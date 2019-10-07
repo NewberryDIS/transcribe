@@ -32,8 +32,8 @@ const Features = () => (
 `}>
         <Container >
                     <Featurebox>
-                        <h2>this would be a features</h2>
-                        <p>some lil text here</p>
+                        <h2>this would be a featured item</h2>
+                        <p>a lil text might go here</p>
                     </Featurebox>
         </Container>
     </section>

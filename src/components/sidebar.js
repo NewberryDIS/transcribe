@@ -12,7 +12,7 @@ const standardcss = css`
     color: white;
     width: 225px;
     .button {
-        background: hotpink;
+        background: black;
         position: absolute;
         top: 0;
         right: 0;
@@ -72,8 +72,8 @@ const hiddencss = css`
         display: none;
     }
     .button {
-        background: teal;
-        border: 1px solid teal;
+        background: black;
+        border: 1px solid black;
         position: absolute;
         top: 0;
         left: 0;
