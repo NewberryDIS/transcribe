@@ -6,6 +6,7 @@ import Cardsection from '../components/cardsection'
 import {Container, Row} from './pieces'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
+import Apipuller from "./apipuller";
 
 const Features = () => {
     const [show, setShow] = useState(true);
@@ -25,6 +26,7 @@ const Features = () => {
             <Sidebar show={show} setShow={setShow} />
             <Cardsection show={show} />
         </Container>
+        <Apipuller />
     </section>
     )
 }

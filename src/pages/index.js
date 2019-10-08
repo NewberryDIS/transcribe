@@ -11,11 +11,11 @@ import bg from '../images/bg.png'
 
 const IndexPage = () => (
   <div css={css`
-  position: relative;
-  background-image: url(${bg});
-  background-position: bottom right;
-  background-size: cover;
-  background-attachment: fixed;>
+    position: relative;
+    background-image: url(${bg});
+    background-position: bottom right;
+    background-size: cover;
+    background-attachment: fixed;
   `}>
     <Features />
     <Navbar />
