@@ -1,13 +1,15 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from '@emotion/styled'
-import {Container, Row, FontSizes} from './pieces'
+import {FontSizes} from './pieces'
 import pic from '../images/img.jpg'
-import {cardArray} from './cardarray'
-
+// import {cardArray} from './cardarray'
 
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import Masonry from 'react-masonry-css'
+
+const apikey = process.env.GATSBY_OMEKA_API_KEY
+const apiurl = 'https://cors-anywhere.herokuapp.com/http://publications.newberry.org/transcription/mms-transcribe/api/items?key=' + apikey
 
 const Card = styled.div`
     flex: 1;
@@ -46,34 +48,82 @@ const Main = styled.div`
         margin-bottom: 3px;
     }
 `
-const cards  = cardArray.map((el, i) =>
-    <Card key={i} ><img src={pic} css={css`flex-basis: auto; width: ${el.w}; height: ${el.h}px;`}/><h3>{el.title}</h3><p>{el.desc}</p></Card>
-);
+// const cards  = cardArray.map((el, i) =>
+//     <Card key={i} ><img src={pic} css={css`flex-basis: auto; width: ${el.w}; height: ${el.h}px;`}/><h3>{el.title}</h3><p>{el.desc}</p></Card>
+// );
 
-const Cardsection = props => {
-    const showBreakpoints = {
+class Cardsection extends React.Component {
+    state = {
+        collections: []
+    }
+    componentDidMount() {
+        fetch(apiurl)
+        .then(res => res.json())
+        .then((data) => {
+            this.setState({ collections: data })
+        })
+        .catch(console.log)
+    }
+    render() {
+    const sidebarBreakpoints = {
         default: 5,
         1200: 4,
         1050: 3,
         800: 2,
         650: 1
     }
-    const hideBreakpoints = {
+    const noSidebarBreakpoints = {
         default: 5,
         1100: 4,
         850: 3,
         650: 2,
         400: 1
-      }
+    }
     return (
-    <Main>
-        <Masonry breakpointCols={props.show ? showBreakpoints : hideBreakpoints} className="masonry-grid" columnClassName="masonry-grid_column">
-            {cards}
-        </Masonry>
-    </Main>
-    )
+        <Main>
+            <Masonry className="masonry-grid" columnClassName="masonry-grid_column">
+                <Cards collections={this.state.collections}/>
+                {console.log('cards what?')}
+            </Masonry>
+        </Main>
+        )
+    }
 }
 
 
+const Cards = props => {
+    return (
+        <div>
+            {props.collections
+                .slice(0, 15)
+                .map((coll, i) => {
+                    const html = []; 
+                    for (const v in coll.element_texts) {html.push( coll.element_texts[v].html ? coll.element_texts[v].text.substring(0,100) + '...': '')}
+                    return (
+                        <Card key={i} ><img src={pic} css={css`flex-basis: auto; width:100%; height: 230px;`}/><h3>{coll.element_texts[0].text}</h3><p>{html}</p></Card>
+                    )
+            })}
+        </div>
+    )
+}
+
+// class Apipuller extends Component {
+//         state = {
+//             collections: []
+//         }
+//         componentDidMount() {
+//             fetch(apiurl)
+//             .then(res => res.json())
+//             .then((data) => {
+//                 this.setState({ collections: data })
+//             })
+//             .catch(console.log)
+//         }
+//         render() {
+//         return (
+//           <Colls collections={this.state.collections} />
+//         )
+//       }
+//     }
 
 export default Cardsection

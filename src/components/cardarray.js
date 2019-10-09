@@ -1,4 +1,3 @@
-
 export const cardArray = [
     {
         image: 'data',

@@ -7,13 +7,13 @@ import Body from '../components/body'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import bg from '../images/bg.png'
+import bg from '../images/longpaper.jpg'
 
 const IndexPage = () => (
   <div css={css`
     position: relative;
     background-image: url(${bg});
-    background-position: bottom right;
+    background-position: 50% 0%;
     background-size: cover;
     background-attachment: fixed;
   `}>

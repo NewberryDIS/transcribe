@@ -2,11 +2,13 @@ import { Link } from "gatsby"
 import React, { useState, useEffect }  from "react"
 import styled from '@emotion/styled'
 import Sidebar from '../components/sidebar'
+// import Vmasonry from '../components/vmasonry'
+import Masonry from '../components/masonry'
 import Cardsection from '../components/cardsection'
+import { cardArray } from './cardarray';
 import {Container, Row} from './pieces'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
-import Apipuller from "./apipuller";
 
 const Features = () => {
     const [show, setShow] = useState(true);
@@ -24,9 +26,8 @@ const Features = () => {
             justify-content: stretch;
         `}>
             <Sidebar show={show} setShow={setShow} />
-            <Cardsection show={show} />
+            <Masonry />
         </Container>
-        <Apipuller />
     </section>
     )
 }

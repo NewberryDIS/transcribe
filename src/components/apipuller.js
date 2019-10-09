@@ -3,22 +3,21 @@ import React, { Component } from 'react';
 const Colls = props => {
     return (
         <div>
-
-        {props.collections.map((coll) => (
-            <div key={coll.id} className="card">
-              <div className="card-body">
-                <h6 className="card-subtitle mb-2 text-muted">{coll.id}</h6>
-                <p className="card-text">{coll.url}</p>
-              </div>
-            </div>
-          ))}
+            {props.collections
+                .slice(0, 15)
+                .map((coll, i) => {
+                    const html = []; 
+                    for (const v in coll.element_texts) { coll.element_texts[v].html === true ? html.push(coll.element_texts[v].text) : '' }
+                    return (
+                        <div key={i}><h3>{coll.element_texts[0].text}</h3><p>{html}</p></div>
+                    )
+            })}
         </div>
     )
 }
 
-// console.log(process.env.GATSBY_OMEKA_API_KEY);
 const apikey = process.env.GATSBY_OMEKA_API_KEY
-const apiurl = 'https://cors-anywhere.herokuapp.com/http://publications.newberry.org/transcription/mms-transcribe/api/collections?key=' + apikey
+const apiurl = 'https://cors-anywhere.herokuapp.com/http://publications.newberry.org/transcription/mms-transcribe/api/items?key=' + apikey
     class Apipuller extends Component {
         state = {
             collections: []

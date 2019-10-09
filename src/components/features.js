@@ -4,7 +4,7 @@ import React from "react"
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import {Container, Row, Flexbox } from './pieces'
-import bg from '../images/bg.png'
+import bg from '../images/feature.jpg'
 
 const Featurebox = styled.div`
     background: white;
@@ -27,8 +27,8 @@ const Features = () => (
     <section css={css`
         position: relative;
         background-image: url(${bg});
-        background-position: bottom right;
-        background-size: cover;
+        background-position: 25% 25%;
+        {/* background-size: cover; */}
 `}>
         <Container >
                     <Featurebox>

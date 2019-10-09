@@ -77,7 +77,7 @@ const hiddencss = css`
         position: absolute;
         top: 0;
         left: 0;
-
+        z-index: 2;
     }
 
     .bar1, .bar2, .bar3 {
