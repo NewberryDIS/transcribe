@@ -35,3 +35,13 @@ export const Flexbox = styled.div`
     // overflow: auto;
     // border: 1px solid white;
 `
+// export const Colors = {
+//     fgcolor: 'rgba(255,255,255,1)',
+//     bgcolor: 'rgba(0,0,0,1)',
+//     inversion: '100%'
+// }
+export const Colors = {
+    fgcolor: 'rgba(0,0,0,1)',
+    bgcolor: 'rgba(255,255,255,1)',
+    inversion: '0%'
+}

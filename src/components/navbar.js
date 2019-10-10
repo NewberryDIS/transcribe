@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import logob from '../images/Newberry_N.svg';
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
-
 
 const Navchunk = styled.div`
     z-index: 2;
@@ -64,7 +61,7 @@ const Navchunk = styled.div`
 export default class Navbar extends React.Component {
     render(){
         return(
-            <Navchunk onClick={this.props.handleClick} className="navleft" >
+            <Navchunk onClick={this.props.handleClick} id="nlogo" className="navleft" >
                     <a href="http://www.newberry.org" className="nav-n-logo">
                         <img alt="Newberry Logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                     </a>

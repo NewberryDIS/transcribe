@@ -1,18 +1,18 @@
-import React, { useState } from "react"
-import styled from '@emotion/styled'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
+import { Colors } from '../components/pieces'
 
 const standardcss = css`
-    border: 1px solid teal;
+    background: ${Colors.bgcolor};
+    border: 1px solid transparent;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    border-radius: 2px;
     position: relative;
     display: block;
     flex-basis: 225px;
-    background: black;
-    color: white;
     width: 225px;
     .button {
-        background: black;
+        background: transparent;
         position: absolute;
         top: 0;
         right: 0;
@@ -23,12 +23,13 @@ const standardcss = css`
         padding: 5px;
         margin: 0;
         li {
+            color: ${Colors.fgcolor};
             padding: 5px 5px 5px 10px;
             margin: 5px;
-            border-left: 1px solid white;
+            border-left: 1px solid ${Colors.fgcolor};
             border-bottom: 1px solid transparent;
             text-decoration: none;
-            background-image: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75));
+            background-image: linear-gradient(${Colors.fgcolor}, ${Colors.fgcolor});
             background-position: 0% 105%;
             background-repeat: no-repeat;
             background-size: 0% 2px;
@@ -42,7 +43,7 @@ const standardcss = css`
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: white;
+        background-color: ${Colors.fgcolor};
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -72,8 +73,11 @@ const hiddencss = css`
         display: none;
     }
     .button {
-        background: black;
-        border: 1px solid black;
+        padding: 2px 7px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+        border-radius: 2px;
+        background: ${Colors.bgcolor};
+        border: 1px solid ${Colors.fgcolor};
         position: absolute;
         top: 0;
         left: 0;
@@ -83,7 +87,7 @@ const hiddencss = css`
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: white;
+        background-color: ${Colors.fgcolor};
         margin: 6px 0;
         transition: 0.4s;
     }
