@@ -2,13 +2,14 @@ import React from 'react'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import {itemsJson} from '../data/items.js'
+// import {itemsJson} from '../data/items.js'
 import pic from '../images/img.jpg'
 import {Colors} from '../components/pieces'
 
 // const apikey = process.env.GATSBY_OMEKA_API_KEY
 // const proxyurl = 'https://cors-anywhere.herokuapp.com/'
 // const apiurl = proxyurl + 'https://publications.newberry.org/transcription/mms-transcribe/api/items?key=' + apikey
+const apiurl = 'http://publications.newberry.org/transcription/mms-transcribe/admin/items/show/1174?output=omeka-json'
 
 const MasonryTile = ({ image, alt, title, id, html, index }) => (
     index % 16 === 15 ? 
@@ -98,22 +99,22 @@ const Banner = styled.div`
 `
 
 function brickWidth(length) {const width = (length * 2) + 300 > 350 ? 350 : (length * 2) + 300; return( width)}
-function imgWidth(length) {const width = (length * 2) + 125 > 350 ? 350 : (length * 2) + 125 ; return( width)}
+// function imgWidth(length) {const width = (length * 2) + 125 > 350 ? 350 : (length * 2) + 125 ; return( width)}
 class Masonry extends React.Component {
-    // state = {
-    //     collections: [itemsJson]
-    // }
-    // componentDidMount() {
-    //     fetch(apiurl)
-    //     .then(res => res.json())
-    //     .then((data) => {
-    //         this.setState({ collections: data })
-    //         console.log(data)
-    //     })
-    //     .catch(console.log)
-    // }
+    state = {
+        jsonItems: []
+    }
+    componentDidMount() {
+        fetch(apiurl)
+        .then(res => res.json())
+        .then((data) => {
+            console.log('ok!')
+            this.setState({ jsonItems: data })
+        })
+        .catch(console.log)
+    }
     render() {
-        const cards = itemsJson
+        const cards = this.state.jsonItems
             .slice(0, 100)
             .map((coll, i) => {
                 const html = []; 
