@@ -1,7 +1,8 @@
 import { useState }  from "react"
 import Sidebar from '../components/sidebar'
-import Masonry from '../components/masonry'
+// import Masonry from '../components/masonry'
 import {Container} from './pieces'
+import ClientFetchingExample from './clientdata'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 
@@ -14,7 +15,7 @@ const Features = () => {
             justify-content: stretch;
         `}>
             <Sidebar show={show} setShow={setShow} />
-            <Masonry />
+        <ClientFetchingExample />
         </Container>
     </section>
     )
