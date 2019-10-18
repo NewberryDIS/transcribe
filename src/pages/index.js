@@ -34,7 +34,7 @@ const IndexPage = () => {
             height: 50px !important;
             z-index: 3;
             & p, h1, h3 {
-                font-size: ${FontSizes.sm} !important;
+                font-size: ${FontSizes.md} !important;
             }
             .mainc {
                 display: flex !important;

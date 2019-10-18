@@ -80,7 +80,7 @@ const headercss = css`
     }
     .sometimes-logo {
         postiion: absolute;
-        left: 0;
+        left: 5px;
         display: none;
         filter: invert(${Colors.inversion});
     }
