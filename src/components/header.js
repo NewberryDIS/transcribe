@@ -6,6 +6,7 @@ import logob from '../images/Newberry_N.svg';
 
 
 const headercss = css`
+    overflow: hidden;
     transition: 0.2s linear;
     font-family: 'News Cycle', sans-serif;
     // background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));
@@ -97,7 +98,7 @@ return (
             <Row >
                 <Flexbox flex={1.2}>
                     <Flexbox column className="mainc" >
-                        {/* <h1>Newberry Transcribe</h1> */}
+                        <h1>Newberry Transcribe</h1>
                         <p className="subheader">Uncover everyday life in the 19th &amp; early 20th centuries</p>
                         <p className="hidey">Contribute <a href="http://www.google.com">here</a>!</p>
                     </Flexbox>

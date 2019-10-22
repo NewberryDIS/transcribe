@@ -1,16 +1,28 @@
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import { Colors } from '../components/pieces'
+// import Menucontent from './dataparser'
 
 const standardcss = css`
-    background: ${Colors.bgcolor};
-    border: 1px solid transparent;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-    border-radius: 2px;
     position: relative;
     display: block;
     flex-basis: 225px;
     width: 225px;
+    .stickycontainer {
+        top: 60px;
+        position: sticky;
+        background: ${Colors.bgcolor};
+        border: 1px solid transparent;
+        // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+        // border-radius: 2px;
+    
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+        border-radius: 3px;
+        &:hover {
+          box-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+          // box-shadow: 0 0 0 1px rgba(0,0,0,.16);
+        }
+    }
     .button {
         background: transparent;
         position: absolute;
@@ -69,6 +81,22 @@ const hiddencss = css`
     position: relative;
     flex-basis: 1px;
     width: 10px;
+
+
+    .stickycontainer {
+        top: 60px;
+        position: sticky;
+        border: 1px solid transparent;
+        // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+        // border-radius: 2px;
+    
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+        border-radius: 3px;
+        &:hover {
+          box-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+          // box-shadow: 0 0 0 1px rgba(0,0,0,.16);
+        }
+    }
     ul {
         display: none;
     }
@@ -99,23 +127,26 @@ const hiddencss = css`
 `
 
 const Sidebar = props => {
+    console.log(props)
     return (
         <div css={props.show ? standardcss : hiddencss}>
-            <div className="listContainer">
-                <ul >
-                    <li>menu item 1</li>
-                    <li>menu item 2</li>
-                    <li>menu item 3</li>
-                    <li>menu item 4</li>
-                    <li>menu item 5</li>
-                </ul>
-            </div>
-            <div className="button container" onClick={() => props.setShow(!props.show)}>
-                <div className="bar1"></div>
-                <div className="bar2"></div>
-                <div className="bar3"></div>
+            <div className="stickycontainer">
+                <div className="listContainer">
+                    <Progress percentage={props.dataContent} />
+                </div>
+                <div className="button container" onClick={() => props.setShow(!props.show)}>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
+                </div>
             </div>
         </div>
     )
 }
+
+const Progress = props => {
+    const percentage = props.percentage >= 1 ? 'Done' : 'Not Done'
+    return <div>{percentage}</div>
+}
+
 export default Sidebar

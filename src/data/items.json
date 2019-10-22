@@ -1,4 +1,4 @@
-export const fullData = [
+[
 	{
 		"id":2,
 		"url":"https:\/\/publications.newberry.org\/transcription\/mms-transcribe\/api\/items\/2",
