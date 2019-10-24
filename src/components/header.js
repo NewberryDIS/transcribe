@@ -98,7 +98,7 @@ return (
             <Row >
                 <Flexbox flex={1.2}>
                     <Flexbox column className="mainc" >
-                        <h1>Newberry Transcribe</h1>
+                        {/* <h1>Newberry Transcribe</h1> */}
                         <p className="subheader">Uncover everyday life in the 19th &amp; early 20th centuries</p>
                         <p className="hidey">Contribute <a href="http://www.google.com">here</a>!</p>
                     </Flexbox>
