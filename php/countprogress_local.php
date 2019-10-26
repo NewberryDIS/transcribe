@@ -4,9 +4,8 @@
 $needsReview = 0;
 $totals = array();
 $totalsforboth = array();
-$items = file_get_contents('items.json');
-$itemdata = json_decode($items, true);
-echo $itemdata[1]["id"];
+$allItems = file_get_contents('items.json');
+$allItemsData = json_decode($allItems, true);
 $counts = array();
 $urls = array();
 $contentArray = array();
@@ -14,7 +13,14 @@ $subject = array();
 $total = 0;
 $totalnr = 0;
 $totalcomplete = 0;
-foreach ($itemdata as $i) {
+$collArray = array(
+    7 => "Transcribing Modern Manuscripts",
+    14 => "Diaries",
+    15 => "Letters",
+    16 => "Everett D. Graff Collection of Western Americana",
+    17 => "Edward E. Ayer Collection"
+);
+foreach ($allItemsData as $i) {
 	$count = (int)$i["files"]["count"];
 	$fileurl = 'files' . $i["id"] . '.json';
 	array_push($counts,$count);
@@ -25,18 +31,18 @@ foreach ($itemdata as $i) {
         }
     }
 }
+
 foreach ($urls as $u) {
 	$itemid = str_replace("files","",$u);
 	$itemid = str_replace(".json","",$itemid);
     $files = file_get_contents($u);
-    $filesdata = '';
     $filesdata = json_decode($files, true);
     $count = count($filesdata);
-    $startDate = '';
-    $endDate = '';
+    $startDate = $endDate = $lang = $desc = $image = $pc = $pnr = $weight = $name = '';
     $review = 0;
     $incomplete = 0;
     $complete = 0;
+    $coll = [];
 	foreach ($filesdata as $f) {
         foreach ($f["element_texts"] as $e) {
             if ($e["element"]["name"] === "Subject" ) array_push($subject, $e["text"]);
@@ -47,9 +53,11 @@ foreach ($urls as $u) {
             }  
         }
     }
-    $items = file_get_contents("http://publications.newberry.org/transcription/mms-transcribe/api/items/" . $itemid);
+    $itemFilename = "items" . $itemid . ".json";
+    $items = file_get_contents($itemFilename);
     $itemsdata = json_decode($items, true);
     foreach ($itemsdata["element_texts"] as $el){
+		if ($el["element"]["name"] === "Language") $lang     = $el["text"];
 		if ($el["element"]["name"] === "Relation") $desc     = $el["text"];
 		if ($el["element"]["name"] === "Source"  ) $image    = $el["text"];
         if ($el["element"]["name"] === "Percent Completed") $pc = $el["text"];
@@ -69,14 +77,19 @@ foreach ($urls as $u) {
                 $endDate = substr($dateRange[0], 5, 8);
             };
         }
+        // $coll = $collArray[$i["collection"]["id"]];
     }
+    $tempcoll = $itemsdata["collection"]["id"];
+    array_push($coll, $tempcoll, $collArray[$tempcoll]);
     $thisone = [
 		"id" => $itemid,
         "name" => $name,
         "startDate" => $startDate,
         "endDate" => $endDate,
-		"subjects" => $subject,
-		"desc" => $desc,
+        "subjects" => $subject,
+        "coll" => $coll,
+        "desc" => $desc,
+        "lang" => $lang,
 		"image" => $image,
 		// "status" => $status,
 		"pc" => $pc,
@@ -96,7 +109,6 @@ foreach ($urls as $u) {
     $totalcomplete += $complete;
 }
 // echo $needsReview;
-
 
 // function get_percentage($total, $number)
 // {

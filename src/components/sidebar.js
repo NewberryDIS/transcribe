@@ -1,7 +1,6 @@
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import { Colors } from '../components/pieces'
-// import Menucontent from './dataparser'
 
 const standardcss = css`
     position: relative;
@@ -125,14 +124,40 @@ const hiddencss = css`
         width: 1px;
     }
 `
+const Progress = props => <div css={css`
+    width: 100%;
+    border: 1px solid black;
+    margin: 30px 0;
+    background-image:
+        linear-gradient(
+            to right, 
+            rgba(255,0,0,0.25),
+            rgba(255,0,0,0.25) ${Math.round(props.percent)}%,
+            #fff ${Math.round(props.percent)}%,
+            #fff
+        );
+    padding: 5px;
+    p {
+        margin-bottom: 3px;
+    }
+`}>
+    <p>
+        {numberWithCommas(props.compl)} out of {numberWithCommas(props.total)} pages completed!
+    </p>
+</div>
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const Sidebar = props => {
+
     console.log(props)
     return (
         <div css={props.show ? standardcss : hiddencss}>
             <div className="stickycontainer">
                 <div className="listContainer">
-                    <Progress percentage={props.dataContent} />
+                    {console.log(props.dataContent[0])}
+                    <Progress percent={props.dataContent[0].percentComplete} compl={props.dataContent[0].totalcomplete} total={props.dataContent[0].total} />
                 </div>
                 <div className="button container" onClick={() => props.setShow(!props.show)}>
                     <div className="bar1"></div>
@@ -144,9 +169,5 @@ const Sidebar = props => {
     )
 }
 
-const Progress = props => {
-    const percentage = props.percentage >= 1 ? 'Done' : 'Not Done'
-    return <div>{percentage}</div>
-}
 
 export default Sidebar
