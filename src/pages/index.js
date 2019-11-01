@@ -12,7 +12,7 @@ const IndexPage = () => {
     const [shrink, setShrink] = useState(false);
     window.onscroll = function() {scrollFunction()};
     function scrollFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if (document.documentElement.scrollTop > 0) {
             setShrink(true)
             document.getElementById("header").classList.add("small-header");
         } else {

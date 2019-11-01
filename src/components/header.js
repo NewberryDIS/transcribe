@@ -73,7 +73,9 @@ const headercss = css`
         }
     }
     .hidey {
-        display: none;
+        opacity: 0;
+        // display: none;
+        
         @media (max-width: 900px){
             display: block;
             font-size: ${FontSizes.md};
@@ -87,35 +89,31 @@ const headercss = css`
     }
 `
 
-
 const Header = () => {
-
-return (
-
-    <header id="header" css={headercss}>
-        <Container >
-            <a href="http://www.newberry.org" ><img className="sometimes-logo" src={ logob } alt="Newberry Logo"/></a>
-            <Row >
-                <Flexbox flex={1.2}>
-                    <Flexbox column className="mainc" >
-                        {/* <h1>Newberry Transcribe</h1> */}
-                        <p className="subheader">Uncover everyday life in the 19th &amp; early 20th centuries</p>
-                        <p className="hidey">Contribute <a href="http://www.google.com">here</a>!</p>
+    return (
+        <header id="header" css={headercss}>
+            <Container >
+                <a href="http://www.newberry.org" ><img className="sometimes-logo" src={ logob } alt="Newberry Logo"/></a>
+                <Row >
+                    <Flexbox flex={1.2}>
+                        <Flexbox column className="mainc" >
+                            {/* <h1>Newberry Transcribe</h1> */}
+                            <p className="subheader">Uncover everyday life in the 19th &amp; early 20th centuries</p>
+                            <p className="hidey">Contribute <a href="http://www.google.com">here</a>!</p>
+                        </Flexbox>
+                        <Flexbox column css={css`justify-content: center; align-items: center;`}>
+                            <img src={Hand} alt="A hand holding a pencil over paper." />
+                        </Flexbox>
                     </Flexbox>
-                    <Flexbox column css={css`justify-content: center; align-items: center;`}>
-                        <img src={Hand} alt="A hand holding a pencil over paper." />
+                    <Flexbox flex={1} column className="otherc">
+                        <h3>Volunteeer online to make historic records easier to find and search</h3>
+                        <p className="right-lowertext">Your efforts transcribing hadwritten letters &amp; diaries will help improve access to our shared cultural heritage.</p>
+                        <p className="right-lowertext">Learn more <a href="http://www.google.com">here</a> or simply choose a collection below to get started &ndash; no account needed!</p>
                     </Flexbox>
-                </Flexbox>
-                <Flexbox flex={1} column className="otherc">
-                    <h3>Volunteeer online to make historic records easier to find and search</h3>
-                    <p className="right-lowertext">Your efforts transcribing hadwritten letters &amp; diaries will help improve access to our shared cultural heritage.</p>
-                    <p className="right-lowertext">Learn more <a href="http://www.google.com">here</a> or simply choose a collection below to get started &ndash; no account needed!</p>
-                </Flexbox>
-            </Row>
-        </Container>
-    </header>
-)
-
+                </Row>
+            </Container>
+        </header>
+    )
 }
 
 export default Header

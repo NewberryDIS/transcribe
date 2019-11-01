@@ -24,21 +24,24 @@ import r from '../images/18.jpg'
 const Cardwrapper = styled.div`
     display: flex; 
     flex-wrap: wrap;
+    // flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
     &.card {
+        flex: auto;
         padding: 0;
-        max-width: 600px;
         margin: 10px;
+        max-width: 300px;
         background-color: white;
-        height: 300px;
+        // height: 450px;
     }
-    div {
+    .cardText {
         margin: 10px;
         padding: 10px;
-        flex: auto;
     }
-    img {
+    .cardImage {
+        height: 300px;
         padding: 0;
-        height: 100%;
     }
 `
 
@@ -48,8 +51,11 @@ const Card = props => {
     const img = images[(Math.floor((Math.random() * 17) + 1))]
     return (
         <Cardwrapper className="card">
-            <img src={img} alt="sample from collection"/>
-            <div>
+            <div className="cardImage">
+
+                <img src={img} alt="sample from collection"/>
+            </div>
+            <div className="cardText">
                 <h3>
                     {props.title}
                 </h3>

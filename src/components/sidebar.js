@@ -1,25 +1,24 @@
+import React, { useState }  from "react"
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import { Colors } from '../components/pieces'
 
 const standardcss = css`
     position: relative;
-    display: block;
+    // display: block;
     flex-basis: 225px;
     width: 225px;
     .stickycontainer {
-        top: 60px;
         position: sticky;
+        top: 60px;
+    }
+    .listwrapper {
         background: ${Colors.bgcolor};
         border: 1px solid transparent;
-        // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-        // border-radius: 2px;
-    
         box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
         border-radius: 3px;
         &:hover {
-          box-shadow: 2px 4px 10px rgba(0,0,0,0.6);
-          // box-shadow: 0 0 0 1px rgba(0,0,0,.16);
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.6);
         }
     }
     .button {
@@ -71,41 +70,36 @@ const standardcss = css`
       transform: rotate(45deg) translate(-8px, -8px);
     }
     .listContainer {
+        transition: width 0.2s, opacity 0.3s;
         flex-basis: 250px;
         padding: 15px;
         width: 225px;
+        opacity: 1;
     }
 `
 const hiddencss = css`
     position: relative;
-    flex-basis: 1px;
+    // display: block;
+    flex-basis: 10px;
     width: 10px;
-
-
     .stickycontainer {
-        top: 60px;
         position: sticky;
-        border: 1px solid transparent;
-        // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-        // border-radius: 2px;
-    
-        box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
-        border-radius: 3px;
-        &:hover {
-          box-shadow: 2px 4px 10px rgba(0,0,0,0.6);
-          // box-shadow: 0 0 0 1px rgba(0,0,0,.16);
-        }
+        top: 60px;
     }
-    ul {
+    .listwrapper {
         display: none;
+        opacity: 0;
+        border: 1px solid transparent;
     }
     .button {
+        display: inline-block;
         padding: 2px 7px;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
         border-radius: 2px;
         background: ${Colors.bgcolor};
         border: 1px solid ${Colors.fgcolor};
-        position: absolute;
+        // position: absolute;
+        position: sticky;
         top: 0;
         left: 0;
         z-index: 2;
@@ -119,12 +113,15 @@ const hiddencss = css`
         transition: 0.4s;
     }
     .listContainer {
+        transition: width 0.3s, opacity 0.3s;
         flex-basis: 1px;
         padding: 0;
         width: 1px;
+        opacity: 0;
     }
 `
 const Progress = props => <div css={css`
+    transition-delay: 0.3s;
     width: 100%;
     border: 1px solid black;
     margin: 30px 0;
@@ -150,16 +147,16 @@ function numberWithCommas(x) {
 }
 
 const Sidebar = props => {
-
-    console.log(props)
     return (
         <div css={props.show ? standardcss : hiddencss}>
             <div className="stickycontainer">
-                <div className="listContainer">
-                    {console.log(props.dataContent[0])}
-                    <Progress percent={props.dataContent[0].percentComplete} compl={props.dataContent[0].totalcomplete} total={props.dataContent[0].total} />
+                <div className="listwrapper">
+                    <div className="listContainer">
+                        <Progress percent={props.allData[0].percentComplete} compl={props.allData[0].totalcomplete} total={props.allData[0].total} />
+                        <Search filteredCardData={props.filteredCardData} filterCards={props.filterCards} allData={props.allData[0]} />
+                    </div>
                 </div>
-                <div className="button container" onClick={() => props.setShow(!props.show)}>
+                <div className="button" onClick={() => props.setShow(!props.show)}>
                     <div className="bar1"></div>
                     <div className="bar2"></div>
                     <div className="bar3"></div>
@@ -168,6 +165,33 @@ const Sidebar = props => {
         </div>
     )
 }
+class Search extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            input: '',
+        }
+    }
 
-
+    handleSubmit(txt) {
+        this.props.filterCards(txt);
+    }
+    handleChange(e) {
+        // var input = e.target.value;
+        this.setState({input: e.target.value}, () => {
+            console.log(this.state.input);
+            this.handleSubmit(this.state.input);
+        });
+    }
+    // function handleChange(e){
+    //     setInput(e)
+    //     let content = props.filteredContent.length > -1 ? props.filteredContent.filter(i => i.name.toUpperCase().indexOf(input.toUpperCase()) > -1) : <div css={css`background: white; padding: 10px;`}>No results</div>
+    //     props.setFilteredContent(content)
+    // }
+    render(){
+        return (
+                <input value={this.state.input} onChange={(e) => this.handleChange(e)} type="text" />
+        )
+    }
+}
 export default Sidebar

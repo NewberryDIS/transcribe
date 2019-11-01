@@ -12,19 +12,45 @@ const collections = require('../data/collections.json')
 const decades = require('../data/decades.json')
 const summary = require('../data/summary.json')
 const allData = [summary, items, collections, decades]
-const Body = () => {
-    const [dataContent, setDataContent] = useState(allData);
-    const [show, setShow] = useState(true);
-    console.log(allData)
-    return (
-    <section>
-        <Container wrap={'nowrap'} css={css`
-            justify-content: stretch;
-        `}>
-            <Sidebar show={show} setShow={setShow} setDataContent={setDataContent} dataContent={dataContent} />
-            <Cardsection items={dataContent} setDataContent={setDataContent}/>
-        </Container>
-    </section>
-    )
+
+
+class Body extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            show: true,
+            cardData: allData[1],
+            filteredCardData: []
+        }
+    }
+
+    componentWillMount() {
+        this.setState({
+            filteredCardData: this.state.cardData
+        })
+    }
+    filterCards = cardFilter => {
+        let filteredCards = this.state.cardData
+        filteredCards = filteredCards.filter((i) => {
+            let cardContent = i.name.toLowerCase()
+            return cardContent.indexOf(cardFilter.toLowerCase()) !== -1
+        })
+        this.setState({filteredCardData: filteredCards})
+    }
+    setShow(){
+        this.setState({show: !this.state.show})
+    }
+    render(){
+        return(
+            <section>
+                <Container wrap={'nowrap'} css={css`
+                    justify-content: stretch;
+                `}>
+                    <Sidebar show={this.state.show} setShow={this.setShow} filterCards={this.filterCards} filteredCardData={this.state.filteredCardData} allData={allData} />
+                    <Cardsection items={this.state.filteredCardData} filterCards={this.filterCards}/>
+                </Container>
+            </section>
+        )
+    }
 }
 export default Body
