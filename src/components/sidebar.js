@@ -170,11 +170,18 @@ class Search extends React.Component {
         super()
         this.state = {
             input: '',
+            type: 'name',
         }
     }
 
     handleSubmit(txt) {
-        this.props.filterCards(txt);
+        this.props.filterCards(txt, this.state.type);
+        console.log(txt + ' ' + this.state.type)
+        // switch (this.state.type){
+        //     case 'subject': console.log('will search subjects');
+        //     case 'keyword': console.log('will search keywords');
+        //     default: console.log('will search titels');
+        // }
     }
     handleChange(e) {
         // var input = e.target.value;
@@ -183,6 +190,9 @@ class Search extends React.Component {
             this.handleSubmit(this.state.input);
         });
     }
+    handleSelect(e) {
+        this.setState({type: e.target.value})
+    }
     // function handleChange(e){
     //     setInput(e)
     //     let content = props.filteredContent.length > -1 ? props.filteredContent.filter(i => i.name.toUpperCase().indexOf(input.toUpperCase()) > -1) : <div css={css`background: white; padding: 10px;`}>No results</div>
@@ -190,7 +200,16 @@ class Search extends React.Component {
     // }
     render(){
         return (
+        <div>
+            <form>
                 <input value={this.state.input} onChange={(e) => this.handleChange(e)} type="text" />
+                <select onChange={(e) => this.handleSelect(e)}>
+                    <option defaultValue value="name">Title</option>
+                    <option value="keyword">Transcription Keywords</option>
+                    <option value="subj">Subjects</option>
+                </select>
+            </form>
+        </div>
         )
     }
 }

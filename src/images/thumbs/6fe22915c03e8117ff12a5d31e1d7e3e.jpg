@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+	<link rel="shortcut icon" href="https://publications.newberry.org/transcription/files/imports/nl-dig.ico" type="image/vnd.microsoft.icon" />
+            <title>Log In &middot; Transcribing the Midwest</title>
+
+    <link rel="alternate" type="application/rss+xml" title="Omeka RSS Feed" href="/transcription/mms-transcribe/items/browse/6fe22915c03e8117ff12a5d31e1d7e3e.jpg/?output=rss2" /><link rel="alternate" type="application/atom+xml" title="Omeka Atom Feed" href="/transcription/mms-transcribe/items/browse/6fe22915c03e8117ff12a5d31e1d7e3e.jpg/?output=atom" />
+    <!-- Plugin Stuff -->
+    
+    <!-- Stylesheets -->
+    <!-- Le styles -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" media="all" rel="stylesheet" type="text/css" >
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" media="all" rel="stylesheet" type="text/css" >
+<link href="https://fast.fonts.net/cssapi/fc8f8385-7e78-4c4b-a85e-9fa8bb57a66a.css" media="all" rel="stylesheet" type="text/css" >
+<link href="https://publications.newberry.org/digital/system/application/views/melons/cantaloupe/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/bootstrap.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/style.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/newberry_footer.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/iconfonts.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/header.css" media="all" rel="stylesheet" type="text/css" >
+<link href="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/css/external.css" media="all" rel="stylesheet" type="text/css" >
+    <!-- JavaScripts -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    //<!--
+    window.jQuery || document.write("<script type=\"text\/javascript\" src=\"http:\/\/publications.newberry.org\/transcription\/mms-transcribe\/application\/views\/scripts\/javascripts\/vendor\/jquery.js\" charset=\"utf-8\"><\/script>")    //-->
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    //<!--
+    window.jQuery.ui || document.write("<script type=\"text\/javascript\" src=\"http:\/\/publications.newberry.org\/transcription\/mms-transcribe\/application\/views\/scripts\/javascripts\/vendor\/jquery-ui.js\" charset=\"utf-8\"><\/script>")    //-->
+</script>
+<script type="text/javascript">
+    //<!--
+    jQuery.noConflict();    //-->
+</script>
+<script type="text/javascript" src="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/javascripts/login.js"></script>
+<script type="text/javascript" src="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/javascripts/jquery.bxSlider.min.js"></script>
+<script type="text/javascript" src="http://publications.newberry.org/transcription/mms-transcribe/themes/Scribe/javascripts/iframeResizer.contentWindow.min.js"></script><script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+jQuery(document).ready(function( $ ){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+</head>
+
+<body class="login">
+<nav id="scalarheader" class="navbar"><span class="navbar-text navbar-left pull-left title_wrapper hidden-xs overflowCalculated" id="desktopTitleWrapper" style="max-width: 1518px; overflow-wrap: break-word;"><span class="hidden-xs author_text"> 	 <a href="https://www.newberry.org" style="color: #ffffff;" tabindex="4"><img src="https://publications.newberry.org/digital/newberry_logo_dark.png" style="height:40px; width:130px;"></a></span><a id="" href="https://publications.newberry.org/digital/mms-transcribe/index" class="navbar-link book-title" tabindex="5">Transcribing Modern Manuscripts</a></span></nav>
+
+<div id="primary">
+<div class="image_header" style="background-image: url(https://publications.newberry.org/digital/mms-transcribe/media/universalbanner3.jpg);"><!--<div class="title_card"><h1 class="heading_font heading_weight clearboth">Transcribing Modern Manuscripts</h1></div> --></div>
+    <div id="wrap" class="container">
+
+        <header id="header" role="banner">
+
+            <div id="sublinks" class="masthead clearfix">
+
+                <ul class="nav nav-pills pull-right">
+
+                    
+                    <li>
+                    <a href="http://publications.newberry.org/transcription/mms-transcribe/scripto/login"><strong>SIGN IN OR REGISTER</strong></a>
+                    </li>
+					<li><div id="search-container" role="search" style="position:relative;">
+                    
+                    <form id="search-form" name="search-form" action="/transcription/mms-transcribe/search" method="get">    <input type="text" name="query" id="query" value="" title="Search">            <input type="hidden" name="query_type" value="keyword" id="query_type">                <input type="hidden" name="record_types[]" value="Item" id="record_types">                <input type="hidden" name="record_types[]" value="File" id="record_types">                <input type="hidden" name="record_types[]" value="Collection" id="record_types">                <button name="submit_search" id="submit_search" type="submit" value="Search">Search</button></form>
+                    
+					</div></li>
+					
+                                    </ul>
+
+                <a href="https://www.newberry.org"><img src="https://publications.newberry.org/digital/newberry_logo_dark.png" /></a>
+				
+				<a href="https://www.newberry.org">DIGITAL NEWBERRY</a>
+				<div class="arrow-right"></div>
+				<a href="https://publications.newberry.org/transcribe">NEWBERRY DIGITAL VOLUNTEERS</a>
+				
+                    
+                  
+              
+                
+            </div>
+
+        </header><!-- end header -->
+
+        <article id="content">
+
+            <h1>Log In</h1>
+
+<p id="login-links">
+<span id="backtosite"><a href="http://publications.newberry.org/transcription/mms-transcribe" >Go to Home Page</a>
+</span>  |  <span id="forgotpassword"><a href="/transcription/mms-transcribe/users/forgot-password">Lost your password?</a></span>
+</p>
+
+    
+<form id="login-form" enctype="application/x-www-form-urlencoded" method="post" action="/transcription/mms-transcribe/users/login">
+<fieldset id="fieldset-login">
+<div class="field"><div id="username-label" class="two columns alpha"><label for="username" class="required">Username</label></div>
+<div class="inputs six columns omega">
+<input type="text" name="username" id="username" value=""></div></div>
+<div class="field"><div id="password-label" class="two columns alpha"><label for="password" class="required">Password</label></div>
+<div class="inputs six columns omega">
+<input type="password" name="password" id="password" value=""></div></div>
+<div class="field"><div id="remember-label" class="two columns alpha"><label for="remember" class="optional">Remember Me?</label></div>
+<div class="inputs six columns omega">
+<input type="hidden" name="remember" value="0"><input type="checkbox" name="remember" id="remember" value="1" class="checkbox"></div></div></fieldset>
+<div>
+<input type="submit" name="submit" id="submit" value="Log In"></div></form>
+        </article>
+
+
+        <footer id="footer">
+			 <div id="block-menu-block-2" class="block block-menu-block footer-nav first odd" role="navigation">
+    <div class="inner">
+           
+
+             <div class="content">
+    <div class="menu-block-wrapper menu-block-2 menu-name-menu-footer-menu parent-mlid-0 menu-level-1">
+ </div>
+  </div>
+    </div>
+</div>
+<div id="block-block-62" class="block block-block address last even">
+    <div class="inner">
+
+    
+  <div class="content">
+    <ul>
+	<li><a href="https://www.newberry.org/" target="_blank">The Newberry</a></li>
+	<li>60 West Walton Street</li>
+	<li>Chicago, Illinois 60610</li>
+	<li>(312) 943-9090</li>
+	<li><a href="http://publications.newberry.org/digital/mms-transcribe/about" target="_blank">Contact us</a></li>
+</ul>  </div>
+    </div>
+</div>
+
+  </footer>
+
+    </div><!-- end wrap -->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script type="text/javascript">	
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5551324-4', 'auto');
+  ga('send', 'pageview');
+  
+</script>
+</body>
+</html>

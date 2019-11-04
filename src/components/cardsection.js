@@ -42,6 +42,12 @@ const Cardwrapper = styled.div`
     .cardImage {
         height: 300px;
         padding: 0;
+        overflow: hidden;
+        img {
+
+            height: 300px;
+            object-fit: cover;
+        }
     }
 `
 
@@ -49,11 +55,13 @@ const images = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r]
 
 const Card = props => {
     const img = images[(Math.floor((Math.random() * 17) + 1))]
+    const hasImage = props.image.lastIndexOf('/') > -1 ? <img src={require('../images/thumbs' + props.image.substring(props.image.lastIndexOf('/'))) } alt="sample from collection"/> : '' 
+    // const localImage = '../images/thumbs' + props.image.substring(props.image.lastIndexOf('/'))
+    console.log(props.image.lastIndexOf('/') > -1 ? props.image.substring(props.image.lastIndexOf('/')): props.image)
     return (
         <Cardwrapper className="card">
             <div className="cardImage">
-
-                <img src={img} alt="sample from collection"/>
+                {hasImage}
             </div>
             <div className="cardText">
                 <h3>

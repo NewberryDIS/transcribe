@@ -1,4 +1,4 @@
-import React, { useState }  from "react"
+import React from "react"
 import Sidebar from './sidebar'
 import {Container} from './pieces'
 import Cardsection from './cardsection'
@@ -29,10 +29,10 @@ class Body extends React.Component {
             filteredCardData: this.state.cardData
         })
     }
-    filterCards = cardFilter => {
+    filterCards = (cardFilter, type) => {
         let filteredCards = this.state.cardData
         filteredCards = filteredCards.filter((i) => {
-            let cardContent = i.name.toLowerCase()
+            let cardContent = i[type].toLowerCase()
             return cardContent.indexOf(cardFilter.toLowerCase()) !== -1
         })
         this.setState({filteredCardData: filteredCards})
