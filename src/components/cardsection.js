@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-
+/** @jsx jsx */ 
+import { jsx, css } from '@emotion/core'
 
 import a from '../images/1.jpg'
 import b from '../images/2.jpg'
@@ -28,6 +29,10 @@ const Cardwrapper = styled.div`
     justify-content: space-evenly;
     width: 100%;
     &.card {
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+        border-radius: 3px;
+background-position: center;
+background-size: cover;
         flex: auto;
         padding: 0;
         margin: 10px;
@@ -36,33 +41,26 @@ const Cardwrapper = styled.div`
         // height: 450px;
     }
     .cardText {
-        margin: 10px;
-        padding: 10px;
+        box-shadow: 
+            0px 11px 8px -10px  rgba(0,0,0,0.4),
+            0px -11px 8px -10px rgba(0,0,0,0.4); 
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5); 
     }
-    .cardImage {
-        height: 300px;
-        padding: 0;
-        overflow: hidden;
-        img {
-
-            height: 300px;
-            object-fit: cover;
-        }
+    .cardCap {
+        height: 250px;
+        content: '';
+    }
     }
 `
 
 const images = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r]
 
 const Card = props => {
-    const img = images[(Math.floor((Math.random() * 17) + 1))]
-    const hasImage = props.image.lastIndexOf('/') > -1 ? <img src={require('../images/thumbs' + props.image.substring(props.image.lastIndexOf('/'))) } alt="sample from collection"/> : '' 
-    // const localImage = '../images/thumbs' + props.image.substring(props.image.lastIndexOf('/'))
-    console.log(props.image.lastIndexOf('/') > -1 ? props.image.substring(props.image.lastIndexOf('/')): props.image)
     return (
-        <Cardwrapper className="card">
-            <div className="cardImage">
-                {hasImage}
-            </div>
+        <Cardwrapper className="card" css={css`background-image: url('${props.image}');`}>
+            <div className="cardCap" />
             <div className="cardText">
                 <h3>
                     {props.title}
@@ -80,7 +78,13 @@ const Card = props => {
 
 
 const Cardsection = props => {
-    const cards = props.items.slice(0,20).map((i) => <Card key={i.id} image={i.image} title={i.name} desc={i.desc} prog={i.calc_complete} />)
+    const cards = props.items.slice(0,20).map((i) => {
+        let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+        let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
+        return (
+        <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
+    )
+    })
     return (
         <Cardwrapper>
             {cards}

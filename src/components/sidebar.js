@@ -13,7 +13,7 @@ const standardcss = css`
         top: 60px;
     }
     .listwrapper {
-        background: ${Colors.bgcolor};
+        background: black;
         border: 1px solid transparent;
         box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
         border-radius: 3px;
@@ -53,7 +53,7 @@ const standardcss = css`
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: ${Colors.fgcolor};
+        background-color: white;
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -96,8 +96,8 @@ const hiddencss = css`
         padding: 2px 7px;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
         border-radius: 2px;
-        background: ${Colors.bgcolor};
-        border: 1px solid ${Colors.fgcolor};
+        background: black;
+        border: 1px solid white;
         // position: absolute;
         position: sticky;
         top: 0;
@@ -108,7 +108,7 @@ const hiddencss = css`
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: ${Colors.fgcolor};
+        background-color: white;
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -125,6 +125,7 @@ const Progress = props => <div css={css`
     width: 100%;
     border: 1px solid black;
     margin: 30px 0;
+    background: white;
     background-image:
         linear-gradient(
             to right, 
@@ -135,6 +136,7 @@ const Progress = props => <div css={css`
         );
     padding: 5px;
     p {
+        text-align: center;
         margin-bottom: 3px;
     }
 `}>

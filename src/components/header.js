@@ -10,9 +10,9 @@ const headercss = css`
     transition: 0.2s linear;
     font-family: 'News Cycle', sans-serif;
     // background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));
-    background: ${Colors.bgcolor};
+    background: black;
     box-shadow: 0 20px 20px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-    color: ${Colors.fgcolor};
+    color: white;
     font-family: sans-serif;
     position: sticky;
     top: 0;
@@ -24,26 +24,26 @@ const headercss = css`
         max-height: 121px;
         width: auto;
         height: auto;
-        // filter: invert(1);
+        filter: invert(1);
         @media (max-width: 900px ){
             // margin: 0 0 15px 0;
         }
     } 
     & a {
-        color: ${Colors.fgcolor};
+        color: white;
         text-decoration: none;
         background-image: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75));
         background-position: 0% 105%;
         background-repeat: no-repeat;
         background-size: 0% 2px;
         transition: background-size .2s;
-        
+        font-weight: 900;
         &:hover {
             background-size: 100% 2px;
         }
     }
     & h1, h3, p {
-        color: ${Colors.fgcolor}
+        color: white;
         margin: 2px;
     }
     & .subheader {
@@ -56,11 +56,13 @@ const headercss = css`
     }
     & h3 { 
         font-size: ${FontSizes.md};
+        margin-bottom: 10px;
     }
     & .subheader {
         font-size: ${FontSizes.lg};
     }
     & p {
+        margin-bottom: 8px;
         font-size: ${FontSizes.sm};
     }
     & .mainc, .otherc {
@@ -85,7 +87,7 @@ const headercss = css`
         postiion: absolute;
         left: 5px;
         display: none;
-        filter: invert(${Colors.inversion});
+        filter: invert(100%);
     }
 `
 
@@ -97,18 +99,17 @@ const Header = () => {
                 <Row >
                     <Flexbox flex={1.2}>
                         <Flexbox column className="mainc" >
-                            {/* <h1>Newberry Transcribe</h1> */}
+                            <h1>Newberry Transcribe</h1>
                             <p className="subheader">Uncover everyday life in the 19th &amp; early 20th centuries</p>
                             <p className="hidey">Contribute <a href="http://www.google.com">here</a>!</p>
                         </Flexbox>
                         <Flexbox column css={css`justify-content: center; align-items: center;`}>
-                            <img src={Hand} alt="A hand holding a pencil over paper." />
+                            <img src={Hand} alt="A hand holding a pencil." />
                         </Flexbox>
                     </Flexbox>
                     <Flexbox flex={1} column className="otherc">
                         <h3>Volunteeer online to make historic records easier to find and search</h3>
-                        <p className="right-lowertext">Your efforts transcribing hadwritten letters &amp; diaries will help improve access to our shared cultural heritage.</p>
-                        <p className="right-lowertext">Learn more <a href="http://www.google.com">here</a> or simply choose a collection below to get started &ndash; no account needed!</p>
+                        <p className="right-lowertext">Your efforts transcribing hadwritten letters &amp; diaries will help improve access to our shared cultural heritage.  Learn more <a href="http://www.google.com">here</a> or simply choose a collection below to get started.  No account needed!</p>
                     </Flexbox>
                 </Row>
             </Container>
