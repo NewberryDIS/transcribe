@@ -129,8 +129,8 @@ const Progress = props => <div css={css`
     background-image:
         linear-gradient(
             to right, 
-            rgba(255,0,0,0.25),
-            rgba(255,0,0,0.25) ${Math.round(props.percent)}%,
+            rgba(140, 181, 129,0.75),
+            rgba(140, 181, 129,0.75) ${Math.round(props.percent)}%,
             #fff ${Math.round(props.percent)}%,
             #fff
         );
@@ -158,7 +158,7 @@ const Sidebar = props => {
                         <Search filteredCardData={props.filteredCardData} filterCards={props.filterCards} allData={props.allData[0]} />
                     </div>
                 </div>
-                <div className="button" onClick={() => props.setShow(!props.show)}>
+                <div className="button" onClick={props.setShow}>
                     <div className="bar1"></div>
                     <div className="bar2"></div>
                     <div className="bar3"></div>

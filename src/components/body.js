@@ -1,7 +1,7 @@
 import React from "react"
 import Sidebar from './sidebar'
 import {Container} from './pieces'
-import Cardsection from './cardsection'
+import Cardsection from './masonry'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 
@@ -21,7 +21,8 @@ class Body extends React.Component {
             show: true,
             cardData: allData[1],
             filteredCardData: [],
-        }
+        };
+        this.setShow = this.setShow.bind(this);
     }
 
     componentWillMount() {
@@ -38,6 +39,7 @@ class Body extends React.Component {
         this.setState({filteredCardData: filteredCards})
     }
     setShow(){
+        console.log('whooo')
         this.setState({show: !this.state.show})
     }
     render(){
