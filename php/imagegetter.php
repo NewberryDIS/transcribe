@@ -5,10 +5,7 @@ $images = array();
 $imgstring  = '';
 foreach ($itemdata as $i){
     $image = $i["image"];
-    $imgstring .= $image . '\n';
-    // array_push($images, $image);
-    // echo $image . '<br />';
+    $image != '' ? $imgstring .= $image . PHP_EOL : '';
 }
 file_put_contents('imagesfile.txt', $imgstring);
-// var_export($images);
 ?>

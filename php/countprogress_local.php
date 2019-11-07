@@ -58,6 +58,7 @@ foreach ($urls as $u) {
     $itemsdata = json_decode($items, true);
     foreach ($itemsdata["element_texts"] as $el){
 		if ($el["element"]["name"] === "Language") $lang     = $el["text"];
+		if ($el["element"]["name"] === "Description") $desc     = $el["text"];
 		if ($el["element"]["name"] === "Relation") $desc     = $el["text"];
 		if ($el["element"]["name"] === "Source"  ) $image    = $el["text"];
         if ($el["element"]["name"] === "Percent Completed") $pc = $el["text"];

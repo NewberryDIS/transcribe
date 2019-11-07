@@ -86,10 +86,11 @@ export default class Cardsection extends React.Component {
                 <Masonrycontainer>
                         <Masonry breakPoints={breakPoints}>
                             {this.props.items.slice(0,20).map((i) => {
+                                let desc = i.desc.substring(0,150) + '...'
                                 let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
                                 let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
                                 return (
-                                    <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
+                                    <Card key={i.id} image={image} title={i.name} desc={desc} prog={i.calc_complete} />
                                 )
                             })}
                         </Masonry>

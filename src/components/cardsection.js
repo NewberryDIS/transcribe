@@ -113,6 +113,7 @@ const Card = props => {
 
 const Cardsection = props => {
     const cards = props.items.slice(0,20).map((i) => {
+        // let desc = i.desc.substring(0,50)
         let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
         let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
         return (

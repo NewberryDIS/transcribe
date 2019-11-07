@@ -1,7 +1,9 @@
 <style>* {font-family: monospace;}</style>
 
 <?php 
-$allItems = file_get_contents('items.json');
+// http://publications.newberry.org/transcription/mms-transcribe/api/items/
+$allItems = file_get_contents('http://publications.newberry.org/transcription/mms-transcribe/api/items/');
+file_put_contents('items.json', $allItems);
 $allItemsData = json_decode($allItems, true);
 $counts = $urls = $contentArray = $subject = array();
 $total = $totalnr = $totalcomplete = $totalincomplete = $itemcount = $fileitemcount = 0;
@@ -52,6 +54,7 @@ foreach ($urls as $u) {
     $itemsdata = json_decode($items, true);
     foreach ($itemsdata["element_texts"] as $el){
 		if ($el["element"]["name"] === "Language") $lang     = $el["text"];
+		if ($el["element"]["name"] === "Description") $desc  = $el["text"];
 		if ($el["element"]["name"] === "Relation") $desc     = $el["text"];
 		if ($el["element"]["name"] === "Source"  ) $image    = $el["text"];
         if ($el["element"]["name"] === "Percent Completed") $pc = $el["text"];

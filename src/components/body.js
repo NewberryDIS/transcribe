@@ -8,6 +8,7 @@ import { jsx, css } from '@emotion/core'
 // const data = require('../data/items.json');
 
 const items = require('../data/content.json')
+items.sort((a,b) => (a.weight > b.weight) ? 1 : -1)
 const collections = require('../data/collections.json')
 const decades = require('../data/decades.json')
 const summary = require('../data/summary.json')
