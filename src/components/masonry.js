@@ -3,6 +3,7 @@ import React from 'react';
 import { css, jsx, Global } from '@emotion/core';
 import styled from "@emotion/styled";
 import { Link } from "gatsby"
+import parse from 'html-react-parser';
 // images
 
 let breakPoints = [400, 700, 850, 1400];
@@ -86,11 +87,14 @@ export default class Cardsection extends React.Component {
                 <Masonrycontainer>
                         <Masonry breakPoints={breakPoints}>
                             {this.props.items.slice(0,20).map((i) => {
-                                let desc = i.desc.substring(0,150) + '...'
+                                // let desc = parse(i.desc)
+                                let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
+                                let truncIndex = Math.min(i.desc.indexOf('<'), 150)
+                                let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
                                 let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
                                 let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
                                 return (
-                                    <Card key={i.id} image={image} title={i.name} desc={desc} prog={i.calc_complete} />
+                                    <Card key={i.id} link={link} image={image} title={i.name} desc={truncatedDesc} prog={i.calc_complete} />
                                 )
                             })}
                         </Masonry>

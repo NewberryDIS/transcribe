@@ -7,12 +7,12 @@ import { jsx, css } from '@emotion/core'
 
 // const data = require('../data/items.json');
 
-const items = require('../data/content.json')
-items.sort((a,b) => (a.weight > b.weight) ? 1 : -1)
-const collections = require('../data/collections.json')
-const decades = require('../data/decades.json')
-const summary = require('../data/summary.json')
-const allData = [summary, items, collections, decades]
+const content = require('../data/content.json')
+// items.sort((a,b) => (a.weight > b.weight) ? 1 : -1)
+// const collections = require('../data/collections.json')
+// const decades = require('../data/decades.json')
+// const summary = require('../data/summary.json')
+// const allData = [summary, items, collections, decades]
 
 
 class Body extends React.Component {
@@ -20,7 +20,7 @@ class Body extends React.Component {
         super()
         this.state = {
             show: true,
-            cardData: allData[1],
+            cardData: content[1],
             filteredCardData: [],
         };
         this.setShow = this.setShow.bind(this);
@@ -49,7 +49,7 @@ class Body extends React.Component {
                 <Container wrap={'nowrap'} css={css`
                     justify-content: stretch;
                 `}>
-                    <Sidebar show={this.state.show} setShow={this.setShow} filterCards={this.filterCards} filteredCardData={this.state.filteredCardData} allData={allData} />
+                    <Sidebar show={this.state.show} setShow={this.setShow} filterCards={this.filterCards} filteredCardData={this.state.filteredCardData} allData={content} />
                     <Cardsection items={this.state.filteredCardData} filterCards={this.filterCards}/>
                 </Container>
             </section>
