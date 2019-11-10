@@ -1,7 +1,5 @@
 import urllib.request as request
-import json
-import os.path
-import time, math, re
+import json, os.path, time, math, re
 
 # current time, used for checking the age of the data files
 currTime = int(time.time())
@@ -16,17 +14,11 @@ content = {
         'totalnr': 0,
         'totalcomplete': 0,
         'totalincomplete': 0,
-        'totaltotal': 0,
-        'percentComplete': 0
+        'percentComplete': 0,
+        'percentTouched': 0
     },
     'subjects': {},
     'items': {},
-    'completion': {
-        'total': 0,
-        'needsReview': 0,
-        'incomplete': 0,
-        'complete': 0
-    },
     'languages': {},
     'dates': {}
 }
@@ -96,13 +88,14 @@ with open(itemsFile) as json_file:
         with open(filesfilename) as files:
             filesJson = json.load(files)
             for fi in filesJson:
+                content['summary']['total'] += 1
                 transcription = ''
                 for fe in fi['element_texts']:
                     if fe['element']['name'] == 'Status':
-                        content['completion']['total'] += 1
-                        if fe['text'] == 'Needs Review': content['completion']['needsReview'] += 1
-                        if fe['text'] == 'Incomplete': content['completion']['incomplete'] += 1
-                        if fe['text'] == 'Completed' or  fe['text'] == 'Complete' : content['completion']['complete'] += 1
+                        # content['summary']['total'] += 1
+                        if fe['text'] == 'Needs Review': content['summary']['totalnr'] += 1
+                        if fe['text'] == 'Incomplete': content['summary']['totalincomplete'] += 1
+                        if fe['text'] == 'Completed' or  fe['text'] == 'Complete' : content['summary']['totalcomplete'] += 1
                     if fe['element']['name'] == 'Transcription': 
                         stuffer(content['items'], 'transcription', fe['text'], id)
         with open(itemfilename) as item:
@@ -132,10 +125,14 @@ with open(itemsFile) as json_file:
                     stuffer(content['items'], 'title', title, id)
                     stuffer(content['items'], 'date', date, id)
                 if lang == '': tagCleaner('English', content['languages'], id)
+cs = content['summary']
+content['summary']['percentComplete'] = round((cs['totalcomplete'] / cs['total']) * 100, 2)
+content['summary']['percentTouched'] = round(((cs['totalcomplete'] + cs['totalincomplete'] + cs['totalnr']) / cs['total']) * 100, 2)
 
 with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
+print('total: ' + str(content['summary']['total']) + '; percent completed: ' + str(content['summary']['percentComplete']) + '%; total touched: ' + str(content['summary']['percentTouched']) + '%;')
 
 # image handling: 
 #     chop off beggining of url

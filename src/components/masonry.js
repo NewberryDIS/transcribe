@@ -87,7 +87,7 @@ export default class Cardsection extends React.Component {
                 <Masonrycontainer>
                         <Masonry breakPoints={breakPoints}>
                             {this.props.items.slice(0,20).map((i) => {
-                                // let desc = parse(i.desc)
+                                
                                 let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
                                 let truncIndex = Math.min(i.desc.indexOf('<'), 150)
                                 let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc

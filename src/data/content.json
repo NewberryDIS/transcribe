@@ -1,4 +1,12 @@
 {
+    "summary": {
+        "total": 52681,
+        "totalnr": 5041,
+        "totalcomplete": 11339,
+        "totalincomplete": 0,
+        "percentComplete": 21.52,
+        "percentTouched": 31.09
+    },
     "subjects": {
         "Rowley family": [
             "2",
@@ -31,7 +39,64 @@
             "2",
             "6"
         ],
+        "Everett D. Graff Collection of Western Americana": [
+            "994",
+            "995",
+            "996"
+        ],
+        "U.S. Western Expansion": [
+            "994",
+            "995",
+            "996",
+            "997",
+            "998",
+            "999",
+            "1000",
+            "1001",
+            "1002",
+            "1003",
+            "1004",
+            "1005",
+            "1006",
+            "1007",
+            "1008",
+            "1009",
+            "1010",
+            "1011",
+            "1037",
+            "1046",
+            "1074",
+            "1167"
+        ],
         "Letters (Correspondence)": [
+            "994",
+            "997",
+            "998",
+            "999",
+            "1000",
+            "1001",
+            "1002",
+            "1003",
+            "1004",
+            "1005",
+            "1006",
+            "1007",
+            "1008",
+            "1011",
+            "1019",
+            "1020",
+            "1021",
+            "1022",
+            "1023",
+            "1027",
+            "1029",
+            "1030",
+            "1031",
+            "1032",
+            "1033",
+            "1034",
+            "1041",
+            "1042",
             "1051",
             "1054",
             "1056",
@@ -41,7 +106,6 @@
             "1060",
             "1061",
             "1062",
-            "1063",
             "1064",
             "1066",
             "1067",
@@ -61,8 +125,109 @@
             "1169",
             "1173"
         ],
+        "Records (Documents)": [
+            "994",
+            "1008",
+            "1009",
+            "1010",
+            "1011",
+            "1019",
+            "1020",
+            "1021",
+            "1022",
+            "1023",
+            "1024",
+            "1034",
+            "1035",
+            "1036",
+            "1038",
+            "1041",
+            "1048",
+            "1049",
+            "1050",
+            "1053",
+            "1055",
+            "1056",
+            "1057",
+            "1058",
+            "1059",
+            "1060",
+            "1061",
+            "1062",
+            "1063",
+            "1064",
+            "1068",
+            "1071",
+            "1080",
+            "1087",
+            "1138",
+            "1139"
+        ],
+        "Travelers' writings": [
+            "995",
+            "1026",
+            "1037",
+            "1046",
+            "1072",
+            "1073",
+            "1077",
+            "1081",
+            "1082",
+            "1167"
+        ],
         "Edward E. Ayer Manuscript Collection": [
+            "997",
+            "998",
+            "999",
+            "1000",
+            "1001",
+            "1002",
+            "1003",
+            "1004",
+            "1005",
+            "1006",
+            "1007",
+            "1008",
+            "1009",
+            "1010",
+            "1011",
+            "1012",
+            "1014",
+            "1016",
+            "1017",
+            "1018",
+            "1019",
+            "1020",
+            "1021",
+            "1022",
+            "1023",
+            "1024",
+            "1026",
+            "1027",
+            "1028",
+            "1029",
+            "1030",
+            "1031",
+            "1032",
+            "1033",
+            "1034",
+            "1035",
+            "1036",
+            "1037",
+            "1038",
+            "1039",
+            "1040",
+            "1041",
+            "1042",
+            "1044",
+            "1045",
+            "1046",
+            "1047",
+            "1048",
+            "1049",
+            "1050",
             "1051",
+            "1053",
             "1054",
             "1055",
             "1056",
@@ -97,8 +262,42 @@
             "1087",
             "1167"
         ],
+        "Letters (Documents)": [
+            "1009"
+        ],
         "Indians of North America": [
+            "1012",
+            "1014",
+            "1016",
+            "1017",
+            "1018",
+            "1019",
+            "1020",
+            "1021",
+            "1022",
+            "1023",
+            "1024",
+            "1026",
+            "1027",
+            "1028",
+            "1029",
+            "1030",
+            "1031",
+            "1032",
+            "1037",
+            "1038",
+            "1039",
+            "1040",
+            "1041",
+            "1042",
+            "1044",
+            "1045",
+            "1047",
+            "1048",
+            "1049",
+            "1050",
             "1051",
+            "1053",
             "1054",
             "1055",
             "1056",
@@ -127,15 +326,11 @@
             "1086",
             "1087"
         ],
-        "Records (Documents)": [
-            "1068",
-            "1071",
-            "1080",
-            "1087",
-            "1138",
-            "1139"
-        ],
         "Diaries": [
+            "1018",
+            "1026",
+            "1037",
+            "1046",
             "1072",
             "1073",
             "1077",
@@ -176,16 +371,9 @@
             "1167",
             "1174"
         ],
-        "Travelers' writings": [
-            "1072",
-            "1073",
-            "1077",
-            "1081",
-            "1082"
-        ],
-        "U.S. Western Expansion": [
-            "1074",
-            "1167"
+        "Poems": [
+            "1044",
+            "1170"
         ],
         "Women": [
             "1077",
@@ -239,9 +427,6 @@
             "1169"
         ],
         "Hymns": [
-            "1170"
-        ],
-        "Poems": [
             "1170"
         ]
     },
@@ -321,15 +506,15 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/549b0ea80414dbba0236b51d5b0d03d5.jpg"
         },
         "39": {
-            "transcription": "Hom built against hill,\nRich French tent in yard colored unclear boy in fountain - gay?\nOpen side of door\npotato plants in lavender & unclear page is torn diagonally and pinned together\nunclear\npines, ashes, elms, maple leafs out\nmilkweed\nLayered unclear,unclearall down\nOven, board top & thatched with pine branches\nOld round stone house. cupboard unclear yet seen in unclear\nunclearunclear unclear Corner perfect Wind unclearon side.\nMoccasins of leather,\nLittle unclear in big barn door.\nLavender colored daisies.\nChildren store. Women very unclear\nAt Leger Brousseau's Buade St\nDr Droinne's History of the Church Notre Dame des Victoires -",
+            "transcription": "Hom built against hill,\nRich French tent in yard colored clay boy in fountain - gay?\nOpen side of door,\npotato plants in lavender & yellow page is torn diagonally and pinned together\nhill\npines, ashes, elms, maple leafs out\nmilkweed\nLayered leafe, damp all down\nOven, board top & thatched with pine branches\nOld round stone house. cupboard shelves yet seen in unclear\nOur velvet home.  Corner perfect Wind from on side.\nMoccasins of leather,\nLittle unclear in big barn door.\nLavender colored daisies.\nChildren store. Women very ugly\nAt Leger Brousseau's Buade St\nDr Droinne's History of the Church Notre Dame des Victoires -",
             "title": "Mary Hartwell Catherwood Canadian travel diary, 1870s",
             "date": [
                 "1870"
             ],
             "desc": "Mary Hartwell Catherwood was born in Ohio in 1847. After spending most of her life in the small Midwestern towns where her husband's business took her and her daughter, at the end of her life she settled in Chicago, where she died in 1902. Catherwood was a central figure in Middle Western authorship during the 1880s and 1890s, writing historical romances, both short stories and novels. Many of her regional, local-color tales reflect life in the corn-belt towns of Ohio, Indiana and Illinois, as well as the French traditions along the American-Canadian border. Yet she also employed historical settings such as Colonial Arcadia and 19th century Mackinac Island. Both well-educated and ambitious, Catherwood had a successful writing career, publishing consistently in magazines of the period, such as Lippincott's Magazine, Harper's Magazine and Atlantic Monthly, as well as in several periodicals for young people. The popularity of Catherwood's sentimental, romantic style and subject matter waned with the advent of a new realism in literature after the turn of the twentieth century, but her regional short stories are of interest for their rich local color and details of speech, manners, emotions and incidents of the times. <a href=\"https://mms.newberry.org/xml/xml_files/Catherwood.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a> | <a target=\"_blank\" href=\"https://archive.org/details/mms_catherwood_box_001/page/n349\" rel=\"noreferrer\">View in digital collection</a>",
-            "pnr": "12",
-            "weight": "012088",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b76e8c710e844e652a64b54aaa0e8067.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b76e8c710e844e652a64b54aaa0e8067.jpg",
+            "pc": "22",
+            "weight": "022100"
         },
         "40": {
             "transcription": "[back cover]",
@@ -1189,10 +1374,9 @@
                 "1919"
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#sum\" target=\"_blank\" rel=\"noreferrer\">View collection guide </a><br /><br /> Elizabeth Everett Butler (1818-1877) was the eldest daughter of Robert &amp; Elizabeth Everett. Educated at the Young Ladies' Domestic Seminary in Clinton, NY, she remained there as a teacher and also principal. She married Reverend J.J. Butler and had a son, John H., and two daughters, Elizabeth (Lizzie) and Hattie. The family lived in New Hampton, New Hampshire, for many years, later settling in Hillsdale, Michigan, where Butler was a professor of theology at Hillsdale College. Their son J.H. Butler was professor of Latin there as well. To improve his poor health, J.J. Butler traveled to Europe in 1867, and his letters home include his observations of Italy and the religious climate there. Hattie married a preacher, Holden Putnam, and settled in Ludington, Michigan where Putnam was pastor of the Congregational Church.",
-            "pc": "6",
-            "pnr": "1",
-            "weight": "005100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/1835a9ca7f7047341dc85f630ddd0672.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/1835a9ca7f7047341dc85f630ddd0672.jpg",
+            "pc": "19",
+            "weight": "019100"
         },
         "156": {
             "transcription": "such a cordial greeting. We have written them twice since my return and hope soon to have a letter ^ from them. We hope some of them will come over before long. I have wanted to see you all, and tell you many things. We are very desirous that father & mother should make us a visit this season. Do some and rest awhile with us. We shall be happy to see any of you that can come. Doubtless you are all busy, but a little change will do you good. We often feel sorry that we are so far separated from our friends, when it would be so pleasant to see you often. But let us make the best of the opportunities we have. We wish to be kindly remembered to you all, and then neighbors and friends whose acquaintances we have made. Please write often. \nYours Truly,\nJ.J. Butler",
@@ -1828,8 +2012,8 @@
             ],
             "desc": "Mainly letters from a New England woman, Emily Elliot Daland, to a friend in Italy, Helen Gerard, whose young daughter had inherited a small estate for which Daland was guardian. The letters touch on many subjects that concerned typical Americans during World War I, the 1920s and then the Depression, such as the shortages and hardships, the influenza epidemic, the League of Nations, Prohibition, Hoover’s presidency, labor strikes, and so on. Daland offers much advice to Gerard, who was always in need of money and clothes, and to her daughter who was becoming an unsuccessful artist. Included in the collection is a fragment of a letter from Tucker Daland announcing Emily’s death in 1933 and three letters from Gerard to Daland. <a href=\"https://mms.newberry.org/xml/xml_files/Daland.xml\" target=\"_blank\" rel=\"noreferrer\">View catalog guide</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4f32d01742969eda2e6b6c1b860c687a.jpg",
-            "pc": "56",
-            "weight": "056100"
+            "pc": "58",
+            "weight": "058100"
         },
         "215": {
             "transcription": "259\nCase \nMS\n4A\n31\n260",
@@ -1857,16 +2041,17 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/d6d99e2cbd3a2b4b58047747e94b2368.jpg"
         },
         "217": {
-            "transcription": "14/\nPoor old China, I am afraid she will have to suffer in the course of liberty. My dear love to you all. \nDevotedly, \nLucy Calhoun",
+            "transcription": "November 30, 1912\n[unclear], We are well started on our cruise and when I regretted aloud that you were not with us, Commander McVey said, \"But think how much we regret it.\"",
             "title": "Lucy Monroe Calhoun letters, 1909-1923",
             "date": [
                 "1909",
                 "1923"
             ],
             "desc": "Lucy Monroe Calhoun, sister of poet and editor Harriet Monroe, was born in 1865. Before her marriage to William J. Calhoun, she had been a freelance art critic for Chicago newspapers as well as national publications. When her husband served as U.S. minister to China, she became the social leader of the diplomatic community in Peking.<br /><br />After her husband’s death, Lucy Calhoun served in the war effort in France in World War I. In the 1920’s she returned to Peking, established her home in an ancient temple, collected art, and become an “institution” in the city. She remained in Peking until the Japanese occupation of the city in 1937.Lucy Monroe Calhoun died in Chicago in 1950, aged 85.<br /><br />The collection includes six letters by Lucy Monroe Calhoun and three by husband William J. Calhoun (U.S.Minister to China, 1909-1913), regarding their experiences in China during the last years of the Qing Dynasty. One letter describes in detail the wedding of Emperor Puyi in December, 1922. A seventh letter relates Lucy Calhoun’s visit to LeMans, France, which served as an embarkation point for troops at the conclusion of World War I. <a href=\"https://i-share.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=817922\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/8da2b561a2331106a3c95f633a269790.jpg",
+            "pc": "1",
             "pnr": "17",
-            "weight": "017083",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/8da2b561a2331106a3c95f633a269790.jpg"
+            "weight": "018083"
         },
         "218": {
             "transcription": "Chicago Ill.\nUnited States of America\nMichigan Boulevard\nAuditorium Hotel\nMademoiselle Jenny Dufau\nLa Fayette, Ind.",
@@ -2210,8 +2395,8 @@
             ],
             "desc": "Irene Miner Weisz and her sisters Carrie Miner Sherwood and Mary Miner Creighton were childhood friends of Willa Cather in Red Cloud, Nebraska. Among other activities the Miner girls and Cather put on plays to entertain friends and families, and as the years passed they remained friends and correspondents. Irene Miner married Charles W. Weisz and spent her adult life in Chicago. <br /><br />Although Willa Cather was born in Virginia, in 1883 when she was 9, her father moved the family to Nebraska. This transition from the orderly South to the pioneering frontier of the Great Plains made a lasting impression on her and in her cultured but rather tomboyish youth she observed and became familiar with immigrant farm families struggling to conquer a sometimes hostile environment. The kinship she felt for the new Americans of Nebraska was later reflected in much of her fiction, notably in two of her best-known novels, O Pioneers! (1913) and My Antonia (1918). <br /><br />Cather graduated from the University of Nebraska in 1895 and began a career first as a teacher and then as a magazine editor, finally settling in New York City in 1906 as editor of McClure's Magazine. During these years she traveled a good deal, developing a special affection both for France and the American Southwest -- the latter described lovingly in the novel Death Comes to the Archbishop -- and then in 1912 she decided to concentrate on supporting herself as free-lance author. What followed was a life dedicated to writing, one in which she published twelve novels and fifty-eight short stories that brought her much popularity and numerous honors and prizes. <br /><br />Cather never married but she developed and maintained many close and enduring friendships. Some of these, as with the Miner sisters dating from her early life in Red Cloud, Nebraska, lasted all her life. Though in her later years she suffered from bouts of poor health, writing remained her passion and she continued to publish, concluding with Saphira and the Slave Girl in 1940. <br /><br />Willa Cather, generally regarded as one of the twentieth century's major American writers, died in New York in 1947.<br /><br /><a href=\"https://mms.newberry.org/xml/xml_files/CatherW.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/d5e1467e5ff5f78b203c5e0458b4398c.jpg",
-            "pc": "2",
-            "weight": "002100"
+            "pc": "3",
+            "weight": "003100"
         },
         "829": {
             "transcription": "Territory of Oklahoma \nCOUNCIL CHAMBER, \n(No 2)  Guthrie,    , 189\nfoe, and hand-to-hand encounter win the day, or go down with colors flying.\nYou have seen this class of fellows before, You have seen them at the bar of Justice, as petty Malefactors, who if, oppertunities of war had offered would have been among the most distinguesed scouts or heroes, Their very Natires made them love adventere, and they were wrong only because civilization willed it so.\nTrusting you do not misinterpreted my meaning. I am General\nMost Sincerely Yors\nRobert McReynolds\n405 West Springer st\nGuthrie Oklahoma Ty",
@@ -2924,14 +3109,14 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/8b32df7b8797362394c3df3443454a06.jpg"
         },
         "943": {
-            "transcription": "111\nbegin lined out portion Methodist Chapel at home only well put, & well delivered. end lined out portion\nOf course sermons of this kind indicate the Theological calibre\nof the congregation as well as that of the Minister; for Ministers & sermons\nare in the long run made by the congregation.  In the evening\nof the same day I attended service at an Episcopal Church.  The\ninterior of the building was profusely decorated with Christmas evergreens,\n& the sermon showed that the Preacher was a man of learning & thought.\n\n    There are five Episcopal Churches in this city.  Those who\n\nminister in them appear to be well paid.  I was told that the two\nhighest salaries were 4000, & 3500 dollars.  I heard, however, but I\ndo not know to what denominations my informants belonged, & so possibly\nthey may not have been well acquainted with the subject, that the\nEpiscopal Church here is not so active as it is in the North.  Of course\nin the North there is greater intellectual & religious activity, just as there\nis more doing in agriculture, manufactures & trade; but if there was\nto be any exception to this rule one wd have expected to have found it\nin the Episcopal Church in Richmond, because here the people in bearing\n& conversation far more closely resemble Englishmen than is the\ncase in the North.  They speak, too, more frequently, & with more regard\nof the old country, its people, & its institutions.  Everybody I saw in the\nChurches in Richmond just as in the Churches of the northern cities was \nwell-dressed.  The humbler classes appeared neither to have churches for themselves\nnor places in the churches of the rich.  This, as everybody knows, is the\nweak point in the American voluntary system.",
+            "transcription": "114\nIndustry of their fallen States, & to a gentleman who held one of the\nhighest offices in the late Confederate Government.  begin lined out portion I did not find it\nnecessary to use all the introductions I was supplied with; & I take\nthis opportunity for expressing the grateful sense I retain of the\nhospitality & kindness with which I was received by all those to whom\nI delivered letters, & for the trouble they imposed on themselves to\nprocure for me the means of end lined out portion I had therefore sufficient means for obtaining the information I required.\n\n  But the question is, what did one see & hear? & what were\n\nthe conclusions to which one was brought by personal observation?  The\nfact that first forces itself on the eye in the towns, & often in the rural\ndistricts you pass through, is that there are multitudes of negroes, loafing\nabout, doing nothing.  You see them at every station.  When you ?\nto make inquiries as to what they are doing, & how they subsist, & generally\nas to the state of the country; you are told that they are to be\nfound in shoals in every town where there is a Freedman's Bureau.\nThey expect something from the Bureau; &, like so many coloured\nMicawbers, are drawn to the towns in the hope that something or\nother will turn up.  So in the towns; but that in the country districts,\nwhere there is no power to restrain the idle & ill-disposed, things\nare in an actively bad condition -- that this class has taken to stealing,\n& has not left on many properties a sweet potatoe, or head of maize,\nor the pig that wd have fed upon them -- that they have made a",
             "title": "F. Barham Zincke account of winter in the United States, part 1, 1868",
             "date": [
                 "1868"
             ],
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/a38a04ce1665fa1146711422e440a55a.jpg",
-            "pc": "61",
-            "weight": "061100"
+            "pc": "63",
+            "weight": "063100"
         },
         "944": {
             "transcription": "The coach started at seven o clock with six fine horses.",
@@ -3323,16 +3508,16 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b34f92517e1bcc8fa9ac6b1693525286.jpg"
         },
         "986": {
-            "transcription": "me. Thanking you\nover an over again\nI am sincerely and\ngratefully yours,\nJanet M. Dickson\n(Mrs. N. J.)\nJune Second 1904",
+            "transcription": "his foot all battered up. Still he was ready to he at his foot again when a new engine came to assist. We stopped over a high bridge and if the connecting rods had caught the tiles we might have tipped over in the stream! The engineer's? cabin just went into fragments with the steam pump. I have a unclear as a relic. I went by the headquarters to make an application for guard unclear but as I have troubled with my eyes and Rheumatism, I stand no chance of getting in. I will try for gate keeper. The city is just crowded with people. They are plenty here looking for employment now. The buildings on the fair grounds are not done with",
             "title": "Carlos Montezuma letters, 1889-1936",
             "date": [
                 "1889",
                 "1936"
             ],
             "desc": "Correspondence and documents relating to Indian rights activist and physician Carlos Montezuma of Arizona and Chicago, Illinois. <a href=\"https://mms.newberry.org/xml/xml_files/Montezuma.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide </a>",
-            "pc": "2",
-            "weight": "002100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b62fa3de82ad1b8263e1ea4cae8805ce.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b62fa3de82ad1b8263e1ea4cae8805ce.jpg",
+            "pc": "3",
+            "weight": "003100"
         },
         "987": {
             "transcription": "4\nam sorry, for I hoped \"he would redeem Israel.\"\nI was not at Mohouk, was not invited. These are ? no free discussion. Truth? is not afraid, was it that Enor Neig w have the right of way?\nDo as you think best my friend, but in your place I should tell the Grur?, I did not care to see him or hear his statements except in the presence of ?\nLet him swing!\nYours faithfully\nRH. Peats\nDr. Carlos Montezumza\nChicago.",
@@ -3419,14 +3604,15 @@
         },
         "994": {
             "transcription": "The check about which we formerly wrote you was paid by Coutts through a bank so we have no doubt it falls into the right hands.\nI am Dear Sir\nfor self & brother\nYours Faithfully\nJohn Blackwood\nHay Ruxton Esq",
-            "title": "George Frederick Augustus Ruxton papers, 1839-1948\r\n",
+            "title": "George Frederick Augustus Ruxton letters and records, 1839-1948\r\n",
             "date": [
                 "1839",
                 "1948"
             ],
             "pc": "78",
             "weight": "078100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/aebaf4b5dd0fbdc481bc1e055a0b01e2.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/aebaf4b5dd0fbdc481bc1e055a0b01e2.jpg",
+            "desc": "Collection includes correspondence, photographs, newspaper clippings, manuscript notes, drafts, copies, etc., mostly relating to Ruxton’s travels in America. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=156092\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>"
         },
         "995": {
             "transcription": "A trip to the gold regions of the Rocky Mountains in the summer of 1860\nExcitement was running very high in the summer of \n1860 in respect to the gold regions of Kansas, and Nebraska.\nAlmost every man who could raise the means gone\nfor the land of gold expecting to realize a fortune in one \nshort summer. Having perhaps the same foolish views \nof the rest of the young men of our place, I , determined \nto make one of the crowd bound for the new Eldorado \nof the west. Accordingly we raised a party consisting \nof seven persons, bought arms and equipments and\nembarked on our long and tedious journey. We started \non the Burlington and Quincy Rail Road running \nthrough the centre of the state the most fertile and \nbest settled part, and let me here remark, that on\nthis line is by far the best land in the west at the time.\nI traveled through there they had a most spendid harvest\nthe grain was as full and yellow and as I afterwards was \ninformed so vast was the crops that they could not ship \nit and were compelled to make fuel of it. On the following \nmorning we arrived at Quincy on the Mississippi River one\nof the most ancient towns in Illinois. It is a town of\nconsiderable importance having beautiful facilities\nfor trading on the upper and lower Mississippi with\nthe interior of Illinois and Misouri. The streets here are \nvery irregular there being no attempt towards a uniforma\nof grade the door sill of one house sometimes is ? ?\nwith the roof of a neighbouring house something ?\nstorys in hight it is very unpleasant and dreading\n?, The Mississippi at this point is a magnificent \nworking sight it is about a mile with the water of a sky blue\ncolor and remarkebly clear the beautiful islands closing in \n? for miles above and below its green shores rising into",
@@ -3436,7 +3622,7 @@
             ],
             "pnr": "1",
             "weight": "001099",
-            "desc": "John D. Young’s narrative of his 1860 round trip from Chicago to the Colorado gold fields and his experiences there, probably composed in Chicago after the trip. Contains full descriptions of encounters with frontier justice, friendly and hostile Indians (Potawatomi, Pawnee, Comanche, Arapahoe, Ute, Sioux, Cheyenne), a Rocky Mountain forest fire, great buffalo herds, a \"hurricane\" at Marysville, and a prairie dog village. Also discussed in detail are rich Missouri farmlands poorly utilized under slavery, the Pony Express, towns and forts (Quincy, St. Joseph, Marysville, Fort Kearny, Denver, Tarryall), scenery and terrain, road conditions, diet, clothing, equipment, diggings (Tarryall, Blue River, California Gulch, etc.), methods of gold extraction, claim salting, etc. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=133037\">View catalog record</a>",
+            "desc": "John D. Young’s narrative of his 1860 round trip from Chicago to the Colorado gold fields and his experiences there, probably composed in Chicago after the trip. Contains full descriptions of encounters with frontier justice, friendly and hostile Indians (Potawatomi, Pawnee, Comanche, Arapahoe, Ute, Sioux, Cheyenne), a Rocky Mountain forest fire, great buffalo herds, a \"hurricane\" at Marysville, and a prairie dog village. Also discussed in detail are rich Missouri farmlands poorly utilized under slavery, the Pony Express, towns and forts (Quincy, St. Joseph, Marysville, Fort Kearny, Denver, Tarryall), scenery and terrain, road conditions, diet, clothing, equipment, diggings (Tarryall, Blue River, California Gulch, etc.), methods of gold extraction, claim salting, etc. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=133037\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/72162051b1d238ae542b6ae2ac2a14cb.jpg"
         },
         "996": {
@@ -3447,7 +3633,8 @@
             ],
             "pc": "11",
             "weight": "011100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4704613b0315d51ebc712cf5897f8440.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4704613b0315d51ebc712cf5897f8440.jpg",
+            "desc": "<a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=155983\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>"
         },
         "997": {
             "transcription": "Fort (unclear)\nSept 20th 18??\nDear Alice\nYour  of the 18th arrived including Father's letter.\nI am glad to learn that you are fishing on (Willet unclear) Lake it with (everyone unclear).\nMy clothes have not yet been (received unclear) -although (unclear) arrived yesterday-I begin to think the goods were not shipped\nby the merchants (unclear) express (Co unclear) but by the United States express and I have had the agent of that company telegraph the agent (unclear) of inventory (unclear) to send the freight back to (unclear).",
@@ -3458,7 +3645,8 @@
             ],
             "pc": "5",
             "weight": "005100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/08a47d52d1a56dee1aaebeae920a0b10.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/08a47d52d1a56dee1aaebeae920a0b10.jpg",
+            "desc": "<span>Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. </span><a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>"
         },
         "998": {
             "transcription": "Will- \nSt Doyle is important to start.\nKiss the babies for me\nEver affectionately\nfrom\nBHG",
@@ -3469,7 +3657,8 @@
             ],
             "pc": "3",
             "weight": "003100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/ac9e7c3ccd22fc4f73dfae4e466b4ad8.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/ac9e7c3ccd22fc4f73dfae4e466b4ad8.jpg",
+            "desc": "<span>Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. </span><a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>"
         },
         "999": {
             "transcription": "Davis 5th 1878\nConcho Nov 5th 1878\nMrs Grierson\nI leave Fort Davis\nnow for [unclear]\nby the most direct \nroute my health\nis very good Expect to\nbe at Concho by or\nbefore the [20th/25th?] [unclear]\nBH Grierson\n30 D[unclear]",
@@ -3478,7 +3667,7 @@
                 "1876",
                 "1880"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/43f6544b8ac8409ea66fe8968b5a79b1.jpg",
             "pc": "3",
             "pnr": "3",
@@ -3493,7 +3682,8 @@
             ],
             "pc": "17",
             "weight": "017100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/435eb29d168fe0d0bd95b3b406c9b926.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/435eb29d168fe0d0bd95b3b406c9b926.jpg",
+            "desc": "<span>Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. </span><a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>"
         },
         "1001": {
             "transcription": "I now hope that I shall be able to stay where I am this summer, or at any rate not be sent out into the wilderness with my company in its present condition.\n\n  I believe min has been the only [underline] company of the regiment not pretty well provided for during the winter.  My man have been in tents, crowded and without floors, and have had to work, work, work, all the time since arriving here to get the camp in shape.  Robinson's was the only other company in tents and he was settled [underline] in it [strike] his present location long before winter came, and was furnished 47 [underline] Wall Tents.\n   My company knows nothing about drill and I really hope that you will help me keep it here or near here till I have time to get it in better shape.   And now that I hear you are coming I am of course, personally, still more desirous of staying here, rather than going out to serve under another Captain, tho' I should prefer Walsh to Robinson.  We have got Spring here and almost summer.\n   Please write to me now and tell me all about your coming, be sure to give us good notice and rest assured we shall arrange to have you all comfortable as possible from the day you arrive until you can get settled.\n    I write in haste, this goes out before day in the morning.\n            Ever with sincere regard,\n                     Yours very truly,\n                                        Henry E. Alvord [signature underline]\n                                         Capt. 'M'. Co. 10th Cav'y.",
@@ -3502,7 +3692,7 @@
                 "1868",
                 "1888"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "85",
             "weight": "085100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/600a186b118d62dc0f55a55000217d6a.jpg"
@@ -3514,7 +3704,7 @@
                 "1868",
                 "1870"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "100",
             "weight": "100100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/71645644f81728272d098e8643c70751.jpg"
@@ -3526,7 +3716,7 @@
                 "1869",
                 "1887"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "90",
             "weight": "090100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/95efd84ed7190d3aa6b031a51c89f85f.jpg"
@@ -3538,7 +3728,7 @@
                 "1868",
                 "1890"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "10",
             "weight": "010100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/c21c52684b868ffd78ab6e5eaa02c497.jpg"
@@ -3550,7 +3740,7 @@
                 "1869",
                 "1890"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "24",
             "weight": "024100"
         },
@@ -3573,7 +3763,7 @@
                 "1868",
                 "1890"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "33",
             "weight": "033100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/c5d53b8e9233945a86199c848d5c2215.jpg"
@@ -3585,7 +3775,7 @@
                 "1868",
                 "1887"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "17",
             "pnr": "2",
             "weight": "019098",
@@ -3593,12 +3783,12 @@
         },
         "1009": {
             "transcription": "and recognized, by those in higher authority.\n\n                       Very respectfully\n                         Your Obedient Servant\n                                B. H. Grierson\n                                Colonel 10th Cavalry\n                                Commanding District",
-            "title": "Benjamin Henry Grierson records, 1868-1889",
+            "title": "Benjamin Henry Grierson letters and records, 1868-1889",
             "date": [
                 "1868",
                 "1889"
             ],
-            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\">View collection guide</a>",
+            "desc": "Papers of volunteer military officer during the Civil War, organizer of the U.S. Army Tenth Cavalry in 1866, commander of various Western army posts and active in opening the Western frontier until retirement in 1890. Includes correspondence to his wife, Alice Kirk Grierson, documents such as orders, reports and maps and other military material, as well as personal miscellany relating to his service in the Western Territories. <a href=\"https://mms.newberry.org/xml/xml_files/Grierson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "18",
             "weight": "018100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/dbf3a75c81704481af5537ecdb8b9b31.jpg"
@@ -3634,7 +3824,7 @@
             "date": [
                 "1900"
             ],
-            "desc": "Handwritten copy of the rare 1865 unauthorized London edition, \"An account of an annual religious ceremony practised by the Mandan tribe of the North American Indians,\" which Catlin disavowed. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136397\">View catalog record</a>",
+            "desc": "Handwritten copy of the rare 1865 unauthorized London edition, \"An account of an annual religious ceremony practised by the Mandan tribe of the North American Indians,\" which Catlin disavowed. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136397\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "49",
             "weight": "049100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/59c3e535efe5eb0dadad79c71b71dbfe.jpg"
@@ -3645,7 +3835,7 @@
             "date": [
                 "1689"
             ],
-            "desc": "Notes compiled in England, probably extracted from letters written in Virginia by John Clayton, a Jamestown, Va., minister from 1684 to 1686 and a successful tobacco planter, who by 1688 had returned to a parish in England. Topical essays describe the physical characteristics, dress, housing, money, livelihood, rulers, diseases, education, marriage, burials, religion, method of telling time, etc., of the Virginia Indians. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=134177\">View catalog record</a>",
+            "desc": "Notes compiled in England, probably extracted from letters written in Virginia by John Clayton, a Jamestown, Va., minister from 1684 to 1686 and a successful tobacco planter, who by 1688 had returned to a parish in England. Topical essays describe the physical characteristics, dress, housing, money, livelihood, rulers, diseases, education, marriage, burials, religion, method of telling time, etc., of the Virginia Indians. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=134177\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "23",
             "pnr": "77",
             "weight": "100023",
@@ -3653,25 +3843,31 @@
         },
         "1015": {
             "transcription": "Index 6\nLasse Mr. 91\nCaleb, unclearaken  by the? ci, 47.\nChobouokouomum, 18, 49, 62.\nChampney Daniel, 26.\nChoo- ci unclear wishes and unclear, 48\nCarleston Edward, 90.\nClark Rev. Thomas, 73.\nCochecho, 46.\nCook Joseph, 55, 56.\nCook George, 90.\nConway? Peter, last wish Tom Acpane?\nrelease of captives, 106.\nLowell- 111\nLowaste 120\nThickering Mr., a tapestry? in 1643, 91.\nunclear John, 94\nunclear one, murders an Indian woman, 121.\nunclear Lewis Philip, 26. Killed, 66.\nLastler? unclear, his escape from unclear Gladbury, 111.\n\nDavid made to unclear his unclear threw of the Lancaster murder, 36, 37. His confession of a false accusation  i.h.?\nHis son sold into slavery, 38. Is also sold, 39.\nunclear Mississippi, 79, 109.",
-            "title": "An historical account of the doings and sufferings of the Christian Indians in New England in the years 1675, 1676, 1677",
+            "title": "Historical account of the doings and sufferings of the Christian Indians in New England, in the years 1675, 1676, 1677. 1831",
             "date": [
                 "1675",
                 "1676",
-                "1677"
+                "1677",
+                "1831"
             ],
             "pc": "15",
             "weight": "015100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/6c0079b4c4b25d1481e2c19bf2bff3fd.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/6c0079b4c4b25d1481e2c19bf2bff3fd.jpg",
+            "desc": "Daniel Gookin (1612-1687), colonist, soldier, magistrate and ardent Puritan, settled in Massachusetts in 1644 and held various positions in the colonial government. He was greatly interested in the welfare of the Indians who had been converted to Christianity and served as Superintendent of the Praying Indians within the jurisdiction of Massachusetts from 1656 to 1686. Gookin sent his manuscript of this work in 1677 to Robert Boyle, Governor of the Society for Propagation of the Gospel in New England, with the hope that the Society would publish it. For whatever reasons, it was not printed at the time and remained unknown until 1830 when it was rediscovered by historian Jared Sparks. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=132758\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>"
         },
         "1016": {
             "transcription": "Capt. Samuel Huntings certificate\nabout the unclear Indian souldiers,\nThese are to certifie That I Samuel Huting\nof Charles Towne in New England, beeing\nBy Athority of the Governd & councill\nappointed comander of the praying Indian\nliveing in the massachusets colony in New\nEngland, In the warr against the Barborus\nIndians, did accordingly comand the said =\nIndian company, consisting (when at the =\nmost) of not above 80 men; The said company\nunclear my selfe served the country in severall\nexpeditions for about one yeares time, In\nall which service, the said Indians, behaved?\nthemselves, courageously, e faithfully to the\nEnglish unclear, e I unclear the said -\ncompany did hill e tahr prisoners above\ntwo hundred of the enimy, e unclear but one man\nof ours, besides about on hundred psons they\nunclear e tooke prison in at other times when I\nwas not wite them & they went out unclear\nand in testimony of the truth herof I have set\nmy hand this 13th of December 1677\nSamuel Hunting",
-            "title": "Stephen Williams hystorical account of the doings and sufferings of the Christian Indians in New England, 1716",
+            "title": "Historical account of the doings and sufferings of the Christian Indians in New England, in the years 1675, 1676, 1677. 1677",
             "date": [
-                "1716"
+                "1675",
+                "1676",
+                "1677",
+                "1677"
             ],
             "pnr": "7",
             "weight": "007093",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/87d2bc4d3de345585765ef0de93dab4e.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/87d2bc4d3de345585765ef0de93dab4e.jpg",
+            "desc": "Daniel Gookin (1612-1687), colonist, soldier, magistrate and ardent Puritan, settled in Massachusetts in 1644 and held various positions in the colonial government. He was greatly interested in the welfare of the Indians who had been converted to Christianity and served as Superintendent of the Praying Indians within the jurisdiction of Massachusetts from 1656 to 1686. Gookin sent this manuscript in 1677 to Robert Boyle, Governor of the Society for Propagation of the Gospel in New England, with the hope that the Society would publish it. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=132759\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>"
         },
         "1017": {
             "title": "George Bonnell observations on Texas travel, 1838-1844",
@@ -3679,7 +3875,7 @@
                 "1838",
                 "1844"
             ],
-            "desc": "This copy of \"Bonnell’s Observations\" contains information on the Indians of Texas, frontier settlements, and geographical features. In the last few pages there is an account of Bonnell’s campaign against the Indians in late 1838 and his encounters with Houston and General Rusk. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136145\">View catalog record</a>",
+            "desc": "This copy of \"Bonnell’s Observations\" contains information on the Indians of Texas, frontier settlements, and geographical features. In the last few pages there is an account of Bonnell’s campaign against the Indians in late 1838 and his encounters with Houston and General Rusk. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136145\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/d9adf6ff1b27e75c393711e46313f0cf.jpg"
         },
         "1018": {
@@ -3688,7 +3884,7 @@
             "date": [
                 "1856"
             ],
-            "desc": "Kit Carson, handicapped by illiteracy, dictated his brief autobiography to John Mostin in 1856. In the concluding paragraph of the manuscript, Carson states \"the foregoing I hereby transfer to Mr. Jesse B. Turley to be used as he may deem proper for our joint benefit.\" <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136955\">View catalog record</a>",
+            "desc": "Frontiersman, scout, and Indian agent, Christopher Houston Carson, commonly known as Kit Carson, established his home in Taos, N.M. in the mid-1830’s. Following years of fur trapping, guiding Fremont’s expeditions, and fighting in Indian battles, Carson was appointed U.S. Indian Agent in 1854 for the northern area of the New Mexico Territory. With home and office in Taos, Carson served in that capacity until 1861. It was during that period that he dictated his life story relating his adventurous years on the plains and in the mountains. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136955\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "4",
             "pnr": "9",
             "weight": "013091",
@@ -3754,7 +3950,7 @@
             "date": [
                 "1744"
             ],
-            "desc": "Declaration of war against the Cape Sable (Micmac) and St. John’s (Malecite) Indians of Nova Scotia and what is now New Brunswick, issued by Gov. William Shirley of Massachusetts Bay with \"the advice of Council\" in Boston, Oct. 19, 1744. Shirley also warns the friendly Indians to the west of St. John not to harbor the hostile tribes or move into their territory, and requires them to join in the war effort. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=143989\">View catalog record</a>",
+            "desc": "Declaration of war against the Cape Sable (Micmac) and St. John’s (Malecite) Indians of Nova Scotia and what is now New Brunswick, issued by Gov. William Shirley of Massachusetts Bay with \"the advice of Council\" in Boston, Oct. 19, 1744. Shirley also warns the friendly Indians to the west of St. John not to harbor the hostile tribes or move into their territory, and requires them to join in the war effort. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=143989\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "100",
             "weight": "100100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/f683255ad5005b9697c992bb2af89891.jpg"
@@ -3766,7 +3962,7 @@
                 "1791",
                 "1794"
             ],
-            "desc": "Journal kept by John Parrish, regarding his journeys from Philadelphia to three Indian treaty councils, June 12-July 15, 1791, Apr. 30-Aug. 19, 1793, and Sept. 15-Nov. 27, 1794. Includes reports on travel and accomodations, Quaker meetings held enroute, visits to Indian camps, interviews with Indian delegates (Red Jacket, Farmer’s Brother, Cornplanter, etc.), interactions with U.S. Commissioners (Timothy Pickering) and British officials (Lt. Gov. Simcoe, Col. England), and negotiations and council meetings. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=131888\">View catalog record</a>",
+            "desc": "Journal kept by John Parrish, regarding his journeys from Philadelphia to three Indian treaty councils, June 12-July 15, 1791, Apr. 30-Aug. 19, 1793, and Sept. 15-Nov. 27, 1794. Includes reports on travel and accomodations, Quaker meetings held enroute, visits to Indian camps, interviews with Indian delegates (Red Jacket, Farmer’s Brother, Cornplanter, etc.), interactions with U.S. Commissioners (Timothy Pickering) and British officials (Lt. Gov. Simcoe, Col. England), and negotiations and council meetings. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=131888\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/cb0e21b82a033e707ad840c38471d339.jpg",
             "pc": "1",
             "pnr": "1",
@@ -3800,7 +3996,7 @@
             "date": [
                 "1834"
             ],
-            "desc": "Letter written by a third party for Konkapot and Umpachenee, addressed to Westfield minister Nehemiah Bull, and intended also for Rev. Stephen Williams of Deerfield. Konkapot and Umpachenee inform Bull and Williams, who had been active in bringing the Christian mission to the Housatonics, that following the council, members of their tribe had been poisoned by other Indians. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=137071\">View catalog record</a>",
+            "desc": "Letter written by a third party for Konkapot and Umpachenee, addressed to Westfield minister Nehemiah Bull, and intended also for Rev. Stephen Williams of Deerfield. Konkapot and Umpachenee inform Bull and Williams, who had been active in bringing the Christian mission to the Housatonics, that following the council, members of their tribe had been poisoned by other Indians. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=137071\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "50",
             "weight": "050100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4c3f8f4dc0fe5eeb0f96450b0eefcb6d.jpg"
@@ -3812,7 +4008,7 @@
                 "1861",
                 "1890"
             ],
-            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\">View collection guide</a>",
+            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "20",
             "weight": "020100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/da36b44cd338733ef1bff2e7ad954f94.jpg"
@@ -3824,7 +4020,7 @@
                 "1857",
                 "1894"
             ],
-            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\">View collection guide</a>",
+            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "57",
             "weight": "057100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/f40587073ce7ea9d3ee1cf0a87b592b9.jpg"
@@ -3836,7 +4032,7 @@
                 "1848",
                 "1896"
             ],
-            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\">View collection guide</a>",
+            "desc": "Correspondence of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/bc3024dc7d28710252ede454fbd0cc74.jpg",
             "pc": "36",
             "weight": "036100"
@@ -3860,7 +4056,7 @@
                 "1838",
                 "1878"
             ],
-            "desc": "Correspondence and records of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\">View collection guide</a>",
+            "desc": "Correspondence and records of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/09def2a99425c07bf6f16d4cc2ec96a7.jpg",
             "pc": "11",
             "weight": "011100"
@@ -3872,7 +4068,7 @@
                 "1846",
                 "1888"
             ],
-            "desc": "Records of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\">View collection guide</a>",
+            "desc": "Records of United States army officer, 1843 to 1885 documenting Augur's military activities and commands before and during the Civil War, and post-war service in the Pacific Northwest, Texas and the Gulf. <a href=\"https://mms.newberry.org/xml/xml_files/Augur.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "pc": "44",
             "weight": "044100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/47a1ff0d29cd71b619dc41830e732531.jpg"
@@ -3883,7 +4079,7 @@
             "date": [
                 "1799"
             ],
-            "desc": "Deposition given and signed by Daniel Boone, Mar. 19, 1799, regarding adjoining Mason County lands he had surveyed years earlier for James Duffey and Robert Campbell. Document is also signed by three commissioners, Thomas Gorins, James Wilson, and D.P. Payne?, and is ordered to be recorded by Thomas Marshall Jr., clerk at the June, 1799, Mason County Court. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=135900\">View catalog record</a>",
+            "desc": "Deposition given and signed by Daniel Boone, Mar. 19, 1799, regarding adjoining Mason County lands he had surveyed years earlier for James Duffey and Robert Campbell. Document is also signed by three commissioners, Thomas Gorins, James Wilson, and D.P. Payne?, and is ordered to be recorded by Thomas Marshall Jr., clerk at the June, 1799, Mason County Court. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=135900\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "100",
             "weight": "100100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/1cf3bf5d20f88b724f9f507e8066d0f4.jpg"
@@ -3893,17 +4089,17 @@
             "date": [
                 "1779"
             ],
-            "desc": "Holograph diary of Lieut. Daniel Clapp of the 1st New Hampshire Regiment, describing his march, June 9-September 16, 1779, with Gen. Sullivan against the Six Nations. Clapp’s diary begins with the cutting of a road through the wilderness between Easton and Wyoming, and ends with news of Gen. Sullivan’s announcement that the successful campaign was over. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136398\">View catalog record</a>",
+            "desc": "Holograph diary of Lieut. Daniel Clapp of the 1st New Hampshire Regiment, describing his march, June 9-September 16, 1779, with Gen. Sullivan against the Six Nations. Clapp’s diary begins with the cutting of a road through the wilderness between Easton and Wyoming, and ends with news of Gen. Sullivan’s announcement that the successful campaign was over. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=136398\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/dbd9da10019a048c38ee1391dcd65af2.jpg"
         },
         "1038": {
             "transcription": "To all People to Whom these Presents shall come Greeting know\nye that we the under signed for the sum of three Thousand Dollars to\nus in hand paid by Jeremiah Halsey Esqr of Preston in the Country of\nNew London and State of Connecticut received to our full satisfaction\ndo therefore hereby convey and assign over the within written leafe\nto him the said Jeremiah Halsey Esqr and to his heirs and assigns\nforever together with all our might Title Interest and and Estates\nWhich we have in and by virtue of the within Written Leafe\nIn Testimony whereof we have hereunto set our hand\nand seals the Third day of may one thousand seven hunderd\nand Ninetyseve?\nJohn Franklin? unclear at the Signing\nby Simon Spalding Obdh Gore? & John Shephard\nWitness Present? \nGriffithe Coombe\nSimon Spalding?\nObadiah Gore\nHenry Hempher?\nMatthias Hollenback\nJohn Shepard?",
-            "title": "Indian land deeds: 1639-1787",
+            "title": "Indian land deeds, 1639-1787",
             "date": [
                 "1639",
                 "1787"
             ],
-            "desc": "Deeds and indentures, 1639-1787, transferring or leasing Indian lands to white inhabitants of Connecticut, Massachusetts, and New York. Properties are located in Norwalk, Norwich, Ridgefield, and Wethersfield, Conn.; Boston, Charlestown, Rochester, Satucket, Scituate, and Plymouth Colony, Mass.; and Long Island, and Orange, Ulster and Schenectady counties, N.Y. Two deeds (Dec. 23, 1685 and Mar. 5, 1787) are on vellum. There are seals on eleven deeds: New York - Dec. 23, 1685, Mar. 5, 1787; Connecticut - June 5, 1702, Dec. 3, 1708, July 4, 1727, Mar. 7, 1729, Dec. 19, 1739; and Massachusetts - Feb. 18, 1689, Nov. 7, 1691, Feb. 27, 1692, July 11, 1732. Also most documents are signed with the marks of the Indian parties involved. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=141207\">View catalog record</a>.",
+            "desc": "Deeds and indentures, 1639-1787, transferring or leasing Indian lands to white inhabitants of Connecticut, Massachusetts, and New York. Properties are located in Norwalk, Norwich, Ridgefield, and Wethersfield, Conn.; Boston, Charlestown, Rochester, Satucket, Scituate, and Plymouth Colony, Mass.; and Long Island, and Orange, Ulster and Schenectady counties, N.Y. Two deeds (Dec. 23, 1685 and Mar. 5, 1787) are on vellum. There are seals on eleven deeds: New York - Dec. 23, 1685, Mar. 5, 1787; Connecticut - June 5, 1702, Dec. 3, 1708, July 4, 1727, Mar. 7, 1729, Dec. 19, 1739; and Massachusetts - Feb. 18, 1689, Nov. 7, 1691, Feb. 27, 1692, July 11, 1732. Also most documents are signed with the marks of the Indian parties involved. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=141207\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "7",
             "pnr": "7",
             "weight": "014093",
@@ -3911,22 +4107,22 @@
         },
         "1039": {
             "transcription": "men into the field as will oblidge the Winnebagoes to comply with their treaty. - The war chief is kind to the Red skins but his duties will always be performed, he will have my aid and support to carry into effect his instructions from your Great Father -   You have good and evil before you and the choice is left to yourselves --  I have always been the friend of the Winnebagoes - I have never deceived them.  I have held you strong by the hand, but if you refuse to comply  with the wished of the President of the United States, as expressed by his War chief all good men will be opposed to you and will unite to compel you to do right. -  Let no evil advisers or bad men advise you to do wrong - do right that you may have a smoth road to travel and a clear sky to sleep under that the Great Spirit may be pleased with his red children the Winnebagoes.\n\n                                                                                            (Signed)  Henry Dodge.",
-            "title": "Council held with the Winnebagoes at Prairie du Chien, 1840",
+            "title": "Proceedings of council held with Winnebagoes at Prairie du Chien, 1840",
             "date": [
                 "1840"
             ],
-            "desc": "Proceedings of a council held at Prairie du Chien, Wisc., May 1-2, 1840, between Gen. Henry Atkinson and Winnebago chiefs, regarding the removal of the tribe and their agent, David Lowry, from western Wisconsin to lands on the Turkey River in Iowa. Contains remarks of Gen. Henry Atkinson and responses of the Indians, chiefly Gule and Dandy. There are also comments by Whirling Thunder, Little Priest, and Win-a-chick. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=141961\">View catalog record</a>",
+            "desc": "Proceedings of a council held at Prairie du Chien, Wisc., May 1-2, 1840, between Gen. Henry Atkinson and Winnebago chiefs, regarding the removal of the tribe and their agent, David Lowry, from western Wisconsin to lands on the Turkey River in Iowa. Contains remarks of Gen. Henry Atkinson and responses of the Indians, chiefly Gule and Dandy. There are also comments by Whirling Thunder, Little Priest, and Win-a-chick. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=141961\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "100",
             "weight": "100100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/48c3486e75d1fdf7ffd105cab87f999f.jpg"
         },
         "1040": {
             "transcription": "glad to hear so many of your sort of People are now alive, that you rise again from the Dead, and \nthough we have been lost to one another a great while, we are very glad to hear you are of the same\nsentiments with Onas. Since he was dead there have from time to time some new Governors one \nafter another and another sorr of People different from the First settlers and we lost him (meaning\nOnas). We are very glad at your rising up and holding the White belt in your hands as an Empblem\nof Peach to endeavor to reconcile the People that are aw War. We will hold fast to what you say and\nand endeavour to carry it to the six Nations and add strength to it is who will be very glad to hear there\nare some People of the same Principles as the first Settlers, for we have not heard of you for many\nyears.      A. String\nBrethren\n\n            We are glad to hear you speak after the Language of Onas and of the Principles of Peace he\n\nhe preach'd or recommended. We thought there were no more of that People of that Principle left\nin this country. We are glad to see you now, and hear you speak; We will",
-            "title": "Conferences held with the Indians, Philadelphia, 1756",
+            "title": "Proceedings of conferences held with the Indians, Philadelphia, 1756",
             "date": [
                 "1756"
             ],
-            "desc": "Contemporary copy of the proceedings of several meetings held in Philadelphia during April, 1756, between Quakers, led by Israel Pemberton, who wished to preserve peace with the Indians, and representatives of the Six Nations led by western Pennsylvania Oneida chief \"Scarroyada\" (also known as Scarouady and Half King). Delegates listed as attending: Kaghswooghtaniyonde or Old Belt, Kayenguirigoa or Jonathan, Conachtego, Abraham Farrington, Joshua Dixon, Owen Jones, Anthony Benezet, James Pemberton, Mary Pemberton, William Logan, John Smith, Mordecai Yarnall, Thomas Brown, Anthony Morris, etc. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=147554\">View catalog record</a>",
+            "desc": "Contemporary copy of the proceedings of several meetings held in Philadelphia during April, 1756, between Quakers, led by Israel Pemberton, who wished to preserve peace with the Indians, and representatives of the Six Nations led by western Pennsylvania Oneida chief \"Scarroyada\" (also known as Scarouady and Half King). Delegates listed as attending: Kaghswooghtaniyonde or Old Belt, Kayenguirigoa or Jonathan, Conachtego, Abraham Farrington, Joshua Dixon, Owen Jones, Anthony Benezet, James Pemberton, Mary Pemberton, William Logan, John Smith, Mordecai Yarnall, Thomas Brown, Anthony Morris, etc. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=147554\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pnr": "100",
             "weight": "100000",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/efe75a4ea6d5629ad0534795bab84e3a.jpg"
@@ -3940,7 +4136,7 @@
             ],
             "pnr": "100",
             "weight": "100000",
-            "desc": "Letter (Sept. 2, 1676) and remonstrance (May 23, 1677) addressed to the Massachusetts General Court, both regarding Richard Waldron’s military participation in King Philip’s War, 1675-1676. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=133062\">View catalog record</a>",
+            "desc": "Letter (Sept. 2, 1676) and remonstrance (May 23, 1677) addressed to the Massachusetts General Court, both regarding Richard Waldron’s military participation in King Philip’s War, 1675-1676. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=133062\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/57f8adcafd3eb9c2739ba5babdde447e.jpg"
         },
         "1042": {
@@ -3959,7 +4155,7 @@
             "transcription": "8 too children dear hea left behind\nbesides a wif who was so kind\nShe was lef be hin in a sad state\nthere for to mourn in a sad state",
             "title": "Come you young people far and near: a ballad, 19th century",
             "date": [],
-            "desc": "Lyrics of a ballad describing the death of two brothers, Moses and Samme, in a skirmish with the Indians across the Ohio River. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=128603\">View catalog record</a>",
+            "desc": "Lyrics of a ballad describing the death of two brothers, Moses and Samme, in a skirmish with the Indians across the Ohio River. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=128603\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "100",
             "weight": "100100",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/17f5305e5dccc1fff1868e022d3a3fb8.jpg"
@@ -3999,7 +4195,7 @@
         },
         "1048": {
             "transcription": "section, to a number of points belonging\nto those corruptions.",
-            "title": "John Howard Payne notes, early to mid-19th century",
+            "title": "John Howard Payne records, early to mid-19th century",
             "date": [],
             "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\">View catalog record</a>",
             "pc": "1",
@@ -4008,7 +4204,7 @@
         },
         "1049": {
             "transcription": "[u] 7 Clans. [/u]\nReid.\t               Unkanee.\tChee-Squah\nPaint\t               \"\twah-teh.\nBluid Savannah       \"\tKawkt-a-kay\nDeer\t                       \"\tCow-wee\nLong Hair\t               \"\tKay Law-eh.\nBlue\t                       \"\tSah-aw-nayh\nWolf  \t               \"\tWhy-yah.",
-            "title": "John Howard Payne notes, early to mid-19th century",
+            "title": "John Howard Payne records, early to mid-19th century",
             "date": [],
             "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\">View catalog record</a>",
             "pc": "6",
@@ -4016,9 +4212,9 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/b96d4b3b19369d7837448279ac272975.jpg"
         },
         "1050": {
-            "title": "John Howard Payne notes, early to mid-19th century",
+            "title": "John Howard Payne records, early to mid-19th century",
             "date": [],
-            "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\">View catalog record</a>",
+            "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/e90000bd14d224e7a97456e9b6851183.jpg"
         },
         "1051": {
@@ -4040,7 +4236,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/d45a9cb77fe327a4d21cf38d5586569a.jpg"
         },
         "1053": {
-            "title": "John Howard Payne letters, 1826-1840",
+            "title": "John Howard Payne records, 1826-1840",
             "date": [
                 "1826",
                 "1840"
@@ -4058,7 +4254,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/7fd9dcb52563fee096a420a6e36e089f.jpg"
         },
         "1055": {
-            "title": "John Howard Payne writings, 1838-1840",
+            "title": "John Howard Payne records, 1838-1840",
             "date": [
                 "1838",
                 "1840"
@@ -4068,7 +4264,7 @@
         },
         "1056": {
             "transcription": "1839\nOct 14, continued.\nwith the individuals to be apprehended. The General promises that no unoffending citizen of the Cherokee nation will be disturbed, or in any way ill treated; therefore, concludes that General, if the discharge of this duty should lead to serious difficulties, the blame will be with Mr Ross, and his people. -\nNov. 2.\nGen. Arbuckle at Fort Gibson writes to John Ross, Principal Chief of the late Emigrant Cherokees. - The General says, it having been reported to him that threats have been made by the Cherokees against any Cherokee who should aid the troops in searching for the individuals implicated in the late murders, he thought it advisable to inform Mr Ross, that Hercules S. Marin, the United States Cherokee Agent's Interpreter would accompany the troops as an interpreter, and in no other capacity; and that should it be necessary to employ a Cherokee or Cherokees to point out these individuals (they not being personally known to the officer) although it is not the General's intention to do so, other persons can be obtained, - Mr Ross must",
-            "title": "John Howard Payne letters and writings, 1817-1839",
+            "title": "John Howard Payne letters and records, 1817-1839",
             "date": [
                 "1817",
                 "1839"
@@ -4079,16 +4275,17 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/d830b63f337f4ceb4ed944a551c82002.jpg"
         },
         "1057": {
-            "title": "John Howard Payne letters, 1817-1839",
+            "title": "John Howard Payne letters and records, 1817-1839",
             "date": [
                 "1817",
                 "1839"
             ],
-            "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>"
+            "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/92ccdb73cacffc547a2a182ffcec9d06.jpg"
         },
         "1058": {
             "transcription": "in consequence of the unsent request of those connected with the United States government & others, as frequently expressed to Mr Ross in letter & conversation, he was induced to convince them that he had no wish whatever to avoid a meeting with the illegible Ridge or to deny those gentlemen an opportunity for uniting with him for the common good. To [rove this, he was even impelled to make the first advance, which he did, by sending them, when they were at the agency, the following letter:\nRed Clay c:n July 30. 1835\nGentlemen, \nImpelled by every feeling of patriotism  for the common welfare of the Cherokee people, I have been induced to address you these hasty lines;- and I need not assure you that I am actuated solely by the most disinterested motive; and I trust that you will not misconstrue them. And were you to lay aside all other feelings of a private or personal character, & duly appreciate my motives, great & lasting good may result in restoring brotherly confidence & harmony among ourselves. It has just occurred to me to suggest for the consideration of the most influential & prominent men, that a special meeting might be held by is to confer on points in relation to the affair of our much afflicted nation, and on which it has been so strenuously insisted by the officer of the general government hat we differ and from which they state that distinct parties have grown up among ourselves: If you will signify to me your willingness to accept an invitation to hold such a conference I will immediately advise with Mr. Lowrey & others and then fix on the time & place and approve you of the same. The conference should be purely Cherokee & composed of a chosen few selected for their wisdom & moral worth, and whose devotion to the best interest & welfare of the nation alone will influence their deliberation. \nI am, gentlemen, \nYour friend and fellow citizen\nJohn Ross\nMasin Ridge\nIllegible Ridge\nCherokee Agency.",
-            "title": "John Howard Payne letters, 1817-1838",
+            "title": "John Howard Payne letters and records, 1817-1838",
             "date": [
                 "1817",
                 "1838"
@@ -4099,7 +4296,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/c036eb010506f55b0683fde563d02734.jpg"
         },
         "1059": {
-            "title": "John Howard Payne letters, 1817-1838",
+            "title": "John Howard Payne letters and records, 1817-1838",
             "date": [
                 "1817",
                 "1838"
@@ -4109,7 +4306,7 @@
         },
         "1060": {
             "transcription": "P. l.\nThis time on \"The Report of the _ in mittee (committee) on the State of the Republic\" of in the Legislative of Georgia, on the subject of the Cherokee Lands; purpost (purpose) big to prove the absolute Jurisdictional right of the said state to the same. This document, bearing on its _ am imposing from, des",
-            "title": "John Howard Payne letters, 1819-1841",
+            "title": "John Howard Payne letters and records, 1819-1841",
             "date": [
                 "1819",
                 "1841"
@@ -4120,7 +4317,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/dff5d02f34579b67c5c357ef334cf844.jpg"
         },
         "1061": {
-            "title": "John Howard Payne letters and writings, 1813-1839",
+            "title": "John Howard Payne letters and records, 1813-1839",
             "date": [
                 "1813",
                 "1839"
@@ -4129,7 +4326,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/5f75f3a44a6bb37b5f0bb7fee0d19de6.jpg"
         },
         "1062": {
-            "title": "John Howard Payne letters and writings, 1813-1839",
+            "title": "John Howard Payne letters and records, 1813-1839",
             "date": [
                 "1813",
                 "1839"
@@ -4139,7 +4336,7 @@
         },
         "1063": {
             "transcription": "were an inch and a half longer than his, from the point of his hip to his knee: supporting the whole frame to have been in the same proportion, the body Sit belonged to must have been seven feet high or upwards. Many bones in the mound, here, are of equal size. Suppose a man seven or? eight feet high, that is from 18 inches to two feet taller than men of the common size; suppose the body broaden in the same proportion, also his arms and legs; would he not be entitled to the name giant? Colonel? William Sheppard, late of North Carolina, in the year 1807, dug up, on the plantation of Colonel? Joel Lewis?, 2 miles from Nashville, the jaw bones of a man, which easily covered the whole chin & jaw of Colonel? Lewis, a man of large size. Some year afterwards, Mr Cassidy? dug up a skeleton from under a small mound near the large one at Bledsoe's Lick, in Sumner county, which measured little short of seven feet in length. Human bones have been dug up at the plantation where Judge Neuton? now lives, in Davidson county, four miles southwestwardly from Nashville, in making a cellar. These bones were of extraordinary  size. The under jaw bones of one skeleton was very easily slipped? over the jaw unclear unclear, a stout? man, full fleshed, very robust & considerably over the common size. These bones were dug up within the traces of ancient walls, in the form of a square if two or three hundred yards in length, situated near an excellent, never failing spring of pure & well tasted water. The spring was enclosed within the wall. A great number of skeletons was found within the enclosure,",
-            "title": "John Howard Payne writings, early to mid-19th century",
+            "title": "John Howard Payne records, early to mid-19th century",
             "date": [],
             "desc": "The John Howard Payne Papers primarily relate to the Cherokee Indians between 1794 and 1841 (bulk 1814-1841). This extensive collection contains fourteen volumes of manuscript notes, memoranda, incoming correspondence, and unpublished works. The subject matter includes among others the political and social history of the Cherokee nation, accounts of religious customs, myths, and legends, and government relations and treaties with the United States. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=150391\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "pc": "3",
@@ -4148,7 +4345,7 @@
         },
         "1064": {
             "transcription": "Summary.\nFive millions set apart for that purpose under \nthe Treaty, and which ought to be in reserve \nfor them and untouched?\nThere can be no such balance; for \nit appears that the only balance now in\nreserve for all possible purposes, is less than\nfour hundred thousand dollars. It must \nbe, therefore, that the means to meet the\nimmense overpayment so far exceeding the \none million seven hundred and twenty two\nthousand and sixty seven dollars, set \napart to cover the second of the two classes \nof our liabilities under the treaty, have been\ndrawn from the Four millions of balance \nwhich ought to have been held sacred for the\nfirst of these two classes of our liabilities.\n- Indeed, I learn that such is actually\nthe case; and I learn it with some\nastonishment, because the operation of this course\nappears to involve",
-            "title": "John Howard Payne letters and writings, 1842",
+            "title": "John Howard Payne letters and records, 1842",
             "date": [
                 "1842"
             ],
@@ -4313,12 +4510,15 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4f01f2e654981ff5ff808b0759ca9da9.jpg"
         },
         "1081": {
+            "transcription": "The Sitka Times.\nVol I.     Sitka A. T.? Saturday September 19th two small parallel lines below the th 1868.              No two small parallel lines below the O 1. \nThe weekly Times will be published and furnished? to Subscribers in Sitka every Saturday at 25 cents a Copy.\nBarney O.Hagan? Editor and \nProprietor No. 57 Market Street\nSitka Al. Terr.?\nAdvertisments.\nG. Y. Montagues\nHouse.\nSaloon, Restaurant and Bakery, all of which is conducted as a No two small lines below the O 1 Establishment, No two small lines below the O 1776? Lincoln Street Sitka A. J.?\nKinkad & Louton\nWholesale and Retail dealers in Dry goods and groceries, Hardware, Wines, Liquors etc. etc. etc. Store in front of Central Park. \nSitka A. J.?\nFrank Mahoney\nAuctioneer\nNo two small lines below the O 110? Market Street Sitka A. T.?\nAdvertisments.\nStorer and Burgman.\nDry goods and groceries, Hardware and a choice lot of pure Irish, Scotch and butter Whiskeys and Wines, etc. etc. etc which they are prepared to sell at such prices as will suit the buyers.\nStore No two small lines below the O 29. Lincoln Street\nSitka A. J.?\nSam's Saloon.\nis still conducted in its usual happy manner. A pleasant smile and good Liquors and Segars? is Sams Motto.\nS. Melitich Proprietor. \nNo two small lines below the O 45 Lincoln Street. Sitka A. J.?\nCity Market.\nIsac Bergman the butcher in Sitka was never known to keep an empty market. He has always, when he can find it, lots of fresh meat on hand. \nMarket      No two small lines below the O 38 Markey Street\nSitka Al. Terr?.",
             "title": "Marietta Davis travel diary of Mexico trip, February-March, 1878",
             "date": [
                 "1878"
             ],
             "desc": "Original correspondence documenting Davis’ and his wife’s tour of Mexico in 1878. <a href=\"https://mms.newberry.org/xml/xml_files/Davis.xml\">View collection guide</a>",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/f3d528dece414ad0579515b1049e4ede.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/f3d528dece414ad0579515b1049e4ede.jpg",
+            "pc": "1",
+            "weight": "001100"
         },
         "1082": {
             "title": "Marietta Davis travel diary of Mexico trip, March-April, 1878",
@@ -4381,15 +4581,15 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/80dcfd91e94bc43fa3f306180f75916e.jpg"
         },
         "1088": {
-            "transcription": "September WEDNESDAY 28 1859\nElla Pope and Thomas Fauble? are to be married to night -\nThis is another lovely day - Belle feeble with Fever - had it all night - it left her at eight O clock - this morning Dr. Rogers is giving her no Medicine at all now - urging nourishment - Siss called and gave her Ice Cream - Virginia called and took Eva and Ada to Mechanic's Fair - Mr. Haywood called to see Belle - Eva spent Afternoon at Prathers - Mr. Badger at Church meeting - Mr. Rupert lost a boy of scarlet Fever yesterday - gave Ellen 2 towels\nChildren out walking - Mrs. Hilton sent to inquire after Belle - so did Mrs. Brent",
+            "transcription": "October SATURDAY 8 1859\nRose very late Breakfasted at Nine Benny Adams over her to stay with Eva - Belle still getting better sitting up in the rocking Chair today for a little while - Eva gone to Mrs Adams for awhile then to Mrs Hunts - Dr Rogers ordered nothing for Belle but nourishment - Mrs Hitton came for the first time since her baby was born - cut out my brown silk - Mattie Brothers and Mary Bainbridge called - I went to get Mrs Murphy to make my brown silk waist - at to has a new picture book from Boston - Mr Badger at home",
             "title": "Elvira Cecelia Sheridan Badger diary, 1859",
             "date": [
                 "1859"
             ],
             "desc": "Daily life of a well-to-do family in Louisville.",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/f8613db3fedbfaa6180d2933447f85f8.jpg",
-            "pc": "72",
-            "weight": "072100"
+            "pc": "74",
+            "weight": "074100"
         },
         "1089": {
             "transcription": "Sunday, 24 Feb 1861\nThis is a beautiful bright day -My Father (Mr Sheridan) too breakfast with us -Mr Badger and \nchildren gone to Unitarian Sunday School - I think I will go to the Christ Church Episcopal \nI took Ada to Church -Virginia brought us home in her Carriage- we went to Mr. Heywood's\nChurch -he discoursed on the lif of Washington -there was a beautiful piece on the\ndeath of Minnie? Wilder -I stopped in to see Ma -we all very well-\nMonday 25 Feb 1861\nThis was a beautiful day - Siss sent her Carriage for me at 11 to come there - my children\nwent riding with Virginia -children called on Mary Ten Broeck Anderson -and \nstayed to her Party - Mrs Dr Scott called on me, all of us well_ Maria Craik and Mrs. Cassiday\ncalled.\nTuesday 26 -1861-\nThis has been a lovely day_ Children all in health _out buying new Hoops _they spent evening\nat Grandma Badgers house_ Sister Belle came to see us- commenced making to\nday blue worsted sacks for Bell & Eva -children took bath to day-\nWednesday 27 Feb 1861\nThis has been a very pretty day -quite warm- Siss called to tell me she would send her Carriage\nto take us to Dr- Breckinridge's- I went and saw Kate & all her children - took Bell & Eva\nwith me - Mr Gunter gave Belle her second lesson -at half past nine in the Morning -at 4\nOclock took all children to see Little Holman children there was such a crowd we\ncould not get in Duffields & Floyds children here playing with mine_ Virginia\ncame to see me_   \nThursday 28 Feb - 1861\nThis is the last day of February - A very lovely day -my children all well - my boy went to spend\nthe day with Grandma Sheridan find time without Nurse in his life_ busy housecleaning\nat 3 O clock went to see the Holman children _ they had a good house _ performed well\ntook all 4 of my children _ Horace & Eddie _ after Tea went with my husband to Musical Funclear\nConcert -it very fine -\nFriday March 1st 1861\nThis is an exceedingly warm day - still cleaning house - all well - went with Sister\nVirginia & Belle to make calls - called on Mrs. Ten Broeck & Tom Andersons -then on Mrs\nDr Marshall - Misses Merriweather _ Mrs Watson Mrs Duvall. Dr Powells Hopkins - Grigleys- Mrs\nGeorge Merriweather. Garvine, Ella Cochran - children spent day with my Mother - Mrs Guult\n& Benedict called to see me - Mrs Syrus Bent called - Sallie Garsien called on children -\nSaturday March 2nd 1861\nThis has been a beautiful day -exceedingly warm- at 11 O clock I went with Belle and Eva to Dr\nMasons the Dentists, we waited there until one before he came in - he has been ill\na long time - he is now suffering with Spine trouble and is going away to Water\nCure - he only looked at my teeth Virginia, & Sister Belles -but could not do the work\nhe x pulled Eva,s x two stomach teeth to let the first teeth come in, Eva cried very\nmuch - they were very strong teeth - at 3 Oclock I went to Dancing School with Ada\nShe looked very lovely in her Scarlet Merino trimmed with black velvet -she \ndanced all the quadrilles, Scotchish & Polka  Mary woke as well as any one\nshe has only taken 1 Lesson from a Teacher - her Sister taught her -she only \n4 years older - has very long curls - is considered very handsome- house cleaning\nto day-\nSunday 3rd March 1861\nThe dark appearance of clouds threatens rain children & their Father gone to Sunday School\nMy Father took Breakfast with us - I went to Mr Heywoods Church with Ada - when we\nreturned home the wind blue very much and it rained - we all very well - Mr Badger\nhas gone to see his Sister Mrs Hittons - Ada came in contact with Whooping Cough last week.",
@@ -4551,11 +4751,12 @@
             "weight": "061100"
         },
         "1138": {
-            "title": "Christina Olson <em>World’s Columbian Exposition</em> work papers, 1893",
+            "title": "Christina Olson World’s Columbian Exposition work papers, 1893",
             "date": [
                 "1893"
             ],
-            "desc": "Small collection of items relating to Olson’s performance as a Turkish dancer at the World’s Columbian Exposition in 1893. Includes documents of employment and assessment of her dancing skill. <a href=\"https://mms.newberry.org/xml/xml_files/Olson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>"
+            "desc": "Small collection of items relating to Olson’s performance as a Turkish dancer at the World’s Columbian Exposition in 1893. Includes documents of employment and assessment of her dancing skill. <a href=\"https://mms.newberry.org/xml/xml_files/Olson.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/306fd6a812e378711f4666def86ece7f.jpg"
         },
         "1139": {
             "title": "Women's Christian Temperance Union minutes, 1901-1906",
@@ -4563,7 +4764,8 @@
                 "1901",
                 "1906"
             ],
-            "desc": "Ledger of minutes from the Women's Christian Temperance Union in Powellton, Illinois, 1901-1906. The minutes record discussions concerning prohibition, suffrage, illegal gambling, and polygamy. <a href=\"https://mms.newberry.org/xml/xml_files/WCTU.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>"
+            "desc": "Ledger of minutes from the Women's Christian Temperance Union in Powellton, Illinois, 1901-1906. The minutes record discussions concerning prohibition, suffrage, illegal gambling, and polygamy. <a href=\"https://mms.newberry.org/xml/xml_files/WCTU.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/5cb4107c04a0bf9af96f65f47439c34b.jpg"
         },
         "1140": {
             "transcription": "Back Cover",
@@ -4658,14 +4860,14 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/4a9f8c30479fe45cf1d33914488f99c9.jpg"
         },
         "1149": {
+            "transcription": "Diary 1866",
             "title": "Hiram Scofield diary, 1866",
             "date": [
                 "1866"
             ],
             "desc": "Civil War officer with the 2nd Iowa Infantry and commander of the 47th Colored Infantry Regiment.",
-            "pc": "1",
-            "weight": "001100",
-            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/9d5a38b3b35d970be050f81cd98a6037.jpg"
+            "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/9d5a38b3b35d970be050f81cd98a6037.jpg",
+            "weight": "000100"
         },
         "1150": {
             "transcription": "Chicago",
@@ -4767,7 +4969,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/1a1cfa6e708481e127b5816067ee84f6.jpg"
         },
         "1164": {
-            "transcription": "Corn fritters  5 cts\nCorn Brusquit  5 cts\nPeaches 15 cts @ 45 each\nWhite Peas  25 cts pint\nPotatoes small 1.00 per doz\nFlour  50 ct per pint\nNearly all trade is carre\nthe sale currency green backs. Postage Stamps at one ct. a piece. Confederate money does not pass well. I read psalms during the day. managed to get hold of an oak pole and by trading I managed to increase my rations\nFriday Aug. 19th\nVisited the markets.",
+            "transcription": "1864\nFriday Sept 9th\nRead in the Testament. More prisoners go out. rations _____ short.\nSaturday 10th Sept.\nOn detail to draw rations got very near full rations more men leave this horrid place.  Our detachment has orders to be in readiness to move. God speed the hour i read in the Testament.\nSunday Sept. 11th\nRather sleepy to day as I only slept two hours last night prisoners still ___",
             "title": "Daniel Bond diary and memoir, 1864-1916",
             "date": [
                 "1864",
@@ -4775,8 +4977,8 @@
             ],
             "desc": "Union soldier from Randolph County, Indiana, on his experiences in the Civil War.",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/e3d78bac1465a31b84e7d80a29e6ed43.jpg",
-            "pc": "26",
-            "weight": "026100"
+            "pc": "28",
+            "weight": "028100"
         },
         "1167": {
             "transcription": "Sunday 27th May 1806 [1804] a fair morning. we set out early passed a creek called ash creek. on the N. Side high clifts on the South Side. proceeded on in the afternoon we arrived at the mouth of the Garganade River on South Side and camped on an Island opposite the mouth of the __ River.\nMonday 28th May 1804 a pleasant morning. Several __ at a hunting. the Latitude at this place is 38º 44' 3' 5. inch. as I was a hunting this day I came across a cave on the South Side or fork of a River about 100 yards in ___ the River. I went a 100 yards under ground had no light in my hand if I had I should have gone further. Their was a small  spring in it. it is the most remarkable cave I ever saw in my travels. I return to the river found the band had gone on and had left the french perogue for me. I called they came across for me and went to camp cooked __ and meal?. on the barge had been gone abt 2 hours. ---- we went about 2 miles and Camped for the night",
@@ -4791,6 +4993,7 @@
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/41250148b0c903fa292cf73a59aefb67.jpg"
         },
         "1169": {
+            "transcription": "June, 28th, 1901\nMr. Philip Bregstone",
             "title": "Philip P. Bregstone letters and writings [in Yiddish and English], 1897-1931 ",
             "date": [
                 "1897",
@@ -4798,7 +5001,9 @@
             ],
             "desc": "Chicago lawyer, judge, writer, and public official on Jewish affairs and Zionist causes in the Midwest.",
             "image": "http://publications.newberry.org/transcription/mms-transcribe/files/original/350cdbb87a93f596f45266d456f04555.jpg",
-            "lang": "English; Yiddish"
+            "lang": "English; Yiddish",
+            "pc": "2",
+            "weight": "002100"
         },
         "1170": {
             "transcription": "\"The path's not always rough and dark,\nNo more than 'tis smooth and bright,\nTo-day you will walk where the shadows lie,\nBut to-morrow in the light.\"\n\"'Tis now a grief and now a joy,\nThat we all are sure to meet;\nSince the cup of life for one and for all,\nHas its bitter and its sweet.\"\n\"You'll often meet the tempter, too,\nWherever you chance to go\nAnd it will strive to lure you, step by step,\nTo the depths of sin and woe.\"\n\"But put your trust in God, my son,\nAnd cherish the good and true,\nThen His hand will bless and your soul shall live,\nFor above the vaulted blue.\"\nE.A. Barnes.",
@@ -4836,12 +5041,6 @@
             "pc": "100",
             "weight": "100100"
         }
-    },
-    "completion": {
-        "total": 16308,
-        "needsReview": 5051,
-        "incomplete": 0,
-        "complete": 11257
     },
     "languages": {
         "English": [
@@ -5377,7 +5576,6 @@
             "155",
             "155",
             "155",
-            "155",
             "156",
             "156",
             "156",
@@ -5738,6 +5936,7 @@
             "216",
             "216",
             "216",
+            "217",
             "217",
             "217",
             "217",
@@ -6568,6 +6767,9 @@
             "994",
             "994",
             "994",
+            "994",
+            "994",
+            "995",
             "995",
             "995",
             "995",
@@ -6579,6 +6781,10 @@
             "996",
             "996",
             "996",
+            "996",
+            "996",
+            "997",
+            "997",
             "997",
             "997",
             "997",
@@ -6589,6 +6795,9 @@
             "998",
             "998",
             "998",
+            "998",
+            "998",
+            "999",
             "999",
             "999",
             "999",
@@ -6601,6 +6810,9 @@
             "1000",
             "1000",
             "1000",
+            "1000",
+            "1000",
+            "1001",
             "1001",
             "1001",
             "1001",
@@ -6613,12 +6825,15 @@
             "1002",
             "1002",
             "1002",
+            "1002",
             "1003",
             "1003",
             "1003",
             "1003",
             "1003",
             "1003",
+            "1003",
+            "1004",
             "1004",
             "1004",
             "1004",
@@ -6630,6 +6845,8 @@
             "1005",
             "1005",
             "1005",
+            "1005",
+            "1006",
             "1006",
             "1006",
             "1006",
@@ -6642,6 +6859,8 @@
             "1007",
             "1007",
             "1007",
+            "1007",
+            "1008",
             "1008",
             "1008",
             "1008",
@@ -6655,12 +6874,15 @@
             "1009",
             "1009",
             "1009",
+            "1009",
             "1010",
             "1010",
             "1010",
             "1010",
             "1010",
             "1010",
+            "1010",
+            "1011",
             "1011",
             "1011",
             "1011",
@@ -6674,6 +6896,8 @@
             "1012",
             "1012",
             "1012",
+            "1012",
+            "1014",
             "1014",
             "1014",
             "1014",
@@ -6686,6 +6910,9 @@
             "1015",
             "1015",
             "1015",
+            "1015",
+            "1016",
+            "1016",
             "1016",
             "1016",
             "1016",
@@ -6695,6 +6922,7 @@
             "1017",
             "1017",
             "1017",
+            "1017",
             "1018",
             "1018",
             "1018",
@@ -6702,6 +6930,8 @@
             "1018",
             "1018",
             "1018",
+            "1018",
+            "1019",
             "1019",
             "1019",
             "1019",
@@ -6712,10 +6942,13 @@
             "1020",
             "1020",
             "1020",
+            "1020",
             "1021",
             "1021",
             "1021",
             "1021",
+            "1021",
+            "1022",
             "1022",
             "1022",
             "1022",
@@ -6728,12 +6961,14 @@
             "1023",
             "1023",
             "1023",
+            "1023",
             "1024",
             "1024",
             "1024",
             "1024",
             "1024",
             "1024",
+            "1024",
             "1026",
             "1026",
             "1026",
@@ -6741,6 +6976,8 @@
             "1026",
             "1026",
             "1026",
+            "1026",
+            "1027",
             "1027",
             "1027",
             "1027",
@@ -6752,6 +6989,8 @@
             "1028",
             "1028",
             "1028",
+            "1028",
+            "1029",
             "1029",
             "1029",
             "1029",
@@ -6764,6 +7003,8 @@
             "1030",
             "1030",
             "1030",
+            "1030",
+            "1031",
             "1031",
             "1031",
             "1031",
@@ -6776,6 +7017,8 @@
             "1032",
             "1032",
             "1032",
+            "1032",
+            "1033",
             "1033",
             "1033",
             "1033",
@@ -6788,12 +7031,15 @@
             "1034",
             "1034",
             "1034",
+            "1034",
             "1035",
             "1035",
             "1035",
             "1035",
             "1035",
             "1035",
+            "1035",
+            "1036",
             "1036",
             "1036",
             "1036",
@@ -6804,6 +7050,8 @@
             "1037",
             "1037",
             "1037",
+            "1037",
+            "1038",
             "1038",
             "1038",
             "1038",
@@ -6818,6 +7066,8 @@
             "1039",
             "1039",
             "1039",
+            "1039",
+            "1040",
             "1040",
             "1040",
             "1040",
@@ -6830,6 +7080,8 @@
             "1041",
             "1041",
             "1041",
+            "1041",
+            "1042",
             "1042",
             "1042",
             "1042",
@@ -6842,12 +7094,15 @@
             "1044",
             "1044",
             "1044",
+            "1044",
             "1045",
             "1045",
             "1045",
             "1045",
             "1045",
             "1045",
+            "1045",
+            "1046",
             "1046",
             "1046",
             "1046",
@@ -6861,6 +7116,8 @@
             "1047",
             "1047",
             "1047",
+            "1047",
+            "1048",
             "1048",
             "1048",
             "1048",
@@ -6873,6 +7130,8 @@
             "1049",
             "1049",
             "1049",
+            "1049",
+            "1050",
             "1050",
             "1050",
             "1050",
@@ -6886,6 +7145,7 @@
             "1052",
             "1052",
             "1052",
+            "1053",
             "1053",
             "1053",
             "1053",
@@ -6911,6 +7171,7 @@
             "1057",
             "1057",
             "1057",
+            "1057",
             "1058",
             "1058",
             "1058",
@@ -7047,6 +7308,8 @@
             "1080",
             "1080",
             "1080",
+            "1081",
+            "1081",
             "1081",
             "1081",
             "1081",
@@ -7213,10 +7476,12 @@
             "1138",
             "1138",
             "1138",
+            "1138",
             "1139",
             "1139",
             "1139",
             "1139",
+            "1139",
             "1140",
             "1140",
             "1140",
@@ -7281,7 +7546,6 @@
             "1148",
             "1148",
             "1148",
-            "1149",
             "1149",
             "1149",
             "1149",
@@ -7372,6 +7636,8 @@
             "1167",
             "1167",
             "1167",
+            "1169",
+            "1169",
             "1169",
             "1169",
             "1169",
@@ -7425,6 +7691,10 @@
             "1015",
             "1015",
             "1015",
+            "1016",
+            "1016",
+            "1016",
+            "1016",
             "1041",
             "1041"
         ],
@@ -7444,9 +7714,6 @@
             "195",
             "196",
             "976"
-        ],
-        "1710": [
-            "1016"
         ],
         "1740": [
             "1024"
@@ -7545,6 +7812,7 @@
             "984",
             "992",
             "994",
+            "1015",
             "1017",
             "1028",
             "1029",

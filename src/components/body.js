@@ -20,7 +20,7 @@ class Body extends React.Component {
         super()
         this.state = {
             show: true,
-            cardData: content[1],
+            cardData: content['items'],
             filteredCardData: [],
         };
         this.setShow = this.setShow.bind(this);

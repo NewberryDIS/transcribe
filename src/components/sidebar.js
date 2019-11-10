@@ -154,8 +154,8 @@ const Sidebar = props => {
             <div className="stickycontainer">
                 <div className="listwrapper">
                     <div className="listContainer">
-                        <Progress percent={props.allData[0].percentComplete} compl={props.allData[0].totalcomplete} total={props.allData[0].total} />
-                        <Search filteredCardData={props.filteredCardData} filterCards={props.filterCards} allData={props.allData[0]} />
+                        <Progress percent={props.allData['summary'].percentComplete} compl={props.allData['summary'].totalcomplete} total={props.allData['summary'].total} />
+                        <Search filteredCardData={props.filteredCardData} filterCards={props.filterCards} allData={props.allData['items']} />
                     </div>
                 </div>
                 <div className="button" onClick={props.setShow}>
@@ -173,6 +173,7 @@ class Search extends React.Component {
         this.state = {
             input: '',
             type: 'name',
+            lang: 'English',
         }
     }
 
