@@ -22,7 +22,7 @@ content = {
     'languages': {},
     'dates': {}
 }
-
+imageList = []
 # if the all items file is older than 1 day, get master items file from omeka
 itemsFile = 'dataFiles/items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
@@ -112,7 +112,9 @@ with open(itemsFile) as json_file:
                     stuffer(content['items'], 'lang', ie['text'], id)
                 if ie['element']['name'] == 'Description':          stuffer(content['items'], 'desc', ie['text'], id)
                 if ie['element']['name'] == 'Relation':             stuffer(content['items'], 'desc', ie['text'], id)
-                if ie['element']['name'] == 'Source':               stuffer(content['items'], 'image', ie['text'], id)
+                if ie['element']['name'] == 'Source':               
+                    stuffer(content['items'], 'image', ie['text'], id)
+                    imageList.append(ie['text'])
                 if ie['element']['name'] == 'Percent Completed':    stuffer(content['items'], 'pc', ie['text'], id)
                 if ie['element']['name'] == 'Percent Needs Review': stuffer(content['items'], 'pnr', ie['text'], id)
                 if ie['element']['name'] == 'Weight':               stuffer(content['items'], 'weight', ie['text'], id)
@@ -133,7 +135,9 @@ with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 print('total: ' + str(content['summary']['total']) + '; percent completed: ' + str(content['summary']['percentComplete']) + '%; total touched: ' + str(content['summary']['percentTouched']) + '%;')
-
+with open('./imageList.txt', 'w') as listfile:
+    for line in imageList:
+        listfile.write(line + "\n")
 # image handling: 
 #     chop off beggining of url
 #     look for filename in /src/images/thumbs/

@@ -83,20 +83,27 @@ class Masonry extends React.Component {
 
 export default class Cardsection extends React.Component {
     render() {
+        let itemsArray = []
+        Object.keys(this.props.items).map((i) =>{
+            itemsArray.push(this.props.items[i])
+        })
+        itemsArray.sort((a, b) => a.weight - b.weight)
+        // console.log(itemsArray.length)
+        let cards = itemsArray.map((i) => {
+            let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
+            let truncIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
+            let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
+            let imagePath = i.image && i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+            let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
+            return (
+                <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
+            )
+        })
         return (
-                <Masonrycontainer>
+            <Masonrycontainer>
                         <Masonry breakPoints={breakPoints}>
-                            {this.props.items.slice(0,20).map((i) => {
-                                
-                                let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
-                                let truncIndex = Math.min(i.desc.indexOf('<'), 150)
-                                let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
-                                let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-                                let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
-                                return (
-                                    <Card key={i.id} link={link} image={image} title={i.name} desc={truncatedDesc} prog={i.calc_complete} />
-                                )
-                            })}
+                            {cards}
+                            
                         </Masonry>
                 </Masonrycontainer>
         )
@@ -115,6 +122,9 @@ const Card = props => {
                 <h3 className="cardtitle">
                     {props.title}
                 </h3>
+                <p className="carddesc">
+                    {props.weight}
+                </p>
                 <p className="carddesc">
                     {props.desc}
                 </p>
@@ -148,6 +158,7 @@ const Cardwrapper = styled.div`
         margin: 10px;
         max-width: 300px;
         background-color: white;
+        text-align: initial;
         overflow: hidden;
         > * {
             color: black;
