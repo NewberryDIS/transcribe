@@ -112,7 +112,9 @@ export default class Cardsection extends React.Component {
             let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
             let truncIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
             let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
-            let imagePath = i.image && i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+            let imagePath = i.image && i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+            console.log(imagePath)
+            // imagePath = i.image.indexOf('.html') > -1 ?  false : imagePath
             let randImg = images[(Math.floor((Math.random() * 17) + 1))]
             let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
             // let image = !imagePath ?  require('../images/thumbs/smile.jpg') : require('../images/thumbs' + imagePath)
