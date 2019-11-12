@@ -5,6 +5,25 @@ import styled from "@emotion/styled";
 import { Link } from "gatsby"
 import parse from 'html-react-parser';
 // images
+import a from '../images/1.jpg'
+import b from '../images/2.jpg'
+import c from '../images/3.jpg'
+import d from '../images/4.jpg'
+import e from '../images/5.jpg'
+import f from '../images/6.jpg'
+import g from '../images/7.jpg'
+import h from '../images/8.jpg'
+import i from '../images/9.jpg'
+import j from '../images/10.jpg'
+import k from '../images/11.jpg'
+import l from '../images/12.jpg'
+import m from '../images/13.jpg'
+import n from '../images/14.jpg'
+import o from '../images/15.jpg'
+import p from '../images/16.jpg'
+import q from '../images/17.jpg'
+import r from '../images/18.jpg'
+const images = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r]
 
 let breakPoints = [400, 700, 850, 1400];
 
@@ -94,7 +113,10 @@ export default class Cardsection extends React.Component {
             let truncIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
             let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
             let imagePath = i.image && i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-            let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
+            let randImg = images[(Math.floor((Math.random() * 17) + 1))]
+            let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
+            // let image = !imagePath ?  require('../images/thumbs/smile.jpg') : require('../images/thumbs' + imagePath)
+            // let image = !imagePath ?  'No Image Found' : require('../images/thumbs' + imagePath)
             return (
                 <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
             )
