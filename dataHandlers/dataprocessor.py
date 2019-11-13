@@ -107,6 +107,7 @@ with open(itemsFile) as json_file:
                 pc = ''
                 pnr = ''
                 weight = ''
+                stuffer(id, 'id', id)
                 if ie['element']['name'] == 'Language':
                     tagCleaner(ie['text'], content['languages'], id)
                     stuffer(content['items'], 'lang', ie['text'], id)

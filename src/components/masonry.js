@@ -100,36 +100,75 @@ class Masonry extends React.Component {
     }
 }
 
+// const Cards = props => {
+//     titleFilter = props.title.toLowerCase().indexOf(props.titleFilter.toLowerCase()) > -1
+    
+// }
+
 export default class Cardsection extends React.Component {
     render() {
         let itemsArray = []
+        // Object.keys(this.props.items).slice(0,20).map((i) =>{
         Object.keys(this.props.items).map((i) =>{
             itemsArray.push(this.props.items[i])
         })
         itemsArray.sort((a, b) => a.weight - b.weight)
-        // console.log(itemsArray.length)
-        let cards = itemsArray.map((i) => {
-            let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
-            let truncIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
-            let truncatedDesc = truncIndex > -1 ? i.desc.substring(0,truncIndex) + '...' : i.desc
-            let imagePath = i.image && i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-            console.log(imagePath)
-            // imagePath = i.image.indexOf('.html') > -1 ?  false : imagePath
-            let randImg = images[(Math.floor((Math.random() * 17) + 1))]
-            let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
-            // let image = !imagePath ?  require('../images/thumbs/smile.jpg') : require('../images/thumbs' + imagePath)
-            // let image = !imagePath ?  'No Image Found' : require('../images/thumbs' + imagePath)
-            return (
-                <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
-            )
-        })
+        // let cards = itemsArray.map((i) => {
+        //     let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
+        //     // if there is a description, if there's html in it ("<"), then only use the substring up until the first <, or 150 characters, whichever is lower; 
+        //     // if there's no html in it, and the lngth is more than 150, then only use the first 150 characters
+        //     // otherwise, use the entire description
+        //     let truncatedDesc = i.desc ? 
+        //             i.desc.indexOf('<') > -1 ? 
+        //                 i.desc.substring(0, Math.min(i.desc.indexOf('<'), 150)) + '...' 
+        //             : i.desc.length > 150 ? 
+        //                     i.desc.substring(0,150) + '...' 
+        //                 : i.desc 
+        //         : ''
+        //     let imagePath = i.image && i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+        //     let randImg = images[(Math.floor((Math.random() * 17) + 1))]
+        //     let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
+        //     // let image = !imagePath ?  require('../images/thumbs/smile.jpg') : require('../images/thumbs' + imagePath)
+        //     // let image = !imagePath ?  'No Image Found' : require('../images/thumbs' + imagePath)
+        //     return (
+        //         <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
+        //     )
+        // })
         return (
             <Masonrycontainer>
-                        <Masonry breakPoints={breakPoints}>
-                            {cards}
+                <Masonry breakPoints={breakPoints}>
+                    {itemsArray.map(i => {
+                        let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
+                        // if there is a description, if there's html in it ("<"), then only use the substring up until the first <, or 150 characters, whichever is lower; 
+                        // if there's no html in it, and the lngth is more than 150, then only use the first 150 characters
+                        // otherwise, use the entire description
+                        let truncatedDesc = i.desc ? 
+                                i.desc.indexOf('<') > -1 ? 
+                                    i.desc.substring(0, Math.min(i.desc.indexOf('<'), 150)) + '...' 
+                                : i.desc.length > 150 ? 
+                                        i.desc.substring(0,150) + '...' 
+                                    : i.desc 
+                            : ''
+                        let imagePath = i.image && (i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1) ? i.image.substring(i.image.lastIndexOf('/')) : false
+                        let randImg = images[(Math.floor((Math.random() * 17) + 1))]
+                        let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
+                        return ( <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} /> )
+                    }).filter(i => {
+                        console.log('text filter = ' + this.props.filters.titleFilter)
+                        return this.props.filters.titleFilter.length > 0  ? i.title.toLowerCase().indexOf(this.props.filters.titleFilter) > -1 : true
+                    }).filter(i => {
+                        // if item's bottom date is below the filter's top date, and the item's top date is below the filter's bottom date, then show
+                        return this.props.filters.dateFilter && i.date ? i.date[0] <= this.props.filters.dateFilter[1] && i.date[i.date.length - 1] >= this.props.filters.dateFilter[0] : true
+                    }).filter(i => {
+                        return this.props.filters.subjectFilter.length > 0 && i.subject ? i.subject.indexOf(this.props.filter.subjectFilter) > -1 : true
+                    // transcript filter: 
+                    // }).filter(i => {
+                    //    return Filter ? i.props... : true
+                    })
+                    }
                             
-                        </Masonry>
-                </Masonrycontainer>
+                </Masonry>
+            </Masonrycontainer>
         )
     }
 }
@@ -147,7 +186,7 @@ const Card = props => {
                     {props.title}
                 </h3>
                 <p className="carddesc">
-                    {props.weight}
+                    {props.tl}
                 </p>
                 <p className="carddesc">
                     {props.desc}

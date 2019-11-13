@@ -20,27 +20,38 @@ class Body extends React.Component {
         super()
         this.state = {
             show: true,
-            cardData: content['items'],
-            filteredCardData: [],
+            filters: {
+                titleFilter: '',
+                dateFilter: [1600, 2000],
+                textFilter: '',
+                subjectFilter: '',
+                langFilter: 'English',
+            },
         };
         this.setShow = this.setShow.bind(this);
+        this.setFilters = this.setFilters.bind(this);
     }
-
-    componentWillMount() {
-        this.setState({
-            filteredCardData: this.state.cardData
-        })
+    cardData = content['items']
+    // componentWillMount() {
+    //     this.setState({
+    //         filteredCardData: this.state.cardData
+    //     })
+    // }
+    setFilters = (needle, type) => {
+        let filters = this.state.filters
+        filters[type] = needle
+        this.setState({filters: filters })
+        // console.log(filters)
     }
-    filterCards = (cardFilter, type) => {
-        let filteredCards = this.state.cardData
-        filteredCards = filteredCards.filter((i) => {
-            let cardContent = i[type].toLowerCase()
-            return cardContent.indexOf(cardFilter.toLowerCase()) !== -1
-        })
-        this.setState({filteredCardData: filteredCards})
-    }
+    // filterCards = (cardFilter, type) => {
+    //     let filteredCards = this.state.cardData
+    //     filteredCards = filteredCards.filter((i) => {
+    //         let cardContent = i[type].toLowerCase()
+    //         return cardContent.indexOf(cardFilter.toLowerCase()) !== -1
+    //     })
+    //     this.setState({filteredCardData: filteredCards})
+    // }
     setShow(){
-        console.log('whooo')
         this.setState({show: !this.state.show})
     }
     render(){
@@ -49,8 +60,8 @@ class Body extends React.Component {
                 <Container wrap={'nowrap'} css={css`
                     justify-content: stretch;
                 `}>
-                    <Sidebar show={this.state.show} setShow={this.setShow} filterCards={this.filterCards} filteredCardData={this.state.filteredCardData} allData={content} />
-                    <Cardsection items={this.state.filteredCardData} filterCards={this.filterCards}/>
+                    <Sidebar show={this.state.show} setShow={this.setShow} filters={this.state.filters} setFilters={this.setFilters} allData={content} />
+                    <Cardsection items={this.cardData} filters={this.state.filters}/>
                 </Container>
             </section>
         )

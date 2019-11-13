@@ -27,6 +27,7 @@ const standardcss = css`
         top: 0;
         right: 0;
         cursor: pointer;
+        margin: 3px 10px 0 0 ;
     }
     ul {
         list-style-type: none;
@@ -75,6 +76,11 @@ const standardcss = css`
         padding: 15px;
         width: 225px;
         opacity: 1;
+    }
+    .searchInput, .searchSelect {
+        width: 100%;
+        margin: 3px 0;
+        height: 35px;
     }
 `
 const hiddencss = css`
@@ -155,7 +161,7 @@ const Sidebar = props => {
                 <div className="listwrapper">
                     <div className="listContainer">
                         <Progress percent={props.allData['summary'].percentComplete} compl={props.allData['summary'].totalcomplete} total={props.allData['summary'].total} />
-                        <Search filteredCardData={props.filteredCardData} filterCards={props.filterCards} allData={props.allData['items']} />
+                        <Search filters={props.filters} setFilters={props.setFilters} />
                     </div>
                 </div>
                 <div className="button" onClick={props.setShow}>
@@ -172,25 +178,17 @@ class Search extends React.Component {
         super()
         this.state = {
             input: '',
-            type: 'name',
-            lang: 'English',
+            type: 'titleFilter'
         }
     }
-
-    handleSubmit(txt) {
-        this.props.filterCards(txt, this.state.type);
-        console.log(txt + ' ' + this.state.type)
-        // switch (this.state.type){
-        //     case 'subject': console.log('will search subjects');
-        //     case 'keyword': console.log('will search keywords');
-        //     default: console.log('will search titels');
-        // }
+    handleSubmit() {
+        this.props.setFilters(this.state.input, this.state.type);
+        // console.log(txt + ' ' + this.state.type)
     }
     handleChange(e) {
         // var input = e.target.value;
         this.setState({input: e.target.value}, () => {
-            console.log(this.state.input);
-            this.handleSubmit(this.state.input);
+            this.handleSubmit(this.state.input, this.state.type);
         });
     }
     handleSelect(e) {
@@ -205,11 +203,11 @@ class Search extends React.Component {
         return (
         <div>
             <form>
-                <input value={this.state.input} onChange={(e) => this.handleChange(e)} type="text" />
-                <select onChange={(e) => this.handleSelect(e)}>
-                    <option defaultValue value="name">Title</option>
-                    <option value="keyword">Transcription Keywords</option>
-                    <option value="subj">Subjects</option>
+                <input className="searchInput" value={this.state.input} onChange={(e) => this.handleChange(e)} type="text" />
+                <select className="searchSelect" onChange={(e) => this.handleSelect(e)}>
+                    <option defaultValue value="titleFilter">Title</option>
+                    <option value="textFilter">Transcription Keywords</option>
+                    <option value="subjectFilter">Subjects</option>
                 </select>
             </form>
         </div>
