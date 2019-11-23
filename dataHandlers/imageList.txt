@@ -5,7 +5,7 @@ http://publications.newberry.org/transcription/mms-transcribe/files/original/8ed
 http://publications.newberry.org/transcription/mms-transcribe/files/original/35ceca97d958e1c8a24cf620bfb046fb.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/549b0ea80414dbba0236b51d5b0d03d5.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/b76e8c710e844e652a64b54aaa0e8067.jpg
-http://publications.newberry.org/transcription/mms-transcribe/files/original/0805dc399bf4c515757089914f98b383.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/9a8622e30e17729b9cc3cc688d8c86bb.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/acb14c18a7c43f2a82d9b2f5d32cdb72.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/f5125e1b8249dd1cf7088c636bb1b6fd.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/2dd86248d1065bfe8699e457e3379c33.jpg
@@ -220,6 +220,7 @@ http://publications.newberry.org/transcription/mms-transcribe/files/original/c74
 http://publications.newberry.org/transcription/mms-transcribe/files/original/2cebe2fe431120fc9665a041befb78a2.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/8b32df7b8797362394c3df3443454a06.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/a38a04ce1665fa1146711422e440a55a.jpg
+http://collections.carli.illinois.edu/utils/ajaxhelper/?CISOROOT=nby_graff&CISOPTR=18735&action=2&DMSCALE=10&DMWIDTH=274&DMHEIGHT=326&DMX=0&DMY=0&DMTEXT=&DMROTATE=0
 http://publications.newberry.org/transcription/mms-transcribe/files/original/8d559cdb0fb7f84fa7d59d34ee2c2834.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/6f90386c2b307ffacb64913fbf1ca9a9.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/9a223a62ace80facf0cb14d27e4b8355.jpg

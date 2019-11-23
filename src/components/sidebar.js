@@ -1,16 +1,15 @@
 import React, { useState }  from "react"
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
-import { Colors } from '../components/pieces'
+import { colors } from '../components/pieces'
 
 const standardcss = css`
     position: relative;
-    // display: block;
     flex-basis: 225px;
     width: 225px;
     .stickycontainer {
         position: sticky;
-        top: 60px;
+        top: 10px;
     }
     .listwrapper {
         background: black;
@@ -34,13 +33,13 @@ const standardcss = css`
         padding: 5px;
         margin: 0;
         li {
-            color: ${Colors.fgcolor};
+            color: ${colors.fg};
             padding: 5px 5px 5px 10px;
             margin: 5px;
-            border-left: 1px solid ${Colors.fgcolor};
+            border-left: 1px solid ${colors.fg};
             border-bottom: 1px solid transparent;
             text-decoration: none;
-            background-image: linear-gradient(${Colors.fgcolor}, ${Colors.fgcolor});
+            background-image: linear-gradient(${colors.fg}, ${colors.fg});
             background-position: 0% 105%;
             background-repeat: no-repeat;
             background-size: 0% 2px;

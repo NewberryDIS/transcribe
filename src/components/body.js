@@ -1,10 +1,12 @@
 import React from "react"
 import Sidebar from './sidebar'
-import {Container} from './pieces'
+import { Container, z } from './pieces'
 import Cardsection from './masonry'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
+import Header from './header'
 
+import { colors } from '../components/pieces'
 // const data = require('../data/items.json');
 
 const content = require('../data/content.json')
@@ -13,6 +15,8 @@ const content = require('../data/content.json')
 // const decades = require('../data/decades.json')
 // const summary = require('../data/summary.json')
 // const allData = [summary, items, collections, decades]
+
+
 
 
 class Body extends React.Component {
@@ -31,6 +35,7 @@ class Body extends React.Component {
         this.setShow = this.setShow.bind(this);
         this.setFilters = this.setFilters.bind(this);
     }
+    
     cardData = content['items']
     // componentWillMount() {
     //     this.setState({
@@ -41,7 +46,7 @@ class Body extends React.Component {
         let filters = this.state.filters
         filters[type] = needle
         this.setState({filters: filters })
-        // console.log(filters)
+        console.log(filters)
     }
     // filterCards = (cardFilter, type) => {
     //     let filteredCards = this.state.cardData
@@ -56,11 +61,13 @@ class Body extends React.Component {
     }
     render(){
         return(
-            <section>
-                <Container wrap={'nowrap'} css={css`
+            <section id="top" css={css`
+                z-index: ${z.mid};
+            `}>
+                <Header />
+                <Container  wrap={'nowrap'} css={css`
                     justify-content: stretch;
                 `}>
-                    <Sidebar show={this.state.show} setShow={this.setShow} filters={this.state.filters} setFilters={this.setFilters} allData={content} />
                     <Cardsection items={this.cardData} filters={this.state.filters}/>
                 </Container>
             </section>

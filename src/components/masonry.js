@@ -3,7 +3,6 @@ import React from 'react';
 import { css, jsx, Global } from '@emotion/core';
 import styled from "@emotion/styled";
 import { Link } from "gatsby"
-import parse from 'html-react-parser';
 // images
 import a from '../images/1.jpg'
 import b from '../images/2.jpg'
@@ -33,6 +32,7 @@ const Masonrycontainer = styled.div`
     margin-top: 10px;
     text-align: center;
     padding: 4px;
+    z-index: 2;
 `
 const Masonrycss = styled.div`
     display: flex;
@@ -100,16 +100,10 @@ class Masonry extends React.Component {
     }
 }
 
-// const Cards = props => {
-//     titleFilter = props.title.toLowerCase().indexOf(props.titleFilter.toLowerCase()) > -1
-    
-// }
-
 export default class Cardsection extends React.Component {
     render() {
         let itemsArray = []
-        // Object.keys(this.props.items).slice(0,20).map((i) =>{
-        Object.keys(this.props.items).map((i) =>{
+        Object.keys(this.props.items).slice(0,20).map((i) =>{
             itemsArray.push(this.props.items[i])
         })
         itemsArray.sort((a, b) => a.weight - b.weight)
@@ -152,7 +146,7 @@ export default class Cardsection extends React.Component {
                         let imagePath = i.image && (i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1) ? i.image.substring(i.image.lastIndexOf('/')) : false
                         let randImg = images[(Math.floor((Math.random() * 17) + 1))]
                         let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
-                        return ( <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} /> )
+                        return ( <Card key={i.id} id={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} /> )
                     }).filter(i => {
                         console.log('text filter = ' + this.props.filters.titleFilter)
                         return this.props.filters.titleFilter.length > 0  ? i.title.toLowerCase().indexOf(this.props.filters.titleFilter) > -1 : true
@@ -176,7 +170,7 @@ export default class Cardsection extends React.Component {
 
 const Card = props => {
     return (
-        <Cardwrapper className="card" >
+        <Cardwrapper href={props.id} className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
             <div className="cardcap">
                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
@@ -200,31 +194,65 @@ const Card = props => {
                             rgba(255,255,255,0.25) ${Math.round(props.prog,0)}%,
                             rgba(255,255,255,0.25)
                         );`}>{Math.round(props.prog,0)}%</div>
+                <div className="" href={props.id} css={css`
+                    font-family: 'Lato', sans-serif;
+                    color: black;
+                    text-decoration: none;
+                    margin-top: 10px;
+                    padding: 15px 30px;
+                    border: 1px solid rgba(0,0,0, 0.5);
+                    text-align: center;
+                    text-transform: uppercase;
+                    transition: all .15s ease-in-out;
+                    &:hover {
+                        border: 1px solid #000;
+                        background-color: #fff;
+                        -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                        -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                    }
+                    background: rgba(255,255,255,0.8);
+                    border-radius: 6px; 
+                }
+                `}>
+                    Transcribe Now
+                </div>
             </div>
         </Cardwrapper>
     )
 }
 
 
-const Cardwrapper = styled.div`
+const Cardwrapper = styled.a`
     display: flex; 
     flex-wrap: wrap;
     justify-content: space-evenly;
+    text-decoration: none;
+
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    &:hover {
+        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+
+    }
     &.card {
+        border-radius: 10px;
+        overflow: hidden;
         flex-basis: 350px;
         flex-direction: column;
         position: relative;
         box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
-        border-radius: 3px;
+        border-radius: 10px;
         flex: auto;
         padding: 0;
         margin: 10px;
         max-width: 300px;
         background-color: white;
         text-align: initial;
-        overflow: hidden;
         > * {
             color: black;
+        }
+        &:hover {
+            z-index: 60000;
         }
     }
     .cardbg {
@@ -239,18 +267,21 @@ const Cardwrapper = styled.div`
         bottom: -40px;
     }
     .cardText {
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
         display: flex;
         flex-direction: column;
         position: relative;
         z-index: 2;
         flex: 1;
-        // overflow: auto;
         box-shadow: 
             0px 11px 8px -10px  rgba(0,0,0,0.4),
             0px -11px 8px -10px rgba(0,0,0,0.4); 
         height: calc(100% - 250px);
         padding: 20px;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(4px);
         background-color: rgba(255, 255, 255, 0.5); 
     }
     .cardcap {
