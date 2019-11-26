@@ -1,25 +1,21 @@
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import bg from '../images/textbg.jpg'
 import * as basicScroll from 'basicscroll'
-import { colors, logo, z } from './pieces'
+import { colors, logo, z, FontSizes } from './pieces'
 
 const Curtain = () => {
     const instances = []
-    const anchor = typeof document !== `undefined` ? document.querySelector('.anchor') : null    
-    // const anchor = document.querySelector('.anchor')
+    // swap these commented lines for gh-pages deploy
+    // const anchor = typeof document !== `undefined` ? document.querySelector('.anchor') : null    
+    const anchor = document.querySelector('.anchor')
     // Create an animation for each border and letter
     const lba = typeof document !== `undefined` ? document.querySelectorAll('.letter, .border') : null
-        lba !== null ? lba.forEach((elem) => {
-
-        // Get the end values from the data attributes
+    // lba !== null ? lba.forEach((elem) => {
+    lba.forEach((elem) => {
         const tx = elem.getAttribute('data-tx') + 'px'
         const ty = elem.getAttribute('data-ty') + 'px'
         const r = elem.getAttribute('data-r') + 'deg'
-
-    // Crate an instance for the current element and store the instance in an array.
-    // We start the animation later using the instances from the array.
         instances.push(basicScroll.create({
             elem: anchor,
             from: 'top-top',
@@ -40,30 +36,29 @@ const Curtain = () => {
             }
             }
         }))
-
-    }) : ''
+    // }) : ''
+    })
     instances.forEach((instance) => instance.start())
     const stwo = logo[1]
-    const header = stwo.split('').map((i) => {
+    const header = stwo.split('').map((i, index) => {
         const tx = Math.round((Math.random() * 200),0)
         const ty = Math.round((Math.random() * 200),0)
         const r =  Math.round((Math.random() * 200),0)
         const posneg = Math.round(Math.random()) === 1 ? '' : '-'
         i = i === ' ' ? '\u00A0' : i
         return (
-                <span className="letter letter-sm" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
+                <span key={index} className="letter letter-sm" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
             )
     })
-    // const header = stringit(hea)
     const stone = logo[0]
-    const subheader = stone.split('').map((i) => {
+    const subheader = stone.split('').map((i, index) => {
         const tx = Math.round((Math.random() * 200),0)
         const ty = Math.round((Math.random() * 200),0)
         const r =  Math.round((Math.random() * 200),0)
         const posneg = Math.round(Math.random()) === 1 ? '' : '-'
         i = i === ' ' ? '\u00A0' : i
         return (
-                <span className="letter letter-lg" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
+                <span key={index} className="letter letter-lg" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
             )
     })
 
@@ -82,15 +77,14 @@ const Curtain = () => {
                 color: ${colors.fg}
             }
             .letter-lg {
-                font-size: 2em;
-
+                font-size: ${FontSizes.xxl};
                 text-transform: uppercase;
             }
             .letter-sm {
                 text-transform: uppercase;
                 // font-family: 'Homemade Apple', cursive;
                 // font-family: 'Kaushan Script', cursive;
-                font-size: 1.3em;
+                font-size: ${FontSizes.xl};
             }
             .curtaintop, .curtainbottom {
 
@@ -188,18 +182,18 @@ const Curtain = () => {
             <div className="curtainbottom" css={css`
                 
             `}>
-                <div class="anchor"></div>
-                <div class="container">
-                    <h1 class="headline-sm">
+                <div className="anchor"></div>
+                <div className="container">
+                    <h1 className="headline-sm">
                     </h1>
                 </div>
-                <div class="container">
-                    <h1 class="headline-lg"><a href="#top" >
+                <div className="container">
+                    <h1 className="headline-lg"><a href="#top" >
 
-                    <span class="border border--top" data-tx="-40" data-ty="20" data-r="-20"></span>
-                    <span class="border border--right" data-tx="-10" data-ty="10" data-r="30"></span>
-                    <span class="border border--bottom" data-tx="60" data-ty="0" data-r="40"></span>
-                    <span class="border border--left" data-tx="50" data-ty="-80" data-r="20"></span>
+                    <span className="border border--top" data-tx="-40" data-ty="20" data-r="-20"></span>
+                    <span className="border border--right" data-tx="-10" data-ty="10" data-r="30"></span>
+                    <span className="border border--bottom" data-tx="60" data-ty="0" data-r="40"></span>
+                    <span className="border border--left" data-tx="50" data-ty="-80" data-r="20"></span>
 
                         <p>{header}</p>
                         <p>{subheader}</p>

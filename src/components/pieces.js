@@ -5,7 +5,8 @@ export const FontSizes = {
     sm: 'calc(10px + 0.5vw)',
     md: 'calc(10px + 1vw)',
     lg: 'calc(10px + 1.25vw)',
-    xl: 'calc(20px + 1.5vw)'
+    xl: 'calc(0.5rem + 3vw)',
+    xxl: 'calc(0.5em + 4vw)'
 }
 export const Container = styled.div`
     width: 100%;

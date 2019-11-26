@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import { colors } from '../components/pieces'
 
-const Sicon = () => <div class="search-wrapper" css={css`
+const Sicon = () => <div className="search-wrapper" css={css`
     padding-bottom: 3px;
     color: ${colors.fg};
     text-align: center;
@@ -40,9 +40,9 @@ const Sicon = () => <div class="search-wrapper" css={css`
         border-bottom-right-radius: 3px;
     }
 `}>
-  <div class="search">
-    <div class="search__circle"></div>
-    <div class="search__rectangle"></div>
+  <div className="search">
+    <div className="search__circle"></div>
+    <div className="search__rectangle"></div>
   </div>
 </div>
 export default Sicon
