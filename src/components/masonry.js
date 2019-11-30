@@ -102,65 +102,53 @@ class Masonry extends React.Component {
 
 export default class Cardsection extends React.Component {
     render() {
-        let itemsArray = []
-        Object.keys(this.props.items).slice(0,20).map((i) =>{
-            itemsArray.push(this.props.items[i])
-        })
-        itemsArray.sort((a, b) => a.weight - b.weight)
-        // let cards = itemsArray.map((i) => {
-        //     let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
-        //     // if there is a description, if there's html in it ("<"), then only use the substring up until the first <, or 150 characters, whichever is lower; 
-        //     // if there's no html in it, and the lngth is more than 150, then only use the first 150 characters
-        //     // otherwise, use the entire description
-        //     let truncatedDesc = i.desc ? 
-        //             i.desc.indexOf('<') > -1 ? 
-        //                 i.desc.substring(0, Math.min(i.desc.indexOf('<'), 150)) + '...' 
-        //             : i.desc.length > 150 ? 
-        //                     i.desc.substring(0,150) + '...' 
-        //                 : i.desc 
-        //         : ''
-        //     let imagePath = i.image && i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-        //     let randImg = images[(Math.floor((Math.random() * 17) + 1))]
-        //     let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
-        //     // let image = !imagePath ?  require('../images/thumbs/smile.jpg') : require('../images/thumbs' + imagePath)
-        //     // let image = !imagePath ?  'No Image Found' : require('../images/thumbs' + imagePath)
-        //     return (
-        //         <Card key={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
-        //     )
-        // })
+        let leftoff = 0;
+                                                // titleFilter: '',
+                                                // dateFilter: [1600, 2000],
+                                                // textFilter: '',
+                                                // subjectFilter: '',
+                                                // langFilter: 'English',
+        function cardMaker(data,filters){
+            data.map((i, index) =>{
+                console.log(i)
+                let add = true
+                if (filters.titleFilter != '' && i.title.indexOf(filters.titleFilter) === -1){
+                    add = false
+                    console.log('falsed on title')
+                }
+                if (i.date[0] > filters.dateFilter[1] && i.date[1] < filters.dateFilter[0]){
+                    add = false
+                    console.log('falsed on date')
+                }
+                if (filters.textFilter != '' && i.transcription.indexOf(filters.textFilter) === -1){
+                    add = false
+                    console.log('falsed on text')
+                }
+                if (filters.subjectFilter != '' && i.desc.indexOf(filters.subjectFilter) === -1){
+                    add = false
+                    console.log('falsed on subj')
+                }
+                if (filters.langFilter != '' && i.lang.indexOf(filters.langFilter) === -1){
+                    add = false
+                    console.log('falsed on lang')
+                }
+                // console.log('adding ' + i.id + ', which is index ' + index)
+                if (add && index < 20) {
+                    leftoff++
+                    let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+                    let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
+                    // console.log(leftoff)
+                    return (
+                        <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
+                        )
+                    }
+                })
+        }
+        const cards = cardMaker(this.props.items.slice(leftoff), this.props.filters)
         return (
             <Masonrycontainer>
                 <Masonry breakPoints={breakPoints}>
-                    {itemsArray.map(i => {
-                        let link = 'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + i.id
-                        // if there is a description, if there's html in it ("<"), then only use the substring up until the first <, or 150 characters, whichever is lower; 
-                        // if there's no html in it, and the lngth is more than 150, then only use the first 150 characters
-                        // otherwise, use the entire description
-                        let truncatedDesc = i.desc ? 
-                                i.desc.indexOf('<') > -1 ? 
-                                    i.desc.substring(0, Math.min(i.desc.indexOf('<'), 150)) + '...' 
-                                : i.desc.length > 150 ? 
-                                        i.desc.substring(0,150) + '...' 
-                                    : i.desc 
-                            : ''
-                        let imagePath = i.image && (i.image.lastIndexOf('/') > -1 || i.image && i.image.indexOf('.html') === -1) ? i.image.substring(i.image.lastIndexOf('/')) : false
-                        let randImg = images[(Math.floor((Math.random() * 17) + 1))]
-                        let image = !imagePath ?  randImg : require('../images/thumbs' + imagePath)
-                        return ( <Card key={i.id} id={i.id} weight={i.weight} link={link} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} /> )
-                    }).filter(i => {
-                        console.log('text filter = ' + this.props.filters.titleFilter)
-                        return this.props.filters.titleFilter.length > 0  ? i.title.toLowerCase().indexOf(this.props.filters.titleFilter) > -1 : true
-                    }).filter(i => {
-                        // if item's bottom date is below the filter's top date, and the item's top date is below the filter's bottom date, then show
-                        return this.props.filters.dateFilter && i.date ? i.date[0] <= this.props.filters.dateFilter[1] && i.date[i.date.length - 1] >= this.props.filters.dateFilter[0] : true
-                    }).filter(i => {
-                        return this.props.filters.subjectFilter.length > 0 && i.subject ? i.subject.indexOf(this.props.filter.subjectFilter) > -1 : true
-                    // transcript filter: 
-                    // }).filter(i => {
-                    //    return Filter ? i.props... : true
-                    })
-                    }
-                            
+                    {cards}  
                 </Masonry>
             </Masonrycontainer>
         )
@@ -169,6 +157,7 @@ export default class Cardsection extends React.Component {
 
 
 const Card = props => {
+    const prog = !props.prog ? 0 : props.prog
     return (
         <Cardwrapper href={props.id} className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
@@ -193,7 +182,7 @@ const Card = props => {
                             rgba(140, 181, 129,0.5) ${Math.round(props.prog,0)}%,
                             rgba(255,255,255,0.25) ${Math.round(props.prog,0)}%,
                             rgba(255,255,255,0.25)
-                        );`}>{Math.round(props.prog,0)}%</div>
+                        );`}>{Math.round(prog)}%</div>
                 <div className="" href={props.id} css={css`
                     font-family: 'Lato', sans-serif;
                     color: black;
