@@ -9,69 +9,52 @@ const Curtain = () => {
     // swap these commented lines for gh-pages deploy
     // const anchor = typeof document !== `undefined` ? document.querySelector('.anchor') : null    
     const anchor = document.querySelector('.anchor')
+    const blurtext = [
+        document.querySelector('.blureffect1'), 
+        document.querySelector('.blureffect2'), 
+        document.querySelector('.blureffect3'), 
+        document.querySelector('.blureffect4')
+    ]
     // Create an animation for each border and letter
     const lba = typeof document !== `undefined` ? document.querySelectorAll('.letter, .border') : null
     // lba !== null ? lba.forEach((elem) => {
-    lba.forEach((elem) => {
-        const tx = elem.getAttribute('data-tx') + 'px'
-        const ty = elem.getAttribute('data-ty') + 'px'
-        const r = elem.getAttribute('data-r') + 'deg'
-        instances.push(basicScroll.create({
-            elem: anchor,
-            from: 'top-top',
-            to: 'top-bottom',
-            direct: elem,
-            props: {
-            '--tx': {
-                from: '0',
-                to: tx
-            },
-                    '--ty': {
-                from: '0',
-                to: ty
-            },
-                    '--r': {
-                from: '0',
-                to: r
+    instances.push(basicScroll.create({
+        elem: anchor,
+        from: '200px',
+        to: '300px',
+        direct: document.querySelector('.blureffect1'),
+        props: {
+            '--blur': {
+                from: '50px',
+                to: '0px'
             }
+        }
+    }),
+    basicScroll.create({
+        elem: anchor,
+        from: '0px',
+        to: '200px',
+        direct: document.querySelector('.blureffect4'),
+        props: {
+            '--blur': {
+                from: '50px',
+                to: '0px'
             }
-        }))
+        }
+    })
+        )
     // }) : ''
-    })
     instances.forEach((instance) => instance.start())
-    const stwo = logo[1]
-    const header = stwo.split('').map((i, index) => {
-        const tx = Math.round((Math.random() * 200),0)
-        const ty = Math.round((Math.random() * 200),0)
-        const r =  Math.round((Math.random() * 200),0)
-        const posneg = Math.round(Math.random()) === 1 ? '' : '-'
-        i = i === ' ' ? '\u00A0' : i
-        return (
-                <span key={index} className="letter letter-sm" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
-            )
-    })
-    const stone = logo[0]
-    const subheader = stone.split('').map((i, index) => {
-        const tx = Math.round((Math.random() * 200),0)
-        const ty = Math.round((Math.random() * 200),0)
-        const r =  Math.round((Math.random() * 200),0)
-        const posneg = Math.round(Math.random()) === 1 ? '' : '-'
-        i = i === ' ' ? '\u00A0' : i
-        return (
-                <span key={index} className="letter letter-lg" data-tx={posneg + tx} data-ty={posneg + ty}  data-r={posneg + r}>{i}</span>
-            )
-    })
-
     return (
         <div id="curtain" css={css`
             z-index: ${z.btm};
-            min-height: 200vh;
+            min-height: 150vh;
             position: relative;
-            top: 0px;
+            top: 0;
             display: flex;
             flex-direction: column;
             p {
-                margin-bottom: 0;
+                margin-bottom: 1px;
             }
             .letter-lg, .letter-sm {
                 color: ${colors.fg}
@@ -82,12 +65,13 @@ const Curtain = () => {
             }
             .letter-sm {
                 text-transform: uppercase;
-                // font-family: 'Homemade Apple', cursive;
                 // font-family: 'Kaushan Script', cursive;
                 font-size: ${FontSizes.xl};
             }
-            .curtaintop, .curtainbottom {
-
+            .curtain {
+                a {
+                    text-decoration: none;
+                }
                 flex: 1;
                 font-family: 'Lato', sans-serif;
                 -webkit-font-smoothing: antialiased;
@@ -112,92 +96,32 @@ const Curtain = () => {
                     height: 100vh;
                     width: 100%;
                 }
-                
-                .headline-sm, .headline-lg {
+                .headline-lg {
                     position: relative;
                     padding: .4em .6em .45em;
                     line-height: 1;
                 }
-                .headline-sm {
-
-                    // height: 100vh;
-                    // font-size: 3em;
-                    // line-height: 15vh;
-                }
-                .headline-lg {
-
-                    // height: 100vh;
-                    // font-size: 6em;
-                    // line-height: 55vh;
-                }
-                
-                .border {
-                    --size: 5px;
-                    position: absolute;
-                    background: ${colors.fg};
-                    color: ${colors.fg};
-                    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
-                    will-change: transform;
-                    
-                    &--top {
-                        top: 0;
-                        right: 0;
-                        left: 0;
-                        height: var(--size);
-                    }
-                    
-                    &--right {
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        width: var(--size);
-                    }
-                    
-                    &--bottom {
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        height: var(--size);
-                    }
-                    
-                    &--left {
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        width: var(--size);
-                    }
-                }
-                
-                .letter {
+                .blureffect1,
+                .blureffect2,
+                .blureffect3,
+                .blureffect4 {
                     display: inline-block;
-                    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
-                    will-change: transform;
+                    filter: blur(var(--blur));
+                    transition: transform .1s linear;
+                    will-change: filter;
                 }
-            }
-            .curtaintop {
-                // font-size: 15vh;
-                // line-height: 40vh;
             }
         `}>
-            <div className="curtainbottom" css={css`
+            <div className="curtain" css={css`
                 
             `}>
                 <div className="anchor"></div>
-                <div className="container">
-                    <h1 className="headline-sm">
-                    </h1>
-                </div>
-                <div className="container">
-                    <h1 className="headline-lg"><a href="#top" >
-
-                    <span className="border border--top" data-tx="-40" data-ty="20" data-r="-20"></span>
-                    <span className="border border--right" data-tx="-10" data-ty="10" data-r="30"></span>
-                    <span className="border border--bottom" data-tx="60" data-ty="0" data-r="40"></span>
-                    <span className="border border--left" data-tx="50" data-ty="-80" data-r="20"></span>
-
-                        <p>{header}</p>
-                        <p>{subheader}</p>
-                    </a>
+                <div className="container ">
+                    <h1 className="headline-lg">
+                        <a href="#top" >
+                            <p className="letter-sm blureffect1 ">Become a part of history</p>
+                            <p className="letter-lg">Newberry&nbsp;<span className="blureffect4">Transcribe</span></p>
+                        </a>
                     </h1>
                 </div>
             </div>

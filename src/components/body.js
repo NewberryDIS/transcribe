@@ -23,7 +23,6 @@ class Body extends React.Component {
     constructor() {
         super()
         this.state = {
-            show: true,
             filters: {
                 titleFilter: '',
                 dateFilter: [1600, 2000],
@@ -32,7 +31,6 @@ class Body extends React.Component {
                 langFilter: 'English',
             },
         };
-        this.setShow = this.setShow.bind(this);
         this.setFilters = this.setFilters.bind(this);
     }
     

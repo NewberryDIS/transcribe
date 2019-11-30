@@ -85,6 +85,8 @@ const Cardwrapper = styled.div`
 // const images = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r]
 
 const Card = props => {
+    const prog = !props.prog ? 0 : props.prog
+    console.log(prog)
     return (
         <Cardwrapper className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
@@ -104,25 +106,48 @@ const Card = props => {
                             rgba(140, 181, 129,0.5) ${Math.round(props.prog,0)}%,
                             rgba(255,255,255,0.25) ${Math.round(props.prog,0)}%,
                             rgba(255,255,255,0.25)
-                        );`}>{Math.round(props.prog,0)}%</div>
+                        );`}>{Math.round(prog,0)}%</div>
             </div>
         </Cardwrapper>
     )
 }
-
-const Cardmaker = props => {
-    props.items.slice
-}
-
 const Cardsection = props => {
-    const cards = props.items.slice(20,20).map((i) => {
-        // let desc = i.desc.substring(0,50)
-        let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-        let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
-        return (
-        <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
-    )
-    })
+    const leftoff = 0;
+                                            // titleFilter: '',
+                                            // dateFilter: [1600, 2000],
+                                            // textFilter: '',
+                                            // subjectFilter: '',
+                                            // langFilter: 'English',
+    function cardMaker(data,filters){
+        data.map((i, index) =>{
+            const add = true
+            if (filters.titleFilter != '' || i.title.indexOf(filters.titleFilter) === -1){
+                add = false
+            }
+            if (i.date[0] <= filters.dateFilter[1] && i.date[1] >= filters.dateFilter[0]){
+                add = false
+            }
+            if (filters.textFilter != '' || i.transcription.indexOf(filters.textFilter) === -1){
+                add = false
+            }
+            if (filters.subjectFilter != '' || i.desc.indexOf(filters.subjectFilter) === -1){
+                add = false
+            }
+            if (filters.langFilter != '' || i.language.indexOf(filters.langFilter) === -1){
+                add = false
+            }
+            if (add && index < 20) {
+                leftoff++
+                let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+                let image = !imagePath ?'No Image Found.' : require('../images/thumbs' + imagePath)
+                return (
+                    <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
+                    )
+                }
+                console.log(leftoff)
+            })
+    }
+    const cards = cardMaker(props.items.slice(leftoff), props.filters)
     return (
         <Cardwrapper>
             {cards}
