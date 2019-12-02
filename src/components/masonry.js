@@ -3,6 +3,7 @@ import React from 'react';
 import { css, jsx, Global } from '@emotion/core';
 import styled from "@emotion/styled";
 import { Link } from "gatsby"
+import debounce from "lodash.debounce";
 // images
 import a from '../images/1.jpg'
 import b from '../images/2.jpg'
@@ -55,13 +56,14 @@ class Masonry extends React.Component {
         super(props);
         this.state = { columns: 1 };
         this.onResize = this.onResize.bind(this);
-    }
+}
     componentDidMount() {
         this.onResize();
         window.addEventListener('resize', this.onResize);
     }
     componentWillUnmount() {
         window.removeEventListener('resize', this.onResize);
+
     }
     getColumns(w) {
         return breakPoints.reduceRight((p, c, i) => {
@@ -101,61 +103,114 @@ class Masonry extends React.Component {
 }
 
 export default class Cardsection extends React.Component {
-    render() {
-        let leftoff = 0;
-                                                // titleFilter: '',
-                                                // dateFilter: [1600, 2000],
-                                                // textFilter: '',
-                                                // subjectFilter: '',
-                                                // langFilter: 'English',
-        function cardMaker(data,filters){
-            data.map((i, index) =>{
-                console.log(i)
-                let add = true
-                if (filters.titleFilter != '' && i.title.indexOf(filters.titleFilter) === -1){
-                    add = false
-                    console.log('falsed on title')
-                }
-                if (i.date[0] > filters.dateFilter[1] && i.date[1] < filters.dateFilter[0]){
-                    add = false
-                    console.log('falsed on date')
-                }
-                if (filters.textFilter != '' && i.transcription.indexOf(filters.textFilter) === -1){
-                    add = false
-                    console.log('falsed on text')
-                }
-                if (filters.subjectFilter != '' && i.desc.indexOf(filters.subjectFilter) === -1){
-                    add = false
-                    console.log('falsed on subj')
-                }
-                if (filters.langFilter != '' && i.lang.indexOf(filters.langFilter) === -1){
-                    add = false
-                    console.log('falsed on lang')
-                }
-                // console.log('adding ' + i.id + ', which is index ' + index)
-                if (add && index < 20) {
-                    leftoff++
-                    let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-                    let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
-                    // console.log(leftoff)
-                    return (
-                        <Card key={i.id} image={image} title={i.name} desc={i.desc} prog={i.calc_complete} />
-                        )
-                    }
-                })
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: false,
+            cards: this.cardMaker(this.props.items.slice(this.leftoff, (this.leftoff + 20)), this.props.filters),
+        };
+        this.leftoff = 0; 
+        // this.cards = this.cardMaker(this.props.items.slice(this.leftoff, 20), this.props.filters);
+        this.cardMaker = this.cardMaker.bind(this);
+        const wndw  = typeof window !== 'undefined' ? window : null
+        wndw !== null ? window.onscroll = debounce(() => {
+            console.log(document.documentElement.offsetHeight + ' ' + (document.documentElement.offsetHeight * 0.75))
+            const {
+                loadCards,
+                state: {
+                    error,
+                    isLoading,
+                    hasMore,
+                },
+            } = this;
+            // Bails early if:
+            // * there's an error
+            // * it's already loading
+            // * there's nothing left to load
+            // Checks that the page has scrolled to the bottom
+            if (
+                window.innerHeight + document.documentElement.scrollTop
+                > document.documentElement.offsetHeight * 0.75
+            ) {
+                loadCards();
+            }
+        }, 100) : '';
+    }
+    componentDidMount() {
+        console.log('working to this point (CDM')
+        this.loadCards();
+      }
+    
+    loadCards = () => {
+        console.log(this.leftoff )
+        this.setState({ isLoading: true }, () => {
+            const nextCards = this.cardMaker(this.props.items.slice(this.leftoff, (this.leftoff + 20)), this.props.filters)
+            this.setState({
+                isLoading: false,
+                cards: [
+                    ...this.state.cards,
+                    ...nextCards,
+                ],
+                });
+            })
         }
-        const cards = cardMaker(this.props.items.slice(leftoff), this.props.filters)
+
+    cardMaker(data,filters){
+        return data.map((i, index) => {
+            let add = true
+            if (filters.titleFilter !== '' && i.title.indexOf(filters.titleFilter) === -1){
+                add = false
+                console.log(i.title)
+            }
+            if (i.date[0] > filters.dateFilter[1] && i.date[1] < filters.dateFilter[0]){
+                add = false
+                console.log(i.date)
+            }
+            if (filters.textFilter !== '' && i.transcription.indexOf(filters.textFilter) === -1){
+                add = false
+                console.log(i.date)
+            }
+            if (filters.subjectFilter !== '' && i.desc.indexOf(filters.subjectFilter) === -1){
+                add = false
+                console.log('falsed on subj')
+            }
+            const lang = i.lang ? i.lang : 'English'
+            if (lang.indexOf(filters.langFilter) === -1){
+                add = false
+                console.log(lang)
+            }
+            if (add && index < 20) {
+                this.leftoff++
+                let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+                let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
+                let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
+                let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
+                return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
+            }
+        })
+    }
+
+    render() { 
+        const {
+            error,
+            hasMore,
+            isLoading,
+            users,
+        } = this.state;
+        // titleFilter: '',
+        // dateFilter: [1600, 2000],
+        // textFilter: '',
+        // subjectFilter: '',
+        // langFilter: 'English',
         return (
-            <Masonrycontainer>
+            <Masonrycontainer id="masonrycontainer">
                 <Masonry breakPoints={breakPoints}>
-                    {cards}  
+                    {this.state.cards}  
                 </Masonry>
             </Masonrycontainer>
         )
     }
 }
-
-
 const Card = props => {
     const prog = !props.prog ? 0 : props.prog
     return (

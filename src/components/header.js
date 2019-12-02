@@ -77,8 +77,20 @@ const Hwrapper = styled.header`
 `
 
 export default class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchInput: '',
+            filterType: 'titleFilter',
+        };
+    }
     handleSelect (e) {
-        
+        this.setState({filterType: e.target.value})
+    }
+    handleSubmit (e) {
+        console.log(this.refs.searchType.value + ' : ' + this.refs.searchInput.value)
+        this.setState({searchInput: e.target.value})
+        this.props.setFilters(this.refs.searchInput.value, this.refs.searchType.value)
     }
     render(){
         return (
@@ -89,14 +101,14 @@ export default class Header extends React.Component {
                 </div>
                 <div className="filsea">
                     <button className="filterButton">Filter</button>
-                    <select className="searchSelect" onChange={(e) => this.handleSelect(e)}>
+                    <select className="searchSelect" ref="searchType" onChange={(e) => this.handleSelect(e)}>
                         <option defaultValue value="titleFilter">Title</option>
                         <option value="textFilter">Transcription Keywords</option>
                         <option value="subjectFilter">Subjects</option>
                     </select>
                     <div className="searchDiv">
-                        <input className="searchInput" type="text" placeholder="Search..."/>
-                        <div className="searchButton"><Sicon /></div>
+                        <input className="searchInput" ref="searchInput"  type="text" placeholder="Search..."/>
+                        <div className="searchButton" onClick={(e) => this.handleSubmit(e)}><Sicon /></div>
                     </div>
                 </div>
             </Hwrapper>

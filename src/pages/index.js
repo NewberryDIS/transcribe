@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+// import React from "react"
 import Body from '../components/body'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import CurtainPage from "../components/curtain"
-import { colors } from '../components/pieces'
+// import { colors } from '../components/pieces'
 import bg from '../images/featured.jpg'
 
 const IndexPage = () => {

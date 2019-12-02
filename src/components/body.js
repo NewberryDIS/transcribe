@@ -34,7 +34,7 @@ class Body extends React.Component {
         this.setFilters = this.setFilters.bind(this);
     }
     
-    cardData = content['items']
+    cardData = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     // componentWillMount() {
     //     this.setState({
     //         filteredCardData: this.state.cardData
@@ -62,7 +62,7 @@ class Body extends React.Component {
             <section id="top" css={css`
                 z-index: ${z.mid};
             `}>
-                <Header />
+                <Header setFilters={this.setFilters} />
                 <Container  wrap={'nowrap'} css={css`
                     justify-content: stretch;
                 `}>
