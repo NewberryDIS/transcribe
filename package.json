@@ -23,6 +23,7 @@
     "gh-pages": "^2.1.1",
     "html-react-parser": "^0.9.2",
     "lodash.debounce": "^4.0.8",
+    "lodash.isequal": "^4.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",

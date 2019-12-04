@@ -4,26 +4,6 @@ import { css, jsx, Global } from '@emotion/core';
 import styled from "@emotion/styled";
 import { Link } from "gatsby"
 import debounce from "lodash.debounce";
-// images
-import a from '../images/1.jpg'
-import b from '../images/2.jpg'
-import c from '../images/3.jpg'
-import d from '../images/4.jpg'
-import e from '../images/5.jpg'
-import f from '../images/6.jpg'
-import g from '../images/7.jpg'
-import h from '../images/8.jpg'
-import i from '../images/9.jpg'
-import j from '../images/10.jpg'
-import k from '../images/11.jpg'
-import l from '../images/12.jpg'
-import m from '../images/13.jpg'
-import n from '../images/14.jpg'
-import o from '../images/15.jpg'
-import p from '../images/16.jpg'
-import q from '../images/17.jpg'
-import r from '../images/18.jpg'
-const images = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r]
 
 let breakPoints = [400, 700, 850, 1400];
 
@@ -56,7 +36,7 @@ class Masonry extends React.Component {
         super(props);
         this.state = { columns: 1 };
         this.onResize = this.onResize.bind(this);
-}
+    }
     componentDidMount() {
         this.onResize();
         window.addEventListener('resize', this.onResize);
@@ -107,101 +87,67 @@ export default class Cardsection extends React.Component {
         super(props);
         this.state = {
             isLoading: false,
-            cards: this.cardMaker(this.props.items.slice(this.leftoff, (this.leftoff + 20)), this.props.filters),
+            cards: this.deck
         };
-        this.leftoff = 0; 
-        // this.cards = this.cardMaker(this.props.items.slice(this.leftoff, 20), this.props.filters);
-        this.cardMaker = this.cardMaker.bind(this);
-        const wndw  = typeof window !== 'undefined' ? window : null
-        wndw !== null ? window.onscroll = debounce(() => {
-            console.log(document.documentElement.offsetHeight + ' ' + (document.documentElement.offsetHeight * 0.75))
-            const {
-                loadCards,
-                state: {
-                    error,
-                    isLoading,
-                    hasMore,
-                },
-            } = this;
-            // Bails early if:
-            // * there's an error
-            // * it's already loading
-            // * there's nothing left to load
-            // Checks that the page has scrolled to the bottom
-            if (
-                window.innerHeight + document.documentElement.scrollTop
-                > document.documentElement.offsetHeight * 0.75
-            ) {
-                loadCards();
-            }
-        }, 100) : '';
+        this.makeCards = this.makeCards.bind(this);
+        this.filterItems = this.filterItems.bind(this);
     }
-    componentDidMount() {
-        console.log('working to this point (CDM')
-        this.loadCards();
-      }
-    
-    loadCards = () => {
-        console.log(this.leftoff )
-        this.setState({ isLoading: true }, () => {
-            const nextCards = this.cardMaker(this.props.items.slice(this.leftoff, (this.leftoff + 20)), this.props.filters)
-            this.setState({
-                isLoading: false,
-                cards: [
-                    ...this.state.cards,
-                    ...nextCards,
-                ],
-                });
-            })
-        }
-
-    cardMaker(data,filters){
-        return data.map((i, index) => {
-            let add = true
-            if (filters.titleFilter !== '' && i.title.indexOf(filters.titleFilter) === -1){
-                add = false
-                console.log(i.title)
-            }
-            if (i.date[0] > filters.dateFilter[1] && i.date[1] < filters.dateFilter[0]){
-                add = false
-                console.log(i.date)
-            }
-            if (filters.textFilter !== '' && i.transcription.indexOf(filters.textFilter) === -1){
-                add = false
-                console.log(i.date)
-            }
-            if (filters.subjectFilter !== '' && i.desc.indexOf(filters.subjectFilter) === -1){
-                add = false
-                console.log('falsed on subj')
-            }
-            const lang = i.lang ? i.lang : 'English'
-            if (lang.indexOf(filters.langFilter) === -1){
-                add = false
-                console.log(lang)
-            }
-            if (add && index < 20) {
-                this.leftoff++
-                let imagePath = i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
-                let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
-                let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
-                let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
-                return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
-            }
+    makeCards = (data) => {
+        return data.map((i) => { 
+            // if there's no image
+            let imagePath = i.image && i.image.lastIndexOf('/') > -1 ? i.image.substring(i.image.lastIndexOf('/')) : false
+            let image = !imagePath ? 'No Image Found.' : require('../images/thumbs' + imagePath)
+            // some descriptions are very long and have html in them
+            // we will truncate at the first '<' or 150 characters, whichever is shorter
+            let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
+            let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
+            return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
         })
     }
-
-    render() { 
-        const {
-            error,
-            hasMore,
-            isLoading,
-            users,
-        } = this.state;
-        // titleFilter: '',
-        // dateFilter: [1600, 2000],
-        // textFilter: '',
-        // subjectFilter: '',
-        // langFilter: 'English',
+    filterItems = (items) => {
+        let counter = 0
+        let returnArray = []
+        // console.log(items)
+        for (var i = 0; counter < 20 && items[i]; i++){
+            let add = true
+            if (items[i].title && this.props.filters.titleFilter !== '' && items[i].title.toLowerCase().indexOf(this.props.filters.titleFilter.toLowerCase()) === -1){
+                add = false
+                // console.log('no "' + this.props.filters.titleFilter + '" in ' +items[i].title )
+            }
+            if (items[i].date && items[i].date[0] > this.props.filters.dateFilter[1] && items[i].date[1] < this.props.filters.dateFilter[0]){
+                add = false
+                // console.log('no "' + this.props.filters.dateFilter + '" in ' + items[i].date )
+            }
+            if (items[i].transcription !== undefined && this.props.filters.textFilter !== '' && items[i].transcription.toLowerCase().indexOf(this.props.filters.textFilter.toLowerCase()) === -1){
+                add = false
+                // console.log('no "' + this.props.filters.textFilter + '" in ' + items[i].text )
+            }
+            if (items[i].desc && this.props.filters.subjectFilter !== '' && items[i].desc.toLowerCase().indexOf(this.props.filters.subjectFilter.toLowerCase()) === -1){
+                add = false
+                // console.log('no "' + this.props.filters.descFilter + '" in ' + items[i].desc )
+            }
+            const lang = items[i].lang ? items[i].lang.toLowerCase(): 'english'
+            if (lang.indexOf(this.props.filters.langFilter.toLowerCase()) === -1){
+                add = false
+                // console.log('no "' + this.props.filters.langFilter + '" in ' + lang )
+            }
+            // console.log('add = ' + add + ' for ' + items[i].title + ' because ' + items[i].title.toLowerCase().indexOf(this.props.filters.titleFilter.toLowerCase()))
+            if (add) {
+                // console.log(items[i].transcription.toLowerCase().indexOf(this.props.filters.textFilter.toLowerCase()))
+                counter++
+                returnArray.push(items[i])
+            }
+        }
+        return returnArray
+    }   
+    componentDidUpdate(prevProps) {
+        console.log(prevProps.filters)
+        if ( prevProps.filters !== this.props.filters){
+            this.setState({cards: this.makeCards(this.filterItems(this.props.items))})
+        }
+    }
+    deck = this.makeCards(this.props.items.slice(0,20))
+    render () {
         return (
             <Masonrycontainer id="masonrycontainer">
                 <Masonry breakPoints={breakPoints}>
@@ -212,7 +158,7 @@ export default class Cardsection extends React.Component {
     }
 }
 const Card = props => {
-    const prog = !props.prog ? 0 : props.prog
+    const prog = !props.prog ? 0 : Math.round(props.prog,0)
     return (
         <Cardwrapper href={props.id} className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
@@ -234,10 +180,10 @@ const Card = props => {
                         linear-gradient(
                             to right,
                             rgba(140, 181, 129,0.5),
-                            rgba(140, 181, 129,0.5) ${Math.round(props.prog,0)}%,
-                            rgba(255,255,255,0.25) ${Math.round(props.prog,0)}%,
+                            rgba(140, 181, 129,0.5) ${prog}%,
+                            rgba(255,255,255,0.25) ${prog}%,
                             rgba(255,255,255,0.25)
-                        );`}>{Math.round(prog)}%</div>
+                        );`}>{prog}%</div>
                 <div className="" href={props.id} css={css`
                     font-family: 'Lato', sans-serif;
                     color: black;

@@ -33,29 +33,12 @@ class Body extends React.Component {
         };
         this.setFilters = this.setFilters.bind(this);
     }
-    
     cardData = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
-    // componentWillMount() {
-    //     this.setState({
-    //         filteredCardData: this.state.cardData
-    //     })
-    // }
     setFilters = (needle, type) => {
         let filters = this.state.filters
         filters[type] = needle
-        this.setState({filters: filters })
+        this.setState({filters: { ...filters, [type]: needle }})
         console.log(filters)
-    }
-    // filterCards = (cardFilter, type) => {
-    //     let filteredCards = this.state.cardData
-    //     filteredCards = filteredCards.filter((i) => {
-    //         let cardContent = i[type].toLowerCase()
-    //         return cardContent.indexOf(cardFilter.toLowerCase()) !== -1
-    //     })
-    //     this.setState({filteredCardData: filteredCards})
-    // }
-    setShow(){
-        this.setState({show: !this.state.show})
     }
     render(){
         return(

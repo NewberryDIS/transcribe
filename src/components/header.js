@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import { colors, logo, z } from '../components/pieces'
@@ -74,7 +74,55 @@ const Hwrapper = styled.header`
     .filterButton {
         line-height: 38px;
     }
+    .filterbox {
+        
+        position: relative;
+    }
 `
+const Dropdown = styled.div`
+    position: absolute;
+    width: 20vw;
+    top: 60px;
+    left: -10px;
+    margin: 5px;
+    border: 5px solid ${colors.fg};
+    color: ${colors.fg};
+    background-color: ${colors.bg};
+    .searchSelect {
+        width: calc(100% - 10px);
+    }
+`
+const FilterButton = props=> {
+    const [showDropdown, setShowDropdown] = useState(false)
+    const handleSelect = (e) => {
+        props.setFilters(e.target.value, 'langFilter')
+    }
+    const handleClearClick = () => {
+        props.setFilters('','titleFilter')
+        props.setFilters('','textFilter')
+        props.setFilters('','subjectFilter')
+        props.setFilters('','langFilter')
+        props.setFilters([1600, 2000],'dateFilter')
+    }
+    return(
+        <div className="filterbox">
+            <button className="filterButton" onClick={() => setShowDropdown(!showDropdown)}>Filters</button>
+            {showDropdown ? 
+                <Dropdown className="filterDropdown">
+                    <div>
+                        here be double-handled date sliders
+                    </div>
+                    <select className="searchSelect" onChange={(e) => handleSelect(e)}>
+                        <option defaultValue value="English">English</option>
+                        <option value="German">German</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Yiddish">Yiddish</option>
+                    </select>
+                    <button className="searchSelect clearfilters" onClick={() => handleClearClick()}>Clear Filters</button>
+                </Dropdown> :''}
+        </div>
+    )
+}
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -85,6 +133,9 @@ export default class Header extends React.Component {
         };
     }
     handleSelect (e) {
+        this.props.setFilters('','titleFilter')
+        this.props.setFilters('','textFilter')
+        this.props.setFilters('','subjectFilter')
         this.setState({filterType: e.target.value})
     }
     handleSubmit (e) {
@@ -100,7 +151,7 @@ export default class Header extends React.Component {
                     <div className="logoright">{logo[1]}</div>
                 </div>
                 <div className="filsea">
-                    <button className="filterButton">Filter</button>
+                    <FilterButton setFilters={this.props.setFilters} />
                     <select className="searchSelect" ref="searchType" onChange={(e) => this.handleSelect(e)}>
                         <option defaultValue value="titleFilter">Title</option>
                         <option value="textFilter">Transcription Keywords</option>
