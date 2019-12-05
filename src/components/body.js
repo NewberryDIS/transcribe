@@ -18,6 +18,7 @@ class Body extends React.Component {
                 subjectFilter: '',
                 langFilter: 'English',
             },
+            cardStyle: 'narrow',
         };
         this.setFilters = this.setFilters.bind(this);
     }

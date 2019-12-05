@@ -1,46 +1,38 @@
-
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import * as basicScroll from 'basicscroll'
-import { colors, logo, z, FontSizes } from './pieces'
+import { colors, z, FontSizes } from './pieces'
 
 const Curtain = () => {
     const instances = []
-    // swap these commented lines for gh-pages deploy
-    // const anchor = typeof document !== `undefined` ? document.querySelector('.anchor') : null    
-    const anchor = document.querySelector('.anchor')
-   
-    // const lba = typeof document !== `undefined` ? document.querySelectorAll('.letter, .border') : null
-    // lba !== null ? lba.forEach((elem) => {
-    // document.querySelectorAll('.letter-sm, .letter-lg').forEach((elem) => {
-    instances.push(
-        basicScroll.create({
-            elem: anchor,
-            from: '0px',
-            to: '100vh',
-            direct: document.querySelector('.blureffect1'),
-            props: {
-                '--blur': {
-                    from: '0px',
-                    to: '50px'
+    const anchor = typeof document !== `undefined` ? document.querySelector('.anchor') : null    
+    const blurs = typeof document !== 'undefined' ? [document.querySelector('.blureffect1'), document.querySelector('.blureffect4')] : null
+    var jSLintSucks = blurs !== null ? instances.push(
+            basicScroll.create({
+                elem: anchor,
+                from: '0px',
+                to: '100vh',
+                direct: blurs[1],
+                props: {
+                    '--blur': {
+                        from: '0px',
+                        to: '50px'
+                    }
                 }
-            }
-        }),
-        basicScroll.create({
-            elem: anchor,
-            from: '0px',
-            to: '100vh',
-            direct: document.querySelector('.blureffect4'),
-            props: {
-                '--blur': {
-                    from: '50px',
-                    to: '0px'
+            }),
+            basicScroll.create({
+                elem: anchor,
+                from: '0px',
+                to: '100vh',
+                direct: blurs[0],
+                props: {
+                    '--blur': {
+                        from: '52px',
+                        to: '0px'
+                    }
                 }
-            }
-        })
-    )
-    // }) : ''
-    // })
+            })
+        ) : ''
     instances.forEach((instance) => instance.start())
     return (
         <div id="curtain" css={css`
@@ -109,15 +101,13 @@ const Curtain = () => {
                 }
             }
         `}>
-            <div className="curtain" css={css`
-                
-            `}>
+            <div className="curtain" >
                 <div className="anchor"></div>
                 <div className="container ">
                     <h1 className="headline-lg">
                         <a href="#top">
                             <p className="letter-sm blureffect1 ">Become a part of history</p>
-                            <p className="blureffect4 letter-lg ">Newberry Transcribe</p>
+                            <p className="letter-lg ">Newberry Transcribe</p>
                             {/* <p  className="letter-lg">Newberry&nbsp;<span className="blureffect4">Transcribe</span></p> */}
                         </a>
                     </h1>

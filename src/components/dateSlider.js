@@ -50,7 +50,7 @@ const DateSlider = props => {
         <div>
             <SliderWrapper>
                 <p>{props.dates[0]} - {props.dates[1]} </p>
-                <Range min={1600} handle={handle} onChange={onSliderChange} max={2000} step={10} pushable={true} defaultValue={props.dates} tipFormatter={value => `${value}`} />
+                <Range min={1600} handle={handle} value={props.dates} onChange={onSliderChange} max={2000} step={10} pushable={true} defaultValue={props.dates} />
             </SliderWrapper>
         </div>
     )

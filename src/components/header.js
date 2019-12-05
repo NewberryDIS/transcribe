@@ -114,6 +114,8 @@ const FilterButton = props => {
         props.setFilters('','subjectFilter')
         props.setFilters('','langFilter')
         props.setFilters([1600, 2000],'dateFilter')
+        setDates([1600,2000])
+        setLang('English')
     }
     return(
         <div className="filterbox">
@@ -155,6 +157,17 @@ export default class Header extends React.Component {
         this.setState({searchInput: e.target.value})
         this.props.setFilters(this.refs.searchInput.value, this.refs.searchType.value)
     }
+    clearSearch(e){
+        console.log(this.refs.searchType.value + ' : ' + this.refs.searchInput.value)
+    }
+    // onKeyDown = (e) => {
+    onKeyPress = (e) => {
+        if(e.which === 13) {
+            this.handleSubmit(e)
+        // } else if(e.which === 27) {
+        //     console.log('y9uo got it busto')
+        }
+    }
     render(){
         return (
             <Hwrapper>
@@ -171,7 +184,7 @@ export default class Header extends React.Component {
                         <option value="subjectFilter">Subjects</option>
                     </select>
                     <div className="searchDiv">
-                        <input className="searchInput" ref="searchInput"  type="text" placeholder="Search..."/>
+                        <input className="searchInput" ref="searchInput" onKeyPress={(e) => this.onKeyPress(e)} type="text" placeholder="Search..."/>
                         <div className="searchButton" onClick={(e) => this.handleSubmit(e)}><Sicon /></div>
                     </div>
                 </div>

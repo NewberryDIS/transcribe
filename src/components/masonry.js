@@ -2,7 +2,7 @@ import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import styled from "@emotion/styled";
-import { colors } from './pieces'
+import { colors, z } from './pieces'
 // import { Link } from "gatsby"
 // import debounce from "lodash.debounce";
 
@@ -15,6 +15,8 @@ const Masonrycontainer = styled.div`
     text-align: center;
     padding: 4px;
     z-index: 2;
+    position: relative;
+    min-height: 100vh;
 `
 const Masonrycss = styled.div`
     display: flex;
@@ -38,12 +40,13 @@ class Masonry extends React.Component {
         this.state = { columns: 1 };
         this.onResize = this.onResize.bind(this);
     }
+    windowChecker = typeof window !== 'undefined' ? true : false
     componentDidMount() {
         this.onResize();
-        window.addEventListener('resize', this.onResize);
+        const adder = this.windowChecker ? window.addEventListener('resize', this.onResize) : ''
     }
     componentWillUnmount() {
-        window.removeEventListener('resize', this.onResize);
+        const remover = this.windowChecker ? window.removeEventListener('resize', this.onResize) : ''
 
     }
     getColumns(w) {
@@ -69,6 +72,7 @@ class Masonry extends React.Component {
         }, col);
     }
     render() {
+        const windowChecker = typeof window !== 'undefined' ? true : false
         return (
         <Masonrycss className="masonry" ref="Masonry">
             {this.mapChildren().map((col, ci) => 
@@ -103,7 +107,7 @@ export default class Cardsection extends React.Component {
             // we will truncate at the first '<' or 150 characters, whichever is shorter
             let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
             let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
-            return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
+            return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} id={i.id} prog={i.pc} />
         })
     }
     dateChecker = (needles, haystacks) => {
@@ -128,17 +132,17 @@ export default class Cardsection extends React.Component {
             let add = true
             if (items[i].title && this.props.filters.titleFilter !== '' && items[i].title.toLowerCase().indexOf(this.props.filters.titleFilter.toLowerCase()) === -1){
                 add = false
-                // console.log('no "' + this.props.filters.titleFilter + '" in ' +items[i].title )
+                console.log('no "' + this.props.filters.titleFilter + '" in ' +items[i].title )
             }
             this.dateChecker(items[i].date, this.props.filters.dateFilter) ? console.log('dates are in range') : add = false
-            if (items[i].date && items[i].date[0] > this.props.filters.dateFilter[1] && items[i].date[1] < this.props.filters.dateFilter[0]){
-                add = false
-                console.log('no "' + this.props.filters.dateFilter + '" in ' + items[i].date )
-            }
+  
             if (items[i].transcription !== undefined && this.props.filters.textFilter !== '' && items[i].transcription.toLowerCase().indexOf(this.props.filters.textFilter.toLowerCase()) === -1){
                 add = false
-                // console.log('no "' + this.props.filters.textFilter + '" in ' + items[i].text )
+                console.log('no "' + this.props.filters.textFilter + '" in ' + items[i].text )
+            } else { 
+                console.log(this.props.filters.textFilter + ' is in ' + items[i].transcription)
             }
+
             if (items[i].desc && this.props.filters.subjectFilter !== '' && items[i].desc.toLowerCase().indexOf(this.props.filters.subjectFilter.toLowerCase()) === -1){
                 add = false
                 // console.log('no "' + this.props.filters.descFilter + '" in ' + items[i].desc )
@@ -150,7 +154,7 @@ export default class Cardsection extends React.Component {
             }
             // console.log('add = ' + add + ' for ' + items[i].title + ' because ' + items[i].title.toLowerCase().indexOf(this.props.filters.titleFilter.toLowerCase()))
             if (add) {
-                // console.log(items[i].transcription.toLowerCase().indexOf(this.props.filters.textFilter.toLowerCase()))
+                console.log(counter)
                 counter++
                 returnArray.push(items[i])
             }
@@ -171,12 +175,15 @@ export default class Cardsection extends React.Component {
                 <Masonry breakPoints={breakPoints}>
                     {this.state.cards}  
                 </Masonry>
-                    {this.state.none ? <NothingFound /> : ''}
+                {this.state.none ? <NothingFound /> : ''}
             </Masonrycontainer>
         )
     }
 }
 const NothingFound = () => <div css={css`
+    position: fixed;
+    top: 35vh;
+    z-index: ${z.top};
     width: 75%;
     margin: 175px auto 100vh auto;
     background: ${colors.bg};
@@ -184,10 +191,11 @@ const NothingFound = () => <div css={css`
     border: 5px solid ${colors.fg};
     padding: 30px;
 `}>There are no items which match your criteria.</div>
+
 const Card = props => {
     const prog = !props.prog ? 0 : Math.round(props.prog,0)
     return (
-        <Cardwrapper href={props.id} className="card" >
+        <Cardwrapper href={'http://google.com/' + props.id} className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
             <div className="cardcap">
                 <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
@@ -196,9 +204,6 @@ const Card = props => {
                 <h3 className="cardtitle">
                     {props.title}
                 </h3>
-                <p className="carddesc">
-                    {props.tl}
-                </p>
                 <p className="carddesc">
                     {props.desc}
                 </p>
@@ -308,14 +313,18 @@ const Cardwrapper = styled.a`
         }
     }
     .cardtitle, .carddesc {
+        margin-bottom: 10px;
         flex: 1;
     }
     .cardprogress {
+        font-size: 1rem;
+        line-height: 15px;
+        height: 1rem;
         width: 100%;
         margin: auto;
         padding: 5px;
         border: 1px solid black;
         text-align: center;
-        flex-basis: 40px;
+        flex-basis: 25px;
     }
 `
