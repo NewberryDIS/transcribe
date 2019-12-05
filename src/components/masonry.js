@@ -1,9 +1,10 @@
 import React from 'react';
 /** @jsx jsx */
-import { css, jsx, Global } from '@emotion/core';
+import { css, jsx } from '@emotion/core';
 import styled from "@emotion/styled";
-import { Link } from "gatsby"
-import debounce from "lodash.debounce";
+import { colors } from './pieces'
+// import { Link } from "gatsby"
+// import debounce from "lodash.debounce";
 
 let breakPoints = [400, 700, 850, 1400];
 
@@ -87,7 +88,8 @@ export default class Cardsection extends React.Component {
         super(props);
         this.state = {
             isLoading: false,
-            cards: this.deck
+            cards: this.deck,
+            none: false,
         };
         this.makeCards = this.makeCards.bind(this);
         this.filterItems = this.filterItems.bind(this);
@@ -104,6 +106,20 @@ export default class Cardsection extends React.Component {
             return <Card key={i.id} image={image} title={i.title} desc={truncatedDesc} prog={i.pc} />
         })
     }
+    dateChecker = (needles, haystacks) => {
+        if (needles.length === 2) {
+            if(needles[0] < haystacks[1] && needles[1] > haystacks[0]) {
+                return true
+            }
+        } else {
+            for (var d in needles){
+                if (haystacks[0] < d && d < haystacks[1]) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
     filterItems = (items) => {
         let counter = 0
         let returnArray = []
@@ -114,9 +130,10 @@ export default class Cardsection extends React.Component {
                 add = false
                 // console.log('no "' + this.props.filters.titleFilter + '" in ' +items[i].title )
             }
+            this.dateChecker(items[i].date, this.props.filters.dateFilter) ? console.log('dates are in range') : add = false
             if (items[i].date && items[i].date[0] > this.props.filters.dateFilter[1] && items[i].date[1] < this.props.filters.dateFilter[0]){
                 add = false
-                // console.log('no "' + this.props.filters.dateFilter + '" in ' + items[i].date )
+                console.log('no "' + this.props.filters.dateFilter + '" in ' + items[i].date )
             }
             if (items[i].transcription !== undefined && this.props.filters.textFilter !== '' && items[i].transcription.toLowerCase().indexOf(this.props.filters.textFilter.toLowerCase()) === -1){
                 add = false
@@ -138,10 +155,11 @@ export default class Cardsection extends React.Component {
                 returnArray.push(items[i])
             }
         }
+        returnArray.length === 0 ? this.setState({none: true}) : this.setState({none: false})
         return returnArray
     }   
     componentDidUpdate(prevProps) {
-        console.log(prevProps.filters)
+        // console.log(prevProps.filters)
         if ( prevProps.filters !== this.props.filters){
             this.setState({cards: this.makeCards(this.filterItems(this.props.items))})
         }
@@ -153,17 +171,26 @@ export default class Cardsection extends React.Component {
                 <Masonry breakPoints={breakPoints}>
                     {this.state.cards}  
                 </Masonry>
+                    {this.state.none ? <NothingFound /> : ''}
             </Masonrycontainer>
         )
     }
 }
+const NothingFound = () => <div css={css`
+    width: 75%;
+    margin: 175px auto 100vh auto;
+    background: ${colors.bg};
+    color: ${colors.fg};
+    border: 5px solid ${colors.fg};
+    padding: 30px;
+`}>There are no items which match your criteria.</div>
 const Card = props => {
     const prog = !props.prog ? 0 : Math.round(props.prog,0)
     return (
         <Cardwrapper href={props.id} className="card" >
             <div className="cardbg" css={css`background-image: url('${props.image}');`} />
             <div className="cardcap">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
             </div>
             <div className="cardText">
                 <h3 className="cardtitle">

@@ -50,7 +50,7 @@ const Curtain = () => {
             top: 0;
             display: flex;
             flex-direction: column;
-            p {
+            p { 
                 margin-bottom: 1px;
             }
             .letter-lg, .letter-sm {
@@ -117,8 +117,8 @@ const Curtain = () => {
                     <h1 className="headline-lg">
                         <a href="#top">
                             <p className="letter-sm blureffect1 ">Become a part of history</p>
-                            <p className="blureffect4 letter-lg">Newberry Transcribe</p>
-                            {/* <p className="letter-lg">Newberry&nbsp;<span className="blureffect4">Transcribe</span></p> */}
+                            <p className="blureffect4 letter-lg ">Newberry Transcribe</p>
+                            {/* <p  className="letter-lg">Newberry&nbsp;<span className="blureffect4">Transcribe</span></p> */}
                         </a>
                     </h1>
                 </div>

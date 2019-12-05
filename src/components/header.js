@@ -5,6 +5,7 @@ import { colors, logo, z } from '../components/pieces'
 import n from '../images/Newberry_N.svg'
 import Sicon from './sicon'
 import styled from '@emotion/styled'
+import DateSlider from './dateSlider'
 
 const Hwrapper = styled.header`
     width: 90%;
@@ -45,7 +46,7 @@ const Hwrapper = styled.header`
         text-align: right;
         font-size: 18px;
     }
-    .filterButton, .searchInput, .searchSelect, .searchButton {
+    .filterButton, .searchInput, .searchSelect, .searchButton, .clearfilters {
         margin: 5px;
         height: 38px;
         background-color: ${colors.bg};
@@ -56,7 +57,7 @@ const Hwrapper = styled.header`
         display: inline-block;
         // flex; auto;
     }
-    .searchSelect {
+    .searchSelect, .clearfilters {
         padding: 0 0 0 7px;
     }
     .searchDiv {
@@ -91,11 +92,21 @@ const Dropdown = styled.div`
     .searchSelect {
         width: calc(100% - 10px);
     }
+    .clearfilters {
+        width: calc(50% - 10px);
+        margin: 0 5px 5px 5px;
+    }
 `
-const FilterButton = props=> {
+const FilterButton = props => {
     const [showDropdown, setShowDropdown] = useState(false)
+    const [lang, setLang] = useState('English')
+    const [dates, setDates] = useState(props.dateFilter)
     const handleSelect = (e) => {
-        props.setFilters(e.target.value, 'langFilter')
+        setLang(e.target.value)
+    }
+    const handleApplyClick = (e) => {
+        props.setFilters(lang, 'langFilter')
+        props.setFilters(dates, 'dateFilter')
     }
     const handleClearClick = () => {
         props.setFilters('','titleFilter')
@@ -110,7 +121,7 @@ const FilterButton = props=> {
             {showDropdown ? 
                 <Dropdown className="filterDropdown">
                     <div>
-                        here be double-handled date sliders
+                        <DateSlider storeDates={setDates} setFilters={props.setFilters} dates={dates} dateFilter={props.dateFilter} />
                     </div>
                     <select className="searchSelect" onChange={(e) => handleSelect(e)}>
                         <option defaultValue value="English">English</option>
@@ -118,7 +129,8 @@ const FilterButton = props=> {
                         <option value="Italian">Italian</option>
                         <option value="Yiddish">Yiddish</option>
                     </select>
-                    <button className="searchSelect clearfilters" onClick={() => handleClearClick()}>Clear Filters</button>
+                    <button className="clearfilters" onClick={() => handleApplyClick()}>Apply</button>
+                    <button className="clearfilters" onClick={() => handleClearClick()}>Clear</button>
                 </Dropdown> :''}
         </div>
     )
@@ -151,7 +163,8 @@ export default class Header extends React.Component {
                     <div className="logoright">{logo[1]}</div>
                 </div>
                 <div className="filsea">
-                    <FilterButton setFilters={this.props.setFilters} />
+                    {console.log(this.props.dateFilter)}
+                    <FilterButton setFilters={this.props.setFilters} dateFilter={this.props.dateFilter} />
                     <select className="searchSelect" ref="searchType" onChange={(e) => this.handleSelect(e)}>
                         <option defaultValue value="titleFilter">Title</option>
                         <option value="textFilter">Transcription Keywords</option>
