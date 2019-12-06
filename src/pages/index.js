@@ -11,7 +11,7 @@ const IndexPage = () => {
         <div css={css`
             position: relative;
             background: url(${bg});
-            background-size: 110%;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;

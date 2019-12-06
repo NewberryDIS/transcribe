@@ -9,15 +9,19 @@ import { colors, z } from './pieces'
 let breakPoints = [400, 700, 850, 1400];
 
 const Masonrycontainer = styled.div`
-    width: 80%;
-    margin: auto;
+    width: calc(100% - 200px);
     margin-top: 10px;
-    text-align: center;
     padding: 4px;
     z-index: 2;
-    position: relative;
+    position: fixed;
+    top: 10px;
+    max-height: 100vh;
     min-height: 100vh;
-`
+    overflow: scroll;
+    // float: left;
+
+  overflow-y: scroll;
+    `
 const Masonrycss = styled.div`
     display: flex;
     flex-direction: row;

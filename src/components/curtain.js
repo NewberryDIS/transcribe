@@ -37,7 +37,7 @@ const Curtain = () => {
     return (
         <div id="curtain" css={css`
             z-index: ${z.btm};
-            min-height: 150vh;
+            min-height: 85vh;
             position: relative;
             top: 0;
             display: flex;
@@ -106,9 +106,9 @@ const Curtain = () => {
                 <div className="container ">
                     <h1 className="headline-lg">
                         <a href="#top">
-                            <p className="letter-sm blureffect1 ">Become a part of history</p>
-                            <p className="letter-lg ">Newberry Transcribe</p>
-                            {/* <p  className="letter-lg">Newberry&nbsp;<span className="blureffect4">Transcribe</span></p> */}
+                            <p className="letter-sm blureffect4">Become a part of history</p>
+                            <p className="letter-lg blureffect1">Newberry Transcribe </p>
+                            {/* <p  className="letter-lg">Newberry&nbsp; <span className="blureffect4">Transcribe</span></p> */}
                         </a>
                     </h1>
                 </div>

@@ -4,6 +4,7 @@ import Cardsection from './masonry'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 import Header from './header'
+import Sidebar from "./sidebar"
 
 const content = require('../data/content.json')
 
@@ -34,9 +35,12 @@ class Body extends React.Component {
             <section id="top" css={css`
                 z-index: ${z.mid};
             `}>
-                <Header dateFilter={this.state.filters.dateFilter} setFilters={this.setFilters} />
+                {/* <Header dateFilter={this.state.filters.dateFilter} setFilters={this.setFilters} /> */}
+                <Sidebar />
                 <Container  wrap={'nowrap'} css={css`
-                    justify-content: stretch;
+                    justify-content: flex-end;
+                    align-content: flex-end;
+                    margin: auto;
                 `}>
                     <Cardsection items={this.cardData} filters={this.state.filters}/>
                 </Container>

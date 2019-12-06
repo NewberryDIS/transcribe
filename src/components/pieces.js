@@ -13,7 +13,8 @@ export const Container = styled.div`
     display: flex;
     padding: 10px;
     flex-wrap: ${props => props.wrap};
-`
+    position: relative;
+    `
 
 export const Row = styled.div`
     width: 100%;
