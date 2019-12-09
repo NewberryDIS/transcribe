@@ -2,8 +2,7 @@ import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import styled from "@emotion/styled";
-import { colors, z } from './misc'
-import Card from './card'
+import { colors, z } from './pieces'
 // import { Link } from "gatsby"
 // import debounce from "lodash.debounce";
 
@@ -196,3 +195,140 @@ const NothingFound = () => <div css={css`
     border: 5px solid ${colors.fg};
     padding: 30px;
 `}>There are no items which match your criteria.</div>
+
+const Card = props => {
+    const prog = !props.prog ? 0 : Math.round(props.prog,0)
+    return (
+        <Cardwrapper href={'http://google.com/' + props.id} className="card" >
+            <div className="cardbg" css={css`background-image: url('${props.image}');`} />
+            <div className="cardcap">
+                <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+            </div>
+            <div className="cardText">
+                <h3 className="cardtitle">
+                    {props.title}
+                </h3>
+                <p className="carddesc">
+                    {props.desc}
+                </p>
+                <div className="cardprogress" css={css`
+                    background-image:
+                        linear-gradient(
+                            to right,
+                            rgba(140, 181, 129,0.5),
+                            rgba(140, 181, 129,0.5) ${prog}%,
+                            rgba(255,255,255,0.25) ${prog}%,
+                            rgba(255,255,255,0.25)
+                        );`}>{prog}%</div>
+                <div className="" href={props.id} css={css`
+                    font-family: 'Lato', sans-serif;
+                    color: black;
+                    text-decoration: none;
+                    margin-top: 10px;
+                    padding: 15px 30px;
+                    border: 1px solid rgba(0,0,0, 0.5);
+                    text-align: center;
+                    text-transform: uppercase;
+                    transition: all .15s ease-in-out;
+                    &:hover {
+                        border: 1px solid #000;
+                        background-color: #fff;
+                        -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                        -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+                    }
+                    background: rgba(255,255,255,0.8);
+                    border-radius: 6px; 
+                }
+                `}>
+                    Transcribe Now
+                </div>
+            </div>
+        </Cardwrapper>
+    )
+}
+
+
+const Cardwrapper = styled.a`
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-decoration: none;
+
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    &:hover {
+        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+
+    }
+    &.card {
+        border-radius: 10px;
+        overflow: hidden;
+        flex-basis: 350px;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+        border-radius: 10px;
+        flex: auto;
+        padding: 0;
+        margin: 10px;
+        max-width: 300px;
+        background-color: white;
+        text-align: initial;
+        > * {
+            color: black;
+        }
+        &:hover {
+            z-index: 60000;
+        }
+    }
+    .cardbg {
+        z-index: 0;
+        width: calc(100% + 80px);
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        left: -40px;
+        right: -40px;
+        top: -40px;
+        bottom: -40px;
+    }
+    .cardText {
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        box-shadow: 
+            0px 11px 8px -10px  rgba(0,0,0,0.4),
+            0px -11px 8px -10px rgba(0,0,0,0.4); 
+        height: calc(100% - 250px);
+        padding: 20px;
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.5); 
+    }
+    .cardcap {
+        flex: 1;
+        img {
+            height: 250px;
+        }
+    }
+    .cardtitle, .carddesc {
+        margin-bottom: 10px;
+        flex: 1;
+    }
+    .cardprogress {
+        font-size: 1rem;
+        line-height: 15px;
+        height: 1rem;
+        width: 100%;
+        margin: auto;
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        flex-basis: 25px;
+    }
+`
