@@ -36,7 +36,6 @@ const Curtain = () => {
     instances.forEach((instance) => instance.start())
     return (
         <div id="curtain" css={css`
-            z-index: ${z.btm};
             min-height: 85vh;
             position: relative;
             top: 0;
@@ -46,16 +45,14 @@ const Curtain = () => {
                 margin-bottom: 1px;
             }
             .letter-lg, .letter-sm {
-                color: ${colors.fg}
+                color: black
             }
             .letter-lg {
-                font-size: ${FontSizes.xxl};
                 text-transform: uppercase;
             }
             .letter-sm {
                 text-transform: uppercase;
                 // font-family: 'Kaushan Script', cursive;
-                font-size: ${FontSizes.xl};
             }
             .curtain {
                 a {

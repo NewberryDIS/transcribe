@@ -1,57 +1,65 @@
-import React from 'react'
-import {Cardwrapper} from './misc'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+import React, { Fragment } from 'react'
+import styled from '@emotion/styled'
 
-const Card = props => {
-    const prog = !props.prog ? 0 : Math.round(props.prog,0)
-    return (
-        <Cardwrapper href={'http://google.com/' + props.id} className="card" >
-            <div className="cardbg" css={css`background-image: url('${props.image}');`} />
-            <div className="cardcap">
-                <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-            </div>
-            <div className="cardText">
-                <h3 className="cardtitle">
-                    {props.title}
-                </h3>
-                <p className="carddesc">
-                    {props.desc}
-                </p>
-                <div className="cardprogress" css={css`
-                    background-image:
-                        linear-gradient(
-                            to right,
-                            rgba(140, 181, 129,0.5),
-                            rgba(140, 181, 129,0.5) ${prog}%,
-                            rgba(255,255,255,0.25) ${prog}%,
-                            rgba(255,255,255,0.25)
-                        );`}>{prog}%</div>
-                <div className="" href={props.id} css={css`
-                    font-family: 'Lato', sans-serif;
-                    color: black;
-                    text-decoration: none;
-                    margin-top: 10px;
-                    padding: 15px 30px;
-                    border: 1px solid rgba(0,0,0, 0.5);
-                    text-align: center;
-                    text-transform: uppercase;
-                    transition: all .15s ease-in-out;
-                    &:hover {
-                        border: 1px solid #000;
-                        background-color: #fff;
-                        -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
-                        -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
-                        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
-                    }
-                    background: rgba(255,255,255,0.8);
-                    border-radius: 6px; 
-                }
-                `}>
-                    Transcribe Now
-                </div>
-            </div>
-        </Cardwrapper>
-    )
-}
+const Cardlayout = styled.div`
+    border-radius: 10px;
+    padding: 1px;
+    margin: 10px;
+    font-family: sans-serif;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    overflow: hidden;
+    &:hover {
+        box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+    }
+    > * {
+        padding: 10px;
+    }
+    .cardcap, .cardbody {
+        flex: 1;
+    }
+    .cardbody {
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.5); 
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
+    }
+`
+
+const ContentCard = props => (
+    <Fragment>
+        <div className="cardtitle"> {props.title }</div>
+        <div className="cardtext">  {props.text  }</div>
+        <div className="cardprog">  {props.prog  }</div>
+        <div className="cardbutton">{props.link  }</div>
+    </Fragment>
+) 
+
+const Filters = props => (
+    <div className="filters">
+        <input />
+        
+    </div>
+)
+
+const Card = props => (
+    <Cardlayout>
+        <div className="cardcap">
+            <h3>{props.captext}</h3>
+        </div>
+        <div className="cardbody">
+            {props.sidebarcard ? 
+                <Filters />
+            : <ContentCard 
+                title={props.title}
+                text={props.text}
+                prog={props.prog}
+                link={props.link}
+            />
+            }
+        </div>
+    </Cardlayout>
+)
+
 export default Card

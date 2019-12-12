@@ -1,10 +1,10 @@
 module.exports = {
-  siteMetadata: {
-    title: `Newberry Transcribe`,
-    description: `Revision of Transcribe site`,
-    author: `c2lknt`,
+pathPrefix: "/transcribe",
+siteMetadata: {
+    title: `Gatsby Default Starter`,
+    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    author: `@gatsbyjs`,
   },
-  pathPrefix: `/transcribe`, 
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -27,32 +27,17 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+      
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-      trackingId: "UA-5551324-4",
+        fonts: [
+          {
+            family: `Lato`,
+          },
+        ],
       },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Open Sans:400, 700`,
-          `News Cycle:400, 700`,
-        ],
-        display: 'swap'
-      }
-    },{
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          'Kaushan Script',
-          `homemade apple`,
-          // `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
-        ],
-        display: 'swap'
-      }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

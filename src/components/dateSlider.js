@@ -1,9 +1,6 @@
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { colors } from './misc'
-import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import styled from '@emotion/styled';
 
@@ -21,7 +18,7 @@ const handle = (props) => {
   };
 
 const SliderWrapper = styled.div`
-    border: 1px solid ${colors.light}; 
+    // border: 1px solid #333; 
     margin: 5px auto;
     padding: 5px 10px;
     width: calc(100% - 10px);
@@ -31,13 +28,15 @@ const SliderWrapper = styled.div`
 `
 const DateSlider = props => {
     const onSliderChange = (value) => {
-        props.storeDates(value)
+        console.log(value);
+        props.setDates(value)
+        // props.setFilters(value,'dateFilter')
     }
     return (
         <div>
             <SliderWrapper>
                 <p>{props.dates[0]} - {props.dates[1]} </p>
-                <Range min={1600} handle={handle} value={props.dates} onChange={onSliderChange} max={2000} step={10} pushable={true} defaultValue={props.dates} />
+                <Range min={1600} handle={handle} value={props.dates} onChange={onSliderChange} max={2000} step={10} pushable={10} defaultValue={props.dates} />
             </SliderWrapper>
         </div>
     )

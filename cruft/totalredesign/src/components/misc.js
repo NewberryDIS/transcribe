@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import bg from '../images/background.jpg'
+
 export const colors = {
     fg: '#000',
     bg: 'rgba(255,255,255,0.85)'
@@ -41,20 +43,25 @@ export const Cardwrapper = styled.div`
     box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
     margin: 10px;
     padding: 0;
-    background-color: ${colors.bg};
     max-width: 300px;
     flex-basis: 350px;
     > * {
         color: black;
     }
     &.card {
+        background-color: ${colors.bg};
         flex: auto;
         text-align: initial;
     }
-    .sidebar {
+    &.sidebar {
         justify-content: space-around;
         align-content: space-around;
-    }
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.5); 
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.65); 
+        }
+    } 
     .cardbg {
         z-index: 0;
         width: calc(100% + 80px);

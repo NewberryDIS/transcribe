@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import { colors } from '../components/misc'
 
 const Sicon = () => <div className="search-wrapper" css={css`
+    flex-basis: 40px;
     padding-bottom: 3px;
     color: ${colors.fg};
     text-align: center;
