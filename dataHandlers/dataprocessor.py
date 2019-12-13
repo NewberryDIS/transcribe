@@ -74,13 +74,14 @@ with open(itemsFile) as json_file:
         filesfilename = 'dataFiles/files' + id + '.json'
         itemurl = 'http://publications.newberry.org/transcription/mms-transcribe/api/items/' + id
         itemfilename = 'dataFiles/item' + id + '.json'
-        fileModTime = os.path.getmtime(filesfilename)
-        if os.path.exists(filesfilename) and currTime - fileModTime > 86400:
-            downloadedFileCount += 1
-            request.urlretrieve(filesurl, filesfilename)
-            request.urlretrieve(itemurl, itemfilename)
-        else:
-            skippedFileCount += 1
+        if os.path.exists(filesfilename):
+            fileModTime = os.path.getmtime(filesfilename)
+            if currTime - fileModTime > 86400:
+                downloadedFileCount += 1
+                request.urlretrieve(filesurl, filesfilename)
+                request.urlretrieve(itemurl, itemfilename)
+            else:
+                skippedFileCount += 1
     # 2. create array of subjects with each corresponding id as a value
         for e in i['element_texts']: 
             if e['element']['name'] == 'Subject':
@@ -132,8 +133,9 @@ with open(itemsFile) as json_file:
         content['items'].append(itemObj)
         print(itemObj['id'])
 cs = content['summary']
-content['summary']['percentComplete'] = round((cs['totalcomplete'] / cs['total']) * 100, 2)
-content['summary']['percentTouched'] = round(((cs['totalcomplete'] + cs['totalincomplete'] + cs['totalnr']) / cs['total']) * 100, 2)
+if cs['total'] > 0:
+    content['summary']['percentComplete'] = round((cs['totalcomplete'] / cs['total']) * 100, 2)
+    content['summary']['percentTouched'] = round(((cs['totalcomplete'] + cs['totalincomplete'] + cs['totalnr']) / cs['total']) * 100, 2)
 
 with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
