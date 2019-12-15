@@ -10,7 +10,7 @@ const Boxeswrapper = styled.div`
     // justify-content: space-between;
     // align-content: space-between;
     // margin: 175px auto 0 auto;
-    margin-top: ${props => props.top};
+    // margin-top: ${props => props.top};
     margin-left: 350px;
     // width: calc(100% - 350px);
     width: 70vw;

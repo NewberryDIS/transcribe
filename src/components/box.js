@@ -67,15 +67,17 @@ const Boxwrapper = styled.div`
         width: 100%;
     }
 `
-const Box = props => (
-    <Boxwrapper className={props.className}>
-        <div className="boxFooter">
-            <div><h3>{props.title}</h3></div>
-            <div><span>{props.text}</span></div>
-            <div><span>{props.prog}</span></div>
-        </div>
-        <img src={props.image} />
-    </Boxwrapper>
-)
-
+const Box = props => {
+    const img = props.image.indexOf('default.jpg') > -1 ? props.image : props.image  + '/full/400,/0/default.jpg'
+    return (
+        <Boxwrapper className={props.className}>
+            <div className="boxFooter">
+                <div><h3>{props.title}</h3></div>
+                <div><span>{props.text}</span></div>
+                <div><span>{props.prog}</span></div>
+            </div>
+            <img src={img} />
+        </Boxwrapper>
+    )
+}
 export default Box

@@ -37,7 +37,7 @@ const IndexPage = () => {
     const currContent = allContent.slice(0,22)
     return (
         <Fragment>
-            {curtainToggle ? <Curtain /> : <Bar />}
+            <Bar />
             <Body>
                 <Sidebar cToggle={cToggle} content={filters} setFilters={setFilters} prog={content['summary']}/>
                 <Boxes topPadder={curtainToggle} content={currContent}/>
@@ -48,3 +48,4 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+// {curtainToggle ? <Curtain /> : <Bar />}
