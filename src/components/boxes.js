@@ -1,5 +1,5 @@
 import React from 'react'
-import Box from './box'
+import Box, { Minibox } from './box'
 import styled from '@emotion/styled'
 
 const Boxeswrapper = styled.div`
@@ -7,35 +7,66 @@ const Boxeswrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     float: right;
-    // justify-content: space-between;
-    // align-content: space-between;
-    // margin: 175px auto 0 auto;
-    // margin-top: ${props => props.top};
-    margin-left: 350px;
-    // width: calc(100% - 350px);
-    width: 70vw;
+    clear: both;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    width: 75vw;
+    margin-bottom: 60px;
     .viewmore {
-        margin: 15px auto;
-        border: 1px solid #333;
-        font-family: 'Lato', sans-serif;
-        background: #ccc;
-        border-radius: 4px;
+        position: absolute;
+        bottom: -60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        button {
+            display: block;
+            margin: 15px auto;
+            border: 1px solid #333;
+            font-family: 'Lato', sans-serif;
+            background: #ccc;
+            border-radius: 4px;
+        }
+    }
+`
+
+const LittleBoxwrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+    margin: 1vw;
+    height: ${props => props.widthCount};
+    // width: 20vw;
+    width: ${props => props.widthCount};
+    // height: 20vw;
+    position: relative;
+    // border: 1px solid #333;
+    .buffer {
+        width: 1.8vw;
+        height: 100%;
     }
 `
 
 const Boxes = props => {
     let counter = 1
+    let storeIt = []
     const currBoxes = props.content.map((i, index) => {
         counter++
-        let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
-        let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
-        let littlemode = counter % 5 === 0 || counter % 5 === 1 ? 'mini' : 'maxi'
-        return <Box className={littlemode} id={counter} key={index} title={i.title} text={truncatedDesc} image={i.image} prog={i.pc} /> 
+        if (counter < 5 || i.title.length > 40 || Math.round(Math.random()) === 1) {
+            let truncationIndex = i.desc && Math.min(i.desc.indexOf('<'), 150)
+            let truncatedDesc = truncationIndex > -1 ? i.desc.substring(0,truncationIndex) + '...' : i.desc
+            return  <Box className='maxi' id={counter} key={index} title={i.title} text={truncatedDesc} image={i.image} prog={i.pc} /> 
+        } else {
+            if (storeIt.length === 2){
+                return <LittleBoxwrapper>{storeIt.pop()}<div className="buffer"></div>{storeIt.pop()}</LittleBoxwrapper>
+            } else {
+                storeIt.push(<Box className='mini' id={counter} key={index} title={i.title} image={i.image} prog={i.pc} /> )
+            }
+        }
     })
     return (
-        <Boxeswrapper top={props.topPadder ? '16vh' : '0'}>
+        <Boxeswrapper >
             {currBoxes}
-            <button className="viewmore">View More</button>
+            <div className="viewmore"><button>View More</button></div>
         </Boxeswrapper>
     )
 }

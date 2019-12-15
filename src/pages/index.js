@@ -9,7 +9,9 @@ import Footer from '../components/footer'
 const Body = styled.div`
     background: rgba(0,0,0,0.1);
     position: relative;
-    display: flex;
+    display: inline-block;
+    width: 100%;
+    clear: both;
     * {
         transition: all .25s ease-in-out;
     }

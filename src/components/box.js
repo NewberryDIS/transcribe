@@ -5,13 +5,23 @@ const Boxwrapper = styled.div`
     &.mini {
         width: 9vw;
         h3 {
-            font-size: 0.8rem;
+            height: 75%;
+            // font-size: 0.8rem;
+            font-size: calc(1vw + 4px);
+            overflow: hidden;
+            text-overflow: ellipsis !important;
+        }
+        p {
+            text-overflow: ellipsis;
+            font-size: 0.75rem;
+            line-height: 0.75rem;
+            padding: 0;
         }
         img {
-            height: 10vw;
+            height: 13vw;
         }
         .boxFooter {
-            height: 9.5vw; 
+            height: 6.5vw; 
             * {
                 margin: 0;
                 padding: 3px;
@@ -19,9 +29,18 @@ const Boxwrapper = styled.div`
         }
     }
     &.maxi {
-        width: 20vw;
+        margin: 1vw;
+        width: ${props => props.widthCount};
         h3 {
-            font-size: 1rem;
+            // font-size: 1rem;
+            font-size: calc(1vw + 8px);
+            text-overflow: ellipsis;
+        }
+        p {
+            text-overflow: ellipsis;
+            font-size: 0.85rem;
+            line-height: 0.85rem;
+            padding: 0;
         }
         img {
             height: 20vw;
@@ -39,10 +58,9 @@ const Boxwrapper = styled.div`
             }
         }
     }
-    height: 20vw;
+    height: ${props => props.widthCount};
     position: relative;
     overflow: hidden;
-    margin: 1vw;
     border: 1px solid #333;
     border-top: 1px solid black;
     box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
@@ -67,14 +85,19 @@ const Boxwrapper = styled.div`
         width: 100%;
     }
 `
+
+export const Minibox = () => (
+    <Boxwrapper className='maxi' />
+)
+
 const Box = props => {
     const img = props.image.indexOf('default.jpg') > -1 ? props.image : props.image  + '/full/400,/0/default.jpg'
     return (
         <Boxwrapper className={props.className}>
             <div className="boxFooter">
-                <div><h3>{props.title}</h3></div>
-                <div><span>{props.text}</span></div>
-                <div><span>{props.prog}</span></div>
+                <h3>{props.title}</h3>
+                <p>{props.text}</p>
+                <p>{props.prog}</p>
             </div>
             <img src={img} />
         </Boxwrapper>
