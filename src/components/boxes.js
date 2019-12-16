@@ -1,7 +1,8 @@
 import React from 'react'
 import Box, { Widebox } from './box'
 import styled from '@emotion/styled'
-import Footer from './footer'
+import { mq } from './mediaQueries'
+
 const Boxeswrapper = styled.div`
     position: relative;
     display: flex;
@@ -10,8 +11,6 @@ const Boxeswrapper = styled.div`
     clear: both;
     justify-content: space-evenly;
     align-content: space-evenly;
-    // width: 75vw;
-    width: ${props => props.width}vw;
     margin-bottom: 60px;
     .viewmore {
         position: absolute;
@@ -27,6 +26,18 @@ const Boxeswrapper = styled.div`
             background: #ccc;
             border-radius: 4px;
         }
+    }    
+    ${mq[0]} {
+        width: 60vw;
+    }
+    ${mq[1]} {
+        width: 60vw;
+    }
+    ${mq[2]} {
+        width: 65vw;
+    }
+    ${mq[3]} {
+        width: 75vw;
     }
 `
 
@@ -35,15 +46,26 @@ const LittleBoxwrapper = styled.div`
     flex-wrap: wrap;
     clear: both;
     margin: 1vw;
-    height: ${props => props.widthCount}vw;
-    // width: 20vw;
-    width: ${props => props.widthCount}vw;
-    // height: 20vw;
     position: relative;
-    // border: 1px solid #333;
     .buffer {
         width: 1.8vw;
         height: 100%;
+    }   
+    ${mq[0]} {
+        height: 49vw;
+        width: 49vw;
+    }
+    ${mq[1]} {
+        height: 49vw;
+        width: 49vw;
+    }
+    ${mq[2]} {
+        height: 30vw;
+        width: 30vw;
+    }
+    ${mq[3]} {
+        height: 20vw;
+        width: 20vw;
     }
 `
 
@@ -53,13 +75,12 @@ const Boxes = props => {
     let returnCounter = 0
     let storeLittles = []
     let storeWide = []
-    const containerWidth = props.widthCount === 20 ? 75 : props.widthCount === 40 ? 60 : 45
+    // const containerWidth = props.widthCount === 20 ? 75 : props.widthCount === 40 ? 60 : 45
     const currBoxes = props.content.map((i, index) => {
         let returnValue = []
         counter++
-        let widthCounter = props.widthCount === 20 ? 3 : props.widthCount === 40 ? 2 : 1
         // if we previously stored a wide one, and we've just finished a row, pop the wide one in and then keep going
-        if (returnCounter % widthCounter === 0 && storeWide.length > 0) {
+        if (returnCounter % 6 === 0 && storeWide.length > 0) {
             returnValue.push(storeWide.pop())
         }
         // if we're above 5, or if the title length is > 40, or just randonly, it'll be a full size box
@@ -72,7 +93,7 @@ const Boxes = props => {
             // if the title is extra long, and randomly, let's make a big big box
             // if (i.title.length > 100 && Math.round(Math.random()) === 1){
             if (i.title.length > 100){
-                storeWide.push(<Widebox  id={counter}  widthCounter={widthCounter} widthCount={props.widthCount} key={index} title={i.title} text={truncatedDesc} image={i.image} prog={i.pc} /> )
+                storeWide.push(<Widebox  id={counter}  key={index} title={i.title} text={truncatedDesc} image={i.image} prog={i.pc} /> )
             } else {
                 returnCounter++
                 returnValue.push(<Box className='maxi' id={counter}  widthCount={props.widthCount} key={index} title={i.title} text={truncatedDesc} image={i.image} prog={i.pc} /> )
@@ -80,16 +101,16 @@ const Boxes = props => {
         } else {
             if (storeLittles.length === 2){
                 returnCounter++
-                returnValue.push(<LittleBoxwrapper widthCount={props.widthCount}>{storeLittles.pop()}<div className="buffer"></div>{storeLittles.pop()}</LittleBoxwrapper>)
+                returnValue.push(<LittleBoxwrapper >{storeLittles.pop()}<div className="buffer"></div>{storeLittles.pop()}</LittleBoxwrapper>)
             } else {
-                storeLittles.push(<Box className='mini' id={counter}  widthCount={props.widthCount} key={index} title={i.title} image={i.image} prog={i.pc} /> )
+                storeLittles.push(<Box className='mini' id={counter} key={index} title={i.title} image={i.image} prog={i.pc} /> )
             }
         }
         return returnValue
     })
     console.log(counter + '. return counter: ' + returnCounter)
     return (
-        <Boxeswrapper width={containerWidth} >
+        <Boxeswrapper >
             {currBoxes}
             <div className="viewmore"><button>View More</button></div>
         </Boxeswrapper>

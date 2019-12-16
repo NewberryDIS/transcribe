@@ -17,27 +17,27 @@ const Body = styled.div`
     }
 `
 
-function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
+// function getWindowDimensions() {
+//     const { innerWidth: width, innerHeight: height } = window;
+//     return {
+//         width,
+//         height
+//     };
+// }
   
-function useWindowDimensions() {
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+// function useWindowDimensions() {
+//     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   
-    useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions());
-        }
+//     useEffect(() => {
+//         function handleResize() {
+//             setWindowDimensions(getWindowDimensions());
+//         }
     
-    window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    return windowDimensions;
-}
+//     window.addEventListener('resize', handleResize);
+//         return () => window.removeEventListener('resize', handleResize);
+//     }, []);
+//     return windowDimensions;
+// }
 
 
 
@@ -54,9 +54,7 @@ const IndexPage = () => {
         tempFilters[type] = data
         filters = tempFilters
     }
-    const { height, width } = useWindowDimensions();
-    const widthCount = width > 1000 ? 20 : width > 600 ? 30 : 49
-    console.log(widthCount)
+    // const { height, width } = useWindowDimensions();
     // const allContent = content['items']
     const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     const currContent = allContent.slice(0,22)
@@ -64,8 +62,8 @@ const IndexPage = () => {
         <Fragment>
             <Bar />
             <Body>
-                <Sidebar widthCount={widthCount} content={filters} setFilters={setFilters} prog={content['summary']}/>
-                <Boxes widthCount={widthCount} content={currContent}/>
+                <Sidebar  content={filters} setFilters={setFilters} prog={content['summary']}/>
+                <Boxes  content={currContent}/>
             </Body>
         </Fragment>
     )
@@ -73,3 +71,6 @@ const IndexPage = () => {
 
 export default IndexPage
 // {curtainToggle ? <Curtain /> : <Bar />}
+
+// <Sidebar widthCount={widthCount} content={filters} setFilters={setFilters} prog={content['summary']}/>
+// <Boxes widthCount={widthCount} content={currContent}/>
