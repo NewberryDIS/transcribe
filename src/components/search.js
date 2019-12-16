@@ -16,10 +16,12 @@ const Search = props => {
             props.submitSearch(input)
          }
     }
+    let clicktext = props.width > 20 ? 'Search' :  show ? 'Hide the search' : 'Search the Transcriptions' 
+    console.log(props.width)
     return (
         <Searchwrapper>
             <div className="text" onClick={() => setShow(!show)}>
-                {show ? 'Hide the search' : 'Search the Transcriptions' }
+                {clicktext}
             </div>
             <div className={show ? 'searchDrop show' : 'searchDrop hide'}>
                 <input className="searchInput" value={input} onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} type="text" />

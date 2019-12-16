@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 /** @jsx jsx */ 
 import { jsx, css } from '@emotion/core'
 
-const Progress = props => <div onClick={props.cToggle} className="toHide" css={css`
+const Progress = props => <div className="toHide" css={css`
     transition-delay: 0.3s;
     border: 1px solid black;
     background: white;

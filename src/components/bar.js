@@ -23,7 +23,8 @@ const Barwrapper = styled.div`
 `
 
 const Bar = props => (
-    <Barwrapper><span className="letter">ok whatevr</span></Barwrapper>
+    <Barwrapper><span className="letter">Newberry Transcribe</span></Barwrapper>
 )
 
 export default Bar
+//<Barwrapper><span className="letter">ok whatevr</span></Barwrapper>
