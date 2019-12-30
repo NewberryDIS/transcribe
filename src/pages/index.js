@@ -1,76 +1,37 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import styled from '@emotion/styled'
+import React from 'react'
+import Curtain from '../components/curtain'
 import Sidebar from '../components/sidebar'
 import Boxes from '../components/boxes'
-import Curtain from '../components/curtain'
-import Bar from '../components/bar'
-import Footer from '../components/footer'
+import styled from '@emotion/styled'
+import { Global, css } from "@emotion/core"
+import bg from '../images/bg.png'
 
-const Body = styled.div`
-    // background: rgba(0,0,0,0.1);
+const Indexcss = styled.div`
     position: relative;
-    display: inline-block;
-    width: 100%;
-    clear: both;
-    * {
-        transition: all .25s ease-in-out;
-    }
+    margin: 0;
+    padding: 0;
+    z-index: 1;
 `
 
-// function getWindowDimensions() {
-//     const { innerWidth: width, innerHeight: height } = window;
-//     return {
-//         width,
-//         height
-//     };
-// }
-  
-// function useWindowDimensions() {
-//     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-  
-//     useEffect(() => {
-//         function handleResize() {
-//             setWindowDimensions(getWindowDimensions());
-//         }
-    
-//     window.addEventListener('resize', handleResize);
-//         return () => window.removeEventListener('resize', handleResize);
-//     }, []);
-//     return windowDimensions;
-// }
-
-
-
+//300,100,2000,2500/1000,/
 const content = require('../data/content.json')
 
-const IndexPage = () => {
-    const filters = {
-        dates: [1660, 1960],
-        subjects: '',
-        keywords: ''
+export default class Index extends React.Component {
+    render(){
+        const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
+        const currContent = allContent.slice(0,202)
+        return (
+            <Indexcss>
+                <Global styles={css`
+                    html, body {
+                        background: url(${bg});
+                        background-attachment: fixed;
+                    }
+                `}/>
+                <Curtain />
+                <Sidebar />
+                <Boxes currContent={currContent} />
+            </Indexcss>
+        )
     }
-    const setFilters = (filters, data, type) => {
-        const tempFilters = filters
-        tempFilters[type] = data
-        filters = tempFilters
-    }
-    // const { height, width } = useWindowDimensions();
-    // const allContent = content['items']
-    const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
-    const currContent = allContent.slice(0,22)
-    return (
-        <Fragment>
-            <Bar />
-            <Body>
-                <Sidebar  content={filters} setFilters={setFilters} prog={content['summary']}/>
-                <Boxes  content={currContent}/>
-            </Body>
-        </Fragment>
-    )
 }
-
-export default IndexPage
-// {curtainToggle ? <Curtain /> : <Bar />}
-
-// <Sidebar widthCount={widthCount} content={filters} setFilters={setFilters} prog={content['summary']}/>
-// <Boxes widthCount={widthCount} content={currContent}/>
