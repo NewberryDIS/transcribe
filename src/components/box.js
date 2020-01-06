@@ -6,6 +6,7 @@ const Boxcss = styled.div`
     border: 1px solid black;
     flex-basis: 20vw;
     margin: 10px;
+    background: white;
     background: url(${props => props.img});
     background-size: cover;
     `
