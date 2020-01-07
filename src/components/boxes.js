@@ -1,80 +1,62 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Box from './box'
-import Widebox from './widebox'
 import styled from '@emotion/styled'
-import bg1 from '../images/lgbg1.jpg'
-import bg2 from '../images/lgbg2.jpg'
-import bg3 from '../images/lgbg3.jpg'
-import bg4 from '../images/lgbg4.jpg'
-import bg5 from '../images/lgbg5.jpg'
-import bg6 from '../images/lgbg6.jpg'
-import bg7 from '../images/lgbg7.jpg'
-
+import Sidebar from './simplesidebar';
 
 const Boxescss = styled.div`
-width: 100vw;
-margin-top: 200px;
-overflow: hidden;
-`
-const Sixpack = styled.div`
-        width: calc(100% - 20vw);
-        margin-left: 400px;
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+    .boxspacer {
+        flex: 1;
+    }
+    .boxwrapper {
+        margin-top: 20vmin;
         position: relative;
+        width: 79vw;
+        flex-basis: 79vw;
+        justify-content: space-evenly;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        flex-direction: row;
-        background: url(${props => props.bg});
-        background-attachment: fixed;
-        background-size: cover;
+    }
+`
+const Morebutton = styled.div`
+    width: 100%;
+    text-align: center;
+    .button {
+        font-family: sans-serif;
+        margin: 25px auto;
+        display: inline-block;
+        width: initial;
+        padding: 12px 15px ;
+        border: 1px solid black;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: inset 0 0 10px rgba(0,42,85,1);
+        background: rgba(125,159,193,1);
+        color: rgba(37,37,37,0.8);
+        transition: background 0.5s, color 0.1s;
+        &:hover {
+            color: rrgba(37,37,37,1);
+            background: rgba(143,169,195,1);
+
+        }
+    }
 `
 
 const Boxes = props => {
-    let boxcounter = 0
-    let sixpack = []
-    const bgarray = [
-        bg1,
-        bg2,
-        bg3,
-        bg4,
-        bg5,
-        bg6,
-        bg7,
-        bg1,
-        bg2,
-        bg3,
-        bg4,
-        bg5,
-        bg6
-    ]
-    const boxes = props.currContent.map((i, index) => {
-        boxcounter++
+    let boxes = props.currContent.map((i, index) => {
         const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
-        const returnbox = []
-        // console.log(index)
-        let twelvepack = sixpack.length
-        let rand = Math.round(Math.random() * 12)
-        console.log(boxcounter + ': ' + twelvepack + ': ' + bgarray[twelvepack])
-        if (twelvepack === 12) { 
-            returnbox.push( <Sixpack bg={bgarray[rand]} key={index}>{sixpack}</Sixpack> )
-            sixpack = []
-            // console.log('six pack is 12 so we\'re returning the sixpack, and now sixpack is ' + sixpack.length)
-        } else if (boxcounter % 12 === 1 && index > 12) {
-            // console.log('six pack is 0 so we\'re popping a wide one, also index is ' + index )
-            returnbox.push(<Widebox key={index} title={i.title} img={img} /> )
-        } else {
-            // console.log('six pack is ' + sixpack.length)
-            sixpack.push(<Box key={index} title={i.title} img={img} />)
-        }
-        return returnbox
+        return <Box key={index} title={i.title} img={img} />
     })
     return (
-        <Boxescss className="scrollanchor">
-            <div className="boxwrapper">
-
-            {boxes}
-            </div>
-        </Boxescss>
+            <Boxescss >
+                <Sidebar progress={props.progress}/>
+                <div className="boxwrapper">
+                    {boxes}
+                    <Morebutton><div className="button">More</div></Morebutton>
+                </div>
+            </Boxescss>
     )
 }
 
