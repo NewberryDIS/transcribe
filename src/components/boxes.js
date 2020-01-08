@@ -46,25 +46,20 @@ const Morebutton = styled.div`
 
 const Boxes = props => {
     const [showButton, setShowButton] = useState(true);
-    const initialBoxes = props.currContent.slice(0,318).map((i, index) => {
+    const initialBoxes = props.currContent.slice(0,18).map((i, index) => {
         const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
         return <Box key={index} title={i.title} img={img} />
     })
     const [boxes, setBoxes] = useState(initialBoxes);
     function boxer(){
-        const qty = 100
+        const qty = 18
         let currLength = boxes === undefined ? 0 : boxes.length
-        console.log(document.querySelectorAll('.box').length)
-        let boxerContent = currLength >= (props.currContent.length - qty) ? props.currContent.slice(currLength, (props.currContent.length - currLength)) : props.currContent.slice(currLength, currLength + qty)
+        let boxerContent = currLength >= (props.currContent.length - qty) ? props.currContent.slice(currLength, props.currContent.length) : props.currContent.slice(currLength, currLength + qty)
         let moreBoxes = boxerContent.map((i, index) => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
             return <Box key={currLength + index} title={i.title} img={img} />
         })
         currLength = boxes === undefined ? 0 : boxes.length
-        // console.log('full length : ' + props.currContent.length)
-        // console.log('curr length : ' + currLength)
-        // console.log('moreboxes legnth: ' + moreBoxes.length)
-        // console.log('boxerContent legnth: ' + boxerContent.length)
         return moreBoxes
     }
     return (
