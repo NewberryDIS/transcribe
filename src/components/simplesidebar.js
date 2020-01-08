@@ -31,7 +31,6 @@ const Dates = props => {
     for (let i = range[0]; i < range[1]; i += 10){
         decades.push(<option value={i}>{i} - {i + 9}</option>)
     }
-    console.log(decades)
     return (
         <Selectcss name="dropdowndecade" >
             <option >Select a decade...</option>
@@ -40,7 +39,7 @@ const Dates = props => {
     )
 }
 
-const Progresscss = styled.p`
+const Progresscss = styled.div`
     border: 2px solid rgba(37,37,37,0.7);
     margin: 10px 0;
     height: 40px;

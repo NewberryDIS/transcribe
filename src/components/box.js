@@ -12,9 +12,8 @@ const Boxcss = styled.div`
     background-size: cover;
     
 `
-
 const Box = props => (
-    <Boxcss img={props.img}>
+    <Boxcss className="box" img={props.img}>
         {props.title}
     </Boxcss>
 )
