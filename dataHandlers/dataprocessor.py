@@ -1,4 +1,4 @@
-import urllib.request as request
+import urllib
 import json, os.path, time, math, re
 
 # current time, used for checking the age of the data files
@@ -29,7 +29,15 @@ imageList = []
 itemsFile = 'dataFiles/items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
 if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
-    request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
+    urllib.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
+
+def arrayCleaner(item):
+    val = [x.strip() for x in item.split(';')]
+    array = []
+    for v in val: 
+        if v not in array:
+            array.append(v)
+    return array
 
 def tagCleaner(item, array, id):
     if item.find(';') > -1:
@@ -67,7 +75,7 @@ with open(itemsFile) as json_file:
             'pc': '', 
             'pnr': '', 
             'weight': '', 
-            'transcription': '', 
+            'transcription': '',
             'date': ''
         }
         count += 1
@@ -80,8 +88,8 @@ with open(itemsFile) as json_file:
             fileModTime = os.path.getmtime(filesfilename)
             if currTime - fileModTime > 86400:
                 downloadedFileCount += 1
-                request.urlretrieve(filesurl, filesfilename)
-                request.urlretrieve(itemurl, itemfilename)
+                urllib.urlretrieve(filesurl, filesfilename)
+                urllib.urlretrieve(itemurl, itemfilename)
             else:
                 skippedFileCount += 1
     # 2. create array of subjects with each corresponding id as a value
@@ -116,7 +124,7 @@ with open(itemsFile) as json_file:
                 itemObj['id'] = id
                 if ie['element']['name'] == 'Language':
                     tagCleaner(ie['text'], content['languages'], id)
-                    itemObj['lang'] = ie['text']
+                    itemObj['lang'] = arrayCleaner(ie['text'])
                 if ie['element']['name'] == 'Description':          itemObj['desc'] = ie['text']
                 if ie['element']['name'] == 'Relation':             itemObj['desc'] = ie['text']
                 if ie['element']['name'] == 'Source':               
@@ -132,8 +140,10 @@ with open(itemsFile) as json_file:
                         decade = math.floor(int(y) / 10) * 10
                         tagCleaner(str(decade), content['dates'], id)
                     itemObj['title'] = title
+                    for i in range(0, len(date)): 
+                        date[i] = int(date[i])
                     itemObj['date'] = date
-                if lang == '': tagCleaner('English', content['languages'], id)
+                if lang == '': lang = ['English']
         content['items'].append(itemObj)
         print(itemObj['id'])
 cs = content['summary']

@@ -17,8 +17,9 @@ const content = require('../data/content.json')
 
 export default class Index extends React.Component {
     render(){
-        const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
-        const currContent = allContent
+    //     const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
+    //     const currContent = allContent
+    const currContent = content['items']
         return (
             <Indexcss >
                 <Global styles={css`

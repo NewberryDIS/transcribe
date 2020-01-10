@@ -28,6 +28,7 @@ const Curtaincss = styled.div`
     z-index: 1000;
     width: 100%;
     height: var(--height);
+    transition: height 0.1s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,9 +37,11 @@ const Curtaincss = styled.div`
     .spacer {
         // flex: 1;
         height: var(--halfheight);
+        transition: height 0.1s;
         overflow: hidden;
     }
     .banner {
+        transition: font-size 0.1s, line-height 0.1s;
         display: flex;
         justify-content: space-between;
         align-content: space-between;
