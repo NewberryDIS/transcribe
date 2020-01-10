@@ -93,11 +93,10 @@ const Curtain = props => {
             </div>
             <div className="banner">
                 <div className="left">
-                    {/* Newberry Transcribe */}
-                    Briny Crab Western
+                    Newberry Transcribe
+                    {/* Briny Crab Western */}
                 </div>
                 <div className="right">
-                    {/* become a part of it */}
                     Be a part of history
                 </div>
             </div>

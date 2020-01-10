@@ -30,12 +30,15 @@ const Boxescss = styled.div`
     .panelwrapper {
         flex-direction: column;
         .box {
+            flex: 1;
+            height: auto;
             display: flex;
-            width: 100%;
-            overflow: auto;
+            width: 85%;
+            overflow: hidden;
             img {
                 order: 1;
                 flex-basis: 20vw;
+                background-size: cover;
             }
             .boxFooter {
                 order: 2;
@@ -43,9 +46,12 @@ const Boxescss = styled.div`
                 padding: 15px;
             }
             .searchtextpanel {
+                height: 100%;
+                overflow: auto;
                 display: block;
                 order: 3;
                 flex: 2;
+                padding: 25px;
             }
         }
     }
@@ -63,6 +69,8 @@ const Boxescss = styled.div`
             box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
             background: white;
             font-family: 'Lato', sans-serif;
+            height: 20vw;
+            width: 20vw;
             img {
                 transition: top 0.2s;
                 top: 0;
@@ -73,6 +81,7 @@ const Boxescss = styled.div`
                 z-index: 3;
                 position: absolute;
                 box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
+                height: 20vw;
             }
             .boxFooter {
                 position: absolute;
@@ -105,13 +114,6 @@ const Boxescss = styled.div`
                     margin: 0 0 7px 0;
                     padding: 0px 10px;
                 }
-            }
-            height: 20vw;
-            width: 20vw;
-            img {
-                height: 20vw;
-            }
-            .boxFooter {
                 height: 13vw;
             }
             &:hover {
@@ -168,26 +170,14 @@ const Boxes = props => {
         subjectFilter: '' 
     });
     const [showButton, setShowButton] = useState(true);
-    let currContent = applyFilters()
     const qty = 18
-    const initialBoxes = currContent.slice(0,qty).map((i, index) => {
-        const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
-        return <Box key={index} className={boxWidth ? 'box' : 'panel'} title={i.title} text={i.desc} img={img} link={i.id} filters={filters} script={i.transcription} />
-    })
-    const [boxes, setBoxes] = useState(initialBoxes);
-    function boxer(tempCurrContent){
-        let currLength = boxes === undefined ? 0 : boxes.length
-        let boxerContent = currLength >= (tempCurrContent.length - qty) ? tempCurrContent.slice(currLength, tempCurrContent.length) : tempCurrContent.slice(currLength, currLength + qty)
-        let moreBoxes = boxerContent.map((i, index) => {
-            const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
-            return <Box key={currLength + index} className="box" title={i.title} text={i.desc} img={img} filters={filters} script={i.transcription} />
-        })
-        if (boxes && boxes.length >= tempCurrContent.length) {setShowButton(false)}
-        return moreBoxes
-    }
-    function applyFilters(){
-        console.log(filters)
-        let tempCurrContent = props.currContent.filter(function(i) {
+    // const initialBoxes = currContent.slice(0,qty).map((i, index) => {
+        //     const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
+        //     return <Box key={index} className={boxWidth ? 'box' : 'panel'} title={i.title} text={i.desc} img={img} link={i.id} filters={filters} script={i.transcription} />
+        // })
+    function applyFilters(content){
+        // console.log(filters)
+        let tempCurrContent = content.filter(function(i) {
             let langfilter = false,
                 textfilter = true,
                 datefilter = false,
@@ -196,6 +186,7 @@ const Boxes = props => {
             langfilter = i.lang.indexOf(filters.langFilter) > -1 ? true : false
             // text filter
             if (filters.textFilter.length > 0){
+                // console.log(filters.textFilter)
                 textfilter = i.transcription.indexOf(filters.textFilter) === -1 ? false : true
             }
             // date filter
@@ -215,14 +206,31 @@ const Boxes = props => {
                 subjfilter = i.desc.indexOf(filters.subjectFilter) === -1 ? false : true
             }
             // console.log('language filter: ' + langfilter + '; ' + '; text filter: ' + textfilter + '; date filter: ' + datefilter + '; subj filter: ' + subjfilter)
-            return datefilter && langfilter && textfilter && subjfilter
+            let returnValue  = datefilter && langfilter && textfilter && subjfilter
+            console.log(returnValue)
+
+            console.log(i.title + ': ' + filters.textFilter + (returnValue ? ' was ' : ' was not ' ) + 'found')
+            return returnValue
         })
         return tempCurrContent
         // boxer(tempCurrContent)
     }
+    function boxer(){
+        let filteredContent = applyFilters(props.currContent)
+        let currLength = !boxes ? 0 : boxes.length
+        let boxerContent = currLength >= (filteredContent.length - qty) ? filteredContent.slice(currLength, filteredContent.length) : filteredContent.slice(currLength, currLength + qty)
+        let moreBoxes = boxerContent.map((i, index) => {
+            const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
+            return <Box key={currLength + index} className="box" title={i.title} text={i.desc} img={img} filters={filters} script={i.transcription} />
+        })
+        if (boxes && boxes.length >= filteredContent.length) {setShowButton(false)}
+        return moreBoxes
+    }
+    // const initialBoxes = boxer(props.currContent)
+    const [boxes, setBoxes] = useState(boxer());
     return (
         <Boxescss >
-            <Sidebar progress={props.progress} filters={filters} applyFilters={applyFilters} setFilters={setFilters} setBoxWidth={setBoxWidth} />
+            <Sidebar progress={props.progress} filters={filters} boxer={boxer} setFilters={setFilters} setBoxWidth={setBoxWidth} />
             <div className={boxWidth ? 'boxwrapper' : 'panelwrapper'}>
                 {boxes}
                 <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => setBoxes(boxes => ([...boxes, ...boxer()]))}>More</div></Morebutton>

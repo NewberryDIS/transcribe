@@ -60,7 +60,11 @@ const Progresscss = styled.div`
         right: 0;
         bottom: 0;
         left: 0;
-        line-height: 35px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 16px;
+        padding: 2px 0;
+        // margin: 0 auto;
         text-align: center;
         color: rgba(37,37,37,0.8);
         transition: color 0.3s;
@@ -104,7 +108,7 @@ const Sidebar = props => {
         let tempFilters = props.filters
         tempFilters[type] = needle
         props.setFilters(tempFilters)
-        props.applyFilters()
+        props.boxer()
     }
     return (
         <Sidebarcss>
@@ -123,7 +127,7 @@ const Sidebar = props => {
 const Progress = props => {
     let percentComplete = Math.round(props.progress.percentComplete)
     return (
-        <Progresscss percent={percentComplete}>
+        <Progresscss percent={props.progress.percentComplete}>
             <div className="complete"></div>
             <div className="text">{numberWithCommas(props.progress.totalcomplete)} out of {numberWithCommas(props.progress.total)} pages completed!</div>
         </Progresscss>

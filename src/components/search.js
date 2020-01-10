@@ -34,7 +34,6 @@ const Search = props => {
         props.setBoxWidth(false)
     }
     const handleKeyDown = (e) => {
-        console.log('you just pressed: ' + e.keyCode)
         if(e.keyCode === 13){
             submitSearch()
          }

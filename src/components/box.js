@@ -22,7 +22,6 @@ const Box = props => {
                 <p>{props.text.length > 70 ? props.text.substring(0,70) + '...' : props.text}</p>
             </div>
         </div>
-        {console.log(props.filters.textFilter)}
         <div className="searchtextpanel" ><Highlight search={props.filters.textFilter}>{props.script}</Highlight></div>
         <img src={props.img} />
     </Boxcss>
