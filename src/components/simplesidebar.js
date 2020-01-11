@@ -17,7 +17,7 @@ const Languages = props => {
     const languages = ['English', 'German', 'Italian', 'Spanish', 'Yiddish']
     const langdropdown = languages.map((l) => <option key={l} value={l} >{l}</option>)
     return (
-        <Selectcss name="dropdownlanguages" >
+        <Selectcss name="dropdownlanguages" onChange={(e) => props.filterHandler('langFilter',e.target.value)}>
             <option >Select a language...</option>
             {langdropdown}
         </Selectcss>
@@ -29,10 +29,11 @@ const Dates = props => {
     let range = [1660, 1990]
     let decades = []
     for (let i = range[0]; i < range[1]; i += 10){
-        decades.push(<option key={i} value={i}>{i} - {i + 9}</option>)
+        let range = [i, i + 9]
+        decades.push(<option key={i} value={range} >{range[0]} - {range[1]}</option>)
     }
     return (
-        <Selectcss name="dropdowndecade" >
+        <Selectcss name="dropdowndecade" onChange={(e) => props.filterHandler('dateFilter',e.target.value)}  >
             <option >Select a decade...</option>
             {decades}
         </Selectcss>
@@ -105,10 +106,11 @@ const Sidebarcss = styled.div`
 `
 const Sidebar = props => {
     function filterHandler(type, needle){
+        console.log('calling filterhandler with ' + type + ': ' + needle)
         let tempFilters = props.filters
         tempFilters[type] = needle
         props.setFilters(tempFilters)
-        props.boxer()
+        props.setBoxes(props.boxer())
     }
     return (
         <Sidebarcss>

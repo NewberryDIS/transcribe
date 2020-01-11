@@ -158,7 +158,6 @@ const Boxescss = styled.div`
             }
         }
     }
-
 `
 
 const Boxes = props => {
@@ -171,25 +170,16 @@ const Boxes = props => {
     });
     const [showButton, setShowButton] = useState(true);
     const qty = 18
-    // const initialBoxes = currContent.slice(0,qty).map((i, index) => {
-        //     const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
-        //     return <Box key={index} className={boxWidth ? 'box' : 'panel'} title={i.title} text={i.desc} img={img} link={i.id} filters={filters} script={i.transcription} />
-        // })
     function applyFilters(content){
-        // console.log(filters)
         let tempCurrContent = content.filter(function(i) {
             let langfilter = false,
                 textfilter = true,
                 datefilter = false,
                 subjfilter = true
-            // language filter
             langfilter = i.lang.indexOf(filters.langFilter) > -1 ? true : false
-            // text filter
             if (filters.textFilter.length > 0){
-                // console.log(filters.textFilter)
-                textfilter = i.transcription.indexOf(filters.textFilter) === -1 ? false : true
+                textfilter = i.transcription.toLowerCase().indexOf(filters.textFilter) === -1 ? false : true
             }
-            // date filter
             if (i.date.length === 1){
                 datefilter = i.date[0] >= filters.dateFilter[0] && i.date[0] <= filters.dateFilter[1] ? true : false
             } else if (i.date.length === 2) {
@@ -199,39 +189,36 @@ const Boxes = props => {
                     datefilter = i.date[d] >= filters.dateFilter[0] && i.date[d] <= filters.dateFilter[1] ? true : false
                 }
             }
-            // subject filter
             // the first one is probably going to work once we have subjects in the data, but it's untested; currently its just searcing in the description, which will probably always fail, so subjects is nonfunctional, but will not error
             if (filters.subjectFilter.length > 0){
                 // subjfilter = i.subjects.indexOf(filters.subjectFilter) === -1 ? false : true
                 subjfilter = i.desc.indexOf(filters.subjectFilter) === -1 ? false : true
             }
-            // console.log('language filter: ' + langfilter + '; ' + '; text filter: ' + textfilter + '; date filter: ' + datefilter + '; subj filter: ' + subjfilter)
-            let returnValue  = datefilter && langfilter && textfilter && subjfilter
-            console.log(returnValue)
-
-            console.log(i.title + ': ' + filters.textFilter + (returnValue ? ' was ' : ' was not ' ) + 'found')
-            return returnValue
+            // let returnValue  = 
+            return datefilter && langfilter && textfilter && subjfilter
         })
         return tempCurrContent
-        // boxer(tempCurrContent)
     }
     function boxer(){
-        let filteredContent = applyFilters(props.currContent)
-        let currLength = !boxes ? 0 : boxes.length
-        let boxerContent = currLength >= (filteredContent.length - qty) ? filteredContent.slice(currLength, filteredContent.length) : filteredContent.slice(currLength, currLength + qty)
-        let moreBoxes = boxerContent.map((i, index) => {
+        const filteredContent = applyFilters(props.currContent)
+        const currLength = boxes === undefined ? 0 : boxes.length
+        // console.log(boxes)
+        const boxerContent = currLength >= (filteredContent.length - qty) ? filteredContent.slice(currLength, filteredContent.length) : filteredContent.slice(currLength, currLength + qty)
+        const moreBoxes = boxerContent.map((i, index) => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
             return <Box key={currLength + index} className="box" title={i.title} text={i.desc} img={img} filters={filters} script={i.transcription} />
         })
-        if (boxes && boxes.length >= filteredContent.length) {setShowButton(false)}
+        // console.log(moreBoxes.length)
+        // if (boxes && boxes.length >= filteredContent.length) {setShowButton(false)}
         return moreBoxes
     }
-    // const initialBoxes = boxer(props.currContent)
-    const [boxes, setBoxes] = useState(boxer());
+    const intitialBoxes = boxer()
+    const [boxes, setBoxes] = useState(intitialBoxes);
     return (
         <Boxescss >
-            <Sidebar progress={props.progress} filters={filters} boxer={boxer} setFilters={setFilters} setBoxWidth={setBoxWidth} />
+            <Sidebar progress={props.progress} filters={filters} boxer={boxer} setFilters={setFilters} setBoxes={setBoxes} setBoxWidth={setBoxWidth} />
             <div className={boxWidth ? 'boxwrapper' : 'panelwrapper'}>
+                {console.log(boxes)}
                 {boxes}
                 <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => setBoxes(boxes => ([...boxes, ...boxer()]))}>More</div></Morebutton>
             </div>

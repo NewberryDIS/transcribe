@@ -30,7 +30,7 @@ const Search = props => {
         setInput(e.target.value)
     }
     const submitSearch = () => {
-        props.filterHandler('textFilter', input)
+        props.filterHandler('textFilter', input.toLowerCase())
         props.setBoxWidth(false)
     }
     const handleKeyDown = (e) => {
