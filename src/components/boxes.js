@@ -194,15 +194,14 @@ const Boxes = props => {
                 // subjfilter = i.subjects.indexOf(filters.subjectFilter) === -1 ? false : true
                 subjfilter = i.desc.indexOf(filters.subjectFilter) === -1 ? false : true
             }
-            // let returnValue  = 
             return datefilter && langfilter && textfilter && subjfilter
         })
         return tempCurrContent
     }
     function boxer(){
         const filteredContent = applyFilters(props.currContent)
-        const currLength = boxes === undefined ? 0 : boxes.length
-        // console.log(boxes)
+        const currLength = boxes === undefined ? 0 : boxes.length - 1
+        console.log(boxes != undefined ? boxes.length : 'boxes is undefined')
         const boxerContent = currLength >= (filteredContent.length - qty) ? filteredContent.slice(currLength, filteredContent.length) : filteredContent.slice(currLength, currLength + qty)
         const moreBoxes = boxerContent.map((i, index) => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
@@ -214,11 +213,12 @@ const Boxes = props => {
     }
     const intitialBoxes = boxer()
     const [boxes, setBoxes] = useState(intitialBoxes);
+    const arrr = [0, 1, 2]
+    console.log(arrr[arrr.length] + ' is the last of arrr')
     return (
         <Boxescss >
             <Sidebar progress={props.progress} filters={filters} boxer={boxer} setFilters={setFilters} setBoxes={setBoxes} setBoxWidth={setBoxWidth} />
             <div className={boxWidth ? 'boxwrapper' : 'panelwrapper'}>
-                {console.log(boxes)}
                 {boxes}
                 <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => setBoxes(boxes => ([...boxes, ...boxer()]))}>More</div></Morebutton>
             </div>

@@ -7,13 +7,18 @@ const Searchcss = styled.div`
     margin: 10px 0;
     background: rgba(255,255,255,0.7);
     display: flex;
+    flex-wrap: no-wrap;
+    overflow: hidden;
     .searchInput {
         flex: 1;
         padding: 5px;
+        width: calc(100% - 35px);
+        margin: 0;
     }
     .searchbutton {
         border: 1px solid black;
-        width: 45px;
+        flex-basis: 35px;
+        flex-shrink: 0;
         height: 35px;
         background: url(${searchIcon});
         background-position: center;
@@ -25,18 +30,17 @@ const Searchcss = styled.div`
 `
 const Search = props => {
     const [input, setInput] = useState('')
-    let text = input.length > 0 ? input : 'Search the trascriptions...'
+    let text = input.length > 0 ? input : 'Search the transcriptions...'
     const handleChange = (e) => {
         setInput(e.target.value)
     }
     const submitSearch = () => {
-        props.filterHandler('textFilter', input.toLowerCase())
-        props.setBoxWidth(false)
+        props.setTextFilter(input)
     }
     const handleKeyDown = (e) => {
         if(e.keyCode === 13){
             submitSearch()
-         }
+        }
     }
     return (
         <Searchcss>

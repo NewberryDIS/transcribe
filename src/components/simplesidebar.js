@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import SubjectFilters from './subjectfilters'
 import Search from './search'
@@ -30,11 +30,20 @@ const Dates = props => {
     let decades = []
     for (let i = range[0]; i < range[1]; i += 10){
         let range = [i, i + 9]
-        decades.push(<option key={i} value={range} >{range[0]} - {range[1]}</option>)
+        decades.push(<option key={i} value={range[0]} >{range[0]} - {range[1]}</option>)
+    }
+    useEffect(() =>{
+        // maybe the answer ?
+        // https://stackoverflow.com/questions/46294864/reactjs-clear-select-value-on-focus
+    }, [props.reset])
+    const dateChanger = (value) => {
+        let valarr = [parseInt(value), parseInt(value) + 9]
+        console.log(valarr)
+        props.setDateFilter(valarr)
     }
     return (
-        <Selectcss name="dropdowndecade" onChange={(e) => props.filterHandler('dateFilter',e.target.value)}  >
-            <option >Select a decade...</option>
+        <Selectcss name="dropdowndecade" defaultValue={range} onChange={(e) => dateChanger(e.target.value)}  >
+            <option value=''>Select a decade...</option>
             {decades}
         </Selectcss>
     )
@@ -86,6 +95,7 @@ function numberWithCommas(x) {
 const Sidebarcss = styled.div`
     width: 20vw;
     height: 100%;
+    // min-height: 100%;
     position: sticky;
     top: 4vmin;
     color: rgba(207,207,207,1);
@@ -103,24 +113,31 @@ const Sidebarcss = styled.div`
         justify-content: space-between;
         box-shadow: inset 0 0 8px rgba(37,37,37,1);
     }
+    .count {
+        text-align: center;
+        padding-top: 10px;
+    }
 `
+
 const Sidebar = props => {
-    function filterHandler(type, needle){
-        console.log('calling filterhandler with ' + type + ': ' + needle)
-        let tempFilters = props.filters
-        tempFilters[type] = needle
-        props.setFilters(tempFilters)
-        props.setBoxes(props.boxer())
+    const [ reset, setReset ] = useState(false)
+    function resetFilters(){
+        props.setTextFilter('')
+        props.setDateFilter([1600,2020])
+        props.setLangFilter('English')
+        props.setSubjFilter('')
+        props.setBoxWidth(true)
     }
     return (
         <Sidebarcss>
             <div className="sidebarcontent">
                 <Progress progress={props.progress} />
-                <Search filterHandler={filterHandler} setBoxWidth={props.setBoxWidth} />
-                <Dates filterHandler={filterHandler} />
-                <Languages filterHandler={filterHandler} />
-                <SubjectFilters filterHandler={filterHandler} />
-                <Resetbutton><div className="button" onClick={() => props.setBoxWidth(true)}>Reset</div></Resetbutton>
+                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} reset={reset} setReset={setReset} />
+                <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} reset={reset} setReset={setReset} />
+                <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} reset={reset} setReset={setReset} />
+                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} reset={reset} setReset={setReset} />
+                <span className="count" >{props.resultCount ? props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.'  : ''} </span>
+                <Resetbutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Resetbutton>
             </div>
         </Sidebarcss>
     )
@@ -141,7 +158,8 @@ const Resetbutton = styled.div`
     text-align: center;
     .button {
         font-family: sans-serif;
-        margin: 25px auto;
+        margin: 12px auto 25px auto;
+        // margin: 25px auto;
         display: inline-block;
         width: initial;
         padding: 12px 15px ;

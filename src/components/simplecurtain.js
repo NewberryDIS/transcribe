@@ -10,6 +10,10 @@ import bg4 from '../images/lgbg4.jpg'
 import bg5 from '../images/lgbg5.jpg'
 import bg6 from '../images/lgbg6.jpg'
 import bg7 from '../images/lgbg7.jpg'
+import bg8 from '../images/lgbg8.jpg'
+import bg9 from '../images/lgbg9.jpg'
+import bg10 from '../images/lgbg10.jpg'
+import bg11 from '../images/lgbg11.jpg'
 
 const bgarray = [
     bg,
@@ -19,7 +23,11 @@ const bgarray = [
     bg4,
     bg5,
     bg6,
-    bg7
+    bg7,
+    bg8,
+    bg9,
+    bg10,
+    bg11,
 ]
 
 const Curtaincss = styled.div`
