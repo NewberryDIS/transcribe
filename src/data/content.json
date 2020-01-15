@@ -1,11 +1,11 @@
 {
     "summary": {
         "total": 50332,
-        "totalnr": 4944,
-        "totalcomplete": 13012,
+        "totalnr": 4922,
+        "totalcomplete": 13218,
         "totalincomplete": 0,
-        "percentComplete": 25.85,
-        "percentTouched": 35.68
+        "percentComplete": 26.26,
+        "percentTouched": 36.04
     },
     "subjects": {
         "Family papers": [
@@ -1115,6 +1115,7 @@
             "date": [
                 1851
             ],
+            "category": "Family papers; Diaries",
             "title": "Rowley family diary, 1851"
         },
         {
@@ -1132,6 +1133,7 @@
                 1857,
                 1887
             ],
+            "category": "Family papers; Diaries",
             "title": "Rowley family diary, 1857-1887"
         },
         {
@@ -1149,6 +1151,7 @@
                 1841,
                 1843
             ],
+            "category": "Family papers; Diaries; Women",
             "title": "Mary Sackett diary, 1841-1843"
         },
         {
@@ -1165,6 +1168,7 @@
             "date": [
                 1896
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Emma Wormwood diary, 1896"
         },
         {
@@ -1182,6 +1186,7 @@
                 1895,
                 1896
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Emma Wormwood diary, 1895-1896"
         },
         {
@@ -1198,6 +1203,7 @@
             "date": [
                 1893
             ],
+            "category": "Diaries; World's Columbian Exposition",
             "title": "Errett McLeod Graham World's Columbian Exposition diary, 1893"
         },
         {
@@ -1214,6 +1220,7 @@
             "date": [
                 1870
             ],
+            "category": "Diaries; Women; Travelers’ writings",
             "title": "Mary Hartwell Catherwood Canadian travel diary, 1870s"
         },
         {
@@ -1230,6 +1237,7 @@
             "date": [
                 1891
             ],
+            "category": "Diaries; Women; Travelers’ writings",
             "title": "Mary Hartwell Catherwood ocean travel diary, 1891"
         },
         {
@@ -1246,6 +1254,7 @@
             "date": [
                 1850
             ],
+            "category": "Family papers; Women",
             "title": "Cynthia Everett writings, circa 1850"
         },
         {
@@ -1262,6 +1271,7 @@
             "date": [
                 1850
             ],
+            "category": "Women; Family papers",
             "title": "Jane Everett writings, circa 1850"
         },
         {
@@ -1279,6 +1289,7 @@
                 1850,
                 1880
             ],
+            "category": "Family papers",
             "title": "Mary Everett writings, 1850s-1880s"
         },
         {
@@ -1295,6 +1306,7 @@
             "date": [
                 1870
             ],
+            "category": "Family papers",
             "title": "Mary Everett medical school notes, circa 1870"
         },
         {
@@ -1311,6 +1323,7 @@
             "date": [
                 1845
             ],
+            "category": "Family papers",
             "title": "Robert Everett Jr. temperance speeches, 1845"
         },
         {
@@ -1327,6 +1340,7 @@
             "date": [
                 1850
             ],
+            "category": "Family papers; Women",
             "title": "Sarah Everett Pritchard compositions, 1850s"
         },
         {
@@ -1344,6 +1358,7 @@
                 1870,
                 1890
             ],
+            "category": "Family papers",
             "title": "Everett family recipes, notes, and drawings, 1870s-1890s"
         },
         {
@@ -1361,6 +1376,7 @@
                 1850,
                 1870
             ],
+            "category": "Family papers",
             "title": "Everett family writings and school exercises, 1850s-1870s"
         },
         {
@@ -1370,14 +1386,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#series2\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a><br /><br />Anna Everett (1836-1902) attended Mount Holyoke Seminary and also Knox College in Galesburg, Illinois, where her sister Jennie taught school. Anna also taught school, and eventually moved back to the family home at Remsen, New York.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/28607",
-            "pc": "16",
+            "pc": "18",
             "pnr": "",
-            "weight": "016100",
+            "weight": "018100",
             "transcription": "You are altogether too good to have done either of these things. If it were Mary, now, that Mary that used to heat me so badly, I should hardly dare hope for mercy, but you- why, you would forgive your \"little Clara\" until seventy times seven if nec-essary, wouldn't you? Taking this for granted, I shall not spend the time in making excuses for my last transgression- of which by the way, I do not know the exact [member?]- but shall proceed directly to business. First of all, I must tell you some very good news; something",
             "date": [
                 1851,
                 1899
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1851-1899"
         },
         {
@@ -1395,6 +1412,7 @@
                 1853,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1853-1876"
         },
         {
@@ -1404,14 +1422,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#series2\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a><br /><br />Cynthia Everett (1839-1876) initially taught school in and around Remsen. In 1870 she went to Norfolk, VA and then Charleston, SC, with the American Missionary Association to teach freedmen. She remained there only a short time before becoming ill and returning to Remsen, but her letters home are filled with descriptions and anecdotes about her students, coworkers, and other details about the experience. Her strong anti-slavery stance is apparent. Many of Cynthia's students and colleagues wrote to her after she left the south; these letters are included in the incoming correspondence.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/20343",
-            "pc": "41",
+            "pc": "44",
             "pnr": "5",
-            "weight": "046095",
+            "weight": "049095",
             "transcription": "would be extra charge for putting\nin new ones or not. Please let \nus know Wed. if she wishes it\ndone.  Jennie says that if she\nis not in Remsen Tues.which I\nalmost know she cannot be, she \nwill come Wed. night.  I may \nstay to hear Gough Wed. evening. \nbut if you wish me to come \nhome with Jennie, be sure to \nsend word in that Wednesday's \nletter. \nWe came here Sat. evening, \ngot a ride from the depot, \nand took our friends by surprise. \nWe received a very cordial \nwelcome.  We are glad we \ncame.  We should have left this \nafternoon, had it not been a \ndisagreeably drizzling day. We intend \nto start about 8.20 tomorrow \n(unclear) morning, to stop over one",
             "date": [
                 1853,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1853-1876"
         },
         {
@@ -1429,6 +1448,7 @@
                 1852,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1852-1876"
         },
         {
@@ -1446,6 +1466,7 @@
                 1857,
                 1875
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1857-1875"
         },
         {
@@ -1463,6 +1484,7 @@
                 1857,
                 1875
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1857-1875"
         },
         {
@@ -1480,6 +1502,7 @@
                 1856,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Cynthia Everett letters, 1856-1871"
         },
         {
@@ -1497,6 +1520,7 @@
                 1852,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1852-1891"
         },
         {
@@ -1506,14 +1530,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#series2\" target=\"_blank\" rel=\"noreferrer\">View collection guide </a><br /><br />Anna Everett (1836-1902) attended Mount Holyoke Seminary and also Knox College in Galesburg, Illinois, where her sister Jennie taught school. Anna also taught school, and eventually moved back to the family home at Remsen, New York.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/28001",
-            "pc": "76",
+            "pc": "78",
             "pnr": "2",
-            "weight": "078098",
-            "transcription": "become accustomed to be there, and \nfinds it less tiresome then to be \nin the sitting room all the time.\nWe had a letter from Eddie the \nother day, saying that he hoped to be \nable to go out with the Cofiant about \nthe 10th of June.  Jennie wants\nto go up to see him, and talk over \nmatters, and we think now she \nmay go next Friday, and stay till \nMonday.  We think we can get along \nnicely so, as J.E. will be home then, \nand will be company and help \nfor us.  S & J could hardly get along \nalone.  I think Jennie needs \nthe change, and hope it will do \nher good, as she has not felt quite \nso well as usual for two or three \nweeks.  I am feeling better than \nI was early in the spring, but\n(along top of page)\nWe have not \nseen Dr. W. \nsince getting \nyour letter, \nso have not \nasked \nhis opinion \nof petroleum. \nWill do so. \nWhat would\n\nyou think of \n\nsending me \nsome [?] pellets \nof it.  You told \nme before I \ncame home \nlast fall that \nyou thought \nit my remedy. \nJennie",
+            "weight": "080098",
+            "transcription": "go out a good deal of the time. She is almost discouraged about the camping out project as the weather is so damp and cold a great deal of the time, and she does not gain as fast as she expected. She has lost a good deal of time with this last cold. I think she will be able to ride today, though it looks as if it was going to be showery. Monday. This letter is still here, but must go some way today. Jennie talks of going to try on her calico dress which Jane Ann [unclear] is making for her, and will take it to the mail. Lizzie has gone to the Thousand Islands. She had a letter of initiation from Ella about a week ago, and started from here Wednesday - was going to Utica first to get Bessie to go with her. We expect her here",
             "date": [
                 1852,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1852-1891"
         },
         {
@@ -1531,6 +1556,7 @@
                 1851,
                 1899
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1851-1899"
         },
         {
@@ -1548,6 +1574,7 @@
                 1858,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1858-1895"
         },
         {
@@ -1557,14 +1584,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#series2\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a><br /><br />Anna Everett (1836-1902) attended Mount Holyoke Seminary and also Knox College in Galesburg, Illinois, where her sister Jennie taught school. Anna also taught school, and eventually moved back to the family home at Remsen, New York.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/28553",
-            "pc": "48",
+            "pc": "57",
             "pnr": "",
-            "weight": "048100",
-            "transcription": "I do dread the storms in the west\nMrs Orin Ls and three children were here this afternoon \nThe baby is a very small child\nIt is three months old\nWe have sunday school at the school house every sunday at 8 Am \nMrs Patterson superintendant\nWe hope it will be a success\nOur neighbour say they have vied to have sunday school here a god many times but always failed\nWe have two colored boys working for us Robert has been planting corn to-day He is afraid he will have to plant a good deal of the land over again as we had a very heavy rain about a week ago I must close as It is bed time much love from all to both familys or do you unclear one if so so much the better \nWrite soon Libbie",
+            "weight": "057100",
+            "transcription": "Sister:\nYou are indeed a dear sister for it takes three and perhaps more letters to get one from you. You must be enjoying yourself nicely I should judge from letters kindly shown me by my friends. I am glad you are satisfied not to do much sewing; it would only waste your strength on what we could as well hire done. Father is in great trouble about getting the Cenhadwr out again. Lewis says he cannot do i tin season with what help he has. Mr. Davis is here today for the first day I think since you left. I have advised pa to write to Utica for help, hope he will be able to get some one. Several subscribers are giving up the \"Cen\" because it is \n[Side scrawled] : Mother and Father are pretty well though tired. Get us one and a half doz lemons to make fries. We like them very much. Sis says we are having a great time cleaning - think \"we are having a great time eating.\" Only think, last Sat we made nineteen fries and now only two are left to tell the sad fate of their friends. If you can, Sarah would like you to get her a yard like her a dress to line the sleeves or else get white silk. Pa has written for a printer~ How soon may we ask for a visit from \"cousin Mary and family? Love to her and all!",
             "date": [
                 1853,
                 1897
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Anna Everett letters, 1853-1897"
         },
         {
@@ -1582,6 +1610,7 @@
                 1850,
                 1890
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1890"
         },
         {
@@ -1599,6 +1628,7 @@
                 1862,
                 1887
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1862-1887"
         },
         {
@@ -1616,6 +1646,7 @@
                 1850,
                 1881
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1881"
         },
         {
@@ -1633,6 +1664,7 @@
                 1851,
                 1879
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1851-1879"
         },
         {
@@ -1650,6 +1682,7 @@
                 1850,
                 1893
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1893"
         },
         {
@@ -1667,6 +1700,7 @@
                 1850,
                 1889
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1889"
         },
         {
@@ -1684,6 +1718,7 @@
                 1852,
                 1890
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1852-1890"
         },
         {
@@ -1693,14 +1728,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#sum\" target=\"_blank\" rel=\"noreferrer\">View collection guide </a><br /><br />Jennie Everett (1827-1891) attended Mount Holyoke Female Seminary in the 1840s, and taught school for many years. She traveled to Kansas in the 1870s and lived with her brother John Roberts Everett for a while, and later lived with her sister Mary Everett in New York City, where she assisted in Mary's medical practice.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/18498",
-            "pc": "11",
-            "pnr": "1",
-            "weight": "012099",
+            "pc": "12",
+            "pnr": "",
+            "weight": "012100",
             "transcription": "90 State Street\nUtica Nov 1. 1881\nMy dear Cousins -\nI have been intending to write to you ever since I came home by way of Whilistown, not N. Gage, as some do.\nWe have recivd your cards and all is glad to know Aunt Sarah. is feeling better.  What bad colds people are having this year.\nMama says tell you the will try and write some - just soon we are cleaning the dining room and the room above - both carpets are up - Last wich we cleaned Uncle Alx. room and put another carpet in it, not a new one but one we had in the hall.  I am not helping about the cleaning today fn I dont feel very well - but unclear I shall be all right unclear",
             "date": [
                 1850,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1895"
         },
         {
@@ -1718,6 +1754,7 @@
                 1884,
                 1929
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John Edward Everett letters, 1884-1929"
         },
         {
@@ -1735,6 +1772,7 @@
                 1880,
                 1913
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John Edward Everett letters, 1880-1913"
         },
         {
@@ -1752,6 +1790,7 @@
                 1880,
                 1925
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John Edward Everett letters, 1880-1925"
         },
         {
@@ -1769,6 +1808,7 @@
                 1889,
                 1928
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John Edward Everett letters, 1889-1928"
         },
         {
@@ -1786,6 +1826,7 @@
                 1852,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1852-1907"
         },
         {
@@ -1803,6 +1844,7 @@
                 1852,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1852-1907"
         },
         {
@@ -1820,6 +1862,7 @@
                 1850,
                 1909
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1850-1909"
         },
         {
@@ -1837,6 +1880,7 @@
                 1850,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1850-1891"
         },
         {
@@ -1854,6 +1898,7 @@
                 1850,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1850-1891"
         },
         {
@@ -1871,6 +1916,7 @@
                 1855,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1855-1895"
         },
         {
@@ -1888,6 +1934,7 @@
                 1855,
                 1912
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1855-1912"
         },
         {
@@ -1905,6 +1952,7 @@
                 1849,
                 1915
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1849-1915"
         },
         {
@@ -1922,6 +1970,7 @@
                 1876,
                 1914
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1876-1914"
         },
         {
@@ -1939,6 +1988,7 @@
                 1879,
                 1912
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1879-1912"
         },
         {
@@ -1956,6 +2006,7 @@
                 1870,
                 1914
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1870-1914"
         },
         {
@@ -1973,6 +2024,7 @@
                 1867,
                 1913
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Mary Holywell Everett letters, 1867-1913"
         },
         {
@@ -1990,6 +2042,7 @@
                 1849,
                 1880
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Sarah Everett Pritchard letters, 1849-1880"
         },
         {
@@ -2007,6 +2060,7 @@
                 1851,
                 1875
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Sarah Everett Pritchard letters, 1851-1875"
         },
         {
@@ -2024,6 +2078,7 @@
                 1860,
                 1910
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Everett family letters, 1860s-1910s"
         },
         {
@@ -2041,6 +2096,7 @@
                 1850,
                 1924
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Everett family letters, 1850-1924"
         },
         {
@@ -2058,6 +2114,7 @@
                 1794,
                 1860
             ],
+            "category": "Family papers",
             "title": "Robert Everett sermons and writings [part 1], 1794-1860s"
         },
         {
@@ -2075,6 +2132,7 @@
                 1794,
                 1860
             ],
+            "category": "Family papers",
             "title": "Robert Everett sermons and writings [part 2], 1794-1860s"
         },
         {
@@ -2092,6 +2150,7 @@
                 1794,
                 1860
             ],
+            "category": "Family papers",
             "title": "Robert Everett sermons and writings [part 3], 1794-1860s"
         },
         {
@@ -2109,6 +2168,7 @@
                 1794,
                 1860
             ],
+            "category": "Family papers",
             "title": "Robert Everett sermons and writings [part 4], 1794-1860s"
         },
         {
@@ -2118,14 +2178,15 @@
             ],
             "desc": "Dating from the late 18th-century, the Everett family correspondence concerns family news and health issues, and also covers abolition, temperance, women's rights, rights of African-Americans, and moral reform. Printing, education, pioneer life, and religion are all discussed within the letters. Included are the papers of Robert Everett, the pastor of Welsh Congregationalist churches in Oneida County, New York, and publisher of Y Cenhadwr Americanaidd (The American Missionary), a Welsh religious reform magazine that was pro-abolition. Also included are letters and materials of Mary Everett, a graduate of New York Medical College and Hospital for Women, who was also involved in the suffrage movement, John Roberts and Sarah Colgrove Everett, pioneers who moved to Kansas Territory in 1854 and were active in abolitionist activities, and Cynthia Everett, a member of the American Missionary Association who taught freedmen in Norfolk, Virginia, and Charleston, South Carolina, following the Civil War. <a href=\"https://mms.newberry.org/xml/xml_files/Everett.xml#sum\" target=\"_blank\" rel=\"noreferrer\">View collection guide </a><br /><br />Letters written and received by Robert Everett and his wife, Elizabeth Roberts Everett. Most of the outgoing letters are to family, and the majority of Robert Everett's incoming correspondence is business related, concerning his Welsh publication Y Cenhadwr Americanaidd (The American Messenger). Many letters are in Welsh.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/22101",
-            "pc": "",
-            "pnr": "9",
-            "weight": "009091",
-            "transcription": "Dear Daughters\nIt is so long since I have written to you, that I must write some if it is only a little. We feel rejoiced to hear that you have good and interesting meetings- hope it will continue and increase, and that the members of your school may be blessed. -- We feel for you in the responsible situation you are placed in, we pray that you may be supported and directed. May you get good and be enabled to do good. I fear least your duties will tax your strength too much, can you not arrange so as to have more time to rest, remember health",
+            "pc": "30",
+            "pnr": "",
+            "weight": "030100",
+            "transcription": "308 9th Av. New York, Wed. 3 P.M.\nDear Children,\n\n   Just now after dinner Mrs. Jones handed Cynthia a letter which had come to her house while with Mr. Jones we were about at the Tract Society meeting.  She said after we read it, that the had purposely kept it till after dinner, for fear it may have contained some unfavorable news.  But was glad and so were all of us that it was all good news.  Especially did we feel much interested to hear that part about the union prayer meeting, and the movement to suppress the selling of intoxicating liquors etc.  And Mr. Armable's hopes that we may hope for more good yet in Reinsen with the cause it Jesus.  We are quite comfortable at mr. & Mrs. Jones's.  we say Maria Pugh yesterday - called at the don with the medicine her mother had sent, on our way to the meeting of Am. & For. Christian Union.  WE had hardly time to know how Maria was, as she was at the time attending the family dinner, and we were in a hurry to go to meeting.  But she looked pretty well, and was glad to see us. - that is all of our friends from Remsen & Thten Neab we had yet sent.  this afternoon we mean to call about tea time (Mr. Jones with us) at Mr. D. Griffiths 1st Av. and then on to the National Temperance Society meeting",
             "date": [
                 1849,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Robert Everett and Elizabeth Roberts Everett letters, 1849-1876"
         },
         {
@@ -2143,6 +2204,7 @@
                 1850,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Robert Everett and Elizabeth Roberts Everett letters, 1850s-1876"
         },
         {
@@ -2161,6 +2223,7 @@
                 1845,
                 1874
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Robert Everett and Elizabeth Roberts Everett letters [in English and Welsh], 1845-1874"
         },
         {
@@ -2178,6 +2241,7 @@
                 1827,
                 1878
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Robert Everett and Elizabeth Roberts Everett letters, 1827-1878"
         },
         {
@@ -2195,6 +2259,7 @@
                 1863,
                 1914
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Elizabeth Everett Butler and J.J. Butler letters, 1863-1914"
         },
         {
@@ -2212,6 +2277,7 @@
                 1850,
                 1894
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Jane Everett letters, 1850-1894"
         },
         {
@@ -2229,6 +2295,7 @@
                 1880,
                 1929
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John Edward Everett letters, 1880-1929"
         },
         {
@@ -2246,6 +2313,7 @@
                 1850,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "John Roberts Everett and Sarah Colgrove Everett letters, 1850s-1895"
         },
         {
@@ -2263,6 +2331,7 @@
                 1850,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "John Roberts Everett and Sarah Colgrove Everett letters, 1850s-1895"
         },
         {
@@ -2280,6 +2349,7 @@
                 1850,
                 1895
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "John Roberts Everett and Sarah Colgrove Everett letters, 1850s-1895"
         },
         {
@@ -2297,6 +2367,7 @@
                 1852,
                 1880
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Sarah Everett Pritchard letters, 1852-1880s"
         },
         {
@@ -2314,6 +2385,7 @@
                 1872,
                 1919
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Elizabeth Everett Butler and J.J. Butler letters, 1872-1919"
         },
         {
@@ -2331,6 +2403,7 @@
                 1851,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Elizabeth Everett Butler and J.J. Butler letters, 1851-1891"
         },
         {
@@ -2348,6 +2421,7 @@
                 1850,
                 1877
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Elizabeth Everett Butler and J.J. Butler letters, 1850-1877"
         },
         {
@@ -2365,6 +2439,7 @@
                 1850,
                 1876
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Elizabeth Everett Butler and J.J. Butler letters, 1850-1876"
         },
         {
@@ -2382,6 +2457,7 @@
                 1852,
                 1893
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1852-1893"
         },
         {
@@ -2399,6 +2475,7 @@
                 1852,
                 1891
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1852-1891"
         },
         {
@@ -2416,6 +2493,7 @@
                 1853,
                 1917
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1853-1917"
         },
         {
@@ -2433,6 +2511,7 @@
                 1854,
                 1917
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1854-1917"
         },
         {
@@ -2450,6 +2529,7 @@
                 1853,
                 1884
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1853-1884"
         },
         {
@@ -2467,6 +2547,7 @@
                 1885,
                 1908
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Edward Williams Everett letters, 1885-1908"
         },
         {
@@ -2484,6 +2565,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2501,6 +2583,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2518,6 +2601,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2535,6 +2619,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2552,6 +2637,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2569,6 +2655,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2586,6 +2673,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2603,6 +2691,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2612,14 +2701,15 @@
             ],
             "desc": "Born in Massachusetts in 1824, Nathan Kendall served as principal in academies in Kentucky and New England before becoming a civil engineer in 1853 and moving to LaPorte, Indiana to work for the Cincinnati, Peru and Chicago Railway and then to own and operate a lumber mill. Also born in Massachusetts in 1827, Abby Reed became a New England school teacher. Friendships among the members of the Kendall and Reed families led to the marriage of Nathan and Abby in 1857. By the end of the 1860s, the couple had acquired considerable agricultural land in Illinois and Indiana, so after losing his position as a superintendent for the Cincinnati, Peru and Chicago Railway and as a mill owner, Nathan hoped to find success as a farmer. Abby bore four sons: Edgar, Winthrop, George and Arthur, losing two other children in infancy. Farming proved to be a struggle, for Nathan's health was always poor and his lungs weak, and Abby felt the need for periodic trips back to Warwick, Mass. to visit her family - especially to see her sister Mary, who was her closest friend. Nathan Kendall died in 1871, just after he had decided that perhaps relocating in the South would help his lung disease. For the next few years Abby and the children lived in New England, renting out the Indiana farm, before returning to live permanently in the Middle West. At the time of her death in 1912, Abby owned property in Fowler, Indiana and in Hudson, Massachusetts. <a href=\"https://mms.newberry.org/xml/xml_files/KendallReed.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/46198",
-            "pc": "23",
+            "pc": "52",
             "pnr": "",
-            "weight": "023100",
-            "transcription": "If Myron is sharp and can get\nhis board in the states he will\nstay there for it is more than\nhe can do here while I was up\nat Raymonds place I lived on\npumpkins and milk I have\nnot eaten any flour for\nso long have forgotten all about\nit, Money in this part of\nthe [illegible] is an article once\nin use but now obsolete. If\nI had not come here and knew\nas much as I now know would\nnever come would work for\nmy board in the states first\nbut I am here and here I am\nbound to stop until I can\nmake a raise of about five\nhundred dollars and then I leave\nfor the states and start a grocery and provision \nstore. I am putting up a boat 5 feet\nlong and 12 feet wide got it all done but\nthen",
+            "weight": "052100",
+            "transcription": "school. Davied offered to get MOther boarded but\nshe thought if she could she had rather visit\nMy school does not commence till the first of June.\nMy health is good except my limbs and they are better\nthough they trouble me a good deal now. The bunches\nare not gone but they do not swell much. I walk\nfrom here to town though seldom frather - \nOld Mrs. Lavering is dead also Lirrie Browns Foster\nEsq Goulding has a son and they feel very much\npleased with it - Mr. Miller came very near getting\nkilled by his horse week before last he got him down\nbetween his fore legs and took his arm in his mouth\nthey think the bone is split and then he kicked him\non his head and hip he is getting along very well\nthough. Aunt Cheney fell down and hurt her quite \nbad so she has not been able to do anything for some\ntime. The last I heard from cousin Augusta she was \nquite sick - Mr E Bigelow has moved back to town\nSarah is worried - Give my love to Jesse and tell\nhim I should like to be with him a few days now he's\nsick hope he is well though by this time.\nI fear Sarah will not be as happy here as she thinks\nto be though hope she will her friends will be all very\nglad to see her but do not think she will find\nthe life of a teacher as pleasant as there wish myself\nwest almost every day. Think I may go sometime - \nAre you not coming home when I comes you have\nnot said anything about it in your last letters\nDo hope you will if it will be as well for you\n[written along the side of the page]\nWrite soon and excuse all amiss and believe me your affectionate sister \nLydia\nTell Sarah that she may imagine me in one of my \"nervous fits, for I can\ncry one minute and laugh the next have hardly had such a turn since she and Lera till now",
             "date": [
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2637,6 +2727,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2654,6 +2745,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2671,6 +2763,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2688,6 +2781,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2705,6 +2799,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2722,6 +2817,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2739,6 +2835,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2756,6 +2853,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2773,6 +2871,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2790,6 +2889,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2807,6 +2907,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2824,6 +2925,7 @@
                 1851,
                 1871
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1851-1871"
         },
         {
@@ -2840,6 +2942,7 @@
             "date": [
                 1850
             ],
+            "category": "Family papers",
             "title": "Nathan Kendall and Abby J. Reed Kendall writings, circa 1850"
         },
         {
@@ -2857,6 +2960,7 @@
                 1842,
                 1907
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1842-1907"
         },
         {
@@ -2874,6 +2978,7 @@
                 1843,
                 1912
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Nathan Kendall and Abby J. Reed Kendall letters, 1843-1912"
         },
         {
@@ -2891,6 +2996,7 @@
                 1707,
                 1852
             ],
+            "category": "Family papers; Records (Documents)",
             "title": "Chauncey Whittelsey Revolutionary War provision records [part 1], 1707-1852"
         },
         {
@@ -2908,6 +3014,7 @@
                 1707,
                 1853
             ],
+            "category": "Family papers; Records (Documents)",
             "title": "Chauncey Whittelsey Revolutionary War provision records [part 2], 1707-1853"
         },
         {
@@ -2925,6 +3032,7 @@
                 1707,
                 1854
             ],
+            "category": "Family papers; Records (Documents)",
             "title": "Chauncey Whittelsey Revolutionary War provision records [part 3], 1707-1854"
         },
         {
@@ -2942,6 +3050,7 @@
                 1707,
                 1855
             ],
+            "category": "Family papers; Records (Documents)",
             "title": "Chauncey Whittelsey Revolutionary War provision records [part 4], 1707-1855"
         },
         {
@@ -2959,6 +3068,7 @@
                 1707,
                 1856
             ],
+            "category": "Family papers; Records (Documents)",
             "title": "Chauncey Whittelsey Revolutionary War provision records [part 5], 1707-1856"
         },
         {
@@ -2976,6 +3086,7 @@
                 1816,
                 1851
             ],
+            "category": "Family papers",
             "title": "Barlow family writings, 1816-1851"
         },
         {
@@ -2993,6 +3104,7 @@
                 1909,
                 1926
             ],
+            "category": "Letters (Correspondence)",
             "title": "Clarence Darrow letters to John T. Jacobs, 1909-1926"
         },
         {
@@ -3009,6 +3121,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, circa 1880s"
         },
         {
@@ -3025,6 +3138,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, circa 1880s"
         },
         {
@@ -3041,6 +3155,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, 1880"
         },
         {
@@ -3057,6 +3172,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, 1880"
         },
         {
@@ -3073,6 +3189,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, circa 1880s"
         },
         {
@@ -3089,6 +3206,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, circa 1880s"
         },
         {
@@ -3105,6 +3223,7 @@
             "date": [
                 1880
             ],
+            "category": "",
             "title": "Elbert Ozial Taylor writings, circa 1880s"
         },
         {
@@ -3122,6 +3241,7 @@
                 1934,
                 1942
             ],
+            "category": "",
             "title": "T-Bone Slim writings, 1934-1942"
         },
         {
@@ -3139,6 +3259,7 @@
                 1851,
                 1863
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John V. LeMoyne letters, 1851-1863"
         },
         {
@@ -3155,6 +3276,7 @@
             "date": [
                 1864
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John V. LeMoyne letters, 1864"
         },
         {
@@ -3172,6 +3294,7 @@
                 1860,
                 1861
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John V. LeMoyne letters, 1860-1861"
         },
         {
@@ -3188,6 +3311,7 @@
             "date": [
                 1862
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John V. LeMoyne letters, 1862"
         },
         {
@@ -3205,6 +3329,7 @@
                 1872,
                 1873
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "John V. LeMoyne letters, 1872-1873"
         },
         {
@@ -3222,6 +3347,7 @@
                 1916,
                 1933
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Emily Elliot Daland letters, 1916-1933"
         },
         {
@@ -3239,6 +3365,7 @@
                 1869,
                 1871
             ],
+            "category": "Diaries; Women",
             "title": "Julia Newberry diary, 1869-1871"
         },
         {
@@ -3256,6 +3383,7 @@
                 1871,
                 1932
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Hambleton family letters, 1871-1932"
         },
         {
@@ -3273,6 +3401,7 @@
                 1909,
                 1923
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Lucy Monroe Calhoun letters, 1909-1923"
         },
         {
@@ -3290,6 +3419,7 @@
                 1913,
                 1917
             ],
+            "category": "Letters (Correspondence); Women",
             "title": "Jenny Dufau letters [in Italian], 1913-1917"
         },
         {
@@ -3307,6 +3437,7 @@
                 1806,
                 1866
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Hannah Hayden letters, 1806-1866"
         },
         {
@@ -3324,6 +3455,7 @@
                 1858,
                 1921
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Hurd-Arno family correspondence, 1858-1921"
         },
         {
@@ -3341,6 +3473,7 @@
                 1858,
                 1921
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Hurd-Arno family correspondence, 1858-1921"
         },
         {
@@ -3358,6 +3491,7 @@
                 1858,
                 1921
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Hurd-Arno family correspondence, 1858-1921"
         },
         {
@@ -3375,6 +3509,7 @@
                 1884,
                 1896
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Parish family letters, 1884-1896"
         },
         {
@@ -3392,6 +3527,7 @@
                 1884,
                 1896
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "Parish family letters, 1884-1896"
         },
         {
@@ -3409,6 +3545,7 @@
                 1839,
                 1851
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Christopher Gardner Pearce and Jane Ann Sackett Pearce letters, 1839-1851"
         },
         {
@@ -3426,6 +3563,7 @@
                 1898,
                 1900
             ],
+            "category": "Family papers; Letters (Correspondence); Women",
             "title": "Amy Eleanor Wingreen letters, 1898-circa 1900"
         },
         {
@@ -3443,6 +3581,7 @@
                 1862,
                 1865
             ],
+            "category": "Family papers; American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Carlos W. Colby letters, 1862-1865"
         },
         {
@@ -3460,6 +3599,7 @@
                 1862,
                 1865
             ],
+            "category": "Family papers; American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Carlos W. Colby letters, 1862-1865"
         },
         {
@@ -3477,6 +3617,7 @@
                 1862,
                 1863
             ],
+            "category": "American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Charles W. Gallentine letters, 1862-1863"
         },
         {
@@ -3493,6 +3634,7 @@
             "date": [
                 1864
             ],
+            "category": "Family papers; American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Edgar T. Marsh letter, 1864"
         },
         {
@@ -3510,6 +3652,7 @@
                 1859,
                 1869
             ],
+            "category": "Family papers; American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Edgar Teamster McLean letters, 1859-1869"
         },
         {
@@ -3527,6 +3670,7 @@
                 1855,
                 1865
             ],
+            "category": "American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Edward W. Curtis letters, 1855-1865"
         },
         {
@@ -3544,6 +3688,7 @@
                 1862,
                 1865
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "Otis Mason letters, 1862-1865"
         },
         {
@@ -3561,6 +3706,7 @@
                 1862,
                 1864
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "George Deal letters, 1862-1864"
         },
         {
@@ -3577,6 +3723,7 @@
             "date": [
                 1862
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "Henry Rice letters, 1862"
         },
         {
@@ -3594,6 +3741,7 @@
                 1862,
                 1863
             ],
+            "category": "American Civil War (1861-1865); Letters (Correspondence)",
             "title": "Henry Patterson and James Patterson letters, 1862-1863"
         },
         {
@@ -3611,6 +3759,7 @@
                 1862,
                 1865
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "John C. Fleming letters, 1862-1865"
         },
         {
@@ -3628,6 +3777,7 @@
                 1862,
                 1865
             ],
+            "category": "Letters (Correspondence); American Civil War (1861-1865)",
             "title": "John D. Beach letters, 1862-1865"
         },
         {
@@ -3645,6 +3795,7 @@
                 1861,
                 1864
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "John J. Russell letters, 1861-1864"
         },
         {
@@ -3662,6 +3813,7 @@
                 1861,
                 1866
             ],
+            "category": "Family papers; Letters (Correspondence)",
             "title": "O.P. Newberry letters, 1861-1866"
         },
         {
@@ -3679,6 +3831,7 @@
                 1864,
                 1865
             ],
+            "category": "Letters (Correspondence); American Civil War (1861-1865)",
             "title": "Richard Realf letters, 1864-1865"
         },
         {
@@ -3695,6 +3848,7 @@
             "date": [
                 1861
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "Theodore Watson letters, 1861"
         },
         {
@@ -3712,6 +3866,7 @@
                 1862,
                 1863
             ],
+            "category": "Letters (Correspondence); American Civil War (1861-1865)",
             "title": "William T. Foster letters, 1862-1863"
         },
         {
@@ -3729,6 +3884,7 @@
                 1913,
                 1949
             ],
+            "category": "Letters (Correspondence); Women",
             "title": "Benjamin D. Hitz and Willa Cather letters, 1913-1949"
         },
         {
@@ -3741,11 +3897,12 @@
             "pc": "16",
             "pnr": "",
             "weight": "016100",
-            "transcription": "IMAGE NUMBER FIVE BANK STREET [Annotated in pencil 13 Jan 1923]\nUnclear faded erasures overwritten\nSaturday\nMy Dearest Irene:\nI arrived last night - two hours late, but without further misadventure. My cold is no worse  - rather better, if anything, but I’m keeping quiet. I am not going to open \nINCOMPLETE",
+            "transcription": "Number five Bank Street [Annotated in pencil 13 Jan 1923]\nSaturday\nMy Dearest Irene:\nI arrived last night - two hours late, but without further misadventure. My cold is no worse  - rather better, if anything, but I’m keeping quiet. I am not going to open the [unclear] basket full of letters that [unclear] until I'm retired. Josephine says I have to tell you that she is furious with you, [unclear] had hoped that I would come straight home from eating roots chez ma mere, and would find her cooking delicious, whereas I do nothing, she insists, but tell her what wonderfl things I had to eat inChicago. But Edith agrees with me that if you hadn't taken me in hand been so good to me I would probably still be languishing in some hospital in Chicago.",
             "date": [
                 1912,
                 1958
             ],
+            "category": "Letters (Correspondence); Women",
             "title": "Willa Cather and Irene Miner Weisz letters, 1912-1958"
         },
         {
@@ -3762,6 +3919,7 @@
             "date": [
                 1895
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Robert McReynolds letters to L.W. Colby, 1895"
         },
         {
@@ -3779,6 +3937,7 @@
                 1845,
                 1905
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Charles G. Hinman letters and records, 1845-1905"
         },
         {
@@ -3795,6 +3954,7 @@
             "date": [
                 1812
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Prospect K. Robbins promissory note signed by John B. Sturt, 1812"
         },
         {
@@ -3811,6 +3971,7 @@
             "date": [
                 1886
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "United States Army report of the operations of the Quartermasters Department in the Department of Arizona, 1886"
         },
         {
@@ -3827,6 +3988,7 @@
             "date": [
                 1829
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Indians of North America",
             "title": "Richard M. Johnson letter to Florida Governo William. P. Duvall, circa 1829"
         },
         {
@@ -3843,6 +4005,7 @@
             "date": [
                 1865
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Irvin McDowell draft of letter to Ulysses S. Grant, 1865"
         },
         {
@@ -3859,6 +4022,7 @@
             "date": [
                 1806
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Thomas Power letter to Stephen Minor, 1806"
         },
         {
@@ -3876,6 +4040,7 @@
                 1864,
                 1865
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Robert R. Livingston letters and records, 1864-1865"
         },
         {
@@ -3892,6 +4057,7 @@
             "date": [
                 1833
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Document referring to the Tuscumbia, Courtland, and Decatur Rail Road Company and property in Lawrence County, Alabama, 1833"
         },
         {
@@ -3908,6 +4074,7 @@
             "date": [
                 1847
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Pierson Barton Reading letter to R.M. Sherman, 1847"
         },
         {
@@ -3924,6 +4091,7 @@
             "date": [
                 1836
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Charles Fenno Hoffman letter to Albert M. Lea, 1836"
         },
         {
@@ -3940,6 +4108,7 @@
             "date": [
                 1845
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Church of Jesus Christ of Latter-day Saints letter to the Governor of Ohio, 1845"
         },
         {
@@ -3956,6 +4125,7 @@
             "date": [
                 1875
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Alexander Culbertson letter to George H. Roberts, 1875"
         },
         {
@@ -3972,6 +4142,7 @@
             "date": [
                 1812
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "A. McNair letter to James Baird, 1812"
         },
         {
@@ -3988,6 +4159,7 @@
             "date": [
                 1770
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "John Wilkins letter to James Rumsey, 1770"
         },
         {
@@ -4004,6 +4176,7 @@
             "date": [
                 1854
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Articles of agreement of land holders establishing the town of Florence, Nebraska Territory, 1854"
         },
         {
@@ -4020,6 +4193,7 @@
             "date": [
                 1905
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "William J. Haddock letter  to \"Dear Sir\", circa 1905"
         },
         {
@@ -4036,6 +4210,7 @@
             "date": [
                 1900
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Eugene Fitch Ware letter to T.J. Majors, 1900s"
         },
         {
@@ -4052,6 +4227,7 @@
             "date": [
                 1857
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "J.M. Vansyckle letter to A.W. Francisco, 1857"
         },
         {
@@ -4068,6 +4244,7 @@
             "date": [
                 1801
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Bill and receipt for payment of account of Philip Nolan with David Burney, payment being made by William Dunbar, 1801"
         },
         {
@@ -4084,6 +4261,7 @@
             "date": [
                 1851
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Gabriel Franchere letter to Narcisse Cyr [in French], 1851"
         },
         {
@@ -4101,6 +4279,7 @@
                 1849,
                 1850
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Charles G. Hinman letters, 1849-1850"
         },
         {
@@ -4117,6 +4296,7 @@
             "date": [
                 1936
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Women; Indians of North America",
             "title": "Geraldine Hughes letter to Edward Eberstadt, 1936"
         },
         {
@@ -4133,6 +4313,7 @@
             "date": [
                 1845
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "V. Capron letter to John P. Capron, 1845"
         },
         {
@@ -4149,6 +4330,7 @@
             "date": [
                 1864
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Horace Greeley letter to O.D. Cose, 1864"
         },
         {
@@ -4163,6 +4345,7 @@
             "weight": "100000",
             "transcription": "[In pencil on side of document graff 89-102600]\n[At top of document 665.3] \nA Chapter in the life of one of the pioneers of the Reserve.\nI have often been an interested listener to the tryels and experiences of the early setlers. I will try and add my experience, which I hope will not be uninteresting. \nWhen this reserve was a new country or inhabited only by Indians. Indian [  aisters?], and wild animals. it was known by the name of the garden of Indiana. \nWe now after it has been settled near sixty years can judge how - properly it was named, land that has been cultivated all those years produses surprising large crops of grain, and vegitabels when we see at our [unclear?]  fair the exhibits of surprising larg ears of corn huge pumkins and squashes a large crisp stalks of selery. potatoes",
             "date": [],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries; Women; Indians of North America",
             "title": "Mary Cordelia Slocum account as an Indiana pioneer, late 19th century"
         },
         {
@@ -4179,6 +4362,7 @@
             "date": [
                 1841
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Indians of North America",
             "title": "Alfred Brunson letter to John Bell, 1841"
         },
         {
@@ -4196,6 +4380,7 @@
                 1850,
                 1853
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Thomas Jefferson Oxley letters, 1850-1853"
         },
         {
@@ -4212,6 +4397,7 @@
             "date": [
                 1859
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "George Smither letter to his mother, 1859"
         },
         {
@@ -4228,6 +4414,7 @@
             "date": [
                 1849
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "William Cornell Jewett letter to John M. Read, 1849"
         },
         {
@@ -4244,6 +4431,7 @@
             "date": [
                 1856
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Alexander Culbertson letter to Julia Culbertson Roberts, 1856"
         },
         {
@@ -4260,6 +4448,7 @@
             "date": [
                 1810
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "James Morrison letter to Robert McKnight, circa 1810s"
         },
         {
@@ -4274,6 +4463,7 @@
             "weight": "100000",
             "transcription": "circumstance - some secret relative to you leaving the Army that you are (-perhaps from Generous motives) disposed to conceal.\nIf this part of your characative? has the colour of probility [struck out passage: I could put in a way to prove your Innocence to the public & bring them to ? who almost affected your ? - end of struck out passage] you might I think return with ? yr character -\nyou will not I hope find me unworthy your confidence - I expect to hear from you this eveng or tomorrow\nyour \nPet",
             "date": [],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Philip Nolan letter, 19th century"
         },
         {
@@ -4290,6 +4480,7 @@
             "date": [
                 1790
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Extracts from the journal of the Commissioners of the United States appointed to hold a treaty at Sandusky, circa 1790s"
         },
         {
@@ -4306,6 +4497,7 @@
             "date": [
                 1906
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Women",
             "title": "Stella D. Gregg letter to Luther A. Brewer, 1906"
         },
         {
@@ -4322,6 +4514,7 @@
             "date": [
                 1864
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Overland Stage Line pass issued to Colonel Livingston, 1864"
         },
         {
@@ -4338,6 +4531,7 @@
             "date": [
                 1865
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries; Indians of North America",
             "title": "Journal of an anonymous scout operating out of Fort Kearney, Nebraska Territory, 1865"
         },
         {
@@ -4354,6 +4548,7 @@
             "date": [
                 1862
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "William T. Sherman letter to General Ulysses S. Grant, 1862"
         },
         {
@@ -4370,6 +4565,7 @@
             "date": [
                 1890
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Women",
             "title": "Susie P. Van de Wiele Travels and experiences in America with army, and Indian reminiscences, 1890s"
         },
         {
@@ -4386,6 +4582,7 @@
             "date": [
                 1890
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "William Woods Averell account of army life in the Southwest, circa 1890s"
         },
         {
@@ -4403,6 +4600,7 @@
                 1850,
                 1881
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Calvin S. Kingsley letters and records, 1850-1881"
         },
         {
@@ -4419,6 +4617,7 @@
             "date": [
                 1830
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "H. Loomis letter to William Kimball, 1830"
         },
         {
@@ -4435,6 +4634,7 @@
             "date": [
                 1861
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Jessie Benton Fremont letter to Christopher Carson, 1861"
         },
         {
@@ -4451,6 +4651,7 @@
             "date": [
                 1866
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries; Indians of North America",
             "title": "Charles Strong Journal of expedition against hostile Indians in southern Nebraska, 1866"
         },
         {
@@ -4467,6 +4668,7 @@
             "date": [
                 1845
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "John James Audubon journal, circa 1845"
         },
         {
@@ -4483,6 +4685,7 @@
             "date": [
                 1845
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Robert Greenhow letter to the New York Tribune, 1845"
         },
         {
@@ -4499,6 +4702,7 @@
             "date": [
                 1926
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Tony Alexander letter to Fred Lockley, 1926"
         },
         {
@@ -4508,13 +4712,14 @@
             ],
             "desc": "My trip from Faribault, Minn., to Oregon, via, Saskatchewan route, British America - account of the country, our sufferings and trials, &amp;c. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=154575\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_graff/16491",
-            "pc": "27",
-            "pnr": "1",
-            "weight": "028099",
-            "transcription": "Lest the brave man speeding onward should be conquered in the race. \nIt could last but little longer and as breathless silence fell.\nWhen suddenly like thunder rose a wild triumphant yell.\nThat echoing and re-echoing seemed to pierce the very skies,\nFor the fireman was the victory, and and the baby's life his price!\nAh; the smiles and tears and praises showed on him everywhere\nAs he placed the blue-eyed baby in its mother's tender care;\nThen to his host up - springing as the train again moved on mid the sound of cheering voices, in a moment he was for?",
+            "pc": "31",
+            "pnr": "",
+            "weight": "031100",
+            "transcription": "Cover",
             "date": [
                 1860
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Travelers’ writings",
             "title": "John W. Jones Across the plains account, 1860s"
         },
         {
@@ -4531,6 +4736,7 @@
             "date": [
                 1843
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Travelers’ writings",
             "title": "George Ruxton account of activities in Canada, 1843"
         },
         {
@@ -4547,6 +4753,7 @@
             "date": [
                 1875
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "George A. Custer letter to Lawrence Barrett, 1875"
         },
         {
@@ -4564,6 +4771,7 @@
                 1825,
                 1826
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "Thomas Mather diary, 1825-1826"
         },
         {
@@ -4580,6 +4788,7 @@
             "date": [
                 1825
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Thomas Mather accounts with Mexican Road Commissioners, circa 1825"
         },
         {
@@ -4596,6 +4805,7 @@
             "date": [
                 1825
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "Thomas Mather diary, 1825"
         },
         {
@@ -4613,6 +4823,7 @@
                 1825,
                 1886
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Thomas Mather letters, 1825-1886"
         },
         {
@@ -4629,6 +4840,7 @@
             "date": [
                 1771
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion",
             "title": "Projet d'etablissement sur la partie espagnole des Illinois [in French], 1771?"
         },
         {
@@ -4645,6 +4857,7 @@
             "date": [
                 1871
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Indians of North America",
             "title": "William T. Sherman letter to Benjamin Henry Grierson, 1871"
         },
         {
@@ -4662,6 +4875,7 @@
                 1863,
                 1866
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "Edwin R. Capron letters, 1863-1866"
         },
         {
@@ -4678,6 +4892,7 @@
             "date": [
                 1849
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Indians of North America",
             "title": "C.De. Quatrefages Notice sur les Indiens Ioways et Ojibways qui se sont montres a Paris [in French], 1849"
         },
         {
@@ -4694,6 +4909,7 @@
             "date": [
                 1866
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "William Judd Fetterman letter to Dr. Charles Terry, 1866"
         },
         {
@@ -4710,6 +4926,7 @@
             "date": [
                 1848
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Travelers' writings; Diaries",
             "title": "Daniel Nason journal of a tour from Boston to Savannah, thence to Havana, in the island of Cuba, 1848"
         },
         {
@@ -4726,6 +4943,7 @@
             "date": [
                 1771
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "ALS letter to Pedro Piernas [in French], 1771"
         },
         {
@@ -4743,6 +4961,7 @@
                 1840,
                 1844
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Indians of North America",
             "title": "William Hillhouse Incidents and experience in Iowa, 1840-1844"
         },
         {
@@ -4759,6 +4978,7 @@
             "date": [
                 1857
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence)",
             "title": "William D. Gallagher letter to Gov. Geary of Kansas, 1857"
         },
         {
@@ -4776,6 +4996,7 @@
                 1855,
                 1942
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Records (Documents)",
             "title": "Documents pertaining to the Icarian Community in Illinois and Iowa, 1855-1942"
         },
         {
@@ -4792,6 +5013,7 @@
             "date": [
                 1868
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "F. Barham Zincke account of winter in the United States [part 1], 1868"
         },
         {
@@ -4808,6 +5030,7 @@
             "date": [
                 1868
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Diaries",
             "title": "F. Barham Zincke account of winter in the United States [part 2], 1868"
         },
         {
@@ -4824,6 +5047,7 @@
             "date": [
                 1983
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "Thomas J. Greenwood letter to Brian G. Bardy, 1983"
         },
         {
@@ -4840,6 +5064,7 @@
             "date": [
                 1897
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Rufus Grider notes regarding his artwork on Iroquois Indians, 1897"
         },
         {
@@ -4856,6 +5081,7 @@
             "date": [
                 1897
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1897"
         },
         {
@@ -4873,6 +5099,7 @@
                 1897,
                 1898
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1897-1898"
         },
         {
@@ -4890,6 +5117,7 @@
                 1898,
                 1899
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1898-1899"
         },
         {
@@ -4907,6 +5135,7 @@
                 1899,
                 1900
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1899-1900"
         },
         {
@@ -4924,6 +5153,7 @@
                 1900,
                 1902
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1900-1902"
         },
         {
@@ -4941,6 +5171,7 @@
                 1903,
                 1905
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1903-1905"
         },
         {
@@ -4958,6 +5189,7 @@
                 1905,
                 1906
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1905-1906"
         },
         {
@@ -4974,6 +5206,7 @@
             "date": [
                 1906
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1906"
         },
         {
@@ -4991,6 +5224,7 @@
                 1906,
                 1908
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1906-1908"
         },
         {
@@ -5008,6 +5242,7 @@
                 1908,
                 1909
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1908-1909"
         },
         {
@@ -5026,6 +5261,7 @@
                 1945,
                 1947
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1909, 1945-1947"
         },
         {
@@ -5043,6 +5279,7 @@
                 1945,
                 1947
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "E.A. Burbank letters, 1945-1947"
         },
         {
@@ -5059,6 +5296,7 @@
             "date": [
                 1758
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Techtama and Homwhyowa of the Cherokees message to the Delawares, 1758"
         },
         {
@@ -5075,6 +5313,7 @@
             "date": [
                 1868
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "Seventh U.S. Cavalry meeting notes, 1868"
         },
         {
@@ -5091,6 +5330,7 @@
             "date": [
                 1889
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Shawanese word list, 1889"
         },
         {
@@ -5107,6 +5347,7 @@
             "date": [
                 1789
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Piamingo chief warrior of the Chickasaw Nation speech to General Joseph Martin, 1789"
         },
         {
@@ -5123,6 +5364,7 @@
             "date": [
                 1788
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Cherokey Nation meeting held at Ustinare, 1788"
         },
         {
@@ -5139,6 +5381,7 @@
             "date": [
                 1775
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "William H. Drayton speech to the Cherokee Nation at the Congarees, 1775"
         },
         {
@@ -5155,6 +5398,7 @@
             "date": [
                 1845
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Jimmy Johnson speech at the Grand Council of the Confederacy of Iroquois held at the Indian village of Tonawanda, 1845"
         },
         {
@@ -5171,6 +5415,7 @@
             "date": [
                 1690
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Robart Wattson, captive, trew relation concerning the takeing and destroying Casco Bay, 1690"
         },
         {
@@ -5187,6 +5432,7 @@
             "date": [
                 1820
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "United Brethren narrative among the Delaware & Mohegan Indians [part 1], 1820"
         },
         {
@@ -5203,6 +5449,7 @@
             "date": [
                 1820
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "United Brethren narrative among the Delaware & Mohegan Indians [part 2], 1820"
         },
         {
@@ -5219,6 +5466,7 @@
             "date": [
                 1820
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "United Brethren narrative among the Delaware & Mohegan Indians [part 3], 1820"
         },
         {
@@ -5236,6 +5484,7 @@
                 1690,
                 1691
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Father Pierre Millet account of captivity among the Onneidas, 1690-1691"
         },
         {
@@ -5252,6 +5501,7 @@
             "date": [
                 1761
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents); Indians of North America",
             "title": "King George III instructions to Robert Mockton regarding treaties with Indian tribes, 1761"
         },
         {
@@ -5268,6 +5518,7 @@
             "date": [
                 1852
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Ojibway tale, 1852"
         },
         {
@@ -5284,6 +5535,7 @@
             "date": [
                 1709
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents)",
             "title": "Articles of ransom agreed upon by the inhabitants of St. John's Bay, 1709"
         },
         {
@@ -5300,6 +5552,7 @@
             "date": [
                 1888
             ],
+            "category": "Edward E. Ayer Manuscript Collection; U.S. Western Expansion",
             "title": "William Emerson Strong Glimpses of travel in the West, 1888"
         },
         {
@@ -5316,6 +5569,7 @@
             "date": [
                 1859
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Diaries; U.S. Western Expansion; Travelers' writings",
             "title": "A.F. Brooks Grand Trip across the Plains account, 1859"
         },
         {
@@ -5332,6 +5586,7 @@
             "date": [
                 1914
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Jeff C. Riddle History of the Modoc War [part 1], circa 1914"
         },
         {
@@ -5348,6 +5603,7 @@
             "date": [
                 1914
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Jeff C. Riddle History of the Modoc War [part 2], circa 1914"
         },
         {
@@ -5365,6 +5621,7 @@
                 1835,
                 1865
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America; Records (Documents)",
             "title": "Thomas Lee Ballenger Cherokee letters and records, 1835-1865"
         },
         {
@@ -5382,6 +5639,7 @@
                 1835,
                 1927
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America; Records (Documents)",
             "title": "Thomas Lee Ballenger Cherokee letters and records, 1835-1927"
         },
         {
@@ -5399,6 +5657,7 @@
                 1888,
                 1936
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "Carlos Montezuma letters, 1888-1936"
         },
         {
@@ -5416,6 +5675,7 @@
                 1889,
                 1936
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "Carlos Montezuma letters, 1889-1936"
         },
         {
@@ -5433,6 +5693,7 @@
                 1894,
                 1924
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "Carlos Montezuma letters, 1894-1924"
         },
         {
@@ -5450,6 +5711,7 @@
                 1889,
                 1924
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "Carlos Montezuma letters, 1889-1924"
         },
         {
@@ -5467,6 +5729,7 @@
                 1889,
                 1935
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America; Records (Documents)",
             "title": "Carlos Montezuma letters and records, 1889-1935"
         },
         {
@@ -5484,6 +5747,7 @@
                 1805,
                 1826
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "David Brydie Mitchell letters, 1805-1826"
         },
         {
@@ -5501,6 +5765,7 @@
                 1805,
                 1826
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "David Brydie Mitchell letters, 1805-1826"
         },
         {
@@ -5518,6 +5783,7 @@
                 1805,
                 1832
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "David Brydie Mitchell letters, 1805-1832"
         },
         {
@@ -5535,6 +5801,7 @@
                 1808,
                 1829
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Indians of North America",
             "title": "David Brydie Mitchell letters, 1808-1829"
         },
         {
@@ -5552,6 +5819,7 @@
                 1839,
                 1948
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion; Letters (Correspondence); Records (Documents); Travelers' writings",
             "title": "George Frederick Augustus Ruxton letters and records, 1839-1948"
         },
         {
@@ -5568,6 +5836,7 @@
             "date": [
                 1860
             ],
+            "category": "Edward E. Ayer Manuscript Collection; U.S. Western Expansion; Travelers' writings",
             "title": "John D. Young Gold regions of the Rocky Mountains travel account, 1860"
         },
         {
@@ -5584,6 +5853,7 @@
             "date": [
                 1810
             ],
+            "category": "Everett D. Graff Collection of Western Americana; U.S. Western Expansion",
             "title": "Robert McKnight literary fragments, 1810s"
         },
         {
@@ -5601,6 +5871,7 @@
                 1866,
                 1869
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1866-1869"
         },
         {
@@ -5618,6 +5889,7 @@
                 1869,
                 1877
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1869-1877"
         },
         {
@@ -5635,6 +5907,7 @@
                 1876,
                 1880
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1876-1880"
         },
         {
@@ -5652,6 +5925,7 @@
                 1880,
                 1886
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1880-1886"
         },
         {
@@ -5669,6 +5943,7 @@
                 1868,
                 1888
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1868-1888"
         },
         {
@@ -5686,6 +5961,7 @@
                 1868,
                 1870
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters from Henry E. Alvord, 1868-1870"
         },
         {
@@ -5703,6 +5979,7 @@
                 1869,
                 1887
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1869-1887"
         },
         {
@@ -5720,6 +5997,7 @@
                 1868,
                 1890
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1868-1890"
         },
         {
@@ -5737,6 +6015,7 @@
                 1869,
                 1890
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1869-1890"
         },
         {
@@ -5754,6 +6033,7 @@
                 1863,
                 1889
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1863-1889"
         },
         {
@@ -5771,6 +6051,7 @@
                 1868,
                 1890
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters, 1868-1890"
         },
         {
@@ -5788,6 +6069,7 @@
                 1868,
                 1887
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Records (Documents); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters and records, 1868-1887"
         },
         {
@@ -5805,6 +6087,7 @@
                 1868,
                 1889
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents); U.S. Western Expansion; Letters (Documents)",
             "title": "Benjamin Henry Grierson letters and records, 1868-1889"
         },
         {
@@ -5822,6 +6105,7 @@
                 1861,
                 1890
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson records, 1861-1890"
         },
         {
@@ -5839,6 +6123,7 @@
                 1860,
                 1890
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Records (Documents); U.S. Western Expansion",
             "title": "Benjamin Henry Grierson letters and records, 1860-1890"
         },
         {
@@ -5855,6 +6140,7 @@
             "date": [
                 1900
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "George Catlin account of religious rite of Mandan tribe of North American Indians, 1900"
         },
         {
@@ -5871,6 +6157,7 @@
             "date": [
                 1689
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Indians in Virginia, 1689"
         },
         {
@@ -5890,6 +6177,7 @@
                 1677,
                 1831
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Daniel Gookin historical account of the doings and sufferings of the Christian Indians in New England, in the years 1675, 1676, 1677. 1831"
         },
         {
@@ -5909,6 +6197,7 @@
                 1677,
                 1677
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Daniel Gookin historical account of the doings and sufferings of the Christian Indians in New England, in the years 1675, 1676, 1677. 1677"
         },
         {
@@ -5926,6 +6215,7 @@
                 1838,
                 1844
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "George Bonnell observations on Texas travel, 1838-1844"
         },
         {
@@ -5942,6 +6232,7 @@
             "date": [
                 1856
             ],
+            "category": "Diaries; Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Kit Carson autobiography, 1856"
         },
         {
@@ -5958,6 +6249,7 @@
             "date": [
                 1744
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "Governor of Massachusetts William Shirley declaration of war against Cape Sable and St. John Indians, 1744"
         },
         {
@@ -5975,6 +6267,7 @@
                 1791,
                 1794
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Diaries; Travelers' writings",
             "title": "John Parrish journal on Indian affairs, 1791-1794"
         },
         {
@@ -5992,6 +6285,7 @@
                 1841,
                 1888
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Charles H. Barstow letters, 1841-1888"
         },
         {
@@ -6008,6 +6302,7 @@
             "date": [
                 1830
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Thomas Lee Ballenger Cherokee history, habits, and language, 1830s"
         },
         {
@@ -6024,6 +6319,7 @@
             "date": [
                 1834
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Chief Konkapot letter to Reverand Nehemiah Bull, circa 1834"
         },
         {
@@ -6041,6 +6337,7 @@
                 1861,
                 1890
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Christopher C. Augur letters, 1861-1890"
         },
         {
@@ -6058,6 +6355,7 @@
                 1857,
                 1894
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "Christopher C. Augur letters, 1857-1894"
         },
         {
@@ -6075,6 +6373,7 @@
                 1848,
                 1896
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "Christopher C. Augur letters, 1848-1896"
         },
         {
@@ -6092,6 +6391,7 @@
                 1872,
                 1878
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence)",
             "title": "Christopher C. Augur letters, 1872-1878"
         },
         {
@@ -6109,6 +6409,7 @@
                 1838,
                 1878
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Letters (Correspondence); Records (Documents)",
             "title": "Christopher C. Augur letters and records, 1838-1878"
         },
         {
@@ -6126,6 +6427,7 @@
                 1846,
                 1888
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents)",
             "title": "Christopher C. Augur records, 1846-1888"
         },
         {
@@ -6142,6 +6444,7 @@
             "date": [
                 1799
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Records (Documents)",
             "title": "Daniel Boone deposition, 1799"
         },
         {
@@ -6158,6 +6461,7 @@
             "date": [
                 1779
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Diaries; Travelers' writings; U.S. Western Expansion",
             "title": "Daniel Clapp diary, 1779"
         },
         {
@@ -6175,6 +6479,7 @@
                 1639,
                 1787
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents); U.S. Western Expansion",
             "title": "Indian land deeds, 1639-1787"
         },
         {
@@ -6191,6 +6496,7 @@
             "date": [
                 1840
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Proceedings of council held with Winnebagoes at Prairie du Chien, 1840"
         },
         {
@@ -6207,6 +6513,7 @@
             "date": [
                 1756
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Proceedings of conferences held with the Indians, Philadelphia, 1756"
         },
         {
@@ -6224,6 +6531,7 @@
                 1676,
                 1677
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence); Records (Documents)",
             "title": "Richard Waldron letter and remonstrance, 1676-1677"
         },
         {
@@ -6241,6 +6549,7 @@
                 1792,
                 1795
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Letters (Correspondence)",
             "title": "Anthony Wayne letters, 1792-1795"
         },
         {
@@ -6255,6 +6564,7 @@
             "weight": "100100",
             "transcription": "8 too children dear hea left behind\nbesides a wif who was so kind\nShe was lef be hin in a sad state\nthere for to mourn in a sad state",
             "date": [],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Poems",
             "title": "Come you young people far and near: a ballad, 19th century"
         },
         {
@@ -6271,6 +6581,7 @@
             "date": [
                 1846
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "George Washington Ewing memorandum on treaties with Pottowotamies, 1846"
         },
         {
@@ -6287,6 +6598,7 @@
             "date": [
                 1855
             ],
+            "category": "Diaries; Edward E. Ayer Manuscript Collection; U.S. Western Expansion; Travelers' writings",
             "title": "Daniel Hale Haskell journal, circa 1855"
         },
         {
@@ -6303,6 +6615,7 @@
             "date": [
                 1836
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Creek Indians discussion between Alabama governor Clement C. Clay and Hopoethle Yoholo, Cheif of the Creek Nation, 1836"
         },
         {
@@ -6317,6 +6630,7 @@
             "weight": "014100",
             "transcription": "41\nthen became fixed to his position in the\nslay?, and is prayed to, and afish? all who\ndesire to kill others by witchcraft; - or be -\n-witches any proposed victim and does the\nkilling for the applicant, himself.\nThe cluster usually termed the seven\nstars was regarded with peculiar reverence.\nWe have not met with any prayers addrefsed?\nto it, but there is a wild legend of its\nhaving sprung from a family of eightboys, \nbrothers, who were wont? to steal into\nToun? Council House and beat the drum which\nwas kept there for public solemnitie's. Some\nof the elders of the tribe reproving them, they\ntook offence, and seizing the drum, darted\nupwards with it, beating it in defiance as\nthey ascended. On the way, however, one of them\ncame down with a fall so hard, that his head\nstruck deep into the ground. He was transformed\ninto a cedar. The three is to stand forever.\nIt has the peculiar property, that, whenever\nbruised or cut, it bleeds like a human being.\nThe rest of the seven brothers mounted as high as\nthey desired and then became seven stars,\nThis narrative is no doubt allegorical but \nno clue can be found to its signification\nnow.\nThere are many other celestial\nobjects denominated ancients, and varying\nin figure, colour and office. They are said\nto be.",
             "date": [],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne records, early to mid-19th century"
         },
         {
@@ -6331,6 +6645,7 @@
             "weight": "006100",
             "transcription": "[u] 7 Clans. [/u]\nReid.\t               Unkanee.\tChee-Squah\nPaint\t               \"\twah-teh.\nBluid Savannah       \"\tKawkt-a-kay\nDeer\t                       \"\tCow-wee\nLong Hair\t               \"\tKay Law-eh.\nBlue\t                       \"\tSah-aw-nayh\nWolf  \t               \"\tWhy-yah.",
             "date": [],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne records, early to mid-19th century"
         },
         {
@@ -6345,6 +6660,7 @@
             "weight": "001100",
             "transcription": "271  523\nand brothers; and an appropriation of money was made to procure\nforage for their horses. After having showed them every\nfriendship, we did not expect that William McIntoch had\nany ungenerous disposition towards the interests of this nation;\nbut we were mistaken. We find that his visit here \nmust have been entirely through speculative designs. He\nhas used intriguing language with some of our chiefs, to\nyield their land to the United States Commissioners, who are\nnow here for that object; and made promises of procuring a\nlarge sum of money from the United State's Commissioners\nfor them, in which he proposed to participate himself, for\nhis trouble. His verbal suggestions, at first, was not taken\nnotice of; but he still continued in the same course, and\nmade a written communication to John Rolf, the President\nof the National Committee, on the subject, promising the sum of\nnineteen thousand dollars, to be paid over to such individuals\nas he may think proper, in case of a cession. He further\nstated, verbally, to some of our chiefs, that he had offerred his\nwhole country to the United States' Commissioners for two dollars\nper acre, and suggested the idea of the Cherokees, Creeks, Choctaws",
             "date": [],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne records, early to mid-19th century"
         },
         {
@@ -6362,6 +6678,7 @@
                 1826,
                 1840
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "John Howard Payne letters, 1826-1840"
         },
         {
@@ -6379,6 +6696,7 @@
                 1826,
                 1840
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "John Howard Payne letters, 1826-1840"
         },
         {
@@ -6396,6 +6714,7 @@
                 1826,
                 1840
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne records, 1826-1840"
         },
         {
@@ -6413,6 +6732,7 @@
                 1826,
                 1838
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "John Howard Payne letters, 1826-1838"
         },
         {
@@ -6430,6 +6750,7 @@
                 1838,
                 1840
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne records, 1838-1840"
         },
         {
@@ -6447,6 +6768,7 @@
                 1817,
                 1839
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1817-1839"
         },
         {
@@ -6464,6 +6786,7 @@
                 1817,
                 1839
             ],
+            "category": "Letters (Correspondence); Records (Documents); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "John Howard Payne letters and records, 1817-1839"
         },
         {
@@ -6481,6 +6804,7 @@
                 1817,
                 1838
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1817-1838"
         },
         {
@@ -6498,6 +6822,7 @@
                 1817,
                 1838
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1817-1838"
         },
         {
@@ -6515,6 +6840,7 @@
                 1819,
                 1841
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1819-1841"
         },
         {
@@ -6532,6 +6858,7 @@
                 1813,
                 1839
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1813-1839"
         },
         {
@@ -6549,6 +6876,7 @@
                 1813,
                 1839
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1813-1839"
         },
         {
@@ -6563,6 +6891,7 @@
             "weight": "004100",
             "transcription": "which enclosed a skeleton, placed on its feet in an\nerect posture. The scull was large enough to go over the\nhead of a man of common size. The thigh bones applied\nto those of a man of ordinary stature, reached\nfrom the joint of his hip, to the calf of his leg\". 196.",
             "date": [],
+            "category": "Records (Documents); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "John Howard Payne records, early to mid-19th century"
         },
         {
@@ -6579,6 +6908,7 @@
             "date": [
                 1842
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America; Records (Documents)",
             "title": "John Howard Payne letters and records, 1842"
         },
         {
@@ -6596,6 +6926,7 @@
                 1797,
                 1799
             ],
+            "category": "Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Henry Burbeck speeches, 1797-1799"
         },
         {
@@ -6613,6 +6944,7 @@
                 1827,
                 1870
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "George Catlin letters, 1827-1870"
         },
         {
@@ -6630,6 +6962,7 @@
                 1847,
                 1858
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "George Copway letters, 1847-1858"
         },
         {
@@ -6647,6 +6980,7 @@
                 1763,
                 1770
             ],
+            "category": "Letters (Correspondence); Records (Documents); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "George Croghan letters, 1763-1770"
         },
         {
@@ -6664,6 +6998,7 @@
                 1824,
                 1834
             ],
+            "category": "Letters (Correspondence); Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "George Davenport letters, 1824-1834"
         },
         {
@@ -6681,6 +7016,7 @@
                 1770,
                 1775
             ],
+            "category": "Letters (Correspondence); Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Gideon Hawley letters, 1770-1775"
         },
         {
@@ -6697,6 +7033,7 @@
             "date": [
                 1694
             ],
+            "category": "Letters (Correspondence); Records (Documents); Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Francis Hooke letters, 1694"
         },
         {
@@ -6713,6 +7050,7 @@
             "date": [
                 1851
             ],
+            "category": "Diaries; Indians of North America; Edward E. Ayer Manuscript Collection; Travelers' writings",
             "title": "Frank Blackwell Mayer travel diary of Midwest trip, May-June 1851"
         },
         {
@@ -6729,6 +7067,7 @@
             "date": [
                 1851
             ],
+            "category": "Diaries; Indians of North America; Edward E. Ayer Manuscript Collection; Travelers' writings",
             "title": "Frank Blackwell Mayer travel diary of Midwest trip, June-July 1851"
         },
         {
@@ -6746,6 +7085,7 @@
                 1849,
                 1850
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; U.S. Western Expansion",
             "title": "Henry Perry letters, 1849-1850"
         },
         {
@@ -6762,6 +7102,7 @@
             "date": [
                 1801
             ],
+            "category": "Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Tom Placide essay on the Welsh Indians, 1801?"
         },
         {
@@ -6779,6 +7120,7 @@
                 1802,
                 1807
             ],
+            "category": "Letters (Correspondence); Edward E. Ayer Manuscript Collection; Indians of North America",
             "title": "Henry Dearborn letters, 1802-1807"
         },
         {
@@ -6795,6 +7137,7 @@
             "date": [
                 1875
             ],
+            "category": "Diaries; Travelers' writings; Women; Edward E. Ayer Manuscript Collection",
             "title": "Account of an expedition from Honolulu to Hilo, June-August 1875"
         },
         {
@@ -6812,6 +7155,7 @@
                 1867,
                 1871
             ],
+            "category": "Letters (Correspondence); Records (Documents); Edward E. Ayer Manuscript Collection",
             "title": "Jefferson Columbus Davis letters and records, 1867-1871"
         },
         {
@@ -6828,6 +7172,7 @@
             "date": [
                 1878
             ],
+            "category": "Diaries; Women; Travelers' writings; Edward E. Ayer Manuscript Collection",
             "title": "Marietta Davis travel diary of Mexico trip, February-March, 1878"
         },
         {
@@ -6844,6 +7189,7 @@
             "date": [
                 1878
             ],
+            "category": "Diaries; Women; Travelers' writings; Edward E. Ayer Manuscript Collection",
             "title": "Marietta Davis travel diary of Mexico trip, March-April, 1878"
         },
         {
@@ -6861,6 +7207,7 @@
                 1867,
                 1868
             ],
+            "category": "Diaries; Women; Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Harriet Caswell diary, 1867-1868"
         },
         {
@@ -6877,6 +7224,7 @@
             "date": [
                 1855
             ],
+            "category": "Diaries; Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Edwin Hatch diary, January-May 1855"
         },
         {
@@ -6893,6 +7241,7 @@
             "date": [
                 1855
             ],
+            "category": "Diaries; Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Edwin Hatch diary, June-October 1855"
         },
         {
@@ -6910,6 +7259,7 @@
                 1855,
                 1856
             ],
+            "category": "Diaries; Indians of North America; Edward E. Ayer Manuscript Collection",
             "title": "Edwin Hatch diary, November 1855-January 1856"
         },
         {
@@ -6919,13 +7269,14 @@
             ],
             "desc": "One of six personal diaries kept by Elvira Cecelia Sheridan Badger of Kentucky and Illinois, spanning the years 1859 through 1903. Diary entries concern the daily lives of a well-to-do family, including their 1861 move to Chicago, Illinois. Sentiment in Kentucky regarding the approach of the Civil War, relations with and freeing of the family's slaves, and news of the war are also noted. <a href=\"https://mms.newberry.org/xml/xml_files/Badger.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/61117",
-            "pc": "84",
+            "pc": "85",
             "pnr": "",
-            "weight": "084100",
-            "transcription": "November THURSDAY 10 1859\nThis has been a pretty day but cold - it rained last night - my little ones out walking - Daisy with a very sore mouth\nBelle very fat - I dont know wether she is swollen or not - Eva very fat + well - Siss called to see me - she sent me wafers\nMrs. Hilton called to see me - Aunt Carrie crying because Daisy is fretful + sick - Jamie sick with cold - + Fever Miss Morris gives a Party to Mrs. Lint Anderson - Miss Rawson also - My little ones all well -",
+            "weight": "085100",
+            "transcription": "November SUNDAY 13 1859\nOctave + his Father took supper\nIt commenced snowing last evening about eight and turned very cold - this morning the ground is also covered with snow - my Brother Joe arrived last night and came to see us this morning - he looks well + fat - Eva went to Sunday school with her Father - I went to hear Mr. Haywood with uncle Isaac + Mr. Badger - Joe came to see us this Afternoon - he dined with Ma & will take Tea with Siss - it still snows - we are all in health - had our first Turkey of the season",
             "date": [
                 1859
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Elvira Cecelia Sheridan Badger diary, 1859"
         },
         {
@@ -6943,6 +7294,7 @@
                 1861,
                 1863
             ],
+            "category": "Diaries; Women; Family papers; American Civil War (1861-1865)",
             "title": "Elvira Cecelia Sheridan Badger diary, 1861-1863"
         },
         {
@@ -6952,14 +7304,15 @@
             ],
             "desc": "One of six personal diaries kept by Elvira Cecelia Sheridan Badger of Kentucky and Illinois, spanning the years 1859 through 1903. Diary entries concern the daily lives of a well-to-do family, including their 1861 move to Chicago, Illinois. Sentiment in Kentucky regarding the approach of the Civil War, relations with and freeing of the family's slaves, and news of the war are also noted. <a target=\"_blank\" href=\"https://mms.newberry.org/xml/xml_files/Badger.xml\" rel=\"noreferrer\">View collection guide</a>.",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/60486",
-            "pc": "4",
+            "pc": "13",
             "pnr": "",
-            "weight": "004100",
+            "weight": "013100",
             "transcription": "Monday. Jan 1st 1866.\nover               New Years day\nAfter remaining about an hour. My Sister Mrs T T.\nShreve sent for us to come home. as we had\na serenade. we came over and found a\nband of seven playing before the door. we\ninvited them in and treated them to Cake\n& wine. and they went into the Parlour and\nplayed many tunes for us. and we danced\nin a few minutes all teh company at Mrs\nL. L. Shreve's came over and joined us\nand we danced untill one o.clock.\nMr & Mrs Shreve still in bed. we had a very\ngrand time. Mrs Scrips of Chicago fell dead to day. while\nentertaining.           Teusday Jan 2nd 1866.\nAfter breakfast we went into the Library\nand chatted awhile.  then Mary Goodloe went\nout and made some calls. News from Chicago state that\nCousin Eddie Cutts? was thrown from our Buggy and severely\nhurt on the first of January. he lies with eyes wide open and\nunconscious.     Wednesday Jan 3rd\nAgain it is bright but cold. all well but baby Shreve\nshe has cold. Virginia came to see us and brought\nher children. Mrs Bishop called and her daughter\nMrs Robbins. also Adele Peters. Dr Phelps and\nhis wife also called. Mary Goodloe left for\nher home at one O.clock to day. my children\nall out walking. Eddie still unconscious. pulse\nat forty. he has been several days injured and no\nsign of returning consciousness yet.\nThursday Jan 4th\nAnother clear cold day. Mrs A. Hite, Mrs Barret\nMrs Eaches. Mrs Wright Mrs Danforth. Mrs Nannie\nCarter and Miss Robinson. Miss Riddle also called\nand a Mrs Bartlett.\nnews from Chicago still unfavourable about Eddie\nno sign of consciousness for five days. all much\ndistressed about him. he Mother Aunt Lizzie\nas we call her is old and almost crazy.\nSheridan sick to night from indigestion. his\nstomach very delicate. Shreve has cold\nAdele Shreve has a severe cough.",
             "date": [
                 1865,
                 1875
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Elvira Cecelia Sheridan Badger diary, 1865-1875"
         },
         {
@@ -6976,6 +7329,7 @@
             "date": [
                 1903
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Elvira Cecelia Sheridan Badger diary, 1903"
         },
         {
@@ -6992,6 +7346,7 @@
             "date": [
                 1901
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Elvira Cecelia Sheridan Badger diary, 1901"
         },
         {
@@ -7008,6 +7363,7 @@
             "date": [
                 1902
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Elvira Cecelia Sheridan Badger diary, 1902"
         },
         {
@@ -7024,6 +7380,7 @@
             "date": [
                 1865
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1865"
         },
         {
@@ -7040,6 +7397,7 @@
             "date": [
                 1870
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1870"
         },
         {
@@ -7056,6 +7414,7 @@
             "date": [
                 1873
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1873"
         },
         {
@@ -7072,6 +7431,7 @@
             "date": [
                 1874
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1874"
         },
         {
@@ -7088,6 +7448,7 @@
             "date": [
                 1881
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1881"
         },
         {
@@ -7104,6 +7465,7 @@
             "date": [
                 1882
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1882"
         },
         {
@@ -7120,6 +7482,7 @@
             "date": [
                 1876
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1876"
         },
         {
@@ -7136,6 +7499,7 @@
             "date": [
                 1875
             ],
+            "category": "Diaries; Family papers",
             "title": "Edward A. Barnes diary, 1875"
         },
         {
@@ -7152,6 +7516,7 @@
             "date": [
                 1883
             ],
+            "category": "Letters (Correspondence); Women",
             "title": "Addie Cantrelli letters, 1883"
         },
         {
@@ -7168,6 +7533,7 @@
             "date": [
                 1893
             ],
+            "category": "Women; Records (Documents)",
             "title": "Christina Olson World’s Columbian Exposition work papers, 1893"
         },
         {
@@ -7185,6 +7551,7 @@
                 1901,
                 1906
             ],
+            "category": "Records (Documents); Women",
             "title": "Women's Christian Temperance Union minutes, 1901-1906"
         },
         {
@@ -7201,6 +7568,7 @@
             "date": [
                 1830
             ],
+            "category": "Diaries; Family papers",
             "title": "John Montgomery Roberts diary, 1830"
         },
         {
@@ -7217,6 +7585,7 @@
             "date": [
                 1831
             ],
+            "category": "Diaries; Family papers",
             "title": "John Montgomery Roberts diary, 1831"
         },
         {
@@ -7233,6 +7602,7 @@
             "date": [
                 1831
             ],
+            "category": "Diaries; Family papers; Women",
             "title": "Mary W. Roberts diary, 1831"
         },
         {
@@ -7250,6 +7620,7 @@
                 1832,
                 1848
             ],
+            "category": "Diaries; Family papers",
             "title": "John Montgomery Roberts diary, 1832-1848"
         },
         {
@@ -7267,6 +7638,7 @@
                 1848,
                 1858
             ],
+            "category": "Diaries; Family papers",
             "title": "John Montgomery Roberts diary, 1848-1858"
         },
         {
@@ -7284,6 +7656,7 @@
                 1859,
                 1886
             ],
+            "category": "Diaries; Family papers",
             "title": "Ann Waters and John Montgomery Roberts diary, 1859-1886"
         },
         {
@@ -7301,6 +7674,7 @@
                 1871,
                 1884
             ],
+            "category": "Diaries; Family papers",
             "title": "John Montgomery Roberts diary, 1871-1884"
         },
         {
@@ -7317,6 +7691,7 @@
             "date": [
                 1863
             ],
+            "category": "Diaries; American Civil War (1861-1865); Family papers",
             "title": "Hiram Scofield diary, 1863"
         },
         {
@@ -7333,6 +7708,7 @@
             "date": [
                 1866
             ],
+            "category": "Diaries; American Civil War (1861-1865); Family papers",
             "title": "Hiram Scofield diary, 1866"
         },
         {
@@ -7346,11 +7722,12 @@
             "pc": "",
             "pnr": "",
             "weight": "000100",
-            "transcription": "Chicago, 8. Mai 1870\nAllen wir im lieben unclear, dir süß",
+            "transcription": "Chicago, 8. Mai 1870\nAllen meinen lieben Verwandten, dir süß",
             "date": [
                 1851,
                 1887
             ],
+            "category": "Letters (Correspondence)",
             "title": "Hermann Raster letters [in German and English], 1851-1887"
         },
         {
@@ -7369,6 +7746,7 @@
                 1888,
                 1890
             ],
+            "category": "Letters (Correspondence)",
             "title": "Hermann Raster letters [in German and English], 1888-1890"
         },
         {
@@ -7387,6 +7765,7 @@
                 1880,
                 1930
             ],
+            "category": "Letters (Correspondence); Women",
             "title": "Anna Sophie Raster letters [in German and English], 1880-1930"
         },
         {
@@ -7403,6 +7782,7 @@
             "date": [
                 1890
             ],
+            "category": "Diaries; Women; Travelers’ writings",
             "title": "Anna Sophie Raster travel diary of Germany trip [in German], 1890"
         },
         {
@@ -7419,6 +7799,7 @@
             "date": [
                 1923
             ],
+            "category": "Diaries; Women; Travelers’ writings",
             "title": "Lenore Raster Aagaard travel diary of Germany trip, 1923"
         },
         {
@@ -7428,14 +7809,15 @@
             ],
             "desc": "Correspondence between Hermann Raster, a German immigrant \"Forty-Eighter\" and editor of the Illinois Staats-Zeitung, and his family. Series also includes correspondence between his family members. Raster’s letters cover topics such as his experiences and feelings as an immigrant in New York City, the aftermath of the Chicago fire in 1871, and his thoughts on the political climate of his time. The letters are in German, yet many have been translated by Raster’s granddaughter Lenore Raster Aagaard. Also included are materials such as diaries, account books, memorabilia, and photographs from Margarethe Raster, Anna Raster, and Lenore Raster. <a href=\"https://mms.newberry.org/xml/xml_files/raster.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>.",
             "image": "http://iiif.archivelab.org/iiif/mms_raster_box_008$1617",
-            "pc": "1",
+            "pc": "9",
             "pnr": "",
-            "weight": "001100",
+            "weight": "009100",
             "transcription": "Edwin Raster to his parents\n(Hermann Raster unclear)\ndescribing a planned\npanorama of Battle of\nShiloh.",
             "date": [
                 1883,
                 1906
             ],
+            "category": "Letters (Correspondence)",
             "title": "Edwin Otto Raster letters [in German], 1883-1906"
         },
         {
@@ -7454,6 +7836,7 @@
                 1871,
                 1923
             ],
+            "category": "Letters (Correspondence)",
             "title": "Raster family letters [in German and English], 1871-1923"
         },
         {
@@ -7472,6 +7855,7 @@
                 1897,
                 1898
             ],
+            "category": "Diaries; Women",
             "title": "Anna Sophie Raster diaries [in German], 1886, 1897-1898"
         },
         {
@@ -7489,6 +7873,7 @@
                 1898,
                 1899
             ],
+            "category": "Diaries; Women",
             "title": "Anna Sophie Raster diaries [in German], 1898-1899"
         },
         {
@@ -7505,6 +7890,7 @@
             "date": [
                 1930
             ],
+            "category": "Diaries; Women",
             "title": "Anna Sophie Raster diary of dream analysis, circa 1930"
         },
         {
@@ -7514,14 +7900,15 @@
             ],
             "desc": "Daniel Bond was a Union soldier, and a member of the Minnesota Infantry Regiment, 1st, Company F. Born in Randolph County, Indiana. Bond enlisted in April 1861, was discharged shortly after and then re-enlisted on 22 August 1861. He was mustered out on 24 July 1865. He was wounded at the Battle of Fredericksburg (1862). At the Battle of Petersburg (1864) Bond was captured and sent to Andersonville Prison from which he escaped. After the war, Bond was a teacher in Indiana and Kentucky. He spent his final years in Los Angeles. Included in the memoirs is a testimonial from the captain of Company F, John Ball, dated May 5th 1864 commending Bond and listing the battles in which Bond participated. <a href=\"https://webvoyage.carli.illinois.edu/nby/cgi-bin/Pwebrecon.cgi?DB=local&amp;v1=1&amp;BBRecID=135675\" target=\"_blank\" rel=\"noreferrer\">View catalog record</a>.",
             "image": "http://iiif.archivelab.org/iiif/mms_287$208",
-            "pc": "47",
+            "pc": "50",
             "pnr": "",
-            "weight": "047100",
-            "transcription": "48\nis a large old fashioned brick building. But I could see nothing about it worthy of particular remark. When we resumed our march we had an opportunity to observe Fort Magruder where our men were sadly butchered on the 5th of May. It is a large square fort and well protected from assault by fallen timber. We camped that night a short distance from Yorktown and remained the next day in that vicinity. When the tide was out we all went down to York river and dove for oysters. and the Cornucopia was in our camp. Oysters potatoes, peaches, apples, green corn and fresh pork. On the 22d we left camp and passing through York Town moved on in the direction of New Port M Newport News, we encamped that night near Big Bethel. And the next day reached Newport News. Here plenty still reigned. we followed diving for oysters as at Yorktown. On the 26th we embarked our brigade 2200 in number on the steam transport Mississippi. On the morn. of the 27th we steamed out and reached Aqua Creek where it was thought we would land about noon on the 28th. After some delay here we steamed on toward Alexandria but it was too late to get there that night and as the Captain was afraid to run his vessel after night we anchored till morning. We landed at Alexandria on the 29th. Went into camp about 3 miles west of the city and remained until the afternoon of the 30th. When we broke up camp and marching nearly all night rested a few hours just before day. then moved on to Chain Bridge. August. 31. We were here but a few hours when orders came for us to move to the support of Gen. Pope. Accordingly we set forward by way of the Old Fair State University marched till about 11 oclock that night then",
+            "weight": "050100",
+            "transcription": "62\nharlots and allowing themselves to be captured and led to Richmond in triumph by a cunning foe who knew well how to take advantage of the effeminate weakness of his antagonist.  Oh! how such things did chill my heart.  How often have I cursed the luxuries of our nation and wished that we were like the Spartans of Yore.  Drinking, gambling, Debauchery, gold, and glittering shown. Seemed the universal delight of our officers.  How unlike true warriors!  Representatives of Sardinopolas and not of Leonidas.  How encouraging to a soldier who loves his country better than aught else he loves. I intend to write in a book which I shall call \"Corruptions of The Army\" a few hundred such instances as this which have come either directly under my observation or of which I have the best of authority of their authenticity.  But for the present I will proceed with my narrative.  Only detailing such things as may be read in company and leaving the grosser parts for my future pen.",
             "date": [
                 1864,
                 1916
             ],
+            "category": "Diaries; American Civil War (1861-1865)",
             "title": "Daniel Bond diary, 1864-1916"
         },
         {
@@ -7539,6 +7926,7 @@
                 1804,
                 1805
             ],
+            "category": "Diaries; U.S. Western Expansion; Edward E. Ayer Manuscript Collection; Travelers' writings; Indians of North America",
             "title": "Joseph Whitehouse journal, 1804-1805"
         },
         {
@@ -7557,6 +7945,7 @@
                 1897,
                 1931
             ],
+            "category": "Letters (Correspondence)",
             "title": "Philip P. Bregstone letters and writings [in Yiddish and English], 1897-1931"
         },
         {
@@ -7574,6 +7963,7 @@
                 1865,
                 1893
             ],
+            "category": "Family papers",
             "title": "Edward A. Barnes hymns, poems, music and prose, 1865-1893"
         },
         {
@@ -7583,14 +7973,15 @@
             ],
             "desc": "Letters, genealogical information, and legal and financial documents of the Ames Family of Lake County, Illinois. Includes Civil War draft notices for stone mason Roderick D. Ames, and Civil War letters from his brother Joel W. Ames, who died in the Battle of Shiloh, Apr. 6, 1862. <a href=\"https://mms.newberry.org/xml/xml_files/Ames.xml\" target=\"_blank\" rel=\"noreferrer\">View collection guide</a>",
             "image": "https://collections.carli.illinois.edu/digital/iiif/nby_mms/61718",
-            "pc": "44",
+            "pc": "48",
             "pnr": "",
-            "weight": "044100",
+            "weight": "048100",
             "transcription": "you have time. The King? is staying here \nat present because he has had an \nillness. This visit makes Brighton very \nbusy indeed. Dada, Mother and sisters \nsend their best wishes to you all. I \nthink I have said all, and must now \ndraw to a close but will say more next \ntime. \nI remain \nyour loving niece \nNellie Mullins",
             "date": [
                 1864,
                 1899
             ],
+            "category": "Family papers; Letters (Correspondence); American Civil War (1861-1865)",
             "title": "Ames family letters, 1864-1899"
         },
         {
@@ -7608,6 +7999,7 @@
                 1896,
                 1898
             ],
+            "category": "Diaries; Women; Family papers",
             "title": "Emma Wormwood diary, 1896-1898"
         },
         {
@@ -7620,6 +8012,7 @@
             "weight": "",
             "transcription": "",
             "date": [],
+            "category": "Family papers",
             "title": "What Is the Midwest?: Family Manuscript Collections"
         }
     ],

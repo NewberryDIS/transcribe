@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 import json, os.path, time, math, re
 
 # current time, used for checking the age of the data files
@@ -29,7 +29,7 @@ imageList = []
 itemsFile = 'dataFiles/items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
 if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
-    urllib.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
+    urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
 
 def arrayCleaner(item):
     val = [x.strip() for x in item.split(';')]
@@ -76,7 +76,8 @@ with open(itemsFile) as json_file:
             'pnr': '', 
             'weight': '', 
             'transcription': '',
-            'date': ''
+            'date': '',
+            'category': '',
         }
         count += 1
         id = str(i['id'])
@@ -88,14 +89,15 @@ with open(itemsFile) as json_file:
             fileModTime = os.path.getmtime(filesfilename)
             if currTime - fileModTime > 86400:
                 downloadedFileCount += 1
-                urllib.urlretrieve(filesurl, filesfilename)
-                urllib.urlretrieve(itemurl, itemfilename)
+                urllib.request.urlretrieve(filesurl, filesfilename)
+                urllib.request.urlretrieve(itemurl, itemfilename)
             else:
                 skippedFileCount += 1
     # 2. create array of subjects with each corresponding id as a value
         for e in i['element_texts']: 
             if e['element']['name'] == 'Subject':
                 tagCleaner(e['text'], content['subjects'], id)
+                itemObj['category'] = e['text']
     # 3. iterate over files files and get completed status, then add transcripts to content.items.id, concatentated for ease of search
         with open(filesfilename) as files:
             filesJson = json.load(files)

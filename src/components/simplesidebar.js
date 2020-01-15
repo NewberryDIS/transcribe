@@ -104,23 +104,34 @@ const Sidebarcss = styled.div`
         padding-top: 10px;
     }
 `
+
 const Sidebar = props => {
+    const [input, setInput] = useState('')
+    // const [reset, setReset] = useState(true)
+    function resetSearchText(el){
+        el.value = ''
+    }
     const resetFilters = () => {
+        // setReset(false)
         props.setTextFilter('')
         props.setDateFilter(1)
         props.setLangFilter('English')
         props.setSubjFilter('')
         props.setBoxWidth(true)
+        const searchField = document.querySelector('.searchInput')
+        searchField.value = ''
         const selectors = document.querySelectorAll('.dropdown')
         let items = Array.from(selectors).map(s => {
             s.options.selectedIndex = 0
         })
+        // setReset(true)
+        setInput('')
     }
     return (
         <Sidebarcss>
             <div className="sidebarcontent">
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} />
+                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} />
                 <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
                 <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
                 <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} />

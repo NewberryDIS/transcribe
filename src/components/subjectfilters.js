@@ -29,7 +29,7 @@ font-family: sans-serif;
 `
 
 const SubjectFilters = props => {
-    const subjectarray = ['Family Life','Diaries','Westward','Secrets','Cool Tapes','Badly Tuned Radio','Weird people','Poetics','Absent Referents', 'the']
+    const subjectarray = ["Family papers","Diaries","Women","World's Columbian Exposition","Travelers’ writings","Letters (Correspondence)","Records (Documents)","American Civil War (1861-1865)","Everett D. Graff Collection of Western Americana","U.S. Western Expansion","Indians of North America","Travelers' writings","Edward E. Ayer Manuscript Collection","Letters (Documents)","Poems"]
     const subjectlist = subjectarray.map((s, index) => {
         return <li key={index} onClick={() => props.setSubjFilter(s)}>{s}</li>
     })

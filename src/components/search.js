@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import searchIcon from '../images/searchIcon.png'
+import { useEffect } from 'react'
 
 const Searchcss = styled.div`
     border: 1px solid black;
@@ -29,22 +30,27 @@ const Searchcss = styled.div`
     }
 `
 const Search = props => {
-    const [input, setInput] = useState('')
-    let text = input.length > 0 ? input : 'Search the transcriptions...'
+    let text = props.input.length > 0 ? props.input : 'Search the transcriptions...'
     const handleChange = (e) => {
-        setInput(e.target.value)
+        props.setInput(e.target.value)
     }
     const submitSearch = () => {
-        props.setTextFilter(input)
+        props.setTextFilter(props.input)
+        console.log(props.input)
     }
     const handleKeyDown = (e) => {
         if(e.keyCode === 13){
             submitSearch()
         }
     }
+
+    // useEffect(() =>{
+    //     console.log('reacting')
+    //     setInput('')
+    // }, [props.reset])
     return (
         <Searchcss>
-            <input className="searchInput" placeholder={text} value={input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
+            <input className="searchInput" placeholder={text} value={props.input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
             <div className="searchbutton" onClick={submitSearch}></div>
         </Searchcss>
     )

@@ -17,7 +17,7 @@ const Boxescss = styled.div`
         flex: 1;
         width: calc(100% - 20vw);
         display: flex;
-        align-content: space-between;
+        align-content: flex-start;
         justify-content: space-evenly;
         flex-wrap: wrap;
     }
@@ -65,7 +65,7 @@ const Boxes = props => {
             // the first one is probably going to work once we have subjects in the data, but it's untested; currently its just searcing in the description, which will probably always fail, so subjects is nonfunctional, but will not error
             if (subjFilter.length > 0){
                 // subjfilter = i.subjects.indexOf(subjectFilter) === -1 ? false : true
-                subjfilter = i.desc.indexOf(subjFilter) === -1 ? false : true
+                subjfilter = i.category.indexOf(subjFilter) === -1 ? false : true
             }
             const result = datefilter && langfilter && textfilter && subjfilter
             resultCount = result ? resultCount + 1 : resultCount
@@ -83,7 +83,7 @@ const Boxes = props => {
         setBoxes(() => boxify(contentForBoxing))
     }
     function clicker() {
-        console.log(' ; textFilter: ' + textFilter +' ; dateFilter: ' + dateFilter +' ; subjFilter: ' + subjFilter +' ; langFilter: ' + langFilter )
+        // console.log(' ; textFilter: ' + textFilter +' ; dateFilter: ' + dateFilter +' ; subjFilter: ' + subjFilter +' ; langFilter: ' + langFilter )
     }
     useEffect(() => {
         filterContent()
