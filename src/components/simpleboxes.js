@@ -27,7 +27,7 @@ const Boxes = props => {
     const qty = 18
     const [ boxWidth, setBoxWidth ] = useState(true)
     const [ textFilter, setTextFilter ] = useState('')
-    const [ dateFilter, setDateFilter ] = useState([1600, 2020])
+    const [ dateFilter, setDateFilter ] = useState(1)
     const [ subjFilter, setSubjFilter ] = useState('')
     const [ langFilter, setLangFilter ] = useState('English')
     const initialContent = filterContent()
@@ -51,13 +51,15 @@ const Boxes = props => {
             if (textFilter.length > 0){
                 textfilter = i.transcription.toLowerCase().indexOf(textFilter) === -1 ? false : true
             }
-            if (i.date.length === 1){
-                datefilter = i.date[0] >= dateFilter[0] && i.date[0] <= dateFilter[1] ? true : false
+            if ( dateFilter === 1) {
+                datefilter = true
+            } else if (i.date.length === 1){
+                datefilter = i.date[0] >= dateFilter && i.date[0] <= dateFilter + 9 ? true : false
             } else if (i.date.length === 2) {
-                datefilter = i.date[0] <= dateFilter[1] && i.date[1] >= dateFilter[0] ? true : false
+                datefilter = i.date[0] <= dateFilter + 9 && i.date[1] >= dateFilter ? true : false
             } else {
                 for (let d in i.date){
-                    datefilter = i.date[d] >= dateFilter[0] && i.date[d] <= dateFilter[1] ? true : false
+                    datefilter = i.date[d] >= dateFilter && i.date[d] <= dateFilter + 9 ? true : false
                 }
             }
             // the first one is probably going to work once we have subjects in the data, but it's untested; currently its just searcing in the description, which will probably always fail, so subjects is nonfunctional, but will not error
@@ -81,6 +83,7 @@ const Boxes = props => {
         setBoxes(() => boxify(contentForBoxing))
     }
     function clicker() {
+        console.log(' ; textFilter: ' + textFilter +' ; dateFilter: ' + dateFilter +' ; subjFilter: ' + subjFilter +' ; langFilter: ' + langFilter )
     }
     useEffect(() => {
         filterContent()

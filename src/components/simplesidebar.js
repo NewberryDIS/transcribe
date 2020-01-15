@@ -12,38 +12,25 @@ const Selectcss = styled.select`
     background: rgba(255,255,255,0.7);
     font-size: 16px;
 `
-
 const Languages = props => {
-    const languages = ['English', 'German', 'Italian', 'Spanish', 'Yiddish']
+    const languages = ['English','French','German','Italian','Welsh','Yiddish']
     const langdropdown = languages.map((l) => <option key={l} value={l} >{l}</option>)
     return (
-        <Selectcss name="dropdownlanguages" onChange={(e) => props.filterHandler('langFilter',e.target.value)}>
-            <option >Select a language...</option>
+        <Selectcss name="dropdownlanguages" className="dropdown" onChange={(e) => props.setLangFilter(e.target.value)} >
+            <option value="English">Select a language...</option>
             {langdropdown}
         </Selectcss>
     )
 }
-
-
 const Dates = props => {
-    let range = [1660, 1990]
+    const range = [1630, 1990]
     let decades = []
     for (let i = range[0]; i < range[1]; i += 10){
-        let range = [i, i + 9]
-        decades.push(<option key={i} value={range[0]} >{range[0]} - {range[1]}</option>)
-    }
-    useEffect(() =>{
-        // maybe the answer ?
-        // https://stackoverflow.com/questions/46294864/reactjs-clear-select-value-on-focus
-    }, [props.reset])
-    const dateChanger = (value) => {
-        let valarr = [parseInt(value), parseInt(value) + 9]
-        console.log(valarr)
-        props.setDateFilter(valarr)
+        decades.push( i === 1960 || i === 1970 ? '' : <option key={i} value={i} >{i} - {i + 9}</option>)
     }
     return (
-        <Selectcss name="dropdowndecade" defaultValue={range} onChange={(e) => dateChanger(e.target.value)}  >
-            <option value=''>Select a decade...</option>
+        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" defaultValue={1} onChange={(e) => props.setDateFilter(parseInt(e.target.value))}  >
+            <option value={1}>Select a decade...</option>
             {decades}
         </Selectcss>
     )
@@ -91,7 +78,6 @@ const Progresscss = styled.div`
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
 const Sidebarcss = styled.div`
     width: 20vw;
     height: 100%;
@@ -118,24 +104,26 @@ const Sidebarcss = styled.div`
         padding-top: 10px;
     }
 `
-
 const Sidebar = props => {
-    const [ reset, setReset ] = useState(false)
-    function resetFilters(){
+    const resetFilters = () => {
         props.setTextFilter('')
-        props.setDateFilter([1600,2020])
+        props.setDateFilter(1)
         props.setLangFilter('English')
         props.setSubjFilter('')
         props.setBoxWidth(true)
+        const selectors = document.querySelectorAll('.dropdown')
+        let items = Array.from(selectors).map(s => {
+            s.options.selectedIndex = 0
+        })
     }
     return (
         <Sidebarcss>
             <div className="sidebarcontent">
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} reset={reset} setReset={setReset} />
-                <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} reset={reset} setReset={setReset} />
-                <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} reset={reset} setReset={setReset} />
-                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} reset={reset} setReset={setReset} />
+                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} />
+                <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
+                <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
+                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} />
                 <span className="count" >{props.resultCount ? props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.'  : ''} </span>
                 <Resetbutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Resetbutton>
             </div>
@@ -144,7 +132,6 @@ const Sidebar = props => {
 }
 
 const Progress = props => {
-    let percentComplete = Math.round(props.progress.percentComplete)
     return (
         <Progresscss percent={props.progress.percentComplete}>
             <div className="complete"></div>

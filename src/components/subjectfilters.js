@@ -29,14 +29,18 @@ font-family: sans-serif;
 `
 
 const SubjectFilters = props => {
-    const subjectarray = ['Family Life','Diaries','Westward','Secrets','Cool Tapes','Badly Tuned Radio','Weird people','Poetics','Absent Referents']
+    const subjectarray = ['Family Life','Diaries','Westward','Secrets','Cool Tapes','Badly Tuned Radio','Weird people','Poetics','Absent Referents', 'the']
     const subjectlist = subjectarray.map((s, index) => {
-        return <li key={index}>{s}</li>
+        return <li key={index} onClick={() => props.setSubjFilter(s)}>{s}</li>
     })
+    const clickHandler = (e, s) => {
+        props.setSubjFilter(s)
+        console.log('subject filter: "' + props.subjFilter + '"')
+    }
     return (
         <Subjectcss>
             <span>Select a subject...</span>
-           <ul>
+            <ul>
                {subjectlist}
                <li>View All Items</li>
             </ul>
