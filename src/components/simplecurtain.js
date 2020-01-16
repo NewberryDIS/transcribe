@@ -2,6 +2,8 @@ import React from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
 import Feature from './feature'
+import SvgLogo from './logo'
+import logo from '../images/drawing.svg'
 import bg from '../images/nbbg.jpg'
 import bg1 from '../images/lgbg1.jpg'
 import bg2 from '../images/lgbg2.jpg'
@@ -68,6 +70,10 @@ const Curtaincss = styled.div`
     }
     background-size: cover;
     background-position: 50% 50%;
+    img {
+        // height: 40px;
+    }
+    
 `
 const Curtain = props => {
     const curtain = typeof document !== `undefined` ? document.querySelector('.curtain') : null
@@ -102,8 +108,8 @@ const Curtain = props => {
             <div className="banner">
                 <div className="left">
                     Newberry Transcribe
-                    {/* Briny Crab Western */}
                 </div>
+<SvgLogo /><img src={logo} />
                 <div className="right">
                     Be a part of history
                 </div>

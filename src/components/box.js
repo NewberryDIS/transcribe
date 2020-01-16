@@ -85,7 +85,7 @@ const Boxcss = styled.a`
 `
 const Box = props => {
     return (
-    <Boxcss className={props.boxWidth ? 'box' : 'widebox'} href={props.link}>
+    <Boxcss className={props.boxWidth ? 'box' : 'widebox'} id={props.id} href={props.link}>
         <div className="boxFooter">
             <div className="boxtext">
                 <h3>{props.title.length > 70 ? props.title.substring(0,70) + '...' : props.title}</h3>

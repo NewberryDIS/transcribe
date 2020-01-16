@@ -22,9 +22,43 @@ const Boxescss = styled.div`
         flex-wrap: wrap;
     }
 `
+const Morebutton = styled.div`
+        width: 100%;
+        text-align: center;
+        .button {
+            font-family: sans-serif;
+            margin: 25px auto;
+            display: inline-block;
+            width: initial;
+            padding: 12px 15px ;
+            border: 1px solid black;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: inset 0 0 10px rgba(0,42,85,1);
+            background: rgba(125,159,193,1);
+            color: rgba(37,37,37,0.8);
+            transition: background 0.5s, color 0.1s;
+            &:hover {
+                color: rgba(37,37,37,1);
+                background: rgba(143,169,195,1);
+            }
+            &.inactive {
+                cursor: not-allowed;
+                box-shadow: inset 0 0 10px rgba(37,37,37,1);
+                background: rgba(125,125,125,1);
+                color: rgba(37,37,37,0.4);
+                transition: background 0.5s, color 0.1s;
+                &:hover {
+                    color: rgba(37,37,37,0.4);
+                    background: rgba(125,125,125,1);
 
+                }
+            }
+        }
+    }
+`
 const Boxes = props => {
-    const qty = 18
+    const qty = 9
     const [ boxWidth, setBoxWidth ] = useState(true)
     const [ textFilter, setTextFilter ] = useState('')
     const [ dateFilter, setDateFilter ] = useState(1)
@@ -36,7 +70,7 @@ const Boxes = props => {
     function boxify(content) { 
         return content.map((i) => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/square/400,/0/default.jpg'
-            return <Box boxWidth={boxWidth} key={i.id} className="box" textFilter={textFilter} title={i.title} text={i.desc} img={img} script={i.transcription} />
+            return <Box boxWidth={boxWidth} key={i.id} id={i.id} className="box" textFilter={textFilter} title={i.title} text={i.desc} img={img} script={i.transcription} />
         })
     }
     let resultCount = 0
@@ -77,10 +111,16 @@ const Boxes = props => {
             return tempCurrContent
         }
     }
+    const [showButton, setShowButton] = useState(true);
     const [boxes, setBoxes] = useState(initialBoxes)
     function rewriteContent(){
-        const contentForBoxing = filteredContent.length > qty ? filteredContent.slice((boxes.length - 1), (boxes.length - 1) + qty) : filteredContent 
-        setBoxes(() => boxify(contentForBoxing))
+        const dblqty = boxes.length > 10 ? qty * 2 : qty
+        // console.log('filteredcontent lenght: ' + filteredContent.length + '; qty: ' + qty + '; boxes.length: ' + boxes.length)
+        const contentForBoxing = filteredContent.length > dblqty ? filteredContent.slice((boxes.length), boxes.length + dblqty) : filteredContent 
+        console.log(boxes)
+        const moreBoxes = boxify(contentForBoxing)
+        setBoxes(boxes => [...boxes, ...moreBoxes]) 
+        if (boxes && boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
     function clicker() {
         // console.log(' ; textFilter: ' + textFilter +' ; dateFilter: ' + dateFilter +' ; subjFilter: ' + subjFilter +' ; langFilter: ' + langFilter )
@@ -109,7 +149,9 @@ const Boxes = props => {
             />
             <div className="boxwrapper">
                 {boxes}
-            <button onClick={clicker}>click</button>
+                <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => rewriteContent()}>More</div></Morebutton>
+            
+            {/* <button onClick={clicker}>click</button> */}
             </div>
         </Boxescss>
     )
