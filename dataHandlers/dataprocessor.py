@@ -69,6 +69,7 @@ with open(itemsFile) as json_file:
     for i in items:
         itemObj = {
             'id': '',
+            'count': '',
             'lang': '', 
             'desc': '', 
             'image': '', 
@@ -81,6 +82,7 @@ with open(itemsFile) as json_file:
         }
         count += 1
         id = str(i['id'])
+        itemObj['count'] = i['files']['count']
         filesurl = 'http://publications.newberry.org/transcription/mms-transcribe/api/files?item=' + id
         filesfilename = 'dataFiles/files' + id + '.json'
         itemurl = 'http://publications.newberry.org/transcription/mms-transcribe/api/items/' + id
@@ -120,8 +122,8 @@ with open(itemsFile) as json_file:
                 lang = ''
                 desc = ''
                 image = ''
-                pc = ''
-                pnr = ''
+                pc = 0
+                pnr = 0
                 weight = ''
                 itemObj['id'] = id
                 if ie['element']['name'] == 'Language':
@@ -132,8 +134,8 @@ with open(itemsFile) as json_file:
                 if ie['element']['name'] == 'Source':               
                     itemObj['image'] = ie['text']
                     imageList.append(ie['text'])
-                if ie['element']['name'] == 'Percent Completed':    itemObj['pc'] = ie['text']
-                if ie['element']['name'] == 'Percent Needs Review': itemObj['pnr'] = ie['text']
+                if ie['element']['name'] == 'Percent Completed':    itemObj['pc'] = int(ie['text'])
+                if ie['element']['name'] == 'Percent Needs Review': itemObj['pnr'] = int(ie['text'])
                 if ie['element']['name'] == 'Weight':               itemObj['weight'] = ie['text']
                 if ie['element']['name'] == 'Title':
                     title = ie['text']

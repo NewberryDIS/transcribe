@@ -1,9 +1,9 @@
 module.exports = {
 pathPrefix: "/transcribe",
 siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Newberry Transcribe`,
+    description: `Become a part of history`,
+    author: `@digitalnewberry`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,9 +33,11 @@ siteMetadata: {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Lato`,
-          },
+            // family: `Lato`,
+            {family: `Playfair Display`},
+            {family: `PT Mono`},
+            {family: 'Crimson Text'},
+            {family: 'Raleway'},
         ],
       },
     }

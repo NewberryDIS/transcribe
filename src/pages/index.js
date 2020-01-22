@@ -21,7 +21,7 @@ const content = require('../data/content.json')
 const Index = () => {
     //     const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     //     const currContent = allContent
-    const currContent = content['items']
+    const currContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     const [resultCount, setResultCount] = useState(0)
     return (
         <Indexcss >

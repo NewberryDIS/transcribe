@@ -3,6 +3,7 @@ import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
 import Feature from './feature'
 import SvgLogo from './logo'
+import { fonts } from './styles'
 import logo from '../images/drawing.svg'
 import bg from '../images/nbbg.jpg'
 import bg1 from '../images/lgbg1.jpg'
@@ -51,6 +52,7 @@ const Curtaincss = styled.div`
         overflow: hidden;
     }
     .banner {
+        font-family: ${fonts.serif};
         transition: font-size 0.1s, line-height 0.1s;
         display: flex;
         justify-content: space-between;
@@ -70,8 +72,9 @@ const Curtaincss = styled.div`
     }
     background-size: cover;
     background-position: 50% 50%;
-    img {
-        // height: 40px;
+    .nogo {
+        // color: white;
+        height: var(--logosize);
     }
     
 `
@@ -92,9 +95,13 @@ const Curtain = props => {
                 to: 0
             },
             '--fontsize': {
-                from: '15vmin',
+                from: '10vmin',
                 to: '2.5vmin',
             },
+            // '--logosize': {
+            //     from: '12vmin',
+            //     to: '2vmin'
+            // }   
         }
     // }) : ''
     })
@@ -107,9 +114,9 @@ const Curtain = props => {
             </div>
             <div className="banner">
                 <div className="left">
+                {/* <img className="nogo" src={logo} /> */}
                     Newberry Transcribe
                 </div>
-<SvgLogo /><img src={logo} />
                 <div className="right">
                     Be a part of history
                 </div>

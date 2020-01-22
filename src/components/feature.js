@@ -1,12 +1,14 @@
 import React from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
+import { fonts } from './styles'
 
 const Featurecss = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
     .feature {
+        font-family: ${fonts.mono};
         box-shadow: inset 0 0 10px rgba(207,207,207,1);
         margin: 5vmin;
         width: 25vmin;

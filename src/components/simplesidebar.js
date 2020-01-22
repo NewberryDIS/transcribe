@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import SubjectFilters from './subjectfilters'
 import Search from './search'
+import Progress from './progressbar'
+import { fonts, colors } from './styles'
 
 const Selectcss = styled.select`
+    font-family: ${fonts.sans};
+    box-shadow: inset 0 0 10px rgba(0,42,85,0.5);
     border: 2px solid rgba(37,37,37,0.7);
+    background: rgba(237,237,237,0.7);
     padding: 7px 5px 5px 5px;
     margin: 10px 0;
     height: 40px;
     line-height: 30px;
-    background: rgba(255,255,255,0.7);
     font-size: 16px;
 `
 const Languages = props => {
@@ -35,56 +39,23 @@ const Dates = props => {
         </Selectcss>
     )
 }
-
-const Progresscss = styled.div`
-    border: 2px solid rgba(37,37,37,0.7);
-    margin: 10px 0;
-    height: 35px;
-    box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
-    position: relative;
-    display: flex;
-    &:hover {
-        .text {
-            color: rgba(37,37,37,0.9);
-        }
-        .complete {
-            background: rgba(0,85,170,0.3);
-        }
-    }
-    .text {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 35px;
-        font-size: 16px;
-        line-height: 16px;
-        padding: 2px 0;
-        // margin: 0 auto;
-        text-align: center;
-        color: rgba(37,37,37,0.8);
-        transition: color 0.3s;
-    }
-    .complete {
-        display: block;
-        background: rgba(0,85,170,0.4);
-        flex-basis: ${props => props.percent}%;
-        transition: background 0.5s;
-    }
-    transition: background 0.5s;
-    transition: color 0.5s;
-`
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 const Sidebarcss = styled.div`
-    width: 20vw;
+// sizes
+@media only screen and (min-width: 1200px){
+    --width: 20vw;
+}
+@media only screen and (max-width: 1200px){
+    --width: 35vw;
+}
+@media only screen and (max-width: 700px){
+    --width:  45vw;
+}
+    width: var(--width);
     height: 100%;
     // min-height: 100%;
     position: sticky;
     top: 4vmin;
-    color: rgba(207,207,207,1);
+    color: rgba(${colors.bg},1);
     .sidebarcontent {
         height: 100%;
         overflow: auto;
@@ -93,13 +64,14 @@ const Sidebarcss = styled.div`
         padding: 15px;
         display: flex;
         flex-direction: column;
-        background-color: rgba(207,207,207,1);
-        border: 1px solid rgba(37,37,37,1);
-        color: rgba(37,37,37,1);
+        background: rgba(${colors.bg},1);
+        border: 1px solid rgba(${colors.fg},1);
+        color: rgba(${colors.fg},1);
         justify-content: space-between;
-        box-shadow: inset 0 0 8px rgba(37,37,37,1);
+        box-shadow: inset 0 0 8px rgba(${colors.fg},1);
     }
     .count {
+        font-family: ${fonts.serif};
         text-align: center;
         padding-top: 10px;
     }
@@ -124,38 +96,29 @@ const Sidebar = props => {
         let items = Array.from(selectors).map(s => {
             s.options.selectedIndex = 0
         })
-        // setReset(true)
         setInput('')
     }
     return (
         <Sidebarcss>
             <div className="sidebarcontent">
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} />
+                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
                 <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
                 <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
                 <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} />
-                <span className="count" >{props.resultCount ? props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.'  : ''} </span>
+                <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Resetbutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Resetbutton>
             </div>
         </Sidebarcss>
     )
 }
 
-const Progress = props => {
-    return (
-        <Progresscss percent={props.progress.percentComplete}>
-            <div className="complete"></div>
-            <div className="text">{numberWithCommas(props.progress.totalcomplete)} out of {numberWithCommas(props.progress.total)} pages completed!</div>
-        </Progresscss>
-    )
-}
 
 const Resetbutton = styled.div`
     width: 100%;
     text-align: center;
     .button {
-        font-family: sans-serif;
+        font-family: ${fonts.sans};
         margin: 12px auto 25px auto;
         // margin: 25px auto;
         display: inline-block;
@@ -165,12 +128,12 @@ const Resetbutton = styled.div`
         border-radius: 8px;
         cursor: pointer;
         box-shadow: 0 0 10px rgba(0,42,85,1);
-        background: rgba(125,159,193,1);
-        color: rgba(37,37,37,0.8);
+        background: rgba(${colors.hl},0.5);
+        color: rgba(${colors.fg},0.8);
         transition: background 0.5s, color 0.1s;
         &:hover {
-            color: rgba(37,37,37,1);
-            background: rgba(143,169,195,1);
+            color: rgba(${colors.fg},1);
+            background: rgba(${colors.hl},0.7);
         }
         &.inactive {
             cursor: not-allowed;
