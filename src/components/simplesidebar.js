@@ -105,7 +105,7 @@ const Sidebar = props => {
                 <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
                 <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
                 <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
-                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} />
+                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} resetFilters={resetFilters} />
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Resetbutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Resetbutton>
             </div>

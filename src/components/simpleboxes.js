@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import Sidebar from './simplesidebar'
 import { fonts } from './styles'
 import Box from './box'
+import Rectangle from './rectangle'
 
 const Boxescss = styled.div`
     flex: 1;
@@ -69,7 +70,16 @@ const Morebutton = styled.div`
         }
     }
 `
-const truncator = t => Math.min(t.indexOf('<'), 200) > -1 ? t.substring(0,Math.min(t.indexOf('<'), 200)) + '...' : t
+
+const Nothing = styled.div`
+
+margin: 10px auto;
+background:white;
+`
+
+// truncates description to 200 characters, or first appearance of html
+const truncator = t => t.indexOf('<') > -1 ? t.substring(0,t.indexOf('<')) + '...' : t
+// removes diacritics, lowercases
 const normalizeText = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 const Boxes = props => {
     const qty = 18
@@ -81,35 +91,9 @@ const Boxes = props => {
     let resultCount = 0
     const initialContent = () => { 
         let tempCurrContent = props.currContent.filter(function(i) {
-            let langfilter = false,
-                textfilter = true,
-                datefilter = false,
-                subjfilter = true
+            let langfilter = false
             langfilter = i.lang.indexOf(langFilter) > -1 ? true : false
-            
-            if (textFilter.length > 0){
-                const needle = normalizeText(textFilter)
-                const haystack = normalizeText(i.transcription)
-                textfilter = haystack.indexOf(needle) === -1 ? false : true
-            }
-            if ( dateFilter === 1) {
-                datefilter = true
-            } else if (i.date.length === 1){
-                datefilter = i.date[0] >= dateFilter && i.date[0] <= dateFilter + 9 ? true : false
-            } else if (i.date.length === 2) {
-                datefilter = i.date[0] <= dateFilter + 9 && i.date[1] >= dateFilter ? true : false
-            } else {
-                for (let d in i.date){
-                    datefilter = i.date[d] >= dateFilter && i.date[d] <= dateFilter + 9 ? true : false
-                }
-            }
-            // the first one is probably going to work once we have subjects in the data, but it's untested; currently its just searcing in the description, which will probably always fail, so subjects is nonfunctional, but will not error
-            if (subjFilter.length > 0){
-                // subjfilter = i.subjects.indexOf(subjectFilter) === -1 ? false : true
-                subjfilter = i.category.indexOf(subjFilter) === -1 ? false : true
-            }
-            const result = datefilter && langfilter && textfilter && subjfilter
-            return result
+            return langfilter
         })
         return tempCurrContent
     }
@@ -125,8 +109,21 @@ const Boxes = props => {
             }
             const desc = truncator(i.desc)
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/full/400,/0/default.jpg'
-            return <Box category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} />
+            let searchresults =  textFilter !== '' ? filterText(textFilter, i.transcription) : ''
+            const returnDiv = textFilter !== '' ? 
+                <Rectangle setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
+                : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} /> 
+            return returnDiv
         })
+    }
+    function filterText(n, hh){
+        let returnArray = []
+        hh.forEach(h => {
+            const needle = normalizeText(n)
+            const haystack = normalizeText(h[1])
+            if (haystack.indexOf(needle) > -1) returnArray.push(h)
+        })
+        return returnArray
     }
     function filterContent() {
         resultCount = 0
@@ -137,7 +134,7 @@ const Boxes = props => {
                 subjfilter = true
             langfilter = i.lang.indexOf(langFilter) > -1 ? true : false
             if (textFilter.length > 0){
-                textfilter = i.transcription.toLowerCase().indexOf(textFilter) === -1 ? false : true
+                textfilter = filterText(textFilter, i.transcription).length > 0 ? true : false
             }
             if ( dateFilter === 1) {
                 datefilter = true
@@ -203,6 +200,7 @@ const Boxes = props => {
             />
             <div className={boxWidth ? 'boxwrapper' : 'boxwrapper wide'}>
                 {boxes}
+                {boxes.length === 0 ? <Nothing >No results</Nothing> :''}
                 <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => addBoxes()}>More</div></Morebutton>
             
             {/* <button onClick={clicker}>click</button> */}

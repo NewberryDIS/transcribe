@@ -39,7 +39,7 @@ const SubjectFilters = props => {
             <span>Select a subject...</span>
             <ul>
                {subjectlist}
-               <li>View All Items</li>
+               <li onClick={() => props.resetFilters()}>View All Items</li>
             </ul>
         </Subjectcss>
     )

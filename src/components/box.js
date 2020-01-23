@@ -3,39 +3,49 @@ import styled from '@emotion/styled'
 import { fonts, colors } from './styles'
 import Progress from './progressbar';
 
-var Highlight = require('react-highlighter');
-
 const Boxcss = styled.a`
     // sizes
+    @media only screen and (min-width: 1500px){
+        --width:20vw;
+        --height:20vw;
+    }
     @media only screen and (min-width: 1200px){
-        --width: 20vw;
-        --height: 20vw;
+        --width: 30vw;
+        --height: 30vw;
+        height: var(--height);
         &:hover {
             img {
                 top: calc((var(--width) * 0.75) * -1);
             }
         }
         .textbox {
+            height: calc(var(--height) * 0.75);
             padding: 15px;
             padding-top: calc(var(--height) * 0.25);
         }
     }
     @media only screen and (max-width: 1200px){
-        --width: 35vw;
-        --height: 35vw;
+        --width:  25vw;
+        --height: 40vw;
+        --semiheight: 33vw;
         &:hover {
             img {
-                top: calc((var(--width) * 0.75) * -1);
+                top: 0;
             }
         }
         .textbox {
+            max-height: var(--height);
             padding: 15px;
-            padding-top: calc(var(--height) * 0.25);
+            padding-top: var(--width);
+        }
+        .text-wrapper {
+            max-height: 100%;
         }
     }
     @media only screen and (max-width: 700px){
         --width:  45vw;
         --height: 90vw;
+        --semiheight: 33vw;
         &:hover {
             img {
                 top: 0;
@@ -52,18 +62,15 @@ const Boxcss = styled.a`
     .highlight {
         background: yellow;
     }
-
     display: block;
     margin: 1vw;
     flex-basis: var(--width);
-    height: var(--height);
     position: relative;
     overflow: hidden;
     .textbox {
-        height: calc(var(--height) * 0.75);
         display: flex;
         flex-direction: column;
-        // align-content: stretch;
+        align-content: space-between;
         // justify-content: stretch;
     }
     h3 {
@@ -89,16 +96,32 @@ const Boxcss = styled.a`
         width: var(--width);
         height: var(--width);
     }
-
+    .desc {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .category {
         font-family: ${fonts.sans};
         font-size: 0.7rem;
         text-transform: uppercase;
         color: rgba(${colors.hl}, 1);
         span {
+            cursor: pointer;
             margin: 0;
             padding: 0 5px;
-            border-right: 1px solid rgba(${colors.hl}, 1);
+            border-right: 1px solid rgba(${colors.hl}, 0.8);
+
+            background-image: linear-gradient(transparent 1px, rgba(${colors.hl}, 0.8) 2px);
+            background-size: 0% 2px;
+            background-position: 0% 105%;
+            background-repeat: no-repeat;
+            transition: background-size 0.2s ease 0s;
+
+            &:hover {
+                // border-bottom: 1px solid rgba(${colors.hl}, 1);
+                background-size: 100% 3px;
+            }
             &:last-of-type {
                 border-right: 0;
             }
@@ -109,6 +132,8 @@ const Boxcss = styled.a`
     }
     .textwrapper {
         flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     .progress {
         flex-basis: 40px;
@@ -117,7 +142,8 @@ const Boxcss = styled.a`
 `
 const Box = props => {
     const cats = props.category.split(';').map((i) => {
-        return <span>{i.trim()}</span>
+        i = i.trim()
+        return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
     return (
     <Boxcss className="box" id={props.id} href={props.link}>
@@ -125,11 +151,10 @@ const Box = props => {
             <div className="textwrapper">
                 <p className="category">{cats}</p>
                 <h3>{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</h3>
-                <p>{props.text.length > 150 ? props.text.substring(0,150) + '...' : props.text}</p>
+                <p className="desc">{props.text}</p>
             </div>
             <div className="progress"><Progress progress={props.progress} /></div>
         </div>
-        {/* <div className="searchtextpanel" ><Highlight search={props.textFilter}>{props.script}</Highlight></div> */}
         <img src={props.img} />
     </Boxcss>
 )}

@@ -76,7 +76,7 @@ with open(itemsFile) as json_file:
             'pc': '', 
             'pnr': '', 
             'weight': '', 
-            'transcription': '',
+            'transcription': [],
             'date': '',
             'category': '',
         }
@@ -113,7 +113,7 @@ with open(itemsFile) as json_file:
                         if fe['text'] == 'Incomplete': content['summary']['totalincomplete'] += 1
                         if fe['text'] == 'Completed' or  fe['text'] == 'Complete' : content['summary']['totalcomplete'] += 1
                     if fe['element']['name'] == 'Transcription': 
-                        itemObj['transcription'] = fe['text']
+                        itemObj['transcription'].append([fi['id'], fe['text']])
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
         with open(itemfilename) as item:
@@ -129,7 +129,7 @@ with open(itemsFile) as json_file:
                 if ie['element']['name'] == 'Language':
                     tagCleaner(ie['text'], content['languages'], id)
                     itemObj['lang'] = arrayCleaner(ie['text'])
-                if ie['element']['name'] == 'Description':          itemObj['desc'] = ie['text']
+                # if ie['element']['name'] == 'Description':          itemObj['desc'] = ie['text']
                 if ie['element']['name'] == 'Relation':             itemObj['desc'] = ie['text']
                 if ie['element']['name'] == 'Source':               
                     itemObj['image'] = ie['text']
