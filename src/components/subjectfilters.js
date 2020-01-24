@@ -30,8 +30,8 @@ const Subjectcss = styled.div`
 `
 
 const SubjectFilters = props => {
-    const subjectarray = ["Family papers","Diaries","Women","World's Columbian Exposition","Travelers’ writings","Letters (Correspondence)","Records (Documents)","American Civil War (1861-1865)","Everett D. Graff Collection of Western Americana","U.S. Western Expansion","Indians of North America","Travelers' writings","Edward E. Ayer Manuscript Collection","Letters (Documents)"]
-    const subjectlist = subjectarray.map((s, index) => {
+    const subjectarray = ["Family papers","Diaries","Women","World's Columbian Exposition","Travelers’ writings","Letters (Correspondence)","Records (Documents)","American Civil War (1861-1865)","Everett D. Graff Collection of Western Americana","U.S. Western Expansion","Indians of North America","Edward E. Ayer Manuscript Collection","Letters (Documents)"]
+    const subjectlist = subjectarray.sort().map((s, index) => {
         return <li key={index} onClick={() => props.setSubjFilter(s)}>{s}</li>
     })
     return (
@@ -39,7 +39,7 @@ const SubjectFilters = props => {
             <span>Select a subject...</span>
             <ul>
                {subjectlist}
-               <li onClick={() => props.resetFilters()}>View All Items</li>
+               <li onClick={() => props.setSubjFilter('')} title="Reset Subject Filter">View All Items</li>
             </ul>
         </Subjectcss>
     )
