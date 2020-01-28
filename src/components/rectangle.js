@@ -10,6 +10,8 @@ const Rectanglecss = styled.div`
     @media only screen and (min-width: 1200px){
         --width: 20vw;
         --height: 20vw;
+        width: var(--width);
+        height: var(--height);
         .textwrapper {
             flex-basis: var(--width);
         }
@@ -293,16 +295,18 @@ const Rectangle = props => {
     <Rectcss className="rectangle" id={props.id} href={props.link}>
         <div className="topwrapper">
             <img src={props.img} />
-            <div className="textwrapper">
-                <p className="category">{cats}</p>
-                <h3>{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</h3>
-                <p className="desc">{props.text}</p>
-                <div className="progress"><Progress progress={props.progress} /></div>
-            </div>
-        </div>
-        <div className="bottomwrapper">
+            <div className="textandresults">
+                <div className="textwrapper">
+                    <p className="category">{cats}</p>
+                    <h3>{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</h3>
+                    <p className="desc">{props.text}</p>
+                    <div className="progress"><Progress progress={props.progress} /></div>
+                </div>
+                <div className="bottomwrapper">
+                    <SearchResults tarray={props.pages} filter={props.textFilter} />
 
-            <SearchResults tarray={props.pages} filter={props.textFilter} />
+                </div>
+            </div>
         </div>
     </Rectcss>
 )}

@@ -2,14 +2,26 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { fonts, colors } from './styles'
 import Progress from './progressbar';
+import { Link } from 'gatsby';
 
-const Boxcss = styled.a`
+const Boxcss = styled.div`
     // sizes
-    @media only screen and (min-width: 1500px){
-        --width:20vw;
-        --height:20vw;
+    @media only screen and (max-width: 3500px){
+        --width: 20vw;
+        --height: 20vw;
+        height: var(--height);
+        &:hover {
+            img {
+                top: calc((var(--width) * 0.75) * -1);
+            }
+        }
+        .textbox {
+            // height: calc(var(--height) * 0.75);
+            padding: 15px;
+            padding-top: calc(var(--height) * 0.25);
+        }
     }
-    @media only screen and (min-width: 1200px){
+    @media only screen and (max-width: 1500px){
         --width: 30vw;
         --height: 30vw;
         height: var(--height);
@@ -19,14 +31,14 @@ const Boxcss = styled.a`
             }
         }
         .textbox {
-            height: calc(var(--height) * 0.75);
+            // height: calc(var(--height) * 0.75);
             padding: 15px;
             padding-top: calc(var(--height) * 0.25);
         }
     }
     @media only screen and (max-width: 1200px){
         --width:  25vw;
-        --height: 40vw;
+        --height: auto;
         --semiheight: 33vw;
         &:hover {
             img {
@@ -34,7 +46,6 @@ const Boxcss = styled.a`
             }
         }
         .textbox {
-            max-height: var(--height);
             padding: 15px;
             padding-top: var(--width);
         }
@@ -44,7 +55,7 @@ const Boxcss = styled.a`
     }
     @media only screen and (max-width: 700px){
         --width:  45vw;
-        --height: 90vw;
+        --height: auto;
         --semiheight: 33vw;
         &:hover {
             img {
@@ -53,7 +64,7 @@ const Boxcss = styled.a`
         }
         .textbox {
             padding: 15px;
-            padding-top: calc(var(--height) * 0.5);
+            padding-top: var(--width);
         }
     }
     border: 2px solid rgba(37,37,37,1);
@@ -70,15 +81,31 @@ const Boxcss = styled.a`
     .textbox {
         display: flex;
         flex-direction: column;
-        align-content: space-between;
-        // justify-content: stretch;
+        align-content: stretch;
+        height: calc(100% - var(--width));
+        justify-content: stretch;
     }
     h3 {
-        line-height: 22px;
+        line-height: 25px;
         padding: 0;
         margin: 0;
         font-size: 22px;
         font-family: ${fonts.serif};
+        a {
+            transition: color 0.2s;
+            text-decoration: none;
+            color: rgba(${colors.fg}, 0.8);
+            background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 1) 2px);
+            background-size: 0% 2px;
+            background-position: 0% 105%;
+            background-repeat: no-repeat;
+            transition: background-size 0.2s ease 0s, color 0.2s;
+
+            &:hover {
+                color: rgba(${colors.fg}, 1);
+                background-size: 100% 3px;
+            }
+        }
     }
     p {
         font-family: ${fonts.sans};
@@ -150,7 +177,7 @@ const Box = props => {
         <div className="textbox">
             <div className="textwrapper">
                 <p className="category">{cats}</p>
-                <h3>{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</h3>
+                <h3><Link to={props.id} >{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</Link></h3>
                 <p className="desc">{props.text}</p>
             </div>
             <div className="progress"><Progress progress={props.progress} /></div>
