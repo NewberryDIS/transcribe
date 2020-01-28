@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Curtain from '../components/simplecurtain'
+// import Curtain from '../components/curtain'
+import Curtain from '../components/simplejumbo'
 import Background from '../components/background'
 import Boxes from '../components/simpleboxes'
 import styled from '@emotion/styled'

@@ -1,24 +1,28 @@
 import React from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
-import { fonts } from './styles'
+import { colors, fonts } from './styles'
+import { Link } from 'gatsby'
 
 const Featurecss = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
     .feature {
-        font-family: ${fonts.mono};
-        box-shadow: inset 0 0 10px rgba(207,207,207,1);
+        font-family: ${fonts.serif};
+        box-shadow: inset 0 0 10px rgba(${colors.fg},1);
         margin: 5vmin;
-        width: 25vmin;
-        background: rgba(0,0,0,0.85);
-        color: white;
-        padding: 10vmin;
-        // padding: var(--padding);
-        border: 1px solid white;
+        // width: 75vw;
+        background: rgba(${colors.bg},1);
+        color: rgba(${colors.fg},1);
+        padding: 1.5vmin 3vmin;
+        border: 1px solid rgba(${colors.fg},1);
         opacity: var(--opacity);
-        will-change: opacity, padding;
+        will-change: opacity;
+        h3 {
+            font-size: calc(12px + 1vmin);
+            line-height: calc(12px + 1vmin);
+        }
     }
 `
 
@@ -29,25 +33,23 @@ const Feature = props => {
     const instance = basicScroll.create({
         elem: feature,
         from: 0,
-        to: '70vh',
+        to: '50%',
         props: {
             '--opacity': {
                 from: 0.99,
                 to: 0.01,
             },
-            '--padding': {
-                from: '10vmin',
-                to: 0,
-            }
         }
     // }) : ''
     })
-    // instance.start()
+    instance.start()
 
     return (
         <Featurecss>
             <div className="feature">
-                {text}
+                <h3>Help unlock the past!</h3>
+                <p>Turn handwritten letters and diaries into searchable text available to researchers worldwide</p>
+                <p><Link to={'about'}>Learn more</Link> about this project, view our <Link to={'guidelines'}>transcription guidelines</Link>, or simply select a document to get started immediately</p>
             </div>
         </Featurecss>
     )

@@ -12,7 +12,7 @@ const Boxescss = styled.div`
     display: flex;
     align-content: flex-end;
     flex-wrap: wrap;
-    padding-top: 200px;
+    padding-top: 50vh;
     // box-shadow: 0 5px 10px rgba(37,37,37,0.69);
     box-shadow: 0 0 8px rgba(37,37,37,1);
     .boxwrapper {
