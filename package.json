@@ -19,6 +19,7 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
     "gh-pages": "^2.2.0",
+    "html-react-parser": "^0.10.0",
     "prop-types": "^15.7.2",
     "rc-slider": "^8.7.1",
     "react": "^16.12.0",

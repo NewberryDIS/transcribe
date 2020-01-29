@@ -6,8 +6,9 @@ import Boxes from '../components/simpleboxes'
 import styled from '@emotion/styled'
 import { Global, css } from "@emotion/core"
 import Footer from '../components/footer'
+import { colors, fonts } from '../components/styles'
 
-const Indexcss = styled.div`
+export const Indexcss = styled.div`
     position: relative;
     margin: 0;
     padding: 0;
@@ -15,11 +16,45 @@ const Indexcss = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    .banner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        box-shadow: inset 0 0 10px rgba(${colors.fg},1);
+        text-shadow: 0 0 10px rgba(${colors.fg},0.75);
+        font-size: 1.75rem;
+        line-height: 2rem;
+        height: 2rem;
+        display: flex;
+        justify-content: space-between;
+        color: rgba(${colors.fg},1);
+        // background: rgba(${colors.bg},1);
+        background: rgba(${colors.bg},0.8);
+        font-family: ${fonts.serif};
+        a {
+            font-weight: 900;
+            transition: color 0.2s;
+            text-decoration: none;
+            color: rgba(${colors.fg}, 1);
+            background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 1) 2px);
+            background-size: 0% 2px;
+            background-position: 0% 105%;
+            background-repeat: no-repeat;
+            transition: background-size 0.2s ease 0s, color 0.2s;
+            &:hover {
+                color: rgba(${colors.fg}, 0.8);
+                background-size: 100% 3px;
+            }
+    }
 `
 //300,100,2000,2500/1000,/
 const content = require('../data/content.json')
 
 const Index = () => {
+    const [bgId, setBgId] = useState()
+    const [bgNo, setBgNo] = useState()
     //     const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     //     const currContent = allContent
     const currContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
@@ -33,9 +68,9 @@ const Index = () => {
                 }
             `}/>
             <Curtain resultCount={resultCount} />
-            <Background />
+            <Background setBgId={setBgId} setBgNo={setBgNo} />
             <Boxes setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
-            <Footer />
+            <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>
     )
 }

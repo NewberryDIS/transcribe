@@ -172,17 +172,18 @@ const Box = props => {
         i = i.trim()
         return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
+    const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
     return (
     <Boxcss className="box" id={props.id} href={props.link}>
         <div className="textbox">
             <div className="textwrapper">
                 <p className="category">{cats}</p>
-                <h3><Link to={props.id} >{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</Link></h3>
+                <h3><Link to={props.id} >{title}</Link></h3>
                 <p className="desc">{props.text}</p>
             </div>
             <div className="progress"><Progress progress={props.progress} /></div>
         </div>
-        <img src={props.img} />
+        <img alt="Sample from Collection" title={title} src={props.img} />
     </Boxcss>
 )}
 

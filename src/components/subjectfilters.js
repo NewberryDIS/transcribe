@@ -32,7 +32,8 @@ const Subjectcss = styled.div`
 const SubjectFilters = props => {
     const subjectarray = ["Family papers","Diaries","Women","World's Columbian Exposition","Travelers’ writings","Letters (Correspondence)","Records (Documents)","American Civil War (1861-1865)","Everett D. Graff Collection of Western Americana","U.S. Western Expansion","Indians of North America","Edward E. Ayer Manuscript Collection","Letters (Documents)"]
     const subjectlist = subjectarray.sort().map((s, index) => {
-        return <li key={index} onClick={() => props.setSubjFilter(s)}>{s}</li>
+        
+        return <li key={index} onClick={() => props.setSubjFilter(s)}>{s === 'American Civil War (1861-1865)' ? 'Civil War' : s === 'Letters (Correspondence)' ? 'Letters' : s === 'Records (Documents)' ? 'Records' : s}</li>
     })
     return (
         <Subjectcss>

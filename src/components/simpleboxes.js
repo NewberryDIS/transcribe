@@ -14,7 +14,7 @@ const Boxescss = styled.div`
     flex-wrap: wrap;
     padding-top: 50vh;
     // box-shadow: 0 5px 10px rgba(37,37,37,0.69);
-    box-shadow: 0 0 8px rgba(37,37,37,1);
+    // box-shadow: 0 0 8px rgba(37,37,37,1);
     .boxwrapper {
         flex: 1;
         width: calc(100% - var(--width));

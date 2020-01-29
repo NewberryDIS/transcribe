@@ -5,33 +5,7 @@ import Feature from './feature'
 import SvgLogo from './logo'
 import { colors, fonts } from './styles'
 import logo from '../images/drawing.svg'
-import bg from '../images/nbbg.jpg'
-import bg1 from '../images/lgbg1.jpg'
-import bg2 from '../images/lgbg2.jpg'
-import bg3 from '../images/lgbg3.jpg'
-import bg4 from '../images/lgbg4.jpg'
-import bg5 from '../images/lgbg5.jpg'
-import bg6 from '../images/lgbg6.jpg'
-import bg7 from '../images/lgbg7.jpg'
-import bg8 from '../images/lgbg8.jpg'
-import bg9 from '../images/lgbg9.jpg'
-import bg10 from '../images/lgbg10.jpg'
-import bg11 from '../images/lgbg11.jpg'
 
-const bgarray = [
-    bg,
-    bg1,
-    bg2,
-    bg3,
-    bg4,
-    bg5,
-    bg6,
-    bg7,
-    bg8,
-    bg9,
-    bg10,
-    bg11,
-]
 const Curtaincss = styled.div`
     // display: flex;
     z-index: 1000;
@@ -48,8 +22,8 @@ const Curtaincss = styled.div`
         box-shadow: inset 0 0 10px rgba(${colors.fg},1);
         text-shadow: 0 0 10px rgba(${colors.fg},0.75);
         font-size: var(--fontsize);
-        line-height: calc(var(--fontsize) + 1vh);
-        height: calc(var(--fontsize) + 1vh);
+        line-height: calc(var(--fontsize) + 1.5vh);
+        height: calc(var(--fontsize) + 2vh);
         will-change: font-size, line-height;
         display: flex;
         justify-content: space-between;
@@ -85,9 +59,8 @@ const Curtain = props => {
     // }) : ''
     })
     instance.start()
-    let bg = bgarray[Math.round(Math.random() * 7)]
     return (
-        <Curtaincss className="element" bg={bg}>
+        <Curtaincss className="element" >
             <div className="featurecontainer">
                 <Feature />
             </div>

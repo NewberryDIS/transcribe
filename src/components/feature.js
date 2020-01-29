@@ -20,14 +20,38 @@ const Featurecss = styled.div`
         opacity: var(--opacity);
         will-change: opacity;
         h3 {
+            font-family: ${fonts.serif};
             font-size: calc(12px + 1vmin);
             line-height: calc(12px + 1vmin);
+            // font-size: 0.88rem;
+            text-transform: uppercase;
+        }
+        p {
+            font-family: ${fonts.sans};
+            a {
+                // font-size: 0.98rem;
+                font-size: 0.88rem;
+                text-transform: uppercase;
+                font-weight: 900;
+                transition: color 0.2s;
+                text-decoration: none;
+                color: rgba(${colors.fg}, 0.8);
+                background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 1) 2px);
+                background-size: 0% 2px;
+                background-position: 0% 105%;
+                background-repeat: no-repeat;
+                transition: background-size 0.2s ease 0s, color 0.2s;
+    
+                &:hover {
+                    color: rgba(${colors.fg}, 1);
+                    background-size: 100% 3px;
+                }
+            }
         }
     }
 `
 
 const Feature = props => {
-    const text = "This is a feature"
     const feature = typeof document !== `undefined` ? document.querySelector('.feature') : null
     // const instance = curtain != null ? basicScroll.create({
     const instance = basicScroll.create({
