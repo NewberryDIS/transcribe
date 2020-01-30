@@ -170,6 +170,7 @@ const Boxcss = styled.div`
 const Box = props => {
     const cats = props.category.split(';').map((i) => {
         i = i.trim()
+        i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
         return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title

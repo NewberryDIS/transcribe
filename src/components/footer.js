@@ -39,6 +39,7 @@ const Gardacss = styled.footer`
             }
             .contact {
                 flex: 2;
+                clip-path: circle(50%);
             }
             .bg, .contact {
                 &:first-of-type {
@@ -58,7 +59,6 @@ const Gardacss = styled.footer`
                     margin: auto;
                 }
                 img {
-
                     box-shadow:  0 0 10px rgba(${colors.fg},1);
                 }
                 a {

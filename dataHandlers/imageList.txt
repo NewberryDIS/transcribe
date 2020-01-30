@@ -157,7 +157,6 @@ https://collections.carli.illinois.edu/digital/iiif/nby_mms/57717
 https://collections.carli.illinois.edu/digital/iiif/nby_mms/58427
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17372
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/16060
-https://collections.carli.illinois.edu/digital/iiif/nby_graff/18098
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17467
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/15743
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17360
@@ -186,11 +185,9 @@ https://collections.carli.illinois.edu/digital/iiif/nby_graff/16734
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/18663
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/15641
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17869
-https://collections.carli.illinois.edu/digital/iiif/nby_graff/16824
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/19332
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17119
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/18115
-https://collections.carli.illinois.edu/digital/iiif/nby_graff/15568
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/18081
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/18122
 https://collections.carli.illinois.edu/digital/iiif/nby_graff/17159
