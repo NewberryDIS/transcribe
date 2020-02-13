@@ -68,8 +68,15 @@ const Boxcss = styled.div`
         }
     }
     border: 2px solid rgba(37,37,37,1);
-    background: rgba(237,237,237,1);
-    box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
+    box-shadow: 10px 10px 60px rgba(37,37,37,0.5);
+    .innerdiv {
+        background: rgba(237,237,237,1);
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
+
+    }
     .highlight {
         background: yellow;
     }
@@ -174,17 +181,22 @@ const Box = props => {
         return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
+    // <h3><Link to={props.id} >{title}</Link></h3>
+    
     return (
     <Boxcss className="box" id={props.id} href={props.link}>
-        <div className="textbox">
-            <div className="textwrapper">
-                <p className="category">{cats}</p>
-                <h3><Link to={props.id} >{title}</Link></h3>
-                <p className="desc">{props.text}</p>
+        <div className="innerdiv">
+
+            <div className="textbox">
+                <div className="textwrapper">
+                    <p className="category">{cats}</p>
+                    <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3>
+                    <p className="desc">{props.text}</p>
+                </div>
+                <div className="progress"><Progress progress={props.progress} /></div>
             </div>
-            <div className="progress"><Progress progress={props.progress} /></div>
+            <img alt="Sample from Collection" title={title} src={props.img} />
         </div>
-        <img alt="Sample from Collection" title={title} src={props.img} />
     </Boxcss>
 )}
 

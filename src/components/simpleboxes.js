@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import Sidebar from './simplesidebar'
-import { fonts } from './styles'
+import { fonts, colors } from './styles'
 import Box from './box'
 import Rectangle from './rectangle'
+import Bluebutton from './bluebutton'
 
 const Boxescss = styled.div`
     flex: 1;
-    width: 100%;
     z-index: 1;
-    display: flex;
     align-content: flex-end;
     flex-wrap: wrap;
-    padding-top: 50vh;
+    padding-top: 60vh;
+    // padding-top: 10vh;
+    margin-top: 50px;
     // box-shadow: 0 5px 10px rgba(37,37,37,0.69);
     // box-shadow: 0 0 8px rgba(37,37,37,1);
     .boxwrapper {
         flex: 1;
-        width: calc(100% - var(--width));
+        width: calc(90% - var(--width));
         display: flex;
         align-content: flex-start;
         justify-content: space-evenly;
@@ -27,56 +28,36 @@ const Boxescss = styled.div`
     // sizes
     @media only screen and (min-width: 1200px){
         --width: 20vw;
+        display: flex;
     }
     @media only screen and (max-width: 1200px){
         --width: 35vw;
+        display: flex;
     }
-    @media only screen and (max-width: 700px){
+    @media only screen and (max-width: 750px){
         --width:  45vw;
     }       
 `
-const Morebutton = styled.div`
-        width: 100%;
-        text-align: center;
-        .button {
-            font-family: ${fonts.sans};
-            margin: 25px auto;
-            display: inline-block;
-            width: initial;
-            padding: 12px 15px ;
-            border: 1px solid black;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: inset 0 0 10px rgba(0,42,85,1);
-            background: rgba(125,159,193,1);
-            color: rgba(37,37,37,0.8);
-            transition: background 0.5s, color 0.1s;
-            &:hover {
-                color: rgba(37,37,37,1);
-                background: rgba(143,169,195,1);
-            }
-            &.inactive {
-                cursor: not-allowed;
-                box-shadow: inset 0 0 10px rgba(37,37,37,1);
-                background: rgba(125,125,125,1);
-                color: rgba(37,37,37,0.8);
-                transition: background 0.5s, color 0.1s;
-                &:hover {
-                    color: rgba(37,37,37,0.4);
-                    background: rgba(125,125,125,1);
-
-                }
-            }
-        }
-    }
+const Anchor = styled.div`
+    position: absolute;
+    top: 50vh;
+    width: 5px;
+    height: 5px;
+    background: black;
+    opacity: 0;
 `
-
 const Nothing = styled.div`
-
-margin: 10px auto;
-background:white;
+    font-family: 'Crimson Text',serif;
+    box-shadow: inset 0 0 10px rgba(37,37,37,1);
+    margin: 5vmin;
+    padding: 7vmin 10vmin;
+    background: rgba(${colors.bg}, 1);
+    border: 1px solid rgba(${colors.fg}, 1);
+    color: rgba(${colors.fg}, 1);
+    font-size: 1.25rem;
 `
-
+// const scrollToRef = (ref) => window.scrollTo(0, (ref.current.offsetTop - 50))  
+const scrollToRef = (ref) => ref.current.scrollIntoView({behavior: 'smooth'})
 // truncates description to 200 characters, or first appearance of html
 const truncator = t => t.indexOf('<') > -1 ? t.substring(0,t.indexOf('<')) + '...' : t
 // removes diacritics, lowercases
@@ -84,7 +65,7 @@ const normalizeText = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").to
 const Boxes = props => {
     const qty = 18
     const [ boxWidth, setBoxWidth ] = useState(true)
-    const [ textFilter, setTextFilter ] = useState('')
+    const [ textFilter, setTextFilter ] = useState([])
     const [ dateFilter, setDateFilter ] = useState(1)
     const [ subjFilter, setSubjFilter ] = useState('')
     const [ langFilter, setLangFilter ] = useState('English')
@@ -102,29 +83,40 @@ const Boxes = props => {
     function boxify(content) { 
         return content.map((i) => {
             const progress = { 
-                totalcomplete: Math.round((i.pc / 100) * i.count),
+                count: i.count,
+                transcount: i.transcount,
+                percentTranscribed: i.percentTranscribed,
+                // totalcomplete: Math.round((i.pc / 100) * i.count),
+                // pnr: i.pnr,
                 // totalcomplete: Math.min(100, Math.round((i.pc / 100) * i.count), 0),
-                total: i.count,
-                percentComplete: i.pc === '' ? 0 : i.pc
+                // total: i.count,
+                // percentComplete: i.pc === '' ? 0 : i.pc
             }
             const desc = truncator(i.desc)
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/full/400,/0/default.jpg'
-            let searchresults =  textFilter !== '' ? filterText(textFilter, i.transcription) : ''
-            const returnDiv = textFilter !== '' ? 
+            let searchresults =  textFilter !== [] ? filterText(textFilter, i.transcription) : ''
+            const returnDiv = textFilter.length !== 0 ? 
                 <Rectangle setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
                 : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} /> 
             return returnDiv
         })
     }
-    function filterText(n, hh){
+    function filterText(nn, hh){
+        // console.log()
         let returnArray = []
+        let found = true
         hh.forEach(h => {
-            const needle = normalizeText(n)
-            const haystack = normalizeText(h[1])
-            if (haystack.indexOf(needle) > -1) returnArray.push(h)
+            let nonvar = nn.length > 0 ? 
+            nn.forEach(n => {
+                const needle = normalizeText(n)
+                const haystack = normalizeText(h[1])
+                found = ( found && haystack.indexOf(needle) > -1) ? true : false
+            }) : ''
+            if (found) returnArray.push(h)
         })
         return returnArray
     }
+    const pageTop = useRef(null)
     function filterContent() {
         resultCount = 0
         let tempCurrContent = props.currContent.filter(function(i) {
@@ -175,10 +167,19 @@ const Boxes = props => {
         setBoxes([...boxes, addBoxes] )
         if (boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
+    const firstLoad = useRef(true);
+    const executeScroll = () => scrollToRef(pageTop)
     useEffect(() => {
         filterContent()
         props.setResultCount(resultCount)
         console.log(resultCount)
+        if (firstLoad.current) {
+            firstLoad.current = false
+            console.log('ts not happeningn yet')
+        } else if (!firstLoad.current) {
+            executeScroll()
+            console.log('ts happeningn')
+        }
     }, [textFilter,
         dateFilter,
         subjFilter,
@@ -189,6 +190,7 @@ const Boxes = props => {
     return (
         <Boxescss className="boxes" >
             <Sidebar 
+                showSidebar={props.showSidebar}
                 setBoxWidth={setBoxWidth} 
                 boxWidth={boxWidth} 
                 progress={props.progress} 
@@ -198,12 +200,11 @@ const Boxes = props => {
                 subjFilter={subjFilter} setSubjFilter={setSubjFilter}
                 langFilter={langFilter} setLangFilter={setLangFilter}
             />
-            <div className={boxWidth ? 'boxwrapper' : 'boxwrapper wide'}>
+            <Anchor ref={pageTop} />
+            <div  className={boxWidth ? 'boxwrapper' : 'boxwrapper wide'}>
                 {boxes}
-                {boxes.length === 0 ? <Nothing >No results</Nothing> :''}
-                <Morebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => addBoxes()}>More</div></Morebutton>
-            
-            {/* <button onClick={clicker}>click</button> */}
+                {boxes.length === 0 ? <Nothing >No results.</Nothing> :''}
+                <Bluebutton><div className={showButton ? 'button' : 'button inactive'} onClick={() => addBoxes()}>More</div></Bluebutton>
             </div>
         </Boxescss>
     )

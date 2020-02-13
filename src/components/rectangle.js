@@ -5,136 +5,6 @@ import Progress from './progressbar'
 
 var Highlight = require('react-highlighter');
 
-const Rectanglecss = styled.div`
-    // sizes
-    @media only screen and (min-width: 1200px){
-        --width: 20vw;
-        --height: 20vw;
-        width: var(--width);
-        height: var(--height);
-        .textwrapper {
-            flex-basis: var(--width);
-        }
-        .searchtextpanel {
-            height:  var(--height);
-        }
-        .rectanglewrapper {
-            flex-direction: row;
-        }
-        .leftwrapper {
-            height: var(--width);
-            .textwrapper {
-                height: calc(var(--width) - 30px);
-            }
-        }
-        img {
-            height: var(--width);
-        }
-    }
-    @media only screen and (max-width: 1200px){
-        --width: 20vw;
-        --height: 40vw;
-        .textwrapper {
-            flex: 1;
-        }
-        .rectanglewrapper {
-            flex-direction: column;
-        }
-        .leftwrapper {
-            flex: 1;
-        }
-        .searchtextpanel {
-            max-height:  var(--height);
-        }
-    }
-    border: 2px solid rgba(37,37,37,1);
-    background: rgba(237,237,237,1);
-    box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
-    margin: 1vw;
-    position: relative;
-    overflow: hidden;
-    .rectanglewrapper {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .searchtextpanel {
-        flex: 1;
-        padding: 10px 25px;
-        overflow: auto;
-        font-family: ${fonts.serif};
-        line-height: 1.35rem;
-        .highlight {
-            background: yellow;
-        }
-    }
-    .leftwrapper {
-        display: flex;
-        .textwrapper {
-            flex-basis: var(--width);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-content: space-between;
-            .desc {
-                flex: 1;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .progress {
-                flex-basis: 40px;
-                flex-shrink: 0;
-            }
-        h3 {
-            line-height: 22px;
-            padding: 0;
-            margin: 10px 0;
-            font-size: 22px;
-            font-family: ${fonts.serif};
-        }
-        p {
-            margin: 0;
-            font-family: ${fonts.sans};
-        }
-        .category {
-            font-family: ${fonts.sans};
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: rgba(${colors.hl}, 1);
-            span {
-                cursor: pointer;
-                margin: 0;
-                padding: 0 5px;
-                border-right: 1px solid rgba(${colors.hl}, 0.8);
-                
-                background-image: linear-gradient(transparent 1px, rgba(${colors.hl}, 0.8) 2px);
-                background-size: 0% 2px;
-                background-position: 0% 105%;
-                background-repeat: no-repeat;
-                transition: background-size 0.2s ease 0s;
-                
-                &:hover {
-                    // border-bottom: 1px solid rgba(${colors.hl}, 1);
-                    background-size: 100% 3px;
-                }
-                &:last-of-type {
-                    border-right: 0;
-                }
-                &:first-of-type {
-                    padding: 0 5px 0 0;
-                }
-            }
-        }
-    }
-}
-    img {
-        flex-basis: var(--width);
-        padding: 0;
-        border: 0;
-        z-index: 3;
-        box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
-        width: var(--width);
-    }
-`
 const Textbox = props => 
     <div className={props.activePage === props.index ? 'active' : 'inactive'}>
         <p className="clickery">
@@ -166,6 +36,7 @@ const Rectcss = styled.div`
     width: 80%;
     margin: 10px auto;
     background: rgba(${colors.bg}, 1);
+    box-shadow: inset 0 0 10px rgba(${colors.fg},1);
     display: flex;
     flex-direction: column;
     .bottomwrapper {
@@ -208,6 +79,16 @@ const Rectcss = styled.div`
         }
         .active {
             display: block;
+            span {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                -ms-word-break: break-all;
+                word-break: break-word;
+                -ms-hyphens: auto;
+                -moz-hyphens: auto;
+                -webkit-hyphens: auto;
+                hyphens: auto;
+            }
         }
         .inactive {
             display: none;
@@ -218,6 +99,12 @@ const Rectcss = styled.div`
             text-align: center;
             flex-shrink: 0;
         }
+
+        padding: 10px;
+        // margin: 30px;
+        border-radius: 6px;
+        // background: #d0d0d0;
+        box-shadow: 10px 10px 60px rgba(${colors.fg},0.5)
     }
     .topwrapper {
         flex-basis: var(--height);
@@ -229,8 +116,18 @@ const Rectcss = styled.div`
             flex-basis: var(--width);
             flex-shrink: 0;
             padding: 0;
-            margin: 0;
+            margin: 15px;
+            background-image: url(${props => props.image});
+            background-size: cover;
+            background-position: center;
             // box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
+            // from footer tweets
+                padding: 10px;
+                margin: 30px;
+                border-radius: 6px;
+                // background: #d0d0d0;
+                box-shadow: 10px 10px 60px rgba(${colors.fg},0.5);
+                border: 1px solid rgba(${colors.fg}, 1);
         }
         .textwrapper { 
             flex: 1;
@@ -286,15 +183,20 @@ const Rectcss = styled.div`
     }
 `
 
+// const bgImage = props => 
+//     css`
+//         background-image: url(${props => props.image});
+//     `
+
 const Rectangle = props => {
     const cats = props.category.split(';').map((i) => {
         i = i.trim()
         return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
     return (
-    <Rectcss className="rectangle" id={props.id} href={props.link}>
+    <Rectcss className="rectangle" id={props.id} href={props.link} image={props.img}>
         <div className="topwrapper">
-            <img src={props.img} />
+            <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
             <div className="textandresults">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import Curtain from '../components/curtain'
-import Curtain from '../components/simplejumbo'
+// import Curtain from '../components/simplejumbo'
+import Jumbo from '../components/jumbo'
 import Background from '../components/background'
 import Boxes from '../components/simpleboxes'
 import styled from '@emotion/styled'
@@ -59,6 +60,14 @@ const Index = () => {
     //     const currContent = allContent
     const currContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     const [resultCount, setResultCount] = useState(0)
+    let totalPages = content['items'].map(i => i.count).reduce((a,b) => a + b, 0)
+    let totalTranscribed = content['items'].map(i => i.transcount).reduce((a,b) => a + b, 0)
+    // let totalTranscribed
+    // const totalProgress = content['items'].map(i => {
+    //     totalProgress.totalPages = totalProgress.totalPages + i.count
+    //     totalProgress.totalTranscribed = totalProgress.totalTranscribed + i.transcount
+    // })
+    const [showSidebar, setShowSidebar] = useState(true)
     return (
         <Indexcss >
             <Global styles={css`
@@ -67,9 +76,9 @@ const Index = () => {
                     padding: 0;
                 }
             `}/>
-            <Curtain resultCount={resultCount} />
+            <Jumbo setShowSidebar={setShowSidebar} showSidebar={showSidebar} resultCount={resultCount} />
             <Background setBgId={setBgId} setBgNo={setBgNo} />
-            <Boxes setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
+            <Boxes showSidebar={showSidebar} setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
             <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>
     )

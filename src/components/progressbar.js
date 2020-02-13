@@ -41,17 +41,24 @@ const Progresscss = styled.div`
         flex-basis: ${props => props.percent}%;
         transition: background 0.5s;
     }
+  
     transition: background 0.5s;
     transition: color 0.5s;
 `
 function numberWithCommas(x) {
-return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    x = Math.round(x)
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 const Progress = props => {
+    const count = props.progress.count ? props.progress.count : props.progress.totalPages
+    const transcount = props.progress.transcount ? props.progress.transcount : props.progress.totalTranscount
+    const percent = props.progress.percentTranscribed 
     return (
-        <Progresscss title={numberWithCommas(props.progress.totalcomplete) + ' out of ' + numberWithCommas(props.progress.total) + ' pages completed!'} percent={props.progress.percentComplete}>
+        <Progresscss 
+            title={numberWithCommas(transcount) + ' out of ' + numberWithCommas(count) + ' pages transcribed'} 
+            percent={percent}>
             <div className="complete"></div>
-            <div className="text">{props.progress.percentComplete}% completed!</div>
+            <div className="text">{percent}% transcribed</div>
         </Progresscss>
     )
 }
