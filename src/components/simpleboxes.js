@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
-import Sidebar from './simplesidebar'
+import Sidebar, { Dropdown } from './simplesidebar'
 import { fonts, colors } from './styles'
 import Box from './box'
 import Rectangle from './rectangle'
@@ -35,7 +35,8 @@ const Boxescss = styled.div`
         display: flex;
     }
     @media only screen and (max-width: 750px){
-        --width:  45vw;
+        margin-left: 40px;
+        margin-right: 40px;
     }       
 `
 const Anchor = styled.div`
@@ -189,6 +190,17 @@ const Boxes = props => {
     }, [filteredContent])
     return (
         <Boxescss className="boxes" >
+            { props.showDropdown ? <Dropdown 
+                showSidebar={props.showSidebar}
+                setBoxWidth={setBoxWidth} 
+                boxWidth={boxWidth} 
+                progress={props.progress} 
+                resultCount={props.resultCount}
+                textFilter={textFilter} setTextFilter={setTextFilter}
+                dateFilter={dateFilter} setDateFilter={setDateFilter}
+                subjFilter={subjFilter} setSubjFilter={setSubjFilter}
+                langFilter={langFilter} setLangFilter={setLangFilter}
+            /> : 
             <Sidebar 
                 showSidebar={props.showSidebar}
                 setBoxWidth={setBoxWidth} 
@@ -199,7 +211,7 @@ const Boxes = props => {
                 dateFilter={dateFilter} setDateFilter={setDateFilter}
                 subjFilter={subjFilter} setSubjFilter={setSubjFilter}
                 langFilter={langFilter} setLangFilter={setLangFilter}
-            />
+            />}
             <Anchor ref={pageTop} />
             <div  className={boxWidth ? 'boxwrapper' : 'boxwrapper wide'}>
                 {boxes}

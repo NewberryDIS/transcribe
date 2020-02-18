@@ -67,7 +67,8 @@ const Index = () => {
     //     totalProgress.totalPages = totalProgress.totalPages + i.count
     //     totalProgress.totalTranscribed = totalProgress.totalTranscribed + i.transcount
     // })
-    const [showSidebar, setShowSidebar] = useState(true)
+
+    const [showDropdown, setShowDropdown] = useState(false)
     return (
         <Indexcss >
             <Global styles={css`
@@ -76,9 +77,9 @@ const Index = () => {
                     padding: 0;
                 }
             `}/>
-            <Jumbo setShowSidebar={setShowSidebar} showSidebar={showSidebar} resultCount={resultCount} />
+            <Jumbo setShowDropdown={setShowDropdown} showDropdown={showDropdown} resultCount={resultCount} />
             <Background setBgId={setBgId} setBgNo={setBgNo} />
-            <Boxes showSidebar={showSidebar} setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
+            <Boxes showDropdown={showDropdown} setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
             <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>
     )

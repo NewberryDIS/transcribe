@@ -6,10 +6,9 @@ import json from './samplejson.json'
 import { useState } from 'react'
 
 const Gardacss = styled.footer`
-    width: 100%;
-    // background-color: rgba(${colors.bg},1);
+    width: 90%;
+    margin: auto;
     padding: 15px;
-    // box-shadow: inset 0 0 10px rgba(${colors.fg},1);
     .footerwrapper {
         position: relative;
         width: 70%;
@@ -30,21 +29,22 @@ const Gardacss = styled.footer`
             grid-column: 1 / 2;
             display: flex;
             flex-wrap: wrap;
+            padding: 15px;
             .bg, .contact, .license, .account {
                 // background-color: rgba(${colors.bg},1);
                 padding: 15px;
             }
             .bg, .tweet {
                 flex: 1;
+                flex-basis: 200px;
             }
             .contact {
                 flex: 2;
-                clip-path: circle(50%);
             }
             .bg, .contact {
-                &:first-of-type {
-                    margin-right: 0;
-                }
+                // &:first-of-type {
+                //     margin-right: 0;
+                // }
               
             }
             .bg {
@@ -57,9 +57,11 @@ const Gardacss = styled.footer`
                 margin: auto;
                 img, figcaption {
                     margin: auto;
+                    font-family: ${fonts.serif};
                 }
                 img {
-                    box-shadow:  0 0 10px rgba(${colors.fg},1);
+                    transition: box-shadow 0.2s;
+                    box-shadow: 10px 10px 60px rgba(${colors.fg},0.4);
                 }
                 a {
                     font-weight: 900;
@@ -69,23 +71,20 @@ const Gardacss = styled.footer`
                     transition: color 0.2s;
                     background: inherit;
                     &:hover {
-                        background: inherit;
+                        // text-shadow: 0 0 10px rgba(${colors.fg},1);
                         color: rgba(${colors.fg}, 0.8);
+                        img {
+                            box-shadow: 10px 10px 60px rgba(${colors.fg},0.5);
+                        }
                     }
                 }
             }
             .tweet {
                 height: 300px;
-                &:first-of-type {
-                    margin-right: 0;
-                }
-                &:last-of-type {
-                    margin-left: 0;
-                }
             }
             > div {
                 padding: 10px;
-                margin: 30px;
+                margin: 15px;
                 border-radius: 6px;
                 background: #d0d0d0;
                 // border-radius: 50px;

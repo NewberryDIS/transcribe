@@ -37,6 +37,7 @@ const Subjectcss = styled.div`
         height: 40px;
         line-height: 30px;
         font-size: 16px;
+        width: 100%;
     }
     @media only screen 
         and (max-width : 750px) {

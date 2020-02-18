@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
 import { colors, fonts } from './styles'
@@ -31,22 +31,18 @@ const Jumbocss = styled.div`
         .hamburger, .nlogo, .titletext {
             display: inline-block;
         }
+        .hamburger, #hamburger {
+            z-index: 1000;
+        }
         .titletext {
-            // position: sticky;
             flex: 1;        
-            // text-align: center;
-            // will-change: margin-left;
-            // margin-left: var(--leftish);
         }
         .titletext .blurone {
 
             filter: blur(var(--blurone));
-            // font-size: var(--fontsize);
             font-size: 3vh;
-            // line-height: var(--textheight);
             transition: transform .1s linear;
             will-change: filter, font-size;
-            font-family: ${fonts.serif};
             display: inline-block;
         }
     }
@@ -60,6 +56,7 @@ const Jumbocss = styled.div`
     @media only screen 
         and (max-width : 750px) { 
         #hamburger {
+            z-index: 2000;
             line-height: 2.5vh;
             vertical-align: bottom;
             display: inline-block;
@@ -106,15 +103,20 @@ const Jumbocss = styled.div`
         display: inline-block;
         transform: translate(var(--tx), 0) rotate(var(--r));
         will-change: transform;
+        font-family: ${fonts.serif};
+        font-weight: 700;
     }
 `
-const Hamburger = props => <div id="hamburger" className={props.showSidebar ? "change" : ""} onClick={() => props.setShowSidebar()}>
+const Hamburger = props => <div id="hamburger" className={props.showDropdown ? 'change' : ''} onClick={() => props.dropDowner()}>
     <div className="bar1"></div>
     <div className="bar2"></div>
     <div className="bar3"></div>
 </div>
 const Jumbo = props => {
-    // let tx, ty, r
+    const dropDowner = () => {
+        console.log('dropdown show')
+        props.setShowDropdown(!props.showDropdown)
+    }
     const curtainText = 'Newberry Transcribe' 
     const header = curtainText.split('').map((i, index) => {
         const tx = Math.round((Math.random() * 70),0)
@@ -130,7 +132,7 @@ const Jumbo = props => {
     const instances = []
     const curtain = typeof document !== `undefined` ? document.querySelector('.curtain') : null   
     const letters = typeof document !== `undefined` ? document.querySelectorAll('.letter') : null
-    letters.forEach((elem) => {
+    const esLintSucks = letters !== null ? letters.forEach((elem) => {
         const tx = elem.getAttribute('data-tx') + 'vw'
         // const ty = elem.getAttribute('data-ty') + 'px'
         const r = elem.getAttribute('data-r') + 'deg'
@@ -155,7 +157,7 @@ const Jumbo = props => {
             }
         }))
 
-    })
+    }) : ''
     const instance = basicScroll.create({
         from: '0px',
         to: '500px',
@@ -185,6 +187,10 @@ const Jumbo = props => {
                 from: '20%',
                 to: '0%'
             },
+            '--opacity': {
+                from: 0.99,
+                to: 0.01
+            }
         }
     // }) : ''
     })
@@ -195,9 +201,9 @@ const Jumbo = props => {
     return (
         <Jumbocss id="curtain">
             <div className="topbar">
-                <div className="hamburger"><Hamburger /></div>
                 <div className="nlogo"><img src={logo} alt=""/></div>
                 <div className="titletext"><span className="blurone">{header}</span></div>
+                <div className="hamburger"><Hamburger dropDowner={dropDowner} showDropdown={props.showDropdown} /></div>
             <div className="jumbler"></div>
             </div>
             <div className="subtitletext"><span className="blurtwo">Become a part<br/>of history</span></div>

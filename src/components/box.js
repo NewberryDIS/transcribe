@@ -53,8 +53,8 @@ const Boxcss = styled.div`
             max-height: 100%;
         }
     }
-    @media only screen and (max-width: 700px){
-        --width:  45vw;
+    @media only screen and (max-width: 750px){
+        --width:  40vw;
         --height: auto;
         --semiheight: 33vw;
         &:hover {

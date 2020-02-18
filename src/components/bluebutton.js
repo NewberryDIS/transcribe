@@ -6,7 +6,7 @@ const Bluebutton = styled.div`
         text-align: center;
         .button {
             font-family: ${fonts.sans};
-            margin: 25px auto;
+            margin: 10px auto;
             display: inline-block;
             width: initial;
             padding: 12px 15px ;
