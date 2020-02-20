@@ -3,14 +3,18 @@ import styled from '@emotion/styled'
 import { fonts, colors } from './styles'
 import Progress from './progressbar'
 
-var Highlight = require('react-highlighter');
+import Highlighter from "react-highlight-words"
 
 const Textbox = props => 
     <div className={props.activePage === props.index ? 'active' : 'inactive'}>
         <p className="clickery">
             <span className={props.total > 1 ? 'leftarrow activearrow' : 'leftarrow inactivearrow'} onClick={() => props.pageSwitch('back')}>&#60;</span><span className="resultstext">Result {props.index + 1} of {props.total}</span><span className={props.total > 1 ? 'rightarrow activearrow' : 'rightarrow inactivearrow'} onClick={() => props.pageSwitch('forward')}>&#62;</span>
         </p>
-        <Highlight search={props.filter}>{props.tarray[1]}</Highlight>
+        <pre><Highlighter
+            highlightClassName="hilite"
+            searchWords={props.filter}
+            textToHighlight={props.tarray[1]}
+        /></pre>
         <p><a href={props.tarray[0]}>Go to page</a></p>
     </div>
 
@@ -39,6 +43,29 @@ const Rectcss = styled.div`
     box-shadow: inset 0 0 10px rgba(${colors.fg},1);
     display: flex;
     flex-direction: column;
+    .hilite {
+        background: rgba(255, 255, 126, 0.75);
+    }
+    pre {
+        margin: 0px 10px;
+        font-family: ${fonts.serif};
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    }
+    .textbox {
+        margin: 0px 10px;
+        pre {
+
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+    }
     .bottomwrapper {
         flex: 1;
         margin: 15px;
@@ -106,7 +133,11 @@ const Rectcss = styled.div`
         // background: #d0d0d0;
         box-shadow: 10px 10px 60px rgba(${colors.fg},0.5)
     }
+
     .topwrapper {
+        @media only screen and (max-width: 1000px){
+            flex-direction: column;
+        } 
         flex-basis: var(--height);
         flex-shrink: 0;
         display: flex;
@@ -183,16 +214,13 @@ const Rectcss = styled.div`
     }
 `
 
-// const bgImage = props => 
-//     css`
-//         background-image: url(${props => props.image});
-//     `
 
 const Rectangle = props => {
     const cats = props.category.split(';').map((i) => {
         i = i.trim()
         return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
     })
+    const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
     return (
     <Rectcss className="rectangle" id={props.id} href={props.link} image={props.img}>
         <div className="topwrapper">
@@ -200,7 +228,13 @@ const Rectangle = props => {
             <div className="textandresults">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>
-                    <h3>{props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title}</h3>
+                    <h3>
+                        <Highlighter
+                            highlightClassName="hilite"
+                            searchWords={props.textFilter}
+                            textToHighlight={title}
+                        />
+                    </h3>
                     <p className="desc">{props.text}</p>
                     <div className="progress"><Progress progress={props.progress} /></div>
                 </div>

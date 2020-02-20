@@ -88,10 +88,13 @@ const Jumbocss = styled.div`
         color: rgba(${colors.fg},1);
         background: rgba(${colors.bg},0.5);
         text-shadow: 0 0 10px rgba(${colors.fg},0.75);
-        filter: blur(var(--blurtwo));
-        font-size: var(--fontsize);
+        // filter: blur(var(--blurtwo));
+        // font-size: var(--fontsize);
+        opacity: var(--opacity);
+        font-size: 10vh;
         transition: transform .1s linear;
-        will-change: filter, font-size;
+        will-change: opacity;
+        // will-change: filter, font-size;
         font-family: ${fonts.serif};
         position: fixed;
         top: 40vh;
@@ -163,30 +166,30 @@ const Jumbo = props => {
         to: '500px',
         props: {
             // feature container height
-            '--feight': {
-                from: '37vh',
-                to: '0',
-            },
-            '--fontsize': {
-                from: '10vh',
-                to: '3vh',
-            },
-            '--textheight': {
-                from: '23vh', 
-                to: '4vh',
-            },
+            // '--feight': {
+            //     from: '37vh',
+            //     to: '0',
+            // },
+            // '--fontsize': {
+            //     from: '10vh',
+            //     to: '3vh',
+            // },
+            // '--textheight': {
+            //     from: '23vh', 
+            //     to: '4vh',
+            // },
             '--blurone': {
                 from: '1px',
                 to: '0px'
             },
-            '--blurtwo': {
-                from: '0px',
-                to: '50px'
-            },
-            '--leftish': {
-                from: '20%',
-                to: '0%'
-            },
+            // '--blurtwo': {
+            //     from: '0px',
+            //     to: '50px'
+            // },
+            // '--leftish': {
+            //     from: '20%',
+            //     to: '0%'
+            // },
             '--opacity': {
                 from: 0.99,
                 to: 0.01

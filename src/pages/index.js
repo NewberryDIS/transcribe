@@ -58,7 +58,8 @@ const Index = () => {
     const [bgNo, setBgNo] = useState()
     //     const allContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     //     const currContent = allContent
-    const currContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
+    const allContent = content['items']
+    // const currContent = content['items'].sort((a,b) => (a.weight > b.weight) ? 1 : -1)
     const [resultCount, setResultCount] = useState(0)
     let totalPages = content['items'].map(i => i.count).reduce((a,b) => a + b, 0)
     let totalTranscribed = content['items'].map(i => i.transcount).reduce((a,b) => a + b, 0)
@@ -79,7 +80,7 @@ const Index = () => {
             `}/>
             <Jumbo setShowDropdown={setShowDropdown} showDropdown={showDropdown} resultCount={resultCount} />
             <Background setBgId={setBgId} setBgNo={setBgNo} />
-            <Boxes showDropdown={showDropdown} setResultCount={setResultCount} resultCount={resultCount} currContent={currContent} progress={content['summary']}/>
+            <Boxes showDropdown={showDropdown} setResultCount={setResultCount} resultCount={resultCount} allContent={allContent} progress={content['summary']}/>
             <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>
     )

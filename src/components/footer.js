@@ -152,7 +152,7 @@ async function postData(url = '', data = {}) {
 const Footer = props => {
     const [imgTitle, setImgTitle] = useState('')
     const tweetcontent = ['tweet one', 'tweet two', 'tweet three']
-    const tweets = tweetcontent.map(t => <Tweet text={t}/>)
+    const tweets = tweetcontent.map(t => <Tweet key={t} text={t}/>)
     const imgLink = '//iiif.archivelab.org/iiif/' + props.bgId + '$' + props.bgNo + '/full/,200/0/default.jpg'
     const aLink = '//archive.org/details/' + props.bgId + '/mode/1up'
     const dataLink = 'https://cors-anywhere.herokuapp.com/http://archive.org/metadata/' + props.bgId + '/metadata/title'

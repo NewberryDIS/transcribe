@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
-import Sidebar, { Dropdown } from './simplesidebar'
+import Sidebar, { Dropdown } from './sidebar'
 import { fonts, colors } from './styles'
 import Box from './box'
 import Rectangle from './rectangle'
@@ -71,63 +71,57 @@ const Boxes = props => {
     const [ subjFilter, setSubjFilter ] = useState('')
     const [ langFilter, setLangFilter ] = useState('English')
     let resultCount = 0
-    const initialContent = () => { 
-        let tempCurrContent = props.currContent.filter(function(i) {
-            let langfilter = false
-            langfilter = i.lang.indexOf(langFilter) > -1 ? true : false
-            return langfilter
-        })
-        return tempCurrContent
-    }
-    const [ filteredContent, setFilteredContent] = useState(initialContent)
-    const initialBoxes = boxify(filteredContent.slice(0,qty))
+    const [ filteredContent, setFilteredContent] = useState(props.allContent)
     function boxify(content) { 
         return content.map((i) => {
             const progress = { 
                 count: i.count,
                 transcount: i.transcount,
                 percentTranscribed: i.percentTranscribed,
-                // totalcomplete: Math.round((i.pc / 100) * i.count),
-                // pnr: i.pnr,
-                // totalcomplete: Math.min(100, Math.round((i.pc / 100) * i.count), 0),
-                // total: i.count,
-                // percentComplete: i.pc === '' ? 0 : i.pc
             }
             const desc = truncator(i.desc)
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/full/400,/0/default.jpg'
-            let searchresults =  textFilter !== [] ? filterText(textFilter, i.transcription) : ''
+            let searchresults =  textFilter !== [] ? filterText(textFilter, i.transcription, i.title) : ''
             const returnDiv = textFilter.length !== 0 ? 
-                <Rectangle setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
-                : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} boxWidth={boxWidth} key={i.id} id={i.id} boxWidth={boxWidth} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} /> 
+                <Rectangle setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
+                : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} /> 
             return returnDiv
         })
     }
-    function filterText(nn, hh){
+    function filterText(nn, hh, t){
         // console.log()
         let returnArray = []
         let found = true
+        let titleFound = true
+        nn.forEach(n => {
+            const needle = normalizeText(n)
+            const title = normalizeText(t)
+            titleFound = ( titleFound && title.indexOf(needle) > -1) ? true : false
+        })
         hh.forEach(h => {
             let nonvar = nn.length > 0 ? 
-            nn.forEach(n => {
-                const needle = normalizeText(n)
-                const haystack = normalizeText(h[1])
-                found = ( found && haystack.indexOf(needle) > -1) ? true : false
-            }) : ''
-            if (found) returnArray.push(h)
+                nn.forEach(n => {
+                    const needle = normalizeText(n)
+                    const haystack = normalizeText(h[1])
+                    found = ( found && haystack.indexOf(needle) > -1) ? true : false
+                }) : ''
+            
+            if (found || (titleFound && !found)) returnArray.push(h)
+
         })
         return returnArray
     }
     const pageTop = useRef(null)
     function filterContent() {
         resultCount = 0
-        let tempCurrContent = props.currContent.filter(function(i) {
+        let tempallContent = props.allContent.filter(function(i) {
             let langfilter = false,
                 textfilter = true,
                 datefilter = false,
                 subjfilter = true
             langfilter = i.lang.indexOf(langFilter) > -1 ? true : false
             if (textFilter.length > 0){
-                textfilter = filterText(textFilter, i.transcription).length > 0 ? true : false
+                textfilter = filterText(textFilter, i.transcription, i.title).length > 0 ? true : false
             }
             if ( dateFilter === 1) {
                 datefilter = true
@@ -140,53 +134,42 @@ const Boxes = props => {
                     datefilter = i.date[d] >= dateFilter && i.date[d] <= dateFilter + 9 ? true : false
                 }
             }
-            // the first one is probably going to work once we have subjects in the data, but it's untested; currently its just searcing in the description, which will probably always fail, so subjects is nonfunctional, but will not error
             if (subjFilter.length > 0){
-                // subjfilter = i.subjects.indexOf(subjectFilter) === -1 ? false : true
                 subjfilter = i.category.indexOf(subjFilter) === -1 ? false : true
             }
             const result = datefilter && langfilter && textfilter && subjfilter
             resultCount = result ? resultCount + 1 : resultCount
             return result
         })
-        setFilteredContent(tempCurrContent)
+        setFilteredContent(tempallContent)
     }
     const [showButton, setShowButton] = useState(true);
-    const [boxes, setBoxes] = useState(initialBoxes)
+    const [boxes, setBoxes] = useState([])
     function rewriteContent(){
         const contentForBoxing = filteredContent.length > qty ? filteredContent.slice(boxes.length, boxes.length + qty) : filteredContent 
         const newBoxes = boxify(contentForBoxing)
         setBoxes(newBoxes) 
         if (boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
-    function clicker() {
-        // console.log(' ; textFilter: ' + textFilter +' ; dateFilter: ' + dateFilter +' ; subjFilter: ' + subjFilter +' ; langFilter: ' + langFilter )
-    }
     function addBoxes(){
         const addContent = filteredContent.slice(boxes.length, boxes.length + qty)
         const addBoxes = boxify(addContent)
-        setBoxes([...boxes, addBoxes] )
+        let tempBoxes = boxes.concat(addBoxes)
+        setBoxes(tempBoxes)
         if (boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
-    const firstLoad = useRef(true);
+    // const firstLoad = useRef(true);
     const executeScroll = () => scrollToRef(pageTop)
     useEffect(() => {
-        filterContent()
-        props.setResultCount(resultCount)
-        console.log(resultCount)
-        if (firstLoad.current) {
-            firstLoad.current = false
-            console.log('ts not happeningn yet')
-        } else if (!firstLoad.current) {
+            filterContent()
+            props.setResultCount(resultCount)
             executeScroll()
-            console.log('ts happeningn')
-        }
     }, [textFilter,
         dateFilter,
         subjFilter,
         langFilter])
     useEffect(() => {
-        rewriteContent()
+            rewriteContent()
     }, [filteredContent])
     return (
         <Boxescss className="boxes" >
@@ -200,7 +183,7 @@ const Boxes = props => {
                 dateFilter={dateFilter} setDateFilter={setDateFilter}
                 subjFilter={subjFilter} setSubjFilter={setSubjFilter}
                 langFilter={langFilter} setLangFilter={setLangFilter}
-            /> : 
+            /> : ''}
             <Sidebar 
                 showSidebar={props.showSidebar}
                 setBoxWidth={setBoxWidth} 
@@ -211,7 +194,7 @@ const Boxes = props => {
                 dateFilter={dateFilter} setDateFilter={setDateFilter}
                 subjFilter={subjFilter} setSubjFilter={setSubjFilter}
                 langFilter={langFilter} setLangFilter={setLangFilter}
-            />}
+            />
             <Anchor ref={pageTop} />
             <div  className={boxWidth ? 'boxwrapper' : 'boxwrapper wide'}>
                 {boxes}
