@@ -5,28 +5,31 @@ import Progress from './progressbar'
 
 import Highlighter from "react-highlight-words"
 
-const Textbox = props => 
+const Textbox = props => {
+    props.setBgimage(props.tarray[2])
+    return (
     <div className={props.activePage === props.index ? 'active' : 'inactive'}>
         <p className="clickery">
-            <span className={props.total > 1 ? 'leftarrow activearrow' : 'leftarrow inactivearrow'} onClick={() => props.pageSwitch('back')}>&#60;</span><span className="resultstext">Result {props.index + 1} of {props.total}</span><span className={props.total > 1 ? 'rightarrow activearrow' : 'rightarrow inactivearrow'} onClick={() => props.pageSwitch('forward')}>&#62;</span>
+            <button className={props.total > 1 ? 'leftarrow activearrow' : 'leftarrow inactivearrow'} onClick={() => props.pageSwitch('back')}>&#60;</button><span className="resultstext">Result {props.index + 1} of {props.total}</span><button className={props.total > 1 ? 'rightarrow activearrow' : 'rightarrow inactivearrow'} onClick={() => props.pageSwitch('forward')}>&#62;</button>
         </p>
         <pre><Highlighter
             highlightClassName="hilite"
             searchWords={props.filter}
             textToHighlight={props.tarray[1]}
-        /></pre>
-        <p><a href={props.tarray[0]}>Go to page</a></p>
+            /></pre>
+        <p><a href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.tarray[0]}>Go to page</a></p>
     </div>
+)}
 
 
 const SearchResults = props => {
     const [activePage, setActivePage] = useState(0)
     const pageSwitch = dir => {
         const adder = dir === 'back' ? -1 : 1
-        const newPage = adder + activePage > props.tarray.length -1 ? 0 : adder + activePage < 0 ? props.tarray.length -1 : adder + activePage
+        const newPage = adder + activePage > props.tarray.length - 1 ? 0 : adder + activePage < 0 ? props.tarray.length - 1 : adder + activePage
         setActivePage(newPage)
     }
-    const results = props.tarray.map((t, i) => <Textbox activePage={activePage} pageSwitch={pageSwitch} total={props.tarray.length} filter={props.filter} tarray={t} index={i} />)
+    const results = props.tarray.map((t, i) => <Textbox setBgimage={props.setBgimage} id={props.id} activePage={activePage} pageSwitch={pageSwitch} total={props.tarray.length} filter={props.filter} tarray={t} index={i} />)
     return (
         <div className="searchtextpanel">
             {results}
@@ -72,6 +75,8 @@ const Rectcss = styled.div`
         padding: 15px;
         border: 1px solid rgba(${colors.fg}, 1);
         box-shadow: 0 0 10px rgba(0,42,85,0.5);
+        box-shadow: inset 0 0 8px rgba(${colors.fg},1);
+        // width: 100%;
         .clickery {
             width: 100%;
             display: flex;
@@ -129,9 +134,9 @@ const Rectcss = styled.div`
 
         padding: 10px;
         // margin: 30px;
-        border-radius: 6px;
+        // border-radius: 6px;
         // background: #d0d0d0;
-        box-shadow: 10px 10px 60px rgba(${colors.fg},0.5)
+        // box-shadow: 10px 10px 60px rgba(${colors.fg},0.5)
     }
 
     .topwrapper {
@@ -182,11 +187,13 @@ const Rectcss = styled.div`
                 font-family: ${fonts.sans};
             }
             .category {
-                font-family: ${fonts.sans};
-                font-size: 0.7rem;
-                text-transform: uppercase;
-                color: rgba(${colors.hl}, 1);
-                span {
+                button {
+                    background: rgba(0,0,0,0);
+                    border: 0;
+                    font-family: ${fonts.sans};
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    color: rgba(${colors.hl}, 1);
                     cursor: pointer;
                     margin: 0;
                     padding: 0 5px;
@@ -218,13 +225,14 @@ const Rectcss = styled.div`
 const Rectangle = props => {
     const cats = props.category.split(';').map((i) => {
         i = i.trim()
-        return <span onClick={() => props.setSubjFilter(i)}>{i}</span>
+        return <button onClick={() => props.setSubjFilter(i)}>{i}</button>
     })
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
+    const [ bgimage, setBgimage ] = useState(props.img)
     return (
-    <Rectcss className="rectangle" id={props.id} href={props.link} image={props.img}>
+    <Rectcss className="rectangle" id={props.id} href={props.link} image={bgimage} >
         <div className="topwrapper">
-            <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="cover of resource"/>
             <div className="textandresults">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>
@@ -239,7 +247,7 @@ const Rectangle = props => {
                     <div className="progress"><Progress progress={props.progress} /></div>
                 </div>
                 <div className="bottomwrapper">
-                    <SearchResults tarray={props.pages} filter={props.textFilter} />
+                    <SearchResults id={props.id} tarray={props.pages} filter={props.textFilter} setBgimage={setBgimage} />
 
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { fonts, colors } from './styles'
 import Progress from './progressbar';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 
 const Boxcss = styled.div`
     // sizes
@@ -16,7 +16,7 @@ const Boxcss = styled.div`
             }
         }
         .textbox {
-            // height: calc(var(--height) * 0.75);
+            height: calc(var(--height) * 0.75);
             padding: 15px;
             padding-top: calc(var(--height) * 0.25);
         }
@@ -89,7 +89,7 @@ const Boxcss = styled.div`
         display: flex;
         flex-direction: column;
         align-content: stretch;
-        height: calc(100% - var(--width));
+        // height: calc(100% - var(--width));
         justify-content: stretch;
     }
     h3 {
@@ -136,11 +136,14 @@ const Boxcss = styled.div`
         text-overflow: ellipsis;
     }
     .category {
-        font-family: ${fonts.sans};
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        color: rgba(${colors.hl}, 1);
-        span {
+        button {
+            font-family: ${fonts.sans};
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0);
+            border: 0;
+            color: rgba(${colors.hl}, 1);
+            text-decoration: none;
             cursor: pointer;
             margin: 0;
             padding: 0 5px;
@@ -170,6 +173,7 @@ const Boxcss = styled.div`
         flex-direction: column;
     }
     .progress {
+        padding-bottom: 10px;
         flex-basis: 40px;
         flex-shrink: 0;
     }
@@ -178,24 +182,23 @@ const Box = props => {
     const cats = props.category.split(';').map((i) => {
         i = i.trim()
         i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
-        return <span key={i} onClick={() => props.setSubjFilter(i)}>{i}</span>
+        return <button key={i} onClick={() => props.setSubjFilter(i)} >{i}</button>
     })
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
     // <h3><Link to={props.id} >{title}</Link></h3>
-    
+    const img = props.img.indexOf('default.jpg') > -1 ? props.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : props.img  + '/full/400,/0/default.jpg'
     return (
     <Boxcss className="box" id={props.id} href={props.link}>
         <div className="innerdiv">
-
             <div className="textbox">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>
                     <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3>
                     <p className="desc">{props.text}</p>
                 </div>
-                <div className="progress"><Progress progress={props.progress} /></div>
+                <div className="progress"><Progress progress={props.progress} title={title}/></div>
             </div>
-            <img alt="Sample from Collection" title={title} src={props.img} />
+            <img alt="Sample from Collection" title={title} src={img} />
         </div>
     </Boxcss>
 )}

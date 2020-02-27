@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "newberry-transcribe",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Transcribe rebuilt",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Nick White <whiten@newberry.org>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
@@ -20,12 +20,15 @@
     "gatsby-transformer-sharp": "^2.3.7",
     "gh-pages": "^2.2.0",
     "html-react-parser": "^0.10.0",
+    "js-search": "^1.4.3",
     "prop-types": "^15.7.2",
     "rc-slider": "^8.7.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-highlight-words": "^0.16.0"
+    "react-highlight-words": "^0.16.0",
+    "react-icons": "^3.9.0",
+    "serialize-javascript": "^3.0.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -36,7 +39,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

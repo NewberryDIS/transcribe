@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import searchIcon from '../images/searchIcon.png'
 import { fonts, colors } from './styles'
 
 const Searchcss = styled.div`
     border: 1px solid black;
-    margin: 10px 0;
+    margin: 4px 0;
     background: rgba(237,237,237,0.7);
     display: flex;
     flex-wrap: no-wrap;
@@ -16,16 +16,20 @@ const Searchcss = styled.div`
         background: transparent;
         border: 1px solid rgba(0,42,85,0.5);
         flex: 1;
-        padding: 0 0 0 5px;
+        padding: 0 0 0 10px;
+        font-size: 12px;
         width: calc(100% - 35px);
         margin: 0;
+        &::placeholder {
+        text-transform: uppercase;
+        }
     }
     .searchbutton {
         border: 1px solid black;
         box-shadow: inset 0 0 10px rgba(0,42,85,0.2);
         flex-basis: 35px;
         flex-shrink: 0;
-        height: 35px;
+        height: 30px;
         background: rgba(${colors.hl},0.3) url(${searchIcon});
         background-position: center;
         background-size: 50%;
@@ -52,7 +56,7 @@ const Search = props => {
     return (
         <Searchcss>
             <input className="searchInput" placeholder={text} value={props.input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
-            <div className="searchbutton" onClick={submitSearch}></div>
+            <button className="searchbutton" onClick={submitSearch}></button>
         </Searchcss>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from '@emotion/styled'
 
 // import nby0BH40 from '../images/nby_0BH40_0000.jpg'
@@ -105,15 +105,17 @@ function getWindowSize() {
     return  returnValue
 }
 const Background = props => {
+    const firstLoad = useRef(true);
     const [bgLink, setBgLink] = useState('')
     const rando = [Math.round(Math.random() * (bgarray.length - 1)), getWindowSize()]
     const bodybg = bgarray[rando[0]]
     const bgId = bodybg[0] + '$' + bodybg[1]
-    useEffect(() => {
+    if (firstLoad.current){
+        firstLoad.current = false
         setBgLink(`//iiif.archivelab.org/iiif/` + bgId + `/full/${rando[1]}/0/default.jpg`)
         props.setBgId(bodybg[0])
         props.setBgNo(bodybg[1])
-    }, [])
+    }
     return (
         <Bodycss bg={bgLink} />
     )

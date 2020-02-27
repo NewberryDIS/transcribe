@@ -5,10 +5,12 @@ import { fonts, colors } from './styles'
 import Box from './box'
 import Rectangle from './rectangle'
 import Bluebutton from './bluebutton'
+import Tsrbox from './tsrbox'
 
 const Boxescss = styled.div`
     flex: 1;
-    z-index: 1;
+    position: relative;
+    z-index: -1;
     align-content: flex-end;
     flex-wrap: wrap;
     padding-top: 60vh;
@@ -37,7 +39,8 @@ const Boxescss = styled.div`
     @media only screen and (max-width: 750px){
         margin-left: 40px;
         margin-right: 40px;
-    }       
+    }   
+     
 `
 const Anchor = styled.div`
     position: absolute;
@@ -74,6 +77,9 @@ const Boxes = props => {
     const [ filteredContent, setFilteredContent] = useState(props.allContent)
     function boxify(content) { 
         return content.map((i) => {
+            if(i.transcount === `undefined`){
+                console.log(i.title)
+            }
             const progress = { 
                 count: i.count,
                 transcount: i.transcount,
@@ -83,21 +89,20 @@ const Boxes = props => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/full/400,/0/default.jpg'
             let searchresults =  textFilter !== [] ? filterText(textFilter, i.transcription, i.title) : ''
             const returnDiv = textFilter.length !== 0 ? 
-                <Rectangle setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
+                <Tsrbox setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} pages={searchresults}/>
                 : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} script={i.transcription} /> 
             return returnDiv
         })
     }
     function filterText(nn, hh, t){
-        // console.log()
         let returnArray = []
         let found = true
         let titleFound = true
-        nn.forEach(n => {
+        let titleSearch = nn.length > 0 ? nn.forEach(n => {
             const needle = normalizeText(n)
             const title = normalizeText(t)
             titleFound = ( titleFound && title.indexOf(needle) > -1) ? true : false
-        })
+        }) : ''
         hh.forEach(h => {
             let nonvar = nn.length > 0 ? 
                 nn.forEach(n => {
@@ -106,7 +111,7 @@ const Boxes = props => {
                     found = ( found && haystack.indexOf(needle) > -1) ? true : false
                 }) : ''
             
-            if (found || (titleFound && !found)) returnArray.push(h)
+            if (found || (titleFound )) returnArray.push(h)
 
         })
         return returnArray
@@ -114,7 +119,7 @@ const Boxes = props => {
     const pageTop = useRef(null)
     function filterContent() {
         resultCount = 0
-        let tempallContent = props.allContent.filter(function(i) {
+        let tempContent = props.allContent.filter(function(i) {
             let langfilter = false,
                 textfilter = true,
                 datefilter = false,
@@ -125,6 +130,8 @@ const Boxes = props => {
             }
             if ( dateFilter === 1) {
                 datefilter = true
+            } else if ( dateFilter === 1799){
+                datefilter = i.date[0] < 1799 ? true : false
             } else if (i.date.length === 1){
                 datefilter = i.date[0] >= dateFilter && i.date[0] <= dateFilter + 9 ? true : false
             } else if (i.date.length === 2) {
@@ -141,7 +148,7 @@ const Boxes = props => {
             resultCount = result ? resultCount + 1 : resultCount
             return result
         })
-        setFilteredContent(tempallContent)
+        setFilteredContent(tempContent)
     }
     const [showButton, setShowButton] = useState(true);
     const [boxes, setBoxes] = useState([])
@@ -152,18 +159,35 @@ const Boxes = props => {
         if (boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
     function addBoxes(){
-        const addContent = filteredContent.slice(boxes.length, boxes.length + qty)
-        const addBoxes = boxify(addContent)
+        console.log('adding boxes...')
+        let addContent = boxes.length < qty ? console.log('not many boxes') : console.log('many boxes')
+         addContent = boxes.length < qty ? filteredContent.slice(boxes.length, (boxes.length + qty) - boxes.length) : filteredContent.slice(boxes.length, boxes.length + qty)
+        let addBoxes = boxify(addContent)
         let tempBoxes = boxes.concat(addBoxes)
         setBoxes(tempBoxes)
         if (boxes.length >= filteredContent.length) {setShowButton(false)} else {setShowButton(true)}
     }
-    // const firstLoad = useRef(true);
+    const firstLoad = useRef(true);
     const executeScroll = () => scrollToRef(pageTop)
     useEffect(() => {
-            filterContent()
-            props.setResultCount(resultCount)
+        filterContent()
+        props.setResultCount(resultCount)
+        console.log(
+            ' ; textFilter: ' + textFilter +
+            ' ; dateFilter: ' + dateFilter +
+            ' ; subjFilter: ' + subjFilter +
+            ' ; langFilter: ' + langFilter + 
+            ' ; boxes length: ' + boxes.length
+            )
+        if (firstLoad.current)  {
+            firstLoad.current = false
+        } else {
+            console.log(boxes.length + ' is less than ' + qty)
+            if (boxes.length < qty){ addBoxes()}
+            console.log(boxes.length)
+
             executeScroll()
+        }
     }, [textFilter,
         dateFilter,
         subjFilter,

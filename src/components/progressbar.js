@@ -4,8 +4,8 @@ import { fonts, colors } from './styles'
 
 const Progresscss = styled.div`
     border: 2px solid rgba(${colors.fg},0.7);
-    margin: 10px 0;
-    height: 35px; 
+    margin: 4px 0;
+    height: 26px; 
     background: rgba(${colors.bg},0.7);
     box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
     position: relative;
@@ -26,9 +26,9 @@ const Progresscss = styled.div`
         right: 0;
         bottom: 0;
         left: 0;
-        height: 35px;
+        height: 26px;
         font-size: 16px;
-        line-height: 35px;
+        line-height: 26px;
         // padding: 2px 0;
         // margin: 0 auto;
         text-align: center;
@@ -45,21 +45,48 @@ const Progresscss = styled.div`
     transition: background 0.5s;
     transition: color 0.5s;
 `
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
     x = Math.round(x)
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 const Progress = props => {
-    const count = props.progress.count ? props.progress.count : props.progress.totalPages
-    const transcount = props.progress.transcount ? props.progress.transcount : props.progress.totalTranscount
-    const percent = props.progress.percentTranscribed 
+    const count = props.progress.totalPages ? props.progress.totalPages : props.progress.count
+    const transcount = props.progress.totalTranscount ? props.progress.totalTranscount : props.progress.transcount
+    const percent = Math.round(props.progress.percentTranscribed,0)
     return (
         <Progresscss 
-            title={numberWithCommas(transcount) + ' out of ' + numberWithCommas(count) + ' pages transcribed'} 
+            title={numberWithCommas(transcount) + ' out of ' + numberWithCommas(count) + ' pages transcribed!'} 
             percent={percent}>
             <div className="complete"></div>
             <div className="text">{percent}% transcribed</div>
         </Progresscss>
+    )
+}
+
+const Proboxcss = styled.div`
+    p {
+        margin: 0;
+    }
+    .percent {
+        text-align: center;
+        font-size: 30px;
+        line-height: 28px;
+    }
+    .bottomtext {
+        font-size: 12px;
+        line-height: 8px;
+    }
+`
+
+export const Progressbox = props => {
+    const count = props.progress.totalPages ? props.progress.totalPages : props.progress.count
+    const transcount = props.progress.totalTranscount ? props.progress.totalTranscount : props.progress.transcount
+    const percent = Math.round(props.progress.percentTranscribed,0)
+    return (
+        <Proboxcss>
+            <p className="percent">{percent}%</p>
+            <p className="bottomtext">transcribed!</p>
+        </Proboxcss>
     )
 }
 

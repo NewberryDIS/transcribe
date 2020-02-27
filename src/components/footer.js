@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import {colors, fonts } from './styles'
-import TwitterContainer from './twittercontainer'
-import json from './samplejson.json'
+// import TwitterContainer from './twittercontainer'
+// import json from './samplejson.json'
 import { useState } from 'react'
 
 const Gardacss = styled.footer`
@@ -169,7 +169,7 @@ const Footer = props => {
                     {tweets}
                 </div>
                 <div className="textycontent">
-                    <div className="bg"><h3>Background Image</h3><figure><a href={aLink}><img src={imgLink} /><figcaption>{imgTitle}</figcaption></a></figure> </div>
+                    <div className="bg"><h3>Background Image</h3><figure><a href={aLink}><img src={imgLink} alt="thumbnail of background" /><figcaption>{imgTitle}</figcaption></a></figure> </div>
                     <div className="contact"><h3>contact</h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
                 </div>
                 <div className="textycontent">

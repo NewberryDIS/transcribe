@@ -1,3 +1,5 @@
+#!/bin/python
+
 import urllib.request
 import json, os.path, time, math, re
 
@@ -106,7 +108,7 @@ with open(itemsFile) as json_file:
                 transcription = ''
                 for fe in fi['element_texts']:
                     if fe['element']['name'] == 'Transcription': 
-                        itemObj['transcription'].append([fi['id'], fe['text']])
+                        itemObj['transcription'].append([fi['id'], fe['text'], fi['filename']])
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
             content['summary']['totalTranscount'] += len(itemObj['transcription'])
@@ -147,7 +149,7 @@ content['summary']['percentTranscribed'] = round(content['summary']['totalTransc
 with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
-print('touched in 2019: ' + str(yearlyModifiedCounter))
+# print('touched in 2019: ' + str(yearlyModifiedCounter))
 with open('./imageList.txt', 'w') as listfile:
     for line in imageList:
         listfile.write(line + "\n")
