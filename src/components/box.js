@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { fonts, colors } from './styles'
 import Progress from './progressbar';
-// import { Link } from 'gatsby';
+import { Link } from 'gatsby';
 
 const Boxcss = styled.div`
     // sizes
@@ -184,6 +184,8 @@ const Box = props => {
         i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
         return <button key={i} onClick={() => props.setSubjFilter(i)} >{i}</button>
     })
+    const tf = false
+    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3> : <h3><Link to={'item/' + props.id} >{title}</Link></h3>
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
     // <h3><Link to={props.id} >{title}</Link></h3>
     const img = props.img.indexOf('default.jpg') > -1 ? props.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : props.img  + '/full/400,/0/default.jpg'
@@ -193,7 +195,7 @@ const Box = props => {
             <div className="textbox">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>
-                    <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3>
+                    {linkType}
                     <p className="desc">{props.text}</p>
                 </div>
                 <div className="progress"><Progress progress={props.progress} title={title}/></div>
