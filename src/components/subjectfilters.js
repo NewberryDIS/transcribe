@@ -48,6 +48,7 @@ const Subjectcss = styled.div`
         }
         &.viewall {
             padding-left: 4px;
+            padding-top: 10px;
         }
     }
     @media only screen 
@@ -68,7 +69,7 @@ const Subjectcss = styled.div`
 
 const SubjectFilters = props => {
     const subjectArray = [
-        "Cassettes",
+        // "Cassettes",
         "Family papers",
         "Diaries",
         "Women",

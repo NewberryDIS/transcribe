@@ -23,13 +23,10 @@ const Gardacss = styled.footer`
             text-align: center;
         }
         .textycontent {
-            box-shadow: inset 0 0 10px rgba(${colors.fg},1);
-            background-color: rgba(${colors.bg},1);
-            margin: 10px 0;
             grid-column: 1 / 2;
             display: flex;
             flex-wrap: wrap;
-            padding: 15px;
+            padding: 0 15px;
             .bg, .contact, .license, .account {
                 // background-color: rgba(${colors.bg},1);
                 padding: 15px;
@@ -85,13 +82,16 @@ const Gardacss = styled.footer`
             > div {
                 padding: 10px;
                 margin: 15px;
-                border-radius: 6px;
+                // border-radius: 6px;
                 background: #d0d0d0;
                 // border-radius: 50px;
                 // background: linear-gradient(145deg, #bbbbbb, #dfdfdf);
                 // box-shadow: 30px 30px 60px #e7e7e7, 
                 //             -30px -30px 60px #b9b9b9;
                 box-shadow: 10px 10px 60px rgba(${colors.fg},0.5);
+
+        box-shadow: inset 0 0 8px rgba(${colors.fg},1);
+        border: 2px solid rgba(${colors.fg},0.7);
                 
     // box-shadow: inset 0 0 10px rgba(${colors.fg},1);
                 // &:first-of-type {
@@ -165,9 +165,9 @@ const Footer = props => {
                 {/* <div className="textycontent">
                     <div className="account"><h3>login &amp; create account etc info</h3></div>
                 </div> */}
-                <div className="textycontent">
+                {/* <div className="textycontent">
                     {tweets}
-                </div>
+                </div> */}
                 <div className="textycontent">
                     <div className="bg"><h3>Background Image</h3><figure><a href={aLink}><img src={imgLink} alt="thumbnail of background" /><figcaption>{imgTitle}</figcaption></a></figure> </div>
                     <div className="contact"><h3>contact</h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>

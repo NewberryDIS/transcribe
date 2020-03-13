@@ -5,8 +5,9 @@ import styled from '@emotion/styled'
 import Parser from 'html-react-parser';
 import { colors, fonts } from '../components/styles'
 import Footer from '../components/footer'
+import Topbar from '../components/topbar'
+import Jumbo from '../components/jumbo'
 import { Indexcss } from './index.js'
-import { Link } from 'gatsby';
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
@@ -79,17 +80,16 @@ const About = () => {
     const [bgNo, setBgNo] = useState()
     return (
         <Indexcss >
-            <Global styles={css`
-                html, body {
-                    margin: 0;
-                    padding: 0;
-                }
-            `}/>
-            <div className="banner">
-                <div className="leftext"><Link to={'/'} >Newberry Transcribe</Link></div>
-                <div className="righttext">Be a part of history</div>
-            </div>
-            <Background setBgId={setBgId} setBgNo={setBgNo} />
+        <Global styles={css`
+            html, body {
+                margin: 0;
+                padding: 0;
+                position: relative;
+                z-index: 1;
+            }
+        `}/>
+        <Topbar  />
+        <Background setBgId={setBgId} setBgNo={setBgNo} />
             <Aboutcontent />
             <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>

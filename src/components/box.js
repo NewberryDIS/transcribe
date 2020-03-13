@@ -185,8 +185,8 @@ const Box = props => {
         return <button key={i} onClick={() => props.setSubjFilter(i)} >{i}</button>
     })
     const tf = false
-    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3> : <h3><Link to={'item/' + props.id} >{title}</Link></h3>
     const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
+    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3> : <h3><Link to={'item/' + props.id} >{title}</Link></h3>
     // <h3><Link to={props.id} >{title}</Link></h3>
     const img = props.img.indexOf('default.jpg') > -1 ? props.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : props.img  + '/full/400,/0/default.jpg'
     return (

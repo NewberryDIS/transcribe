@@ -9,7 +9,7 @@ exports.createPages = ({ actions }) => {
 
     // Create pages for each JSON entry.
     data.forEach(item => {
-        var path = 'items/' + item.id;
+        var path = 'item/' + item.id;
         createPage({
             path,
             component: template,

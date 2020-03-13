@@ -80,6 +80,7 @@ with open(itemsFile) as json_file:
             'percentTranscribed': 0,
             'date': '',
             'category': '',
+            'pages': []
         }
         id = str(i['id'])
         itemObj['count'] = i['files']['count']
@@ -105,12 +106,17 @@ with open(itemsFile) as json_file:
         with open(filesfilename) as files:
             filesJson = json.load(files)
             for fi in filesJson:
+                fileObj = {
+                    'pageid': fi['id'],
+                    'pagefilename': fi['filename'],
+                }
                 transcription = ''
                 for fe in fi['element_texts']:
                     if fe['element']['name'] == 'Transcription': 
-                        itemObj['transcription'].append([fi['id'], fe['text'], fi['filename']])
+                        fileObj['transcription'] = fe['text']
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
+                itemObj['pages'].append(fileObj)
             content['summary']['totalTranscount'] += len(itemObj['transcription'])
         with open(itemfilename) as item:
             itemJson = json.load(item)
@@ -148,6 +154,8 @@ with open(itemsFile) as json_file:
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
 with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
+with open('../src/data/items.json', 'w') as dataFile:
+    json.dump(content['items'], dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
 with open('./imageList.txt', 'w') as listfile:

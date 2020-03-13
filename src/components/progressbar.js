@@ -89,5 +89,26 @@ export const Progressbox = props => {
         </Proboxcss>
     )
 }
+const Simpleprogcss = styled.div`
+    border: 2px solid rgba(${colors.fg},0.7);
+    margin: 4px 0;
+    height: 26px; 
+    line-height: 26px;
+    text-align: center;
+    background: ${props => props.complstatus ? `rgba(${colors.hl},0.4);` : `rgba(${colors.bg},0.7)`};
+    box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
+    position: relative;
+    transition: 0.2s;
+    &:hover {
+        color: black;
+        background: ${props => props.complstatus ? `rgba(${colors.hl},0.2);` : `rgba(${colors.bg},0.5)`};
+    }
+`
+export const Simpleprogress = props  => {
+    const complstatus = props.status ? "Complete!" : "Not transcribed"
+    return (
+        <Simpleprogcss complstatus={props.status}>{complstatus}</Simpleprogcss>
+    )
+}
 
 export default Progress

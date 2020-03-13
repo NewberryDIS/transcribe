@@ -20,7 +20,7 @@ const Tsrcss = styled.div`
     width: var(--width);
     margin: 20px auto ;
     background: rgba(${colors.bg},1);
-
+    border: 2px solid rgba(${colors.fg},1);
     display: flex;
     flex-direction: column;
     img {
