@@ -79,8 +79,6 @@ const Proboxcss = styled.div`
 `
 
 export const Progressbox = props => {
-    const count = props.progress.totalPages ? props.progress.totalPages : props.progress.count
-    const transcount = props.progress.totalTranscount ? props.progress.totalTranscount : props.progress.transcount
     const percent = Math.round(props.progress.percentTranscribed,0)
     return (
         <Proboxcss>

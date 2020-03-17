@@ -65,6 +65,20 @@ const Subjectcss = styled.div`
             vertical-align: middle;
             margin-right: 4px;
         }
+    @media only screen 
+        and (max-height  : 600px) {
+            .subjectlist {display: none;}
+            .subjectdropdown {display: block;}
+        }
+    @media only screen 
+        and (min-height : 600px) {
+            .subjectlist {display: block;}
+            .subjectdropdown {display: none;}
+        }
+        .icon {
+            vertical-align: middle;
+            margin-right: 4px;
+        }
 `
 
 const SubjectFilters = props => {

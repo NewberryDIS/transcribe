@@ -184,7 +184,6 @@ const Tsrcss = styled.div`
 `
 
 const Textbox = props => {
-    // props.setBgImage('https://publications.newberry.org/transcription/mms-transcribe/files/original/' + props.tarray[2])
     return (
     <div className={props.activePage === props.index ? 'active' : 'inactive'}>
         <p className="topwrapper">
@@ -195,20 +194,26 @@ const Textbox = props => {
         <Highlighter
             highlightClassName="hilite"
             searchWords={props.filter}
-            textToHighlight={props.tarray[1]}
+            textToHighlight={props.searchresult.transcription}
         />
-        <p><a href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.tarray[0]}>Go to page</a></p>
+        <p><a href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid}>Go to page</a></p>
     </div>
 )}
 const ResultsPages = props => {
     const [activePage, setActivePage] = useState(0)
     const pageSwitch = dir => {
         const adder = dir === 'back' ? -1 : 1
-        const newPage = adder + activePage > props.tarray.length - 1 ? 0 : adder + activePage < 0 ? props.tarray.length - 1 : adder + activePage
+        const newPage = adder + activePage > props.searchresults.length - 1 ? 0 : adder + activePage < 0 ? props.searchresults.length - 1 : adder + activePage
         setActivePage(newPage)
-        props.setBgImage('https://publications.newberry.org/transcription/mms-transcribe/files/original/' + props.tarray[newPage][2])
+        props.setBgImage('https://publications.newberry.org/transcription/mms-transcribe/files/original/' + props.searchresults[newPage].pagefilename)
     }
-    const results = props.tarray.map((t, i) => <Textbox key={props.id + '-' + i} setBgImage={props.setBgImage} id={props.id} activePage={activePage} pageSwitch={pageSwitch} total={props.tarray.length} filter={props.filter} tarray={t} index={i} />)
+    const results = props.searchresults.map((t, i) => {
+            if (t.transcription.length > 0) {
+                return <Textbox key={props.id + '-' + i} setBgImage={props.setBgImage} id={props.id} activePage={activePage} pageSwitch={pageSwitch} total={props.searchresults.length} filter={props.filter} searchresult={t} index={i} />
+            } else {
+                return true
+            }
+        })
     return (
         <div className="searchtextpanel">
             {results}
@@ -218,6 +223,7 @@ const ResultsPages = props => {
 
 const Tsrbox = props => {
     const [ bgImage, setBgImage ] = useState(props.img)
+    // console.log(props.id + ': ' + props.progress.percentTranscribed)
     return(
         <Tsrcss bgImage={bgImage}>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=""/>
@@ -233,7 +239,7 @@ const Tsrbox = props => {
                                 <Progressbox progress={props.progress}/>
                             </div>
                         </div>
-                        <ResultsPages  id={props.id} tarray={props.pages} filter={props.textFilter} setBgImage={setBgImage} />
+                        <ResultsPages  id={props.id} searchresults={props.searchresults} filter={props.textFilter} setBgImage={setBgImage} />
                 </div>
         </Tsrcss>
     )

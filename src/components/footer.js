@@ -152,7 +152,7 @@ async function postData(url = '', data = {}) {
 const Footer = props => {
     const [imgTitle, setImgTitle] = useState('')
     const imgLink = '//iiif.archivelab.org/iiif/' + props.bgLink + '/full/,200/0/default.jpg'
-    console.log(props.bgLink)
+    // console.log(props.bgLink)
     postData(props.bgText).then((data) => {
         setImgTitle(data.result)
     });

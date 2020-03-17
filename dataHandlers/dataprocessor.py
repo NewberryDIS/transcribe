@@ -109,16 +109,18 @@ with open(itemsFile) as json_file:
                 fileObj = {
                     'pageid': fi['id'],
                     'pagefilename': fi['filename'],
-                    'transcription': [],
+                    'transcription': '',
                 }
                 transcription = ''
                 for fe in fi['element_texts']:
                     if fe['element']['name'] == 'Transcription': 
-                        fileObj['transcription'].append(fe['text'])
+                        fileObj['transcription'] = fe['text']
+                        if len(fileObj['transcription']) > 0:
+                            content['summary']['totalTranscount'] += 1
+                            itemObj['transcount'] += 1
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
                 itemObj['pages'].append(fileObj)
-                content['summary']['totalTranscount'] += len(fileObj['transcription'])
         with open(itemfilename) as item:
             itemJson = json.load(item)
             for ie in itemJson['element_texts']:
@@ -146,7 +148,6 @@ with open(itemsFile) as json_file:
                         date[i] = int(date[i])
                     itemObj['date'] = date
                 if lang == '': lang = ['English']
-        itemObj['transcount'] = len(itemObj['transcription'])
         # print( itemObj['count'])
         if id != '1182':
             itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
