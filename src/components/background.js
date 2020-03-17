@@ -98,24 +98,26 @@ const Bodycss = styled.div`
     }
 
 `
-function getWindowSize() {
-    const isBrowser = typeof window === "object"
-    //halving window width because we dont really need it to be that big
-    const returnValue = isBrowser ?Math.ceil(window.innerWidth * 0.5, window.innerHeight * 0.5 ): undefined
-    return  returnValue
-}
+// function getWindowSize() {
+//     const isBrowser = typeof window === "object"
+//     //halving window width because we dont really need it to be that big
+//     const returnValue = isBrowser ? Math.ceil(window.innerWidth * 0.5, window.innerHeight * 0.5 ): undefined
+//     return  returnValue
+// }
 const Background = props => {
     const firstLoad = useRef(true);
     const [bgLink, setBgLink] = useState('')
-    const rando = [Math.round(Math.random() * (bgarray.length - 1)), getWindowSize()]
-    const bodybg = bgarray[rando[0]]
-    const bgId = bodybg[0] + '$' + bodybg[1]
     if (firstLoad.current){
         firstLoad.current = false
-        setBgLink(`//iiif.archivelab.org/iiif/` + bgId + `/full/${rando[1]}/0/default.jpg`)
+        const rando = Math.round(Math.random() * (bgarray.length - 1))
+        const bodybg = bgarray[rando]
+        const bgId = bodybg[0] + '$' + bodybg[1]
+        setBgLink(`//iiif.archivelab.org/iiif/` + bgId + `/full/1000,/0/default.jpg`)
         props.setBgId(bodybg[0])
         props.setBgNo(bodybg[1])
+        console.log('bgId from index: ' + props.bgId)
     }
+    console.log('bglink from bg: ' + bgLink)
     return (
         <Bodycss bg={bgLink} />
     )

@@ -109,15 +109,16 @@ with open(itemsFile) as json_file:
                 fileObj = {
                     'pageid': fi['id'],
                     'pagefilename': fi['filename'],
+                    'transcription': [],
                 }
                 transcription = ''
                 for fe in fi['element_texts']:
                     if fe['element']['name'] == 'Transcription': 
-                        fileObj['transcription'] = fe['text']
+                        fileObj['transcription'].append(fe['text'])
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
                 itemObj['pages'].append(fileObj)
-            content['summary']['totalTranscount'] += len(itemObj['transcription'])
+                content['summary']['totalTranscount'] += len(fileObj['transcription'])
         with open(itemfilename) as item:
             itemJson = json.load(item)
             for ie in itemJson['element_texts']:

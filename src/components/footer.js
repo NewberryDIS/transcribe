@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import styled from '@emotion/styled'
 import {colors, fonts } from './styles'
 // import TwitterContainer from './twittercontainer'
@@ -151,34 +151,78 @@ async function postData(url = '', data = {}) {
   
 const Footer = props => {
     const [imgTitle, setImgTitle] = useState('')
-    const tweetcontent = ['tweet one', 'tweet two', 'tweet three']
-    const tweets = tweetcontent.map(t => <Tweet key={t} text={t}/>)
-    const imgLink = '//iiif.archivelab.org/iiif/' + props.bgId + '$' + props.bgNo + '/full/,200/0/default.jpg'
-    const aLink = '//archive.org/details/' + props.bgId + '/mode/1up'
-    const dataLink = 'https://cors-anywhere.herokuapp.com/http://archive.org/metadata/' + props.bgId + '/metadata/title'
-    postData(dataLink).then((data) => {
+    const imgLink = '//iiif.archivelab.org/iiif/' + props.bgLink + '/full/,200/0/default.jpg'
+    console.log(props.bgLink)
+    postData(props.bgText).then((data) => {
         setImgTitle(data.result)
     });
     return (
         <Gardacss >
             <div className="footerwrapper">
-                {/* <div className="textycontent">
-                    <div className="account"><h3>login &amp; create account etc info</h3></div>
-                </div> */}
-                {/* <div className="textycontent">
-                    {tweets}
-                </div> */}
                 <div className="textycontent">
-                    <div className="bg"><h3>Background Image</h3><figure><a href={aLink}><img src={imgLink} alt="thumbnail of background" /><figcaption>{imgTitle}</figcaption></a></figure> </div>
-                    <div className="contact"><h3>contact</h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
+                    <div className="bg">
+                        <h3>Background Image</h3>
+                        <figure>
+                            <a href={props.aLink}>
+                                <img src={imgLink} alt="thumbnail of background" />
+                                <figcaption>
+                                    {imgTitle}
+                                </figcaption>
+                            </a>
+                        </figure>
+                    </div>
+                    <div className="contact">
+                        <h3>contact</h3>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
                 </div>
                 <div className="textycontent">
-                <div className="license"><Cccontent /></div>
-            </div>
+                    <div className="license"><Cccontent /></div>
+                </div>
             </div>
         </Gardacss>
     )
 }
+// class Footer extends React.Component {
+//     // shouldComponentUpdate(nextProps, nextState){
+//     //     return nextProps.bgLink != this.props.bgLink
+//     // }
+//     constructor(props) {
+//         super(props);
+//         this.state = {imgTitle: ''};
+//     }
+//     // const tweetcontent = ['tweet one', 'tweet two', 'tweet three']
+//     // const tweets = tweetcontent.map(t => <Tweet key={t} text={t}/>)
+//     // console.log('bg state from index in footer: ' + props.bgId)
+//     imgLink = '//iiif.archivelab.org/iiif/' + this.props.bgLink + '/full/,200/0/default.jpg'
+//     // const aLink = '//archive.org/details/' + props.bgId + '/mode/1up'
+//     // const dataLink = 'https://cors-anywhere.herokuapp.com/http://archive.org/metadata/' + props.bgId + '/metadata/title'
+//     getTitle = postData(this.props.dataLink).then((data) => {
+//         this.setState({
+//             imgTitle: data.result
+//         });
+//     });
+//     render() {
+//         return (
+//             <Gardacss >
+//                 <div className="footerwrapper">
+//                     {/* <div className="textycontent">
+//                         <div className="account"><h3>login &amp; create account etc info</h3></div>
+//                     </div> */}
+//                     {/* <div className="textycontent">
+//                         {tweets}
+//                     </div> */}
+//                     <div className="textycontent">
+//                         <div className="bg"><h3>Background Image</h3><figure><a href={this.props.aLink}><img src={this.imgLink} alt="thumbnail of background" /><figcaption>{this.state.imgTitle}</figcaption></a></figure> </div>
+//                         <div className="contact"><h3>contact</h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
+//                     </div>
+//                     <div className="textycontent">
+//                     <div className="license"><Cccontent /></div>
+//                 </div>
+//                 </div>
+//             </Gardacss>
+//         )
+//     }
+// }
 
 const Cccontent = () => (
     <p>
