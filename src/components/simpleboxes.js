@@ -98,11 +98,9 @@ const Boxes = props => {
         let returnArray = []
         let found = true
         let titleFound = true
-        let foundIndex, titleFoundIndex
         nn.length > 0 && nn.forEach(n => {
             const needle = normalizeText(n)
             const haystack = normalizeText(t)
-            titleFoundIndex = haystack.indexOf(needle)
             titleFound = ( titleFound && haystack.indexOf(needle) > -1) ? true : false
         })
         hh.forEach(h => {
@@ -110,10 +108,9 @@ const Boxes = props => {
                 nn.forEach(n => {
                     const needle = normalizeText(n)
                     const haystack = normalizeText(h.transcription)
-                    foundIndex = haystack.indexOf(needle) 
-                    found = ( found && haystack.indexOf(needle) > -1) ? true : false
+                    found = ( haystack.indexOf(needle) > -1) ? true : false
+                    if (found || (titleFound )) {returnArray.push(h)}
                 })
-                if (found || (titleFound )) {returnArray.push(h)}
             }
         }) 
         return returnArray
@@ -122,11 +119,10 @@ const Boxes = props => {
     function filterContent() {
         resultCount = 0
         let tempContent = props.allContent.filter(function(i) {
-            let langfilter = false,
+            let langfilter = i.lang.indexOf(langFilter) > -1 ? true : false,
                 textfilter = true,
                 datefilter = false,
                 subjfilter = true
-            langfilter = i.lang.indexOf(langFilter) > -1 ? true : false
             if (textFilter.length > 0){
                 textfilter = filterText(textFilter, i.pages, i.title).length > 0 ? true : false
             }

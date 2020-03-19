@@ -140,7 +140,7 @@ export const Dropdown = props =>{
             <div className="sidebarcontent">
                 <Progresstext totalTranscount={props.progress.totalTranscount} totalPages={props.progress.totalPages}/>
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
+                <Search             textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
                 <div className="dropdowns">
                     <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
                     <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />

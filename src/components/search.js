@@ -44,7 +44,7 @@ const Search = props => {
         props.setInput(e.target.value)
     }
     const submitSearch = () => {
-        props.setTextFilter(props.input.toLowerCase().split(" "))
+        props.setTextFilter([props.input.toLowerCase()])
         props.setBoxWidth(false)
         console.log(props.input)
     }

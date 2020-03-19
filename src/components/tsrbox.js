@@ -83,7 +83,8 @@ const Tsrcss = styled.div`
         font-family: ${fonts.serif};
         flex: 1;
         display: flex;
-            padding: 6px 0;
+        padding: 6px 0;
+        justify-content: space-between;
         .titlebox {
             vertical-align: middle;
             flex: 1;
@@ -95,19 +96,19 @@ const Tsrcss = styled.div`
             color: rgba(${colors.fg}, 1);
             text-decoration: none;
             .titletext {
-            background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 0.8) 2px);
-            background-size: 0% 2px;
-            background-position: 0% 105%;
-            background-repeat: no-repeat;
-            transition: background-size 0.2s ease 0s;
+                background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 0.8) 2px);
+                background-size: 0% 2px;
+                background-position: 0% 105%;
+                background-repeat: no-repeat;
+                transition: background-size 0.2s ease 0s;
 
-            &:hover {
-                // border-bottom: 1px solid rgba(${colors.hl}, 1);
-                background-size: 100% 3px;
-            }
+                &:hover {
+                    // border-bottom: 1px solid rgba(${colors.hl}, 1);
+                    background-size: 100% 3px;
+                }
                 font-weight: 900;
                 font-size: 1.25rem;
-             }
+            }
         }
     }
     .active {
@@ -133,21 +134,27 @@ const Tsrcss = styled.div`
         flex-shrink: 0;
     }
     .searchtextpanel {
-        padding: 5px 15px;
+        padding: 0;
         background: rgba(${colors.bg},1);
         border: 1px solid rgba(${colors.fg},1);
-        box-shadow: 0 0 8px rgba(${colors.fg},1);
         color: rgba(${colors.fg},1);
         margin: 5px 0;
-        height: 150px;
+        height: 200px;
         overflow: auto;
+        position: relative;
+     
         .topwrapper {
+            padding-top: 5px;
+            margin: 0;
             width: 100%;
             height: 35px;
             display: flex;
             justify-items: center;
             flex-direction: row;
-
+            position: sticky;
+            background: rgba(${colors.bg},1);
+            box-shadow:  0 0 8px rgba(${colors.fg},1);
+            top: 0;
             div {
                 flex: 1;
                 text-align: center;
@@ -161,6 +168,25 @@ const Tsrcss = styled.div`
                 width: 30px;
                 transition: all 0.2s;
             }
+            a {
+                color: rgba(${colors.fg}, 1);
+                line-height: 30px;
+                text-decoration: none;
+                background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 0.8) 2px);
+                background-size: 0% 2px;
+                background-position: 0% 105%;
+                background-repeat: no-repeat;
+                transition: background-size 0.2s ease 0s;
+
+                &:hover {
+                    // border-bottom: 1px solid rgba(${colors.hl}, 1);
+                    background-size: 100% 3px;
+                }
+            }
+        }
+        .hilitecontent {
+            display: block;
+            padding: 15px;
         }
         .activearrow {
             color: rgba(${colors.fg}, 1);
@@ -186,17 +212,17 @@ const Tsrcss = styled.div`
 const Textbox = props => {
     return (
     <div className={props.activePage === props.index ? 'active' : 'inactive'}>
-        <p className="topwrapper">
+        <div className="topwrapper">
             <div><button className={props.total > 1 ? 'leftarrow activearrow' : 'leftarrow inactivearrow'} onClick={() => props.pageSwitch('back')}>&#60;</button></div>
-            <div><p className="resultstext">Result {props.index + 1} of {props.total}</p></div>
+            <div><a className="magiclink" href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid}>Result {props.index + 1} of {props.total}</a></div>
             <div><button className={props.total > 1 ? 'rightarrow activearrow' : 'rightarrow inactivearrow'} onClick={() => props.pageSwitch('forward')}>&#62;</button></div>
-        </p>
+        </div>
         <Highlighter
+            className="hilitecontent"
             highlightClassName="hilite"
             searchWords={props.filter}
             textToHighlight={props.searchresult.transcription}
         />
-        <p><a href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid}>Go to page</a></p>
     </div>
 )}
 const ResultsPages = props => {

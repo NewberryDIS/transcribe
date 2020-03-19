@@ -51,34 +51,26 @@ const Subjectcss = styled.div`
             padding-top: 10px;
         }
     }
-    @media only screen 
-        and (max-width : 750px) {
-            .subjectlist {display: none;}
-            .subjectdropdown {display: block;}
-        }
-    @media only screen 
-        and (min-width : 750px) {
-            .subjectlist {display: block;}
-            .subjectdropdown {display: none;}
-        }
-        .icon {
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-    @media only screen 
-        and (max-height  : 600px) {
-            .subjectlist {display: none;}
-            .subjectdropdown {display: block;}
-        }
-    @media only screen 
-        and (min-height : 600px) {
-            .subjectlist {display: block;}
-            .subjectdropdown {display: none;}
-        }
-        .icon {
-            vertical-align: middle;
-            margin-right: 4px;
-        }
+    @media screen and (max-width : 750px), screen and (max-height : 600px) {
+        .subjectlist {display: none;}
+        .subjectdropdown {display: block;}
+    }
+    @media screen and (min-width : 750px), screen and (min-height : 600px) {
+        .subjectlist {display: block;}
+        .subjectdropdown {display: none;}
+    }
+    // @media only screen and (max-width : 750px) {
+    //     .subjectlist {display: none;}
+    //     .subjectdropdown {display: block;}
+    // }
+    // @media only screen and (min-width : 75px) {
+    //     .subjectlist {display: block;}
+    //     .subjectdropdown {display: none;}
+    // }
+    .icon {
+        vertical-align: middle;
+        margin-right: 4px;
+    }
 `
 
 const SubjectFilters = props => {

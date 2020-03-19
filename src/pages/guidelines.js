@@ -66,7 +66,6 @@ const Glcontent = () =>{
     const [content, setContent] = useState('Loading...')
     const dataLink = 'https://cors-anywhere.herokuapp.com/https://publications.newberry.org/digital/mms-transcribe/guidelines.json'
     postData(dataLink).then((data) => {
-        console.log(data["https://publications.newberry.org/digital/mms-transcribe/guidelines.42"]["http://rdfs.org/sioc/ns#content"]["0"].value)
         setContent(data["https://publications.newberry.org/digital/mms-transcribe/guidelines.42"]["http://rdfs.org/sioc/ns#content"]["0"].value)
     });
     return (

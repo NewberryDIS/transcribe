@@ -1,233 +1,101 @@
-import React, { PureComponent } from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import {colors, fonts } from './styles'
 // import TwitterContainer from './twittercontainer'
 // import json from './samplejson.json'
-import { useState } from 'react'
+import { Link } from 'gatsby'
+import { Gardacss, Contentcss, Closebutton} from './csscomponents'
 
-const Gardacss = styled.footer`
-    width: 90%;
-    margin: auto;
-    padding: 15px;
-    .footerwrapper {
-        position: relative;
-        width: 70%;
-        margin: auto;
-        z-index: 0;
-        color: rgba(${colors.fg},1);
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-        grid-template-columns: 1fr;
-        .account {
-            grid-column: 1 / -1;
-            text-align: center;
-        }
-        .textycontent {
-            grid-column: 1 / 2;
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 15px;
-            .bg, .contact, .license, .account {
-                // background-color: rgba(${colors.bg},1);
-                padding: 15px;
-            }
-            .bg, .tweet {
-                flex: 1;
-                flex-basis: 200px;
-            }
-            .contact {
-                flex: 2;
-            }
-            .bg, .contact {
-                // &:first-of-type {
-                //     margin-right: 0;
-                // }
-              
-            }
-            .bg {
-                text-align: center;
-            }
-            figure {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin: auto;
-                img, figcaption {
-                    margin: auto;
-                    font-family: ${fonts.serif};
-                }
-                img {
-                    transition: box-shadow 0.2s;
-                    box-shadow: 10px 10px 60px rgba(${colors.fg},0.4);
-                }
-                a {
-                    font-weight: 900;
-                    transition: color 0.2s;
-                    text-decoration: none;
-                    color: rgba(${colors.fg}, 1);
-                    transition: color 0.2s;
-                    background: inherit;
-                    &:hover {
-                        // text-shadow: 0 0 10px rgba(${colors.fg},1);
-                        color: rgba(${colors.fg}, 0.8);
-                        img {
-                            box-shadow: 10px 10px 60px rgba(${colors.fg},0.5);
-                        }
-                    }
-                }
-            }
-            .tweet {
-                height: 300px;
-            }
-            > div {
-                padding: 10px;
-                margin: 15px;
-                // border-radius: 6px;
-                background: #d0d0d0;
-                // border-radius: 50px;
-                // background: linear-gradient(145deg, #bbbbbb, #dfdfdf);
-                // box-shadow: 30px 30px 60px #e7e7e7, 
-                //             -30px -30px 60px #b9b9b9;
-                box-shadow: 10px 10px 60px rgba(${colors.fg},0.5);
-
-        box-shadow: inset 0 0 8px rgba(${colors.fg},1);
-        border: 2px solid rgba(${colors.fg},0.7);
-                
-    // box-shadow: inset 0 0 10px rgba(${colors.fg},1);
-                // &:first-of-type {
-                //     margin-right: 0;
-                // }
-                // &:last-of-type {
-                //     margin-left: 0;
-                // }
-            }
-        } 
-    }
-    h3 {
-        font-family: ${fonts.serif};
-    }
-    p {
-        font-family: ${fonts.sans};
-    }
-    a {
-        font-weight: 900;
-        transition: color 0.2s;
-        text-decoration: none;
-        color: rgba(${colors.fg}, 1);
-        background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 1) 2px);
-        background-size: 0% 2px;
-        background-position: 0% 105%;
-        background-repeat: no-repeat;
-        transition: background-size 0.2s ease 0s, color 0.2s;
-        &:hover {
-            color: rgba(${colors.fg}, 0.8);
-            background-size: 100% 3px;
-        }
-    }
-`
-const Tweet = props => {
-    return (
-        <div className="tweet">
-            {props.text}
-        </div>
-    )
-}
-
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST', 
-        mode: 'cors', 
-        cache: 'no-cache', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer', 
-        body: JSON.stringify(data) 
-    });
-    return await response.json(); 
-}
   
-const Footer = props => {
-    const [imgTitle, setImgTitle] = useState('')
-    const imgLink = '//iiif.archivelab.org/iiif/' + props.bgLink + '/full/,200/0/default.jpg'
-    // console.log(props.bgLink)
-    postData(props.bgText).then((data) => {
-        setImgTitle(data.result)
-    });
+const Footer = () => {
+    const [ gettingStarted, setgettingStarted ] = useState(false)
+    const [ tips, settips ] = useState(false)
+    const toggleSection = (section, e) => {
+        e.stopPropagation();
+        const toggler = eval('set' + section)
+        const toggled = eval(section)
+        const currentState = toggled ? 'true' : 'false'
+        toggler(!toggled)
+        console.log(currentState)
+    }
     return (
         <Gardacss >
             <div className="footerwrapper">
                 <div className="textycontent">
-                    <div className="bg">
-                        <h3>Background Image</h3>
-                        <figure>
-                            <a href={props.aLink}>
-                                <img src={imgLink} alt="thumbnail of background" />
-                                <figcaption>
-                                    {imgTitle}
-                                </figcaption>
-                            </a>
-                        </figure>
-                    </div>
                     <div className="contact">
-                        <h3>contact</h3>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
-                </div>
-                <div className="textycontent">
-                    <div className="license"><Cccontent /></div>
+                        <h3>Questions? Comments?</h3>
+                        <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe">dis@newberry.org</a></p>
+                        <h3>About this project</h3>
+                        <p>Newberry Transcribe lets you contribute to historical scholarship, while learning about the everyday lives of individuals from a wide variety of backgrounds in the 19th and early 20th centuries. </p>
+                        <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <Link to={'about'}>More information.</Link></p>
+                    </div>
+                    <div className="license">
+                        <h3>Guidelines</h3>
+                            {gettingStarted ? <GettingStarted setgettingStarted={setgettingStarted}/> : <p>Unsure how to get started?  <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>}
+                            { tips ? <Tips settips={settips} /> : <p>New to transcribing?  <span className="notlink" onClick={(e) => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>}
+                        <h3>License</h3>
+                        <p>
+                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <Link to={'data/items.json'}>here.</Link> 
+                        </p>
+                    </div>
+                    
                 </div>
             </div>
         </Gardacss>
     )
 }
-// class Footer extends React.Component {
-//     // shouldComponentUpdate(nextProps, nextState){
-//     //     return nextProps.bgLink != this.props.bgLink
-//     // }
-//     constructor(props) {
-//         super(props);
-//         this.state = {imgTitle: ''};
-//     }
-//     // const tweetcontent = ['tweet one', 'tweet two', 'tweet three']
-//     // const tweets = tweetcontent.map(t => <Tweet key={t} text={t}/>)
-//     // console.log('bg state from index in footer: ' + props.bgId)
-//     imgLink = '//iiif.archivelab.org/iiif/' + this.props.bgLink + '/full/,200/0/default.jpg'
-//     // const aLink = '//archive.org/details/' + props.bgId + '/mode/1up'
-//     // const dataLink = 'https://cors-anywhere.herokuapp.com/http://archive.org/metadata/' + props.bgId + '/metadata/title'
-//     getTitle = postData(this.props.dataLink).then((data) => {
-//         this.setState({
-//             imgTitle: data.result
-//         });
-//     });
-//     render() {
-//         return (
-//             <Gardacss >
-//                 <div className="footerwrapper">
-//                     {/* <div className="textycontent">
-//                         <div className="account"><h3>login &amp; create account etc info</h3></div>
-//                     </div> */}
-//                     {/* <div className="textycontent">
-//                         {tweets}
-//                     </div> */}
-//                     <div className="textycontent">
-//                         <div className="bg"><h3>Background Image</h3><figure><a href={this.props.aLink}><img src={this.imgLink} alt="thumbnail of background" /><figcaption>{this.state.imgTitle}</figcaption></a></figure> </div>
-//                         <div className="contact"><h3>contact</h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam corporis fugiat perferendis porro illum, maiores aliquam soluta similique id praesentium, non quidem doloremque sunt modi. Rem itaque dignissimos cupiditate.</div>
-//                     </div>
-//                     <div className="textycontent">
-//                     <div className="license"><Cccontent /></div>
-//                 </div>
-//                 </div>
-//             </Gardacss>
-//         )
-//     }
-// }
-
-const Cccontent = () => (
-    <p>
-        Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions">Newberry Rights and Reproductions Policy.</a>
-
-    </p>
+const GettingStarted = ({ setgettingStarted }) => (
+    <Contentcss>
+        <Closebutton onClick={() => setgettingStarted(false)} />
+        <h3>Getting Started</h3>
+        <ul>
+        <li>First, click on a manuscript that interests you.</li>
+        <li>You will be taken to a display of the manuscript’s individual pages. Select a page labeled “Not Started.”</li>
+        <li>The page image will appear in a viewer, with a text box below. You can use the tools in the upper left corner of the viewer to zoom in and out and to move the document page around. </li>
+        <li>Below the viewer is a text box. Put your cursor into the box, and then simply begin typing what you see on the page.</li>
+        <li>Make sure to save your work frequently.</li>
+        <li>Keep in mind that any user can build upon another user’s work by adding to or editing an incomplete transcription. To do so, select a page labeled “Needs Review” and then follow the instructions above.</li>
+        <li>Optional: Users are encouraged to create accounts, which will enable them to track their own progress and gather updates on recent revisions by other users. To create an account, navigate to a page image in any collection and click the </li>'Log <li>In (optional)' button above the image. You'll be redirected to a new page that will allow you to create an account by following some simple steps.</li>
+        </ul>
+    </Contentcss>
 )
+const Tips = ({ settips }) => (
+    <Contentcss>
+    <Closebutton onClick={() => settips(false)} />
+        <h3>Transcription tips</h3>
+        <dl>
+            <dt>Save your work</dt>
+            <dd>After completing any transcription, remember to hit the save button to ensure that your work is preserved.</dd>
+            
+            <dt>Transcribe what you see</dt>
+            <dd>Simply type what you see on the page, preserving spelling errors, punctuation, and so on. Resist the urge to modernize spelling or to correct mistakes. Type words exactly as they are presented, including capitalization, abbreviations, names, and dates.</dd>
+            
+            <dt>Use complete words</dt>
+            <dd>Often, a writer will break and hyphenate a word when moving from one line to the next. Don't preserve these breaks; just write the complete word. This will better enable researchers to run effective word searches.</dd>
+            
+            <dt>Use brackets to indicate that a word or phrase is unclear </dt>
+            <dd>When you encounter words or phrases that you can't make out, just use double brackets to indicate this (i.e., "[[unclear]]"). If can propose a reasonable guess, place your guess in double brackets with a question mark following it (e.g., [[barn?]]).</dd>
+            
+            <dt>Indicate the presence of sketches or doodles with a note</dt>
+            <dd>If you encounter a sketch or doodle on a manuscript page, indicate this by placing the word image in the double brackets (e.g. "[[image]]"). If you feel that you can make out what the image is, place your guess in the double brackets as well (e.g. "[[barn--image]]").</dd>
+            
+            <dt>Transcribe as much as you can on a page and then move on</dt>
+            <dd>In general, you should try to finish page transcriptions if you can, but if you feel bored or confused by a particular page, just move on to a different one. Somebody else will take over where you left off.</dd>
+            
+            <dt>Don't attempt to format text</dt>
+            <dd>No need to indicate line breaks, indents, underlining, etc. Remember, the goal is to make the digitized manuscript searchable; users will be able to view the page image itself, so describing the appearance of the text is unnecessary.</dd>
+            
+            <dt>Rely on context to decipher words</dt>
+            <dd>Handwriting can be difficult to read. Look for similar words or letters in the document that may help you to decode the handwriting.</dd>
+            
+            <dt>View the collection guide or catalog record</dt>
+            <dd>The item description includes a link for its archival collection guide when available; or catalog record when not available. These links provide more information about the larger collection that your item is drawn from, and may include names of places, people, subjects, and events that can provide clues in deciphering manuscript text.</dd>
+            
+            <dt>Remember: some access is better than none</dt>
+            <dd>Don't worry if your work isn't perfect or if you're unable to complete a page; others can review your work and edit or add to your transcription later. Keep in mind that without your help, these handwritten pages are completely unsearchable - so any transcribed text you can provide is better than none.</dd>
+    
+        </dl>
+    </Contentcss>
+)
+
 export default Footer

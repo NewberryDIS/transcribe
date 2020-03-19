@@ -16,7 +16,7 @@ const Topbarcss = styled.div`
         display: flex;
         z-index: 100;
         box-shadow: inset 0 0 10px rgba(${colors.fg},1);
-        text-shadow: 0 0 10px rgba(${colors.fg},0.75);
+        // text-shadow: 0 0 10px rgba(${colors.fg},0.75);
         color: rgba(${colors.fg},1);
         background: rgba(${colors.bg},1);
         font-family: ${fonts.serif};
@@ -24,7 +24,7 @@ const Topbarcss = styled.div`
             // vertical-align: bottom;
             height: 1.5rem;;
             padding: 5px 7px;
-            filter: drop-shadow(0 0 10px rgba(${colors.fg},0.75))
+            // filter: drop-shadow(0 0 10px rgba(${colors.fg},0.75))
         }
         .hamburger, .nlogo, .titletext {
             display: inline-block;
