@@ -236,11 +236,11 @@
                 }
             }
             if (results.length === 0) {
-            alert("No results found for " + search);
+                alert("No results found for " + search);
             } else if ($('#var-content').hasClass('thumbnails')) {
-            displayThumbs(results, 'search');
+                displayThumbs(results, 'search');
             } else {
-            newPage(results, 0, 0, "search");
+                newPage(results, 0, 0, "search");
             }
 
             $('.itemnum').text("1")

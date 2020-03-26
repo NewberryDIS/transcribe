@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import styled from '@emotion/styled'
-import {colors, fonts } from './styles'
 // import TwitterContainer from './twittercontainer'
 // import json from './samplejson.json'
 import { Link } from 'gatsby'
-import { Gardacss, Contentcss, Closebutton} from './csscomponents'
+import { Gardacss, Contentcss, Closebutton, ClickExpander, Modal} from './csscomponents'
 
   
 const Footer = () => {
@@ -31,8 +29,10 @@ const Footer = () => {
                     </div>
                     <div className="license">
                         <h3>Guidelines</h3>
-                            {gettingStarted ? <GettingStarted setgettingStarted={setgettingStarted}/> : <p>Unsure how to get started?  <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>}
-                            { tips ? <Tips settips={settips} /> : <p>New to transcribing?  <span className="notlink" onClick={(e) => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>}
+                        <p>Unsure how to get started? <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>
+                        <p>New to transcribing?  <span className="notlink" onClick={e => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
+                        {gettingStarted ? <Modal onClick={() => setgettingStarted(false)}><GettingStarted setgettingStarted={setgettingStarted}/> </Modal> : ''}
+                        {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''}
                         <h3>License</h3>
                         <p>
                             Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <Link to={'data/items.json'}>here.</Link> 
@@ -45,7 +45,7 @@ const Footer = () => {
     )
 }
 const GettingStarted = ({ setgettingStarted }) => (
-    <Contentcss>
+    <Contentcss onClick={e => e.stopPropagation()}>
         <Closebutton onClick={() => setgettingStarted(false)} />
         <h3>Getting Started</h3>
         <ul>
@@ -60,7 +60,7 @@ const GettingStarted = ({ setgettingStarted }) => (
     </Contentcss>
 )
 const Tips = ({ settips }) => (
-    <Contentcss>
+    <Contentcss onClick={e => e.stopPropagation()}>
     <Closebutton onClick={() => settips(false)} />
         <h3>Transcription tips</h3>
         <dl>

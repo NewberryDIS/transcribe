@@ -61,9 +61,9 @@ const Jumbo = () => {
     return (
         <Jumbocss id="jumbo">
             <div className="subtitletext"><span className="blurtwo">
-                <span className="lgtext"> Newberry Transcribe</span><br />
-                <span className="mdtext">Unlock the Past</span><br />
-                <span className="smtext">Contribute to historical research by transcribing handwritten letters and diaries. </span> 
+                <span className="lgtext">Newberry Transcribe</span><br />
+                <span className="mdtext">Unlock the Past!</span><br />
+                <span className="smtext">Transcribe letters and diaries to help with historical research</span> 
             </span></div>
         </Jumbocss>
     )

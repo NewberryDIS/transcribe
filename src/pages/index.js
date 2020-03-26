@@ -1,7 +1,7 @@
-import React, { useState, PureComponent } from 'react'
+import React, { useState } from 'react'
 import Jumbo from '../components/jumbo'
 // import Background from '../components/background'
-import Boxes from '../components/simpleboxes'
+import Boxes from '../components/boxes'
 import styled from '@emotion/styled'
 import { Global, css } from "@emotion/core"
 import Footer from '../components/footer'
@@ -71,9 +71,10 @@ const Index = props => {
     const date = search.substr(search.indexOf('=') + 1 )
     // let bgLink, bgText, aLink
         
-    const allContent = content['items'].sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1)
-    const [resultCount, setResultCount] = useState(0)
-    const [showDropdown, setShowDropdown] = useState(false)
+    let allContent = content['items'].sort((a,b) => (a.title > b.title) ? 1 : -1)
+    allContent = allContent.sort((a,b) =>(a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
+    const [ resultCount, setResultCount ] = useState(0)
+    const [ showDropdown, setShowDropdown ] = useState(false)
     const [ bgLink, setBgLink ] = useState('')
     const [ bgText, setBgText ] = useState('')
     const [ aLink, setALink ] = useState('')

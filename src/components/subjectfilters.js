@@ -51,27 +51,29 @@ const Subjectcss = styled.div`
             padding-top: 10px;
         }
     }
-    @media screen and (max-width : 750px), screen and (max-height : 600px) {
-        .subjectlist {display: none;}
-        .subjectdropdown {display: block;}
-    }
-    @media screen and (min-width : 750px), screen and (min-height : 600px) {
-        .subjectlist {display: block;}
-        .subjectdropdown {display: none;}
-    }
-    // @media only screen and (max-width : 750px) {
-    //     .subjectlist {display: none;}
-    //     .subjectdropdown {display: block;}
-    // }
-    // @media only screen and (min-width : 75px) {
-    //     .subjectlist {display: block;}
-    //     .subjectdropdown {display: none;}
-    // }
     .icon {
         vertical-align: middle;
         margin-right: 4px;
     }
+    @media (max-width: 850px) {
+        .subjectlist {display: none;}
+        .subjectdropdown {display: block;}
+    }
+    @media (min-width: 850px) {
+        .subjectlist {display: block;}
+        .subjectdropdown {display: none;}
+    }
+    @media (max-height: 600px) {
+        .subjectlist {display: none;}
+        .subjectdropdown {display: block;}
+    }
+    @media (min-height: 600px) {
+        .subjectlist {display: block;}
+        .subjectdropdown {display: none;}
+    }
 `
+
+// only one media query is being applied (height, here)
 
 const SubjectFilters = props => {
     const subjectArray = [
@@ -90,13 +92,15 @@ const SubjectFilters = props => {
         // "Edward E. Ayer Manuscript Collection",
     ]
     const subjectList = subjectArray.sort().map((s, index) => {
-        return <li key={index}><button onClick={() => props.setSubjFilter(s)}>
+        return <li key={index}><button onClick={() => props.setFilters({...props.filters, subjFilter: s})}>
             {props.subjFilter.indexOf(s) > -1 ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />}
-            {s === 'American Civil War (1861-1865)' ? 'Civil War' : 
-            s === 'Letters (Correspondence)' ? 'Letters' : 
-            s === 'Records (Documents)' ? 'Records' : 
-            s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
-            s}</button>
+            {
+                s === 'American Civil War (1861-1865)' ? 'Civil War' : 
+                s === 'Letters (Correspondence)' ? 'Letters' : 
+                s === 'Records (Documents)' ? 'Records' : 
+                s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
+                s
+            }</button>
         </li>
     })
         const subjectDropdown = subjectArray.sort().map((s,index) => <option key={index} value={s} >

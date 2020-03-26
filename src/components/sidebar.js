@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import SubjectFilters from './subjectfilters'
 import Search from './search'
 import Progress from './progressbar'
-import Bluebutton from './bluebutton'
+import { Bluebutton } from './csscomponents'
 import { fonts, colors } from './styles'
 import { numberWithCommas } from './progressbar'
 
@@ -37,7 +37,7 @@ const Dates = props => {
         decades.push( i === 1960 || i === 1970 ? '' : <option key={i} value={i} >{i} - {i + 9}</option>)
     }
     return (
-        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" defaultValue={1} onChange={(e) => props.setDateFilter(parseInt(e.target.value))}  >
+        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" defaultValue={1} onChange={(e) => props.setFilters({...props.filters, dateFilter: parseInt(e.target.value)})}  >
             <option value={1}>Select a decade...</option>
             <option key="early" value="1799" >pre-1800</option>
             {decades}
@@ -52,7 +52,7 @@ const Sidebarcss = styled.div`
     @media only screen and (max-width: 1200px){
         --width: 35vw;
     }
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 850px){
         display: none;
     }
     width: var(--width);
@@ -84,7 +84,7 @@ const Sidebarcss = styled.div`
     
 `
 const Dropdowncss = styled.div`
-    @media only screen and (min-width: 750px){
+    @media only screen and (min-width: 850px){
         display: none;
     }
     position: fixed;
@@ -142,9 +142,9 @@ export const Dropdown = props =>{
                 <Progress progress={props.progress} />
                 <Search             textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
                 <div className="dropdowns">
-                    <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
-                    <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
-                    <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} resetFilters={resetFilters} />
+                    <Dates          dateFilter={props.filters.dateFilter} setFilters={props.setFilters} />
+                    <Languages      langFilter={props.filters.langFilter} setFilters={props.setFilters} />
+                    <SubjectFilters subjFilter={props.filters.subjFilter} setFilters={props.setFilters} resetFilters={resetFilters} />
                 </div>
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Bluebutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Bluebutton>
@@ -171,12 +171,15 @@ const Sidebar = props => {
         el.value = ''
     }
     const resetFilters = () => {
+        let tempFilters = props.filters
+        tempFilters = {...tempFilters, 
+            textFilter: '',
+            dateFilter: 1,
+            subjFilter: '',
+            langFilter: 'English',
+        }
+        props.setFilters(tempFilters)
         // setReset(false)
-        props.setTextFilter('')
-        props.setDateFilter(1)
-        props.setLangFilter('English')
-        props.setSubjFilter('')
-        props.setBoxWidth(true)
         const searchField = document.querySelector('.searchInput')
         searchField.value = ''
         const selectors = document.querySelectorAll('.dropdown')
@@ -190,10 +193,10 @@ const Sidebar = props => {
             <div className="sidebarcontent">
                 <Progresstext totalTranscount={props.progress.totalTranscount} totalPages={props.progress.totalPages}/>
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setTextFilter={props.setTextFilter} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
-                <Dates          dateFilter={props.dateFilter} setDateFilter={props.setDateFilter} />
-                <Languages      langFilter={props.langfinter} setLangFilter={props.setLangFilter} />
-                <SubjectFilters subjFilter={props.subjFilter} setSubjFilter={props.setSubjFilter} resetFilters={resetFilters} />
+                <Search         textFilter={props.textFilter} setFilters={props.setFilters} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
+                <Dates          dateFilter={props.dateFilter} setFilters={props.setFilters} />
+                <Languages      langFilter={props.langfinter} setFilters={props.setFilters} />
+                <SubjectFilters subjFilter={props.filters.subjFilter} setFilters={props.setFilters} resetFilters={resetFilters} />
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Bluebutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Bluebutton>
             </div>

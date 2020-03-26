@@ -43,14 +43,14 @@ const Topbarcss = styled.div`
         }
     }
     @media only screen 
-        and (min-width : 750px) { 
+        and (min-width : 850px) { 
             .carrot {
                 display: none;
             }
             
     }
     @media only screen 
-        and (max-width : 750px) {
+        and (max-width : 850px) {
             .carrot {
                 display: block;
             }

@@ -4,7 +4,7 @@ import Sidebar, { Dropdown } from './sidebar'
 import { fonts, colors } from './styles'
 import Box from './box'
 import Rectangle from './rectangle'
-import Bluebutton from './bluebutton'
+import { Bluebutton } from './csscomponents'
 import Tsrbox from './tsrbox'
 
 const Boxescss = styled.div`
