@@ -193,9 +193,9 @@ const Sidebar = props => {
             <div className="sidebarcontent">
                 <Progresstext totalTranscount={props.progress.totalTranscount} totalPages={props.progress.totalPages}/>
                 <Progress progress={props.progress} />
-                <Search         textFilter={props.textFilter} setFilters={props.setFilters} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
-                <Dates          dateFilter={props.dateFilter} setFilters={props.setFilters} />
-                <Languages      langFilter={props.langfinter} setFilters={props.setFilters} />
+                <Search         textFilter={props.filters.textFilter} setFilters={props.setFilters} input={input} setInput={setInput} setBoxWidth={props.setBoxWidth}/>
+                <Dates          dateFilter={props.filters.dateFilter} setFilters={props.setFilters} />
+                <Languages      langFilter={props.filters.langFilter} setFilters={props.setFilters} />
                 <SubjectFilters subjFilter={props.filters.subjFilter} setFilters={props.setFilters} resetFilters={resetFilters} />
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Bluebutton><div className={props.boxWidth ? 'button check' : 'button'} onClick={() => resetFilters()}>Reset</div></Bluebutton>

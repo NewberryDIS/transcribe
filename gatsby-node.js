@@ -1,19 +1,27 @@
 const path = require('path');
 const data = require('./src/data/items.json');
 
-exports.createPages = ({ actions }) => {
+exports.createPages =  async ({ page, actions }) => {
     const { createPage } = actions;
 
-    // Your component that should be rendered for every item in JSON.
-    const template = path.resolve(`./src/templates/item-template.js`);
-
-    // Create pages for each JSON entry.
+        // item pages
+    const itemTemplate = path.resolve(`./src/templates/item-template.js`);
     data.forEach(item => {
         var path = 'item/' + item.id;
         createPage({
             path,
-            component: template,
+            component: itemTemplate,
             context: item,
         })
     });
+
+        // search pages
+    // const searchTemplate = path.resolve(`./src/templates/search-template.js`);
+    // if (page.path.match(/search/)) {
+    //     let params
+    //     createPage({
+    //         path: `/search/${params}`,
+    //         component: searchTemplate,
+    //     })
+    // }
 };

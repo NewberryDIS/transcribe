@@ -106,8 +106,8 @@ const Boxes = props => {
     }
     let filteredContent = filterContent(props.allContent)
     let boxedContent = boxify(filteredContent)
-    const initialContent = filterContent(props.allContent)
-    const initialBoxes = boxify(initialContent)
+    // const initialContent = filterContent(props.allContent)
+    // const initialBoxes = boxify(initialContent)
     const [ boxes, setBoxes ] = useState(boxedContent)
     const pageTop = useRef(null)
     const addBoxes = () => {

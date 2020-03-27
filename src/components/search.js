@@ -45,7 +45,6 @@ const Search = props => {
     }
     const submitSearch = () => {
         props.setTextFilter([props.input.toLowerCase()])
-        props.setBoxWidth(false)
         console.log(props.input)
     }
     const handleKeyDown = (e) => {

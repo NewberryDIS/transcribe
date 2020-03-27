@@ -9,21 +9,8 @@ import Topbar from '../components/topbar'
 import Jumbo from '../components/jumbo'
 import { Indexcss } from './index.js'
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST', 
-        mode: 'cors', 
-        cache: 'no-cache', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer', 
-        body: JSON.stringify(data) 
-    });
-    return await response.json(); 
-}
+
+import CustomQueryStringComponent from "../components/customQueryStringComponent"
 
 const Aboutcss = styled.div`
     width: 60%;
@@ -62,18 +49,15 @@ const Aboutcss = styled.div`
             }
 `
 const Aboutcontent = () =>{
-    const [content, setContent] = useState('Loading...')
-    const dataLink = 'https://cors-anywhere.herokuapp.com/https://publications.newberry.org/digital/mms-transcribe/about.json'
-    postData(dataLink).then((data) => {
-        setContent(data["https://publications.newberry.org/digital/mms-transcribe/about.84"]["http://rdfs.org/sioc/ns#content"]["0"].value)
-    });
+    
     return (
         <Aboutcss>
             <h1>About Newberry Transcribe</h1>
-            {Parser(content)}
         </Aboutcss>
     )
 }
+
+
 
 const About = () => {
     const [bgId, setBgId] = useState()
@@ -91,6 +75,7 @@ const About = () => {
         <Topbar  />
         <Background setBgId={setBgId} setBgNo={setBgNo} />
             <Aboutcontent />
+            <CustomQueryStringComponent />
             <Footer bgId={bgId} bgNo={bgNo}/>
         </Indexcss>
     )
