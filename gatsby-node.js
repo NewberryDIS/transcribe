@@ -16,12 +16,11 @@ exports.createPages =  async ({ page, actions }) => {
     });
 
         // search pages
-    // const searchTemplate = path.resolve(`./src/templates/search-template.js`);
-    // if (page.path.match(/search/)) {
-    //     let params
-    //     createPage({
-    //         path: `/search/${params}`,
-    //         component: searchTemplate,
-    //     })
-    // }
+    const searchTemplate = path.resolve(`./src/templates/search-template.js`);
+    let param;
+    createPage({
+        path: `/search/${param}`,
+        component: searchTemplate,
+        matchPath: '/search/*'
+    })
 };

@@ -178,27 +178,27 @@ const Boxcss = styled.div`
         flex-shrink: 0;
     }
 `
-const Box = props => {
-    const cats = props.category.split(';').map((i) => {
+const Box = ({ boxProps }) => {
+    const cats = boxProps.category.split(';').map((i) => {
         i = i.trim()
         i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
-        return <button key={i} onClick={() => props.setSubjFilter(i)} >{i}</button>
+        return <button key={i}  >{i}</button>
     })
     const tf = false
-    const title = props.title.length > 100 ? props.title.substring(0,100) + '...' : props.title
-    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + props.id} >{title}</a></h3> : <h3><Link to={'item/' + props.id} >{title}</Link></h3>
-    // <h3><Link to={props.id} >{title}</Link></h3>
-    const img = props.img.indexOf('default.jpg') > -1 ? props.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : props.img  + '/full/400,/0/default.jpg'
+    const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
+    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + boxProps.id} >{title}</a></h3> : <h3><Link to={'item/' + boxProps.id} >{title}</Link></h3>
+    // <h3><Link to={boxProps.id} >{title}</Link></h3>
+    const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img  + '/full/400,/0/default.jpg'
     return (
-    <Boxcss className="box" id={props.id} href={props.link}>
+    <Boxcss className="box" id={boxProps.id} href={boxProps.link}>
         <div className="innerdiv">
             <div className="textbox">
                 <div className="textwrapper">
                     <p className="category">{cats}</p>
                     {linkType}
-                    <p className="desc">{props.text}</p>
+                    <p className="desc">{boxProps.text}</p>
                 </div>
-                <div className="progress"><Progress progress={props.progress} title={title}/></div>
+                <div className="progress"><Progress progress={boxProps.progress} title={title}/></div>
             </div>
             <img alt="Sample from Collection" title={title} src={img} />
         </div>

@@ -89,7 +89,17 @@ const Boxes = props => {
             const img = i.image.indexOf('default.jpg') > -1 ? i.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : i.image  + '/full/400,/0/default.jpg'
             let searchresults =  textFilter !== [] ? filterText(textFilter, i.pages, i.title) : ''
             const returnDiv = textFilter.length !== 0 ? 
-                <Tsrbox setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} searchresults={searchresults}/>
+                <Tsrbox 
+                setSubjFilter={setSubjFilter} 
+                category={i.category} 
+                progress={progress} 
+                key={i.id} 
+                id={i.id} 
+                textFilter={textFilter} 
+                title={i.title} 
+                text={desc} 
+                img={img} 
+                searchresults={searchresults}/>
                 : <Box setSubjFilter={setSubjFilter} category={i.category} progress={progress} key={i.id} id={i.id} textFilter={textFilter} title={i.title} text={desc} img={img} /> 
             return returnDiv
         })

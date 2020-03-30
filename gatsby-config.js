@@ -29,18 +29,18 @@ siteMetadata: {
       },
       
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-            // family: `Lato`,
-            {family: `Playfair Display`},
-            {family: `PT Mono`},
-            {family: 'Crimson Text'},
-            {family: 'Raleway'},
-        ],
-      },
-    }
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //         // family: `Lato`,
+    //         {family: `Playfair Display`},
+    //         {family: `PT Mono`},
+    //         {family: 'Crimson Text'},
+    //         {family: 'Raleway'},
+    //     ],
+    //   },
+    // }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
