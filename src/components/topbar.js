@@ -1,7 +1,7 @@
 import React from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
-import { colors, fonts } from './styles'
+import { colors, fonts } from '../components/csscomponents'
 import logo from '../images/drawing.svg'
 import { IoIosArrowDropdownCircle, IoIosCloseCircle } from 'react-icons/io'
 
@@ -15,18 +15,18 @@ const Topbarcss = styled.div`
         height: 2rem;
         display: flex;
         z-index: 100;
-        box-shadow: inset 0 0 10px rgba(${colors.fg},1);
+        box-shadow: inset 0 0 10px rgba(${colors.hl},1);
+        border: 2px solid rgba(${colors.hl}, 1);
         // text-shadow: 0 0 10px rgba(${colors.fg},0.75);
         color: rgba(${colors.fg},1);
         background: rgba(${colors.bg},1);
         font-family: ${fonts.serif};
         img {
-            // vertical-align: bottom;
-            height: 1.5rem;;
+            height: 1.9rem;
+            line-height: 2rem;
             padding: 5px 7px;
-            // filter: drop-shadow(0 0 10px rgba(${colors.fg},0.75))
         }
-        .hamburger, .nlogo, .titletext {
+        .nlogo, .titletext {
             display: inline-block;
         }
         .titletext {
@@ -37,6 +37,7 @@ const Topbarcss = styled.div`
             filter: blur(var(--blurone));
             // font-size: var(--height);
             font-size: 1.5rem;
+            line-height: 2rem;
             transition: transform .1s linear;
             will-change: filter, font-size;
             display: inline-block;
@@ -89,17 +90,16 @@ const Topbarcss = styled.div`
             background-size: 100% 3px;
         }}   
 `
-// const Dropdownbutton = props => <div id="menu" >
-    
-// </div>
-// const Hamberder = props => <div id="hamburger" className={props.showDropdown ? 'change' : ''} onClick={() => props.dropDowner()}>
-//     <div className="bar1"></div>
-//     <div className="bar2"></div>
-//     <div className="bar3"></div>
-// </div>
+
 const Topbar = props => {
-    const dropDowner = () => {
-        props.setShowDropdown(!props.showDropdown)
+    const dropDowner = (e, c) => {
+        e.preventDefault();
+        if (e.key === "Enter" || c === "click"){
+
+            // if (e.key !== "Enter" && e.key !== `undefined`) console.log(e.key)
+            console.log(props.showMenu ? 'shosohsso' : 'nononono')
+            props.setShowMenu(!props.showMenu)
+        } else {return true}
     }
     const curtainText = [['Digital Newberry: ', 'http://www.google.com','dislink'],['Newberry Transcribe', '/','homelink']]
     const breadcrumbs = curtainText.map(ct => {
@@ -138,28 +138,28 @@ const Topbar = props => {
             }
         }))
     }) : ''
-    const instance = basicScroll.create({
-        from: '0px',
-        to: '500px',
-        props: {
-            '--blurone': {
-                from: '1px',
-                to: '0px'
-            },
-        }
-    // }) : ''
-    })
+    // const instance = basicScroll.create({
+    //     from: '0px',
+    //     to: '500px',
+    //     props: {
+    //         '--blurone': {
+    //             from: '1px',
+    //             to: '0px'
+    //         },
+    //     }
+    // // }) : ''
+    // })
     
     // const instanceStart = curtain !== null ? instance.start() : ''
-    instance.start()
+    // instance.start()
     instances.forEach((i) => i.start())
     return (
         <Topbarcss id="topbar">
             <div className="topbar">
                 <div className="nlogo"><a href="https://www.newberry.org/" target="_blank" rel="noopener noreferrer"><img src={logo} alt=""/></a></div>
                 <div className="titletext"><span className="blurone">{breadcrumbs}</span></div>
-                <div className="menu" onClick={() => dropDowner()} onKeyUp={() => dropDowner()} role="button" tabIndex={0}>
-                    {props.showDropdown ? <IoIosCloseCircle size="1.5rem" className="carrot" /> : <IoIosArrowDropdownCircle size="1.5rem" className="carrot" />}
+                <div className="menu" onClick={(e) => dropDowner(e)} onKeyUp={(e) => dropDowner(e)} role="button" tabIndex={0}>
+                    {props.showMenu ? <IoIosCloseCircle size="1.5rem" className="carrot" /> : <IoIosArrowDropdownCircle size="1.5rem" className="carrot" />}
                 </div>
                 <div className="jumbler"></div>
             </div>

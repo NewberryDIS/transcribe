@@ -1,7 +1,8 @@
 const path = require('path');
-const data = require('./src/data/items.json');
+const contentjson = require('./src/data/content.json');
+const data = contentjson['items']
 
-exports.createPages =  async ({ page, actions }) => {
+exports.createPages =  async ({ actions }) => {
     const { createPage } = actions;
 
         // item pages
@@ -13,14 +14,5 @@ exports.createPages =  async ({ page, actions }) => {
             component: itemTemplate,
             context: item,
         })
-    });
-
-        // search pages
-    const searchTemplate = path.resolve(`./src/templates/search-template.js`);
-    let param;
-    createPage({
-        path: `/search/${param}`,
-        component: searchTemplate,
-        matchPath: '/search/*'
     })
-};
+}

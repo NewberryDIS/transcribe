@@ -1,75 +1,141 @@
 import styled from '@emotion/styled'
-import {colors, fonts } from './styles'
 
+export const colors = {
+    fg: '37,37,37',
+    bg: '208,208,208',
+    hl: '15,76,129',
+    hll: '144,165,182',
+    hld: '121,139,153',
+}
+export const fonts = {
+    sans: "'Raleway', sans-serif",
+    serif: "'Crimson Text', serif", 
+}
+export const CoreBox = styled.div`
+    background: rgba(${colors.bg}, 1);
+    border: 2px solid rgba(${colors.hl}, 1);
+    box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+    ${props => props.nothing ? 'width: 400px; height: 150px; padding: 25px; margin: auto; text-align: center;' :''}
+}
+
+
+`
 export const Bluebutton = styled.div`
         width: 100%;
         text-align: center;
         position: relative;
+        .wrapper {
+            background: rgba(${colors.bg},1);
+            display: inline-block;
+            border: 1px solid  rgba(${colors.fg}, 1);
+            box-shadow: inset 0 0 10px rgba(${colors.hl},1);
+            padding: 0;
+            margin: 6px auto;
+        }
         .button {
             font-family: ${fonts.sans};
-            margin: 6px auto;
             display: inline-block;
             width: initial;
-            padding: 10px 12px ;
-            border: 1px solid black;
+            padding: 10px 12px;
             font-size: 14px;
-            // border-radius: 8px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: inset 0 0 10px rgba(0,42,85,1);
-            background: rgba(125,159,193,1);
+            // background: rgba(${colors.hll},1);
+            background: rgba(${colors.hl},0.4);
             color: rgba(${colors.fg},0.8);
-            transition: background 0.5s, color 0.1s;
+            transition: background 0.1s, color 0.1s;
+            font-weight: 900;
             &:hover {
                 color: rgba(${colors.fg},1);
-                background: rgba(143,169,195,1);
+                background: rgba(${colors.hl},0.33);
             }
             &.inactive {
                 display: none;
                 cursor: not-allowed;
                 box-shadow: inset 0 0 10px rgba(${colors.fg},1);
-                background: rgba(125,125,125,1);
+                background: rgba(${colors.bg},1);
                 color: rgba(${colors.fg},0.8);
                 transition: background 0.5s, color 0.1s;
                 &:hover {
                     color: rgba(${colors.fg},0.4);
-                    background: rgba(125,125,125,1);
+                    background: rgba(${colors.bg},1);
                 }
             }
         }
     }
 `
-
+export const Closebutton = styled.div`
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.1s ease;
+    &:hover {
+        opacity: 1;
+    }
+    &:before, &:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+`
+export const Modal = styled.div`
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(${colors.fg},0.33);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    > div {
+        padding: 40px;
+        margin: auto;
+        width: 65%;
+        @media (min-width: 979px;) { width: 75%; }
+        @media (min-width: 768px;) and (max-width: 978px;) { width: 85%; }
+        @media (max-width: 768px;) { width: 95%; }
+    }
+`
+export const Selectcss = styled.select`
+    font-family: ${fonts.sans};
+    box-shadow: inset 0 0 10px rgba(${colors.hl},0.5);
+    border: 2px solid rgba(${colors.fg},0.7);
+    background: rgba(${colors.bg},0.7);
+    margin: 4px 0;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 5px;
+    text-transform: uppercase;
+    width: 100%;
+`
 export const Gardacss = styled.footer`
+    padding: 15px;
     width: 90%;
     margin: auto;
-    padding: 15px;
-    .footerwrapper {
-        position: relative;
-        width: 80%;
-        margin: auto;
-        z-index: 0;
-        color: rgba(${colors.fg},1);
-     
-        .textycontent {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 15px;
-            justify-content: space-between;
-            .contact, .license {
-                background-color: rgba(${colors.bg},1);
-                padding: 25px;
-                margin: 15px;
-                flex: 1;
-                min-width: 300px;
-                box-shadow: inset 0 0 8px rgba(${colors.fg},1);
-                border: 2px solid rgba(${colors.fg},0.7);
-                shadow: 10px 10px 60px rgba(${colors.fg},0.5);
-            }
-            
-            }
-        } 
-    }
+    color: rgba(${colors.fg},1);
+    display: flex;
+    flex-wrap: wrap;
+    .footercontent {
+        padding: 25px;
+        // max-width: 300px;
+    } 
     h3 {
         font-family: ${fonts.serif};
     }
@@ -92,15 +158,36 @@ export const Gardacss = styled.footer`
         }
         cursor: pointer;
     }
+    .imagelink {
+
+            background: none;
+        img {
+            margin:  0 auto 20px auto;
+            box-shadow:  0 0 8px rgba(${colors.fg},1);
+        }
+    }
+    .masonry-grid {
+        flex: 1;
+        display: flex;
+        margin-left: -30px; /* gutter size offset */
+        width: auto;
+    }
+    .masonry-grid_column {
+        padding-left: 30px; /* gutter size */
+        background-clip: padding-box;
+        min-width: 400px;
+    }
+    .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+        margin: 0 auto 30px auto;
+    }
 `
 export const Contentcss = styled.div`
     position: relative;
-    // top: 10vmin;
-    // left: 25vmin;
-    // width: 50vmin;
+    max-height: 90vh;
+    overflow: auto;
     background-color: rgba(${colors.bg},1);
     padding: 5px 25px;
-    margin: 0 auto 15px auto;
+    margin: 10vh auto;
     box-shadow: inset 0 0 8px rgba(${colors.fg},1);
     border: 2px solid rgba(${colors.fg},0.7);
     shadow: 10px 10px 60px rgba(${colors.fg},0.5);
@@ -129,79 +216,5 @@ export const Contentcss = styled.div`
         font-family: ${fonts.sans};
         margin: 0 0 10px 0;
         font-size: 0.9rem;
-    }
-`
-
-export const Closebutton = styled.div`
-    position: absolute;
-    right: 32px;
-    top: 32px;
-    width: 32px;
-    height: 32px;
-    opacity: 0.3;
-    cursor: pointer;
-    transition: opacity 0.1s ease;
-    &:hover {
-        opacity: 1;
-    }
-    &:before, &:after {
-        position: absolute;
-        left: 15px;
-        content: ' ';
-        height: 33px;
-        width: 2px;
-        background-color: #333;
-    }
-    &:before {
-        transform: rotate(45deg);
-    }
-    &:after {
-        transform: rotate(-45deg);
-    }
-
-`
-
-export const ClickExpander = styled.div`
-    position: relative;
-    .toggle-height-hide {
-        overflow: hidden;
-        transition: max-height .6s ease;
-        max-height: 1px;
-    }
-    .toggle-height-show {
-        overflow: hidden;
-        transition: max-height .6s ease;
-        max-height: 1000px;
-    }
-    .toggle-transform-hide {
-        overflow: hidden;
-        transition: transform .4s ease;
-        transform: translateY(-100%);
-    }
-    .toggle-transform-show {
-        overflow: hidden;
-        transition: transform .4s ease;
-        transform: translateY(0);
-    }
-`
-export const Modal = styled.div`
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(37,37,37,0.33);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    > div {
-        padding: 40px;
-        margin: auto;
-        width: 65%;
-        @media (min-width: 979px;) { width: 75%; }
-        @media (min-width: 768px;) and (max-width: 978px;) { width: 85%; }
-        @media (max-width: 768px;) { width: 95%; }
     }
 `

@@ -1,103 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import { fonts, colors } from './styles'
-import Progress from './progressbar';
-import { Link } from 'gatsby';
+import Highlighter from 'react-highlight-words'
+// import { Link } from 'gatsby';
+import { colors, fonts, Bluebutton } from '../components/csscomponents'
+import { insertParam } from '../components/searchcomponents'
+import Progress from '../components/progress'
 
 const Boxcss = styled.div`
-    // sizes
-    @media only screen and (max-width: 3500px){
-        --width: 20vw;
-        --height: 20vw;
-        height: var(--height);
-        &:hover {
-            img {
-                top: calc((var(--width) * 0.75) * -1);
-            }
-        }
-        .textbox {
-            height: calc(var(--height) * 0.75);
-            padding: 15px;
-            padding-top: calc(var(--height) * 0.25);
-        }
-    }
-    @media only screen and (max-width: 1500px){
-        --width: 30vw;
-        --height: 30vw;
-        height: var(--height);
-        &:hover {
-            img {
-                top: calc((var(--width) * 0.75) * -1);
-            }
-        }
-        .textbox {
-            // height: calc(var(--height) * 0.75);
-            padding: 15px;
-            padding-top: calc(var(--height) * 0.25);
-        }
-    }
-    @media only screen and (max-width: 1200px){
-        --width:  25vw;
-        --height: auto;
-        --semiheight: 33vw;
-        &:hover {
-            img {
-                top: 0;
-            }
-        }
-        .textbox {
-            padding: 15px;
-            padding-top: var(--width);
-        }
-        .text-wrapper {
-            max-height: 100%;
-        }
-    }
-    @media only screen and (max-width: 750px){
-        --width:  40vw;
-        --height: auto;
-        --semiheight: 33vw;
-        &:hover {
-            img {
-                top: 0;
-            }
-        }
-        .textbox {
-            padding: 15px;
-            padding-top: var(--width);
-        }
-    }
-    border: 2px solid rgba(37,37,37,1);
-    box-shadow: 10px 10px 60px rgba(37,37,37,0.5);
-    .innerdiv {
-        background: rgba(237,237,237,1);
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        box-shadow: inset 0 0 10px rgba(0,42,85,0.7);
-
-    }
-    .highlight {
-        background: yellow;
-    }
-    display: block;
-    margin: 1vw;
-    flex-basis: var(--width);
+    background: rgba(${colors.bg}, 1);
+    border: 2px solid rgba(${colors.fg}, 1);
+    box-shadow: inset 0 0 10px rgba(${colors.hl},0.5);
     position: relative;
+    display: ${props => props.show ? 'block' : 'none'};
     overflow: hidden;
-    .textbox {
-        display: flex;
-        flex-direction: column;
-        align-content: stretch;
-        // height: calc(100% - var(--width));
-        justify-content: stretch;
+    img {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        box-shadow:  0 0 8px rgba(${colors.fg},1);
+    }
+    .text {
+        padding: 0 15px 15px 15px;
+    }
+    .title h3, .progress {
+        font-family: ${fonts.serif};
+        padding: 5px 0;
+    }
+    .desc, .cats {
+        font-family: ${fonts.sans};
+    }
+    .desc {
+        font-size: 0.85rem;
     }
     h3 {
         line-height: 25px;
         padding: 0;
         margin: 0;
         font-size: 22px;
-        font-family: ${fonts.serif};
         a {
             transition: color 0.2s;
             text-decoration: none;
@@ -114,95 +54,241 @@ const Boxcss = styled.div`
             }
         }
     }
-    p {
-        font-family: ${fonts.sans};
-    }
-    img {
-        transition: top 0.2s;
-        top: 0;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        border: 0;
-        z-index: 3;
-        position: absolute;
-        box-shadow: 2px 4px 4px rgba(0,0,0,0.4);
-        width: var(--width);
-        height: var(--width);
-    }
-    .desc {
-        flex: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .category {
-        button {
-            font-family: ${fonts.sans};
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            background: rgba(0,0,0,0);
-            border: 0;
-            color: rgba(${colors.hl}, 1);
-            text-decoration: none;
-            cursor: pointer;
-            margin: 0;
+    .cats {
+        margin: 0 ;
+        span {
+            margin: 0 ;
             padding: 0 5px;
-            border-right: 1px solid rgba(${colors.hl}, 0.8);
-
-            background-image: linear-gradient(transparent 1px, rgba(${colors.hl}, 0.8) 2px);
-            background-size: 0% 2px;
-            background-position: 0% 105%;
+            display: inline;
+            border: 1px solid transparent;
+            a {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                text-decoration: none;
+                line-height: 15px;
+                height: 15px;
+                &:link, &:visited {
+                    color: rgba(${colors.hl},1);
+                }
+                &:hover, &:active {
+                    color: rgba(${colors.hl},0.75);
+                }
+            }
+            border-right: 1px solid rgba(${colors.hl},1);
+            background-image: linear-gradient(transparent 1px, rgba(${colors.hl},1) 1px);
+            background-size: 0% 1px;
+            background-position: 0% 101%;
             background-repeat: no-repeat;
             transition: background-size 0.2s ease 0s;
-
             &:hover {
-                // border-bottom: 1px solid rgba(${colors.hl}, 1);
-                background-size: 100% 3px;
-            }
-            &:last-of-type {
-                border-right: 0;
+                background-size: 100% 2px;
             }
             &:first-of-type {
                 padding: 0 5px 0 0;
             }
+            &:last-of-type {
+                border-right: 0;
+            }
         }
     }
-    .textwrapper {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+
+    .active {
+        display: block;
+        span {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-all;
+            word-break: break-word;
+            -ms-hyphens: auto;
+            -moz-hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
     }
-    .progress {
-        padding-bottom: 10px;
-        flex-basis: 40px;
+    .inactive {
+        display: none;
+    }
+    .resultstext {
+        line-height: 36px;
+        display: block;
+        text-align: center;
         flex-shrink: 0;
     }
+    .searchtextpanel {
+        padding: 0;
+        background: rgba(${colors.bg},1);
+        border: 1px solid rgba(${colors.fg},1);
+        color: rgba(${colors.fg},1);
+        margin: -10px 0 0 0;
+        height: 300px;
+        overflow: auto;
+        position: relative;
+     
+        .topwrapper {
+
+            position: sticky;
+            top: 0;
+        }
+        .bottomlink {
+            position: sticky;
+            bottom: 0;
+            a {
+                text-decoration: none;
+            }
+        }
+        .topwrapper {
+            padding: 5px 0;
+            margin: 0;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-items: center;
+            flex-direction: row;
+            background: rgba(${colors.bg},1);
+            box-shadow:  0 0 8px rgba(${colors.fg},1);
+            .resultcount, .btncontainer {
+                margin: auto;
+                text-align: center;
+            }
+            .btncontainer {
+                @media (min-width: 1201px ) { flex: 1;}
+                @media (max-width: 1200px ) { flex-basis: 50px;}
+            }
+            .resultcount {
+                flex: 1;
+            }
+            p {
+                margin: 0;
+                line-height: 30px;
+            }
+            button {
+                height: 30px;
+                width: 30px;
+                transition: all 0.2s;
+            }
+            
+        }
+        .magiclink {
+            color: rgba(${colors.fg}, 1);
+            line-height: 30px;
+            margin: auto;
+            text-decoration: none;
+            background-image: linear-gradient(transparent 1px, rgba(${colors.fg}, 0.8) 2px);
+            background-size: 0% 2px;
+            background-position: 0% 105%;
+            background-repeat: no-repeat;
+            transition: background-size 0.2s ease 0s;
+            // border: 1px solid rgba(${colors.fg}, 1);
+            cursor: pointer;
+            // box-shadow: 0 0 10px rgba(0,42,85,0.2);
+            &:hover {
+                // border-bottom: 1px solid rgba(${colors.hl}, 1);
+                background-size: 100% 3px;
+            }
+        }
+    .hilitecontent {
+        display: block;
+        padding: 15px;
+    }
+    .activearrow {
+        color: rgba(${colors.fg}, 1);
+        border: 1px solid rgba(${colors.fg}, 1);
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,42,85,0.2);
+        &:hover {
+            box-shadow: 0 0 10px rgba(0,42,85,0.5);
+        }
+    }
+    .inactivearrow {
+        color: rgba(${colors.fg}, 0.5);
+        border: 1px solid rgba(${colors.fg}, 0.5);
+        cursor: not-allowed;
+        box-shadow: inset 0 0 10px rgba(0,42,85,0.2);
+        &:hover {
+            box-shadow: inset 0 0 10px rgba(0,42,85,0.5);
+        }
+    }
 `
-const Box = ({ boxProps }) => {
+const Textbox = props => {
+    return (
+    <div className={props.activePage === props.index ? 'active' : 'inactive'}>
+        <div className="topwrapper">
+            <div className="btncontainer"><button className={props.total > 1 ? 'leftarrow activearrow' : 'leftarrow inactivearrow'} onClick={() => props.pageSwitch('back')}>&#60;</button></div>
+            <div className="resultcount">Result {props.index + 1} of {props.total}</div>
+            <div className="btncontainer"><button className={props.total > 1 ? 'rightarrow activearrow' : 'rightarrow inactivearrow'} onClick={() => props.pageSwitch('forward')}>&#62;</button></div>
+        </div>
+        <Highlighter
+            className="hilitecontent"
+            highlightClassName="hilite"
+            searchWords={props.filter}
+            textToHighlight={props.searchresult.transcription}
+        />
+        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
+        
+    </div>
+)}
+const TextSearchResults = ({ tsr, id, filter }) => {
+    const [activePage, setActivePage] = useState(0)
+    const pageSwitch = dir => {
+        const adder = dir === 'back' ? -1 : 1
+        const newPage = adder + activePage > tsr.length - 1 ? 0 : adder + activePage < 0 ? tsr.length - 1 : adder + activePage
+        setActivePage(newPage)
+        // props.setBgImage('https://publications.newberry.org/transcription/mms-transcribe/files/original/' + props.searchresults[newPage].pagefilename)
+    }
+    const results = tsr.map((t, i) => {
+        // console.log(t)
+        if (t.transcription.length > 0) {
+            return <Textbox key={tsr.pageid} id={id} activePage={activePage} pageSwitch={pageSwitch} total={tsr.length} filter={filter} searchresult={t} index={i} />
+        } else {
+            return true
+        }
+    })
+    return (
+        <div className="searchtextpanel">
+            {results}
+        </div>
+    )
+}
+const Box = ({ boxProps, textSearchResults, filter }) => {
+    // let catLink = insertParam('cat', boxProps.category)
+    // const cats = boxProps.category.indexOf(';') > -1 ? boxProps.category.split(';').map((i) => {
+    //     i = i.trim()
+    //     catLink = insertParam('cat', i)
+    //     i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
+    //     return <span key={i}><a href={catLink}>{i}</a></span>
+    // }) : <span ><a href={catLink}>{boxProps.category}</a></span>
     const cats = boxProps.category.split(';').map((i) => {
         i = i.trim()
+        let catLink = insertParam('cat', i)
         i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
-        return <button key={i}  >{i}</button>
-    })
-    const tf = false
+        return <span key={i}><a href={catLink}>{i}</a></span>
+    }) 
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
-    const linkType = tf ? <h3><a href={'https://publications.newberry.org/transcription/mms-transcribe/items/show/' + boxProps.id} >{title}</a></h3> : <h3><Link to={'item/' + boxProps.id} >{title}</Link></h3>
-    // <h3><Link to={boxProps.id} >{title}</Link></h3>
+    
     const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img  + '/full/400,/0/default.jpg'
     return (
-    <Boxcss className="box" id={boxProps.id} href={boxProps.link}>
-        <div className="innerdiv">
-            <div className="textbox">
-                <div className="textwrapper">
-                    <p className="category">{cats}</p>
-                    {linkType}
-                    <p className="desc">{boxProps.text}</p>
+        <Boxcss show={boxProps.show} >
+            <div className="image"><a href={'item/' + boxProps.id}><img src={img} alt={title}/></a></div>
+            <div className="text">
+                { boxProps.category.length > 0 ? <div className="cats">{cats}</div> : ''}
+                <div className="title">
+                    <h3><a href={'item/' + boxProps.id} >
+                        {filter.length > 0 && title.toLowerCase().indexOf(filter) > -1 ? <Highlighter   
+                            className="titletext"
+                            highlightClassName="hilite"
+                            searchWords={filter}
+                            textToHighlight={title}
+                        /> : title}
+                    </a></h3>
+                    </div>
+                <div className="desc">{boxProps.desc}</div>
+                <div className="progress">
+                    <Progress progressData={boxProps.progress} />
                 </div>
-                <div className="progress"><Progress progress={boxProps.progress} title={title}/></div>
+                
             </div>
-            <img alt="Sample from Collection" title={title} src={img} />
-        </div>
-    </Boxcss>
-)}
-
+            {textSearchResults.length > 0 ? <TextSearchResults tsr={textSearchResults} id={boxProps.id} filter={filter} /> : ''}
+        </Boxcss>
+    )
+}
 export default Box

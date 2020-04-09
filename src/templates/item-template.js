@@ -1,15 +1,23 @@
 import React, { useState } from "react"
-import Background from '../components/background'
 import { Global, css } from "@emotion/core"
 import styled from '@emotion/styled'
-import { graphql } from "gatsby"
-import { colors, fonts } from '../components/styles'
+// import { graphql } from "gatsby"
+import Background from '../components/background'
+import { colors, fonts } from '../components/csscomponents'
 import Footer from '../components/footer'
 import Topbar from '../components/topbar'
-import { Indexcss } from '../pages/index.js'
-import { Simpleprogress } from "../components/progressbar"
+import { Simpleprogress } from "../components/progress"
+import BetaBanner from '../components/beta'
 
-
+const Wrapper = styled.div`
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+`
 
 
 const Itemcss = styled.div`
@@ -18,7 +26,7 @@ const Itemcss = styled.div`
     color: rgba(${colors.fg});
     box-shadow: inset 0 0 10px rgba(${colors.fg},1);
     margin: 80px auto;
-    padding: 2vw 5vw;
+    padding: 2vw;
     font-family: ${fonts.sans};
     border: 2px solid rgba(${colors.fg},0.7);
     h1, h3 {
@@ -40,7 +48,7 @@ const Itemcss = styled.div`
         
     }
     .itemheaderimage {
-        padding: 10px;
+        padding: 10px 20px;
         float: left;
     }
     &::after {
@@ -54,6 +62,7 @@ const Itemcss = styled.div`
     }
     .pagelink {
         flex: 1;
+        min-width: 200px;
         display: block;
         box-shadow: inset 0 0 10px rgba(${colors.fg},1);
         border: 2px solid rgba(${colors.fg},1);
@@ -64,6 +73,8 @@ const Itemcss = styled.div`
         border: 2px solid rgba(${colors.fg},1);
         margin: auto;
         display: block;
+
+        box-shadow:  0 0 8px rgba(${colors.fg},1);
     }
 `
 
@@ -71,8 +82,6 @@ const Itemcss = styled.div`
 export default ( props ) => {
     console.log(props.pageContext)
     const item = props.pageContext
-    const [bgId, setBgId] = useState()
-    const [bgNo, setBgNo] = useState()
     const pages = item.pages.map(i => 
         <a href={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${i.pageid}#transcription`} className="pagelink">
             <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} />
@@ -81,7 +90,7 @@ export default ( props ) => {
         </a>
     )
     return (
-        <Indexcss >
+        <Wrapper >
         <Global styles={css`
             html, body {
                 margin: 0;
@@ -91,11 +100,9 @@ export default ( props ) => {
             }
         `}/>
         <Topbar  />
-        <Background setBgId={setBgId} setBgNo={setBgNo} />
+        <Background image={item.image + '/full/1000,/0/default.jpg'}/>
+        <BetaBanner />
             <Itemcss>
-                <div className="itemheaderimage">
-                    <img src={item.image + '/full/400,/0/default.jpg'} />
-                </div>
                 <div className="itemheadertext">
                     
                     <h1>{item.title}</h1>
@@ -105,8 +112,8 @@ export default ( props ) => {
                     </div>
                 </div>
             </Itemcss>
-            <Footer bgId={bgId} bgNo={bgNo}/>
-        </Indexcss>
+            <Footer />
+        </Wrapper>
     )
 }
 // export const query = graphql`

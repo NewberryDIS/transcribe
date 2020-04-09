@@ -1,7 +1,7 @@
 import React  from 'react'
 import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
-import { colors, fonts } from './styles'
+import { colors, fonts } from './csscomponents'
 
 const Jumbocss = styled.div`
     position: relative;
