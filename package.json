@@ -24,7 +24,8 @@
     "react-helmet": "^5.2.1",
     "react-highlight-words": "^0.16.0",
     "react-icons": "^3.9.0",
-    "react-masonry-css": "^1.0.14"
+    "react-masonry-css": "^1.0.14",
+    "react-twitter-embed": "^3.0.3"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

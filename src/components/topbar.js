@@ -112,7 +112,7 @@ const Topbar = props => {
                 <span key={index} className="letter" data-tx={tx} data-r={posneg + r}>{i}</span>
             )
         }) 
-        return <a href={ct[1]} key={ct[2]} className={ct[2]} target="_blank" rel="noopener noreferrer">{letterarray}</a>
+        return <a href={ct[1]} key={ct[2]} className={ct[2]} target={ct[2] === 'dislink' ? "_blank" : ''} rel={ct[2] === 'dislink' ? "noopener noreferrer" : ''}>{letterarray}</a>
     })
     const instances = []
     const curtain = typeof document !== `undefined` ? document.querySelector('.curtain') : null   

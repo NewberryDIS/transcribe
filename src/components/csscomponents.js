@@ -135,6 +135,13 @@ export const Gardacss = styled.footer`
     .footercontent {
         padding: 25px;
         // max-width: 300px;
+        &.tweets{
+
+            iframe {
+                border-radius: 5px;
+                box-shadow:  0 0 8px rgba(${colors.fg},1);
+            }
+        } 
     } 
     h3 {
         font-family: ${fonts.serif};
@@ -162,6 +169,7 @@ export const Gardacss = styled.footer`
 
             background: none;
         img {
+            border-radius: 5px;
             margin:  0 auto 20px auto;
             box-shadow:  0 0 8px rgba(${colors.fg},1);
         }
