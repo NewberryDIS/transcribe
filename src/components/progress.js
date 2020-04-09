@@ -103,7 +103,7 @@ const Simpleprogcss = styled.div`
     }
 `
 export const Simpleprogress = props  => {
-    const complstatus = props.status ? "Complete!" : "Not transcribed"
+    const complstatus = props.status ? "In Progress / Needs Review" : "Not transcribed"
     return (
         <Simpleprogcss complstatus={props.status}>{complstatus}</Simpleprogcss>
     )

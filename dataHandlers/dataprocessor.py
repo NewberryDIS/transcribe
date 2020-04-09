@@ -73,6 +73,7 @@ with open(itemsFile) as json_file:
             'count': 0,
             'lang': '', 
             'desc': '', 
+            'cataloglink': '',
             'image': '', 
             'weight': '', 
             'transcription': [],
@@ -132,11 +133,16 @@ with open(itemsFile) as json_file:
                 if ie['element']['name'] == 'Language':
                     tagCleaner(ie['text'], content['languages'], id)
                     itemObj['lang'] = arrayCleaner(ie['text'])
-                if ie['element']['name'] == 'Relation':             itemObj['desc'] = ie['text']
+                if ie['element']['name'] == 'Relation': itemObj['desc'] = ie['text']
+                if ie['element']['name'] == 'Description':
+                    pattern = "(?P<url>https?://[^\s]+)\" target=\"_blank\" rel=\"noreferrer\">View catalog record<"
+                    if re.search(pattern, ie['text']) is not None:
+                        substring = re.search(pattern, ie['text']).group("url").replace('&amp;','&')
+                        itemObj['cataloglink'] = substring
                 if ie['element']['name'] == 'Source':               
                     itemObj['image'] = ie['text']
                     imageList.append(ie['text'])
-                if ie['element']['name'] == 'Weight':               itemObj['weight'] = ie['text']
+                if ie['element']['name'] == 'Weight': itemObj['weight'] = ie['text']
                 if ie['element']['name'] == 'Title':
                     title = ie['text']
                     date = re.findall(r'[0-9]{4}', title)

@@ -41,7 +41,7 @@ const BetaBanner = () => {
     return (
         <Betacss>
             <p className="title">B e t a</p>
-            <p className="link"><a href="asdfasdf">We want your feedback!</a></p>
+            <p className="link"><a href="https://forms.gle/LhT2NLRtFviMWeMCA"  target="_blank" rel="noopener noreferrer">We want your feedback!</a></p>
         </Betacss>
     )
 }

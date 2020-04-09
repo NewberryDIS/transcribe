@@ -8,6 +8,7 @@ import Footer from '../components/footer'
 import Topbar from '../components/topbar'
 import { Simpleprogress } from "../components/progress"
 import BetaBanner from '../components/beta'
+import Progress from '../components/progress'
 
 const Wrapper = styled.div`
     position: relative;
@@ -41,10 +42,21 @@ const Itemcss = styled.div`
             padding: 5px 0;
         }
     }
+    p { 
+        margin-bottom: 12px;
+    }
     a {
         font-weight: 900;
         text-decoration: none;
         color: rgba(${colors.fg}, 1);
+        background-image: linear-gradient(transparent 1px, rgba(${colors.hl},1) 1px);
+        background-size: 0% 1px;
+        background-position: 0% 101%;
+        background-repeat: no-repeat;
+        transition: background-size 0.2s ease 0s;
+        &:hover {
+            background-size: 100% 2px;
+        }
         
     }
     .itemheaderimage {
@@ -62,7 +74,7 @@ const Itemcss = styled.div`
     }
     .pagelink {
         flex: 1;
-        min-width: 200px;
+        min-width: 300px;
         display: block;
         box-shadow: inset 0 0 10px rgba(${colors.fg},1);
         border: 2px solid rgba(${colors.fg},1);
@@ -70,6 +82,7 @@ const Itemcss = styled.div`
         margin: 10px;
     }
     .pageimage {
+        height: 250px;
         border: 2px solid rgba(${colors.fg},1);
         margin: auto;
         display: block;
@@ -85,10 +98,14 @@ export default ( props ) => {
     const pages = item.pages.map(i => 
         <a href={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${i.pageid}#transcription`} className="pagelink">
             <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} />
-            {console.log(i)}
             <Simpleprogress status={i.transcription ? true : false} />
         </a>
     )
+    const progress = {
+        count: item.count,
+        transcount: item.transcount,
+        percentTranscribed: item.percentTranscribed,
+    }
     return (
         <Wrapper >
         <Global styles={css`
@@ -107,6 +124,8 @@ export default ( props ) => {
                     
                     <h1>{item.title}</h1>
                     <p>{item.desc}</p>
+                    <p><a href={item.cataloglink}>View Catalog Record</a></p>
+                    <Progress progressData={progress} />
                     <div className="pages">
                         {pages}
                     </div>
@@ -116,14 +135,3 @@ export default ( props ) => {
         </Wrapper>
     )
 }
-// export const query = graphql`
-//   {
-//     sitePage {
-//       context {
-//         id
-//         title
-//         transcount
-//       }
-//     }
-//   }
-// `
