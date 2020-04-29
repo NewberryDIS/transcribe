@@ -141,6 +141,7 @@ export const SubjSearch = props => {
         "Women",
         "World's Columbian Exposition",
         "Travelers’ writings",
+        "Labor Movement",
         "Letters (Correspondence)",
         "Records (Documents)",
         "American Civil War (1861-1865)",
@@ -181,7 +182,7 @@ export const SubjSearch = props => {
             </div>
             <div className="subjectdropdown">
                 <Selectcss id="dropdownsubj" className="dropdown" name="dropdownsubj" defaultValue={''} onChange={e => navToNewFilter('cat', e.target.value, props.setFilters)}>
-                    <option value={''}>Select a subject...</option>
+                    <option value={''}>Select a category...</option>
                     {subjectDropdown}
                 </Selectcss>
             </div>
@@ -222,8 +223,7 @@ export function insertParam(key, value) {
 
 const navToNewFilter = (key, value, setFilters) => {
     let newUrl = insertParam(key, value) 
-    let newObj = { [key]: value }
-    console.log(newObj)
+    // let newObj = { [key]: value }2
     setFilters(prevState => {
         return { ...prevState, [key]: value }
     })

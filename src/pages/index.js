@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import { graphql } from "gatsby"
 import styled from '@emotion/styled'
 import { Global, css } from "@emotion/core"
 import Masonry from 'react-masonry-css'
@@ -12,6 +13,7 @@ import Sidebar from '../components/sidebar'
 import Footer from "../components/footer"
 import Box from '../components/box'
 import BetaBanner from '../components/beta'
+// import transcriptions from '../data/itemTranscriptions.json'
 
 const Indexcss = styled.div`
   position: relative;
@@ -69,28 +71,31 @@ export const breakpointColumnsObj = {
   1300: 2,
   900: 1,
 };
-
+let transcriptions = []
 const normalizeText = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 const scrollToRef = (ref) => ref.current.scrollIntoView({behavior: 'smooth'})
-const content = require('../data/content.json')
+// const content = require('../data/content.json')
 const truncator = t => t.indexOf('<') > -1 ? t.substring(0,t.indexOf('<')) + '...' : t
 const filterFunctions = {
-  textFFunction: (hh, nn, t) => {
+  textFFunction: (itemid, nn, t) => {
+    let uhh = transcriptions.find( ({ id }) => id === itemid )
+    if (uhh === undefined || uhh.pages === undefined) return false
+    const hh = uhh.pages
     let returnArray = []
     let found = true
     let titleFound = true
     nn.length > 0 && nn.forEach(n => {
-        const needle = normalizeText(n)
-        const haystack = normalizeText(t)
-        titleFound = ( titleFound && haystack.indexOf(needle) > -1) ? true : false
+      const needle = normalizeText(n)
+      const haystack = normalizeText(t)
+      titleFound = ( titleFound && haystack.indexOf(needle) > -1) ? true : false
     })
     hh.forEach(h => {
         if (h.transcription.length > 0 && nn.length > 0 ) { 
             nn.forEach(n => {
-                const needle = normalizeText(n)
-                const haystack = normalizeText(h.transcription)
-                found = ( haystack.indexOf(needle) > -1) ? true : false
-                if (found || (titleFound )) {returnArray.push(h)}
+              const needle = normalizeText(n)
+              const haystack = normalizeText(h.transcription)
+              found = ( haystack.indexOf(needle) > -1) ? true : false
+              if (found || (titleFound )) {returnArray.push(h)}
             })
         }
     }) 
@@ -124,22 +129,23 @@ const filterFunctions = {
   }
 }
 
-const IndexPage = ({ search }) => {
-  let allContent = content['items'].sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
+const IndexPage = ({ search, data }) => {
+  const allContent    = data.allFile.edges[1].node.childDataJson.items.sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
+  const progressData  = data.allFile.edges[0].node.childDataJson.summary
+  transcriptions      = data.allFile.edges[2].node.childDataJson.transcriptions
   const [ showButton, setShowButton ] = useState(true)
-  const progressData = content['summary']
   const [ resultCount, setResultCount ] = useState(0)
   const [ showMenu, setShowMenu ] = useState(false)
   const [ itemsToShow, setItemsToShow ] = useState(18)
   const [ filters, setFilters ] = useState({
     lang: search.lang !== undefined ? search.lang : 'English',
-    cat: search.cat   !== undefined ? search.cat  : '' ,
+    cat:  search.cat   !== undefined ? search.cat  : '' ,
     date: search.date !== undefined ? search.date : 1 ,
     text: search.text !== undefined ? [search.text] : [] ,
   })
   const filterContent = (content) => {
     const returnArray = content.filter(c => {
-      let textResult = filters.text.length > 0 ? filterFunctions.textFFunction(c.pages, filters.text, c.title) : true
+      let textResult = filters.text.length > 0 ? filterFunctions.textFFunction(c.id, filters.text, c.title) : true
       let langResult = filterFunctions.langFFunction(c.lang, filters.lang)
       let dateResult = filterFunctions.dateFFunction(c.date, filters.date)
       let catResult = filterFunctions.catFFunction(c.category, filters.cat) 
@@ -154,7 +160,7 @@ const IndexPage = ({ search }) => {
     if (content.length === 0 ) return <CoreBox nothing>No results.</CoreBox>
     let boxedUpContent = content.map(c => {
       counter++
-        let textSearchResults = filters.text.length > 0 ? filterFunctions.textFFunction(c.pages, filters.text, c.title) : ''
+        let textSearchResults = filters.text.length > 0 ? filterFunctions.textFFunction(c.id, filters.text, c.title) : ''
         const boxProps = {
           id: c.id,
           title: c.title,
@@ -201,7 +207,6 @@ const IndexPage = ({ search }) => {
   useEffect(() =>{
     console.log(showMenu ? 'show' : 'no show')
   }, [showMenu])
-  
   let filteredContent = filterContent(allContent)
   let boxedContent = boxify(filteredContent)
   const pageTop = useRef(null)
@@ -252,3 +257,42 @@ const IndexPage = ({ search }) => {
 // )
 
 export default withLocation(IndexPage)
+
+export const query = graphql`
+  {
+    allFile(filter: {extension: {eq: "json"}}) {
+      edges {
+        node {
+          childDataJson {
+            summary {
+              percentTranscribed
+              totalPages
+              totalTranscount
+            }
+            items {
+              id
+              cataloglink
+              category
+              count
+              date
+              desc
+              image
+              lang
+              percentTranscribed
+              title
+              transcount
+            }
+            transcriptions {
+              pages {
+                pagefilename
+                pageid
+                transcription
+              }
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+`

@@ -250,14 +250,7 @@ const TextSearchResults = ({ tsr, id, filter }) => {
     )
 }
 const Box = ({ boxProps, textSearchResults, filter }) => {
-    // let catLink = insertParam('cat', boxProps.category)
-    // const cats = boxProps.category.indexOf(';') > -1 ? boxProps.category.split(';').map((i) => {
-    //     i = i.trim()
-    //     catLink = insertParam('cat', i)
-    //     i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
-    //     return <span key={i}><a href={catLink}>{i}</a></span>
-    // }) : <span ><a href={catLink}>{boxProps.category}</a></span>
-    const cats = boxProps.category.split(';').map((i) => {
+    const cats = boxProps.category && boxProps.category.split(';').map((i) => {
         i = i.trim()
         let catLink = insertParam('cat', i)
         i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
@@ -265,7 +258,7 @@ const Box = ({ boxProps, textSearchResults, filter }) => {
     }) 
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
     
-    const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img  + '/full/400,/0/default.jpg'
+    const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img.indexOf('mms-transcribe') > -1 ? boxProps.img : boxProps.img  + '/full/400,/0/default.jpg'
     return (
         <Boxcss show={boxProps.show} >
             <div className="image"><a href={'item/' + boxProps.id}><img src={img} alt={title}/></a></div>
@@ -273,7 +266,7 @@ const Box = ({ boxProps, textSearchResults, filter }) => {
                 { boxProps.category.length > 0 ? <div className="cats">{cats}</div> : ''}
                 <div className="title">
                     <h3><a href={'item/' + boxProps.id} >
-                        {filter.length > 0 && title.toLowerCase().indexOf(filter) > -1 ? <Highlighter   
+                        {filter && filter.length > 0 && title.toLowerCase().indexOf(filter) > -1 ? <Highlighter   
                             className="titletext"
                             highlightClassName="hilite"
                             searchWords={filter}

@@ -1,7 +1,7 @@
 #!/bin/python
 
 import urllib.request
-import json, os.path, time, math, re
+import json, os.path, time, math, re, operator
 
 # current time, used for checking the age of the data files
 currTime = int(time.time())
@@ -22,7 +22,8 @@ content = {
     'dates': {}
 }
 yearlyModifiedCounter = 0
-
+itemData = []
+itemTranscriptions = []
 imageList = []
 # if the all items file is older than 1 day, get master items file from omeka
 itemsFile = 'dataFiles/items.json'
@@ -33,7 +34,7 @@ if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
 def arrayCleaner(item):
     val = [x.strip() for x in item.split(';')]
     array = []
-    for v in val: 
+    for v in val:
         if v not in array:
             array.append(v)
     return array
@@ -47,7 +48,7 @@ def tagCleaner(item, array, id):
                 array[v].append(id)
             else:
                 array.update({v: [id]})
-    else: 
+    else:
         if item in array:
             array[item].append(id)
         else:
@@ -71,17 +72,19 @@ with open(itemsFile) as json_file:
         itemObj = {
             'id': '',
             'count': 0,
-            'lang': '', 
-            'desc': '', 
+            'lang': '',
+            'desc': '',
             'cataloglink': '',
-            'image': '', 
-            'weight': '', 
-            'transcription': [],
+            'image': '',
+            'weight': '',
             'transcount': 0,
             'percentTranscribed': 0,
             'date': '',
             'category': '',
-            'pages': []
+        }
+        sitemTranscriptions = {
+            'id': str(i['id']),
+            'pages': [],
         }
         id = str(i['id'])
         itemObj['count'] = i['files']['count']
@@ -99,7 +102,7 @@ with open(itemsFile) as json_file:
             else:
                 skippedFileCount += 1
     # 2. create array of subjects with each corresponding id as a value
-        for e in i['element_texts']: 
+        for e in i['element_texts']:
             if e['element']['name'] == 'Subject':
                 tagCleaner(e['text'], content['subjects'], id)
                 itemObj['category'] = e['text']
@@ -114,14 +117,14 @@ with open(itemsFile) as json_file:
                 }
                 transcription = ''
                 for fe in fi['element_texts']:
-                    if fe['element']['name'] == 'Transcription': 
+                    if fe['element']['name'] == 'Transcription':
                         fileObj['transcription'] = fe['text']
                         if len(fileObj['transcription']) > 0:
                             content['summary']['totalTranscount'] += 1
                             itemObj['transcount'] += 1
                 if '2019' in fi["modified"]:
                     yearlyModifiedCounter += 1
-                itemObj['pages'].append(fileObj)
+                sitemTranscriptions['pages'].append(fileObj)
         with open(itemfilename) as item:
             itemJson = json.load(item)
             for ie in itemJson['element_texts']:
@@ -139,7 +142,7 @@ with open(itemsFile) as json_file:
                     if re.search(pattern, ie['text']) is not None:
                         substring = re.search(pattern, ie['text']).group("url").replace('&amp;','&')
                         itemObj['cataloglink'] = substring
-                if ie['element']['name'] == 'Source':               
+                if ie['element']['name'] == 'Source':
                     itemObj['image'] = ie['text']
                     imageList.append(ie['text'])
                 if ie['element']['name'] == 'Weight': itemObj['weight'] = ie['text']
@@ -150,7 +153,7 @@ with open(itemsFile) as json_file:
                         decade = math.floor(int(y) / 10) * 10
                         tagCleaner(str(decade), content['dates'], id)
                     itemObj['title'] = title
-                    for i in range(0, len(date)): 
+                    for i in range(0, len(date)):
                         date[i] = int(date[i])
                     itemObj['date'] = date
                 if lang == '': lang = ['English']
@@ -158,12 +161,17 @@ with open(itemsFile) as json_file:
         if id != '1182':
             itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
         content['items'].append(itemObj)
+        itemData.append(itemObj)
+        itemTranscriptions.append(sitemTranscriptions)
         print(itemObj['id'])
+itemData.sort(key=operator.itemgetter('transcount'))
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
 with open('../src/data/content.json', 'w') as dataFile:
     json.dump(content, dataFile)
 with open('../src/data/items.json', 'w') as dataFile:
-    json.dump(content['items'], dataFile)
+    json.dump(itemData, dataFile)
+with open('../src/data/itemTranscriptions.json', 'w') as dataFile:
+    json.dump(itemTranscriptions, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
 with open('./imageList.txt', 'w') as listfile:

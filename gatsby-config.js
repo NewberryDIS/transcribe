@@ -1,5 +1,6 @@
 module.exports = {
-  pathPrefix: "transcribe",
+  // pathPrefix: "transcribe",
+  pathPrefix: "transcription/testfolder",
   siteMetadata: {
     title: `Newberry Transcribe`,
     description: `Help unlock the past.`,
@@ -39,6 +40,14 @@ module.exports = {
             {family: 'Raleway'},
         ],
       },
+    },
+    "gatsby-transformer-json",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`
+      }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

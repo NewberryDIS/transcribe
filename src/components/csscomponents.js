@@ -16,9 +16,6 @@ export const CoreBox = styled.div`
     border: 2px solid rgba(${colors.hl}, 1);
     box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
     ${props => props.nothing ? 'width: 400px; height: 150px; padding: 25px; margin: auto; text-align: center;' :''}
-}
-
-
 `
 export const Bluebutton = styled.div`
         width: 100%;
@@ -134,7 +131,6 @@ export const Gardacss = styled.footer`
     flex-wrap: wrap;
     .footercontent {
         padding: 25px;
-        // max-width: 300px;
         &.tweets{
 
             iframe {
@@ -178,12 +174,11 @@ export const Gardacss = styled.footer`
         flex: 1;
         display: flex;
         margin-left: -30px; /* gutter size offset */
-        width: auto;
+        // width: auto;
     }
     .masonry-grid_column {
         padding-left: 30px; /* gutter size */
         background-clip: padding-box;
-        min-width: 400px;
     }
     .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
         margin: 0 auto 30px auto;

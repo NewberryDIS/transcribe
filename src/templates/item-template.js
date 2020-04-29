@@ -9,6 +9,7 @@ import Topbar from '../components/topbar'
 import { Simpleprogress } from "../components/progress"
 import BetaBanner from '../components/beta'
 import Progress from '../components/progress'
+import transcriptions from '../data/itemTranscriptions.json'
 
 const Wrapper = styled.div`
     position: relative;
@@ -19,8 +20,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     min-height: 100vh;
 `
-
-
 const Itemcss = styled.div`
     width: 60%;
     background: rgba(${colors.bg});
@@ -91,11 +90,12 @@ const Itemcss = styled.div`
     }
 `
 
-
 export default ( props ) => {
     console.log(props.pageContext)
     const item = props.pageContext
-    const pages = item.pages.map(i => 
+
+    let uhh = transcriptions['transcriptions'].find( ({ id }) => id === item.id )
+    const pages = uhh.pages.map(i => 
         <a href={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${i.pageid}#transcription`} className="pagelink">
             <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} />
             <Simpleprogress status={i.transcription ? true : false} />

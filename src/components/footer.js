@@ -4,6 +4,7 @@ import Masonry from 'react-masonry-css'
 import { jsx, css  } from '@emotion/core'
 import { Gardacss, Contentcss, Closebutton, Modal, CoreBox } from './csscomponents'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import RecentItem from './recent'
 
 const breakpointColumnsObj = {
     default: 2,
@@ -43,7 +44,7 @@ const Footer = () => {
                         {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''}
                         <h3>License</h3>
                         <p>
-                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a to={'data/items.json'}>here.</a> 
+                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions" target="_blank" rel="noopener noreferrer">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a to={'data/items.json'} target="_blank" rel="noopener noreferrer">here.</a> 
                         </p>
                     </CoreBox>
                     <CoreBox className="footercontent">
@@ -66,11 +67,14 @@ const Footer = () => {
                     <CoreBox className="footercontent tweets">
 
                         <TwitterTimelineEmbed 
+                            // sourceType="url"
+                            // url="https://twitter.com/digitalnewberry/lists/crowdsourcing" 
                             sourceType="profile"
                             screenName="digitalnewberry"
-                            options={{height: 400}}
+                            options={{height: 400}} 
                             />
                     </CoreBox>
+                    <RecentItem />
                 </Masonry>
         </Gardacss>
     )
@@ -108,8 +112,8 @@ const About = ({setabout }) => (
                 <dd>To get started, visit our Guidelines page for an overview of the transcription process.</dd>
                 <dt>How can I view or search the transcriptions?</dt>
                 <dd>Completed transcriptions can be accessed using the search box at the left on the Newberry Transcribe home page. Additionally, they will be added periodically to digitized manuscripts at the Newberry's Internet Archive library, where they can be searched and browsed. Finally, to encourage digital scholarship projects, we have made the transcriptions available as a data set at our GitHub site. </dd>
-                <dt>What software does Transcribing Modern Manuscripts use?</dt>
-                <dd>Transcribing Modern Manuscripts is powered by: Scalar, an open-source tool developed by the Alliance for Networking Visual Culture for scholarly publishing; and Omeka+Scripto, open-source tools developed by the Roy Rosenzweig Center for History and New Media to enable community transcriptions of document files.</dd>
+                <dt>What software does Newberry Transcribe use?</dt>
+                <dd>Newberry Transcribe is powered by Omeka with Scripto, open-source tools developed by the Roy Rosenzweig Center for History and New Media to enable community transcriptions of document files.  The front end is written in React JavaScript; <a href="https://github.com/newberrydis/transcribe"  target="_blank" rel="noopener noreferrer">our code repository can be found here</a> </dd>
             <dt>Questions or comments?</dt>
             <dd>Contact us on Twitter <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or email dis@newberry.org</dd>
         </dl>

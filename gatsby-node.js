@@ -1,5 +1,5 @@
 const path = require('path');
-const contentjson = require('./src/data/content.json');
+const contentjson = require('./src/data/items.json');
 const data = contentjson['items']
 
 exports.createPages =  async ({ actions }) => {
