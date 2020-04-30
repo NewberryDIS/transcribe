@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
+import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import { Global, css } from "@emotion/core"
 import Masonry from 'react-masonry-css'
@@ -74,7 +75,6 @@ export const breakpointColumnsObj = {
 let transcriptions = []
 const normalizeText = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 const scrollToRef = (ref) => ref.current.scrollIntoView({behavior: 'smooth'})
-// const content = require('../data/content.json')
 const truncator = t => t.indexOf('<') > -1 ? t.substring(0,t.indexOf('<')) + '...' : t
 const filterFunctions = {
   textFFunction: (itemid, nn, t) => {
@@ -102,10 +102,15 @@ const filterFunctions = {
     return returnArray.length > 0 ? returnArray : false
   },
   langFFunction: (langArray, langFilter) => {
-    langArray = langArray.map(l => l.toLowerCase())
-    langFilter = langFilter.toLowerCase()
-    let returnValue = langArray.indexOf(langFilter) > -1 ? true : false
-    return returnValue
+    if (langFilter === 'English'){
+      langArray = langArray.map(l => l.toLowerCase())
+      langFilter = langFilter.toLowerCase()
+      return langArray.indexOf(langFilter) > -1 && langArray.length === 1
+    } else {
+      langArray = langArray.map(l => l.toLowerCase())
+      langFilter = langFilter.toLowerCase()
+      return langArray.indexOf(langFilter) > -1 
+    }
   },
   dateFFunction: (dateArray, dateFilter) => {
     dateFilter = parseInt(dateFilter)
@@ -124,8 +129,7 @@ const filterFunctions = {
   catFFunction: (catString, catFilter) => {
     catString = catString.toLowerCase()
     catFilter = catFilter.toLowerCase()
-    let returnValue = catFilter.length > 0 ? (catString.indexOf(catFilter) > -1 ? true : false ): true
-    return returnValue
+    return (catFilter.length > 0 && catString.indexOf(catFilter) > -1) || catFilter.length === 0 ? true : false
   }
 }
 
@@ -174,7 +178,6 @@ const IndexPage = ({ search, data }) => {
           img: c.image.indexOf('default.jpg') > -1 ? c.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : c.image  + '/full/400,/0/default.jpg',
           show: counter <= itemsToShow,
       }
-        // return  <Box boxProps={boxProps} key={counter} className={counter <= itemsToShow ? "item" : "item hide"} />
         return  <Box boxProps={boxProps} key={counter} filter={filters.text} textSearchResults={textSearchResults} >{c.title}</Box>
     })
     // boxedUpContent = boxedUpContent.length === 1 ? boxedUpContent.push(<div></div>) : boxedUpContent
@@ -204,9 +207,6 @@ const IndexPage = ({ search, data }) => {
       updateContent()
       setShowButton(boxedContent.length < itemsToShow ? false : true)
   }, [itemsToShow])
-  useEffect(() =>{
-    console.log(showMenu ? 'show' : 'no show')
-  }, [showMenu])
   let filteredContent = filterContent(allContent)
   let boxedContent = boxify(filteredContent)
   const pageTop = useRef(null)
@@ -219,8 +219,17 @@ const IndexPage = ({ search, data }) => {
         padding: 0;
         position: relative;
         z-index: 1;
+        max-width: 100vw;
+
+      }
+      * {
+        min-width: 5px !important;
       }
     `}/>
+     <Helmet>
+      <meta charSet="utf-8" />
+      <title>Newberry Transcribe</title>
+    </Helmet>
     <Topbar setShowMenu={setShowMenu} showMenu={showMenu} resultCount={resultCount} />
     <Jumbo />
     <BetaBanner />
@@ -245,16 +254,6 @@ const IndexPage = ({ search, data }) => {
     <Footer />
   </Indexcss>
 )}
-
-// const Boxes = props => (
- 
-//   <Router >
-
-//   <Boxes path="/"  boxes={boxes} />
-//   <Boxes path="/:params" boxes={boxes} />
-//   </Router>
-  
-// )
 
 export default withLocation(IndexPage)
 

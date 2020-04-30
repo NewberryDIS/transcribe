@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Masonry from 'react-masonry-css'
-/** @jsx jsx */
-import { jsx, css  } from '@emotion/core'
 import { Gardacss, Contentcss, Closebutton, Modal, CoreBox } from './csscomponents'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import RecentItem from './recent'
@@ -16,12 +14,6 @@ const Footer = () => {
     const [ gettingStarted, setgettingStarted ] = useState(false)
     const [ tips, settips ] = useState(false)
     const [ about, setabout ] = useState(false)
-    const toggleSection = (section, e) => {
-        e.stopPropagation();
-        const toggler = eval('set' + section)
-        const toggled = eval(section)
-        toggler(!toggled)
-    }
     return (
         <Gardacss >
                 <Masonry
@@ -30,35 +22,35 @@ const Footer = () => {
                     columnClassName="masonry-grid_column">
                     <CoreBox className="footercontent contact">
                         <h3>Questions? Comments?</h3>
-                        <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe">dis@newberry.org</a></p>
+                        <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe">dis@newberry.org</a></p>
                         <h3>About this project</h3>
                         <p>Newberry Transcribe lets you contribute to historical scholarship, while learning about the everyday lives of individuals from a wide variety of backgrounds in the 19th and early 20th centuries. </p>
-                        <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <span className="notlink" onClick={e => toggleSection('about', e)}>More information.</span></p>
+                        <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <span className="notlink" onClick={e => setabout(true)}>More information.</span></p>
                         {about ?  <Modal  onClick={() => setabout(false)}><About setabout={setabout}/> </Modal> : ''}
                     </CoreBox>
                     <CoreBox className="footercontent license">
                         <h3>Guidelines</h3>
-                        <p>Unsure how to get started? <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>
-                        <p>New to transcribing?  <span className="notlink" onClick={e => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
+                        <p>Unsure how to get started? <span className="notlink" onClick={e => setgettingStarted(true)}>Click here!</span></p>
+                        <p>New to transcribing?  <span className="notlink" onClick={e => settips(true)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
                         {gettingStarted ? <Modal onClick={() => setgettingStarted(false)}><GettingStarted setgettingStarted={setgettingStarted}/> </Modal> : ''}
                         {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''}
                         <h3>License</h3>
                         <p>
-                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions" target="_blank" rel="noopener noreferrer">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a to={'data/items.json'} target="_blank" rel="noopener noreferrer">here.</a> 
+                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions" target="_blank" rel="noopener noreferrer">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a href="https://publications.newberry.org/transcription/mms-transcribe/data/alltranscripts.json" target="_blank" rel="noopener noreferrer">here.</a> 
                         </p>
                     </CoreBox>
                     <CoreBox className="footercontent">
-                        <a href="https://publications.newberry.org/postcard-sender/" className="imagelink" target="_blank" rel="noopener noreferrer">
-                            <img src={require(`../images/postcardsender.png`)} />
+                        <a href="http://publications.newberry.org/postcard-sender/index.php?id=nby_LL12699&p=0" className="imagelink" target="_blank" rel="noopener noreferrer">
+                            <img src={require(`../images/postcardsender.png`)} alt="" />
                         </a>
                         <a href="https://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer" ><h3>Send a postcard!</h3></a>
                         <p>Inspired after transcribing correspondence? Write a message to a friend with our Postcard Sender! </p>
-                        <p><a href="http://publications.newberry.org/postcard-sender/">Choose from a selection</a> or browse 26,000+ items at the <a href="https://archive.org/details/newberrypostcards">Newberry Postcards digital collection</a> and click the Sender link below any image.</p>
+                        <p><a href="http://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer">Choose from a selection</a> or browse 26,000+ items at the <a href="https://archive.org/details/newberrypostcards" target="_blank" rel="noopener noreferrer">Newberry Postcards digital collection</a> and click the Sender link below any image.</p>
 
                     </CoreBox>
                     <CoreBox className="footercontent timemachine">
                         <a href="https://publications.newberry.org/time-machine/" className="imagelink" target="_blank" rel="noopener noreferrer">
-                            <img src={require(`../images/timemachine.png`)} />
+                            <img src={require(`../images/timemachine.png`)} alt="" />
                         </a>
                         <a href="https://publications.newberry.org/time-machine/" target="_blank" rel="noopener noreferrer"><h3>Midwest Time Machine</h3></a>
                         
@@ -71,7 +63,7 @@ const Footer = () => {
                             // url="https://twitter.com/digitalnewberry/lists/crowdsourcing" 
                             sourceType="profile"
                             screenName="digitalnewberry"
-                            options={{height: 400}} 
+                            options={{autoHeight: true, tweetLimit: 6}} 
                             />
                     </CoreBox>
                     <RecentItem />

@@ -166,12 +166,12 @@ with open(itemsFile) as json_file:
         print(itemObj['id'])
 itemData.sort(key=operator.itemgetter('transcount'))
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
-with open('../src/data/content.json', 'w') as dataFile:
-    json.dump(content, dataFile)
 with open('../src/data/items.json', 'w') as dataFile:
     json.dump(itemData, dataFile)
 with open('../src/data/itemTranscriptions.json', 'w') as dataFile:
     json.dump(itemTranscriptions, dataFile)
+with open('../src/data/summary.json', 'w') as dataFile:
+    json.dump(content['summary'], dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
 with open('./imageList.txt', 'w') as listfile:

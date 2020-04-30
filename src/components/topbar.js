@@ -24,7 +24,7 @@ const Topbarcss = styled.div`
         img {
             height: 1.9rem;
             line-height: 2rem;
-            padding: 5px 7px;
+            padding: 2px 7px;
         }
         .nlogo, .titletext {
             display: inline-block;
@@ -92,16 +92,7 @@ const Topbarcss = styled.div`
 `
 
 const Topbar = props => {
-    const dropDowner = (e, c) => {
-        e.preventDefault();
-        if (e.key === "Enter" || c === "click"){
-
-            // if (e.key !== "Enter" && e.key !== `undefined`) console.log(e.key)
-            console.log(props.showMenu ? 'shosohsso' : 'nononono')
-            props.setShowMenu(!props.showMenu)
-        } else {return true}
-    }
-    const curtainText = [['Digital Newberry: ', 'http://www.google.com','dislink'],['Newberry Transcribe', '/','homelink']]
+    const curtainText = [['Digital Newberry: ', '/','dislink'],['Newberry Transcribe', '/transcribe/','homelink']]
     const breadcrumbs = curtainText.map(ct => {
         const letterarray = ct[0].split('').map((i,index) => {
             const tx = Math.round((Math.random() * 70),0)
@@ -138,29 +129,15 @@ const Topbar = props => {
             }
         }))
     }) : ''
-    // const instance = basicScroll.create({
-    //     from: '0px',
-    //     to: '500px',
-    //     props: {
-    //         '--blurone': {
-    //             from: '1px',
-    //             to: '0px'
-    //         },
-    //     }
-    // // }) : ''
-    // })
-    
-    // const instanceStart = curtain !== null ? instance.start() : ''
-    // instance.start()
     instances.forEach((i) => i.start())
     return (
         <Topbarcss id="topbar">
             <div className="topbar">
                 <div className="nlogo"><a href="https://www.newberry.org/" target="_blank" rel="noopener noreferrer"><img src={logo} alt=""/></a></div>
                 <div className="titletext"><span className="blurone">{breadcrumbs}</span></div>
-                <div className="menu" onClick={(e) => dropDowner(e)} onKeyUp={(e) => dropDowner(e)} role="button" tabIndex={0}>
+                {props.showMenu !== undefined ? <div className="menu" onClick={() => props.setShowMenu(!props.showMenu)} onKeyUp={() => props.setShowMenu(!props.showMenu)} role="button" tabIndex={0}>
                     {props.showMenu ? <IoIosCloseCircle size="1.5rem" className="carrot" /> : <IoIosArrowDropdownCircle size="1.5rem" className="carrot" />}
-                </div>
+                </div> :'' }
                 <div className="jumbler"></div>
             </div>
         </Topbarcss>

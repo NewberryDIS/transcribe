@@ -15,8 +15,22 @@ export const CoreBox = styled.div`
     background: rgba(${colors.bg}, 1);
     border: 2px solid rgba(${colors.hl}, 1);
     box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+    min-width: 5px !important;
     ${props => props.nothing ? 'width: 400px; height: 150px; padding: 25px; margin: auto; text-align: center;' :''}
-`
+    .pixbox {
+        background:linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)), url('${props => props.img}');
+        padding: 20px;
+        border: 2px solid rgba(${colors.hl}, 1);
+        box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+        position: relative;
+        background-position: center;
+        h4 {
+            font-size: 1.2rem;
+            font-family: ${fonts.serif};
+        }
+        margin-bottom: 20px;
+    }
+    `
 export const Bluebutton = styled.div`
         width: 100%;
         text-align: center;
@@ -125,6 +139,7 @@ export const Selectcss = styled.select`
 export const Gardacss = styled.footer`
     padding: 15px;
     width: 90%;
+    max-width: 100%;
     margin: auto;
     color: rgba(${colors.fg},1);
     display: flex;
@@ -132,7 +147,8 @@ export const Gardacss = styled.footer`
     .footercontent {
         padding: 25px;
         &.tweets{
-
+            max-height: 400px;
+            overflow: auto;
             iframe {
                 border-radius: 5px;
                 box-shadow:  0 0 8px rgba(${colors.fg},1);
@@ -162,26 +178,27 @@ export const Gardacss = styled.footer`
         cursor: pointer;
     }
     .imagelink {
-
-            background: none;
+        background: none;
+        margin: auto;
         img {
+            width: 100%;
             border-radius: 5px;
             margin:  0 auto 20px auto;
             box-shadow:  0 0 8px rgba(${colors.fg},1);
         }
     }
     .masonry-grid {
-        flex: 1;
-        display: flex;
-        margin-left: -30px; /* gutter size offset */
-        // width: auto;
+      flex: 1;
+      display: flex;
+      margin-left: -30px; /* gutter size offset */
+    //   width: auto;
     }
     .masonry-grid_column {
-        padding-left: 30px; /* gutter size */
-        background-clip: padding-box;
+      padding-left: 30px; /* gutter size */
+      background-clip: padding-box;
     }
     .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-        margin: 0 auto 30px auto;
+      margin-bottom: 30px;
     }
 `
 export const Contentcss = styled.div`

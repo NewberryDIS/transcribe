@@ -8,7 +8,7 @@ exports.createPages =  async ({ actions }) => {
         // item pages
     const itemTemplate = path.resolve(`./src/templates/item-template.js`);
     data.forEach(item => {
-        var path = 'item/' + item.id;
+        var path = 'item/' + item.id + '/';
         createPage({
             path,
             component: itemTemplate,

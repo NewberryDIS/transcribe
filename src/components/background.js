@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
 
@@ -37,10 +37,16 @@ const Background = props => {
     if (props.image){
         bgLink = props.image
     } else {
-        // const rando = Math.round(Math.random() * (bgarray.length - 1));
         const bodybg = bgarray[rando]
         bgLink = '//iiif.archivelab.org/iiif/' + bodybg[0] + `$` + bodybg[1] + '/full/1000,/0/default.jpg'
     }
+    //https://upmostly.com/tutorials/setinterval-in-react-components-using-hooks
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if(props.image) {setRando(Math.round(Math.random() * (bgarray.length - 1)))}
+        }, 30000);
+        return () => clearInterval(interval);
+    }, []);
     return(
         <div css={css`
         z-index: -9990;
@@ -53,6 +59,9 @@ const Background = props => {
         background-size: cover;
         background-position: 50% 50%;
         overflow: hidden;
+        max-width: 100vw;
+        max-height: 100vh;
+        transition: all 1s;
         `}/>
     )
 }

@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import { jsx, css  } from '@emotion/core'
 import { IoIosSearch } from 'react-icons/io'
 import { fonts, colors, Selectcss } from './csscomponents'
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 
 const Searchcss = styled.div`
     border: 1px solid black;
@@ -61,16 +60,17 @@ const Subjectcss = styled.div`
         text-transform: uppercase;
         font-size: 15px;
         margin: 0;
-        padding: 0 0 0 5px;
+        padding: 0 0 0 3em;
         cursor: pointer;
         border: 1px solid transparent;
         transition: border 0.1s;
         font-family: ${fonts.sans};
         text-transform: uppercase;
         background: rgba(0,0,0,0);
+        text-indent: -2em;
         &:hover {
             border: 1px solid rgba(${colors.hl}, 1);
-            box-shadow:  0 0 10px rgba(${colors.fg},0.5);
+            // box-shadow:  0 0 10px rgba(${colors.fg},0.5);
         }
         &.viewall {
             font-weight: 900;
@@ -133,7 +133,6 @@ export const DateSearch = props => {
     )
 }
 export const SubjSearch = props => {
-    const [ checked, setChecked ] = useState(false)
     const subjectArray = [
         // "Cassettes",
         "Family papers",
@@ -152,12 +151,13 @@ export const SubjSearch = props => {
     ]
     const subjectList = subjectArray.sort().map((s, index) => {
         return <li key={index} onClick={() => navToNewFilter('cat', s, props.setFilters)}>
-            {checked ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />}
+            {/* {checked ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />} */}
             {
                 s === 'American Civil War (1861-1865)' ? 'Civil War' : 
                 s === 'Letters (Correspondence)' ? 'Letters' : 
                 s === 'Records (Documents)' ? 'Records' : 
-                s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
+                // s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
+                s === 'Indians of North America' ? 'Indigenous Americans' :
                 s
             }
         </li>

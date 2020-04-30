@@ -1,9 +1,8 @@
 // import React, { useState } from 'react'
 import { navigate } from 'gatsby'
-import styled from '@emotion/styled'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
-import { fonts, colors, Bluebutton, CoreBox } from './csscomponents'
+import { fonts, Bluebutton, CoreBox } from './csscomponents'
 import Progress from './progress'
 import { TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
 import { numberWithCommas } from './progress'

@@ -1,6 +1,6 @@
 module.exports = {
-  // pathPrefix: "transcribe",
-  pathPrefix: "transcription/testfolder",
+  pathPrefix: "transcribe",
+  // pathPrefix: "transcription/testfolder",
   siteMetadata: {
     title: `Newberry Transcribe`,
     description: `Help unlock the past.`,
@@ -20,13 +20,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `newberry-transcribe`,
+        short_name: `transcribe`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/drawing.svg`, // This path is relative to the root of the site.
       },
     },
     {
