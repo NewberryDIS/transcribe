@@ -134,13 +134,15 @@ const filterFunctions = {
 }
 
 const IndexPage = ({ search, data }) => {
-  const allContent    = data.allFile.edges[1].node.childDataJson.items.sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
+  console.log(data.allFile.edges)
+  const allContent    = data.allFile.edges[2].node.childDataJson.items.sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
   const progressData  = data.allFile.edges[0].node.childDataJson.summary
-  transcriptions      = data.allFile.edges[2].node.childDataJson.transcriptions
+  transcriptions      = data.allFile.edges[1].node.childDataJson.transcriptions
   const [ showButton, setShowButton ] = useState(true)
   const [ resultCount, setResultCount ] = useState(0)
   const [ showMenu, setShowMenu ] = useState(false)
   const [ itemsToShow, setItemsToShow ] = useState(18)
+  const [ sideBarLoading, setSideBarLoading ] = useState(true)
   const [ filters, setFilters ] = useState({
     lang: search.lang !== undefined ? search.lang : 'English',
     cat:  search.cat   !== undefined ? search.cat  : '' ,
@@ -199,6 +201,8 @@ const IndexPage = ({ search, data }) => {
       updateContent()
       if (firstLoad.current)  {
           firstLoad.current = false
+          console.log('setSideBarLoading')
+          setSideBarLoading(false)
       } else {
           executeScroll()
       }
@@ -207,6 +211,7 @@ const IndexPage = ({ search, data }) => {
       updateContent()
       setShowButton(boxedContent.length < itemsToShow ? false : true)
   }, [itemsToShow])
+  useEffect(() => console.log('mainpage loaded'), [])
   let filteredContent = filterContent(allContent)
   let boxedContent = boxify(filteredContent)
   const pageTop = useRef(null)
@@ -237,7 +242,7 @@ const IndexPage = ({ search, data }) => {
     <Body>
       <Boxescss>
         <Anchor ref={pageTop} />
-        <Sidebar progressData={progressData} setFilters={setFilters} resultCount={resultCount} showMenu={showMenu} />
+        <Sidebar sideBarLoading={sideBarLoading} progressData={progressData} setFilters={setFilters} resultCount={resultCount} showMenu={showMenu} />
         {boxes.length === 1 ? boxes : 
           <Masonry
             breakpointCols={breakpointColumnsObj}

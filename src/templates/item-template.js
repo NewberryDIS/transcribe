@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Global, css } from "@emotion/core"
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
@@ -10,8 +10,9 @@ import Topbar from '../components/topbar'
 import { Simpleprogress } from "../components/progress"
 import BetaBanner from '../components/beta'
 import Progress from '../components/progress'
-import transcriptions from '../data/itemTranscriptions.json'
+// import transcriptions from '../data/itemTranscriptions.json'
 import withLocation from "../components/withlocation"
+import loading from '../images/loading.gif'
 
 const Wrapper = styled.div`
     position: relative;
@@ -98,9 +99,28 @@ const Itemcss = styled.div`
         display: block;
         box-shadow:  0 0 8px rgba(${colors.fg},1);
     }
+    .iframeContainer {
+        background: mintgreen;
+        position: relative;
+        z-index: 0;
+        background-image: url(${loading})
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            line-height: 200px;
+            z-index: 0;
+            text-align: center;
+            content: "Loading...";
+        }
+    }
     iframe {
+        z-index: 100;
         border-radius: 5px;
         width: 100%; 
+        margin: 0;
         height: 80vh;
         overflow: auto;
         box-shadow:  0 0 10px rgba(${colors.fg},1);
@@ -113,8 +133,7 @@ const Itemcss = styled.div`
 
 const Item = ( props ) => {
     const item = props.pageContext
-    const [ pageNo, setPageNo ] = useState(props.search.page)
-    const pageType = pageNo === undefined ? 'item' : 'page'
+    const [pageType, setPageType] = useState(props.search.page === undefined ? 'item' : 'page')
     const progress = {
         count: item.count,
         transcount: item.transcount,
@@ -122,10 +141,13 @@ const Item = ( props ) => {
     }
     const navToPage = (page) => {
         navigate('?page=' + page)
-        setPageNo(page)
     }
-    let uhh = transcriptions['transcriptions'].find( ({ id }) => id === item.id )
-    const pages = uhh.pages.map(i => 
+    useEffect(() => {
+        setPageType(props.search.page === undefined ? 'item' : 'page')
+        
+    }, [props.search]);
+    // let uhh = transcriptions['transcriptions'].find( ({ id }) => id === item.id )
+    const pages = item.pages.map(i => 
         <a key={i.pageid} className="pagelink" onClick={() => navToPage(i.pageid)}>
             <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} alt="" />
             <Simpleprogress status={i.transcription ? true : false} />
@@ -161,7 +183,7 @@ const Item = ( props ) => {
                             </div>
                         </div>
                         : 
-                        <iframe src={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${pageNo}#transcription`} title="transcription page" />
+                        <div className="iframeContainer"><iframe src={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${props.search.page}#transcription`} placeholder={"Loading..."} title="transcription page" /></div>
                     }
                 </div>
             </Itemcss>

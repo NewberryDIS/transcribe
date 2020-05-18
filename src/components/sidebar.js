@@ -2,16 +2,30 @@
 import { navigate } from 'gatsby'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
-import { fonts, Bluebutton, CoreBox } from './csscomponents'
+import styled from '@emotion/styled'
+import { colors, fonts, Bluebutton, CoreBox } from './csscomponents'
 import Progress from './progress'
 import { TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
 import { numberWithCommas } from './progress'
 // let SidebarCss = styled('div')`${dynamicStyle}` 
+
+const Loading = styled.div`
+    position: absolute;
+    top:    25px;
+    right:  25px;
+    bottom: 25px;
+    left:   25px;
+    background: rgba(${colors.bg}, 0.63);
+    border: 2px solid rgba(${colors.hl}, 0.63);
+    box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+`
+
 const Sidebar = props => {
     let showHideMenu = props.showMenu ? 'block' : 'none'
+    console.log(props.sidebarLoading ? 'asdf' : 'qwer')
     return (
         <div className="sidebar" css={css`
-        
+            position: relative;
             @media ( min-width: 1300px ) { flex-basis: 20vw;  }
             @media ( min-width: 900px ) and ( max-width: 1300px ) { flex-basis: 30vw;  }
             // @media (min-width: 801) and ( max-width: 900px ) { flex-basis: 40vw; }
@@ -55,10 +69,10 @@ const Sidebar = props => {
             `}>
                 <div className="progress-text" >{numberWithCommas(props.progressData.totalTranscount)} out of {numberWithCommas(props.progressData.totalPages)} pages transcribed!</div>
                 <Progress progressData={props.progressData} />
-                <TextSearch setFilters={props.setFilters} />
-                <DateSearch setFilters={props.setFilters} />
-                <LangSearch setFilters={props.setFilters} />
-                <SubjSearch setFilters={props.setFilters} showMenu={props.showMenu} />
+                <TextSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
+                <DateSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
+                <LangSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
+                <SubjSearch setFilters={props.setFilters} loading={props.sidebarLoading} showMenu={props.showMenu} />
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
                 <Bluebutton><div className="wrapper"><div className="button" onClick={e => resetFilters(e, props.setFilters) }>Reset</div></div></Bluebutton>
             </CoreBox>

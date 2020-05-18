@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { navigate } from 'gatsby'
 import styled from '@emotion/styled'
 /** @jsx jsx */
@@ -87,8 +87,9 @@ const Subjectcss = styled.div`
 `
 
 export const TextSearch = props => {
+    const [ready, setReady ] = useState(false)
     const [input, setInput] = useState('')
-    let text = input.length > 0 ? input : 'Search the transcriptions...'
+    let text = ready ? input.length > 0 ? input : 'Search the transcriptions...' : 'Data is loading...'
     const handleChange = (e) => {
         setInput([e.target.value.toLowerCase()])
     }
@@ -101,38 +102,58 @@ export const TextSearch = props => {
             submitSearch()
         }
     }
+
+  useEffect(() => {
+      console.log('test comp laoded')
+        setReady(true)
+    }, [props.loading])
     return (
         <Searchcss className="text-search">
-            <input className="searchInput" placeholder={text} value={props.input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
+            <input className="searchInput" placeholder={text} value={props.input} type="text" disabled={!ready} onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
             <button className="searchbutton" onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
         </Searchcss>
     )
 }
 export const LangSearch = props => {
+    const [ready, setReady ] = useState(false)
+    useEffect(() => {
+        console.log('test comp laoded')
+          setReady(true)
+    }, [props.loading])
     const languages = ['English','French','German','Italian','Welsh','Yiddish']
     const langdropdown = languages.map((l) => <option key={l} value={l} >{l}</option>)
     return (
-        <Selectcss name="dropdownlanguages" className="dropdown" onChange={e => navToNewFilter('lang', e.target.value, props.setFilters)}>
-            <option value="English">Select a language...</option>
+        <Selectcss name="dropdownlanguages" className="dropdown" disabled={!ready} onChange={e => navToNewFilter('lang', e.target.value, props.setFilters)}>
+            <option value="English">{ready ? 'Select a language...' : 'Data is loading...'}</option>
             {langdropdown}
         </Selectcss>
     )
 }
 export const DateSearch = props => {
+    const [ready, setReady ] = useState(false)
+    useEffect(() => {
+        console.log('test comp laoded')
+          setReady(true)
+    }, [props.loading])
     const range = [1800, 1990]
     let decades = []
     for (let i = range[0]; i < range[1]; i += 10){
         decades.push( i === 1960 || i === 1970 ? '' : <option key={i} value={i} >{i} - {i + 9}</option>)
     }
     return (
-        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" defaultValue={1} onChange={e => navToNewFilter('date', e.target.value, props.setFilters)}> >
-            <option value={1}>Select a decade...</option>
+        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" disabled={!ready} defaultValue={1} onChange={e => navToNewFilter('date', e.target.value, props.setFilters)}> >
+            <option value={1}>{ready ? 'Select a decade...' : 'Data is loading...'}</option>
             <option key="early" value="1799" >pre-1800</option>
             {decades}
         </Selectcss>
     )
 }
 export const SubjSearch = props => {
+    const [ready, setReady ] = useState(false)
+    useEffect(() => {
+        console.log('test comp laoded')
+          setReady(true)
+    }, [props.loading])
     const subjectArray = [
         // "Cassettes",
         "Family papers",
@@ -177,12 +198,12 @@ export const SubjSearch = props => {
             <div className="subjectlist">
                 <span>Select a category...</span>
                 <ul>
-                    {subjectList}
+                    {ready ? subjectList : <li>Data is loading...</li>}
                 </ul>
             </div>
             <div className="subjectdropdown">
-                <Selectcss id="dropdownsubj" className="dropdown" name="dropdownsubj" defaultValue={''} onChange={e => navToNewFilter('cat', e.target.value, props.setFilters)}>
-                    <option value={''}>Select a category...</option>
+                <Selectcss id="dropdownsubj" className="dropdown" name="dropdownsubj" disabled={!ready}  defaultValue={''} onChange={e => navToNewFilter('cat', e.target.value, props.setFilters)}>
+                    <option value={''}>{ready ? 'Select a category...' : 'Data is loading...'}</option>
                     {subjectDropdown}
                 </Selectcss>
             </div>

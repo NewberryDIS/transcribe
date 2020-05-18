@@ -81,6 +81,7 @@ with open(itemsFile) as json_file:
             'percentTranscribed': 0,
             'date': '',
             'category': '',
+            'pages': []
         }
         sitemTranscriptions = {
             'id': str(i['id']),
@@ -110,6 +111,7 @@ with open(itemsFile) as json_file:
         with open(filesfilename) as files:
             filesJson = json.load(files)
             for fi in filesJson:
+                itemObj['pages'].append(fi['id'])
                 fileObj = {
                     'pageid': fi['id'],
                     'pagefilename': fi['filename'],
@@ -162,10 +164,16 @@ with open(itemsFile) as json_file:
             itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
         content['items'].append(itemObj)
         itemData.append(itemObj)
+        # wholeItem = itemObj
+        # wholeItem.update(sitemTranscriptions)
         itemTranscriptions.append(sitemTranscriptions)
+        # newFileName = '../src/data/' + id + '.json'
+        # with open(newFileName, 'w') as dataFile:
+        #     json.dump(wholeItem, dataFile)
         print(itemObj['id'])
 itemData.sort(key=operator.itemgetter('transcount'))
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
+
 with open('../src/data/items.json', 'w') as dataFile:
     json.dump(itemData, dataFile)
 with open('../src/data/itemTranscriptions.json', 'w') as dataFile:
