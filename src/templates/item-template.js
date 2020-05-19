@@ -100,7 +100,6 @@ const Itemcss = styled.div`
         box-shadow:  0 0 8px rgba(${colors.fg},1);
     }
     .iframeContainer {
-        background: mintgreen;
         position: relative;
         z-index: 0;
         background-image: url(${loading})
@@ -124,6 +123,7 @@ const Itemcss = styled.div`
         height: 80vh;
         overflow: auto;
         box-shadow:  0 0 10px rgba(${colors.fg},1);
+        background: white;
     }
     // .sizewarning {
     //     @media (min-width: 500px){display: none;}

@@ -48,7 +48,6 @@ const Topbarcss = styled.div`
             .carrot {
                 display: none;
             }
-            
     }
     @media only screen 
         and (max-width : 850px) {
@@ -62,10 +61,12 @@ const Topbarcss = styled.div`
         will-change: transform;
         font-family: ${fonts.serif};
         font-weight: 700;
+        z-index: 500;
     }
     .carrot {
         vertical-align: middle;
         line-height: 2rem;
+        font-size: 1.75rem;
         padding: 4px;
         // margin-right: 5px;
         transition: 0.2s;
@@ -84,11 +85,14 @@ const Topbarcss = styled.div`
         background-position: 0% 105%;
         background-repeat: no-repeat;
         transition: background-size 0.2s ease 0s, color 0.2s;
-
         &:hover {
             color: rgba(${colors.fg}, 1);
             background-size: 100% 3px;
         }}   
+    .menu {
+        // background: white;
+        z-index: 1000;
+    }
 `
 
 const Topbar = props => {
@@ -130,17 +134,65 @@ const Topbar = props => {
         }))
     }) : ''
     instances.forEach((i) => i.start())
+
+    const clickstopper = e => {
+        e.stopPropagation()
+        props.setShowMenu(!props.showMenu)
+        console.log('stop it')
+    }
     return (
         <Topbarcss id="topbar">
             <div className="topbar">
                 <div className="nlogo"><a href="https://www.newberry.org/" target="_blank" rel="noopener noreferrer"><img src={logo} alt=""/></a></div>
                 <div className="titletext"><span className="blurone">{breadcrumbs}</span></div>
-                {props.showMenu !== undefined ? <div className="menu" onClick={() => props.setShowMenu(!props.showMenu)} onKeyUp={() => props.setShowMenu(!props.showMenu)} role="button" tabIndex={0}>
-                    {props.showMenu ? <IoIosCloseCircle size="1.5rem" className="carrot" /> : <IoIosArrowDropdownCircle size="1.5rem" className="carrot" />}
-                </div> :'' }
+                {props.showMenu !== undefined ? <div className="menu" onClick={(e) => clickstopper(e)} onKeyUp={(e) => clickstopper(e)} role="button" tabIndex={0}>
+                    <MenuButton showMenu={props.showMenu} />
+                </div> : '' }
                 <div className="jumbler"></div>
             </div>
         </Topbarcss>
     )
 }
 export default Topbar
+
+const MenuCss = styled.div`
+    .container {
+        display: inline-block;
+        cursor: pointer;
+        line-height: 50px;
+        z-index: 1000;
+        background: rgba(${colors.bg},1);
+    }
+    
+    .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: rgba(${colors.fg}, 1);
+        margin: 4px 0;
+        transition: 0.2s;
+    }
+    
+    .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-8px, 5px);
+        transform: rotate(-45deg) translate(-8px, 5px);
+    }
+    
+    .change .bar2 {opacity: 0;}
+    
+    .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-7px, -5px);
+        transform: rotate(45deg) translate(-7px, -5px);
+    }
+`
+const MenuButton = props => {
+ 
+    return (
+        <MenuCss  >
+            <div className={props.showMenu ? "change container" : "container"} >
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
+            </div>
+        </MenuCss> 
+    )
+}
