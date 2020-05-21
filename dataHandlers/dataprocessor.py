@@ -16,10 +16,6 @@ content = {
         'totalTranscount': 0,
         'percentTranscribed': 0,
     },
-    'subjects': {},
-    'items': [],
-    'languages': {},
-    'dates': {}
 }
 yearlyModifiedCounter = 0
 itemData = []
@@ -72,7 +68,7 @@ with open(itemsFile) as json_file:
         itemObj = {
             'id': '',
             'count': 0,
-            'lang': '',
+            'lang': [],
             'desc': '',
             'cataloglink': '',
             'image': '',
@@ -102,10 +98,14 @@ with open(itemsFile) as json_file:
                 urllib.request.urlretrieve(itemurl, itemfilename)
             else:
                 skippedFileCount += 1
+        else: 
+            downloadedFileCount += 1
+            urllib.request.urlretrieve(filesurl, filesfilename)
+            urllib.request.urlretrieve(itemurl, itemfilename)
     # 2. create array of subjects with each corresponding id as a value
         for e in i['element_texts']:
             if e['element']['name'] == 'Subject':
-                tagCleaner(e['text'], content['subjects'], id)
+                # tagCleaner(e['text'], content['subjects'], id)
                 itemObj['category'] = e['text']
     # 3. iterate over files files and get completed status, then add transcripts to content.items.id, concatentated for ease of search
         with open(filesfilename) as files:
@@ -130,17 +130,17 @@ with open(itemsFile) as json_file:
         with open(itemfilename) as item:
             itemJson = json.load(item)
             for ie in itemJson['element_texts']:
-                lang = ''
+                lang = []
                 desc = ''
                 image = ''
                 weight = ''
                 itemObj['id'] = id
                 if ie['element']['name'] == 'Language':
-                    tagCleaner(ie['text'], content['languages'], id)
+                    # tagCleaner(ie['text'], content['languages'], id)
                     itemObj['lang'] = arrayCleaner(ie['text'])
                 if ie['element']['name'] == 'Relation': itemObj['desc'] = ie['text']
                 if ie['element']['name'] == 'Description':
-                    pattern = "(?P<url>https?://[^\s]+)\" target=\"_blank\" rel=\"noreferrer\">View catalog record<"
+                    pattern = "(?P<url>https?://[^\s]+)\" (.*?)>View c"
                     if re.search(pattern, ie['text']) is not None:
                         substring = re.search(pattern, ie['text']).group("url").replace('&amp;','&')
                         itemObj['cataloglink'] = substring
@@ -153,16 +153,16 @@ with open(itemsFile) as json_file:
                     date = re.findall(r'[0-9]{4}', title)
                     for y in date:
                         decade = math.floor(int(y) / 10) * 10
-                        tagCleaner(str(decade), content['dates'], id)
+                        # tagCleaner(str(decade), content['dates'], id)
                     itemObj['title'] = title
                     for i in range(0, len(date)):
                         date[i] = int(date[i])
                     itemObj['date'] = date
-                if lang == '': lang = ['English']
+                if lang == [] : lang = ['English']
         # print( itemObj['count'])
         if id != '1182':
             itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
-        content['items'].append(itemObj)
+        # content['items'].append(itemObj)
         itemData.append(itemObj)
         # wholeItem = itemObj
         # wholeItem.update(sitemTranscriptions)
@@ -179,7 +179,7 @@ with open('../src/data/items.json', 'w') as dataFile:
 with open('../src/data/itemTranscriptions.json', 'w') as dataFile:
     json.dump(itemTranscriptions, dataFile)
 with open('../src/data/summary.json', 'w') as dataFile:
-    json.dump(content['summary'], dataFile)
+    json.dump(content, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
 with open('./imageList.txt', 'w') as listfile:

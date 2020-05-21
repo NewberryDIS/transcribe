@@ -223,7 +223,7 @@ const Textbox = props => {
             searchWords={props.filter}
             textToHighlight={props.searchresult.transcription}
         />
-        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
+        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'http://publications.newberry.org/transcribe/item/' + props.id + '?page=' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
         
     </div>
 )}
@@ -257,7 +257,7 @@ const Box = ({ boxProps, textSearchResults, filter }) => {
         return <span key={i}><a href={catLink}>{i}</a></span>
     }) 
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
-    
+    const transResults = textSearchResults && textSearchResults.filter(t => t.transcription && t.transcription.length > 0)
     const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img.indexOf('mms-transcribe') > -1 ? boxProps.img : boxProps.img  + '/full/400,/0/default.jpg'
     return (
         <Boxcss show={boxProps.show} >
@@ -280,7 +280,7 @@ const Box = ({ boxProps, textSearchResults, filter }) => {
                 </div>
                 
             </div>
-            {textSearchResults.length > 0 ? <TextSearchResults tsr={textSearchResults} id={boxProps.id} filter={filter} /> : ''}
+            {transResults.length > 0 ? <TextSearchResults tsr={transResults} id={boxProps.id} filter={filter} /> : ''}
         </Boxcss>
     )
 }

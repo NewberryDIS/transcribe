@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"
+// import React, { useState, useEffect, useRef } from "react"
+// import ReactDOM from 'react-dom' 
 import { Global, css } from "@emotion/core"
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
@@ -10,9 +12,10 @@ import Topbar from '../components/topbar'
 import { Simpleprogress } from "../components/progress"
 import BetaBanner from '../components/beta'
 import Progress from '../components/progress'
-// import transcriptions from '../data/itemTranscriptions.json'
+import transcriptions from '../data/itemTranscriptions.json'
 import withLocation from "../components/withlocation"
 import loading from '../images/loading.gif'
+import { Link } from "gatsby"
 
 const Wrapper = styled.div`
     position: relative;
@@ -99,32 +102,7 @@ const Itemcss = styled.div`
         display: block;
         box-shadow:  0 0 8px rgba(${colors.fg},1);
     }
-    .iframeContainer {
-        position: relative;
-        z-index: 0;
-        background-image: url(${loading})
-        &:after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            line-height: 200px;
-            z-index: 0;
-            text-align: center;
-            content: "Loading...";
-        }
-    }
-    iframe {
-        z-index: 100;
-        border-radius: 5px;
-        width: 100%; 
-        margin: 0;
-        height: 80vh;
-        overflow: auto;
-        box-shadow:  0 0 10px rgba(${colors.fg},1);
-        background: white;
-    }
+
     // .sizewarning {
     //     @media (min-width: 500px){display: none;}
     //     @media (max-width: 500px){display: block;}
@@ -133,25 +111,18 @@ const Itemcss = styled.div`
 
 const Item = ( props ) => {
     const item = props.pageContext
-    const [pageType, setPageType] = useState(props.search.page === undefined ? 'item' : 'page')
     const progress = {
         count: item.count,
         transcount: item.transcount,
         percentTranscribed: item.percentTranscribed,
     }
-    const navToPage = (page) => {
-        navigate('?page=' + page)
-    }
-    useEffect(() => {
-        setPageType(props.search.page === undefined ? 'item' : 'page')
-        
-    }, [props.search]);
-    // let uhh = transcriptions['transcriptions'].find( ({ id }) => id === item.id )
-    const pages = item.pages.map(i => 
-        <a key={i.pageid} className="pagelink" onClick={() => navToPage(i.pageid)}>
+    let bgimage = item.image.indexOf('files') > -1 ? item.image :  item.image + '/full/1000,/0/default.jpg'
+    let uhh = transcriptions['transcriptions'].find( ({ id }) => id === item.id )
+    const pages = uhh.pages.map(i => 
+        <Link to={'/page?itemid=' + item.id + '&pageid=' + i.pageid} state={{ item: i, id: item.id }} key={i.pageid} className="pagelink" >
             <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} alt="" />
             <Simpleprogress status={i.transcription ? true : false} />
-        </a>
+        </Link>
     )
     return (
         <Wrapper >
@@ -161,6 +132,30 @@ const Item = ( props ) => {
                     padding: 0;
                     position: relative;
                     z-index: 1;
+                    -webkit-font-smoothing: antialiased;
+                }
+                .iframeContainer {
+                    padding: 30px 100px;
+                    width: 90%;
+                    height: 1400px;
+                    margin: 60px auto;
+                    z-index: 0;
+                    background: rgba(${colors.bg},1);
+                    border: 2px solid rgba(${colors.fg},1);
+                    box-shadow: inset 0 0 10px rgba(${colors.hl},0.5);
+            
+                }
+                iframe {
+                    width: 1000px;
+                    height: 100%;
+                    z-index: 100;
+                    border-radius: 5px;
+                    width: 100%; 
+                    margin: auto;
+                    overflow: auto;
+                    background: rgba(${colors.bg},1);
+                    border: 2px solid rgba(${colors.fg},1);
+                    box-shadow: 0 0 10px rgba(${colors.hl},0.5);
                 }
             `}/>
             <Helmet>
@@ -168,33 +163,24 @@ const Item = ( props ) => {
                 <title>Newberry Transcribe</title>
             </Helmet>
             <Topbar  />
-            <Background image={item.image + '/full/1000,/0/default.jpg'}/>
-            <BetaBanner />
-            <Itemcss>
-                <div className="itemheadertext">
-                    { pageType === 'item' ? 
-                        <div className="itemheadertext">
-                            <h1>{item.title}</h1>
-                            <p>{item.desc}</p>
-                            {item.cataloglink.length > 0 ? <p><a href={item.cataloglink}  target="_blank" rel="noopener noreferrer">View Catalog Record</a></p> : ''}
-                            <Progress progressData={progress} />
-                            <div className="pages">
-                                {pages}
+                        <Background image={bgimage}/>
+                        <BetaBanner />
+                        <Itemcss  >
+                            <div className="itemheadertext">
+                                <div className="itemheadertext">
+                                    <h1>{item.title}</h1>
+                                    <p>{item.desc}</p>
+                                    {item.cataloglink.length > 0 ? <p><a href={item.cataloglink}  target="_blank" rel="noopener noreferrer">More Information</a></p> : ''}
+                                    <Progress progressData={progress} />
+                                    <div className="pages">
+                                        {pages}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        : 
-                        <div className="iframeContainer"><iframe src={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${item.id}/${props.search.page}#transcription`} placeholder={"Loading..."} title="transcription page" /></div>
-                    }
-                </div>
-            </Itemcss>
-            <Footer />
+                        </Itemcss>
+             <Footer />
         </Wrapper>
     )
 }
 
 export default withLocation(Item)
-
-{/* <div key={i.pageid} onClick={() => NavToPage(props.pathname, i.pageid, props.setPageType) } className="pagelink" role="navigation" tabIndex={1}>
-    <img className="pageimage" src={'http://publications.newberry.org/transcription/mms-transcribe/files/square_thumbnails/' + i.pagefilename} alt="" />
-    <Simpleprogress status={i.transcription ? true : false} />
-</div> */}

@@ -9,20 +9,19 @@ import { TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponen
 import { numberWithCommas } from './progress'
 // let SidebarCss = styled('div')`${dynamicStyle}` 
 
-const Loading = styled.div`
-    position: absolute;
-    top:    25px;
-    right:  25px;
-    bottom: 25px;
-    left:   25px;
-    background: rgba(${colors.bg}, 0.63);
-    border: 2px solid rgba(${colors.hl}, 0.63);
-    box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
-`
+// const Loading = styled.div`
+//     position: absolute;
+//     top:    25px;
+//     right:  25px;
+//     bottom: 25px;
+//     left:   25px;
+//     background: rgba(${colors.bg}, 0.63);
+//     border: 2px solid rgba(${colors.hl}, 0.63);
+//     box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+// `
 
 const Sidebar = props => {
     let showHideMenu = props.showMenu ? 'block' : 'none'
-    console.log(props.sidebarLoading ? 'asdf' : 'qwer')
     return (
         <div className="sidebar" css={css`
             position: relative;

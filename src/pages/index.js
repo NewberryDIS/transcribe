@@ -90,15 +90,19 @@ const filterFunctions = {
       titleFound = ( titleFound && haystack.indexOf(needle) > -1) ? true : false
     })
     hh.forEach(h => {
-        if (h.transcription.length > 0 && nn.length > 0 ) { 
-            nn.forEach(n => {
-              const needle = normalizeText(n)
-              const haystack = normalizeText(h.transcription)
-              found = ( haystack.indexOf(needle) > -1) ? true : false
-              if (found || (titleFound )) {returnArray.push(h)}
-            })
+      if (h.transcription.length > 0 && nn.length > 0 ) { 
+        nn.forEach(n => {
+            const needle = normalizeText(n)
+            const haystack = normalizeText(h.transcription)
+            found = ( haystack.indexOf(needle) > -1) ? true : false
+            if (found) {returnArray.push(h)}
+          })
         }
     }) 
+    if(returnArray.length < 1 && titleFound){
+      returnArray.push({id: itemid})
+    }
+    // if(returnArray.length > 0){console.log(returnArray)}
     return returnArray.length > 0 ? returnArray : false
   },
   langFFunction: (langArray, langFilter) => {
@@ -132,12 +136,12 @@ const filterFunctions = {
     return (catFilter.length > 0 && catString.indexOf(catFilter) > -1) || catFilter.length === 0 ? true : false
   }
 }
-
+let catalogLinkCount = 0
 const IndexPage = ({ search, data }) => {
-  console.log(data.allFile.edges)
-  const allContent    = data.allFile.edges[2].node.childDataJson.items.sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
+  // console.log(data.allFile.edges)
+  const allContent    = data.allFile.edges[1].node.childDataJson.items.sort((a,b) => (a.title > b.title) ? 1 : -1).sort((a,b) => (a.percentTranscribed > b.percentTranscribed) ? 1 : -1 )
   const progressData  = data.allFile.edges[0].node.childDataJson.summary
-  transcriptions      = data.allFile.edges[1].node.childDataJson.transcriptions
+  transcriptions      = data.allFile.edges[2].node.childDataJson.transcriptions
   const [ showButton, setShowButton ] = useState(true)
   const [ resultCount, setResultCount ] = useState(0)
   const [ showMenu, setShowMenu ] = useState(false)
@@ -167,6 +171,7 @@ const IndexPage = ({ search, data }) => {
     let boxedUpContent = content.map(c => {
       counter++
         let textSearchResults = filters.text.length > 0 ? filterFunctions.textFFunction(c.id, filters.text, c.title) : ''
+        if (c.cataloglink.length > 0) {catalogLinkCount++}
         const boxProps = {
           id: c.id,
           title: c.title,
@@ -175,9 +180,10 @@ const IndexPage = ({ search, data }) => {
             transcount: c.transcount,
             percentTranscribed: c.percentTranscribed,
           },
+
           category: c.category,
           desc: truncator(c.desc),
-          img: c.image.indexOf('default.jpg') > -1 ? c.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : c.image  + '/full/400,/0/default.jpg',
+          img: c.image.indexOf('default.jpg') > -1 ? c.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : c.image.indexOf('files') > -1 ? c.image :  c.image  + '/full/400,/0/default.jpg',
           show: counter <= itemsToShow,
       }
         return  <Box boxProps={boxProps} key={counter} filter={filters.text} textSearchResults={textSearchResults} >{c.title}</Box>
@@ -191,27 +197,25 @@ const IndexPage = ({ search, data }) => {
   const updateContent = () => {
     filteredContent = filterContent(allContent)
     boxedContent = boxify(filteredContent)
-    setResultCount(boxedContent.length)
+    setResultCount(boxedContent.length) 
     setBoxes(boxedContent)
   }
   const firstLoad = useRef(true);
   const executeScroll = () => scrollToRef(pageTop)
   useEffect(() => {
       setItemsToShow(18)
-      updateContent()
       if (firstLoad.current)  {
           firstLoad.current = false
-          console.log('setSideBarLoading')
           setSideBarLoading(false)
       } else {
           executeScroll()
       }
+      !sideBarLoading && updateContent()
   }, [filters])
   useEffect(() => {
       updateContent()
       setShowButton(boxedContent.length < itemsToShow ? false : true)
   }, [itemsToShow])
-  useEffect(() => console.log('mainpage loaded'), [])
   let filteredContent = filterContent(allContent)
   let boxedContent = boxify(filteredContent)
   const pageTop = useRef(null)
@@ -220,6 +224,7 @@ const IndexPage = ({ search, data }) => {
   <Indexcss>
     <Global styles={css`
       html, body {
+        -webkit-font-smoothing: antialiased;
         margin: 0;
         padding: 0;
         position: relative;
@@ -243,14 +248,12 @@ const IndexPage = ({ search, data }) => {
       <Boxescss>
         <Anchor ref={pageTop} />
         <Sidebar sideBarLoading={sideBarLoading} progressData={progressData} setFilters={setFilters} resultCount={resultCount} showMenu={showMenu} />
-        {boxes.length === 1 ? boxes : 
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="masonry-grid"
             columnClassName="masonry-grid_column">
               {boxes}
           </Masonry>  
-        }
       </Boxescss>
       <Bluebutton>
           <div className="wrapper"><div className={showButton ? 'button' : 'button inactive'} onClick={() => addBoxes()}>More</div></div>

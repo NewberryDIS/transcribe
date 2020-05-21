@@ -3,7 +3,6 @@ import styled  from '@emotion/styled'
 import * as basicScroll from 'basicscroll'
 import { colors, fonts } from '../components/csscomponents'
 import logo from '../images/drawing.svg'
-import { IoIosArrowDropdownCircle, IoIosCloseCircle } from 'react-icons/io'
 
 const Topbarcss = styled.div`
     position: relative;

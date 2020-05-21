@@ -94,7 +94,7 @@ export const TextSearch = props => {
         setInput([e.target.value.toLowerCase()])
     }
     const submitSearch = () => {
-        console.log(input)
+        // console.log(input)
         navToNewFilter('text', input, props.setFilters)
     }
     const handleKeyDown = (e) => {
@@ -104,7 +104,6 @@ export const TextSearch = props => {
     }
 
   useEffect(() => {
-      console.log('test comp laoded')
         setReady(true)
     }, [props.loading])
     return (
@@ -117,7 +116,6 @@ export const TextSearch = props => {
 export const LangSearch = props => {
     const [ready, setReady ] = useState(false)
     useEffect(() => {
-        console.log('test comp laoded')
           setReady(true)
     }, [props.loading])
     const languages = ['English','French','German','Italian','Welsh','Yiddish']
@@ -132,7 +130,6 @@ export const LangSearch = props => {
 export const DateSearch = props => {
     const [ready, setReady ] = useState(false)
     useEffect(() => {
-        console.log('test comp laoded')
           setReady(true)
     }, [props.loading])
     const range = [1800, 1990]
@@ -151,7 +148,6 @@ export const DateSearch = props => {
 export const SubjSearch = props => {
     const [ready, setReady ] = useState(false)
     useEffect(() => {
-        console.log('test comp laoded')
           setReady(true)
     }, [props.loading])
     const subjectArray = [

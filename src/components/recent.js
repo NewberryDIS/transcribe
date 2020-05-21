@@ -7,7 +7,7 @@ const RecentItem = () => {
     const getItem = () => {
         fetch('https://cors-anywhere.herokuapp.com/https://publications.newberry.org/transcription/mms-transcribe/recentdata.json')
             .then(response => response.json())
-            .then(data => makeItem(data));
+            .then(data => makeItem(data))
     }
     const transcriptor = t => {
         let returnt = t.replace("Created page with ","");
