@@ -5,6 +5,7 @@ import Highlighter from 'react-highlight-words'
 import { colors, fonts, Bluebutton } from '../components/csscomponents'
 import { insertParam } from '../components/searchcomponents'
 import Progress from '../components/progress'
+import { Link } from 'gatsby'
 
 const Boxcss = styled.div`
     background: rgba(${colors.bg}, 1);
@@ -223,7 +224,7 @@ const Textbox = props => {
             searchWords={props.filter}
             textToHighlight={props.searchresult.transcription}
         />
-        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'http://publications.newberry.org/transcribe/item/' + props.id + '?page=' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
+        <Bluebutton className="bottomlink"><div className="wrapper"><Link className="button"  to={'/page?itemid=' + props.id + '&pageid=' + props.searchresult.pageid} >Go to page</Link></div></Bluebutton>
         
     </div>
 )}
