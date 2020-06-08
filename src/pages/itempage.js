@@ -118,13 +118,13 @@ function ItemPage() {
     let itemdataurl = '/transcription/mms-transcribe/api/files?item='  + itemid
     const [data, loading] = useFetch(itemdataurl);
     const pageBoxes = data.map((p, index) => {
-            const transc = p.element_texts[1] !== undefined ? p.element_texts[1].text : ''
-            const page = {
-                id: p.id,
-                image: p.file_urls.thumbnail,
-                prog: transc.length > 0 
-            }
-            const box = <Link key={page.id} to ={'/item/' + itemid + '/page/' + page.id} className="pagelink">
+        const transc = p.element_texts[1] !== undefined ? p.element_texts[1].text : ''
+        const page = {
+            id: p.id,
+            image: p.file_urls.thumbnail,
+            prog: transc.length > 0 
+        }
+        const box = <Link key={page.id} to ={'/item/' + itemid + '/page/' + page.id} className="pagelink">
                 <img className="pageimage" src={page.image} />
                 <PageProgress prog={page.prog} />
             </Link>
@@ -143,10 +143,7 @@ function ItemPage() {
                     <p><a href={item.cataloglink} target="_blank" rel="noopener noreferrer">View Catalog Record</a></p>
                     <ItemProgress itemid={itemid} pageCount={item.count} />
                     <div className="pages">
-                    {loading ? (
-                            <Loading pages={item.count} />
-                        ) : (
-                            <>
+                        {loading ? <Loading pages={item.count} />: 
                             <InfiniteScroll
                                 dataLength={pageBoxes.length} //This is important field to render the next data
                                 next={addPages}
@@ -154,10 +151,9 @@ function ItemPage() {
                                 // loader={<h4>Loading...</h4>}
                                 >
                                     
-                                    {pageBoxes}
-                                </InfiniteScroll>
-                            </>
-                        )}
+                                {pageBoxes}
+                            </InfiniteScroll>
+                        }
                     </div>
                 </div>
             </Itemcss>
