@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Masonry from 'react-masonry-css'
+/** @jsx jsx */
+import { jsx, css  } from '@emotion/core'
 import { Gardacss, Contentcss, Closebutton, Modal, CoreBox } from './csscomponents'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import RecentItem from './recent'
+import tmpic from '../images/timemachine.png'
+import pspic from '../images/postcardsender.png'
 
 const breakpointColumnsObj = {
     default: 2,
@@ -14,6 +18,12 @@ const Footer = () => {
     const [ gettingStarted, setgettingStarted ] = useState(false)
     const [ tips, settips ] = useState(false)
     const [ about, setabout ] = useState(false)
+    const toggleSection = (section, e) => {
+        e.stopPropagation();
+        const toggler = eval('set' + section)
+        const toggled = eval(section)
+        toggler(!toggled)
+    }
     return (
         <Gardacss >
                 <Masonry
@@ -22,16 +32,16 @@ const Footer = () => {
                     columnClassName="masonry-grid_column">
                     <CoreBox className="footercontent contact">
                         <h3>Questions? Comments?</h3>
-                        <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe">dis@newberry.org</a></p>
+                        <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe" target="_blank" rel="noopener noreferrer">dis@newberry.org</a></p>
                         <h3>About this project</h3>
                         <p>Newberry Transcribe lets you contribute to historical scholarship, while learning about the everyday lives of individuals from a wide variety of backgrounds in the 19th and early 20th centuries. </p>
-                        <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <span className="notlink" onClick={e => setabout(true)}>More information.</span></p>
+                        <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <span className="notlink" onClick={e => toggleSection('about', e)}>More information.</span></p>
                         {about ?  <Modal  onClick={() => setabout(false)}><About setabout={setabout}/> </Modal> : ''}
                     </CoreBox>
                     <CoreBox className="footercontent license">
                         <h3>Guidelines</h3>
-                        <p>Unsure how to get started? <span className="notlink" onClick={e => setgettingStarted(true)}>Click here!</span></p>
-                        <p>New to transcribing?  <span className="notlink" onClick={e => settips(true)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
+                        <p>Unsure how to get started? <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>
+                        <p>New to transcribing?  <span className="notlink" onClick={e => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
                         {gettingStarted ? <Modal onClick={() => setgettingStarted(false)}><GettingStarted setgettingStarted={setgettingStarted}/> </Modal> : ''}
                         {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''}
                         <h3>License</h3>
@@ -40,8 +50,8 @@ const Footer = () => {
                         </p>
                     </CoreBox>
                     <CoreBox className="footercontent">
-                        <a href="http://publications.newberry.org/postcard-sender/index.php?id=nby_LL12699&p=0" className="imagelink" target="_blank" rel="noopener noreferrer">
-                            <img src={require(`../images/postcardsender.png`)} alt="" />
+                        <a href="https://publications.newberry.org/postcard-sender/" className="imagelink" target="_blank" rel="noopener noreferrer">
+                            <img src={pspic} />
                         </a>
                         <a href="https://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer" ><h3>Send a postcard!</h3></a>
                         <p>Inspired after transcribing correspondence? Write a message to a friend with our Postcard Sender! </p>
@@ -50,7 +60,7 @@ const Footer = () => {
                     </CoreBox>
                     <CoreBox className="footercontent timemachine">
                         <a href="https://publications.newberry.org/time-machine/" className="imagelink" target="_blank" rel="noopener noreferrer">
-                            <img src={require(`../images/timemachine.png`)} alt="" />
+                            <img src={tmpic} />
                         </a>
                         <a href="https://publications.newberry.org/time-machine/" target="_blank" rel="noopener noreferrer"><h3>Midwest Time Machine</h3></a>
                         
@@ -63,7 +73,7 @@ const Footer = () => {
                             // url="https://twitter.com/digitalnewberry/lists/crowdsourcing" 
                             sourceType="profile"
                             screenName="digitalnewberry"
-                            options={{autoHeight: true, tweetLimit: 6}} 
+                            options={{height: 400, tweetLimit: 5}} 
                             />
                     </CoreBox>
                     <RecentItem />
@@ -105,7 +115,7 @@ const About = ({setabout }) => (
                 <dt>How can I view or search the transcriptions?</dt>
                 <dd>Completed transcriptions can be accessed using the search box at the left on the Newberry Transcribe home page. Additionally, they will be added periodically to digitized manuscripts at the Newberry's Internet Archive library, where they can be searched and browsed. Finally, to encourage digital scholarship projects, we have made the transcriptions available as a data set at our GitHub site. </dd>
                 <dt>What software does Newberry Transcribe use?</dt>
-                <dd>Newberry Transcribe is powered by Omeka with Scripto, open-source tools developed by the Roy Rosenzweig Center for History and New Media to enable community transcriptions of document files.  The front end is written in React JavaScript; <a href="https://github.com/newberrydis/transcribe"  target="_blank" rel="noopener noreferrer">our code repository can be found here</a> </dd>
+                <dd>Newberry Transcribe is powered by Omeka with Scripto, open-source tools developed by the Roy Rosenzweig Center for History and New Media to enable community transcriptions of document files.  The front end is written in React JavaScript; <a href="https://github.com/newberrydis/transcribe" target="_blank" rel="noopener noreferrer">our code repository can be found here</a> </dd>
             <dt>Questions or comments?</dt>
             <dd>Contact us on Twitter <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or email dis@newberry.org</dd>
         </dl>

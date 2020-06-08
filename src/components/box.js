@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import Highlighter from 'react-highlight-words'
-// import { Link } from 'gatsby';
+import { Link } from 'react-router-dom';
 import { colors, fonts, Bluebutton } from '../components/csscomponents'
-import { insertParam } from '../components/searchcomponents'
-import Progress from '../components/progress'
-import { Link } from 'gatsby'
+// import { insertParam } from '../components/searchcomponents'
+import Progress from '../components/OLD.progress'
 
 const Boxcss = styled.div`
+
+@media ( min-width: 1300px ) { width: 20vw;  }
+@media ( min-width: 951px ) and ( max-width: 1300px ) { width: 30vw;  }
+@media ( max-width: 950px ) { width: 40vw; }
     background: rgba(${colors.bg}, 1);
     border: 2px solid rgba(${colors.fg}, 1);
     box-shadow: inset 0 0 10px rgba(${colors.hl},0.5);
@@ -221,10 +224,10 @@ const Textbox = props => {
         <Highlighter
             className="hilitecontent"
             highlightClassName="hilite"
-            searchWords={props.filter}
+            searchWords={[props.filter]}
             textToHighlight={props.searchresult.transcription}
         />
-        <Bluebutton className="bottomlink"><div className="wrapper"><Link className="button"  to={'/page?itemid=' + props.id + '&pageid=' + props.searchresult.pageid} >Go to page</Link></div></Bluebutton>
+        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
         
     </div>
 )}
@@ -238,8 +241,8 @@ const TextSearchResults = ({ tsr, id, filter }) => {
     }
     const results = tsr.map((t, i) => {
         // console.log(t)
-        if (t.transcription.length > 0) {
-            return <Textbox key={tsr.pageid} id={id} activePage={activePage} pageSwitch={pageSwitch} total={tsr.length} filter={filter} searchresult={t} index={i} />
+        if (t.transcription && t.transcription.length > 0) {
+            return <Textbox key={t.pageid} id={id} activePage={activePage} pageSwitch={pageSwitch} total={tsr.length} filter={filter} searchresult={t} index={i} />
         } else {
             return true
         }
@@ -250,38 +253,24 @@ const TextSearchResults = ({ tsr, id, filter }) => {
         </div>
     )
 }
-const Box = ({ boxProps, textSearchResults, filter }) => {
-    const cats = boxProps.category && boxProps.category.split(';').map((i) => {
-        i = i.trim()
-        let catLink = insertParam('cat', i)
-        i = i === 'American Civil War (1861-1865)' ? 'Civil War' : i === 'Letters (Correspondence)' ? 'Letters' : i === 'Records (Documents)' ? 'Records' : i
-        return <span key={i}><a href={catLink}>{i}</a></span>
-    }) 
+const Box = ({ boxProps }) => {
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
-    const transResults = textSearchResults && textSearchResults.filter(t => t.transcription && t.transcription.length > 0)
-    const img = boxProps.img.indexOf('default.jpg') > -1 ? boxProps.img.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.img.indexOf('mms-transcribe') > -1 ? boxProps.img : boxProps.img  + '/full/400,/0/default.jpg'
+    const img = boxProps.image!== undefined ? (boxProps.image.indexOf('default.jpg') > -1 ? boxProps.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.image.indexOf('mms-transcribe') > -1 ? boxProps.image : boxProps.image  + '/full/400,/0/default.jpg') : ''
     return (
         <Boxcss show={boxProps.show} >
-            <div className="image"><a href={'item/' + boxProps.id}><img src={img} alt={title}/></a></div>
+            <div className="image"><Link to={'item/' + boxProps.id}><img src={img} alt={title}/></Link></div>
             <div className="text">
-                { boxProps.category.length > 0 ? <div className="cats">{cats}</div> : ''}
                 <div className="title">
-                    <h3><a href={'item/' + boxProps.id} >
-                        {filter && filter.length > 0 && title.toLowerCase().indexOf(filter) > -1 ? <Highlighter   
-                            className="titletext"
-                            highlightClassName="hilite"
-                            searchWords={filter}
-                            textToHighlight={title}
-                        /> : title}
-                    </a></h3>
+                    <h3><Link to={'item/' + boxProps.id} >
+                        {title}
+                    </Link></h3>
                     </div>
                 <div className="desc">{boxProps.desc}</div>
                 <div className="progress">
-                    <Progress progressData={boxProps.progress} />
+                    <Progress percentComplete={boxProps.percentComplete} />
                 </div>
                 
             </div>
-            {transResults.length > 0 ? <TextSearchResults tsr={transResults} id={boxProps.id} filter={filter} /> : ''}
         </Boxcss>
     )
 }

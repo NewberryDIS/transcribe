@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { CoreBox } from './csscomponents'
+import styled from '@emotion/styled'
+import { CoreBox, fonts, colors } from './csscomponents'
+
+const RecentItemCss = styled.div`
+    .pixbox {
+        background:linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)), url('${props => props.img}');
+        padding: 20px;
+        border: 2px solid rgba(${colors.hl}, 1);
+        box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+        position: relative;
+        background-position: center;
+        h4 {
+            font-size: 1.2rem;
+            font-family: ${fonts.serif};
+        }
+        margin-bottom: 20px;
+    }
+`
 
 const RecentItem = () => {
     const [ item, setItem ] = useState('')
     const [ img, setImg ] = useState('')
     const getItem = () => {
-        fetch('https://cors-anywhere.herokuapp.com/https://publications.newberry.org/transcription/mms-transcribe/recentdata.json')
+        // console.log('firing')
+        fetch('https://publications.newberry.org/transcription/mms-transcribe/recentdata.json')
             .then(response => response.json())
-            .then(data => makeItem(data))
+            .then(data => makeItem(data));
     }
     const transcriptor = t => {
         let returnt = t.replace("Created page with ","");
@@ -28,25 +46,25 @@ const RecentItem = () => {
     }
     const makeItem = props => {
         setImg("http://publications.newberry.org/transcription/mms-transcribe/files/original/" + props.filename)
-        let itemlink = "https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/" + props.document_id + "/" + props.document_page_id + "#transcription"
+        let itemlink = "https://publications.newberry.org/transcribe/item/" + props.document_id + "/page/" + props.document_page_id
         let transcript = transcriptor(props.comment)
-        const returnItem = <>
+        const returnItem = <CoreBox className="footercontent tweets">
             <h3>Most Recent Contribution:</h3>
             <div className="pixbox">
-                <h4><a href={itemlink}>{props.document_title}</a></h4>
+                <h4><a href={itemlink} target="_blank" rel="noopener noreferrer">{props.document_title}</a></h4>
                 <p>{transcript}</p>
             </div>
-            <p><a href={itemlink}>Visit the page</a></p>
-        </>
+            <p><a href={itemlink} target="_blank" rel="noopener noreferrer">Visit the page</a></p>
+        </CoreBox>
         setItem(returnItem)
     }
     useEffect(()=> {
         getItem()
     }, [])
     return (
-        <CoreBox className="footercontent tweets" img={img}>
+        <RecentItemCss img={img}>
             {item}
-        </CoreBox>
+        </RecentItemCss>
 
     )
 }

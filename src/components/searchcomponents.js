@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
-import { navigate } from 'gatsby'
+import { useHistory } from 'react-router-dom'
 import styled from '@emotion/styled'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
 import { IoIosSearch } from 'react-icons/io'
 import { fonts, colors, Selectcss } from './csscomponents'
+import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
+import * as queryString  from 'query-string'
 
 const Searchcss = styled.div`
     border: 1px solid black;
-    margin: 4px 0;
+    margin: 5px 0;
     background: rgba(237,237,237,0.7);
     display: flex;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
     overflow: hidden;
     .searchInput {
         font-family: ${fonts.sans};
@@ -39,8 +41,10 @@ const Searchcss = styled.div`
         color: rgba(${colors.hl},1);
         cursor: pointer;
     }
+    &.titlesearch {
+        margin: 4px 0 8px 0;
+    }
 `
-
 const Subjectcss = styled.div`
     font-family: ${fonts.sans};
     span {
@@ -60,17 +64,16 @@ const Subjectcss = styled.div`
         text-transform: uppercase;
         font-size: 15px;
         margin: 0;
-        padding: 0 0 0 3em;
+        padding: 0 0 0 5px;
         cursor: pointer;
         border: 1px solid transparent;
         transition: border 0.1s;
         font-family: ${fonts.sans};
         text-transform: uppercase;
         background: rgba(0,0,0,0);
-        text-indent: -2em;
         &:hover {
             border: 1px solid rgba(${colors.hl}, 1);
-            // box-shadow:  0 0 10px rgba(${colors.fg},0.5);
+            box-shadow:  0 0 10px rgba(${colors.fg},0.5);
         }
         &.viewall {
             font-weight: 900;
@@ -84,72 +87,142 @@ const Subjectcss = styled.div`
         margin-right: 4px;
         margin-bottom: 3px;
     }
+    // html:not([data-scroll='0']) {
+    //     padding-top: 3em;
+    //   }
+    //   html:not([data-scroll='0']) header {
+    //     position: fixed;
+    // }
+    &.droporlist {
+        @media (max-width: 850px) { 
+            .subjectlist {display: none;} 
+            .subjectdropdown {display: block;}
+        }
+        @media (min-width: 850px) { 
+            .subjectlist {display: block;} 
+            .subjectdropdown {display: none;}
+        }
+        @media (max-height: 750px) { 
+            .subjectlist {display: none;} 
+            .subjectdropdown {display: block;}
+        }
+        @media (min-height: 750px) { 
+            .subjectlist { display: block; } 
+            .subjectdropdown { display: none; }
+        }
+    }
 `
 
-export const TextSearch = props => {
-    const [ready, setReady ] = useState(false)
+export const TitleSearch = props => {
     const [input, setInput] = useState('')
-    let text = ready ? input.length > 0 ? input : 'Search the transcriptions...' : 'Data is loading...'
+    let text = input.length > 0 ? input : 'Search titles...'
+    const history = useHistory()
     const handleChange = (e) => {
-        setInput([e.target.value.toLowerCase()])
+        setInput(e.target.value.toLowerCase())
     }
     const submitSearch = () => {
-        // console.log(input)
-        navToNewFilter('text', input, props.setFilters)
+        console.log(input)
+        let q = queryString.parse(window.location.search)
+        q = {...q, title: input}
+        let s = queryString.stringify(q)
+        history.push(`/?${s}`)
+        props.setFilters(q)
+        console.log(props.filters)
     }
     const handleKeyDown = (e) => {
         if(e.keyCode === 13){
             submitSearch()
         }
     }
-
-  useEffect(() => {
-        setReady(true)
-    }, [props.loading])
     return (
-        <Searchcss className="text-search">
-            <input className="searchInput" placeholder={text} value={props.input} type="text" disabled={!ready} onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
+        <Searchcss className="titlesearch">
+            <input className="searchInput" placeholder={text}  value={props.input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
             <button className="searchbutton" onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
         </Searchcss>
     )
 }
-export const LangSearch = props => {
-    const [ready, setReady ] = useState(false)
-    useEffect(() => {
-          setReady(true)
-    }, [props.loading])
-    const languages = ['English','French','German','Italian','Welsh','Yiddish']
-    const langdropdown = languages.map((l) => <option key={l} value={l} >{l}</option>)
+
+export const TextSearch = props => {
+    const [input, setInput] = useState('')
+    let text = input.length > 0 ? input : 'Search transcription text...'
+    const history = useHistory()
+    const handleChange = (e) => {
+        setInput(e.target.value.toLowerCase())
+    }
+    const submitSearch = () => {
+        console.log(input)
+        let q = queryString.parse(window.location.search)
+        q = {...q, text: input}
+        let s = queryString.stringify(q)
+        history.push(`/?${s}`)
+        props.setFilters(q)
+        console.log(props.filters)
+    }
+    const handleKeyDown = (e) => {
+        if(e.keyCode === 13){
+            submitSearch()
+        }
+    }
     return (
-        <Selectcss name="dropdownlanguages" className="dropdown" disabled={!ready} onChange={e => navToNewFilter('lang', e.target.value, props.setFilters)}>
-            <option value="English">{ready ? 'Select a language...' : 'Data is loading...'}</option>
+        <Searchcss className="text-search">
+            <input className="searchInput" placeholder={text}  value={props.input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
+            <button className="searchbutton" onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
+        </Searchcss>
+    )
+}
+
+
+export const LangSearch = props => {
+    const languages = ['English','French','German','Italian','Spanish','Welsh','Yiddish']
+    const langdropdown = languages.map((l) => <option key={l} value={l} >{l}</option>)
+    const history = useHistory()
+    const handleChange = (value) => {
+        let q = queryString.parse(window.location.search)
+        q = {...q, lang: value}
+        let s = queryString.stringify(q)
+        history.push(`/?${s}`)
+        props.setFilters(q)
+    }
+    return (
+        <Selectcss name="dropdownlanguages" className="dropdown" value={props.filters.lang} onChange={e => handleChange(e.target.value)}>
+            <option value="English" >Select a language...</option>
             {langdropdown}
         </Selectcss>
     )
 }
 export const DateSearch = props => {
-    const [ready, setReady ] = useState(false)
-    useEffect(() => {
-          setReady(true)
-    }, [props.loading])
     const range = [1800, 1990]
     let decades = []
     for (let i = range[0]; i < range[1]; i += 10){
         decades.push( i === 1960 || i === 1970 ? '' : <option key={i} value={i} >{i} - {i + 9}</option>)
     }
+    const history = useHistory()
+    const handleChange = (value) => {
+        let q = queryString.parse(window.location.search)
+        q = {...q, date: value}
+        let s = queryString.stringify(q)
+        history.push(`/?${s}`)
+        props.setFilters(q)
+    }
     return (
-        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" disabled={!ready} defaultValue={1} onChange={e => navToNewFilter('date', e.target.value, props.setFilters)}> >
-            <option value={1}>{ready ? 'Select a decade...' : 'Data is loading...'}</option>
+        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" value={props.filters.date}  onChange={e => handleChange(e.target.value)}> >
+            <option value={1}>Select a decade...</option>
             <option key="early" value="1799" >pre-1800</option>
             {decades}
         </Selectcss>
     )
 }
 export const SubjSearch = props => {
-    const [ready, setReady ] = useState(false)
-    useEffect(() => {
-          setReady(true)
-    }, [props.loading])
+    const [ checked, setChecked ] = useState(false)
+    const history = useHistory()
+    const handleChange = value => {
+        setChecked(true)
+        let q = queryString.parse(window.location.search)
+        q = {...q, cat: value}
+        let s = queryString.stringify(q)
+        history.push(`/?${s}`)
+        props.setFilters(q)
+    }
     const subjectArray = [
         // "Cassettes",
         "Family papers",
@@ -167,19 +240,18 @@ export const SubjSearch = props => {
         // "Edward E. Ayer Manuscript Collection",
     ]
     const subjectList = subjectArray.sort().map((s, index) => {
-        return <li key={index} onClick={() => navToNewFilter('cat', s, props.setFilters)}>
-            {/* {checked ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />} */}
+        return <li key={index} onClick={() => handleChange(s)}>
+            {checked ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />}
             {
                 s === 'American Civil War (1861-1865)' ? 'Civil War' : 
                 s === 'Letters (Correspondence)' ? 'Letters' : 
                 s === 'Records (Documents)' ? 'Records' : 
-                // s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
-                s === 'Indians of North America' ? 'Indigenous Americans' :
+                s === 'Indians of North America' ? 'American Indians and Indigenous peoples' :
                 s
             }
         </li>
     })
-    const subjectDropdown = subjectArray.sort().map((s,index) => <option key={index} value={s} >
+    const subjectDropdown = subjectArray.sort().map((s,index) => <option key={index} value={s}  >
         {   s === 'American Civil War (1861-1865)' ? 'Civil War' : 
             s === 'Letters (Correspondence)' ? 'Letters' : 
             // s === 'Letters (Documents)' ? 'Letters' : 
@@ -188,18 +260,18 @@ export const SubjSearch = props => {
         }
         </option>
     )
-    let dropOrList = props.showMenu ? css`.subjectlist {display: none;} .subjectdropdown {display: block;}` : css`@media (max-width: 850px) { .subjectlist {display: none;} .subjectdropdown {display: block;}}@media (min-width: 850px) { .subjectlist {display: block;} .subjectdropdown {display: none;}}@media (max-height: 750px) { .subjectlist {display: none;} .subjectdropdown {display: block;}}@media (min-height: 750px) { .subjectlist {display: block;} .subjectdropdown {display: none;}}`
+    let dropOrList = props.showMenu ? css`` : css``
     return (
-        <Subjectcss css={dropOrList}>
+        <Subjectcss className="droporlist">
             <div className="subjectlist">
                 <span>Select a category...</span>
                 <ul>
-                    {ready ? subjectList : <li>Data is loading...</li>}
+                    {subjectList}
                 </ul>
             </div>
             <div className="subjectdropdown">
-                <Selectcss id="dropdownsubj" className="dropdown" name="dropdownsubj" disabled={!ready}  defaultValue={''} onChange={e => navToNewFilter('cat', e.target.value, props.setFilters)}>
-                    <option value={''}>{ready ? 'Select a category...' : 'Data is loading...'}</option>
+                <Selectcss id="dropdownsubj" className="dropdown" name="dropdownsubj" value={props.filters.cat} onChange={e => handleChange(e.target.value)}>
+                    <option value={''}>Select a category...</option>
                     {subjectDropdown}
                 </Selectcss>
             </div>
@@ -207,47 +279,3 @@ export const SubjSearch = props => {
     )
 }
 
-
-export function insertParam(key, value) {
-    key = escape(key); value = escape(value);
-    let newUrl  = ''
-    var kvp = typeof document !== `undefined` ? document.location.search.substr(1).split('&') : null
-    if ( kvp !== null ){
-    if (kvp === '') {
-        newUrl = '?' + key + '=' + value;
-    }
-    else {
-
-        var i = kvp.length; var x; while (i--) {
-            x = kvp[i].split('=');
-
-            if (x[0] === key) {
-                x[1] = value;
-                kvp[i] = x.join('=');
-                break;
-            }
-        }
-
-        if (i < 0) { kvp[kvp.length] = [key, value].join('='); }
-        newUrl = '?'  + kvp.join('&')
-        
-        //this will reload the page, it's likely better to store this until finished
-        // document.location.search = kvp.join('&');
-    }
-}
-    return newUrl
-}
-
-const navToNewFilter = (key, value, setFilters) => {
-    let newUrl = insertParam(key, value) 
-    // let newObj = { [key]: value }2
-    setFilters(prevState => {
-        return { ...prevState, [key]: value }
-    })
-    navigate(
-        newUrl, 
-        {
-            state: { newUrl },
-        }
-    )
-}

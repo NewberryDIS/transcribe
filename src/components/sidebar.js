@@ -1,51 +1,48 @@
-// import React, { useState } from 'react'
-import { navigate } from 'gatsby'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors, fonts, Bluebutton, CoreBox } from './csscomponents'
-import Progress from './progress'
-import { TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
-import { numberWithCommas } from './progress'
-// let SidebarCss = styled('div')`${dynamicStyle}` 
+import { fonts, colors, Bluebutton } from './csscomponents'
+import { TitleSearch, TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
+import { TotalProgress } from './progress'
+import React, { useState } from 'react'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { GrClose } from 'react-icons/gr'
+import { IconContext } from "react-icons";
 
-// const Loading = styled.div`
-//     position: absolute;
-//     top:    25px;
-//     right:  25px;
-//     bottom: 25px;
-//     left:   25px;
-//     background: rgba(${colors.bg}, 0.63);
-//     border: 2px solid rgba(${colors.hl}, 0.63);
-//     box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+// const CoreBox = () styled.div`
 // `
 
+
 const Sidebar = props => {
-    let showHideMenu = props.showMenu ? 'block' : 'none'
+    // const [tall, setTall] = useState(false)
+    // function expander(e) {
+    //     e.stopPropagation();
+    //     setTall(!tall)
+    // }
     return (
         <div className="sidebar" css={css`
-            position: relative;
-            @media ( min-width: 1300px ) { flex-basis: 20vw;  }
-            @media ( min-width: 900px ) and ( max-width: 1300px ) { flex-basis: 30vw;  }
-            // @media (min-width: 801) and ( max-width: 900px ) { flex-basis: 40vw; }
-            // @media ( max-width: 800px) { display: ${showHideMenu}; position: absolute;}
-            @media ( max-width: 900px ) { flex-basis: 40vw;  display: ${showHideMenu}; position: absolute;}
+        
         `}>
-            <CoreBox css={css`
-                @media ( min-width: 901px ) {
+            <div  css={css`
+                background: rgba(${colors.bg}, 1);
+                border: 2px solid rgba(${colors.hl}, 1);
+                box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
+                transition: max-height 0.4s;
+                padding: 20px;
+                overflow: hidden;
+                margin: 0 30px 30px 30px;
+                @media ( min-width: 951px ) {
                     position: sticky;
                     top: 60px;
                     display: block;
+                    max-width: 30vw;
                 }
-                @media (max-width: 900px) {
-                    position: fixed;
-                    top: 50px;
-                    left: 50px;
-                    right: 50px;
-                    z-index: 1000;
-                    width: auto;
+                @media (max-width: 950px) {
+                    position: sticky;
+                    min-width: 300px;
+                    // margin: 0 auto 30px auto;
                 }
-                padding: 20px; 
                 > p {
                     font-family: ${fonts.serif};
                     text-transform: uppercase;
@@ -64,17 +61,31 @@ const Sidebar = props => {
                     font-size: 0.85rem;
                     text-transform: uppercase;
                 }
+                .menu {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    border: none;
+                }
+                .container {
+                    background: none;
+                    border: none;
+                    display: inline-block;
+                    cursor: pointer;
+                    padding: 5px 7px;
+                }
                 
             `}>
-                <div className="progress-text" >{numberWithCommas(props.progressData.totalTranscount)} out of {numberWithCommas(props.progressData.totalPages)} pages transcribed!</div>
-                <Progress progressData={props.progressData} />
-                <TextSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
-                <DateSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
-                <LangSearch setFilters={props.setFilters} loading={props.sidebarLoading} />
-                <SubjSearch setFilters={props.setFilters} loading={props.sidebarLoading} showMenu={props.showMenu} />
+                <TotalProgress />
+                <TitleSearch filters={props.filters} setFilters={props.setFilters} />
+                <TextSearch filters={props.filters} setFilters={props.setFilters} />
+                <DateSearch filters={props.filters} setFilters={props.setFilters} />
+                <LangSearch filters={props.filters} setFilters={props.setFilters} />
+                <SubjSearch filters={props.filters} setFilters={props.setFilters} />
                 <span className="count" >{ props.resultCount === 1 ? props.resultCount + ' result.' : props.resultCount + ' results.' } </span>
-                <Bluebutton><div className="wrapper"><div className="button" onClick={e => resetFilters(e, props.setFilters) }>Reset</div></div></Bluebutton>
-            </CoreBox>
+                <Bluebutton><div className="wrapper"><Link to="/" className="button" >Reset</Link></div></Bluebutton>
+      
+            </div>
         </div>
     )
 }
@@ -88,12 +99,15 @@ export const resetFilters = (e, setFilters) => {
         text: [] ,
     })
     
+    Router.push({
+        pathname: '/',
+        query: {},
+    })
     const inputField = typeof document !== `undefined` ? document.querySelector('.searchInput') : null  
     const dropdowns = typeof document !== `undefined` ? document.querySelectorAll('.dropdown') : null  
     inputField.value = ''
     inputField.placeholder = 'Search the Transcriptions...'
     dropdowns.forEach(d => d.selectedIndex = 0) 
-    navigate('/')
 }
 
 export default Sidebar
