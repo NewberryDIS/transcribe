@@ -8,7 +8,7 @@ import Box from '../components/newbox'
 import Loading from '../components/loading'
 import Sidebar from '../components/sidebar'
 import { colors, fonts } from '../components/csscomponents'
-// import TextSearchResults from "./tsrpage";
+import TextSearchResults from "./tsrpage";
 const queryString = require('query-string');
 
 export const breakpointColumnsObj = {
@@ -69,9 +69,6 @@ function IndexPage (){
       })
     return item
   }).filter(i => filterFunctions(filters, i))
-//   if (filters.text !== '' && filteredData.length > 0){
-//       textSearch(filteredData)
-//   }
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)
@@ -80,18 +77,19 @@ function IndexPage (){
       <Boxescss>
         <Sidebar setFilters={setFilters} filters={filters} resultCount={resultCount} />
             {filters.text.length > 0  && filteredData.length > 0 ? 
-      
-                <TextSearchResults itemsToShow={itemsToShow} filteredData={filteredData} textfilter={filters.text} setResultCount={setResultCount} /> : 
-        loading ? <><Loading/><Spacer /></> : filteredData.length > 0 ?
-            <InfiniteScroll
-                dataLength={resultCount} 
-                next={addItems}
-                hasMore={true}
-                loader={<span></span>}>
-                <FilterResults itemsToShow={itemsToShow} filteredData={filteredData} setResultCount={setResultCount} />}
-            </InfiniteScroll>
-          : <NoResults>No results.</NoResults>
-        }
+              <TextSearchResults itemsToShow={itemsToShow} filteredData={filteredData} textfilter={filters.text} setResultCount={setResultCount} /> : 
+              loading ? 
+                <><Loading/><Spacer /></> : 
+                filteredData.length > 0 ?
+                  <InfiniteScroll
+                      dataLength={resultCount} 
+                      next={addItems}
+                      hasMore={true}
+                      loader={<span></span>}>
+                      <FilterResults itemsToShow={itemsToShow} filteredData={filteredData} setResultCount={setResultCount} />}
+                  </InfiniteScroll>
+                : <NoResults>No results.</NoResults>
+              }
       </Boxescss>
   )
 }
@@ -117,7 +115,6 @@ function filterFunctions(filter, item){
     const returnValue = titleFFunction && langFFunction && dateFFunction && catFFunction
     return returnValue
 }
-
 
 export const NoResults = styled.div`
   width: 50vw;
@@ -180,74 +177,73 @@ const Spacer = styled.div`
   width: 70vw;
 `
 
-
 const itempages = require('../data/itempages.json')
 
-function TextSearchResults(props) {
-    let mwQueryUrl = '/mediawiki2017/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
-    const [srdata, srloading] = useFetch(mwQueryUrl)
-    const [ itemBoxes, setItemBoxes ] = useState([])
-    function b64converter(encodedTitle){
-        encodedTitle = encodedTitle.split('.')
-        const numericItem = atob(encodedTitle[1])
-        const numericPage = parseInt(atob(encodedTitle[2]))
-        return [numericItem, numericPage]
-    }
-    let textFilteredData = []
-    function processSearchResults (){
-        const filteredSearchResults = srloading ? [] : srdata.query.search.filter(d => {
-            const decodedTitleArray = b64converter(d.title)
-            const matchingItemInItemPages = itempages.find(ip => ip.id == decodedTitleArray[0]) 
-            return matchingItemInItemPages !== undefined && matchingItemInItemPages.pages.indexOf(decodedTitleArray[1]) > -1 
-        })
-        const searchResultsArray = []
-        filteredSearchResults.map(d => {
-            const decodedTitleArray = b64converter(d.title)
-            if (searchResultsArray.find(sri => sri.item === decodedTitleArray[0]) !== undefined){
-                searchResultsArray.find(sri => sri.item === decodedTitleArray[0]).pages.push({page: decodedTitleArray[1], snippet: d.snippet})
-            } else {
-                searchResultsArray.push({item: decodedTitleArray[0], pages: [{page: decodedTitleArray[1], snippet: d.snippet}]})
-            }
-        })
-        return searchResultsArray
-    }
-    // const textFilteredData =  loading ? [] : props.filteredData.filter(fd => searchResultsArray.find(sr => sr.item == fd.id) !== undefined)
-    useEffect(() =>{
-        if (!srloading){
-            const tempSearchResults = processSearchResults()
-            console.log(props.filteredData)
-            textFilteredData = props.filteredData.filter(fd => {
-              console.log(fd)
-              console.log(fd)
-              return tempSearchResults.find(sr => sr.item == fd.id) !== undefined
-            })
-            console.log(textFilteredData)
-            setItemBoxes(textFilteredData.slice(0,props.itemsToShow).map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>))
-        } else {
-          console.log('loading is not complete')
-        }
-    },[srloading])
-    function addItems(){
-        let newCount = Math.min(textFilteredData.length, props.itemsToShow + 21)
-        props.findsetItemsToShow(newCount)
-    }
-    return (
-        <>
-            {srloading ? <><Loading/><Spacer /></> : textFilteredData.length > 0 ?
-                <InfiniteScroll
-                    dataLength={textFilteredData.length} 
-                    next={addItems}
-                    hasMore={true}
-                    loader={<span></span>}>
-                    <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="masonry-grid"
-                        columnClassName="masonry-grid_column">
-                        {itemBoxes}
-                    </Masonry>
-            </InfiniteScroll>
-          : <NoResults>No results.</NoResults>
-        }
-        </>
-    )
-}
+// function TextSearchResults(props) {
+//     let mwQueryUrl = '/mediawiki2017/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
+//     const [srdata, srloading] = useFetch(mwQueryUrl)
+//     const [ itemBoxes, setItemBoxes ] = useState([])
+//     function b64converter(encodedTitle){
+//         encodedTitle = encodedTitle.split('.')
+//         const numericItem = atob(encodedTitle[1])
+//         const numericPage = parseInt(atob(encodedTitle[2]))
+//         return [numericItem, numericPage]
+//     }
+//     let textFilteredData = []
+//     function processSearchResults (){
+//         const filteredSearchResults = srloading ? [] : srdata.query.search.filter(d => {
+//             const decodedTitleArray = b64converter(d.title)
+//             const matchingItemInItemPages = itempages.find(ip => ip.id == decodedTitleArray[0]) 
+//             return matchingItemInItemPages !== undefined && matchingItemInItemPages.pages.indexOf(decodedTitleArray[1]) > -1 
+//         })
+//         const searchResultsArray = []
+//         filteredSearchResults.map(d => {
+//             const decodedTitleArray = b64converter(d.title)
+//             if (searchResultsArray.find(sri => sri.item === decodedTitleArray[0]) !== undefined){
+//                 searchResultsArray.find(sri => sri.item === decodedTitleArray[0]).pages.push({page: decodedTitleArray[1], snippet: d.snippet})
+//             } else {
+//                 searchResultsArray.push({item: decodedTitleArray[0], pages: [{page: decodedTitleArray[1], snippet: d.snippet}]})
+//             }
+//         })
+//         return searchResultsArray
+//     }
+//     // const textFilteredData =  loading ? [] : props.filteredData.filter(fd => searchResultsArray.find(sr => sr.item == fd.id) !== undefined)
+//     useEffect(() =>{
+//         if (!srloading){
+//             const tempSearchResults = processSearchResults()
+//             console.log(props.filteredData)
+//             textFilteredData = props.filteredData.filter(fd => {
+//               console.log(fd)
+//               console.log(fd)
+//               return tempSearchResults.find(sr => sr.item == fd.id) !== undefined
+//             })
+//             console.log(textFilteredData)
+//             setItemBoxes(textFilteredData.slice(0,props.itemsToShow).map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>))
+//         } else {
+//           console.log('loading is not complete')
+//         }
+//     },[srloading])
+//     function addItems(){
+//         let newCount = Math.min(textFilteredData.length, props.itemsToShow + 21)
+//         props.findsetItemsToShow(newCount)
+//     }
+//     return (
+//         <>
+//             {srloading ? <><Loading/><Spacer /></> : textFilteredData.length > 0 ?
+//                 <InfiniteScroll
+//                     dataLength={textFilteredData.length} 
+//                     next={addItems}
+//                     hasMore={true}
+//                     loader={<span></span>}>
+//                     <Masonry
+//                         breakpointCols={breakpointColumnsObj}
+//                         className="masonry-grid"
+//                         columnClassName="masonry-grid_column">
+//                         {itemBoxes}
+//                     </Masonry>
+//             </InfiniteScroll>
+//           : <NoResults>No results.</NoResults>
+//         }
+//         </>
+//     )
+// }

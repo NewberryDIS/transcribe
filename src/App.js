@@ -3,6 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom'
 import { Global, css } from "@emotion/core"
 import { colors } from './components/csscomponents'
 import styled from "@emotion/styled"
+// import IndexPage from './pages/indexpage'
 import IndexPage from './pages/indexpage-refactoredTextSearch'
 import ItemPage from './pages/itempage'
 import PagePage from './pages/pagepage'

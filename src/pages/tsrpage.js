@@ -26,7 +26,7 @@ function TextSearchResults(props) {
             let apage = atob(btitle[2])
             apage = parseInt(apage)
             const matchitem = itempages.find(ip => ip.id == aitem)
-            console.log(matchitem.pages)
+            // console.log(matchitem.pages)
             // if the page isn't in the array of pages for that item, it's not added
             if (matchitem !== undefined && matchitem.pages.indexOf(apage) > -1) {
                 console.log('gona look closer')
@@ -39,11 +39,13 @@ function TextSearchResults(props) {
                 }
             }
         })
+        let textFilteredData = []
         let boxes = itempagearray.filter(ip => props.filteredData.find(o => o.id == ip.item) !== undefined).map(ip => {
             const item = props.filteredData.find(o => o.id == ip.item)
+            textFilteredData.push(item)
             return <Box boxProps={item} key={ip.item} show={true} pages={ip.pages} filter={props.textfilter}/>
         })
-        props.setResultCount(boxes.length)
+        props.setResultCount(textFilteredData.length)
         return boxes
     }
     return (
