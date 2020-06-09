@@ -29,12 +29,9 @@ function TextSearchResults(props) {
             // console.log(matchitem.pages)
             // if the page isn't in the array of pages for that item, it's not added
             if (matchitem !== undefined && matchitem.pages.indexOf(apage) > -1) {
-                console.log('gona look closer')
                 if (itempagearray.find(ip => ip.item === aitem) === undefined ){
-                    console.log('gonna push it')
                     itempagearray.push({item: aitem, pages: [{page: apage, snippet: srrr.snippet}]})
                 } else {
-                    console.log('not gonna push it')
                     itempagearray.find(ip => ip.item === aitem).pages.push({page: apage, snippet: srrr.snippet})
                 }
             }
