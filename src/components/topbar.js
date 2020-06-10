@@ -106,12 +106,13 @@ const TopBar = () => {
             return <a href={ct[1]} key={ct[2]} className={ct[2]} target={ct[2] === 'dislink' ? "_blank" : ''} rel={ct[2] === 'dislink' ? "noopener noreferrer" : ''}>{letterarray}</a>
         })
         const instances = []
-        const curtain = typeof document !== `undefined` ? document.querySelector('.curtain') : null   
-        const letters = typeof document !== `undefined` ? document.querySelectorAll('.letter') : null
-        const esLintSucks = letters !== null ? letters.forEach((elem) => {
-            const tx = elem.getAttribute('data-tx') + 'vw'
+        const curtain = typeof document !== `undefined` ? document.querySelector('.curtain') : undefined   
+        const letters = typeof document !== `undefined` ? document.querySelectorAll('.letter') : undefined
+        const esLintSucks = letters.forEach((elem) => {
+            let tx = elem.getAttribute('data-tx') === null ? '0vw' : elem.getAttribute('data-tx') + 'vw'
             // const ty = elem.getAttribute('data-ty') + 'px'
-            const r = elem.getAttribute('data-r') + 'deg'
+            let r = elem.getAttribute('data-r') === null ? '0deg' : elem.getAttribute('data-r') + 'deg'
+            console.log(tx)
             instances.push(basicScroll.create({
                 elem: curtain,
                 from: '0px',
@@ -128,7 +129,7 @@ const TopBar = () => {
                     }
                 }
             }))
-        }) : ''
+        }) 
         instances.forEach((i) => i.start())
     } else {
         breadcrumbs = curtainText.map(ct => <a href={ct[1]} key={ct[2]} className={ct[2] + ' letter'} target={ct[2] === 'dislink' ? "_blank" : ''} rel={ct[2] === 'dislink' ? "noopener noreferrer" : ''}>{ct[0]}</a>)

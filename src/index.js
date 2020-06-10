@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/scrolltotop';
-import GA from './components/googleanalytics'
+// import GA from './components/googleanalytics'
 
 ReactDOM.render(
     <BrowserRouter basename={'/transcribe'}>
-      { GA.init() && <GA.RouteTracker /> }
+      {/* { GA.init() && <GA.RouteTracker /> } */}
       <ScrollToTop>
         <App />
       </ScrollToTop>

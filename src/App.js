@@ -12,7 +12,10 @@ import TopBar from './components/topbar'
 import Jumbo from './components/jumbo'
 import BetaBanner from './components/beta'
 import Background from './components/background'
-import Footer from './components/footer';
+import Footer from './components/footer'
+
+import withTracker from './components/withTracker'
+
 
 const Body = styled.div`
   display: flex;
@@ -63,9 +66,9 @@ function App() {
       <BetaBanner />
       <Body>
         <Switch>
-          <Route path={`/item/:itemid/page/:pageid`} component={() => <PagePage setImage={setImage}/> } />
-          <Route path={`/item/:itemid`} component={() => <ItemPage setImage={setImage}/> } />
-          <Route component={() => <IndexPage showMenu={showMenu} resultCount={resultCount} setResultCount={setResultCount} />} />
+          <Route path={`/item/:itemid/page/:pageid`}  component={withTracker(() => <PagePage setImage={setImage}/>) } />
+          <Route path={`/item/:itemid`}               component={withTracker(() => <ItemPage setImage={setImage}/>) } />
+          <Route                                      component={withTracker(() => <IndexPage showMenu={showMenu} resultCount={resultCount} setResultCount={setResultCount} />)} />
         </Switch>
       </Body>
       <Footer />
