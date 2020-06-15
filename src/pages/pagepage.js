@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Global, css } from "@emotion/core"
 import styled from '@emotion/styled'
 import Background from '../components/background'
-import { colors, fonts } from '../components/csscomponents'
+import { colors } from '../components/csscomponents'
 import Footer from '../components/footer'
 import Topbar from '../components/topbar'
 import BetaBanner from '../components/beta'

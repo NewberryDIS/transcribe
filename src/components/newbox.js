@@ -3,8 +3,7 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom';
 import { colors, fonts, Bluebutton } from '../components/csscomponents'
 import { ItemProgress } from './progress'
-import Highlighter from 'react-highlight-words'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
  
 
 const Boxcss = styled.div`

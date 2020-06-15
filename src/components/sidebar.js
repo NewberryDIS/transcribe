@@ -1,25 +1,12 @@
+import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 /** @jsx jsx */
 import { jsx, css  } from '@emotion/core'
-import styled from '@emotion/styled'
 import { fonts, colors, Bluebutton } from './csscomponents'
 import { TitleSearch, TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
 import { TotalProgress } from './progress'
-import React, { useState } from 'react'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { GrClose } from 'react-icons/gr'
-import { IconContext } from "react-icons";
-
-// const CoreBox = () styled.div`
-// `
-
 
 const Sidebar = props => {
-    // const [tall, setTall] = useState(false)
-    // function expander(e) {
-    //     e.stopPropagation();
-    //     setTall(!tall)
-    // }
     return (
         <div className="sidebar" css={css`
         

@@ -66,7 +66,7 @@ const Footer = () => {
                         
                         <p>Travel to the past with highlights from our favorite letters and diaries -- transcribed by users like you!</p>
                     </CoreBox>
-                    {/* <CoreBox className="footercontent tweets">
+                    <CoreBox className="footercontent tweets">
 
                         <TwitterTimelineEmbed 
                             // sourceType="url"
@@ -76,7 +76,7 @@ const Footer = () => {
                             options={{height: 400, tweetLimit: 5}} 
                             />
                     </CoreBox>
-                    <RecentItem /> */}
+                    <RecentItem />
                 </Masonry>
         </Gardacss>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetch } from "../components/hooks";
 import Masonry from 'react-masonry-css'
-import { breakpointColumnsObj } from './indexpage'
+import { breakpointColumnsObj, NoResults } from './indexpage'
 import Box from '../components/newbox'
 import Loading from "../components/loading";
 
@@ -47,13 +47,13 @@ function TextSearchResults(props) {
     }
     return (
         <>
-        {loading ? <Loading /> :
+        {loading ? <Loading /> : searchResults.query.search.length > 0 ?
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="masonry-grid"
                 columnClassName="masonry-grid_column">
                 {boxicate(searchResults.query.search)}
-            </Masonry>
+            </Masonry> : <NoResults>No results.</NoResults>
         }
         </>
     )

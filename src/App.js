@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom'
 import { Global, css } from "@emotion/core"
-import { colors } from './components/csscomponents'
 import styled from "@emotion/styled"
-// import IndexPage from './pages/indexpage'
-import IndexPage from './pages/indexpage-refactoredTextSearch'
+import IndexPage from './pages/indexpage'
+// import IndexPage from './pages/indexpage-refactoredTextSearch'
 import ItemPage from './pages/itempage'
 import PagePage from './pages/pagepage'
-import TextSearchResults from './pages/tsrpage'
 import TopBar from './components/topbar'
 import Jumbo from './components/jumbo'
 import BetaBanner from './components/beta'
@@ -66,8 +64,8 @@ function App() {
       <BetaBanner />
       <Body>
         <Switch>
-          <Route path={`/item/:itemid/page/:pageid`}  component={withTracker(() => <PagePage setImage={setImage}/>) } />
-          <Route path={`/item/:itemid`}               component={withTracker(() => <ItemPage setImage={setImage}/>) } />
+          <Route path={`/item/:itemid/page/:pageid`}  component={withTracker(() => <PagePage setImage={setImage}/>)} />
+          <Route path={`/item/:itemid`}               component={withTracker(() => <ItemPage setImage={setImage}/>)} />
           <Route                                      component={withTracker(() => <IndexPage showMenu={showMenu} resultCount={resultCount} setResultCount={setResultCount} />)} />
         </Switch>
       </Body>

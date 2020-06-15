@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import styled from '@emotion/styled'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Masonry from 'react-masonry-css'
 import { useFetch } from '../components/hooks'
 import { Link, useParams } from 'react-router-dom'
 import { items } from '../data/items.json'
-import { colors, fonts, Bluebutton } from '../components/csscomponents'
+import { colors, fonts } from '../components/csscomponents'
 import { PageProgress, ItemProgress } from '../components/progress'
 import Loading from '../components/loading'
 

@@ -5,13 +5,6 @@ import * as basicScroll from 'basicscroll'
 import { colors, fonts } from '../components/csscomponents'
 import logo from '../images/drawing.svg'
 
-
-function HeaderView() {
-  let location = useLocation();
-  console.log(location.pathname);
-  return <span>Path : {location.pathname}</span>
-}
-
 const Topbarcss = styled.div`
     position: relative;
     .topbar {
