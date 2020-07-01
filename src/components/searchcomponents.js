@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import { jsx, css  } from '@emotion/core'
 import { IoIosSearch } from 'react-icons/io'
 import { fonts, colors, Selectcss } from './csscomponents'
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 import * as queryString  from 'query-string'
 
 const Searchcss = styled.div`
@@ -213,10 +212,8 @@ export const DateSearch = props => {
     )
 }
 export const SubjSearch = props => {
-    const [ checked, setChecked ] = useState(false)
     const history = useHistory()
     const handleChange = value => {
-        setChecked(true)
         let q = queryString.parse(window.location.search)
         q = {...q, cat: value}
         let s = queryString.stringify(q)
@@ -241,7 +238,6 @@ export const SubjSearch = props => {
     ]
     const subjectList = subjectArray.sort().map((s, index) => {
         return <li key={index} onClick={() => handleChange(s)}>
-            {checked ? <MdCheckBox className="icon" /> : <MdCheckBoxOutlineBlank className="icon" />}
             {
                 s === 'American Civil War (1861-1865)' ? 'Civil War' : 
                 s === 'Letters (Correspondence)' ? 'Letters' : 
