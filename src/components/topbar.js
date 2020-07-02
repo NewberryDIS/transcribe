@@ -105,7 +105,6 @@ const TopBar = () => {
             let tx = elem.getAttribute('data-tx') === null ? '0vw' : elem.getAttribute('data-tx') + 'vw'
             // const ty = elem.getAttribute('data-ty') + 'px'
             let r = elem.getAttribute('data-r') === null ? '0deg' : elem.getAttribute('data-r') + 'deg'
-            console.log(tx)
             instances.push(basicScroll.create({
                 elem: curtain,
                 from: '0px',

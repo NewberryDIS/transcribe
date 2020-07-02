@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "basicscroll": "^3.0.3",
     "lodash": "^4.17.15",
-    "query-string": "^6.12.1",
+    "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",

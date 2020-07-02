@@ -19,8 +19,8 @@ export const breakpointColumnsObj = {
 const dateRegex = /[0-9]{4}/g
 function IndexPage (){
   const [ resultCount, setResultCount ] = useState(0)
-  const search = queryString.parse(window.location.search);
-  // console.log(search)
+  const hash = window.location.hash.substring(2,3000)
+  const search = queryString.parse(hash);
   const dataurl = '/transcription/mms-transcribe/api/items/'
   const [ data, loading ] = useFetch(dataurl, true)
   const [ itemsToShow, setItemsToShow ] = useState(17)
@@ -32,6 +32,7 @@ function IndexPage (){
     text: search !== undefined && search.text !== undefined ? [search.text] : [] ,
   })
   const filteredData = data.map((i, index) => {
+    // console.log(filters)
       let item = {
         id: i.id,
         count: i.files.count,

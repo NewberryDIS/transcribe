@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
+
+// import { Route, HashRouter as Router, Switch } from 'react-router-dom';
+
 import { Global, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import IndexPage from './pages/indexpage'
