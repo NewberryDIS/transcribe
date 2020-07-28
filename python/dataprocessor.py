@@ -55,7 +55,12 @@ with open(itemsFile) as json_file:
                 urllib.request.urlretrieve(filesurl, filesfilename)
                 urllib.request.urlretrieve(itemurl, itemfilename)
             else:
+
                 skippedFileCount += 1
+        else: 
+            downloadedFileCount += 1
+            urllib.request.urlretrieve(filesurl, filesfilename)
+            urllib.request.urlretrieve(itemurl, itemfilename)
     # 2. create array of subjects with each corresponding id as a value
         for e in i['element_texts']:
             if e['element']['name'] == 'Subject':
