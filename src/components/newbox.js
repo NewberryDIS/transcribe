@@ -14,7 +14,8 @@ const Boxcss = styled.div`
     position: relative;
     overflow: hidden;
     display: ${props => props.show ? 'block' : 'none'};
-    min-width: 20vw;
+    // min-width: 20vw;
+    width: 20vw;
     img {
         margin: 0;
         padding: 0;

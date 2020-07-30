@@ -6,17 +6,17 @@ import { colors, fonts, Bluebutton } from '../components/csscomponents'
 // import { insertParam } from '../components/searchcomponents'
 import Progress from '../components/OLD.progress'
 
+// @media ( min-width: 1300px ) { width: 20vw;  }
+// @media ( min-width: 951px ) and ( max-width: 1300px ) { width: 30vw;  }
+// @media ( max-width: 950px ) { width: 40vw; }
 const Boxcss = styled.div`
 
-@media ( min-width: 1300px ) { width: 20vw;  }
-@media ( min-width: 951px ) and ( max-width: 1300px ) { width: 30vw;  }
-@media ( max-width: 950px ) { width: 40vw; }
     background: rgba(${colors.bg}, 1);
     border: 2px solid rgba(${colors.fg}, 1);
     box-shadow: inset 0 0 10px rgba(${colors.hl},0.5);
     position: relative;
-    display: ${props => props.show ? 'block' : 'none'};
     overflow: hidden;
+    width: 250px !important;
     img {
         margin: 0;
         padding: 0;

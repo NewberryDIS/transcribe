@@ -22,7 +22,7 @@ itemData = []
 itemTranscriptions = []
 imageList = []
 # if the all items file is older than 1 day, get master items file from omeka
-itemsFile = 'dataFiles/items.json'
+itemsFile = 'items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
 if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
     urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)

@@ -464,3 +464,9 @@ http://iiif.archivelab.org/iiif/mms_metcalf_box_006$965
 http://iiif.archivelab.org/iiif/mms_metcalf_box_006$980
 http://publications.newberry.org/transcription/mms-transcribe/files/original/c393b880a745baccbb7ef99254155ce9.jpg
 http://iiif.archivelab.org/iiif/mms_metcalf_box_007$42
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$580
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$612
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$672
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$776
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$853
+http://iiif.archivelab.org/iiif/mms_metcalf_box_007$1083

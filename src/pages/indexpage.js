@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from '@emotion/styled'
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css'
 import { useFetch } from "../components/hooks";
 // import { location } from 'react-router-dom'
@@ -81,13 +81,7 @@ function IndexPage (){
               loading ? 
                 <><Loading/><Spacer /></> : 
                 filteredData.length > 0 ?
-                  <InfiniteScroll
-                      dataLength={resultCount} 
-                      next={addItems}
-                      hasMore={true}
-                      loader={<span></span>}>
                       <FilterResults itemsToShow={itemsToShow} filteredData={filteredData} setResultCount={setResultCount} />
-                  </InfiniteScroll>
                 : <NoResults>No results.</NoResults>
               }
       </Boxescss>
@@ -158,7 +152,7 @@ export const Boxescss = styled.div`
 
 function FilterResults(props) {
   props.setResultCount(props.filteredData.length)
-  const itemBoxes = props.filteredData.slice(0,props.itemsToShow).map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>)
+  const itemBoxes = props.filteredData.map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>)
 
   return (
    <>

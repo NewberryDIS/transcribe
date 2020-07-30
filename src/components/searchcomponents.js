@@ -204,7 +204,7 @@ export const DateSearch = props => {
         props.setFilters(q)
     }
     return (
-        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" value={props.filters.date}  onChange={e => handleChange(e.target.value)}> >
+        <Selectcss id="dropdowndecade" className="dropdown" name="dropdowndecade" value={props.filters.date}  onChange={e => handleChange(e.target.value)}> 
             <option value={1}>Select a decade...</option>
             <option key="early" value="1799" >pre-1800</option>
             {decades}
