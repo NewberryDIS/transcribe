@@ -20,6 +20,8 @@ export function useFetch(url, sort) {
             }
           })
           return aweight - bweight
+        }).sort(function(x, y) {
+          return (x.featured === y.featured) ? 0 : x ? -1 : 1;
         }) : json
         setData(json);
         setLoading(false);

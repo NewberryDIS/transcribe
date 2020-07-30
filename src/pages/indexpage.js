@@ -156,12 +156,12 @@ function FilterResults(props) {
 
   return (
    <>
-        <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="masonry-grid"
-            columnClassName="masonry-grid_column">
-            {itemBoxes}
-        </Masonry>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column">
+        {itemBoxes}
+      </Masonry>
    </>
  )
 }
