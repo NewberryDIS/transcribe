@@ -25,25 +25,25 @@ const Betacss = styled.div`
         margin: 0;
     }
     .link {
+    	padding: 20px 0;
         a {
             color: rgba(${colors.bg},1);
             text-decoration: none;
         }
         width: 150px;
         margin: auto;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 20px;
     }
 }
 `
 
-const BetaBanner = () => {
+const Banner = () => {
     return (
         <Betacss>
-            <p className="title">B e t a</p>
             <p className="link"><a href="https://forms.gle/LhT2NLRtFviMWeMCA"  target="_blank" rel="noopener noreferrer">We want your feedback!</a></p>
         </Betacss>
     )
 }
 
-export default BetaBanner
+export default Banner

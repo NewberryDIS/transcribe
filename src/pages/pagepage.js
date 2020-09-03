@@ -7,7 +7,7 @@ import Background from '../components/background'
 import { colors } from '../components/csscomponents'
 import Footer from '../components/footer'
 import Topbar from '../components/topbar'
-import BetaBanner from '../components/beta'
+import Banner from '../components/banner'
 import { useParams} from 'react-router-dom'
 
 const Wrapper = styled.div`
@@ -144,7 +144,7 @@ const PagePage = () => {
             `}/>
             <Topbar  />
             <Background />
-            <BetaBanner />
+            <Banner />
             <div className="iframeContainer">
                 {loading? '' : <iframe src={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${itemid}/${pageid}#transcription`} placeholder={"Loading..."} title="transcription page"  /> }
             </div>

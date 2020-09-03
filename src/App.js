@@ -12,7 +12,7 @@ import ItemPage from './pages/itempage'
 import PagePage from './pages/pagepage'
 import TopBar from './components/topbar'
 import Jumbo from './components/jumbo'
-import BetaBanner from './components/beta'
+import Banner from './components/banner'
 import Background from './components/background'
 import Footer from './components/footer'
 
@@ -65,7 +65,7 @@ function App() {
       <Background image={image}/>
       <Jumbo />
       <Anchor ref={pageTop} />
-      <BetaBanner />
+      <Banner />
       <Body>
         <Switch>
           <Route path={`/item/:itemid/page/:pageid`}  component={() => <PagePage setImage={setImage}/>} />

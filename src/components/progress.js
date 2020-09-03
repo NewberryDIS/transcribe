@@ -75,7 +75,7 @@ export const ItemProgress = ({itemid, pageCount }) => {
         <Progresscss 
             percent={percent}>
             <div className="complete"></div>
-            <div className="text">{percent}% transcribed</div>
+            <div className="text">{loading ? 'Loading...' : percent + '% transcribed'}</div>
         </Progresscss>
     )
 }
