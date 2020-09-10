@@ -73,7 +73,6 @@ with open(itemsFile) as json_file:
         # if id != '1182':
         #     itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
         # if itemObj['id'] ==  '6':
-        query = {"key": '1fecb024c01dc30832731137491e644701626a10'}
         endpoint = 'https://publications.newberry.org/transcription/mms-transcribe/api/items/' + itemObj["id"] + '?' + urllib.parse.urlencode(query)
         with open(itemfilename) as jsonfile:
             itemJson = json.load(jsonfile)
