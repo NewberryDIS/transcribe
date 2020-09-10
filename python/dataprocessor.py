@@ -39,6 +39,7 @@ with open(itemsFile) as json_file:
             'image': '',
             'transcount': 0,
             'percentTranscribed': 0,
+            'dailyPercent': 0,
             'date': '',
             'category': '',
             'pages': [],
@@ -92,6 +93,7 @@ with open(itemsFile) as json_file:
                 if ie['element']['name'] == 'Language':
                     itemObj['lang'] = ie['text']
                 if ie['element']['name'] == 'Relation': itemObj['desc'] = ie['text']
+                if ie['element']['name'] == 'Coverage': itemObj['dailyPercent'] = ie['text']
                 if ie['element']['name'] == 'Description':
                     pattern = "(?P<url>https?://[^\s]+)\" target=\"_blank\" rel=\"noreferrer\">View catalog record<"
                     if re.search(pattern, ie['text']) is not None:

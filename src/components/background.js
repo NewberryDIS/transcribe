@@ -51,11 +51,13 @@ const Background = props => {
         left: 0;
         max-width: 100vw;
         max-height: 100vh;
+        background-color: rgb(37,37,37);
         background: url('${bgLink}');
+        opacity: 25%;
         background-size: cover;
         background-position: 50% 50%;
         overflow: hidden;
-        `}/>
+        `} />
     )
 }
 

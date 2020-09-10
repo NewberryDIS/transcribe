@@ -5,25 +5,21 @@ export function useFetch(url, sort) {
     const [loading, setLoading] = useState(true);
     async function fetchUrl() {
         const response = await fetch(url);
-        // console.log(response)
         let json = await response.json()
-        // json = sort ? json.sort(function(x, y) {
         json = sort ? json.sort(function(x, y) {
-          console.log(x.id + ': featured: ' + x.featured)
-          return (x.featured === y.featured) ? 0 : x ? -1 : 1;
-        // }).sort(function(a, b) {
-        //   let aweight, bweight
-        //   a.element_texts.map(et => {
-        //     if(et.element.name === 'Percent Completed'){
-        //       aweight = et.text
-        //     }
-        //   })
-        //   b.element_texts.map(et => {
-        //     if(et.element.name === 'Percent Completed'){
-        //       bweight = et.text
-        //     }
-        //   })
-        //   return aweight - bweight
+            let xdp, ydp;
+            x.element_texts.map(et => {
+                if (et.element.name === 'Coverage') {
+                    xdp = et.text
+                }
+            })
+            y.element_texts.map(et => {
+                if (et.element.name === 'Coverage') {
+                    ydp = et.text
+                }
+            })
+          console.log(x.id + ': daily percent: ' + xdp)
+            return parseInt(xdp) > parseInt(ydp) ? 1 : -1
         }) : json
         setData(json);
         setLoading(false);

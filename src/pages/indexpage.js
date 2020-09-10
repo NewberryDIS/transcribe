@@ -22,7 +22,7 @@ function IndexPage (){
   const hash = window.location.hash.substring(2,3000)
   const search = queryString.parse(hash);
   const dataurl = '/transcription/mms-transcribe/api/items/'
-  const [ data, loading ] = useFetch(dataurl, true)
+  const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)
   const [filters, setFilters ] = useState({
     title: search !== undefined && search.title !== undefined ? search.title : '',
@@ -43,7 +43,9 @@ function IndexPage (){
         lang: '',
         title: '',
         pc: 0,
+        dailyPercent: 0,
         weight: 0,
+        featured: i.featured
       }
       i.element_texts.map(et => {
         if (et.element.name === 'Subject'){
@@ -54,6 +56,9 @@ function IndexPage (){
           item.desc = et.text
         } else if (et.element.name === 'Language') {
           item.lang = et.text.length > 0 ? et.text : 'English'
+        } else if (et.element.name === 'Coverage') {
+          // console.log(i.id)
+          item.dailyPercent = et.text
         } else if (et.element.name === 'Title') {
           item.title = et.text
           var allDates = et.text.matchAll(dateRegex)
@@ -68,7 +73,7 @@ function IndexPage (){
         } 
       })
     return item
-  }).filter(i => filterFunctions(filters, i))
+  }).sort((x,y)=>x.featured?1:-1).sort((a,b) => a.dailyPercent - b.dailyPercent).filter(i => filterFunctions(filters, i))
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)
@@ -93,7 +98,7 @@ export default IndexPage
 function filterFunctions(filter, item){
     let titleFFunction, langFFunction, dateFFunction, catFFunction
     titleFFunction = item.title.toLowerCase().indexOf(filter.title.toLowerCase()) > -1 ? true : false 
-    langFFunction = item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
+    langFFunction = (filter.lang === 'English') ? item.lang.toLowerCase() === filter.lang.toLowerCase() : item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
     filter.date = parseInt(filter.date)
     if ( filter.date === 1 || (filter.date === 1799 && item.date[0] < 1799)) {
         dateFFunction =  true
