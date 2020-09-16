@@ -69,6 +69,7 @@ function App() {
       <Body>
         <Switch>
           <Route path={`/item/:itemid/page/:pageid`}  component={() => <PagePage setImage={setImage}/>} />
+          <Route path={`/item/:itemid/search/:qtext`} component={() => <ItemPage setImage={setImage}/>} />
           <Route path={`/item/:itemid`}               component={() => <ItemPage setImage={setImage}/>} />
           <Route                                      component={() => <IndexPage showMenu={showMenu} resultCount={resultCount} setResultCount={setResultCount} />} />
         </Switch>

@@ -7,7 +7,7 @@ import { IoIosSearch } from 'react-icons/io'
 import { fonts, colors, Selectcss } from './csscomponents'
 import * as queryString  from 'query-string'
 
-const Searchcss = styled.div`
+export const Searchcss = styled.div`
     border: 1px solid black;
     margin: 5px 0;
     background: rgba(237,237,237,0.7);
@@ -42,6 +42,9 @@ const Searchcss = styled.div`
     }
     &.titlesearch {
         margin: 4px 0 8px 0;
+    }
+    wideSearch {
+        width: 100%;
     }
 `
 const Subjectcss = styled.div`

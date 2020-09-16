@@ -24,7 +24,7 @@ function IndexPage (){
   const dataurl = '/transcription/mms-transcribe/api/items/'
   const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)
-  const [filters, setFilters ] = useState({
+  const [ filters, setFilters ] = useState({
     title: search !== undefined && search.title !== undefined ? search.title : '',
     lang: search !== undefined && search.lang !== undefined ? search.lang : 'English',
     category:  search !== undefined && search.cat  !== undefined ? search.cat  : '' ,

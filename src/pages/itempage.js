@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import styled from '@emotion/styled'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useFetch } from '../components/hooks'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import { items } from '../data/items.json'
-import { colors, fonts } from '../components/csscomponents'
 import { PageProgress, ItemProgress } from '../components/progress'
 import Loading from '../components/loading'
+import ItemSearch from '../components/itemsearch'
+import { colors, fonts, Bluebutton } from '../components/csscomponents'
+import Highlighter from 'react-highlight-words'
 
 const Wrapper = styled.div`
     position: relative;
@@ -87,22 +89,74 @@ const Itemcss = styled.div`
         display: block;
         max-width: 85%;
         overflow: hidden;
-        box-shadow:  0 0 8px rgba(${colors.fg},1);
     }
+    .pageimage, .searchResultImage {
+        box-shadow:  0 0 8px rgba(${colors.fg},1);
 
-  .masonry-grid {
-    flex: 1;
-    display: flex;
-    margin-left: -30px; /* gutter size offset */
-    width: auto;
-  }
-  .masonry-grid_column {
-    padding-left: 30px; /* gutter size */
-    background-clip: padding-box;
-  }
-  .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-    margin-bottom: 30px;
-  }
+    }
+    .searchResultImage {
+        margin: auto;
+    }
+    .srImageLink {
+        flex-basis: 10vw;
+        display: flex;
+        justify-contents: center;
+    }
+    .searchResultBox {
+        box-shadow: inset 0 0 10px rgba(${colors.fg},1);
+        border: 2px solid rgba(${colors.fg},1);
+    }
+    .searchResultBox, .transresult {
+        width: 100%;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        .transresult {
+            flex: 1;
+            flex-direction: column;
+            .transtext {
+                flex: 1;
+            }
+        }
+
+    }
+    .masonry-grid {
+        flex: 1;
+        display: flex;
+        margin-left: -30px; /* gutter size offset */
+        width: auto;
+    }
+    .masonry-grid_column {
+        padding-left: 30px; /* gutter size */
+        background-clip: padding-box;
+    }
+    .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+        margin-bottom: 30px;
+    }
+    .searchRow {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .searchRowRight {
+        display: inline-block;
+        flex: 1;
+        margin: 10px 0;
+        }
+    .transresults {
+        display: flex;
+        img {
+            flex
+        }   
+    }
+    .button {
+        border: 1px solid  rgba(${colors.fg}, 1);
+    }
+    .noresults {
+        font-size: 30px;
+        margin: 20px auto 0 auto;
+        font-family: ${fonts.serif};
+    }
 `
 
 export const breakpointColumnsObj = {
@@ -111,11 +165,45 @@ export const breakpointColumnsObj = {
     900: 1,
   }
 function ItemPage() {
-    const { itemid } = useParams()
+    const { itemid, qtext } = useParams()
+    const history = useHistory()
+    
+    const [ searchTerm, setSearchTerm ] = useState(qtext === null || qtext === undefined ? '' : qtext)
+    console.log(searchTerm)
     const [ pagesToShow, setPagesToShow ] = useState(21)
     const item = items.find(o => o.id === itemid);
     let itemdataurl = '/transcription/mms-transcribe/api/files?item='  + itemid
+    function goFunction(itemid, pageid) {
+        history.push('/item/' + itemid + '/page/' + pageid)
+    }
+    const boxicate = (page, transtext) => <div className="searchResultBox">
+        <Link to={'/item/' + itemid + '/page/' + page.id} className="srImageLink"><img className="searchResultImage" src={page.file_urls.thumbnail} /></Link>
+        <div className="transresult">
+            <div className="transtext">
+                <Highlighter
+                    className="hilitecontent"
+                    highlightClassName="hilite"
+                    searchWords={[searchTerm]}
+                    textToHighlight={transtext}
+                />
+            </div>
+            <Bluebutton >
+                <button onClick={() => goFunction(itemid, page.id)} className="button">Go to page</button>
+            </Bluebutton>
+        </div>
+    </div>
     const [data, loading] = useFetch(itemdataurl);
+    let searchResults = searchTerm !== undefined && searchTerm.length > 0 ? data.map(d => {
+        for (var et of d.element_texts){
+            if (et.element.name === 'Transcription'){
+                if (et.text.toLowerCase().indexOf(searchTerm) > -1){
+                    return boxicate(d, et.text)
+                } 
+            }
+        };
+    }).filter(function(item){
+        return typeof item !== 'undefined';  
+    }) : []
     const pageBoxes = data.map((p, index) => {
         const transc = p.element_texts[1] !== undefined ? p.element_texts[1].text : ''
         const page = {
@@ -139,18 +227,20 @@ function ItemPage() {
                 <div className="itemheadertext">
                     <h1>{item.title}</h1>
                     <p>{item.desc}</p>
-                    <p><a href={item.cataloglink} target="_blank" rel="noopener noreferrer">View Catalog Record</a></p>
+                        <div className=""><a href={item.cataloglink} target="_blank" rel="noopener noreferrer">View Catalog Record</a></div>
+                    <div className="searchRow">
+                        <div className="searchRowRight"><ItemSearch itemid={itemid} setSearchTerm={setSearchTerm} /></div>
+                    </div>
                     <ItemProgress itemid={itemid} pageCount={item.count} />
                     <div className="pages">
-                        {loading ? <Loading pages={item.count} />: 
+                        {loading ? <Loading pages={searchTerm.length > 0 ? searchResults.length : item.count} />: 
                             <InfiniteScroll
-                                dataLength={pageBoxes.length} //This is important field to render the next data
+                                dataLength={searchTerm.length > 0 ? searchResults.length : pageBoxes.length} //This is important field to render the next data
                                 next={addPages}
                                 hasMore={true}
-                                // loader={<h4>Loading...</h4>}
                                 >
-                                    
-                                {pageBoxes}
+                                    {console.log(searchResults)}
+                                {searchTerm.length > 0 ? searchResults.length === 0 ? <div className="noresults">No results.</div> : searchResults : pageBoxes}
                             </InfiniteScroll>
                         }
                     </div>
@@ -168,3 +258,5 @@ export default ItemPage;
 // var end = et.text.indexOf('"', start + 6)
 // item.catalogLink = et.text.substring(start + 6, end).replace('&amp;', '&')
 // console.log(item.catalogLink)
+
+const NoResults = <div>No Results.</div>
