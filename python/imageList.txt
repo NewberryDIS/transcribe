@@ -470,3 +470,5 @@ http://iiif.archivelab.org/iiif/mms_metcalf_box_007$672
 http://iiif.archivelab.org/iiif/mms_metcalf_box_007$776
 http://iiif.archivelab.org/iiif/mms_metcalf_box_007$853
 http://iiif.archivelab.org/iiif/mms_metcalf_box_007$1083
+http://publications.newberry.org/transcription/mms-transcribe/files/original/8c2de4bf9f1101cbba28dbb401a5f8ec.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/de25660e71da87dbefab3a6cc187acfe.jpg

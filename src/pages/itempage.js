@@ -169,7 +169,7 @@ function ItemPage() {
     const history = useHistory()
     
     const [ searchTerm, setSearchTerm ] = useState(qtext === null || qtext === undefined ? '' : qtext)
-    console.log(searchTerm)
+    // console.log(searchTerm)
     const [ pagesToShow, setPagesToShow ] = useState(21)
     const item = items.find(o => o.id === itemid);
     let itemdataurl = '/transcription/mms-transcribe/api/files?item='  + itemid

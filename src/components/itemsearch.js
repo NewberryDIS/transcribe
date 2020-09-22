@@ -8,7 +8,7 @@ import { IoIosSearch } from 'react-icons/io'
 const ItemSearch = props => {
     const { itemid, qtext } = useParams()
     const history = useHistory()
-    const dataUrl = 'http://publications.newberry.org/transcription/mms-transcribe/api/files?item=' + props.itemid
+    const dataUrl = 'https://publications.newberry.org/transcription/mms-transcribe/api/files?item=' + props.itemid
     const [input, setInput] = useState(qtext === null ? '' : qtext)
     const [ data, loading ] = useFetch(dataUrl)
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ const ItemSearch = props => {
         
         <Searchcss className="wideSearch">
             <input className="searchInput" disabled={!loading} placeholder={text}  value={input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
-            <button className="searchbutton" disabled={!loading && input.length > 0} onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
+            <button className="searchbutton" disabled={!loading && input !== undefined && input.length > 0} onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
         </Searchcss>
     )
 }

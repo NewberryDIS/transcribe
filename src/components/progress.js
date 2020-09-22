@@ -53,7 +53,7 @@ export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export const ItemProgress = ({itemid, pageCount }) => {
+export const ItemProgress = ({ itemid, pageCount }) => {
     const itemdataurl = '/transcription/mms-transcribe/api/files?item=' + itemid
     const [data, loading] = useFetch(itemdataurl, false)
     let transCount = 0

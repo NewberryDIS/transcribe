@@ -18,14 +18,14 @@ content = {
     },
 }
 yearlyModifiedCounter = 0
-itemData = []
-itemTranscriptions = []
+itemData = {"items":[]}
+itemTranscriptions = {"transcriptions":[]}
 imageList = []
 # if the all items file is older than 1 day, get master items file from omeka
 itemsFile = 'items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
-if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
-    urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
+# if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
+urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
 # slices semicolon-separated values into standard array values; does not dedupe
 def arrayCleaner(item):
     val = [x.strip() for x in item.split(';')]
@@ -163,15 +163,15 @@ with open(itemsFile) as json_file:
         if id != '1182':
             itemObj['percentTranscribed'] = round(itemObj['transcount'] / itemObj['count'],2) * 100
         # content['items'].append(itemObj)
-        itemData.append(itemObj)
+        itemData["items"].append(itemObj)
         # wholeItem = itemObj
         # wholeItem.update(sitemTranscriptions)
-        itemTranscriptions.append(sitemTranscriptions)
+        itemTranscriptions["transcriptions"].append(sitemTranscriptions)
         # newFileName = '../src/data/' + id + '.json'
         # with open(newFileName, 'w') as dataFile:
         #     json.dump(wholeItem, dataFile)
         print(itemObj['id'])
-itemData.sort(key=operator.itemgetter('transcount'))
+itemData["items"].sort(key=operator.itemgetter('transcount'))
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
 
 with open('../src/data/items.json', 'w') as dataFile:
