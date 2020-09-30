@@ -28,8 +28,8 @@ const ItemSearch = props => {
     return (
         
         <Searchcss className="wideSearch">
-            <input className="searchInput" disabled={!loading} placeholder={text}  value={input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
-            <button className="searchbutton" disabled={!loading && input !== undefined && input.length > 0} onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
+            <input className="searchInput" placeholder={text}  value={input} type="text" onKeyDown={handleKeyDown} onChange={(e) => handleChange(e)} />
+            <button className="searchbutton" onClick={submitSearch}><IoIosSearch size="1.5rem" /></button>
         </Searchcss>
     )
 }

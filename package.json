@@ -24,7 +24,8 @@
     "react-router-dom": "^5.1.2",
     "react-router-ga": "^1.2.3",
     "react-scripts": "3.4.1",
-    "react-twitter-embed": "^3.0.3"
+    "react-twitter-embed": "^3.0.3",
+    "string.prototype.matchall": "^4.0.2"
   },
   "proxy": "http://publications.newberry.org",
   "scripts": {

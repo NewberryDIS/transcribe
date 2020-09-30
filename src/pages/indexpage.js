@@ -61,6 +61,8 @@ function IndexPage (){
           item.dailyPercent = et.text
         } else if (et.element.name === 'Title') {
           item.title = et.text
+          const matchAll = require('string.prototype.matchall')
+          matchAll.shim()
           var allDates = et.text.matchAll(dateRegex)
           item.date[0] = Math.min(...allDates)
           if (Math.min(...allDates) !==  Infinity)  item.date[0] = Math.min(...allDates)
