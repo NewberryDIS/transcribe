@@ -31,6 +31,7 @@ function IndexPage (){
     date: search !== undefined && search.date !== undefined ? search.date : 1 ,
     text: search !== undefined && search.text !== undefined ? [search.text] : [] ,
   })
+  const secretItems = [1290,1307,1312,1314]
   const filteredData = data.map((i, index) => {
     // console.log(filters)
       let item = {
@@ -75,7 +76,7 @@ function IndexPage (){
         } 
       })
     return item
-  }).sort((x,y)=>x.featured?1:-1).sort((a,b) => a.dailyPercent - b.dailyPercent).filter(i => filterFunctions(filters, i))
+}).sort((x,y)=>x.featured?1:-1).sort((a,b) => a.dailyPercent - b.dailyPercent).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i))
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)

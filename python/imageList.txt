@@ -387,6 +387,7 @@ https://collections.carli.illinois.edu/digital/iiif/nby_mms/51081
 https://collections.carli.illinois.edu/digital/iiif/nby_mms/46890
 https://collections.carli.illinois.edu/digital/iiif/nby_mms/61718
 http://iiif.archivelab.org/iiif/mms_221$63
+http://publications.newberry.org/transcription/mms-transcribe/files/original/3f229007edb825224b718d6fe8a4f0fb.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/6b2a9b92acacd30077d27ec2baef0d37.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/e17e325cb46f2b5b715d3e034de7e56e.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/5aab5ed6c1967216fe4a6d3705b2496b.jpg
@@ -472,3 +473,17 @@ http://iiif.archivelab.org/iiif/mms_metcalf_box_007$853
 http://iiif.archivelab.org/iiif/mms_metcalf_box_007$1083
 http://publications.newberry.org/transcription/mms-transcribe/files/original/8c2de4bf9f1101cbba28dbb401a5f8ec.jpg
 http://publications.newberry.org/transcription/mms-transcribe/files/original/de25660e71da87dbefab3a6cc187acfe.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/588a5211d5015fa279e7a8889b8f0992.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/5784ad353cba48dc118ab03f8e43587b.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/0eca26dceb4d76bd6a6198b1ccff884a.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/8e838dd3f10766fd8d6fd28773e14fd3.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/2b2861c8eec7ed0547e1c071333f47b2.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/133ccf3088b66ca80b54ba5940dc3a3e.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/430427b62a94017b7f0f33c38ad097b5.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/a247ef862350b0668d7745f4321bed2b.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/a247ef862350b0668d7745f4321bed2b.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/0b38166f90e1e214b8d3e3f5a46c35cc.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/2ad798a49bf658ad5eb83e59038d20dd.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/6cad3fcd48758a0d37b57d7edad907ae.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/93356460a84f94f5de114c15d92e1457.jpg
+http://publications.newberry.org/transcription/mms-transcribe/files/original/898ac85c5fa1787ef1cfa5baf9dfc9e8.jpg

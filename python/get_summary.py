@@ -182,6 +182,6 @@ with open('../src/data/summary.json', 'w') as dataFile:
     json.dump(content, dataFile)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
-with open('./imageList.txt', 'w') as listfile:
-    for line in imageList:
-        listfile.write(line + "\n")
+# with open('./imageList.txt', 'w') as listfile:
+#     for line in imageList:
+#         listfile.write(line + "\n")
