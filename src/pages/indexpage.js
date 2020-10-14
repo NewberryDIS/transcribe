@@ -33,7 +33,6 @@ function IndexPage (){
   })
   const secretItems = [1290,1307,1312,1314]
   const filteredData = data.map((i, index) => {
-    // console.log(filters)
       let item = {
         id: i.id,
         count: i.files.count,
@@ -58,7 +57,6 @@ function IndexPage (){
         } else if (et.element.name === 'Language') {
           item.lang = et.text.length > 0 ? et.text : 'English'
         } else if (et.element.name === 'Coverage') {
-          // console.log(i.id)
           item.dailyPercent = et.text
         } else if (et.element.name === 'Title') {
           item.title = et.text
@@ -76,7 +74,13 @@ function IndexPage (){
         } 
       })
     return item
-}).sort((x,y)=>x.featured?1:-1).sort((a,b) => a.dailyPercent - b.dailyPercent).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i))
+}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((a,b) => {
+  
+  if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return -1
+  if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return 1
+  if (parseInt(a.pc) > parseInt(b.pc)) return -1
+  if (parseInt(a.pc) > parseInt(b.pc)) return 1
+}).sort((x,y)=>x.featured?-1:1)
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)
