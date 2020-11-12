@@ -74,13 +74,13 @@ function IndexPage (){
         } 
       })
     return item
-}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((a,b) => {
+}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((x,y)=>x.featured?-1:1).sort((a,b) => {
   
-  if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return -1
   if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return 1
-  if (parseInt(a.pc) > parseInt(b.pc)) return -1
+  if (parseInt(a.dailyPercent) < parseInt(b.dailyPercent)) return -1
   if (parseInt(a.pc) > parseInt(b.pc)) return 1
-}).sort((x,y)=>x.featured?-1:1)
+  if (parseInt(a.pc) < parseInt(b.pc)) return -1
+})
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)
@@ -103,18 +103,25 @@ function IndexPage (){
 export default IndexPage
 
 function filterFunctions(filter, item){
+    // filter.title === '' && filter.lang ===  'English' && filter.category === ''  && filter.date === 1  && filter.text === []
     let titleFFunction, langFFunction, dateFFunction, catFFunction
     titleFFunction = item.title.toLowerCase().indexOf(filter.title.toLowerCase()) > -1 ? true : false 
     langFFunction = (filter.lang === 'English') ? item.lang.toLowerCase() === filter.lang.toLowerCase() : item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
     filter.date = parseInt(filter.date)
-    if ( filter.date === 1 || (filter.date === 1799 && item.date[0] < 1799)) {
-        dateFFunction =  true
-    } else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
+    if ( filter.date === 1 ) {
+        dateFFunction = true
+        console.log('no date filter')
+    } else if (filter.date === 1799 && item.date[0] < 1799 ) {
+      console.log('1799 date filter')
+      dateFFunction = true
+      langFFunction = true
+    }
+    else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
         dateFFunction =  true
     } else if ( item.date.length === 2 && item.date[0] <= (filter.date + 9) && item.date[1] >= filter.date ) {
         dateFFunction =  true
     } else {
-        // console.log('data error in date array for item ' + item.id)
+        console.log('data error in date array for item ' + item.id)
     }
     
     catFFunction = item.category.toLowerCase().indexOf(filter.category.toLowerCase()) > -1 ? true : false 

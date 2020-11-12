@@ -26,6 +26,23 @@ itemsFile = 'items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
 # if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
 urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/', itemsFile)
+itemsFile2 = 'items2.json'
+urllib.request.urlretrieve('http://publications.newberry.org/transcription/mms-transcribe/api/items/?page=2', itemsFile2)
+data = data2 = "" 
+# Reading data from file1 
+with open(itemsFile) as fp: 
+    data = fp.read() 
+# Reading data from file2 
+with open(itemsFile2) as fp: 
+    data2 = fp.read() 
+  
+data = data[:-1] + ','
+data2 = data2[1:]
+data += data2
+
+with open ('itemsBothPages.json', 'w') as fp: 
+    fp.write(data) 
+
 # slices semicolon-separated values into standard array values; does not dedupe
 def arrayCleaner(item):
     val = [x.strip() for x in item.split(';')]
@@ -60,7 +77,7 @@ def stuffer(array, key, value, id):
 # go through all items in items.json and
 #     1. get file___.json and item___.json (if they are older than 1 day)
 #         (we don't bother checking age of both files, if files___.json is older than a day, we get them both - low impact inefficiency (aka who cares))
-with open(itemsFile) as json_file:
+with open('itemsBothPages.json') as json_file:
     items = json.load(json_file)
     downloadedFileCount = 0
     skippedFileCount = 0
