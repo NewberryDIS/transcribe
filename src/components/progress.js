@@ -54,7 +54,9 @@ export function numberWithCommas(x) {
 }
 
 export const ItemProgress = ({ itemid, pageCount }) => {
-    const itemdataurl = '/transcription/mms-transcribe/api/files?item=' + itemid
+// export const ItemProgress = ({ itemid, pageCount, setOrder }) => {
+    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item=' + itemid
+    const itemdataurl = 'https://transcribe.newberry.org/api/files?item=' + itemid
     const [data, loading] = useFetch(itemdataurl, false)
     let transCount = 0
     const percentage = data.map(i => {
@@ -71,6 +73,7 @@ export const ItemProgress = ({ itemid, pageCount }) => {
         }
     }})
     const percent = Math.round((transCount / pageCount) * 100 )
+    // setOrder(percent)
     return (
         <Progresscss 
             percent={percent}>

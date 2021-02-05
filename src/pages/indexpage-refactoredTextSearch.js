@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from '@emotion/styled'
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css'
 import { useFetch } from "../components/hooks";
 // import { location } from 'react-router-dom'
@@ -11,6 +11,10 @@ import { colors, fonts } from '../components/csscomponents'
 import TextSearchResults from "./tsrpage";
 const queryString = require('query-string');
 
+
+import { ItemProgress } from './progress'
+import styled from '@emotion/styled'
+
 export const breakpointColumnsObj = {
   default: 3,
   1300: 2,
@@ -19,19 +23,20 @@ export const breakpointColumnsObj = {
 const dateRegex = /[0-9]{4}/g
 function IndexPage (){
   const [ resultCount, setResultCount ] = useState(0)
-  const search = queryString.parse(window.location.search);
-  // console.log(search)
-  const dataurl = '/transcription/mms-transcribe/api/items/'
-  const [ data, loading ] = useFetch(dataurl, true)
-  const [ srdata, srloading ] = useFetch(dataurl, true)
+  const hash = window.location.hash.substring(2,3000)
+  const search = queryString.parse(hash);
+  // const dataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/'
+  const dataurl = 'https://transcribe.newberry.org/api/items/'
+  const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)
-  const [filters, setFilters ] = useState({
+  const [ filters, setFilters ] = useState({
     title: search !== undefined && search.title !== undefined ? search.title : '',
     lang: search !== undefined && search.lang !== undefined ? search.lang : 'English',
     category:  search !== undefined && search.cat  !== undefined ? search.cat  : '' ,
     date: search !== undefined && search.date !== undefined ? search.date : 1 ,
     text: search !== undefined && search.text !== undefined ? [search.text] : [] ,
   })
+  const secretItems = [1290,1307,1312,1314]
   const filteredData = data.map((i, index) => {
       let item = {
         id: i.id,
@@ -43,7 +48,9 @@ function IndexPage (){
         lang: '',
         title: '',
         pc: 0,
+        dailyPercent: 0,
         weight: 0,
+        featured: i.featured
       }
       i.element_texts.map(et => {
         if (et.element.name === 'Subject'){
@@ -54,8 +61,12 @@ function IndexPage (){
           item.desc = et.text
         } else if (et.element.name === 'Language') {
           item.lang = et.text.length > 0 ? et.text : 'English'
+        } else if (et.element.name === 'Coverage') {
+          item.dailyPercent = et.text
         } else if (et.element.name === 'Title') {
           item.title = et.text
+          const matchAll = require('string.prototype.matchall')
+          matchAll.shim()
           var allDates = et.text.matchAll(dateRegex)
           item.date[0] = Math.min(...allDates)
           if (Math.min(...allDates) !==  Infinity)  item.date[0] = Math.min(...allDates)
@@ -68,47 +79,67 @@ function IndexPage (){
         } 
       })
     return item
-  }).filter(i => filterFunctions(filters, i))
+}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((a,b) => {
+  
+  if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return 1
+  if (parseInt(a.dailyPercent) < parseInt(b.dailyPercent)) return -1
+  if (parseInt(a.pc) > parseInt(b.pc)) return 1
+  if (parseInt(a.pc) < parseInt(b.pc)) return -1
+})
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)
     setItemsToShow(newCount)
   }
+
+  const itemBoxes = props.filteredData.map((i, index) => <Boc boxProps={i} key={index} />)
   return (
-      <Boxescss>
-        <Sidebar setFilters={setFilters} filters={filters} resultCount={resultCount} />
-            {filters.text.length > 0  && filteredData.length > 0 ? 
-              <TextSearchResults itemsToShow={itemsToShow} filteredData={filteredData} textfilter={filters.text} setResultCount={setResultCount} /> : 
-              loading ? 
-                <><Loading/><Spacer /></> : 
-                filteredData.length > 0 ?
-                  <InfiniteScroll
-                      dataLength={resultCount} 
-                      next={addItems}
-                      hasMore={true}
-                      loader={<span></span>}>
-                      <FilterResults itemsToShow={itemsToShow} filteredData={filteredData} setResultCount={setResultCount} />}
-                  </InfiniteScroll>
-                : <NoResults>No results.</NoResults>
-              }
-      </Boxescss>
+      <BocCss>
+        {itemBoxes}
+      </BocCss>
   )
 }
-
+const BocCss = styled.div`
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+`
+const Boc = ({boxProps}) => <div className="grid-container">
+  <div className="grid-item">{boxProps.id}</div>
+  <div className="grid-item">{boxProps.title}</div>
+  <div className="grid-item"><ItemProgress pageCount={boxProps.count} itemid={boxProps.id} /></div>
+</div>
 export default IndexPage
 
 function filterFunctions(filter, item){
+    // filter.title === '' && filter.lang ===  'English' && filter.category === ''  && filter.date === 1  && filter.text === []
     let titleFFunction, langFFunction, dateFFunction, catFFunction
     titleFFunction = item.title.toLowerCase().indexOf(filter.title.toLowerCase()) > -1 ? true : false 
-    langFFunction = item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
+    langFFunction = (filter.lang === 'English') ? item.lang.toLowerCase() === filter.lang.toLowerCase() : item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
     filter.date = parseInt(filter.date)
-    if ( filter.date === 1 || (filter.date === 1799 && item.date[0] < 1799)) {
-        dateFFunction =  true
-    } else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
+    if ( filter.date === 1 ) {
+        dateFFunction = true
+        console.log('no date filter')
+    } else if (filter.date === 1799 && item.date[0] < 1799 ) {
+      console.log('1799 date filter')
+      dateFFunction = true
+      langFFunction = true
+    }
+    else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
         dateFFunction =  true
     } else if ( item.date.length === 2 && item.date[0] <= (filter.date + 9) && item.date[1] >= filter.date ) {
         dateFFunction =  true
     } else {
-        // console.log('data error in date array for item ' + item.id)
+        console.log('data error in date array for item ' + item.id)
     }
     
     catFFunction = item.category.toLowerCase().indexOf(filter.category.toLowerCase()) > -1 ? true : false 
@@ -158,16 +189,16 @@ export const Boxescss = styled.div`
 
 function FilterResults(props) {
   props.setResultCount(props.filteredData.length)
-  const itemBoxes = props.filteredData.slice(0,props.itemsToShow).map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>)
+  const itemBoxes = props.filteredData.map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>)
 
   return (
    <>
-        <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="masonry-grid"
-            columnClassName="masonry-grid_column">
-            {itemBoxes}
-        </Masonry>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column">
+        {itemBoxes}
+      </Masonry>
    </>
  )
 }
@@ -177,73 +208,3 @@ const Spacer = styled.div`
   width: 70vw;
 `
 
-const itempages = require('../data/itempages.json')
-
-// function TextSearchResults(props) {
-//     let mwQueryUrl = '/mediawiki2017/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
-//     const [srdata, srloading] = useFetch(mwQueryUrl)
-//     const [ itemBoxes, setItemBoxes ] = useState([])
-//     function b64converter(encodedTitle){
-//         encodedTitle = encodedTitle.split('.')
-//         const numericItem = atob(encodedTitle[1])
-//         const numericPage = parseInt(atob(encodedTitle[2]))
-//         return [numericItem, numericPage]
-//     }
-//     let textFilteredData = []
-//     function processSearchResults (){
-//         const filteredSearchResults = srloading ? [] : srdata.query.search.filter(d => {
-//             const decodedTitleArray = b64converter(d.title)
-//             const matchingItemInItemPages = itempages.find(ip => ip.id == decodedTitleArray[0]) 
-//             return matchingItemInItemPages !== undefined && matchingItemInItemPages.pages.indexOf(decodedTitleArray[1]) > -1 
-//         })
-//         const searchResultsArray = []
-//         filteredSearchResults.map(d => {
-//             const decodedTitleArray = b64converter(d.title)
-//             if (searchResultsArray.find(sri => sri.item === decodedTitleArray[0]) !== undefined){
-//                 searchResultsArray.find(sri => sri.item === decodedTitleArray[0]).pages.push({page: decodedTitleArray[1], snippet: d.snippet})
-//             } else {
-//                 searchResultsArray.push({item: decodedTitleArray[0], pages: [{page: decodedTitleArray[1], snippet: d.snippet}]})
-//             }
-//         })
-//         return searchResultsArray
-//     }
-//     // const textFilteredData =  loading ? [] : props.filteredData.filter(fd => searchResultsArray.find(sr => sr.item == fd.id) !== undefined)
-//     useEffect(() =>{
-//         if (!srloading){
-//             const tempSearchResults = processSearchResults()
-//             console.log(props.filteredData)
-//             textFilteredData = props.filteredData.filter(fd => {
-//               console.log(fd)
-//               console.log(fd)
-//               return tempSearchResults.find(sr => sr.item == fd.id) !== undefined
-//             })
-//             console.log(textFilteredData)
-//             setItemBoxes(textFilteredData.slice(0,props.itemsToShow).map((i, index) => <Box boxProps={i} key={index} show={true}>{i.title}</Box>))
-//         } else {
-//           console.log('loading is not complete')
-//         }
-//     },[srloading])
-//     function addItems(){
-//         let newCount = Math.min(textFilteredData.length, props.itemsToShow + 21)
-//         props.findsetItemsToShow(newCount)
-//     }
-//     return (
-//         <>
-//             {srloading ? <><Loading/><Spacer /></> : textFilteredData.length > 0 ?
-//                 <InfiniteScroll
-//                     dataLength={textFilteredData.length} 
-//                     next={addItems}
-//                     hasMore={true}
-//                     loader={<span></span>}>
-//                     <Masonry
-//                         breakpointCols={breakpointColumnsObj}
-//                         className="masonry-grid"
-//                         columnClassName="masonry-grid_column">
-//                         {itemBoxes}
-//                     </Masonry>
-//             </InfiniteScroll>
-//           : <NoResults>No results.</NoResults>
-//         }
-//         </>
-//     )
-// }

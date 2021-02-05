@@ -8,8 +8,8 @@ export const colors = {
     hld: '121,139,153',
 }
 export const fonts = {
-    sans: "'Raleway', sans-serif",
-    serif: "'Crimson Text', serif", 
+    sans: "'Basic Commercial W01', Helvetica, sans-serif",
+    serif: "'Bembo W01', Cardo, serif", 
 }
 export const CoreBox = styled.div`
     background: rgba(${colors.bg}, 1);

@@ -11,7 +11,7 @@ content = {
     },
 }
 
-itemsurl = "http://publications.newberry.org/transcription/mms-transcribe/api/items"
+itemsurl = "http://transcribe.newberry.org/api/items"
 itemresponse = urllib.request.urlopen(itemsurl).read()
 itemjson = json.loads(itemresponse)
 alltranscriptions = []
@@ -34,7 +34,7 @@ for i in itemjson:
 	for f in filesjson:
 		fileid = str(f["id"])
 		# dlink = "http://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/"+itemid+"/"+fileid
-		dlink = "http://publications.newberry.org/transcribe/page?itemid="+itemid+"&pageid="+fileid
+		dlink = "http://publications.newberry.org/transcribe/item/" + itemid + "/page/" + fileid
 		file_data = f["file_urls"]
 		filename = file_data["original"]
 		element_texts = f["element_texts"]
@@ -50,12 +50,13 @@ for i in itemjson:
 	objects = {"transcriptions": colltranscripts, "item_url":collectionurl, "item":collectiontitle}
 	alltranscriptions.append(objects)
 print( "Successfully exported "+str(total)+" transcriptions")
-with open("/home/newberry/webapps/transcribe/mms-transcribe/data/alltranscripts.json", 'w') as f:
+with open("alltranscripts.json", 'w') as f:
 # with open("alltranscripts.json", 'w') as f:
    json.dump(alltranscriptions, f,indent=4, sort_keys=True)
 
 content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
 
-with open('/home/newberry/webapps/cranscribe/data/summary.json', 'w') as dataFile:
-# with open('./summary.json', 'w') as dataFile:
+with open('summary.json', 'w') as dataFile:
     json.dump(content, dataFile, indent=4, sort_keys=True)
+# with open('data/summary.json', 'w') as dataFile:
+#     json.dump(content, dataFile, indent=4, sort_keys=True)

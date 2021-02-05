@@ -1,5 +1,5 @@
 export function textSearch ({filteredData}) {
-    let mwQueryUrl = '/mediawiki2017/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
+    let mwQueryUrl = 'transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
     let itempagearray = []
     async function fetchSearchResults() {
         const response = await fetch(mwQueryUrl);

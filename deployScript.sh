@@ -1,4 +1,5 @@
 #!/bin/bash
-source ../variables.sh
 npm run build
-scp -r build/* $SERVER/newtranscribe/
+# cp src/data/summary.json public/data/ 
+# scp -r build/* $SRVR\:/var/www/transcribe/
+rsync -avz build/* $SRVR\:/var/www/transcribe/

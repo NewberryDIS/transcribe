@@ -10,15 +10,17 @@ import Topbar from '../components/topbar'
 import Banner from '../components/banner'
 import { useParams} from 'react-router-dom'
 
+
 const Wrapper = styled.div`
-    position: relative;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+position: relative;
+margin: 0;
+padding: 0;
+z-index: 1;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
 `
+const FooterTwo = Wrapper
 // const Itemcss = styled.div`
 //     @media (min-width: 1501px){width: 80%;}
 //     @media (max-width: 1500px) and (min-width: 901px){width: 95%;}
@@ -144,9 +146,8 @@ const PagePage = () => {
             `}/>
             <Topbar  />
             <Background />
-            <Banner />
             <div className="iframeContainer">
-                {loading? '' : <iframe src={`https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/${itemid}/${pageid}#transcription`} placeholder={"Loading..."} title="transcription page"  /> }
+                {loading? '' : <iframe src={`https://transcribe.newberry.org/scripto/transcribe/${itemid}/${pageid}#transcription`} placeholder={"Loading..."} title="transcription page"  /> }
             </div>
             <Footer />
         </Wrapper>

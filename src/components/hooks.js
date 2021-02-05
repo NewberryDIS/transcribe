@@ -5,7 +5,7 @@ export function useFetch(url, sort) {
     const [loading, setLoading] = useState(true);
     async function fetchUrl() {
         let json;
-        if (url === '/transcription/mms-transcribe/api/items/'){
+        if (url === 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/' || url === 'https://transcribe.newberry.org/api/items/'){
             const responseOne = await fetch(url)
             const urlTwo = url + '?page=2'
             const responseTwo = await fetch(urlTwo)

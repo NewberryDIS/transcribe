@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from '@emotion/styled'
 /** @jsx jsx */
+import { useState, useEffect } from 'react'
 import { jsx, css  } from '@emotion/core'
 import { IoIosSearch } from 'react-icons/io'
 import { fonts, colors, Selectcss } from './csscomponents'
@@ -225,21 +225,22 @@ export const SubjSearch = props => {
     }
     const subjectArray = [
         // "Cassettes",
-        "Family papers",
+        "Indians of North America",
+        "American Civil War (1861-1865)",
         "Diaries",
-        "Women",
-        "World's Columbian Exposition",
-        "Travelers’ writings",
+        "Family papers",
+        "IMLS CARES Act",
         "Labor Movement",
         "Letters (Correspondence)",
         "Records (Documents)",
-        "American Civil War (1861-1865)",
-        // "Everett D. Graff Collection of Western Americana",
+        "Travelers’ writings",
         "U.S. Western Expansion",
-        "Indians of North America",
+        "Women",
+        "World's Columbian Exposition",
+        // "Everett D. Graff Collection of Western Americana",
         // "Edward E. Ayer Manuscript Collection",
     ]
-    const subjectList = subjectArray.sort().map((s, index) => {
+    const subjectList = subjectArray.map((s, index) => {
         return <li key={index} onClick={() => handleChange(s)}>
             {
                 s === 'American Civil War (1861-1865)' ? 'Civil War' : 

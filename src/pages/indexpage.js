@@ -21,7 +21,10 @@ function IndexPage (){
   const [ resultCount, setResultCount ] = useState(0)
   const hash = window.location.hash.substring(2,3000)
   const search = queryString.parse(hash);
-  const dataurl = '/transcription/mms-transcribe/api/items/'
+  // const dataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/'
+  const dataurl = 'https://transcribe.newberry.org/api/items/'
+  // const dataurl = 'https://transcribe.newberry.org/api/items/'
+  // const dataurl = '/transcription/mms-transcribe/api/items/'
   const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)
   const [ filters, setFilters ] = useState({
@@ -74,12 +77,14 @@ function IndexPage (){
         } 
       })
     return item
-}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((x,y)=>x.featured?-1:1).sort((a,b) => {
+}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((a,b) => {
   
-  if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return 1
-  if (parseInt(a.dailyPercent) < parseInt(b.dailyPercent)) return -1
-  if (parseInt(a.pc) > parseInt(b.pc)) return 1
-  if (parseInt(a.pc) < parseInt(b.pc)) return -1
+  let aOrder = Math.max( a.pc, a.dailyPercent)
+  let bOrder = Math.max( b.pc, b.dailyPercent)
+  // if (parseInt(a.dailyPercent) > parseInt(b.dailyPercent)) return 1
+  // if (parseInt(a.dailyPercent) < parseInt(b.dailyPercent)) return -1
+  if (aOrder > bOrder) return 1
+  if (aOrder < bOrder) return -1
 })
   function addItems(){
     let newCount = Math.min(filteredData.length, itemsToShow + 21)

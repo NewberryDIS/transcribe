@@ -23,7 +23,7 @@ const RecentItem = () => {
     const [ img, setImg ] = useState('')
     const getItem = () => {
         // console.log('firing')
-        fetch('https://publications.newberry.org/transcription/mms-transcribe/recentdata.json')
+        fetch('https://transcribe.newberry.org/recentdata.json')
             .then(response => response.json())
             .then(data => makeItem(data));
     }
@@ -45,8 +45,8 @@ const RecentItem = () => {
         return returnt
     }
     const makeItem = props => {
-        setImg("http://publications.newberry.org/transcription/mms-transcribe/files/original/" + props.filename)
-        let itemlink = "https://publications.newberry.org/transcribe/item/" + props.document_id + "/page/" + props.document_page_id
+        setImg("http://transcribe.newberry.org/files/original/" + props.filename)
+        let itemlink = "https://transcribe.newberry.org/item/" + props.document_id + "/page/" + props.document_page_id
         let transcript = transcriptor(props.comment)
         const returnItem = <CoreBox className="footercontent tweets">
             <h3>Most Recent Contribution:</h3>

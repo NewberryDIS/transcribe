@@ -164,15 +164,23 @@ export const breakpointColumnsObj = {
     1300: 2,
     900: 1,
   }
-function ItemPage() {
+function ItemPage(props) {
     const { itemid, qtext } = useParams()
     const history = useHistory()
-    
     const [ searchTerm, setSearchTerm ] = useState(qtext === null || qtext === undefined ? '' : qtext)
     // console.log(searchTerm)
     const [ pagesToShow, setPagesToShow ] = useState(21)
+
     const item = items.find(o => o.id === itemid);
-    let itemdataurl = '/transcription/mms-transcribe/api/files?item='  + itemid
+    // const item = fetch(`/data/items.json`)
+    //     .then((r) => r.json())
+    //     .then((data) =>{
+    //         data.find(o => o.id === itemid);
+    //         console.log(data)
+    //     })
+    // let itemdataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item='  + itemid
+    let itemdataurl = 'https://transcribe.newberry.org/api/files?item='  + itemid
+    // let itemdataurl = '//transcribe.newberry.org/api/files?item='  + itemid
     function goFunction(itemid, pageid) {
         history.push('/item/' + itemid + '/page/' + pageid)
     }

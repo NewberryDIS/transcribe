@@ -227,7 +227,7 @@ const Textbox = props => {
             searchWords={[props.filter]}
             textToHighlight={props.searchresult.transcription}
         />
-        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://publications.newberry.org/transcription/mms-transcribe/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
+        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://transcribe.newberry.org/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
         
     </div>
 )}
@@ -255,7 +255,7 @@ const TextSearchResults = ({ tsr, id, filter }) => {
 }
 const Box = ({ boxProps }) => {
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
-    const img = boxProps.image!== undefined ? (boxProps.image.indexOf('default.jpg') > -1 ? boxProps.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.image.indexOf('mms-transcribe') > -1 ? boxProps.image : boxProps.image  + '/full/400,/0/default.jpg') : ''
+    const img = boxProps.image!== undefined ? (boxProps.image.indexOf('default.jpg') > -1 ? boxProps.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.image.indexOf('publications.newberry.org/transcription/mms-transcribe/files') > -1 ? boxProps.image.replace('publications.newberry.org/transcription/mms-transcribe/files', 'transcribe.newberry.org/files') : boxProps.image  + '/full/400,/0/default.jpg') : ''
     return (
         <Boxcss show={boxProps.show} >
             <div className="image"><Link to={'item/' + boxProps.id}><img src={img} alt={title}/></Link></div>

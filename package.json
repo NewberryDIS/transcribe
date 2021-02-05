@@ -27,7 +27,8 @@
     "react-twitter-embed": "^3.0.3",
     "string.prototype.matchall": "^4.0.2"
   },
-  "proxy": "http://publications.newberry.org",
+  "//": "comment this proxy out for development",
+  "//": "proxy: http://publications.newberry.org",
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
