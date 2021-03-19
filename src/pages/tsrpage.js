@@ -5,7 +5,7 @@ import { breakpointColumnsObj, NoResults } from './indexpage'
 import Box from '../components/newbox'
 import Loading from "../components/loading";
 
-// const itempages = require('../data/itempages.json')
+const itempages = require('../data/itempages.json')
 
 function TextSearchResults(props) {
 
@@ -13,7 +13,7 @@ function TextSearchResults(props) {
     // let mwQueryUrl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
     let mwQueryUrl = 'https://transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
     const [ data, loading ] = useFetch(mwQueryUrl)
-    const [ itempages, iploading ] = useFetch('/data/itempages.json')
+    // const [ itempages, iploading ] = useFetch('/data/itempages.json')
     let itempagearray = []
     const searchResults = data
     // console.log(data)
@@ -22,17 +22,17 @@ function TextSearchResults(props) {
     function boxicate(sresults) {
         // takes mediawiki pagename, parses it and converts from base64, pushes it into itempagearray 
         let b64converter = sresults.map(srrr => {
-            // console.log(srrr)
+            console.log(srrr)
 
             const btitle = srrr.title.split('.')
             // always starts with a . so the [0] is always ""
             const aitem = atob(btitle[1])
             let apage = atob(btitle[2])
             apage = parseInt(apage)
-            const matchitem = iploading ? 'undefined' : itempages.find(ip => ip.id == aitem)
+            const matchitem =  itempages.find(ip => ip.id == aitem)
             // console.log(matchitem.pages)
             // if the page isn't in the array of pages for that item, it's not added
-            if (matchitem !== 'undefined' && matchitem.pages.indexOf(apage) > -1) {
+            if (matchitem  && matchitem.pages.indexOf(apage) > -1) {
                 if (itempagearray.find(ip => ip.item === aitem) === undefined ){
                     itempagearray.push({item: aitem, pages: [{page: apage, snippet: srrr.snippet}]})
                 } else {

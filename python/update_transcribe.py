@@ -124,6 +124,15 @@ with open('itemsBothPages.json') as json_file:
             if e['element']['name'] == 'Subject':
                 # tagCleaner(e['text'], content['subjects'], id)
                 itemObj['category'] = e['text']
+            if e['element']['name'] == 'Description':
+                # urll = re.search("(?P<url>https?://[^\s]+)", e['text']).group("url")
+
+                # pattern = "(?P<url>https?://[^\s]+)\" (.*?)>View "
+                if re.search("(?P<url>https?://[^\s]+)", e['text']) is not None:
+                    substring = re.search("(?P<url>https?://[^\s]+)\"", e['text']).group("url")
+                    # substring = re.search(pattern, e['text']).group("url").replace('&amp;','&')
+                    itemObj['cataloglink'] = substring
+                    print(substring)
     # 3. iterate over files files and get completed status, then add transcripts to content.items.id, concatentated for ease of search
         with open(filesfilename) as files:
             filesJson = json.load(files)
