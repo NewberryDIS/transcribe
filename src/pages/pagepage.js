@@ -147,7 +147,7 @@ const PagePage = () => {
             <Topbar  />
             <Background />
             <div className="iframeContainer">
-                {loading? '' : <iframe src={`https://transcribe.newberry.org/scripto/transcribe/${itemid}/${pageid}#transcription`} placeholder={"Loading..."} title="transcription page"  /> }
+                {loading? '' : <iframe src={`https://digital.newberry.org/transcribe/omeka/scripto/transcribe/${itemid}/${pageid}#transcription`} placeholder={"Loading..."} title="transcription page"  /> }
             </div>
             <Footer />
         </Wrapper>

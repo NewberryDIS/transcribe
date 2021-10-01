@@ -2,7 +2,7 @@
   "name": "transcribe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "//publications.newberry.org/transcribe",
+  "homepage": "//publications.newberry.org/transcribe/",
   "dependencies": {
     "@egjs/react-infinitegrid": "^3.0.5",
     "@emotion/core": "^10.0.28",

@@ -23,7 +23,8 @@ const RecentItem = () => {
     const [ img, setImg ] = useState('')
     const getItem = () => {
         // console.log('firing')
-        fetch('https://transcribe.newberry.org/recentdata.json')
+        // fetch('https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/recentdata.json')
+        fetch('https://digital.newberry.org/transcribe/omeka/recentdata.json')
             .then(response => response.json())
             .then(data => makeItem(data));
     }
@@ -45,8 +46,8 @@ const RecentItem = () => {
         return returnt
     }
     const makeItem = props => {
-        setImg("http://transcribe.newberry.org/files/original/" + props.filename)
-        let itemlink = "https://transcribe.newberry.org/item/" + props.document_id + "/page/" + props.document_page_id
+        setImg("http://digital.newberry.org/transcribe/omeka/files/original/" + props.filename)
+        let itemlink = "https://digital.newberry.org/transcribe/omeka/item/" + props.document_id + "/page/" + props.document_page_id
         let transcript = transcriptor(props.comment)
         const returnItem = <CoreBox className="footercontent tweets">
             <h3>Most Recent Contribution:</h3>

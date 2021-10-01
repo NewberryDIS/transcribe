@@ -23,7 +23,7 @@ function ListFormIndex (){
   const [ resultCount, setResultCount ] = useState(0)
   const hash = window.location.hash.substring(2,3000)
   const search = queryString.parse(hash);
-  const dataurl = 'https://transcribe.newberry.org/api/items/'
+  const dataurl = 'https://digital.newberry.org/transcribe/omeka/api/items/'
   // const dataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/'
   const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)

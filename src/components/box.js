@@ -227,7 +227,7 @@ const Textbox = props => {
             searchWords={[props.filter]}
             textToHighlight={props.searchresult.transcription}
         />
-        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://transcribe.newberry.org/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
+        <Bluebutton className="bottomlink"><div className="wrapper"><a className="button"  href={'https://digital.newberry.org/transcribe/omeka/scripto/transcribe/' + props.id + '/' + props.searchresult.pageid} >Go to page</a></div></Bluebutton>
         
     </div>
 )}
@@ -255,7 +255,29 @@ const TextSearchResults = ({ tsr, id, filter }) => {
 }
 const Box = ({ boxProps }) => {
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
-    const img = boxProps.image!== undefined ? (boxProps.image.indexOf('default.jpg') > -1 ? boxProps.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : boxProps.image.indexOf('publications.newberry.org/transcription/mms-transcribe/files') > -1 ? boxProps.image.replace('publications.newberry.org/transcription/mms-transcribe/files', 'transcribe.newberry.org/files') : boxProps.image  + '/full/400,/0/default.jpg') : ''
+    const img = boxProps.image!== undefined ? boxProps.image : ''
+    console.log('okokok')
+    if (img.indexOf('default.jpg') > -1) {
+        img.replace('/full/full/0/default.jpg','/full/400,/0/default.jpg')
+        console.log('replaceing full/full with iiif goodness')
+    }
+    if (img.indexOf('publications.newberry.org/transcription/mms-transcribe/files') > -1 ){
+        img.replace('publications.newberry.org/transcription/mms-transcribe/files', 'digital.newberry.org/transcribe/omeka/files') 
+        console.log('replaceing publications with digital')
+    }
+    if (img.indexOf('transcribe.newberry.org/files') > -1 ){
+        img.replace('transcribe.newberry.org/files', 'digital.newberry.org/transcribe/omeka/files') 
+        console.log('replaceing transcribe with digital')
+    } else (
+        console.log('not replacing transcribe with digital because : '  + img)
+    )
+    // img = img.indexOf('default.jpg') > -1 ? img.replace('/full/full/0/default.jpg','/full/400,/0/default.jpg') : img
+    // img = img.indexOf('publications.newberry.org/transcription/mms-transcribe/files') > -1 
+    //     ? img.replace('publications.newberry.org/transcription/mms-transcribe/files', 'digital.newberry.org/transcribe/omeka/files') 
+    //     : img
+    // img = img.indexOf('transcribe.newberry.org/files') > -1 
+    //     ? img.replace('transcribe.newberry.org/files', 'digital.newberry.org/transcribe/omeka/files') 
+    //     : img
     return (
         <Boxcss show={boxProps.show} >
             <div className="image"><Link to={'item/' + boxProps.id}><img src={img} alt={title}/></Link></div>

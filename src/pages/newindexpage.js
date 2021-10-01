@@ -23,7 +23,7 @@ function IndexPage (){
   const search = queryString.parse(window.location.search);
     // console.log(search)
   // const dataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/'
-  const dataurl = 'https://transcribe.newberry.org/api/items/'
+  const dataurl = 'https://digital.newberry.org/transcribe/omeka/api/items/'
   const [ data, loading ] = useFetch(dataurl, true)
   const [ itemsToShow, setItemsToShow ] = useState(17)
   const [filters, setFilters ] = useState({

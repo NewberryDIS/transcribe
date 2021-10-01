@@ -55,8 +55,9 @@ export function numberWithCommas(x) {
 
 export const ItemProgress = ({ itemid, pageCount }) => {
 // export const ItemProgress = ({ itemid, pageCount, setOrder }) => {
-    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item=' + itemid
-    const itemdataurl = 'https://transcribe.newberry.org/api/files?item=' + itemid
+    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
+    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
+    const itemdataurl = 'https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
     const [data, loading] = useFetch(itemdataurl, false)
     let transCount = 0
     const percentage = data.map(i => {

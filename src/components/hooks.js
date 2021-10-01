@@ -5,14 +5,14 @@ export function useFetch(url, sort) {
     const [loading, setLoading] = useState(true);
     async function fetchUrl() {
         let json;
-        if (url === 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/items/' || url === 'https://transcribe.newberry.org/api/items/'){
+        if (url === 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/items/' || url === 'https://digital.newberry.org/transcribe/omeka/api/items/'){
             const responseOne = await fetch(url)
-            const urlTwo = url + '?page=2'
-            const responseTwo = await fetch(urlTwo)
-            let jsonOne = await responseOne.json()
-            let jsonTwo = await responseTwo.json()
-            Array.prototype.push.apply(jsonOne,jsonTwo)
-            json = jsonOne
+            // const urlTwo = url + '?page=2'
+            // const responseTwo = await fetch(urlTwo)
+            json = await responseOne.json()
+            // let jsonTwo = await responseTwo.json()
+            // Array.prototype.push.apply(jsonOne,jsonTwo)
+            // json = jsonOne
         } else {
             const response = await fetch(url)
             json = await response.json()

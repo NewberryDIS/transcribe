@@ -10,8 +10,8 @@ const itempages = require('../data/itempages.json')
 function TextSearchResults(props) {
 
 
-    // let mwQueryUrl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
-    let mwQueryUrl = 'https://transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
+    // let mwQueryUrl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/wiki/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
+    let mwQueryUrl = 'https://digital.newberry.org/transcribe/wiki/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
     const [ data, loading ] = useFetch(mwQueryUrl)
     // const [ itempages, iploading ] = useFetch('/data/itempages.json')
     let itempagearray = []

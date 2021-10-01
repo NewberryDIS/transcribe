@@ -8,8 +8,9 @@ import { IoIosSearch } from 'react-icons/io'
 const ItemSearch = props => {
     const { itemid, qtext } = useParams()
     const history = useHistory()
-    // const dataUrl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item=' + props.itemid
-    const dataUrl = 'https://transcribe.newberry.org/api/files?item=' + props.itemid
+    // const dataUrl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + props.itemid
+    // const dataUrl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + props.itemid
+    const dataUrl = 'https://digital.newberry.org/transcribe/omeka/api/files?item=' + props.itemid
     const [input, setInput] = useState(qtext === null ? '' : qtext)
     const [ data, loading ] = useFetch(dataUrl)
     const handleChange = (e) => {

@@ -220,8 +220,8 @@ const Box = ({boxProps, show, pages, filter}) => {
     const pagelist = pages !== undefined && pages.length > 0 
     const title = boxProps.title.length > 100 ? boxProps.title.substring(0,100) + '...' : boxProps.title
     const img = boxProps.image.indexOf('default.jpg') > -1 ? boxProps.image.replace('/full/full/0/default.jpg','/square/400,/0/default.jpg') : 
-        boxProps.image.indexOf('mms-transcribe') > -1 ? boxProps.image.replace('publications.newberry.org/transcription/mms-transcribe/files', 'transcribe.newberry.org/files') : 
-        boxProps.image.indexOf('transcribe.newberry.org/files') > -1 ? boxProps.image : 
+        boxProps.image.indexOf('mms-transcribe') > -1 ? boxProps.image.replace('publications.newberry.org/transcription/mms-transcribe/files', 'digital.newberry.org/transcribe/omeka/files') : 
+        boxProps.image.indexOf('transcribe.newberry.org/files') > -1 ? boxProps.image.replace('transcribe.newberry.org/files','digital.newberry.org/transcribe/omeka/files') : 
         boxProps.image  + '/full/400,/0/default.jpg'
     return (
         <Boxcss show={show}>

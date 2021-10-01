@@ -1,5 +1,5 @@
 export function textSearch ({filteredData}) {
-    let mwQueryUrl = 'transcribe.newberry.org/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
+    let mwQueryUrl = 'digital.newberry.org/transcribe/omeka/w/api.php?action=query&list=search&format=json&srwhat=text&srlimit=200&srsearch=' + props.textfilter
     let itempagearray = []
     async function fetchSearchResults() {
         const response = await fetch(mwQueryUrl);

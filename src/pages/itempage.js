@@ -179,8 +179,8 @@ function ItemPage(props) {
     //         console.log(data)
     //     })
     // let itemdataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item='  + itemid
-    let itemdataurl = 'https://transcribe.newberry.org/api/files?item='  + itemid
-    // let itemdataurl = '//transcribe.newberry.org/api/files?item='  + itemid
+    // let itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item='  + itemid
+    let itemdataurl = 'https://digital.newberry.org/transcribe/omeka/api/files?item='  + itemid
     function goFunction(itemid, pageid) {
         history.push('/item/' + itemid + '/page/' + pageid)
     }

@@ -25,9 +25,9 @@ imageList = []
 itemsFile = 'items.json'
 itemsFileModTime = os.path.getmtime(itemsFile)
 # if os.path.exists( itemsFile) and currTime - itemsFileModTime > 86400:
-urllib.request.urlretrieve('https://transcribe.newberry.org/api/items/', itemsFile)
+urllib.request.urlretrieve('http://transcribe.newberry.org/api/items/', itemsFile)
 itemsFile2 = 'items2.json'
-urllib.request.urlretrieve('https://transcribe.newberry.org/api/items/?page=2', itemsFile2)
+urllib.request.urlretrieve('http://transcribe.newberry.org/api/items/?page=2', itemsFile2)
 data = data2 = "" 
 # Reading data from file1 
 with open(itemsFile) as fp: 
@@ -125,14 +125,9 @@ with open('itemsBothPages.json') as json_file:
                 # tagCleaner(e['text'], content['subjects'], id)
                 itemObj['category'] = e['text']
             if e['element']['name'] == 'Description':
-                # urll = re.search("(?P<url>https?://[^\s]+)", e['text']).group("url")
-
-                # pattern = "(?P<url>https?://[^\s]+)\" (.*?)>View "
                 if re.search("(?P<url>https?://[^\s]+)", e['text']) is not None:
                     substring = re.search("(?P<url>https?://[^\s]+)\"", e['text']).group("url")
-                    # substring = re.search(pattern, e['text']).group("url").replace('&amp;','&')
                     itemObj['cataloglink'] = substring
-                    print(substring)
     # 3. iterate over files files and get completed status, then add transcripts to content.items.id, concatentated for ease of search
         with open(filesfilename) as files:
             filesJson = json.load(files)

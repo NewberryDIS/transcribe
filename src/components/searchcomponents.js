@@ -236,7 +236,7 @@ export const SubjSearch = props => {
         "Travelers’ writings",
         "U.S. Western Expansion",
         "Women",
-        "World's Columbian Exposition",
+        "World's Fairs",
         // "Everett D. Graff Collection of Western Americana",
         // "Edward E. Ayer Manuscript Collection",
     ]
