@@ -39,7 +39,22 @@ function IndexPage (){
     date: search !== undefined && search.date !== undefined ? search.date : 1 ,
     text: search !== undefined && search.text !== undefined ? [search.text] : [] ,
   })
-  const secretItems = [1290,1307,1312,1314,1384,1385,1400]
+  const secretItems = [
+    1290,
+    1307,
+    1312,
+    1314,
+    1384,
+    1385,
+    1400,
+    1402,  
+    1403, 
+    1404,
+    1405,   
+    1406,
+    1407,
+    1408
+  ]
   const filteredData = data.map((i, index) => {
       let item = {
         id: i.id,
