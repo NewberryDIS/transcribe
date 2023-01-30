@@ -16,6 +16,8 @@ import Jumbo from './components/jumbo'
 import Banner from './components/banner'
 import Background from './components/background'
 import Footer from './components/footer'
+import TestPage from './pages/testpag'
+// import Guidelines from './pages/guidelines'
 
 // import withTracker from './components/withTracker'
 
@@ -69,6 +71,8 @@ function App() {
       {/* <Banner /> */}
       <Body>
         <Switch>
+          {/* <Route path={`/guidelines`}  component={() => <Guidelines />} /> */}
+          <Route path={`/testpag`}  component={() => <TestPage setImage={setImage} />} />
           <Route path={`/item/:itemid/page/:pageid`}  component={() => <PagePage setImage={setImage} />} />
           <Route path={`/item/:itemid/search/:qtext`} component={() => <ItemPage setImage={setImage} />} />
           <Route path={`/item/:itemid`}               component={() => <ItemPage setImage={setImage} />} />
@@ -76,7 +80,7 @@ function App() {
           <Route                                      component={() => <IndexPage showMenu={showMenu} resultCount={resultCount} setResultCount={setResultCount} />} />
         </Switch>
       </Body>
-      {pathname.indexOf('page') > -1 ? '' : <Footer />}
+      {pathname.includes('page') ? '' : <Footer />}
     </div>
   );
 }

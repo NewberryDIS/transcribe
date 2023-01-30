@@ -43,6 +43,9 @@ const Jumbocss = styled.div`
         display: block;
         padding-bottom: 15px;
     }
+    .red {
+        color: red;
+    }
 `
 const Jumbo = () => {
     const instance = basicScroll.create({

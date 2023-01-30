@@ -17,7 +17,7 @@ export const CoreBox = styled.div`
     box-shadow: inset 0 0 10px rgba(${colors.fg},0.5);
 `
 export const Bluebutton = styled.div`
-        width: 100%;
+        // width: 100%;
         text-align: center;
         position: relative;
         .wrapper {
@@ -26,14 +26,14 @@ export const Bluebutton = styled.div`
             border: 1px solid  rgba(${colors.fg}, 1);
             box-shadow: inset 0 0 10px rgba(${colors.hl},1);
             padding: 0;
-            margin: 6px auto;
+            margin: 3px auto;
         }
         .button {
             text-decoration: none;
             font-family: ${fonts.sans};
             display: inline-block;
             width: initial;
-            padding: 10px 12px;
+            padding: 7px 12px;
             font-size: 14px;
             cursor: pointer;
             text-transform: uppercase;

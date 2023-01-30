@@ -2,7 +2,7 @@ import React from 'react'
 import { useFetch } from './hooks'
 import styled from '@emotion/styled'
 import { fonts, colors } from './csscomponents'
-// import { summary } from '/data/summary'
+import summary  from '../data/summary'
 
 const Progresscss = styled.div`
     border: 2px solid rgba(${colors.fg},0.7);
@@ -55,9 +55,7 @@ export function numberWithCommas(x) {
 
 export const ItemProgress = ({ itemid, pageCount }) => {
 // export const ItemProgress = ({ itemid, pageCount, setOrder }) => {
-    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
-    // const itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
-    const itemdataurl = 'https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
+    const itemdataurl = process.env.NODE_ENV === 'development' ?  'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid :  'https://digital.newberry.org/transcribe/omeka/api/files?item=' + itemid
     const [data, loading] = useFetch(itemdataurl, false)
     let transCount = 0
     const percentage = data.map(i => {
@@ -97,8 +95,11 @@ export const PageProgress = ({prog}) => {
 )}
 
 export function TotalProgress() {
-    const summaryUrl = '/transcribe/data/summary.json'
-    const [ data, loading ] = useFetch(summaryUrl)
+    // const summaryUrl = '/transcribe/data/summary.json'
+    // const [ data, loading ] = useFetch(summaryUrl)
+    let loading = false;
+    const data = summary
+    
     return (
         <>{ loading ? 'Loading...' : <>
             <div className="progress-text" >{numberWithCommas(data.summary.totalTranscount)} out of {numberWithCommas(data.summary.totalPages)} pages transcribed!</div>

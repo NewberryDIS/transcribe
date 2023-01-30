@@ -10,7 +10,7 @@ import ItemSearch from '../components/itemsearch'
 import { colors, fonts, Bluebutton } from '../components/csscomponents'
 import Highlighter from 'react-highlight-words'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     position: relative;
     margin: 10vh auto 0 auto;
     padding: 0;
@@ -178,9 +178,7 @@ function ItemPage(props) {
     //         data.find(o => o.id === itemid);
     //         console.log(data)
     //     })
-    // let itemdataurl = 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item='  + itemid
-    // let itemdataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/files?item='  + itemid
-    let itemdataurl = 'https://digital.newberry.org/transcribe/omeka/api/files?item='  + itemid
+    let itemdataurl = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/https://transcribe.newberry.org/api/files?item='  + itemid : 'https://digital.newberry.org/transcribe/omeka/api/files?item='  + itemid
     function goFunction(itemid, pageid) {
         history.push('/item/' + itemid + '/page/' + pageid)
     }

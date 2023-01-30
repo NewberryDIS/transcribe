@@ -7,6 +7,7 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import RecentItem from './recent'
 import tmpic from '../images/timemachine.png'
 import pspic from '../images/postcardsender.png'
+import digcoll from '../images/digcoll.png'
 
 const breakpointColumnsObj = {
     default: 2,
@@ -34,19 +35,19 @@ const Footer = () => {
                         <h3>Questions? Comments?</h3>
                         <p>Contact the Newberry’s Digital Initiatives and Services staff: <a href="https://twitter.com/digitalnewberry" target="_blank" rel="noopener noreferrer">@DigitalNewberry</a> or <a href="mailto:dis@newberry.org?Subject=Newberry%20Transcribe" target="_blank" rel="noopener noreferrer">dis@newberry.org</a></p>
                         <h3>About this project</h3>
-                        <p>Newberry Transcribe lets you contribute to historical scholarship, while learning about the everyday lives of individuals from a wide variety of backgrounds in the 19th and early 20th centuries. </p>
+                        <p>Newberry Transcribe lets you contribute to historical scholarship, while learning about the everyday lives of individuals from a wide variety of backgrounds and time periods. </p>
                         <p>By transcribing handwritten letters, diaries, and other materials from the Newberry's Modern Manuscript Collections, you're helping to preserve these voices from the past -- making their stories easier to find, search, and read.  <span className="notlink" onClick={e => toggleSection('about', e)}>More information.</span></p>
                         {about ?  <Modal  onClick={() => setabout(false)}><About setabout={setabout}/> </Modal> : ''}
                     </CoreBox>
                     <CoreBox className="footercontent license">
                         <h3>Guidelines</h3>
-                        <p>Unsure how to get started? <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p>
-                        <p>New to transcribing?  <span className="notlink" onClick={e => toggleSection('tips', e)}>Click here</span> for some tips that will help you transcribe more effectively. </p>
-                        {gettingStarted ? <Modal onClick={() => setgettingStarted(false)}><GettingStarted setgettingStarted={setgettingStarted}/> </Modal> : ''}
-                        {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''}
+                        {/* <p>Unsure how to get started? <span className="notlink" onClick={e => toggleSection('gettingStarted', e)}>Click here!</span></p> */}
+                        <p>New to transcribing, or unsure how to get started?  <a href="https://publications.newberry.org/transcribe/guidelines/">Here are some tips that will help!</a> </p>
+                        {/* {gettingStarted ? <Modal onClick={() => setgettingStarted(false)}><GettingStarted setgettingStarted={setgettingStarted}/> </Modal> : ''}
+                        {tips ? <Modal  onClick={() => settips(false)}><Tips settips={settips}/> </Modal> : ''} */}
                         <h3>License</h3>
                         <p>
-                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions" target="_blank" rel="noopener noreferrer">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a href="//publications.newberry.org/transcribe/data/itemTranscriptions.json" target="_blank" rel="noopener noreferrer">here</a> (approx 65 MB). 
+                            Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/policies#open-access" target="_blank" rel="noopener noreferrer">Newberry Open Access Policy.</a>  The transcription data is available in json format <a href="//publications.newberry.org/transcribe/data/itemTranscriptions.json" target="_blank" rel="noopener noreferrer">here</a>.  The previously transcribed content is still available, <a href="//publications.newberry.org/transcribe/data/itemTranscriptions_221231.json" target="_blank" rel="noopener noreferrer">here</a> (80mb download). 
                             {/* Except where otherwise noted, contextual content on this site is made available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">Creative Commons Public Domain license</a>.  Digitized images and other media from the Newberry's collections are made available for any lawful purpose, commercial or non-commercial, without licensing or permission fees to the library, subject to the following terms and conditions: <a href="https://www.newberry.org/rights-and-reproductions" target="_blank" rel="noopener noreferrer">Newberry Rights and Reproductions Policy.</a>  The transcription data is available in json format <a href="https://publications.newberry.org/transcription/mms-transcribe/data/alltranscripts.json" target="_blank" rel="noopener noreferrer">here.</a>  */}
                         </p>
                     </CoreBox>
@@ -54,11 +55,18 @@ const Footer = () => {
                         <a href="https://publications.newberry.org/postcard-sender/" className="imagelink" target="_blank" rel="noopener noreferrer">
                             <img src={pspic} />
                         </a>
-                        <a href="https://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer" ><h3>Send a postcard!</h3></a>
-                        <p>Inspired after transcribing correspondence? Write a message to a friend with our Postcard Sender! </p>
-                        <p><a href="http://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer">Choose from a selection</a> or browse 26,000+ items at the <a href="https://archive.org/details/newberrypostcards" target="_blank" rel="noopener noreferrer">Newberry Postcards digital collection</a> and click the Sender link below any image.</p>
+                        <a href="https://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer" ><h3><a href="http://publications.newberry.org/postcard-sender/" target="_blank" rel="noopener noreferrer">Postcard Sender</a></h3></a>
+                        <p>Inspired after transcribing correspondence?  Choose a vintage postcard image and send a message to a friend! </p>
 
                     </CoreBox>
+                    <CoreBox className="footercontent">
+        <a href="https://collections.newberry.org/"  target="_blank" className="imagelink" rel="noopener noreferrer" >
+    <img src={digcoll} className="digcoll-image"/>
+            
+            </a>
+        <h3><a href="https://collections.newberry.org/"  target="_blank" rel="noopener noreferrer" >Newberry Digital Collections</a></h3>
+        <p>Browse thousands of digitized maps, books, photographs, video, artwork, and other rare and unique materials from the Newberry Library.</p>
+    </CoreBox>
                     <CoreBox className="footercontent timemachine">
                         <a href="https://publications.newberry.org/time-machine/" className="imagelink" target="_blank" rel="noopener noreferrer">
                             <img src={tmpic} />
@@ -67,6 +75,7 @@ const Footer = () => {
                         
                         <p>Travel to the past with highlights from our favorite letters and diaries -- transcribed by users like you!</p>
                     </CoreBox>
+
                     <CoreBox className="footercontent tweets">
 
                         <TwitterTimelineEmbed 
@@ -77,7 +86,6 @@ const Footer = () => {
                             options={{height: 400, tweetLimit: 5}} 
                             />
                     </CoreBox>
-                    <RecentItem />
                 </Masonry>
         </Gardacss>
     )
@@ -109,12 +117,12 @@ const About = ({setabout }) => (
                 <dt>Why transcribe?</dt>
                 <dd>Crowdsourced transcription projects like Newberry Transcribe give participants the chance to engage with manuscripts in new and exciting ways while also contributing to scholarship and expanding public access to previously hard-to-access documents. By allowing users to transcribe these documents, transcription projects make it possible to create searchable digitized texts for scholars to use in their research and members of the public to examine at their leisure. Though primary sources such as the items included in Newberry Transcribe are likely of great value to historians, sociologists, and other scholars, libraries lack the staff that would be needed to transcribe manuscript content on such a large scale. In order to make the collections searchable by researchers, the Newberry is turning to the public for help.</dd>
                 <dt>What manuscripts are available to transcribe?</dt>
-                <dd>Newberry Transcribe allows users to transcribe letters, diaries, journals, and other material from the Newberry’s Modern Manuscripts Collections, a repository of American manuscripts from the mid-18th through the 20th centuries. The content of the more than 800 physical collections mirrors the library’s collecting strengths, including all aspects of the history and culture of Chicago and the Midwest, American Indians, American History and Culture, Printing and Book Arts, Music, Religion, Genealogy, and Maps, Travel and Exploration.<br />
-                Holdings are strongest for Chicago and the Midwest, with over 500 collections in these areas. Consequently, many of the items included on this site are drawn from our Midwest Manuscripts Collection and provide first-hand accounts of everyday life in the Midwest during the 19th century. However, the site also includes items not specific to a single region, including the collected papers of a multi-generational family, the Everetts, whose members crisscrossed the country, settling in South Carolina, Kansas, and beyond. </dd>
+                <dd>Newberry Transcribe allows users to transcribe letters, diaries, journals, and other material from the Newberry’s Modern Manuscripts Collections, a repository of American manuscripts from the mid-18th through the 20th centuries. The content of the more than 800 physical collections mirrors the library’s collecting strengths, including all aspects of the history and culture of Chicago and the Midwest, American Indians, American History and Culture, Printing and Book Arts, Music, Religion, Genealogy, and Maps, Travel and Exploration.</dd>
+                <dd>Currently, Newberry Transcribe features selections of correspondence and other documents created by prominent social reformers of 20th-century Chicago. Learn more: <a href="https://publications.newberry.org/social-activism"  target="_blank" rel="noopener noreferrer">Transcribing Social Activism.</a> </dd>
                 <dt>How can I get started?</dt>
-                <dd>To get started, visit our Guidelines page for an overview of the transcription process.</dd>
+                <dd>To get started, visit our <a href="https://publications.newberry.org/transcribe/guidelines/"  target="_blank" rel="noopener noreferrer">Guidelines page</a> for an overview of the transcription process.</dd>
                 <dt>How can I view or search the transcriptions?</dt>
-                <dd>Completed transcriptions can be accessed using the search box at the left on the Newberry Transcribe home page. Additionally, they will be added periodically to digitized manuscripts at the Newberry's Internet Archive library, where they can be searched and browsed. Finally, to encourage digital scholarship projects, we have made the transcriptions available as a data set at our GitHub site. </dd>
+                <dd>Completed transcriptions can be accessed using the search box at the left on the Newberry Transcribe home page. Additionally, they will be at our digital collections site, where they can be searched and browsed. Access the in-progress collection here: <a href="https://collections.newberry.org/Share/46n52h3t8vi758a86a2dn5i4blpw5734" target="_blank" rel="noopener noreferrer">Transcribed manuscripts at Newberry Digital Collections</a>. Finally, to encourage digital scholarship projects, we have made the transcriptions available as a <a href="https://publications.newberry.org/transcribe/itemTranscriptions.json" target="_blank" rel="noopener noreferrer">JSON data set.</a> </dd>
                 <dt>What software does Newberry Transcribe use?</dt>
                 <dd>Newberry Transcribe is powered by Omeka with Scripto, open-source tools developed by the Roy Rosenzweig Center for History and New Media to enable community transcriptions of document files.  The front end is written in React JavaScript; <a href="https://github.com/newberrydis/transcribe" target="_blank" rel="noopener noreferrer">our code repository can be found here</a> </dd>
             <dt>Questions or comments?</dt>
@@ -125,7 +133,7 @@ const About = ({setabout }) => (
 const Tips = ({ settips }) => (
     <Contentcss onClick={e => e.stopPropagation()}>
     <Closebutton onClick={() => settips(false)} />
-        <h3>Transcription tips</h3>
+        <h3 id="transc-tips">Transcription tips</h3>
         <dl>
             <dt>Save your work</dt>
             <dd>After completing any transcription, remember to hit the save button to ensure that your work is preserved.</dd>

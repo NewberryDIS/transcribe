@@ -96,6 +96,7 @@ with open('itemsBothPages.json') as json_file:
         }
         sitemTranscriptions = {
             'id': str(i['id']),
+            'cataloglink': '',
             'pages': [],
         }
         id = str(i['id'])
@@ -122,10 +123,11 @@ with open('itemsBothPages.json') as json_file:
             if e['element']['name'] == 'Subject':
                 # tagCleaner(e['text'], content['subjects'], id)
                 itemObj['category'] = e['text']
-            if e['element']['name'] == 'Description':
+            if e['element']['name'] == 'Relation':
                 if re.search("(?P<url>https?://[^\s]+)", e['text']) is not None:
-                    substring = re.search("(?P<url>https?://[^\s]+)\"", e['text']).group("url")
+                    substring = re.search('(?P<url>https?://[^\s]+)', e['text']).group("url")
                     itemObj['cataloglink'] = substring
+                    sitemTranscriptions['cataloglink'] = substring
     # 3. iterate over files files and get completed status, then add transcripts to content.items.id, concatentated for ease of search
         with open(filesfilename) as files:
             filesJson = json.load(files)
@@ -134,6 +136,7 @@ with open('itemsBothPages.json') as json_file:
                 fileObj = {
                     'pageid': fi['id'],
                     'pagefilename': fi['filename'],
+                    'pageorigfilename': fi['original_filename'],
                     'transcription': '',
                 }
                 transcription = ''
@@ -157,12 +160,13 @@ with open('itemsBothPages.json') as json_file:
                 if ie['element']['name'] == 'Language':
                     # tagCleaner(ie['text'], content['languages'], id)
                     itemObj['lang'] = arrayCleaner(ie['text'])
-                if ie['element']['name'] == 'Relation': itemObj['desc'] = ie['text']
-                if ie['element']['name'] == 'Description':
+                if ie['element']['name'] == 'Description': itemObj['desc'] = ie['text']
+                if ie['element']['name'] == 'Relation':
                     pattern = "(?P<url>https?://[^\s]+)\" (.*?)>View c"
                     if re.search(pattern, ie['text']) is not None:
                         substring = re.search(pattern, ie['text']).group("url").replace('&amp;','&')
                         itemObj['cataloglink'] = substring
+                        sitemTranscriptions['cataloglink'] = substring
                 if ie['element']['name'] == 'Source':
                     itemObj['image'] = ie['text']
                     imageList.append(ie['text'])
@@ -191,16 +195,17 @@ with open('itemsBothPages.json') as json_file:
         #     json.dump(wholeItem, dataFile)
         print(itemObj['id'])
 itemData["items"].sort(key=operator.itemgetter('transcount'))
-content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
+if content['summary']['totalPages'] > 0:
+    content['summary']['percentTranscribed'] = round(content['summary']['totalTranscount'] / content['summary']['totalPages'], 4) * 100
 
 with open('../src/data/items.json', 'w') as dataFile:
-    json.dump(itemData, dataFile)
+    json.dump(itemData, dataFile, indent=4)
 with open('../src/data/itemTranscriptions.json', 'w') as dataFile:
-    json.dump(itemTranscriptions, dataFile)
+    json.dump(itemTranscriptions, dataFile, indent=4)
 with open('../src/data/summary.json', 'w') as dataFile:
-    json.dump(content, dataFile)
+    json.dump(content, dataFile, indent=4)
 with open('../public/data/summary.json', 'w') as dataFile:
-    json.dump(content, dataFile)
+    json.dump(content, dataFile, indent=4)
 print('downloaded ' + str(downloadedFileCount) + ' files; did not download ' + str(skippedFileCount) + ' files.')
 # print('touched in 2019: ' + str(yearlyModifiedCounter))
 # with open('./imageList.txt', 'w') as listfile:

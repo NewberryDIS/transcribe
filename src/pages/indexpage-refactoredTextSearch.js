@@ -25,8 +25,7 @@ function IndexPage (){
   const [ resultCount, setResultCount ] = useState(0)
   const hash = window.location.hash.substring(2,3000)
   const search = queryString.parse(hash);
-  // const dataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/items/'
-  const dataurl = 'https://digital.newberry.org/transcribe/omeka/api/items/'
+  const dataurl = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/items/' : 'https://digital.newberry.org/transcribe/omeka/api/items/'
   const [ data, loading ] = useFetch(dataurl, false)
   const [ itemsToShow, setItemsToShow ] = useState(17)
   const [ filters, setFilters ] = useState({

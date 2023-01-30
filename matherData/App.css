@@ -1,0 +1,23 @@
+
+main {
+  
+  width: 80%;
+  margin: 50px auto;
+  /* background-color: #282c34; */
+}
+table {
+  width: 100%;
+  /* margin: auto; */
+}
+td {
+  padding: 0 10px;
+  min-width: 100px;
+  border: 1px solid black;
+
+}
+tr {
+  margin-bottom: 25px;
+}
+img {
+  max-width: 300px;
+}

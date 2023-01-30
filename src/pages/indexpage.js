@@ -6,10 +6,10 @@ import { useFetch } from "../components/hooks";
 // import { location } from 'react-router-dom'
 import Box from '../components/newbox'
 import Loading from '../components/loading'
-import Sidebar from '../components/sidebar'
+import Sidebar from '../components/sidebar_new'
 import { colors, fonts } from '../components/csscomponents'
 import TextSearchResults from "./tsrpage";
-import itemsUnabridged from '../data/itemsUnabriged.json'
+import itemsUnabridged from '../data/apiitems.json'
 
 const queryString = require('query-string');
 
@@ -24,14 +24,10 @@ const pagecountNew = pagecountArray.reduce((a,b) => a + b, 0)
 
 const dateRegex = /[0-9]{4}/g
 function IndexPage (){
-  console.log(pagecountNew)
+  console.log(process.env.NODE_ENV)
   const [ resultCount, setResultCount ] = useState(0)
-  const hash = window.location.hash.substring(2,3000)
+  const hash = window.location.hash.substring(2)
   const search = queryString.parse(hash);
-  // const dataurl = 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/items/'
-  const dataurl = '/transcribe/omeka/api/items/'
-  const [ data, loading ] = useFetch(dataurl, false)
-  const [ itemsToShow, setItemsToShow ] = useState(17)
   const [ filters, setFilters ] = useState({
     title: search !== undefined && search.title !== undefined ? search.title : '',
     lang: search !== undefined && search.lang !== undefined ? search.lang : 'English',
@@ -39,21 +35,29 @@ function IndexPage (){
     date: search !== undefined && search.date !== undefined ? search.date : 1 ,
     text: search !== undefined && search.text !== undefined ? [search.text] : [] ,
   })
+  console.log(filters)
+  const dataurl = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/api/items/' : '/transcribe/omeka/api/items/'
+  const [ data, loading ] = useFetch(dataurl, false)
+  // const data = itemsUnabridged
+  // let loading = false
+  const [ itemsToShow, setItemsToShow ] = useState(17)
   const secretItems = [
-    1290,
-    1307,
-    1312,
-    1314,
-    1384,
-    1385,
-    1400,
-    1402,  
-    1403, 
-    1404,
-    1405,   
-    1406,
-    1407,
-    1408
+    // 1290,
+    // 1307,
+    // 1312,
+    // 1314,
+    // 1384,
+    // 1385,
+    // 1400
+    // 1402,  
+    // 1403, 
+    // 1404,
+    // 1405,   
+    // 1406,
+    // 1407,
+    // 1408,
+    // 1409,
+    // 1410
   ]
   const filteredData = data.map((i, index) => {
       let item = {
@@ -75,7 +79,7 @@ function IndexPage (){
           item.category = et.text
         } else if (et.element.name === 'Source') {
           item.image = et.text
-        } else if (et.element.name === 'Relation') {
+        } else if (et.element.name === 'Description') {
           item.desc = et.text
         } else if (et.element.name === 'Language') {
           item.lang = et.text.length > 0 ? et.text : 'English'
@@ -96,8 +100,11 @@ function IndexPage (){
           item.weight = et.text
         } 
       })
+      // console.log(item)
     return item
-}).filter(i => secretItems.indexOf(i.id) === -1).filter(i => filterFunctions(filters, i)).sort((a,b) => {
+}).filter(i => !secretItems.includes(i.id)).filter(i =>{
+  // console.log(i)
+  return  abbrFilterFunction(filters, i)}).sort((a,b) => {
   
   let aOrder = Math.max( a.pc, a.dailyPercent)
   let bOrder = Math.max( b.pc, b.dailyPercent)
@@ -127,32 +134,37 @@ function IndexPage (){
 
 export default IndexPage
 
-function filterFunctions(filter, item){
-    // filter.title === '' && filter.lang ===  'English' && filter.category === ''  && filter.date === 1  && filter.text === []
-    let titleFFunction, langFFunction, dateFFunction, catFFunction
-    titleFFunction = item.title.toLowerCase().indexOf(filter.title.toLowerCase()) > -1 ? true : false 
-    langFFunction = (filter.lang === 'English') ? item.lang.toLowerCase() === filter.lang.toLowerCase() : item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
-    filter.date = parseInt(filter.date)
-    if ( filter.date === 1 ) {
-        dateFFunction = true
-        console.log('no date filter')
-    } else if (filter.date === 1799 && item.date[0] < 1799 ) {
-      console.log('1799 date filter')
-      dateFFunction = true
-      langFFunction = true
-    }
-    else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
-        dateFFunction =  true
-    } else if ( item.date.length === 2 && item.date[0] <= (filter.date + 9) && item.date[1] >= filter.date ) {
-        dateFFunction =  true
-    } else {
-        console.log('data error in date array for item ' + item.id)
-    }
-    
-    catFFunction = item.category.toLowerCase().indexOf(filter.category.toLowerCase()) > -1 ? true : false 
-    const returnValue = titleFFunction && langFFunction && dateFFunction && catFFunction
-    return returnValue
+function abbrFilterFunction(filter, item){
+  return item.title.toLowerCase().includes(filter.title.toLowerCase())
 }
+
+// function filterFunctions(filter, item){
+
+//     // filter.title === '' && filter.lang ===  'English' && filter.category === ''  && filter.date === 1  && filter.text === []
+//     let titleFFunction, langFFunction, dateFFunction, catFFunction
+//     titleFFunction = item.title.toLowerCase().indexOf(filter.title.toLowerCase()) > -1 ? true : false 
+//     langFFunction = (filter.lang === 'English') ? item.lang.toLowerCase() === filter.lang.toLowerCase() : item.lang.toLowerCase().indexOf(filter.lang.toLowerCase()) > -1 ? true : false
+//     filter.date = parseInt(filter.date)
+//     if ( filter.date === 1 ) {
+//         dateFFunction = true
+//         // console.log('no date filter')
+//     } else if (filter.date === 1799 && item.date[0] < 1799 ) {
+//       // console.log('1799 date filter')
+//       dateFFunction = true
+//       langFFunction = true
+//     }
+//     else if ( item.date.length === 1 && item.date[0] >= filter.date && item.date[0] <= (filter.date + 9) ) {
+//         dateFFunction =  true
+//     } else if ( item.date.length === 2 && item.date[0] <= (filter.date + 9) && item.date[1] >= filter.date ) {
+//         dateFFunction =  true
+//     } else {
+//         console.log('data error in date array for item ' + item.id)
+//     }
+    
+//     catFFunction = item.category.toLowerCase().indexOf(filter.category.toLowerCase()) > -1 ? true : false 
+//     const returnValue = titleFFunction && langFFunction && dateFFunction && catFFunction
+//     return returnValue
+// }
 
 export const NoResults = styled.div`
   width: 50vw;

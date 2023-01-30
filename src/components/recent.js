@@ -23,8 +23,8 @@ const RecentItem = () => {
     const [ img, setImg ] = useState('')
     const getItem = () => {
         // console.log('firing')
-        // fetch('https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/recentdata.json')
-        fetch('https://digital.newberry.org/transcribe/omeka/recentdata.json')
+        let recentDataurl = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/https://digital.newberry.org/transcribe/omeka/recentdata.json' : 'https://digital.newberry.org/transcribe/omeka/recentdata.json'
+        fetch(recentDataurl)
             .then(response => response.json())
             .then(data => makeItem(data));
     }

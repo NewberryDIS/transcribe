@@ -82,7 +82,7 @@ const Topbarcss = styled.div`
 `
 
 const TopBar = () => {
-    const curtainText = [['Digital Newberry: ', '//publications.newberry.org/','dislink'],['Newberry Transcribe', '//publications.newberry.org/transcribe','homelink']]
+    const curtainText = [['Digital Newberry: ', '//publications.newberry.org/transcribe','dislink'],['Newberry Transcribe', '//publications.newberry.org/transcribe','homelink']]
     let breadcrumbs
     const location = useLocation()
     if (location.pathname.indexOf('item') === -1 ){
