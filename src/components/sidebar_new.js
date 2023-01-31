@@ -5,6 +5,7 @@ import { jsx, css  } from '@emotion/core'
 import { fonts, colors, Bluebutton } from './csscomponents'
 import { TitleSearch, TextSearch, DateSearch, LangSearch, SubjSearch } from './searchcomponents'
 import { TotalProgress } from './progress'
+import { HashLink  } from 'react-router-hash-link';
 
 const Sidebar = props => {
     return (
@@ -109,7 +110,7 @@ const Sidebar = props => {
                 <p className="thanks t-l1">
                 Please help improve searchability for these handwritten pages from our collections on U.S. social reform in the early to mid-20th century. Learn more: <a href="https://publications.newberry.org/social-activism/"  target="_blank" rel="noopener noreferrer">Transcribing Social Activism.</a>
                 </p>
-                <p className="thanks t-l2">New to the site? <a href="#transc-tips"  >Click here some tips that will help,</a> or simply choose a manuscript at the right and get started</p>
+                <p className="thanks t-l2">New to the site? <a href="https://publications.newberry.org/transcribe/guidelines/"  target="_blank" rel="noreferrer" >View our guidelines,</a> or simply choose a manuscript at the right and get started</p>
                 <TotalProgress />
                 <TitleSearch filters={props.filters} setFilters={props.setFilters} />
                 <TextSearch filters={props.filters} setFilters={props.setFilters} />
@@ -120,7 +121,7 @@ const Sidebar = props => {
                 </div>
 <p className="thanks t-l4">
 
-Many thanks to our amazing volunteers, who transcribed more than 70,000 manuscript pages previously posted to this site! Search or browse the in-progress collection here: <a href="https://collections.newberry.org/Share/46n52h3t8vi758a86a2dn5i4blpw5734"  target="_blank" rel="noopener noreferrer">Transcribed manuscripts at Newberry Digital Collections</a>
+Many thanks to our amazing volunteers, who transcribed more than 70,000 manuscript pages previously posted to this site! Search or browse the in-progress collection here: <a href="https://collections.newberry.org/Share/5465d67708o0qorw52h84fx38w2as616"  target="_blank" rel="noopener noreferrer">Transcribed manuscripts at Newberry Digital Collections</a>
 </p>
                 <p className="thanks t-l3">This project was made possible in part by the Institute of Museum and Library Services [CAGML-247293-OMLS-20].</p>
 

@@ -5,8 +5,9 @@ const TestPage = () => {
 
     return (
         <Boxescss> <Sidebar />test pages have fewer api calls
-        </Boxescss>
+        <a href="#transcrtips">ok</a>
     
+        </Boxescss>
     )
 }
 
