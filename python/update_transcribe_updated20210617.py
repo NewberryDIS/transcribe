@@ -107,7 +107,9 @@ with open('itemsBothPages.json') as json_file:
         itemurl = 'https://transcribe.newberry.org/api/items/' + id
         itemfilename = 'dataFiles/item' + id + '.json'
         if os.path.exists(filesfilename):
+        # if os.path.exists(filesfilename):
             fileModTime = os.path.getmtime(filesfilename)
+            # if True:
             if currTime - fileModTime > 86400:
                 downloadedFileCount += 1
                 urllib.request.urlretrieve(filesurl, filesfilename)
