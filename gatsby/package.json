@@ -9,7 +9,7 @@
     "@emotion/styled": "^10.0.27",
     "@loadable/component": "^5.12.0",
     "basicscroll": "^3.0.3",
-    "gatsby": "^2.32.13",
+    "gatsby": "^5.13.4",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-google-analytics": "^2.3.2",
     "gatsby-plugin-manifest": "^2.2.48",
