@@ -1,1 +1,0 @@
-Rebuild of Newberry Transcribe site

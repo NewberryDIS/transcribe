@@ -1,0 +1,155 @@
+<style>
+ul {
+  list-style: none;
+
+}
+li {
+
+  padding: 0;
+  margin: 0;
+}
+h3 {
+  margin: 0;
+}
+/* Container styles */
+.split-container {
+  width: 80vw;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.split-wrapper {
+  display: flex;
+  min-height: 100%;
+}
+
+.split-wrapper.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Section styles */
+.split-side {
+  flex: 1;
+  padding: 2rem;
+}
+
+.split-left {
+background-color: var(--bg-accent-color);
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.split-right {
+background-color: color-mix(in oklab, var(--bg-accent-color) 77%, transparent);
+}
+
+/* Card grid styles */
+.card-grid, .split-side ul {
+  padding: 0;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1rem;
+}
+
+.section-link {
+  margin: 33px auto;
+}
+.li-img {
+aspect-ratio: 1/1;
+position: relative;
+/* padding: 1rem; */
+border-radius: 0.5rem;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  & a {
+
+width: 100%;
+height: 100%;
+  }
+& img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+border-radius: 0.5rem;
+}
+}
+
+/* Typography */
+.section-title {
+
+font-size:  var(--main-title-font-size);
+font-weight: bold;
+}
+
+.card-title , .split-side em {
+position: absolute; 
+  left: 0;
+  right: 0;
+bottom: 0;
+  padding: 0.5rem 1rem;
+background: var(--fg-accent-color);
+color: var(--bg-accent-color);
+font-size: 1.25rem;
+font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+.split-wrapper, .split-wrapper.reverse {
+flex-direction: column;
+}
+
+
+
+.split-container {
+width: 95vw;
+}
+}
+.split-left, .split-right {
+  flex: 1;
+10
+  @media (max-width: 1300px) and (min-width: 1000px) {
+    .split-left { 
+      flex: 1;
+    }
+    .split-right {
+      flex: 2;
+    }
+}
+</style>
+<section class="split-container">
+  <div class="split-wrapper">
+    <div class="split-side split-left">
+      <h2 class="section-title">Choose a creator</h2>
+      <p>Our diarists and correspondants come from all walks of life.  Choose from social activists, novelists, homemakers, and lots more</p>
+      <a href="/creators" class=" button-like section-link">Browse creators</a>
+    </div>
+    <div class="split-side split-right">
+          {{ gallery_creators | safe }}
+  </div>
+</section>
+
+<!-- Second section - reversed orientation -->
+<section class="split-container">
+  <div class="split-wrapper reverse">
+    <div class="split-side split-left">
+      <h2 class="section-title">Choose a manuscript</h2>
+      <p>Select from thousands of pages of letters, diaries, and business records, spanning the 18th through 20th centuries</p>
+      <a href="/transcribe" class="button-like section-link">Browse manuscripts</a>
+    </div>
+    <div class="split-side split-right">
+      <ul class="card-grid">
+
+        {% for ms in gallery_mss %}
+        <li class="li-img">
+          <a href="/ms/{{ ms.ms_id }}">
+            <img alt="" src="https://collections.newberry.org/IIIF3/Image/{{ ms.repimage }}/full/,400/0/default.jpg"> 
+            <h3 class="card-title">{{ ms.short_title if ms.short_title else ms.title }}</h3>
+          </a> 
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

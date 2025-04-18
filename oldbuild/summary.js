@@ -1,1 +1,0 @@
-export const summary = {"totalPages": 61594, "totalTranscount": 44409, "percentTranscribed": 72.1}

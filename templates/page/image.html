@@ -1,0 +1,29 @@
+<div id='openseadragon' style='width: 100%; height: 100%;'>
+</div>
+
+<script>
+  picUrl = 'https://collections.newberry.org/IIIF3/Image/{{ image }}/info.json';
+
+  // console.log(picUrl)
+  // console.log("image link:", "https://collections.newberry.org/IIIF3/Image/{{ image }}/full/,400/0/default.jpg");
+
+  // if it exists, destroy it; then you can make it again
+  if (viewer) {
+    viewer.destroy();
+    // important
+    viewer = null;
+  } else {
+    var viewer;
+  }
+
+  viewer = OpenSeadragon({
+    id: "openseadragon",
+    prefixUrl: "/static/js/openseadragon/images/",
+    showRotationControl: true,
+    autoHideControls: false,
+    // homeFillsViewer: true,
+    tileSources: [picUrl]
+  });
+
+</script>
+

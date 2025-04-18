@@ -1,0 +1,4 @@
+<div hx-swap-oob="true" id="total-transcribed">
+    <progress-bar id="total-transcribed-bar" transcribed="{{ "%.0f" % ((total_transcribed/total_pages)*100) }}" ></progress-bar>
+    <span id="total-transcribed-caption">{{ "{:,.0f}".format(total_transcribed) }} OUT OF {{ "{:,.0f}".format(total_pages) }} PAGES TRANSCRIBED</span>
+</div>

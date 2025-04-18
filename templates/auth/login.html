@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<title>Login/Register</title>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/leaderboard.css') }}">
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+<script>
+    function highlightActiveTab(tab){
+        const tabs = document.getElementsByClassName("auth-tab"); 
+        Array.from(tabs).forEach(t => {
+            t.classList.remove("active");
+        });
+        
+        // Add active class to the clicked tab
+        let thisTab = document.getElementById(tab);
+        thisTab.classList.add("active");
+    }  
+</script>
+{% endblock %}
+
+{% block content %}
+<div  id="login-page">
+    <div id="tabs-and-form">
+        <div id="tabs">
+            <button
+                class="auth-tab active" id="login" onclick="highlightActiveTab('login')" 
+                hx-get="/login/login-form" hx-target="#auth-form" hx-trigger="click" hx-swap="innerHTML">
+                Log In
+            </button>
+            <button
+                class="auth-tab " id ="signup" onclick="highlightActiveTab('signup')" 
+                hx-get="/login/signup-form" hx-target="#auth-form" hx-trigger="click" hx-swap="innerHTML">
+                Sign Up
+            </button>
+        </div>
+        <div id="auth-form" role="tabpanel" hx-get="/login/login-form" hx-target="#auth-form" hx-trigger="load delay:100ms" hx-swap="innerHTML"></div>
+    </div>
+</div>
+
+{% include 'chunks/leaderboard.html' %}
+
+{% endblock %}

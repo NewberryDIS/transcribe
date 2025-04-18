@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+gunicorn
+sqlalchemy
+supabase
+jinja2
+markdown
+pydantic[email]
+pydantic-settings
+psycopg2-binary
+python-multipart
+httpx
+beautifulsoup4

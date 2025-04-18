@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{page.title | truncate(20, True, "")}} (Page {{ page.page_number }}){% endblock %}
+
+{% block content %}
+{% if review!='?review' %}{% include 'chunks/quick_tips.html' %}{% endif %}
+<div class="breadcrumbs">
+  <a href="/" class="llines">Transcribe Home</a>
+  &gt;
+  <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review' %}Review{%else%}Transcribe{%endif%}</a>
+  &gt;
+  <a href="/ms/{{ ms_id }}{{review}}" class="llines">{{ page.title }}</a>
+  &gt;
+  Page {{ page.page_number }} of {{ page.num_pages }}
+</div>
+<article>
+  <section class="left">
+    <div id="transcription-interface"
+      hx-get="/page/{{ page.ms_id}}/{{ page.page_number }}/input/transcription{{ review }}"
+      hx-trigger="load delay:100ms" hx-target="#transcription-interface" hx-swap="innerHTML"></div>
+  </section>
+  <section class="right" id="right">
+  <!-- <div id="approved-ribbon" style={{ 'display:grid;' if page.status=='reviewed' else 'display:none;' }}><span>Approved</span></div> -->
+    {% include 'page/image.html' %}
+  </section>
+</article>
+<script>
+  function closeModal() {
+    document.getElementById("resultModal").remove()
+  }
+
+  // shows the ribbon and disables submits after reviewed
+  document.body.addEventListener('htmx:afterRequest', function(evt) {
+    if(evt.detail.elt.id=='transcription-form' && document.getElementById("transcription-form").getAttribute("review")=='?review'){
+      // document.getElementById("approved-ribbon").style.display = "grid"
+      document.getElementById("approve-button").disabled = true;
+      document.getElementById("save-button").disabled = true;
+    }
+  });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<script>let picUrl = ''</script>
+<script src="{{ url_for('static', path='/js/openseadragon/openseadragon.min.js') }}"></script>
+<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/page.css') }}">
+{% endblock %}

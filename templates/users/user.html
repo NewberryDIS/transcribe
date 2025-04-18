@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<title>User Profile</title>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/leaderboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/user.css') }}">
+{% endblock %}
+{% block content %}
+<style>
+    body {
+      background-image: url('https://collections.newberry.org/IIIF3/Image/{{ user_background }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ user_background }}/full/,1000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ user_background }}/full/,300/0/default.jpg');
+    }
+</style>
+
+<script>
+    function openTab(id, tab){
+        const tabcontent = document.getElementsByClassName("contr-content"); 
+        const tabs = document.getElementsByClassName("contr-tab")
+        Array.from(tabcontent).forEach(t => {
+            t.style.display="none";
+        });
+        Array.from(tabs).forEach(t=> {
+            t.classList.remove("active")
+        });
+        
+        // display the content associated with tab clicked
+        document.getElementById(id).style.display = "block";
+
+        // Add active class to the clicked tab
+        tab.classList.add("active");
+    }  
+
+    function showSaveButton(){
+        document.getElementById("save-photo").style.display = "block";
+    }
+
+    function hideSaveButton(){
+        document.getElementById("save-photo").style.display = "none";
+    }
+
+    function showPreview(upload){
+        var avatar = document.getElementById("avatar");
+        console.log("uploaded");
+        file = upload.files[0]
+        if(file){
+            avatar.src = URL.createObjectURL(file);
+            avatar.onload = () => {
+                URL.revokeObjectURL(avatar.src);
+            };
+
+        }
+    }
+
+
+</script>
+
+<div class="user-container">
+    <div class="left">
+        <div id="top">
+            <div class="user-info">
+                <div id="img-container">
+                    <label id="avatar_label" for="avatar_upload" onclick="showSaveButton()">
+                        <img id="avatar" src="https://awntuwhgnlwgckwgfurh.supabase.co/storage/v1/object/public/avatars/{{ user.avatar if user.avatar is not none else '/none.svg' }}">
+                    </label>
+                </div>
+                <div class="info">
+                    <h1>{{ user.username }}</h1>
+                    <span>Transcribed: {{ contributions|selectattr('status','equalto','transcribed')|list|length }} pages</span>
+                    <span>Translated: {{ contributions|selectattr('status','equalto','translated')|list|length }} pages</span>
+                    <span>Reviewed: {{ contributions|selectattr('status','equalto','reviewed')|list|length }} pages</span>
+                </div>
+            </div>
+            <form enctype=multipart/form-data action="/auth/set-avatar" method="POST">
+                <input type="file" id="avatar_upload" name="avatar_upload" accept="image/*" onchange="showPreview(this)" style="display:none"/>
+                <button id="save-photo" type="submit" onsubmit="hideSaveButton()">Save photo</button>
+            </form>
+        </div>
+        <div id="bottom">
+            <div id="tabs">
+                <button class="contr-tab active" id="default-open" onclick="openTab('recent',this)">Recent</button>
+                <button class="contr-tab" onclick="openTab('all',this)">All</button>
+            </div>
+            <hr>
+            {% include '/users/contributions.html' %}
+
+        </div>
+    </div>
+    <div class="right">
+        {% include '/chunks/leaderboard.html' %}
+        <!-- <span>Member Since: {{ user.created_at.strftime('%B %d, %Y') }}</span> -->
+        <form action="/auth/logout" method="post" class="inline">
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

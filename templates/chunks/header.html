@@ -1,0 +1,45 @@
+<section class="header-left">
+  <newberry-logo></newberry-logo>
+</section>
+
+<section class="header-right">
+  <nav class="site-nav">
+    <div class="site-title">
+      <h1><a id="header-home-link" class="llines" href="/">Newberry Transcribe</a></h1>
+    </div>
+    <ul role="list">
+      <li><a href="/transcribe">Transcribe</a></li>
+      <li><a href="/review">Review</a></li>
+      <li><a href="/creators">Creators</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/tutorial">Tutorial</a></li>
+      <li>{{header_menu | safe}}</li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/login">
+          {% if user %}
+          Account
+          {% else %}
+          Log in
+          {% endif %}
+        </a></li>
+    </ul>
+  </nav>
+  <button id="menu-button" class="closed-menu" onclick="toggleMenu()">
+    <div class="ex"></div>
+    <div class="xex"></div>
+    <div class="xe"></div>
+  </button>
+</section>
+<style>
+  .beta-banner {
+
+    /* width: calc(100% - var(--header-left-width) - var(--header-right-width) - var(--header-gap)); */
+
+  }
+</style>
+<script>
+  function toggleMenu() {
+    let menu = document.querySelector("#menu-button");
+    menu.classList.toggle("closed-menu")
+  }
+</script>

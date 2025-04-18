@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/mw/api.php",
+      "status": 404,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "dest": "/404"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "app/main.py"
+    }
+  ]
+}

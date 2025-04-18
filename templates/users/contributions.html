@@ -1,0 +1,86 @@
+<div id="recent" class="contr-content" style="display: block;">
+    {% if contributions %}
+
+    {% if contributions|selectattr('status','equalto','transcribed')|list|length > 0 %}
+    {% set transcribed = contributions|selectattr('status','equalto','transcribed')|list %}
+    <h3>Transcribed</h3>
+    <div id="transcribed" class="cards">
+        {% for c in (transcribed)[:3] %}
+        <a href='/page/{{c.ms_id}}/{{c.page_number}}' class='card'>
+            <img src="https://collections.newberry.org/IIIF3/Image/{{ c.image }}/square/300,/0/default.jpg"
+                alt="a page of handwritten text" />
+            <p class='title'>{{ c.title }}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <hr class="hr-contr">
+    {% endif %}
+    {% if contributions|selectattr('status','equalto','translated')|list|length > 0 %}
+    {% set translated = contributions|selectattr('status','equalto','translated')|list %}
+    <h3>Translated</h3>
+    <div id="translated" class="cards">
+        {% for c in (translated)[:3] %}
+        <a href='/page/{{c.ms_id}}/{{c.page_number}}' class='card'>
+            <img src="https://collections.newberry.org/IIIF3/Image/{{ c.image }}/square/300,/0/default.jpg"
+                alt="a page of handwritten text" />
+            <p class='title'>{{ c.title }}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <hr class="hr-contr">
+    {% endif %}
+    {% if contributions|selectattr('status','equalto','reviewed')|list|length > 0 %}
+    {% set reviewed = contributions|selectattr('status','equalto','reviewed')|list %}
+    <h3>Reviewed</h3>
+    <div id="reviewed" class="cards">
+        {% for c in (reviewed)[:3] %}
+        <a href='/page/{{c.ms_id}}/{{c.page_number}}?review' class='card'>
+            <img src="https://collections.newberry.org/IIIF3/Image/{{ c.image }}/square/300,/0/default.jpg"
+                alt="a page of handwritten text" />
+            <p class='title'>{{ c.title }}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <hr class="hr-contr">
+    {% endif %}
+
+    {% else %}
+    <div id="no-contr">
+        <span>No contributions yet. Head to <a href="/transcribe" class="underline" color="var(--accent-color)">manuscripts</a> to get started!</span>
+    </div>
+    {% endif %}
+</div>
+<div id="all" class="contr-content">
+    {% if contributions %}
+    <table id="recent-contributions">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Item</th>
+            <th scope="col">Page</th>
+            <th scope="col">Contribution</th>
+        </tr>
+        {% for c in contributions %}
+        <tr>
+            <td class="timedate">{{ c.contribution_timestamp }}</td>
+            <td><a color="var(--bg-accent-color)" text-decoration="underline" {% if c.status=='reviewed'%} href="/ms/{{c.ms_id}}?review" {%else%} href="/ms/{{c.ms_id}}" {%endif%}>{{c.title}}</a></td>
+            <td><a color="var(--bg-accent-color)" class="underline" {% if c.status=='reviewed'%} href="/page/{{c.ms_id}}/{{c.page_number}}?review" {%else%} href="/page/{{c.ms_id}}/{{c.page_number}}" {%endif%}>{{c.page_number}}</a></td>
+            <td>{{ c.status.capitalize() }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <div id="no-contr">
+        <span>No contributions yet. Head to <a href="/transcribe" class="underline" color="var(--accent-color)">manuscripts</a> to get started!</span>
+    </div>
+    {% endif %}    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+window.onload = function(){
+    document.querySelectorAll(".timedate").forEach(function(el){
+        var utcTime = moment.utc(el.innerText);
+        utcTime.local();
+        el.innerText = utcTime.format('MMM DD, YYYY, h:mm a')
+    })
+}
+</script>

@@ -1,0 +1,21 @@
+CREATE TABLE creator (
+    slug VARCHAR(255) PRIMARY KEY,
+    bioblurb TEXT,
+    biographicalnote TEXT,
+    caption TEXT,
+    collectionguide TEXT,
+    collectionscopenote TEXT,
+    dates VARCHAR(255),
+    displayname VARCHAR(255),
+    featured VARCHAR(10),
+    indexname VARCHAR(255),
+    mei VARCHAR(255),
+    repImage VARCHAR(255),
+    rr1text VARCHAR(100),
+    rr1url VARCHAR(100),
+    rr2text VARCHAR(100),
+    rr2url VARCHAR(100),
+    rr3text VARCHAR(100),
+    rr3url VARCHAR(100),
+    sysid VARCHAR(50)
+);

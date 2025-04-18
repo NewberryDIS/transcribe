@@ -1,0 +1,174 @@
+{% extends "index_base.html" %}
+
+{%block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/how-to.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/jumbotron.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/center-box.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/beta-banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/tests/horiz.css') }}">
+<style>
+  /* css that has to stay in this file */
+  body {
+    /* wtfffffff
+    background-image: {
+        {
+        t.image_set | safe
+      }
+    }
+
+    ; */
+  }
+</style>
+{% endblock %}
+{% block body %}
+
+<body class="nt-{{ t.image }} horiz"
+  style="background-image: url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/1000,/0/default.jpg'), url('{{ url_for('static', path='/images/jumbo/' + t.image + '-sm.jpg') }}');">
+  <header id="header" class="sneaky-header glassy">
+    {% include "chunks/header.html" %}
+  </header>
+  <main>
+    <article class="top">
+      {% include "chunks/jumbotron.html" %}
+      {% include "chunks/center-box.html" %}
+    </article>
+    <article>
+      <div class="choose mss">
+        <div class="header-wrapper">
+          <h2>Choose a manuscript</h2>
+          <p id="title-anchor">
+            Select from thousands of pages of letters, diaries, and business records, spanning the 18th
+            through
+            20th centuries
+          </p>
+          <div class="button-wrapper">
+            <a href="/manuscripts" class="button-like index-button">Browse manuscripts</a>
+          </div>
+          <!-- <p class="citation">Background image: -->
+          <!-- <a href="https://collections.newberry.org/asset-management/2KXJ8ZSAT7VXS" target="_blank" class="llines"> -->
+          <!-- Chicago Club, 1907 </a> -->
+          <!-- </p> -->
+        </div>
+        {{ gallery_mss | safe }}
+      </div>
+    </article>
+    <article>
+      <div class="choose creator">
+        <div class="creator-overlay">
+          <h5 class="message">Coming soon!</h5>
+        </div>
+        <div class="header-wrapper">
+          <h2>Choose a creator</h2>
+          <p>
+            Our diarists and correspondents come from all walks of life. Choose from social activists,
+            novelists, homemakers, and lots more
+          </p>
+          <div class="button-wrapper">
+            <a href="/creators" class="button-like index-button">Browse creators</a>
+          </div>
+          <p class="citation">Background image:
+            <a href="https://collections.newberry.org/asset-management/2KXJ8ZSATCW2M" target="_blank" class="llines">
+              Michigan Avenue, Chicago, ca. 1910s </a>
+          </p>
+        </div>
+        {{ gallery_creators | safe }}
+      </div>
+    </article>
+
+    <footer>
+      {{ footer_menu | safe }}
+    </footer>
+  </main>
+
+</body>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // const toKeepCodeFromCukfingUpMyCss = "background-image: {{ t.image_set | safe }};"
+  // const body = document.body;
+  // body.style.backgroundImage = toKeepCodeFromCukfingUpMyCss;
+  // header scroll 
+
+  const header = document.getElementById('header');
+
+  let ticking = false;
+
+  function toggleHeaderClass() {
+    if (null !== header) {
+      const scrollPercent = (window.scrollY / window.innerHeight) * 100;
+      header.classList.toggle('not-sneaky', scrollPercent >= 50);
+    }
+  }
+
+  document.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleHeaderClass();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+
+  // transcription fanciness / jumbotron 
+
+  // let blownUp = false;
+  const jumbo = document.getElementById('jumbo');
+  const transcription = document.getElementById('transcription');
+  const transcript = document.getElementById('transcription-text');
+  // const transcriptContainer = document.getElementById('transcriptContainer');
+  // let originalWidth = transcript.offsetWidth;
+  // let originalHeight = transcript.offsetHeight;
+
+
+
+  let circleRadius = 200;
+  let embiggened = false;
+
+  document.addEventListener('mousemove', (e) => {
+    jumbo.style.transition = `none`;
+
+    // console.log(e.clientX, e.clientY)
+    if (!embiggened) {
+      circleRadius = 200;
+      jumbo.style.clipPath = `circle(${circleRadius}px at ${e.clientX}px ${e.clientY}px)`;
+    }
+  });
+
+  jumbo.addEventListener('click', (e) => {
+    if (embiggened) {
+      header.style.zIndex = `9001`;
+
+    } else {
+      header.style.zIndex = `10`;
+    }
+    circleRadius = 4000;
+    jumbo.style.transition = `300ms clip-path`;
+    jumbo.style.clipPath = `circle(${circleRadius}px at ${e.clientX}px ${e.clientY}px)`;
+    embiggened = !embiggened;
+  });
+
+  function resizeContainer() {
+
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleHeaderClass();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+
+  resizeContainer();
+  window.addEventListener('resize', resizeContainer);
+  // jumbo.addEventListener('mousemove', mouseFollower);
+  // transcription.addEventListener('click', blowUp);
+
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<article {% if "toc" in page_text %} class="text-page" {% else %} class="text-page md-no-toc" {% endif %}>
+  {{ page_text | safe }}
+</article>
+
+<script>
+
+const headings = document.querySelectorAll('h1, h2');
+// console.log(headings);
+
+const tocLinks = document.querySelectorAll('.toc a');
+
+function highlightActiveLink() {
+  // Remove all active classes first
+  tocLinks.forEach(link => link.classList.remove('active'));
+
+  // Convert headings to array for easier index-based access
+  const headingsArray = Array.from(headings);
+  if(headingsArray[headingsArray.length-1].id == "questions"){
+    headingsArray.pop(); // exclude questions h2
+  }
+    
+
+  headingsArray.forEach((heading, index) => {
+    const nextHeading = headingsArray[index + 1];
+    const { top, bottom } = heading.getBoundingClientRect();
+
+    // Check if current heading content is in viewport 
+    const isInViewport = (top <= window.innerHeight && 
+      (!nextHeading || nextHeading.getBoundingClientRect().top > (window.innerHeight - 100))) ; // a little offset for top half of viewport
+
+    if (isInViewport) {
+      const otherActive = document.querySelector('.active');
+      const activeLink = document.querySelector(`.toc a[href="#${heading.id}"]`);
+      if (activeLink && !otherActive) {
+        activeLink.classList.add('active');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightActiveLink);
+
+// Initial call to highlight on page load
+highlightActiveLink();
+
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/text-page.css') }}">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

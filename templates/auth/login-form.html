@@ -1,0 +1,23 @@
+<form  hx-post="/auth/login" hx-target-error="#login-errors" >
+    <div class="label-input">
+        <label for="username" >Username</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+
+    <div class="label-input">
+        <label for="password" >Password</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+
+    <div id="login-errors"></div>
+
+    <div class="label-input">
+        <button type="submit">
+            Log In
+        </button>
+    </div>
+
+    <div class="label-input" id="forgot">
+        <span>Forgot username or password? Please email dis@newberry.org to request a reset</span>
+    </div>
+</form>

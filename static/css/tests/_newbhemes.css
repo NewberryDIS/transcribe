@@ -1,0 +1,152 @@
+@import "bg-themes.css";
+
+body {
+
+    --bg-color: var(--foreground);
+    --bg-rgb: var(--color7);
+    --fg-color: var(--background);
+    --fg-rgb: var(--color0);
+
+    --fg-splash: color-mix(in oklab, var(--splash), var(--fg-color));
+    --fg-alt: color-mix(in oklab, var(--alt), var(--fg-color));
+
+    --bg-splash: color-mix(in oklab, var(--splash), var(--bg-color));
+    --bg-alt: color-mix(in oklab, var(--alt), var(--bg-color));
+
+    --splash-color: var(--fg-splash);
+
+    --shadow-color: color-mix(in oklab, var(--fg-alt) 15%, transparent);
+    --shadow: 0 0 7px 7px var(--shadow-color);
+
+}
+
+
+body.dark {
+
+    --fg-color: var(--foreground);
+    --fg-rgb: var(--color7);
+    --bg-color: var(--background);
+    --bg-rgb: var(--color0);
+
+}
+/* fonts */
+
+@font-face {
+    /* heading 1 - 2 */
+    font-family: "flecha-m";
+    src:
+        url("../fonts/FlechaM-Regular.woff") format("woff"),
+        url("../fonts/FlechaM-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    /* heading 3+, use as much as possible, we love it */
+    font-family: "styrene";
+    src:
+        url("../fonts/StyreneB-Regular-Web.woff") format("woff"),
+        url("../fonts/StyreneB-Regular-Web.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* like styrene, but bold */
+    font-family: "styrene bold";
+    src:
+        url("../fonts/StyreneB-Bold-Web.woff") format("woff"),
+        url("../fonts/StyreneB-Bold-Web.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* base text but Jen hates serif */
+    font-family: "signifier";
+    src: url("../fonts/signifier-regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* transcription  */
+    /* not officially sanctioned!!! */
+    font-family: "xenon";
+    src:
+        url("../fonts/MonaspaceXenonVarVF.woff") format("woff"),
+        url("../fonts/MonaspaceXenonVarVF.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    background: var(--bg-color);
+    color: var(--fg-color);
+}
+
+h1,
+h1 a,
+h1 *,
+h2,
+h2 * {
+    font-family: "flecha-m";
+    color: var(--fg-splash);
+}
+
+h3,
+h4,
+h5,
+h6,
+dt,
+p,
+.site-nav li a {
+    font-family: "styrene";
+    color: var(--fg-splash);
+    /* color: var(--fg-color); */
+}
+
+body,
+html {
+    font-family: "styrene";
+    /* font-family: "xenon"; */
+}
+
+b {
+    font-family: "styrene bold";
+}
+
+/* putting classes on markdown is hard */
+.site-nav li a,
+.llines {
+    color: inherit;
+    text-decoration: none;
+    background: linear-gradient(to right,
+            color-mix(in oklab, currentcolor 30%, transparent),
+            color-mix(in oklab, currentcolor 30%, transparent)),
+        linear-gradient(to right, currentcolor, var(--splash-color));
+    background-size:
+        100% 0.1rem,
+        0 0.1rem;
+    background-position:
+        100% 100%,
+        0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms;
+}
+
+.site-nav li a:hover,
+.site-nav li a:focus,
+.llines:hover,
+.llines:focus {
+    background-size:
+        0 0.1rem,
+        100% 0.1rem;
+}

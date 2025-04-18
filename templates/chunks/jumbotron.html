@@ -1,0 +1,15 @@
+<div class="jumbo" id="jumbo">
+  <div class="splash">
+    <div class="bg">
+      <div class="transcription" id="transcription">
+        <div class="content">
+          <pre class="text" id="transcription-text"> {{ t.text | safe }}</pre>
+          <div class="ack">
+            <p>
+              from <a href="{{ t.link }}" class="link-lines ack-link" target="_blank">{{ t.title }}</a>.  Transcribed by <b>{{ t.user }}</b> on {{ t.date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

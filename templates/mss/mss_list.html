@@ -1,0 +1,21 @@
+{% if mss %} {% for ms in mss %}
+<a href="/ms/{{ ms.ms_id }}{{ review }}" class="card set">
+  <progress-bar
+    inprogress="{{ ms.inprogress }}"
+    transcribed="{{ ms.transcribed }}"
+    reviewed="{{ ms.reviewed }}"
+    num-pages="{{ms.num_pages}}"
+    review="{{ review }}"
+  ></progress-bar>
+  <img
+    src="https://collections.newberry.org/IIIF3/Image/{{ ms.repimage }}/square/300,/0/default.jpg"
+    alt="a page of handwritten text"
+  />
+  <p class="title">{{ ms.title }}</p>
+</a>
+{% endfor %} {% else %}
+<p>No manuscripts fit the filtering criteria.</p>
+{% endif %}
+<h3 hx-swap-oob="true" id="result-count">
+  {{ result_count }} {% if result_count == 1 %}item{% else %}items{% endif %}
+</h3>

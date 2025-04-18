@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newberry Transcribe {% block title %}{% endblock %}</title>
+    <script src="/static/js/newberry-logo.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/test-2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/header_footer.css') }}">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+
+
+
+<main class="paper-main" style="background-image: {{ t.image_set }}">
+  <div class="left">
+        <div class="main-area">
+    <div class="reading">
+      <div class="content">
+            <img src="static/images/jumbo/{{ t.image }}-sm.jpg" alt="" />
+      </div>
+    </div>
+    <div class="writing tablet">
+      <div class="content">
+            <pre class="text" id="transcription-text"> {{ t.text | safe }}</pre>
+            <div class="ack">
+              <p>
+              from <a href="{{ t.link }}" class="llines ack-link"
+                                          target="_blank">{{ t.title }}</a>
+              </p>
+              <p>transcribed by <b>{{ t.user }}</b> on {{ t.date }}</p>
+            </div>
+      </div>
+    </div>
+    </div>
+    <div class="paper">
+      <div class="paper-top-1">
+        {% include 'tests/rip.html' %}
+      </div>
+      <div class="paper-top-2">
+        {% include 'tests/rip.html' %}
+      </div>
+      <div class="paper-mid-1">
+        {% include 'tests/rip.html' %}
+      </div>
+      <div class="paper-mid-2">
+        {% include 'tests/rip.html' %}
+      </div>
+      <div class="paper-btm-1">
+        {% include 'tests/rip.html' %}
+      </div>
+      <div class="paper-btm-2">
+        {% include 'tests/rip.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="right">
+
+  </div>
+</main>

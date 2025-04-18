@@ -1,0 +1,39 @@
+<form hx-post="/auth/signup" hx-target-error="#signup-errors">
+
+    <span>Sign up for an optional user account if you'd like to track your progress, review the work of other volunteers, and compete in the project leaderboard.</span>
+    <div class="label-input">
+        <label for="username" >Username:</label>
+        <input type="text" name="username" id="username" required minlength="3" >
+        <span class="hint">Must include: a minimum of 3 characters</span>
+    </div>
+
+    <div class="label-input">
+        <label for="email" >Email address: (Optional)</label>
+        <input type="email" name="email" id="email" >
+        <span class="hint">To allow password recovery; we won't add you to our mailing list unless you opt in below</span>
+    </div>
+
+    <div class="label-input">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required minlength="6">
+        <span class="hint">Must include: a minimum of 6 characters</span>
+    </div>
+
+    <div class="label-input">
+        <label for="confirm-password" >Confirm password:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+    </div>
+    <div class="label-input">
+        <input class="nl" type="checkbox" id="newsletter" name="newsletter" value="True">
+        <label class="nl" for="newsletter">Receive our newsletter twice a month with project updates and news about recently added collections, events, etc.</label>
+    </div>
+
+    <div id="signup-errors"></div>
+
+    <div class="label-input">
+        <button type="submit">
+            Create Account
+        </button>
+    </div>
+
+</form>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newberry Transcribe {% block title %}{% endblock %}</title>
+  <script src="/static/js/newberry-logo.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/header_footer.css') }}">
+  {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+  <header class="sneaky-header glassy">
+    {% include "chunks/header.html" %}
+  </header>
+  <article class="top">
+    {% for t in data %}
+    <div id="transc-{{ loop.index }}" class="showcase" style="background-image: {{ t.image_set | safe }};">
+      <div class="overlay">
+        <section class="transcription">
+          <pre class="text" id="transcription-text">{{ t.text }}</pre>
+          <div class="ack">
+            <p>
+              from <a href="{{ t.link }}" class="llines ack-link" target="_blank">{{ t.title }}</a>
+            </p>
+            <p>transcribed by <b>{{ t.user }}</b> on {{ t.date }}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    {% endfor %}
+  </article>
+  <div class="main-title">
+    <h1 id="main-title">Splash Color</h1>
+      <h3>Alt Color 1!</h3>
+
+      <p>
+        Alt color 2.  Help preserve the past by transcribing handwritten letters and diaries at <a
+          href="https://collections.newberry.org" class="llines invert" target="_blank">Newberry Digital Collections</a>
+      </p>
+  </div>
+  <article class="intro">
+
+    <div class="center-splash">
+      <div class="get-started-buttons">
+        <button id="color-demo" class="fakelink button-like color-button" onclick="switchTheme()" >all colors</button>
+        <a href="/mss" class="button-like  color-button" >Browse Manuscripts</a>
+        <a href="{{ random_link }}" class="button-like  color-button">Jump In!</a>
+      </div>
+
+        {% include 'chunks/how-to.html' %}
+  </article>
+  <article>
+    <div class="choose mss">
+      <div class="header-wrapper">
+        <h2>Choose a manuscript</h2>
+        <p id="title-anchor">
+          Select from thousands of pages of letters, diaries, and business records, spanning the 18th
+          through
+          20th centuries
+        </p>
+        <div class="button-wrapper">
+          <a href="/manuscripts" class="button-like index-button">Browse manuscripts</a>
+        </div>
+        <p class="citation">Background image:
+          <a href="https://collections.newberry.org/asset-management/2KXJ8ZSAT7VXS" target="_blank" class="llines">
+            Chicago Club, 1907 </a>
+        </p>
+      </div>
+      {{ gallery_mss | safe }}
+    </div>
+  </article>
+  <article>
+    <div class="choose creator">
+      <div class="creator-overlay">
+        <h5 class="message">Coming soon!</h5>
+      </div>
+      <div class="header-wrapper">
+        <h2>Choose a creator</h2>
+        <p>
+          Our diarists and correspondents come from all walks of life. Choose from social activists,
+          novelists, homemakers, and lots more
+        </p>
+        <div class="button-wrapper">
+          <a href="/creators" class="button-like index-button">Browse creators</a>
+        </div>
+        <p class="citation">Background image:
+          <a href="https://collections.newberry.org/asset-management/2KXJ8ZSATCW2M" target="_blank" class="llines">
+            Michigan Avenue, Chicago, ca. 1910s </a>
+        </p>
+      </div>
+      {{ gallery_creators | safe }}
+    </div>
+  </article>
+  <footer>
+    {{ footer_menu | safe }}
+  </footer>
+</body>
+<script>
+
+  /* showcase interval + click-to-change */
+  const showcaseItems = document.querySelectorAll('.showcase');
+  const nextButton = document.createElement('button');
+  const prevButton = document.createElement('button');
+  let counter = 1;
+  let intervalId;
+const nextArrow = document.createElement('i');
+const prevArrow = document.createElement('i');
+  // Setup navigation buttons
+  nextButton.className = 'showcase-nav next';
+  prevButton.className = 'showcase-nav prev';
+  // nextButton.innerHTML = '→';
+  // prevButton.innerHTML = '←';
+
+  nextButton.appendChild(nextArrow);
+  prevButton.appendChild(prevArrow);
+  // Insert buttons into DOM - adjust this based on your desired button placement
+  const showcaseContainer = showcaseItems[0].parentElement;
+  showcaseContainer.appendChild(nextButton);
+  showcaseContainer.appendChild(prevButton);
+
+  // Initialize first item
+  showcaseItems[0].classList.add("active");
+
+  // Function to handle the showcase transition
+  function transitionToIndex(newIndex) {
+    showcaseItems.forEach(item => item.classList.remove('active'));
+    const normalizedIndex = (newIndex + showcaseItems.length) % showcaseItems.length;
+    showcaseItems[normalizedIndex].classList.add('active');
+    return normalizedIndex;
+  }
+
+  // Start automatic rotation
+  function startInterval() {
+    intervalId = setInterval(() => {
+      counter = transitionToIndex(counter) + 1;
+      console.log(`tick: ${counter}`);
+    }, 10000);
+  }
+
+  // Initial start
+  startInterval();
+
+  // Navigation handlers
+  nextButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = Array.from(showcaseItems).findIndex(
+      showcase => showcase.classList.contains('active')
+    );
+    counter = transitionToIndex(currentIndex + 1) + 1;
+  });
+
+  prevButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = Array.from(showcaseItems).findIndex(
+      showcase => showcase.classList.contains('active')
+    );
+    counter = transitionToIndex(currentIndex - 1) + 1;
+  });
+  let ticking = false;
+  const headerHomeLink = document.getElementById('header-home-link');
+  document.addEventListener('scroll', showHomeLink);
+  function showHomeLink() {
+    console.log('scrollfunction')
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        let windowHeight = window.innerHeight;
+        headerHomeLink.classList.toggle('visible', window.scrollY > windowHeight * 0.4);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  showHomeLink()
+  window.addEventListener('resize', showHomeLink);
+</script>
+
+</html>

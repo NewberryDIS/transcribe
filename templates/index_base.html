@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newberry Transcribe</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', path='/favicon.png') }}" sizes="16x16 32x32 48x48"
+                                                                                  type="image/png">
+    <script src="{{ url_for('static', path='/js/newberry-logo.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6WVBSVWD2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S6WVBSVWD2');
+</script>
+    {% block extra_css %}{% endblock %}
+
+  </head>
+
+  <script>
+    const themes = {{ themes | safe }}
+  </script>
+
+  {% block body %}{% endblock %}
+
+  {% block extra_js %}{% endblock %}
+
+  <script>
+const hasUserSavedTheme = false;
+    function changeTheme(newTheme) {
+      themes.forEach((theme, idx) => {
+        document.body.classList.remove(theme)
+      })
+      console.log(newTheme);
+      sessionStorage.setItem("theme", newTheme);
+      // const normalizedIndex = (newIndex + themes.length) % themes.length;
+      document.body.classList.add(newTheme)
+
+      // return normalizedIndex; 
+    }
+
+    function loadSavedTheme() {
+      let savedTheme;
+      if (hasUserSavedTheme) {
+      //  const savedTheme  = localStorage.getItem("theme");
+       savedTheme = sessionStorage.getItem("theme") || localStorage.getItem("theme");
+      }
+      if (savedTheme && themes.includes(savedTheme)) {
+        changeTheme(savedTheme);
+      } else (
+        changeTheme("nt-{{ t.image }}")
+      )
+    }
+
+    loadSavedTheme()
+
+  </script>
+</html>

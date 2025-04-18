@@ -1,0 +1,229 @@
+body {
+  --center-section-width: 70vw;
+  --center-section-spacing: 6rem;
+  --jumbotron-height: 60vh;
+  --main-title-font-size: clamp(2.0625rem, 0.567rem + 4.7857vw, 6.25rem);
+  --sub-title-font-size: clamp(1.5rem, 0.6964rem + 2.5714vw, 3.75rem);
+  --main-text-font-size: clamp(1rem, 0.8214rem + 0.5714vw, 1.5rem);
+
+  --button-fg: var(--bg-accent-color);
+  --button-bg: var(--fg-accent-color);
+}
+
+.intro {
+  flex: 1;
+}
+
+.h1-wrapper {
+
+  background-color: var(--bg-color);
+  /* background-color: var(--bg-accent-color); */
+  /* height: calc(var(--main-title-font-size) *1.25); */
+  height: calc(var(--main-title-font-size) * 0.85);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+
+  & h1 {
+    font-size: var(--main-title-font-size);
+    height: calc(var(--main-title-font-size) *1);
+    height: calc(var(--main-title-font-size) *1.25);
+  }
+}
+
+.center-splash {
+  pointer-events: auto;
+  margin: auto;
+  position: relative;
+  width: var(--center-section-width);
+  margin: auto;
+  /*      background: var(--bg-color); */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 0 33px 33px 33px;
+  gap: 11px;
+
+  & .title-box {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    & h3,
+    p {
+      text-align: right;
+      margin: 0;
+    }
+
+    & h3 {
+      font-size: var(--center-splash-title-font-size);
+      line-height: calc(var(--center-splash-title-font-size) * 0.7);
+    }
+
+    & p {
+      padding-top: 0;
+      font-size: var(--main-text-font-size);
+      line-height: calc(var(--main-text-font-size) * 0.95);
+      display: block;
+      max-width: min(700px, 95%);
+      width: 95%;
+
+      /* width: 100%; */
+    }
+
+    & a {
+      text-decoration: none;
+      pointer-events: auto;
+      font-weight: bold;
+    }
+  }
+
+  ol {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+    & h4 {
+      text-align: center;
+    }
+
+    /* place-items: center; */
+  }
+
+  ol li {
+    padding-block: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    place-items: center;
+    place-content: center;
+    gap: 1vw;
+    /* display: flex; */
+    /* align-items: center; */
+    border: 2px solid rgba(var(--fg-rgb), 0.1);
+
+    &>* {
+      /* flex: 1; */
+      text-align: center;
+      /* width: min(25%, 200px); */
+    }
+
+    & img {
+      width: 200px;
+      height: 100px;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  .images {
+    overflow: hidden;
+    border: 1px solid rgba(var(--fg-rgb), 0.1);
+    box-shadow: inset var(--shadow);
+    position: relative;
+
+    --translate: translateY(20%);
+
+    & img {
+      filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 1));
+      position: absolute;
+      inset: 0;
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      object-position: center;
+      /* opacity: 0.9; */
+      transition: 0.5s ease-in-out;
+      /* transform: rotate(10deg); */
+      /* transform: var(--translate); */
+      transform: rotate(-10deg) var(--translate) translateX(10%);
+    }
+
+    & img:first-child {
+      transform: rotate(95deg) translate(10%, -20%);
+    }
+
+    & img:last-child {
+      transform: rotate(10deg) var(--translate) translateX(33%) scaleX(-1);
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .images {
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .images {
+    display: none;
+  }
+
+}
+
+.list-wrapper {
+
+  display: flex;
+  gap: 1rem;
+
+  & ol,
+  .images {
+    flex: 1;
+  }
+}
+
+
+.get-started-buttons {
+  /* position: absolute;
+  bottom: -20px; */
+  gap: 9px;
+  width: calc(100% - 66px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  place-content: center;
+
+  &>* {
+    display: block;
+  }
+
+  /*       middle button has inverted colors  */
+  & :nth-child(2) {
+    z-index: 1;
+    position: relative;
+    border-color: var(--button-bg);
+
+
+    /* border-color: transparent; */
+
+    &:before {
+      content: " ";
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid var(--button-fg);
+      /*   background: var(--fg-accent-color); */
+
+    }
+  }
+}
+
+
+.button-like {
+  display: inline;
+
+  width: 100%;
+
+  font-size: clamp(1rem, 0.739rem + 1.204svw, 1.4rem);
+}

@@ -1,0 +1,16 @@
+
+<div class="leaderboard-container">
+    <table id="leaderboard">
+        <tr><th>★ Top contributors ★</th></tr>
+        {% for user in leaderboard %}
+        <tr>
+            <!-- <td><img src="static/images/user-profile/none.svg"></td> -->
+            <td><img src="https://awntuwhgnlwgckwgfurh.supabase.co/storage/v1/object/public/avatars/{{ user.avatar if user.avatar is not none else '/none.svg' }}" alt="{{ user.username }} profile image"></td>
+            <td>{{ user.username }}
+                {{user.contribution_count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+

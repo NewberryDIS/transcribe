@@ -1,0 +1,43 @@
+
+{% if user and user.is_reviewer %}
+  <div class="review-tabs button-row tabs">
+    <button {% if user.type !="reviewer" %} class="active" aria-selected="true" {% else %}
+      hx-get="/mss/" aria-selected="false" {% endif %} role="tab"
+      aria-controls="tab-content">
+      Transcribe
+    </button>
+    <button {% if user.type=="reviewer" %} class="active" aria-selected="true" 
+       {% else %} hx-get="/page/{{ ms_id}}/{{ page_number }}/input/translation"
+      aria-selected="false" {% endif %} role="tab" aria-controls="tab-content">
+      Review 
+    </button>
+  <a href="/{{ request.path }}" target="_blank" class="button-like" title="This will open in a new tab">what is this I don't even</a>
+  </div>
+<style>
+
+.review-tabs {
+  border-bottom: 1px solid var(--fg-color);
+  & button, .button-like {
+    background-color: var(--bg-color);
+    border: 1px solid var(--fg-color);
+    color: var(--fg-color);
+    margin-bottom: -1px;
+    transition: var(--global-transition);
+    &:nth-child(2) {
+      border-inline: none;
+    }
+  }
+  & .active {
+
+    border-bottom: 1 solid var(--bg-color);
+  }
+  & :not(.active ){
+    background-color: color-mix(in oklab, var(--bg-color) 87%, var(--fg-color));
+    &:hover {
+
+    background-color: color-mix(in oklab, var(--bg-color) 95%, var(--fg-color));
+    }
+  }
+}
+</style>
+{% endif %}

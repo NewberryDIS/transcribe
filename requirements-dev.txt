@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+gunicorn
+redis
+sqlalchemy
+supabase
+jinja2
+markdown
+pydantic[email]
+pydantic-settings
+psycopg2-binary
+python-multipart
+httpx
+pytest
+pytest-cov
+beautifulsoup4

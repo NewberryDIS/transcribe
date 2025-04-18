@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ creator.displayname }} at {% endblock %}
+
+{% block extra_css %}
+
+<script src="{{ url_for('static', path='/js/progress-bar.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/creator.css') }}">
+{% endblock %}
+
+{% block content %}
+<style>
+body {
+
+  background-image: url('https://collections.newberry.org/IIIF3/Image/{{ page_background }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ page_background }}/full/,1000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ page_background }}/full/,300/0/default.jpg');
+}
+
+</style>
+<article class="creator" id="creator-section">
+
+  <section class="creator-text">
+
+    <figure class="creator-image">
+      <a href="{{ creator.repimageurl }}" class="link-lines" target="_blank">
+    <img src="https://collections.newberry.org/IIIF3/Image/{{ creator.repimage }}/full/,600/0/default.jpg" />
+    <figcaption>
+        {{ creator.caption }}
+    </figcaption>
+      </a>
+    </figure>
+    <div class="breadcrumbs">
+      <a class="llines" href="/">Transcribe Home</a>
+      &gt;
+      <a  class="llines" href='/creators'>Creators</a>
+      &gt;
+    </div>
+    <h1 class="truncate" >
+      {{ creator.displayname }}
+    </h1>
+      <p class="creator-dates">{{ creator.dates }}</p>
+      <p class="creator-bioblurb">{{ creator.bioblurb }}</p>
+      <dl>
+        <dt>About the creator</dt>
+        <dd>{{ creator.biographicalnote | safe}}</dd>
+        <dt>About the collection</dt>
+        <dd>
+          {{ creator.collectionscopenote | safe }}  
+          <div class="mo-info">
+          <a href="{{ creator.collectionguide }}" class="link-lines " target="_blank" >&mdash; More information</a>
+          </div>
+        </dd>
+        <dt>Related resources</dt>
+        <dd>
+          <ul>
+            <li><a class="link-lines" href="{{ creator.rr1url }}" target="_blank" >{{ creator.rr1text or "Creator link 1" }}</a></li>
+            <li><a class="link-lines" href="{{ creator.rr2url }}" target="_blank" >{{ creator.rr2text or "Creator link 2" }}</a></li>
+            <li><a class="link-lines" href="{{ creator.rr3url }}" target="_blank" >{{ creator.rr3text or "Creator link 3" }}</a></li>
+          </ul>
+        </dd>
+  </section>
+</article>
+
+    <!--<section class="creator-image">-->
+    <!--</section>-->
+    <!--<div class="float-right">-->
+    <!--  </div>-->
+<article class="creator-mss cards">
+  
+  {% for ms in mss %}
+  <a href='/ms/{{ ms.ms_id }}' class='card set'>
+    <progress-bar inprogress="{{ ms.inprogress }}" transcribed="{{ ms.transcribed }}"
+                                                   reviewed="{{ ms.reviewed }}"></progress-bar>
+    <img src="https://collections.newberry.org/IIIF3/Image/{{ ms.repimage }}/square/300,/0/default.jpg"
+         alt="a page of handwritten text" />
+    <p class='title'>{{ ms.title }}</p>
+  </a>
+  {% endfor %}
+  <span><span>
+</article>
+{% endblock %}

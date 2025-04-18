@@ -1,0 +1,172 @@
+/* fonts */
+
+@font-face {
+    /* heading 1 - 2 */
+    font-family: "flecha-m";
+    src:
+        url("../fonts/FlechaM-Regular.woff") format("woff"),
+        url("../fonts/FlechaM-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    /* heading 3+, use as much as possible, we love it */
+    font-family: "styrene";
+    src:
+        url("../fonts/StyreneB-Regular-Web.woff") format("woff"),
+        url("../fonts/StyreneB-Regular-Web.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* like styrene, but bold */
+    font-family: "styrene bold";
+    src:
+        url("../fonts/StyreneB-Bold-Web.woff") format("woff"),
+        url("../fonts/StyreneB-Bold-Web.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* base text but Jen hates serif */
+    font-family: "signifier";
+    src: url("../fonts/signifier-regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* transcription  */
+    /* not officially sanctioned!!! */
+    font-family: "0xproto";
+    src:
+        url("../fonts/0xProto-Regular.woff2") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* transcription  */
+    /* not officially sanctioned!!! */
+    font-family: "neon";
+    src:
+        url("../fonts/MonaspaceNeonVarVF.woff") format("woff"),
+        url("../fonts/MonaspaceNeonVarVF.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* transcription  */
+    /* not officially sanctioned!!! */
+    font-family: "xenon";
+    src:
+        url("../fonts/MonaspaceXenonVarVF.woff") format("woff"),
+        url("../fonts/MonaspaceXenonVarVF.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+  --global-transition: 250ms;
+    /*background: var(--bg-color);*/
+    /*color: var(--fg-color);*/
+}
+
+h1,
+h1 a,
+h1 *,
+h2,
+h2 * {
+    font-family: "flecha-m";
+    /*color: var(--fg-accent-color);*/
+}
+
+h3,
+h4,
+h5,
+h6,
+dt,
+p,
+.site-nav li a {
+    font-family: "styrene";
+    /*color: var(--fg-accent-color);*/
+    /* color: var(--fg-color);*/
+
+}
+
+body,
+html {
+    font-family: "styrene";
+    /* font-family: "xenon"; */
+}
+
+b {
+    font-family: "styrene bold";
+}
+
+/* putting classes on markdown is hard */
+.link-lines {
+    /*color: inherit;*/
+    text-decoration: none;
+    background: linear-gradient(to right,
+            color-mix(in oklab, currentcolor 30%, transparent),
+            color-mix(in oklab, currentcolor 30%, transparent)),
+        linear-gradient(to right, currentcolor, var(--accent-color));
+    background-size:
+        100% 0.1rem,
+        0 0.1rem;
+    background-position:
+        100% 100%,
+        0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms;
+}
+
+.link-lines:hover,
+.link-lines:focus {
+    background-size:
+        0 0.1rem,
+        100% 0.1rem;
+}
+
+
+.site-nav li a,
+.llines {
+    /*color: inherit;*/
+    text-decoration: none;
+    background: linear-gradient(to right,
+             transparent,
+             transparent),
+        linear-gradient(to right, currentcolor, var(--accent-color));
+    background-size:
+        100% 0.1rem,
+        0 0.1rem;
+    background-position:
+        100% 100%,
+        0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms;
+}
+
+
+.site-nav li a:hover,
+.site-nav li a:focus,
+.llines:hover,
+.llines:focus {
+    background-size:
+        0 0.1rem,
+        100% 0.1rem;
+}

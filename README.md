@@ -1,6 +1,20 @@
-# Newberry Transcribe Front End
+# TODO:
 
-Built in React.  
-
-Data is pulled from the Omeka/Scripto API.  This repo starts with the **get_summary.py** script in /python/, which downloads all the item and file data from the Omeka API and assmembles page lists for each item as well as other basic metadata.  The files in /src/data (esp items.json) power the filtering.  Search is handled by Mediawiki's built in search & API.  Percentages and fill rate are controlled by a server-side script that runs periodically, driven by php.
+- [x] create python branch
+- [x] update templates with new css & html
+  - [x] index 
+  - [x] mss
+  - [x] ms
+  - [x] page 
+- [x] create user accounts
+  - [x] implement user pfp
+  - [x] contribution timestamps localized 
+- [-] add review workflow
+  - [x] split transcribe and review mss selection page
+  - [x] version ms and page routes to handle review
+  - [x] disable review menu option for users not logged in
+  - [x] do something (a ribbon?) when approved
+- [x] user feedback
+  - [ ] text-area scroll on overflow
+  - [ ] hide/handle quicktips on mobile
 

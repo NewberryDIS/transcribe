@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Manuscripts at{% endblock %}
+
+{% block content %}
+{% if page_type == "review" and user is none %}{% include 'chunks/review_popup.html' %}{%endif%}
+<div class="left">
+  <section class="filters" id="filter-section">
+    <div class="breadcrumbs">
+      <a href="/" class="link-lines">Transcribe Home</a>
+      &gt;
+    </div>
+    <h1 class="truncate">
+      {% if page_type == "review" %}Review{%else%}Transcribe{%endif%}
+    </h1>
+    <div hx-get="/mss/total-transcribed" hx-trigger="load" id="total-transcribed"></div>
+    <hr style="height:1px; color:var(--fg-color); width: 100%; border-bottom: unset;">
+    <h3 id="result-count"></h3>
+
+    <!-- <div id="filters-container" hx-get="/mss/filters" hx-trigger="load" hx-target="#filters-container"></div> -->
+    {% include '/mss/filters.html' %}
+
+  </section>
+</div>
+<div class="right">
+  <section class="mss"
+    hx-get="/mss/mss?fgroup={{ fgroup }}&fvalue={{ fvalue }}&page_type={{ page_type }}" hx-trigger="load"
+    hx-target="#mss-section" hx-swap="beforeend">
+  {% if page_type == "review" %}
+  <div class="mode-header review-mode">
+    
+      <h3>
+      Review and approve transcriptions!
+    </h3>
+    <p>
+      Please review submissions, make corrections, and mark as approved. Staff will then add the transcriptions as searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry Digital Collections</a>
+    </p>
+  </div>
+  {% else %}
+  <div class="mode-header transcribe-mode">
+    <h3>
+      Transcribe handwritten letters and diaries and more!
+    </h3>
+    <p>
+      Select a manuscript, then click on a page, and type what you see!  Check out our <a href="/tutorial" class="link-lines">tutorial</a> to learn more.  Once you've finished,
+      reviewers will be able to proofread, and staff will then add the transcriptions as
+      searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry Digital Collections</a>
+    </p>
+
+  </div>
+
+  {% endif %}  
+</section>
+<div class="cards" id="mss-section"></div>
+
+
+</div>
+
+<script>
+// https://newberrydis.cartodb.com/api/v2/sql/?q=SELECT * FROM us_histcounties_gen001 
+
+  let counter = 0;
+  let expander = 0;
+
+  let intervalId
+  // const countertracker = document.getElementById('countertracker')
+
+  document.body.style.setProperty('--top', 0)
+  document.body.style.setProperty('--left', '-20px')
+
+  filterGroups.forEach((group, index) => {
+    if (index === 0 && window.innerWidth > 700) {
+      group.classList.add('open')
+    }
+    if (index === 1) {
+      group.classList.add('fancy')
+      group.id = 'dancyfriend'
+    }
+
+    group.addEventListener('click', function (e) {
+
+      if (e.target.id === 'dancyfriend') {
+        dancyboy(e)
+        e.target.classList.toggle('open')
+      } else {
+
+        e.target.classList.toggle('open')
+      }
+    })
+  })
+  function dancyboy(e) {
+    console.log("IM DANCIN")
+    if (counter > 1) {
+      e.target.classList.remove('fancy')
+    }
+    counter++
+    // countertracker.innerHTML = counter
+
+    if (counter === 9) {
+      document.body.style.setProperty('--left', "-33px")
+      e.target.classList.add('more')
+      timeoutId = setTimeout(() => {
+        boppin(true)
+      }, 2000, intervalId)
+    } else if (counter > 9 && counter < 15) {
+
+      boppin(false)
+      e.target.classList.remove('more')
+    } else if (counter === 15) {
+      e.target.classList.add('done')
+    } else {
+      const interval_id = setInterval(function () { }, Number.MAX_SAFE_INTEGER);
+      if (intervalId !== 'its cleared for real I swear') {
+        for (let i = 1; i < interval_id; i++) {
+          clearInterval(i);
+        }
+      }
+      intervalId = 'its cleared for real I swear'
+    }
+  }
+  function boppin(go) {
+    if (go) {
+      intervalId = setInterval(() => {
+        expander++
+        let newTop = Math.round((Math.random() * (20 + expander)) - 10)
+        let newLeft = Math.round((Math.random() * (20 + expander)) - 10)
+        document.body.style.setProperty('--top', `${newTop}px`)
+        document.body.style.setProperty('--left', `${newLeft}px`)
+        // document.body.style.setProperty('--expander', expander)
+      }, 250)
+    } else {
+      clearInterval(intervalId)
+    }
+  }
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<script src="{{ url_for('static', path='/js/progress-bar.js') }}"></script>
+<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
+<script src="{{ url_for('static', path='/js/nouislider/nouislider.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', path='/js/nouislider/nouislider.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/mss.css') }}">
+{% endblock %}

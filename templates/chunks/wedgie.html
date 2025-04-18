@@ -1,0 +1,252 @@
+<article class="jumbotron">
+  <section class="showcase" style="background-image: {{ t.image_set }};">
+    <div class="text-container">
+      <div class="left-side-header">
+        <h1 class="left-hand-path">Newberry Transcribe</h1>
+      </div>
+      <pre class="text" id="transcription-text"> {{ t.text | safe }}</pre>
+      <div class="ack">
+        <p>
+          from <a href="{{ t.link }}" class="llines ack-link" target="_blank">{{ t.title }}</a>
+        </p>
+        <p>transcribed by <b>{{ t.user }}</b> on {{ t.date }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="title">
+    <h3>Unlock history!</h3>
+    <header class="sneaky-header">
+      {% include 'chunks/header.html' %}
+    </header>
+    <h1 id="magic-header">Newberry Transcribe</h1>
+    <p>
+      Help preserve the past by transcribing handwritten letters and diaries at <a
+        href="https://collections.newberry.org" class="llines-invert" target="_blank">Newberry Digital
+        Collections</a>
+    </p>
+    <div class="title-buttons">
+      <a href="#" class="fakelink button-like">Learn More</a>
+      <a href="/mss" class="button-like">Browse Manuscripts</a>
+      <a href="https://www.youtube.com/watch?v=SGjmGlsdLGE" class="fakelink button-like">Jump In!</a>
+    </div>
+    {% include 'chunks/how-to.html' %}
+  </section>
+  <section>
+
+  </section>
+</article>
+
+<style>
+  .left-side-header {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-items: center;
+    place-content: center;
+
+    & .left-hand-path {
+      display: inline;
+      transition: opacity 300ms;
+      font-size: 100px;
+      opacity: 0.9999;
+      width: auto;
+
+    }
+  }
+
+  body {
+    min-height: 300vh !important;
+  }
+
+  .title {
+    z-index: 20;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    min-height: 100vh;
+
+    background-color: var(--fg-splash);
+    clip-path: polygon(0 66vw, 100% 33vh, 100% 100%, 0 100%);
+
+    & h3,
+    p {
+      z-index: 10;
+      color: var(--bg-color);
+    }
+
+    & a {
+      color: var(--bg-splash);
+    }
+
+    h1 {
+      margin: 0;
+      transition: font-size: 200ms;
+      z-index: 30;
+      position: sticky;
+      top: 0;
+
+      &.resting-position {
+        font-size: 1.5rem;
+        color: var(--fg-splash);
+      }
+
+      &:not(.resting-position) {
+        font-size: 6rem;
+        color: var(--bg-color);
+      }
+    }
+
+    & p,
+    a {
+      font-size: var(--font-size-p, 22px);
+    }
+
+    & h3 {
+      font-size: var(--font-size-h3, 33px);
+    }
+
+    & h3,
+    p,
+    .title-buttons {
+      position: relative;
+    }
+  }
+
+  .showcase {
+    z-index: 10;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+  }
+
+  .text-container {
+    position: relative;
+    background: var(--bg-color);
+    border: 1px solid var(--fg-color);
+    width: min(100%, 60ch);
+    margin: 1vw;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+
+    & .ack,
+    .text {
+      transition: opacity 300ms;
+      opacity: 0.0001;
+      pointer-events: none;
+    }
+  }
+
+  .text-container:hover {
+
+    & .ack,
+    .text {
+      opacity: 0.9999;
+      pointer-events: all;
+    }
+
+    .left-hand-path {
+      opacity: 0.0001;
+    }
+  }
+
+  .text {
+    max-height: 80%;
+    overflow: auto;
+    white-space: pre-wrap;
+  }
+
+  .jumbotron {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .showcase,
+  .title-wrapper {
+    min-height: 100%;
+    width: 100%;
+    flex: 1;
+  }
+
+  @media screen and (max-width: 900px) {
+    .jumbotron {
+      flex-direction: column;
+    }
+
+    .text-container {
+      height: min(76vh, 400px);
+    }
+  }
+
+  #position-checker {
+    position: fixed;
+    background-color: pink;
+    width: 100vh;
+    min-height: 5px;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+
+  }
+
+  #magic-header,
+  #unmagic-header {}
+
+  #magic-header {
+    font-size: 1.5rem;
+    position: relative;
+    transition: transform 200ms ease-out;
+
+    &.final-position {
+      position: fixed !important;
+      top: 0 !important;
+      right: 11px !important;
+      transform: scale(1) !important;
+    }
+  }
+</style>
+<script>
+  const magicHeader = document.getElementById('magic-header')
+  const unmagicHeader = document.getElementById('unmagic-header')
+  const startPosition = unmagicHeader.getBoundingClientRect().top;
+
+  function updateTitleSize() {
+    const scrollPosition = window.scrollY
+    if (scrollPosition >= startPosition.top) {
+      magicHeader.classList.add('final-position')
+    } else {
+      magicHeader.classList.remove('final-position')
+    }
+  }
+  window.addEventListener('scroll', () => {
+    // const currentPosition = magicHeader.getBoundingClientRect().top
+    const scrollPosition = window.scrollY
+    if ((scrollPosition - startPosition) <= 0) {
+      // requestAnimationFrame(updateTitleSize);
+      magicHeader.classList.remove('final-position')
+    } else {
+      magicHeader.classList.add('final-position')
+    }
+  });
+
+</script>

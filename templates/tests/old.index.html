@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Newberry Transcribe{% endblock %}</title>
+
+  <link rel="shortcut icon" href="{{ url_for('static', path='/favicon.png') }}" sizes="16x16 32x32 48x48"
+    type="image/png">
+  <script src="{{ url_for('static', path='/js/newberry-logo.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/how-to.css') }}">
+  {% block extra_css %}{% endblock %}
+  <style>
+    section.jumbo-title,
+    section.mss {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="sneaky-header" class="sneaky-header">
+
+    {% include 'chunks/header.html' %}
+  </header>
+  <section class="jumbo-title">
+    {% include 'chunks/jumbotron.html' %}
+
+  </section>
+  <section class="mss">
+    mss
+  </section>
+  <!--<script>console.log({{dd}})</script>-->
+  <footer>
+    {{ footer_menu | safe}}
+  </footer>
+</body>
+
+</html>

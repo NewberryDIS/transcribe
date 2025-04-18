@@ -1,0 +1,374 @@
+[...extensive page text removed for brevity]relationship notices to take a first step toward keeping firearms out of the hands of potentially dangerous individuals.\nThank you for your time and consideration and help in keeping New York the safest large state in the country and helping DCJS in its mission to enhance public safety and improve criminal justice.\n"],
+"article_dt":"2019-06-13T16:26:58Z",[
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8Z814RSTQ"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZSM6EV_3"
+  },
+  {
+    "repimageurl": "https://digital.denverlibrary.org/nodes/view/1106026"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8Z814RGLO"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZSL8B5RQ"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZF7NUTW?BRPN=2"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZS80YTZY"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZP7MXA9?BRPN=9"
+  },
+  {
+    "repimageurl": "https://encyclopediavirginia.org/3193hpr-d6ced3b57230009/"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZS4KPA07?BRPN=2"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8Z819HT28"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZSP1ZF8I?BRPN=2&WS=AssetManagement"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZS5RDGNP"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZSP6WK3Y?BRPN=1"
+  },
+  {
+    "repimageurl": "https://en.wikipedia.org/wiki/File:Slim_Brundage_1960.jpg"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZSSM15SN"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8Z81MJ213?BRPN=10"
+  },
+  {
+    "repimageurl": "https://www.nga.gov/collection/art-object-page.213866.html"
+  },
+  {
+    "repimageurl": "https://commons.wikimedia.org/wiki/File:Walther_edwin_anna.jpeg"
+  },
+  {
+    "repimageurl": "https://collections.lakeforest.edu/items/show/3175"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZSCF7XHN"
+  },
+  {
+    "repimageurl": "https://collections.newberry.org/asset-management/2KXJ8ZS9NT6VZ?BRPN=1"
+  },
+  {
+    "repimageurl": "collections.newberry.org/asset-management/2KXJ8ZS75PJAX"
+  }
+]
+
+
+@keyframes dance {
+0% {
+  border-color:  transparent transparent transparent var(--splash-color);
+  border-color:   var(--splash-color) #f0f #0af #0fa;
+  border-radius: 0;
+}
+10% {
+
+  border-color:  #f0f transparent transparent var(--splash-color);
+}
+20% {
+
+    transform: translate(3px, -3px) rotate(90deg);
+  border-color:  #f0f  transparent #0af var(--splash-color);
+}
+25% {
+    transform:  scale(1.33) translate(3px, -3px) rotate(90deg);
+  border-radius: 50% 0 0 0 ;
+}
+30% {
+
+    transform: translate(3px, -3px) rotate(90deg);
+  border-color:  #f0f  #0fa #0af var(--splash-color);
+}
+45% {transform:   translate(3px, -3px) rotate(90deg);}
+50% {
+    transform:  scale(1.33) translate(3px, -3px) rotate(90deg);
+  border-radius: 50%  ;
+  border-color:  #0fa   var(--splash-color) #0af #f0f ;
+}
+55% {transform:   translate(3px, -3px) rotate(90deg);}
+70% {transform:   translate(3px, -3px) rotate(90deg);}
+75% {
+    transform:  scale(1.33) translate(3px, -3px) rotate(90deg);
+  border-radius: 50% 0 50% 0 ;
+}
+80% {transform:   translate(3px, -3px) rotate(90deg);}
+95% {transform:   translate(3px, -3px) rotate(90deg);}
+100% {
+
+  border-color:   var(--splash-color) #f0f #0af #0fa;
+    transform:  scale(1.33) translate(3px, -3px) rotate(90deg);
+}
+}
+
+
+#f0f, #009, #303
+
+0% { border-color: #303; transform: scale(1.33);}
+5% { transform: scale(1); }
+
+20% { transform: scale(1); border-radius: 50% 0 0 0;}
+25% { transform: scale(1.33); }
+30% { transform: scale(1); }
+
+33% { border-color: #f0f; }
+
+40% { border-radius: 50% 0 50% 0; }
+45% { transform: scale(1); }
+50% { transform: scale(1.33); }
+55% { transform: scale(1); }
+
+60% { border-radius: 50%; }
+
+66% { border-color: #009; }
+
+
+70% { transform: scale(1); }
+75% { transform: scale(1.33); }
+80% { transform: scale(1); }
+
+80% { border-radius: 0 50%; }
+
+95% { transform: scale(1); }
+
+
+0% { border-color: #909; transform: scale(1.33) rotate(0deg);}
+5% { transform: scale(1) rotate(18deg); }
+
+20% { transform: scale(1) rotate(calc(4 * 18deg)); border-radius: 50% 0 0 0;}
+25% { transform: scale(1.33) rotate(calc(5 * 18deg)); }
+30% { transform: scale(1) rotate(calc(6 * 18deg)); }
+
+33% { border-color: #f0f; }
+
+40% { border-radius: 50% 0 50% 0; }
+45% { transform: scale(1) rotate(calc(9 * 18deg)); }
+50% { transform: scale(1.33) rotate(calc(10 * 18deg)); }
+55% { transform: scale(1) rotate(calc(9 * 18deg)); }
+
+60% { border-radius: 50%; }
+
+66% { border-color: #00c; }
+
+
+70% { transform: scale(1) rotate(calc(6 * 18deg)); }
+75% { transform: scale(1.33) rotate(calc(5 * 18deg)); }
+80% { transform: scale(1) rotate(calc(4 * 18deg)); }
+
+80% { border-radius: 0 50%; }
+
+95% { transform: scale(1) rotate(18deg); }
+100% { border-color: #303;}
+
+
+$t_text = $random_data["new.User-Contributed-Transcription"];
+$timage = $random_data["MediaEncryptedIdentifier"];
+$t_image_set = "image-set('/images/jumbo/$timage-m.jpg' 1x, '/images/jumbo/$timage-m.jpg' 2x, '/images/jumbo/$timage-l.jpg' 3x)";
+// $transcript = "andom_data->searchText->text";
+
+$t_title = $random_data["Title"];
+$t_user = $random_data["user"];
+$tdo = $random_data["timestamp"];
+$t_date = $tdo["month"] . " / " . $tdo["day"] . " / " . $tdo["year"];
+$t_link =
+  $random_data["new.Page-in-Object"] === ""
+  ? "https://collections.newberry.org/asset-management/" .
+  $random_data["MediaEncryptedIdentifier"]
+  : $random_data["new.Page-in-Object"];
+
+
+
+__new bgs
+2KXJ8ZSC09H2L
+whole buggy well painted. 
+It is fortunate that no one was hurt when the carriage springs were broken.  It is a good thing to have quiet horses for family use.  Dr. Jones was not here either yesterday or the day before and he's not been here yet to-day. Charley had another good nights rest and is still more quiet and better today than heretofore. I presume the Dr. can do very little good in coming to see him - time care and to rest is what Charley needs more than medicine.  
+Mr. [[unclear]] put the iron bars on the outside of the attic windows yesterday - there are 4 bars across each window and securely fastened to the window frames. They are painted green like the shutters and can hardly be noticed either from the inside or outside. It is very possible that this is also a good thing to have these bars on for the greater security of children who when playing there [[unclear]] the attic sooner if any time hereafter, might [[unclear]] into their glass [[unclear]] to get unto this [[unclear]] which would [[unclear]] dangerous [[unclear]]
+Will write again to-morrow
+As ever
+Your [[unclear]]
+B.H.G.
+
+/// mysql data ///
+//    actor_name: imported>SamSLB
+// rev_timestamp: 20200523030950
+// *************************** 2. row ***************************
+//    actor_name: imported>SamSLB
+// rev_timestamp: 20200523031055
+// *************************** 3. row ***************************
+//    actor_name: imported>Skemmler
+// rev_timestamp: 20200410200222
+// *************************** 4. row ***************************
+//    actor_name: imported>Skemmler
+// rev_timestamp: 20200410200403
+
+colors: 
+bg: 6e3a8c 
+110 58 140
+fg: e9e7da
+233 231 218
+ac: b5ac9d
+181 172 157
+
+
+
+
+2KXJ8ZS8UB8KB
+is along with truths and enquiries about you.
+Now Em I suppose that you of course expect to know what the fashions are in this ere town as a return for this information which you tendered me on this same point. Well, commencing at the head -- as you know it is easier to climb down hills than up -- hats are of sundry shapes and sizes [drawing of large and small hats] thus. I suppose you will like pictures best, as little girls generally do so I will give them to you. Hair and whiskers [drawing of a man's face with long hair and beard] thus. Collars entirely defunct. Shirts [drawing of striped shirt] boots and pants [drawing of a part of pants tucked into boots] thus. Walking sticks thus [drawing of a pick and a shovel]. Batchelors hall [drawing of men outside tent]. A dash out on the avenue [drawing of man in buggy]
+But my genius is entirely exhausted so I must stop. All remarks will of course be unnecessary as a single glance will show you that they are not only unique in every point - but every thing this man of fashion could ask for - I had liked to have forgot however to mention that the above, are generally covered with a coat of dust varying from 3 feet in thickness (whew -- give me a whisk broom).
+As to the ladies I believe that I have seen but one, and she was at such a distance that with out Hershals Telescope I should have hardly have been able to describe her to you
+Fruit is very scarce, what there is being hardly fit to eat, consisting only of a few dry hard Pears and apples. In Em's letter she speaks of John's not
+/// no luck in databases 
+/// no luck in databases 
+/// no luck in databases 
+/// no luck in databases 
+/// no luck in databases 
+colors: 
+bg: cccbc9
+204 203 201
+fg: 322421
+50 36 33
+ac: b0a4e6 
+176 164 230
+
+
+2KXJ8ZSLOJ965
+
+(71 I made Jack Foster's acquaintance when I first arrived, but he has been away a good deal. He is very homely, & wears shockingly old fashioned clothes, checked pantaloons for instance. On the other hand, his blood is blue, his connections splendid, his manners excellent; he is polite [drawing of a woman in striped dress and apron] kind, attentive, jolly, amusing, & 23. What is more, he has never said or done anything that jarred me in the least. We had a very nice time together at the table curse [course], & he was very attentive. After that I saw him occasionally, & about three weeks ago, he made me a present of a beautiful
+
+/// mysql data ///.
+//    actor_name: imported>Dvkremk
+//         rev_id: 10073
+//       rev_page: 4109
+// rev_comment_id: 0
+//      rev_actor: 38
+//  rev_timestamp: 20200326172851
+//  actor_name: imported>DawnLib16
+//         rev_id: 10074
+//       rev_page: 4109
+// rev_comment_id: 0
+//      rev_actor: 114
+//  rev_timestamp: 20200410213115
+
+colors: 
+bg: d1c2a5
+209 194 165
+fg: 3f2f3a
+63 47 58
+accent: 5c8587
+92 133 135
+
+alt:
+962225
+150 34 37
+
+
+2KXJ8ZJ78RKI
+TURIN NOV 21 1880
+DEAR AUNT ANNA, 
+BILL WHITE HAS GOT A BABY GIRL. 
+I AM LEARNING TO SKATE. 
+WHEN ARE YOU COMING HERE. 
+I AM EARNING 2 DOLLARS OF PAPA BY BRUSHING MY TEETH AND NOT PICKING MY TEETH WITH A PIN.
+   actor_name: imported>DLRusch
+rev_timestamp: 01/03/2018
+*************************** 2. row ***************************
+   actor_name: imported>Nkeikok
+rev_timestamp: 20200429024819
+*************************** 3. row ***************************
+   actor_name: imported>Nkeikok
+rev_timestamp: 20200429024827
+
+
+colors: 
+bg: 221, 206, 197
+fg: 15 ,12, 11
+accent: 97, 80, 116
+
+2KXJ8ZS2V831N
+[letterhead: Pinkerton's National Detective Agency, eyeball logo, "we never sleep"]
+Chicago Illinois
+Sept. 1rth 1888.  
+H.B. Stone Esq.  
+Genl.Manager. C.B.&Q.R.R.  
+City  
+Dear Sir.  
+Following find report of Opt H.H.F. dated at Aurora Sept 14 & 15th 1888.  
+Operative reports That: as usual he started out to locate his men. and saw Bauereisen during the forenoon he went to the Cigar Store 110 Fox St. Stayed there till 10.15 a.m. then went home. Opt did not see any of the rest. at 2 p.m. according to instructions from Supt. Rhodes he met Frank W. (Opt) and they went to Sugar Grove to see McClean. found him and Opt F.W. started the Conversation by asking him to be Agent for lands in Kansas and Nebraska: saying he had been recomended as a good man. but soon changed the subject - and told him that both Opts were brotherhood men, (Engineers) and asked him what it was he had reported against the brotherhood Men. he said he had done nothing of the kind: (just then, another man who proved to be the Depot Master came up to where the 3 men were talking!) that he had never reported them as Brotherhood men: Opt asked whether he was working for the Compajkny: he first said no but when he found out that Opts knew him, he ad-
+
+/// mysql data ///
+//actor_name: imported>Ekbush
+//        rev_id: 114394
+//      rev_page: 53625
+//rev_comment_id: 0
+//     rev_actor: 44
+// rev_timestamp: 20200621211819
+colors: 
+bg: b1aa9a
+177 170 154
+fg: 201708
+32 23 8
+accent: 170,133,127
+
+2KXJ8ZQ50KYQ
+
+To Speak with Spiritts  Call their names Orimoth, Belmoth Lymocke]   and Say thus. I coniure you by the names   of the Angels + Sator and Azamor that   yee intend to me in this Aore, and send   unto me a Spirite called Sagrigit that   doe fullfill my comanding and desire   and that can also understand my words   for one or 2 yeares [?]; or as long as I will.  [image: circle with Î™Î—S (=Iesus) in center and 'Dalthay' under a line, the outer circle reads: Adonay Pant[?] [Corp...?] + Usor R[?]thaeth + [Messias?] + Soter + Emanuel Sabaoth]  [image: lozenge shape: compare Reginald Scot Discoverie of Witchcraft Book XV Chapter VII.]  Aries Leo, Othos you, Mala M, Mala M, Alpha et al, Ely Eloy, [+]  Character [image] Ilsopheul Character [image] Robeas  Character Baron [image:Chi-Ro] Carak[ter] [image] Andromaleus   Character [image] Bleth. Character [image: ] Egypia   Character [image: ] Mosaeus [image: ]  [image:] [image:]  Haphago
+
+translation:  Solomon's bond.   I conjure you N., by Y. V. EL Y. and by the name Faya, and in the name of Faya, which Adam named and knew the omnipotence of God. I adjure thee in the name in the name of Ya, and in the name of Ya, which Abel named, and his sacrifice was accepted[?] by God; and by the name EL which Enoch named and and received from God the oil of mercy; and by the name of Jah which Enoch named and walked with God; and by the name of Duaphemion which Moses named and struck the land of Egypt with every plague by divine order. And through the name Agia which Aaron named and was worthy of the privilege(?) of being called a priest of the Lord; and by the name Joth(?) which Moses named; and he was worthy to hear the voice of God speaking in the flame; by the name Hagios, which Moses named and celebrated Passover by the name Jehovah by which Moses crossed and the people of God the Red Sea; by the name Jaffa by which Joshua make the sun go back 15 degrees; by the name Agios which Samson named and conquered the Philistines; by the name O Theos by which the walls of Jericho fell. I adjure you, N., and by the virtue of Pantheon through which David conquered Goliath by the name Pantocrator by which David conquered the lion and bear; by the name IHVH, by which all Eegis(?) was filled with sacrifices and by the name Agamon through which Elijah was taken up in a chariot of fire.
+
+colors: 
+
+bg: dacbb6
+218 203 182
+fg: 251a18
+37 26 24
+accent: 295487
+41 84 135
+
+
+alts: 
+0a916f
+254f75
+
+    --sepia-rotate: calc(calc(var(--ac-h) - 90 ) * 1deg);
+  --purple-rotate: 273deg;
+  --purple-rotated: 243deg;
+  --pink-rotate: 321deg;
+  --pink-rotated: 242deg;
+  --aqua-rotate: 192deg;
+  --aqua-rotated: 162deg;
+    --sepia-rotate: vaR(--purple-rotated);
+  --synth-fucsia-h: 309deg;
+  --synth-fucsia-h-r: 279deg;
+  --synth-fucsia-s: 76%;
+  --synth-fucsia-l: 87%;
+  --synth-ornj-h: 324deg;
+  --synth-ornj-h-r: 294deg;
+  --synth-ornj-s: 87%;
+  --synth-ornj-l: 100%;
+  --synth-bloo-h: 236deg;
+  --synth-bloo-h-r: 206deg;
+  --synth-bloo-s: 72%;
+  --synth-bloo-l: 58%;
+  --maj: 300deg;
+  --purp: 270deg;
+  --aq: 150deg;
+  --synth-fucsia-filter: sepia(1) hue-rotate(var(--synth-fucsia-h)) saturate(var(--synth-fucsia-s)) brightness(var(--synth-fucsia-l)) contrast(0.7);
+  --synth-ornj-filter: sepia(1) hue-rotate(var(--synth-ornj-h)) saturate(var(--synth-ornj-s)) brightness(var(--synth-ornj-l)) contrast(0.7);
+  --synth-bloo-filter:sepia(1) hue-rotate(var(--aqua-rotated)) saturate(1) brightness(0.5) contrast(0.76);

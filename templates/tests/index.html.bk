@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newberry Transcribe {% block title %}{% endblock %}</title>
+  <script src="{{ url_for('static', path='/js/newberry-logo.js')}}"></script>
+  <script src="{{ url_for('static', path='/js/theme-switcher.js')}}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/nu_index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/footer.css') }}">
+
+  {% block extra_css %}{% endblock %}
+
+  <style>
+    .showcase {
+      background-image: url("https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/1500,/0/default.jpg");
+     /* background-image: url("https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/max/0/default.jpg"); */
+     /* background-image: url("{{ url_for('static', path='/images/jumbo/' + t.image + '-m.jpg') }}"); */
+     /* background-image: url("{{ url_for('static', path='/images/jumbo/' + t.image + '-l.jpg') }}"); */
+    }
+  </style>
+</head>
+
+<body id="{{ themes[0] }}" class="">
+  <header class="sneaky-header glassy">
+    <!-- <theme-switcher ext="webp" path="/static/images/jens-shortlist" themes='{{ themes|join(",") }}'></theme-switcher> -->
+
+    {% include "chunks/header.html" %}
+  </header>
+  <article class="top" id="theme-bg">
+    <div class="rotatingBackground"></div>
+    <div class="overlay"></div>
+  </article>
+  <div class="main-title">
+    <div class="liner">
+
+      <h1 id="main-title">Newberry Transcribe</h1>
+      <h3>Unlock the past!</h3>
+
+      <p>
+        Help preserve the past by transcribing <br />
+        handwritten letters and diaries at <a href="https://collections.newberry.org" class="llines invert"
+          target="_blank">Newberry Digital
+          Collections</a>
+      </p>
+    </div>
+  </div>
+  <article class="intro">
+
+    <div class="center-splash">
+      <div class="get-started-buttons">
+        <a href="#" class="fakelink button-like">Learn More</a>
+        <a href="/mss" class="button-like  color-button">Browse Manuscripts</a>
+        <a href="{{ random_link }}" class="button-like  color-button">Jump In!</a>
+      </div>
+
+      {% include 'chunks/how-to.html' %}
+  </article>
+  <article class="showcase">
+    <h3 class="transcription-header">
+      Featured transcription!</h3>
+    <!--<img srcset="{{ t.srcset }}" alt="a page of handwritten text" class="page" />-->
+    <section class="transcription">
+      <pre class="text" id="transcription-text"> {{ t.text }}</pre>
+      <div class="ack">
+        <p>
+          from <a href="{{ t.link }}" class="llines ack-link" target="_blank">{{ t.title }}</a>
+        </p>
+        <p>transcribed by <b>{{ t.user }}</b> on {{ t.date }}</p>
+      </div>
+    </section>
+  </article>
+
+  <article>
+    <div class="choose mss">
+      <div class="header-wrapper">
+        <h2>Choose a manuscript</h2>
+        <p id="title-anchor">
+          Select from thousands of pages of letters, diaries, and business records, spanning the 18th
+          through
+          20th centuries
+        </p>
+        <div class="button-wrapper">
+          <a href="/manuscripts" class="button-like index-button">Browse manuscripts</a>
+        </div>
+        <!-- <p class="citation">Background image: -->
+        <!-- <a href="https://collections.newberry.org/asset-management/2KXJ8ZSAT7VXS" target="_blank" class="llines"> -->
+        <!-- Chicago Club, 1907 </a> -->
+        <!-- </p> -->
+      </div>
+      {{ gallery_mss | safe }}
+    </div>
+  </article>
+  <article>
+    <div class="choose creator">
+      <div class="creator-overlay">
+        <h5 class="message">Coming soon!</h5>
+      </div>
+      <div class="header-wrapper">
+        <h2>Choose a creator</h2>
+        <p>
+          Our diarists and correspondents come from all walks of life. Choose from social activists,
+          novelists, homemakers, and lots more
+        </p>
+        <div class="button-wrapper">
+          <a href="/creators" class="button-like index-button">Browse creators</a>
+        </div>
+        <p class="citation">Background image:
+          <a href="https://collections.newberry.org/asset-management/2KXJ8ZSATCW2M" target="_blank" class="llines">
+            Michigan Avenue, Chicago, ca. 1910s </a>
+        </p>
+      </div>
+      {{ gallery_creators | safe }}
+    </div>
+  </article>
+  <footer>
+    {{ footer_menu | safe }}
+  </footer>
+</body>
+<script>
+
+  // Handle color picker changes
+  /* rotatingBackground interval + click-to-change */
+
+  let counter = 0;
+  let intervalId;
+
+  const themes = {{ themes | safe }};
+  // console.log(themes)
+
+  const themeSection = document.getElementById('theme-bg');
+
+  const nextButton = document.createElement('button');
+  const prevButton = document.createElement('button');
+  const nextArrow = document.createElement('i');
+  const prevArrow = document.createElement('i');
+
+  nextButton.className = 'rotatingBackground-nav next';
+  prevButton.className = 'rotatingBackground-nav prev';
+
+  nextButton.appendChild(nextArrow);
+  prevButton.appendChild(prevArrow);
+
+  themeSection.appendChild(nextButton);
+  themeSection.appendChild(prevButton);
+
+
+  function changeTheme(newIndex = 0, storeTheme = false) {
+    themes.forEach((theme, idx) => {
+      document.body.classList.remove(theme)
+    })
+
+    const normalizedIndex = (newIndex + themes.length) % themes.length;
+    document.body.classList.add(themes[normalizedIndex])
+
+    if (storeTheme) {
+      sessionStorage.setItem("theme", themes[normalizedIndex]);
+
+    }
+    return normalizedIndex;
+  }
+
+  // Start automatic rotation
+  function startInterval() {
+    intervalId = setInterval(() => {
+
+      counter = changeTheme(counter) + 1;
+    }, 10000);
+  }
+
+  changeTheme(counter)
+  // Initial start
+  startInterval();
+
+  // Navigation handlers
+  nextButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = themes.findIndex(
+      theme => document.body.classList.contains(theme)
+    );
+    counter = changeTheme(currentIndex + 1, true) + 1;
+  });
+
+  prevButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = themes.findIndex(
+      theme => document.body.classList.contains(theme)
+    );
+    counter = changeTheme(currentIndex - 1, true) + 1;
+  });
+
+
+  let ticking = false;
+
+  const headerHomeLink = document.getElementById('header-home-link');
+  document.addEventListener('scroll', showHomeLink);
+
+  function showHomeLink() {
+    console.log('scrollfunction')
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        let windowHeight = window.innerHeight;
+        headerHomeLink.classList.toggle('visible', window.scrollY > windowHeight * 0.4);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  showHomeLink()
+  window.addEventListener('resize', showHomeLink);
+
+</script>
+
+</html>

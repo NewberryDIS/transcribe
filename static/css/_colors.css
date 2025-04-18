@@ -1,0 +1,329 @@
+body {
+  --fg-color: rgb(var(--fg));
+  --bg-color: rgb(var(--bg));
+  --accent-color: rgb(var(--accent));
+  --fg-accent-color: color-mix(in oklab, var(--accent-color) 33%, var(--fg-color));
+  --bg-accent-color: color-mix(in oklab, var(--accent-color) 33%, var(--bg-color));
+
+  --shadow-accent-color: color-mix(in oklab, var(--accent-color) 15%, transparent);
+  --shadow-color: color-mix(in oklab, var(--fg-color) 15%, transparent);
+  --shadow: 0 0 7px 7px var(--shadow-color);
+  --inset-shadow: inset 0 0 7px 7px var(--shadow-color);
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+.nt-2KXJ8ZQ50KYQ {
+  --bg:  218, 203, 182 ;
+  --fg:  37, 26, 24 ;
+  --accent:  41, 84, 135 ;
+  --fg-hsl: 9, 21.3, 12;
+ --fg-h: 9;
+  --bg-hsl: 35, 32.7, 78.4;
+ --bg-h: 35;
+  --ac-hsl: 213, 53.4, 34.5;
+  --ac-h: 213;
+}
+.nt-2KXJ8ZS2V831N {
+  --bg:  177, 170, 154 ;
+  --fg:  32, 23, 8 ;
+  --accent:  170, 133, 127 ;
+  --fg-hsl: 38, 60, 7.8;
+ --fg-h: 38;
+  --bg-hsl: 42, 12.8, 64.9;
+ --bg-h: 42;
+  --ac-hsl: 8, 20.2, 58.2;
+  --ac-h: 8;
+
+}
+
+.nt-2KXJ8ZJ78RKI {
+  --bg:  221, 206, 197 ;
+  --fg:  15, 12, 11 ;
+  --accent:  97, 80, 116 ;
+  --fg-hsl: 15, 15.4, 5.1;
+ --fg-h: 15;
+  --bg-hsl: 22, 26.1, 82;
+ --bg-h: 22;
+  --ac-hsl: 268, 18.4, 38.4;
+  --ac-h: 268;
+
+}
+
+.nt-2KXJ8ZSLOJ965 {
+  --bg:  209, 194, 165 ;
+  --fg:  63, 47, 58 ;
+  --accent:  92, 133, 135 ;
+  --fg-hsl: 319, 14.5, 21.6;
+ --fg-h: 319;
+  --bg-hsl: 40, 32.4, 73.3;
+ --bg-h: 40;
+  --ac-hsl: 183, 18.9, 44.5;
+  --ac-h: 183;
+
+}
+
+.nt-2KXJ8ZS8UB8KB {
+  --bg:  204, 203, 201 ;
+  --fg:  50, 36, 33 ;
+  --accent:  123, 115, 161 ;
+  --fg-hsl: 11, 20.5, 16.3;
+ --fg-h: 11;
+  --bg-hsl: 40, 2.9, 79.4;
+ --bg-h: 40;
+  --ac-hsl: 250, 19.7, 54.1;
+  --ac-h: 250;
+
+}
+
+.nt-2KXJ8ZSC09H2L {
+  --fg:  110, 58, 140 ;
+  --bg:  233, 231, 218 ;
+  --accent:  181, 172, 157 ;
+  --fg-hsl: 278, 41.4, 38.8;
+ --fg-h: 278;
+  --bg-hsl: 52, 25.4, 88.4;
+ --bg-h: 52;
+  --ac-hsl: 38, 14, 66.3;
+  --ac-h: 38;
+
+}
+
+.nt-2KXJ8Z1ZLV0H {
+  --fg:  5, 4, 3 ;
+  --bg:  234, 229, 215 ;
+  --accent:  79, 150, 131 ;
+  --fg-hsl: 30, 25, 1.6;
+ --fg-h: 30;
+  --bg-hsl: 44, 31.1, 88;
+ --bg-h: 44;
+  --ac-hsl: 164, 31, 44.9;
+  --ac-h: 164;
+
+}
+
+.nt-2KXJ8Z2NFLNT {
+  --fg:  3, 2, 2 ;
+  --bg:  219, 216, 207 ;
+  --accent:  92, 123, 115 ;
+  --fg-hsl: 0, 20, 1;
+ --fg-h: 0;
+  --bg-hsl: 45, 14.3, 83.5;
+ --bg-h: 45;
+  --ac-hsl: 165, 14.4, 42.2;
+  --ac-h: 165;
+
+}
+
+.nt-2KXJ8ZE0DCKJ {
+  --fg:  0, 0, 0 ;
+  --bg:  212, 222, 216 ;
+  --accent:  106, 94, 123 ;
+  --fg-hsl: 0, 0, 0;
+ --fg-h: 0;
+  --bg-hsl: 144, 13.2, 85.1;
+ --bg-h: 144;
+  --ac-hsl: 265, 13.4, 42.5;
+  --ac-h: 265;
+
+}
+
+.nt-2KXJ8ZELYODH {
+  --fg:  10, 10, 10 ;
+  --bg:  233, 226, 218 ;
+  --accent:  88, 148, 120 ;
+  --fg-hsl: 0, 0, 3.9;
+ --fg-h: 0;
+  --bg-hsl: 32, 25.4, 88.4;
+ --bg-h: 32;
+  --ac-hsl: 152, 25.4, 46.3;
+  --ac-h: 152;
+
+}
+
+.nt-2KXJ8ZS497O2R {
+  --fg:  11, 10, 10 ;
+  --bg:  242, 232, 214 ;
+  --accent:  57, 181, 137 ;
+  --fg-hsl: 0, 4.8, 4.1;
+ --fg-h: 0;
+  --bg-hsl: 39, 51.9, 89.4;
+ --bg-h: 39;
+  --ac-hsl: 159, 52.1, 46.7;
+  --ac-h: 159;
+
+}
+
+.nt-2KXJ8ZSA8ZZBB {
+  --fg:  1, 1, 1 ;
+  --bg:  232, 225, 218 ;
+  --accent:  87, 139, 113 ;
+  --fg-hsl: 0, 0, 0.4;
+ --fg-h: 0;
+  --bg-hsl: 30, 23.3, 88.2;
+ --bg-h: 30;
+  --ac-hsl: 150, 23, 44.3;
+  --ac-h: 150;
+
+}
+
+.nt-2KXJ8ZSCY4XHT {
+  --fg:  12, 11, 10 ;
+  --bg:  224, 225, 221 ;
+  --accent:  110, 121, 124 ;
+  --fg-hsl: 30, 9.1, 4.3;
+ --fg-h: 30;
+  --bg-hsl: 75, 6.2, 87.5;
+ --bg-h: 75;
+  --ac-hsl: 193, 6, 45.9;
+  --ac-h: 193;
+
+}
+
+.nt-2KXJ8ZSF6FBKA {
+  --fg:  6, 5, 5 ;
+  --bg:  229, 225, 216 ;
+  --accent:  91, 137, 123 ;
+  --fg-hsl: 0, 9.1, 2.2;
+ --fg-h: 0;
+  --bg-hsl: 42, 20, 87.3;
+ --bg-h: 42;
+  --ac-hsl: 162, 20.2, 44.7;
+  --ac-h: 162;
+
+}
+
+.nt-2KXJ8ZSFQB9OQ {
+  --fg:  15, 15, 15 ;
+  --bg:  213, 218, 217 ;
+  --accent:  120, 108, 123 ;
+  --fg-hsl: 0, 0, 5.9;
+ --fg-h: 0;
+  --bg-hsl: 168, 6.3, 84.5;
+ --bg-h: 168;
+  --ac-hsl: 288, 6.5, 45.3;
+  --ac-h: 288;
+
+}
+
+.nt-2KXJ8ZSKYV4OE {
+  --fg:  7, 6, 6 ;
+  --bg:  221, 212, 200 ;
+  --accent:  83, 134, 112 ;
+  --fg-hsl: 0, 7.7, 2.5;
+ --fg-h: 0;
+  --bg-hsl: 34, 23.6, 82.5;
+ --bg-h: 34;
+  --ac-hsl: 154, 23.5, 42.5;
+  --ac-h: 154;
+
+}
+
+.nt-2KXJ8ZW261H8 {
+  --fg:  11, 11, 12 ;
+  --bg:  216, 218, 226 ;
+  --accent:  133, 99, 106 ;
+  --fg-hsl: 240, 4.3, 4.5;
+ --fg-h: 240;
+  --bg-hsl: 228, 14.7, 86.7;
+ --bg-h: 228;
+  --ac-hsl: 348, 14.7, 45.5;
+  --ac-h: 348;
+
+}
+
+  .nt-2KXJ8ZW2MKF1{
+  --fg:  15, 14, 15 ;
+  --bg:  227, 232, 237 ;
+  --accent:  150, 96, 123 ;
+  --fg-hsl: 300, 3.4, 5.7;
+ --fg-h: 300;
+  --bg-hsl: 210, 21.7, 91;
+ --bg-h: 210;
+  --ac-hsl: 330, 22, 48.2;
+  --ac-h: 330;
+}
+
+* {
+  color: var(--fg-color);
+}
+
+h1,
+h2,
+h1 *,
+h2 * {
+  color: var(--fg-accent-color);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: color-mix(in oklab, var(--accent-color), var(--fg-accent-color));
+  /* color: var(--accent-color); */
+}
+
+.main-title .liner {
+  /* backdrop-filter: blur(5px); */
+  /* background: color-mix(in oklab, var(--bg-color) 60%, transparent); */
+  background: var(--bg-color);
+}
+
+
+
+.center-splash {
+  background: var(--bg-color);
+  /* background: #fff; */
+}
+
+.button-like {
+  --button-fg: var(--bg-color);
+  --button-bg: var(--fg-accent-color);
+
+
+  &:nth-child(2) {
+    --button-fg: var(--fg-accent-color);
+    --button-bg: var(--bg-accent-color);
+    box-shadow: 0 0 7px 7px color-mix(in oklab, var(--button-bg) 22%, transparent);
+
+    &:hover {
+      filter: brightness(1.2);
+
+      box-shadow: 0 0 7px 7px color-mix(in oklab, var(--button-bg) 33%, transparent);
+    }
+  }
+}
+
+.instr-grid {
+  --how-to-icon-color: var(--bg-accent-color);
+}
+
+.choose {
+  &.mss .header-wrapper {
+    background: var(--fg-accent-color);
+  }
+
+  &.creator .header-wrapper {
+
+    background: var(--fg-accent-color);
+  }
+
+  & h2,
+  p,
+  a {
+    color: var(--bg-accent-color);
+  }
+}
+
+.choose li em {
+
+  background: var(--bg-accent-color);
+  color: var(--fg-accent-color);
+}
+
+.creator-overlay {
+  background-color: color-mix(in oklab, var(--bg-color) 60%, transparent);
+
+}
+
+/* .choose.creator .header-wrapper {} */

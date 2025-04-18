@@ -1,0 +1,348 @@
+.nt-2KXJ8ZA0QPZN,
+.nt-2KXJ8ZA6K8AJ,
+.nt-2KXJ8ZA9QC6K,
+.nt-2KXJ8ZCVAKWM,
+.nt-2KXJ8ZCVYDIF,
+.nt-2KXJ8ZFI8W1X,
+.nt-2KXJ8ZIJVB5T,
+.nt-2KXJ8ZIOUOUO,
+.nt-2KXJ8ZJ1F80D,
+.nt-2KXJ8ZJ78RKI,
+.nt-2KXJ8ZJ7KNGK,
+.nt-2KXJ8ZJQVM57,
+.nt-2KXJ8ZQ50KYQ,
+.nt-2KXJ8ZS6AJIRH,
+.nt-2KXJ8ZS8U9WIR,
+.nt-2KXJ8ZSU9NE2D {
+  --splash-rgb: var(--color1);
+  --splash: rgb(var(--color1));
+}
+
+.nt-2KXJ8ZA0QPZN,
+.nt-2KXJ8ZA6K8AJ,
+.nt-2KXJ8ZCVAKWM,
+.nt-2KXJ8ZCVYDIF,
+.nt-2KXJ8ZIOUOUO,
+.nt-2KXJ8ZJ78RKI,
+.nt-2KXJ8ZJ7KNGK,
+.nt-2KXJ8ZQ50KYQ,
+.nt-2KXJ8ZSU9NE2D {
+  --alt-rgb: var(--color6);
+  --alt: rgb(var(--color6));
+}
+
+.nt-2KXJ8ZA9QC6K,
+.nt-2KXJ8ZFI8W1X,
+.nt-2KXJ8ZIJVB5T,
+.nt-2KXJ8ZJ1F80D,
+.nt-2KXJ8ZS8U9WIR {
+  --alt-rgb: var(--color5);
+  --alt: rgb(var(--color5));
+}
+
+.nt-2KXJ8ZS6AJIRH {
+  --alt-rgb: var(--color2);
+  --alt: rgb(var(--color2));
+}
+
+.nt-2KXJ8ZJQVM57 {
+  --alt-rgb: var(--color4);
+  --alt: rgb(var(--color4));
+}
+
+.nt-2KXJ8ZW2MKF1 {
+  --alt-rgb: var(--color2);
+  --alt: rgb(var(--color2));
+  --splash-rgb: var(color4);
+  --splash: rgb(var(color4));
+}
+
+
+.nt-2KXJ8ZA0QPZN {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA0QPZN/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA0QPZN/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA0QPZN/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZA0QPZN/full/1500,/0/default.jpg');
+  --background: #020202;
+  --foreground: #d8dedc;
+  --color0: 2, 2, 2;
+  --color1: 150, 163, 156;
+  --color2: 155, 169, 164;
+  --color3: 172, 187, 182;
+  --color4: 178, 194, 189;
+  --color5: 193, 201, 188;
+  --color6: 186, 201, 196;
+  --color7: 216, 222, 220;
+  --color8: 151, 155, 154;
+}
+
+.nt-2KXJ8ZA6K8AJ {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA6K8AJ/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA6K8AJ/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA6K8AJ/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZA6K8AJ/full/1500,/0/default.jpg');
+  --background: #030302;
+  --foreground: #dcd9bb;
+  --color0: 3, 3, 2;
+  --color1: 193, 158, 108;
+  --color2: 195, 185, 123;
+  --color3: 190, 193, 127;
+  --color4: 200, 193, 126;
+  --color5: 187, 182, 131;
+  --color6: 196, 188, 132;
+  --color7: 220, 217, 187;
+  --color8: 154, 151, 130;
+}
+
+.nt-2KXJ8ZA9QC6K {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA9QC6K/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA9QC6K/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZA9QC6K/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZA9QC6K/full/1500,/0/default.jpg');
+  --background: #040303;
+  --foreground: #ddc298;
+  --color0: 4, 3, 3;
+  --color1: 178, 121, 47;
+  --color2: 173, 121, 59;
+  --color3: 188, 131, 47;
+  --color4: 199, 141, 52;
+  --color5: 213, 158, 59;
+  --color6: 184, 135, 67;
+  --color7: 221, 194, 152;
+  --color8: 154, 135, 106;
+}
+
+.nt-2KXJ8ZCVAKWM {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVAKWM/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVAKWM/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVAKWM/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVAKWM/full/1500,/0/default.jpg');
+  --background: #010101;
+  --foreground: #d3dfe6;
+  --color0: 1, 1, 1;
+  --color1: 127, 162, 178;
+  --color2: 132, 155, 170;
+  --color3: 143, 170, 186;
+  --color4: 154, 182, 196;
+  --color5: 162, 189, 202;
+  --color6: 170, 196, 208;
+  --color7: 211, 223, 230;
+  --color8: 147, 156, 161;
+}
+
+.nt-2KXJ8ZCVYDIF {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVYDIF/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVYDIF/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVYDIF/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZCVYDIF/full/1500,/0/default.jpg');
+  --background: #0e0e0a;
+  --foreground: #e8e8e4;
+  --color0: 14, 14, 10;
+  --color1: 128, 126, 116;
+  --color2: 134, 133, 122;
+  --color3: 166, 165, 155;
+  --color4: 192, 191, 182;
+  --color5: 199, 197, 186;
+  --color6: 214, 215, 209;
+  --color7: 232, 232, 228;
+  --color8: 162, 162, 159;
+}
+
+.nt-2KXJ8ZFI8W1X {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZFI8W1X/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZFI8W1X/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZFI8W1X/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZFI8W1X/full/1500,/0/default.jpg');
+  --background: #030202;
+  --foreground: #e2dadd;
+  --color0: 3, 2, 2;
+  --color1: 184, 169, 174;
+  --color2: 195, 180, 157;
+  --color3: 199, 183, 186;
+  --color4: 211, 195, 189;
+  --color5: 188, 167, 194;
+  --color6: 204, 188, 196;
+  --color7: 226, 218, 221;
+  --color8: 158, 152, 154;
+}
+
+.nt-2KXJ8ZIJVB5T {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIJVB5T/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIJVB5T/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIJVB5T/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZIJVB5T/full/1500,/0/default.jpg');
+  --background: #010101;
+  --foreground: #e7bcc2;
+  --color0: 1, 1, 1;
+  --color1: 203, 128, 126;
+  --color2: 186, 113, 132;
+  --color3: 212, 122, 133;
+  --color4: 225, 125, 139;
+  --color5: 191, 129, 148;
+  --color6: 219, 133, 144;
+  --color7: 231, 188, 194;
+  --color8: 161, 131, 135;
+}
+
+.nt-2KXJ8ZIOUOUO {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIOUOUO/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIOUOUO/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZIOUOUO/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZIOUOUO/full/1500,/0/default.jpg');
+  --background: #010102;
+  --foreground: #a3d0c7;
+  --color0: 1, 1, 2;
+  --color1: 133, 186, 74;
+  --color2: 149, 212, 77;
+  --color3: 162, 220, 91;
+  --color4: 161, 222, 100;
+  --color5: 165, 221, 100;
+  --color6: 106, 190, 145;
+  --color7: 163, 208, 199;
+  --color8: 114, 145, 139;
+}
+
+.nt-2KXJ8ZJ1F80D {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ1F80D/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ1F80D/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ1F80D/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ1F80D/full/1500,/0/default.jpg');
+  --background: #060403;
+  --foreground: #ced1c5;
+  --color0: 6, 4, 3;
+  --color1: 123, 133, 106;
+  --color2: 140, 145, 116;
+  --color3: 159, 159, 120;
+  --color4: 147, 155, 131;
+  --color5: 156, 170, 141;
+  --color6: 169, 176, 144;
+  --color7: 206, 209, 197;
+  --color8: 144, 146, 137;
+}
+
+.nt-2KXJ8ZJ78RKI {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ78RKI/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ78RKI/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ78RKI/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ78RKI/full/1500,/0/default.jpg');
+  --background: #0F0C0B;
+  --foreground: #d8d3cf;
+  --color0: 15, 12, 11;
+  --color1: 134, 120, 143;
+  --color2: 151, 142, 139;
+  --color3: 165, 156, 147;
+  --color4: 175, 165, 155;
+  --color5: 160, 149, 164;
+  --color6: 182, 173, 166;
+  --color7: 216, 211, 207;
+  --color8: 151, 147, 144;
+}
+
+.nt-2KXJ8ZJ7KNGK {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ7KNGK/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ7KNGK/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ7KNGK/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZJ7KNGK/full/1500,/0/default.jpg');
+  --background: #0d0907;
+  --foreground: #f1d3b9;
+  --color0: 13, 9, 7;
+  --color1: 230, 162, 94;
+  --color2: 211, 153, 103;
+  --color3: 220, 163, 108;
+  --color4: 239, 173, 109;
+  --color5: 244, 184, 113;
+  --color6: 212, 163, 135;
+  --color7: 241, 211, 185;
+  --color8: 168, 147, 129;
+}
+
+.nt-2KXJ8ZJQVM57 {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJQVM57/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJQVM57/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZJQVM57/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZJQVM57/full/1500,/0/default.jpg');
+  --background: #030203;
+  --foreground: #e0cdc0;
+  --color0: 3, 2, 3;
+  --color1: 155, 131, 114;
+  --color2: 174, 141, 117;
+  --color3: 203, 162, 125;
+  --color4: 127, 122, 130;
+  --color5: 181, 152, 134;
+  --color6: 202, 166, 142;
+  --color7: 224, 205, 192;
+  --color8: 156, 143, 134;
+}
+
+.nt-2KXJ8ZQ50KYQ {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZQ50KYQ/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZQ50KYQ/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZQ50KYQ/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZQ50KYQ/full/1500,/0/default.jpg');
+  --background: #050302;
+  --foreground: #e8ddd2;
+  --color0: 5, 3, 2;
+  --color1: 182, 159, 138;
+  --color2: 203, 166, 137;
+  --color3: 206, 176, 147;
+  --color4: 211, 187, 165;
+  --color5: 223, 193, 158;
+  --color6: 219, 198, 177;
+  --color7: 232, 221, 210;
+  --color8: 162, 154, 147;
+}
+
+.nt-2KXJ8ZS6AJIRH {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS6AJIRH/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS6AJIRH/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS6AJIRH/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZS6AJIRH/full/1500,/0/default.jpg');
+  --background: #030202;
+  --foreground: #dfc6c7;
+  --color0: 3, 2, 2;
+  --color1: 199, 137, 127;
+  --color2: 160, 127, 128;
+  --color3: 164, 143, 136;
+  --color4: 179, 144, 138;
+  --color5: 205, 155, 152;
+  --color6: 209, 161, 157;
+  --color7: 223, 198, 199;
+  --color8: 156, 138, 139;
+}
+
+.nt-2KXJ8ZS8U9WIR {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS8U9WIR/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS8U9WIR/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZS8U9WIR/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZS8U9WIR/full/1500,/0/default.jpg');
+  --background: #100e0f;
+  --foreground: #d3d8df;
+  --color0: 16, 14, 15;
+  --color1: 152, 155, 166;
+  --color2: 157, 164, 181;
+  --color3: 170, 173, 183;
+  --color4: 197, 192, 178;
+  --color5: 158, 168, 194;
+  --color6: 175, 183, 201;
+  --color7: 211, 216, 223;
+  --color8: 147, 151, 156;
+}
+
+.nt-2KXJ8ZSU9NE2D {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZSU9NE2D/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZSU9NE2D/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZSU9NE2D/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZSU9NE2D/full/1500,/0/default.jpg');
+  --background: #020202;
+  --foreground: #cbcbc5;
+  --color0: 2, 2, 2;
+  --color1: 144, 149, 117;
+  --color2: 155, 164, 123;
+  --color3: 161, 168, 126;
+  --color4: 148, 150, 133;
+  --color5: 157, 166, 130;
+  --color6: 165, 172, 134;
+  --color7: 203, 203, 197;
+  --color8: 142, 142, 137;
+}
+
+.nt-2KXJ8ZW2MKF1 {
+  --wallpaper: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZW2MKF1/full/1200,/0/default.jpg');
+  --wallpaper-l: url('https://collections.newberry.org/IIIF3/Image/2KXJ8ZW2MKF1/full/1500,/0/default.jpg');
+  --wallpaper-set: image-set('https://collections.newberry.org/IIIF3/Image/2KXJ8ZW2MKF1/full/1200,/0/default.jpg' 1x, 'https://collections.newberry.org/IIIF3/Image/2KXJ8ZW2MKF1/full/1500,/0/default.jpg');
+  --background: #0f0f10;
+  --foreground: #e3e8ed;
+  --color0: 15, 15, 16;
+  --color1: 194, 193, 186;
+  --color2: 178, 186, 198;
+  --color3: 187, 197, 208;
+  --color4: 190, 205, 225;
+  --color5: 199, 207, 218;
+  --color6: 206, 216, 229;
+  --color7: 227, 232, 237;
+  --color8: 158, 162, 165;
+}

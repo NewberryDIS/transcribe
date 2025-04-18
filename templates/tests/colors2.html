@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newberry Transcribe {% block title %}{% endblock %}</title>
+  <script src="{{ url_for('static', path='/js/newberry-logo.js')}}"></script>
+  <script src="{{ url_for('static', path='/js/theme-switcher.js')}}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/_newbase.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/nu_index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/header_footer.css') }}">
+
+  {% block extra_css %}{% endblock %}
+
+  <style>
+    .showcase {
+      background-image: url("{{ url_for('static', path='/images/jumbo/' + t.image + '-sm.jpg') }}");
+      background-image: url("{{ url_for('static', path='/images/jumbo/' + t.image + '-m.jpg') }}");
+      background-image: url("{{ url_for('static', path='/images/jumbo/' + t.image + '-l.jpg') }}");
+      margin-top: var(--header-height);
+      display: flex;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      align-items: end;
+      justify-content: end;
+      padding: 33px;
+
+
+      & .transcription {
+
+        max-height: 76vh;
+        overflow-y: auto;
+        max-width: min(87ch, 95%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: end;
+
+        backdrop-filter: blur(6px);
+        padding: 33px;
+        background-color: rgba(var(--bg-rgb), 0.5);
+        overflow-y: auto;
+        /* put scrollbar on left */
+        direction: rtl;
+
+        & .text,
+        .ack {
+          direction: ltr;
+        }
+
+        & .text {
+          max-height: 100%;
+          white-space: pre-wrap;
+          overflow-y: auto;
+        }
+
+        & .ack p {
+          text-align: end;
+          text-wrap: pretty;
+          margin-block: 0;
+        }
+      }
+    }
+
+
+    .top {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+    }
+
+    .rotatingBackground,
+    .overlay {
+      transition: var(--global-transition); 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      overflow: hidden;
+
+    }
+
+    .rotatingBackground {
+      background-image: var(--wallpaper);
+      background-size: cover;
+      background-position: 25%;
+    }
+
+    .overlay {
+      background: rgb(var(--bg-rgb), 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    #colorPicker {
+      bottom: 50px;
+      right: 50px;
+    }
+
+    .color-grid,
+    #colorPicker {
+
+      position: absolute;
+      z-index: 1000000;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 2rem;
+    }
+
+    .color-box {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .color-label {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .picker-container {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #colorPicker {
+      width: 4rem;
+      height: 4rem;
+    }
+  </style>
+</head>
+
+<body id="{{ themes[0] }}">
+  <header class="sneaky-header glassy">
+    <theme-switcher ext="webp" path="/static/images/jens-shortlist" themes="{{ themes|join(',') }}"></theme-switcher>
+  </header>
+  --bg-color
+  --fg-color
+  --fg-splash
+  --fg-alt
+  --bg-splash
+  --bg-alt
+  <article class="top" id="theme-bg">
+    <div class="rotatingBackground" style="background-image: var(--wallpaper);"></div>
+    <div class="overlay"></div>
+  </article>
+  <div class="color-grid" id="colorGrid"></div>
+
+</body>
+<style>
+
+</style>
+<script>
+
+
+
+  function rgb2hue(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    var c = max - min;
+    var hue;
+    if (c == 0) {
+      hue = 0;
+    } else {
+      switch (max) {
+        case r:
+          var segment = (g - b) / c;
+          var shift = 0 / 60;       // R° / (360° / hex sides)
+          if (segment < 0) {          // hue > 180, full rotation
+            shift = 360 / 60;         // R° / (360° / hex sides)
+          }
+          hue = segment + shift;
+          break;
+        case g:
+          var segment = (b - r) / c;
+          var shift = 120 / 60;     // G° / (360° / hex sides)
+          hue = segment + shift;
+          break;
+        case b:
+          var segment = (r - g) / c;
+          var shift = 240 / 60;     // B° / (360° / hex sides)
+          hue = segment + shift;
+          break;
+      }
+    }
+    return Math.round(hue * 60); // hue is in [0,6], scale it up
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(Math.min(value, max), min);
+  }
+
+  function hexToRGB(str) {
+    var hex = str.replace("#", "");
+    var num = parseInt(hex, 16);
+    return { r: num >> 16, g: (num >> 8) & 255, b: num & 255 };
+  };
+
+  function rgbToHex({ r, g, b }) {
+    return "#" + (b | (g << 8) | (r << 16) | (1 << 24)).toString(16).slice(1);
+  }
+
+  const gammaToLinear = (c) =>
+    c >= 0.04045 ? Math.pow((c + 0.055) / 1.055, 2.4) : c / 12.92;
+  const linearToGamma = (c) =>
+    c >= 0.0031308 ? 1.055 * Math.pow(c, 1 / 2.4) - 0.055 : 12.92 * c;
+
+  function rgbToOklab({ r, g, b }) {
+    r = gammaToLinear(r / 255); g = gammaToLinear(g / 255); b = gammaToLinear(b / 255);
+    var l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+    var m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+    var s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+    l = Math.cbrt(l); m = Math.cbrt(m); s = Math.cbrt(s);
+    return {
+      L: l * +0.2104542553 + m * +0.7936177850 + s * -0.0040720468,
+      a: l * +1.9779984951 + m * -2.4285922050 + s * +0.4505937099,
+      b: l * +0.0259040371 + m * +0.7827717662 + s * -0.8086757660
+    }
+  }
+
+  function oklabToSRGB({ L, a, b }) {
+    var l = L + a * +0.3963377774 + b * +0.2158037573;
+    var m = L + a * -0.1055613458 + b * -0.0638541728;
+    var s = L + a * -0.0894841775 + b * -1.2914855480;
+    l = l ** 3; m = m ** 3; s = s ** 3;
+    var r = l * +4.0767416621 + m * -3.3077115913 + s * +0.2309699292;
+    var g = l * -1.2684380046 + m * +2.6097574011 + s * -0.3413193965;
+    var b = l * -0.0041960863 + m * -0.7034186147 + s * +1.7076147010;
+    r = 255 * linearToGamma(r); g = 255 * linearToGamma(g); b = 255 * linearToGamma(b);
+    r = clamp(r, 0, 255); g = clamp(g, 0, 255); b = clamp(b, 0, 255);
+    r = Math.round(r); g = Math.round(g); b = Math.round(b);
+    return { r, g, b };
+  }
+
+
+
+
+  function getLerpRange(min, max, N) {
+    dividend = (max - min) / (N - 1);
+    var arr = [];
+    currentVal = min;
+    for (var i = 0; i < N; i++) {
+      arr.push(currentVal);
+      currentVal += dividend;
+    }
+    return arr;
+  }
+
+  function getRGBlerpRangeInOklabSpace(startRGBhexColor, endRGBhexColor, numberOfColors) {
+    var lasInterpolaciones = [];
+    var startLabVals = rgbToOklab(hexToRGB(startRGBhexColor));
+    var endLabVals = rgbToOklab(hexToRGB(endRGBhexColor));
+    var lValsArr = getLerpRange(startLabVals.L, endLabVals.L, numberOfColors);
+    var aValsArr = getLerpRange(startLabVals.a, endLabVals.a, numberOfColors);
+    var bValsArr = getLerpRange(startLabVals.b, endLabVals.b, numberOfColors);
+    for (var i = 0; i < numberOfColors; i++) {
+      var tmpOklabVals = { L: lValsArr[i], a: aValsArr[i], b: bValsArr[i] };
+      var tmpsRGBvals = oklabToSRGB(tmpOklabVals);
+      lasInterpolaciones.push(tmpsRGBvals);
+    }
+    return lasInterpolaciones;
+  }
+
+  testInterpolaciones = getRGBlerpRangeInOklabSpace('#0000ff', '#ffff00', 7);
+  for (var element of testInterpolaciones) {
+    //  console.log(element);
+  };
+  function rgb2hsl(r, g, b) {
+
+    // see https://en.wikipedia.org/wiki/HSL_and_HSV#Formal_derivation
+    // convert r,g,b [0,255] range to [0,1]
+    r = r / 255,
+      g = g / 255,
+      b = b / 255;
+    // get the min and max of r,g,b
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    // lightness is the average of the largest and smallest color components
+    var lum = (max + min) / 2;
+    var hue;
+    var sat;
+    if (max == min) { // no saturation
+      hue = 0;
+      sat = 0;
+    } else {
+      var c = max - min; // chroma
+      // saturation is simply the chroma scaled to fill
+      // the interval [0, 1] for every combination of hue and lightness
+      sat = c / (1 - Math.abs(2 * lum - 1));
+      switch (max) {
+        case r:
+          // hue = (g - b) / c;
+          // hue = ((g - b) / c) % 6;
+          // hue = (g - b) / c + (g < b ? 6 : 0);
+          break;
+        case g:
+          hue = (b - r) / c + 2;
+          break;
+        case b:
+          hue = (r - g) / c + 4;
+          break;
+      }
+    }
+    hue = rgb2hue(r, g, b) // °
+    sat = Math.round(sat * 100); // %
+    lum = Math.round(lum * 100); // %
+    return [hue, sat, lum];
+  }
+
+  function rgbToHSL({ r, g, b }) {
+
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0;
+    } else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    return [h * 360, s * 100, l * 100];
+  }
+
+  function HSLToRGB(h, s, l) {
+    s /= 100;
+    l /= 100;
+
+    let c = (1 - Math.abs(2 * l - 1)) * s;
+    let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    let m = l - c / 2;
+    let r = 0, g = 0, b = 0;
+
+    if (0 <= h && h < 60) {
+      r = c; g = x; b = 0;
+    } else if (60 <= h && h < 120) {
+      r = x; g = c; b = 0;
+    } else if (120 <= h && h < 180) {
+      r = 0; g = c; b = x;
+    } else if (180 <= h && h < 240) {
+      r = 0; g = x; b = c;
+    } else if (240 <= h && h < 300) {
+      r = x; g = 0; b = c;
+    } else if (300 <= h && h < 360) {
+      r = c; g = 0; b = x;
+    }
+
+    const rgbObj = {
+      r: r,
+      g: g,
+      b: b
+    }
+    return rgbObj
+    // r = Math.round((r + m) * 255).toString(16).padStart(2, '0');
+    // g = Math.round((g + m) * 255).toString(16).padStart(2, '0');
+    // b = Math.round((b + m) * 255).toString(16).padStart(2, '0');
+
+    // return `#${r}${g}${b}`;
+  }
+
+  function getComplementaryColor(rgb) {
+    let [h, s, l] = rgb2hsl(rgb.r, rgb.g, rgb.b);
+    h = (h + 180) % 360;
+    return [h, s, l];
+  }
+
+  function colorConverter(colorEl, wrapperEl) {
+    // console.log(colorEl)
+    let srgbColor, computedColor
+    if (typeof colorEl === 'string') {
+      computedColor = getComputedStyle(wrapperEl).getPropertyValue(`--${colorEl}`)
+      const rgbArr = computedColor.replace('rgb(', '').replace(')', '').split(',').map(fe => fe.trim())
+      // srgbColor = {r:rgbArr[0], g:rgbArr[1], b:rgbArr[2]}
+      srgbColor = { r: rgbArr[0], g: rgbArr[1], b: rgbArr[2] }
+
+    } else {
+      computedColor = window.getComputedStyle(colorEl).getPropertyValue(`background-color`)
+      if (computedColor.indexOf('oklab') > -1) {
+        // console.log("computedColor", computedColor)
+        const oklabArr = computedColor.replace('oklab(', '').replace(')', '').split(' ')
+        const oklabObj = {
+          L: parseFloat(oklabArr[0]),
+          a: parseFloat(oklabArr[1]),
+          b: parseFloat(oklabArr[2])
+        }
+        srgbColor = oklabToSRGB(oklabObj)
+      } else {
+        const rgbArr = computedColor.replace('rgb(', '').replace(')', '').split(', ')
+        srgbColor = { r: rgbArr[0], g: rgbArr[1], b: rgbArr[2] }
+
+      }
+    }
+    // console.log("srgbColor", srgbColor)
+
+    const cC = getComplementaryColor(srgbColor)
+    const colorValu = `hsl(${cC[0]}, ${cC[1]}%, ${cC[2]}%)`
+    //     console.log("colorValu", colorValu)
+    // console.log("computedColor again", computedColor)
+    const grad = `linear-gradient(to right, ${computedColor} 0%, ${computedColor} 50%, ${colorValu} 50%, ${colorValu}  100%)`
+    return colorValu
+    // return grad
+  }
+  const colors = [
+    '--splash',
+    '--alt',
+  ]
+
+  const grid = document.getElementById('colorGrid');
+  const picker = document.getElementById('colorPicker');
+  const colorValue = document.getElementById('colorValue');
+
+
+  // Create empty box for selected color
+
+
+  // Handle color picker changes
+  /* rotatingBackground interval + click-to-change */
+
+  let counter = 0;
+  let intervalId;
+
+  const themes = {{ themes | safe }};
+  // console.log(themes)
+
+  const themeSection = document.getElementById('theme-bg');
+
+  const nextButton = document.createElement('button');
+  const prevButton = document.createElement('button');
+  const nextArrow = document.createElement('i');
+  const prevArrow = document.createElement('i');
+
+  nextButton.className = 'rotatingBackground-nav next';
+  prevButton.className = 'rotatingBackground-nav prev';
+
+  nextButton.appendChild(nextArrow);
+  prevButton.appendChild(prevArrow);
+
+  themeSection.appendChild(nextButton);
+  themeSection.appendChild(prevButton);
+
+
+  function changeTheme(newIndex = 0, storeTheme = false) {
+    themes.forEach((theme, idx) => {
+      document.body.classList.remove(theme)
+    })
+
+    const normalizedIndex = (newIndex + themes.length) % themes.length;
+    document.body.classList.add(themes[normalizedIndex])
+
+    if (storeTheme) {
+      sessionStorage.setItem("theme", themes[normalizedIndex]);
+
+    }
+    return normalizedIndex;
+  }
+
+  // Start automatic rotation
+  function startInterval() {
+    intervalId = setInterval(() => {
+      counter = changeTheme(counter) + 1;
+    }, 10000);
+  }
+
+  changeTheme(counter)
+  // Initial start
+  startInterval();
+
+  // Navigation handlers
+  nextButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = themes.findIndex(
+      theme => document.body.classList.contains(theme)
+    );
+    counter = changeTheme(currentIndex + 1, true) + 1;
+  });
+
+  prevButton.addEventListener('click', (e) => {
+    clearInterval(intervalId);
+    const currentIndex = themes.findIndex(
+      theme => document.body.classList.contains(theme)
+    );
+    counter = changeTheme(currentIndex - 1, true) + 1;
+  });
+
+  console.log(themes)
+  const colrGr = document.getElementById('colorGrid')
+  themes.forEach((theme, idx) => {
+    const themewrapper = document.createElement('div');
+    themewrapper.className = 'themer ' + theme;
+    themewrapper.id = theme;
+    const imgg = document.createElement('img')
+    imgg.style.minWidth = '100px'
+    imgg.style.minHeight = '100px'
+    imgg.style.background = 'var(--wallpaper)'
+    imgg.style.backgroundSize = 'cover'
+    themewrapper.appendChild(imgg);
+    colrGr.appendChild(themewrapper);
+
+    const splashBox = document.createElement('div');
+    const altBox = document.createElement('div');
+    colors.forEach(color => {
+      if (color === '--splash' || color === '--alt') {
+        const box = document.createElement('div');
+        box.style.backgroundColor = `var(${color})`;
+        box.innerText = color;
+        box.classList.add('color-bx')
+        themewrapper.appendChild(box);
+      }
+    })
+    // console.log("typeof themeaper",typeof themewrapper)
+    const splgrad = colorConverter('splash', themewrapper)
+    splashBox.style.backgroundColor = splgrad;
+    splashBox.classList.add('color-bx')
+    const altgrad = colorConverter('alt', themewrapper)
+    altBox.style.backgroundColor = altgrad;
+    altBox.classList.add('color-bx')
+
+    themewrapper.appendChild(splashBox);
+    themewrapper.appendChild(altBox);
+
+  });
+
+</script>
+<style>
+  body.nt-2KXJ8ZCVAKWM .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZA0QPZN .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZA6K8AJ .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZA9QC6K .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZCVYDIF .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZFI8W1X .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZIJVB5T .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZIOUOUO .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZJ1F80D .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZJ78RKI .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZJ7KNGK .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZJQVM57 .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZQ50KYQ .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZS6AJIRH .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZS8U9WIR .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZSU9NE2D .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  body.nt-2KXJ8ZW2MKF1 .themer {
+    border: 1px solid var(--fg-color);
+    padding: 10px;
+  }
+
+  .color-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .themer .color-bx {
+    min-width: 100px;
+    min-height: 100px;
+  }
+
+  .themer {
+    width: 100%;
+    display: flex;
+
+  }
+
+  .color-bx:after {}
+</style>
+
+</html>

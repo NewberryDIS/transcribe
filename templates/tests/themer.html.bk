@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newberry Transcribe {% block title %}{% endblock %}</title>
+  <script src="/static/js/newberry-logo.js"></script>
+  <script src="{{ url_for('static', path='/js/theme-switcher.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/header_footer.css') }}">
+  {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+  <header class="sneaky-header glassy">
+  </header>
+  <article class="top">
+    <div class="showcase" style="background-image: var(--wallpaper);">
+      <div class="overlay">
+        <section class="transcription">
+          <pre class="text" id="transcription-text">{{ data[0].text }}</pre>
+          <div class="ack">
+            <p>
+              from <a href="" class="llines ack-link" target="_blank">{{ data[0].title }}</a>
+            </p>
+            <p>transcribed by <b>{{ data[0].user }}</b> on {{ data[0].date }}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div class="main-title">
+    <h1 id="main-title">Splash Color</h1>
+      <h3>Alt Color 1!</h3>
+
+      <p>
+        Alt color 2.  Help preserve the past by transcribing handwritten letters and diaries at <a
+          href="https://collections.newberry.org" class="llines invert" target="_blank">Newberry Digital Collections</a>
+      </p>
+  </div>
+  <article class="intro">
+
+    <div class="center-splash">
+      <div class="get-started-buttons">
+        <button id="color-demo" class="fakelink button-like color-button" onclick="switchTheme()" >all colors</button>
+        <a href="/mss" class="button-like  color-button" >Browse Manuscripts</a>
+        <a href="{{ random_link }}" class="button-like  color-button">Jump In!</a>
+      </div>
+
+        {% include 'chunks/how-to.html' %}
+  </article>
+  <article>
+    <div class="choose mss">
+      <div class="header-wrapper">
+        <h2>Choose a manuscript</h2>
+        <p id="title-anchor">
+          Select from thousands of pages of letters, diaries, and business records, spanning the 18th
+          through
+          20th centuries
+        </p>
+        <div class="button-wrapper">
+          <a href="/manuscripts" class="button-like index-button">Browse manuscripts</a>
+        </div>
+        <p class="citation">Background image:
+          <a href="https://collections.newberry.org/asset-management/2KXJ8ZSAT7VXS" target="_blank" class="llines">
+            Chicago Club, 1907 </a>
+        </p>
+      </div>
+      {{ gallery_mss | safe }}
+    </div>
+  </article>
+  <article>
+    <div class="choose creator">
+      <div class="creator-overlay">
+        <h5 class="message">Coming soon!</h5>
+      </div>
+      <div class="header-wrapper">
+        <h2>Choose a creator</h2>
+        <p>
+          Our diarists and correspondents come from all walks of life. Choose from social activists,
+          novelists, homemakers, and lots more
+        </p>
+        <div class="button-wrapper">
+          <a href="/creators" class="button-like index-button">Browse creators</a>
+        </div>
+        <p class="citation">Background image:
+          <a href="https://collections.newberry.org/asset-management/2KXJ8ZSATCW2M" target="_blank" class="llines">
+            Michigan Avenue, Chicago, ca. 1910s </a>
+        </p>
+      </div>
+      {{ gallery_creators | safe }}
+    </div>
+  </article>
+  <footer>
+    {{ footer_menu | safe }}
+  </footer>
+</body>
+<script>
+const meis = [
+
+"2KXJ8Z81GVQRV",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJENJY",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7BST",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJ7L4F",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJE5RZ",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJ7GBL",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLJEW2S",
+"2KXJ8ZSLXKYSP",
+"2KXJ8ZSLXKYSP",
+"2KXJ8ZSLXKYSP",
+"2KXJ8ZSLXKYSP",
+"2KXJ8ZSLXKYSP",
+"2KXJ8ZS6Q0TQX",
+"2KXJ8ZS6Q0TQX",
+"2KXJ8ZS6Q0TQX",
+"2KXJ8ZS6Q0TQX",
+"2KXJ8ZS6Q0TQX",
+"2KXJ8ZS6Q0KF5",
+"2KXJ8ZS6Q0KF5",
+"2KXJ8ZS6Q0KF5",
+"2KXJ8ZS6Q0KF5",
+"2KXJ8ZS6Q0KF5",
+"2KXJ8Z1ZLV0H",
+"2KXJ8Z1ZLV0H",
+"2KXJ8Z1ZLV0H",
+"2KXJ8Z1ZLV0H",
+"2KXJ8Z1ZLV0H",
+"2KXJ8ZSA8ZZBB",
+"2KXJ8ZSA8ZZBB",
+"2KXJ8ZSA8ZZBB",
+"2KXJ8ZSA8ZZBB",
+"2KXJ8ZSA8ZZBB",
+"2KXJ8ZS42BE04",
+"2KXJ8ZS42BE04",
+"2KXJ8ZS42BE04",
+"2KXJ8ZS42BE04",
+"2KXJ8ZS42BE04",
+"2KXJ8ZS6ALI",
+"2KXJ8ZS6ALI",
+"2KXJ8ZS6ALI",
+"2KXJ8ZS6ALI",
+"2KXJ8ZS6ALI",
+"2KXJ8ZS6AW9SN",
+"2KXJ8ZS6AW9SN",
+"2KXJ8ZS6AW9SN",
+"2KXJ8ZS6AW9SN",
+"2KXJ8ZS6AW9SN",
+"2KXJ8ZBD4OU5",
+"2KXJ8ZBD4OU5",
+"2KXJ8ZBD4OU5",
+"2KXJ8ZBD4OU5",
+"2KXJ8ZBD4OU5",
+"2KXJ8ZBD21PO",
+"2KXJ8ZBD21PO",
+"2KXJ8ZBD21PO",
+"2KXJ8ZBD21PO",
+"2KXJ8ZBD21PO",
+"2KXJ8ZB80KMO",
+"2KXJ8ZB80KMO",
+"2KXJ8ZB80KMO",
+"2KXJ8ZB80KMO",
+"2KXJ8ZB80KMO",
+"2KXJ8ZSLEYNAS",
+"2KXJ8ZSLEYNAS",
+"2KXJ8ZSLEYNAS",
+"2KXJ8ZSLEYNAS",
+"2KXJ8ZSLEYNAS",
+"2KXJ8ZS6AEAEA",
+"2KXJ8ZS6AEAEA",
+"2KXJ8ZS6AEAEA",
+"2KXJ8ZS6AEAEA",
+"2KXJ8ZS6AEAEA",
+"2KXJ8ZS6A7DGE",
+"2KXJ8ZS6A7DGE",
+"2KXJ8ZS6A7DGE",
+"2KXJ8ZS6A7DGE",
+"2KXJ8ZS6A7DGE",
+"2KXJ8ZS6A7RHZ",
+"2KXJ8ZS6A7RHZ",
+"2KXJ8ZS6A7RHZ",
+"2KXJ8ZS6A7RHZ",
+"2KXJ8ZS6A7RHZ",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZS6AKC2L",
+"2KXJ8ZS6AKC2L",
+"2KXJ8ZS6AKC2L",
+"2KXJ8ZS6AKC2L",
+"2KXJ8ZS6AKC2L",
+"2KXJ8ZS6AXX33",
+"2KXJ8ZS6AXX33",
+"2KXJ8ZS6AXX33",
+"2KXJ8ZS6AXX33",
+"2KXJ8ZS6AXX33",
+"2KXJ8ZFAOK3T",
+"2KXJ8ZFAOK3T",
+"2KXJ8ZFAOK3T",
+"2KXJ8ZFAOK3T",
+"2KXJ8ZFAOK3T",
+"2KXJ8ZO82E37",
+"2KXJ8ZO82E37",
+"2KXJ8ZO82E37",
+"2KXJ8ZO82E37",
+"2KXJ8ZO82E37",
+"2KXJ8ZS6AQKZT",
+"2KXJ8ZS6AQKZT",
+"2KXJ8ZS6AQKZT",
+"2KXJ8ZS6AQKZT",
+"2KXJ8ZS6AQKZT",
+"2KXJ8ZSC0N7KN",
+"2KXJ8ZSC0N7KN",
+"2KXJ8ZSC0N7KN",
+"2KXJ8ZSC0N7KN",
+"2KXJ8ZSC0N7KN",
+"2KXJ8ZSC0J4I6",
+"2KXJ8ZSC0J4I6",
+"2KXJ8ZSC0J4I6",
+"2KXJ8ZSC0J4I6",
+"2KXJ8ZSC0J4I6",
+"2KXJ8ZSC0WCUJ",
+"2KXJ8ZSC0WCUJ",
+"2KXJ8ZSC0WCUJ",
+"2KXJ8ZSC0WCUJ",
+"2KXJ8ZSC0WCUJ",
+"2KXJ8ZR71AEK",
+"2KXJ8ZR71AEK",
+"2KXJ8ZR71AEK",
+"2KXJ8ZR71AEK",
+"2KXJ8ZR71AEK",
+"2KXJ8ZR71Q4U",
+"2KXJ8ZR71Q4U",
+"2KXJ8ZR71Q4U",
+"2KXJ8ZR71Q4U",
+"2KXJ8ZR71Q4U",
+"2KXJ8ZR78YT8",
+"2KXJ8ZR78YT8",
+"2KXJ8ZR78YT8",
+"2KXJ8ZR78YT8",
+"2KXJ8ZR78YT8",
+"2KXJ8ZR785BR",
+"2KXJ8ZR785BR",
+"2KXJ8ZR785BR",
+"2KXJ8ZR785BR",
+"2KXJ8ZR785BR",
+"2KXJ8ZR76A4K",
+"2KXJ8ZR76A4K",
+"2KXJ8ZR76A4K",
+"2KXJ8ZR76A4K",
+"2KXJ8ZR76A4K",
+"2KXJ8ZR7VL9D",
+"2KXJ8ZR7VL9D",
+"2KXJ8ZR7VL9D",
+"2KXJ8ZR7VL9D",
+"2KXJ8ZR7VL9D",
+"2KXJ8ZR7V46X",
+"2KXJ8ZR7V46X",
+"2KXJ8ZR7V46X",
+"2KXJ8ZR7V46X",
+"2KXJ8ZR7V46X",
+"2KXJ8ZS4E3MYT",
+"2KXJ8ZS4E3MYT",
+"2KXJ8ZS4E3MYT",
+"2KXJ8ZS4E3MYT",
+"2KXJ8ZS4E3MYT",
+"2KXJ8ZR76TP1",
+"2KXJ8ZR76TP1",
+"2KXJ8ZR76TP1",
+"2KXJ8ZR76TP1",
+"2KXJ8ZR76TP1",
+"2KXJ8ZR76N2K",
+"2KXJ8ZR76N2K",
+"2KXJ8ZR76N2K",
+"2KXJ8ZR76N2K",
+"2KXJ8ZR76N2K",
+"2KXJ8ZR7631P",
+"2KXJ8ZR7631P",
+"2KXJ8ZR7631P",
+"2KXJ8ZR7631P",
+"2KXJ8ZR7631P",
+"2KXJ8ZR7VBE4",
+"2KXJ8ZR7VBE4",
+"2KXJ8ZR7VBE4",
+"2KXJ8ZR7VBE4",
+"2KXJ8ZR7VBE4",
+"2KXJ8ZR76I3R",
+"2KXJ8ZR76I3R",
+"2KXJ8ZR76I3R",
+"2KXJ8ZR76I3R",
+"2KXJ8ZR76I3R",
+"2KXJ8ZF2UJV9",
+"2KXJ8ZF2UJV9",
+"2KXJ8ZF2UJV9",
+"2KXJ8ZF2UJV9",
+"2KXJ8ZF2UJV9",
+"2KXJ8ZR76K0W",
+"2KXJ8ZR76K0W",
+"2KXJ8ZR76K0W",
+"2KXJ8ZR76K0W",
+"2KXJ8ZR76K0W",
+"2KXJ8ZR7VQFU",
+"2KXJ8ZR7VQFU",
+"2KXJ8ZR7VQFU",
+"2KXJ8ZR7VQFU",
+"2KXJ8ZR7VQFU",
+"2KXJ8ZR7KCV5",
+"2KXJ8ZR7KCV5",
+"2KXJ8ZR7KCV5",
+"2KXJ8ZR7KCV5",
+"2KXJ8ZR7KCV5",
+"2KXJ8ZR76767",
+"2KXJ8ZR76767",
+"2KXJ8ZR76767",
+"2KXJ8ZR76767",
+"2KXJ8ZR76767",
+"2KXJ8ZS9J6ATY",
+"2KXJ8Z81GVQRV",
+"2KXJ8Z81GVQRV",
+"2KXJ8Z81GVQRV",
+"2KXJ8Z81GVQRV",
+"2KXJ8Z6ANOB6",
+"2KXJ8Z6ANOB6",
+"2KXJ8Z6AN7PV",
+"2KXJ8Z6AN7PV",
+"2KXJ8ZFZGHCV",
+"2KXJ8ZFZGHCV",
+"2KXJ8ZV8MSDI",
+"2KXJ8ZV8MSDI",
+"2KXJ8ZYG5OV",
+"2KXJ8ZYG5OV",
+"2KXJ8ZSIWRQ54",
+"2KXJ8ZSIWRQ54",
+"2KXJ8ZSB6EN",
+"2KXJ8ZSB6EN",
+"2KXJ8ZOQ7UQ",
+"2KXJ8ZOQ7UQ",
+"2KXJ8ZAHJV",
+"2KXJ8ZAHJV",
+"2KXJ8ZQA8MP",
+"2KXJ8ZQA8MP",
+"2KXJ8ZSM3WDV0",
+"2KXJ8ZSM3WDV0",
+"2KXJ8ZSM3WW00",
+"2KXJ8ZSM3WW00",
+"2KXJ8Z54KRQ",
+"2KXJ8Z54KRQ",
+"2KXJ8ZSUTQXTY",
+"2KXJ8ZSUTQXTY",
+"2KXJ8ZSMLELEL",
+"2KXJ8ZSMLELEL",
+"2KXJ8ZSR6BA5H",
+"2KXJ8ZSR6BA5H",
+"2KXJ8ZS9J6ATY",
+"2KXJ8ZS9J6ATY",
+"2KXJ8ZS9J6O9T",
+"2KXJ8ZS9J6O9T",
+"2KXJ8ZS9J6ATY",
+"2KXJ8ZSL6N7WG",
+"2KXJ8ZSL6N7WG",
+"2KXJ8ZS9J6ATY",
+"2KXJ8Z81GVGVG",
+"2KXJ8Z81GVGVG",
+"2KXJ8ZS9J6ATY",
+"2KXJ8Z81GVQRV",
+"2KXJ8Z81GVQRV",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLZ6K1L",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLEY7PL",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZSLZ6H3V",
+"2KXJ8ZLXABJU",
+"2KXJ8ZLXABJU",
+"2KXJ8ZQGVQR",
+"2KXJ8ZQGVQR",
+"2KXJ8ZOOQQ5",
+"2KXJ8ZOOQQ5",
+"2KXJ8ZES0M3",
+"2KXJ8ZES0M3",
+"2KXJ8Z8MKDNT",
+"2KXJ8Z8MKDNT",
+"2KXJ8ZLI4I4I",
+"2KXJ8ZLI4I4I",
+"2KXJ8ZQ4XYM2",
+"2KXJ8ZQ4XYM2",
+"2KXJ8Z59AQN9",
+"2KXJ8Z59AQN9",
+"2KXJ8ZK576G7",
+"2KXJ8ZK576G7",
+"2KXJ8ZSG0IJBF",
+"2KXJ8ZSG0IJBF",
+"2KXGDN6HZNE",
+"2KXGDN6HZNE",
+"2KXJ8ZSBNT3ZV",
+"2KXJ8ZSBNT3ZV",
+"2KXJ8ZVY8IAV",
+"2KXJ8ZVY8IAV",
+"2KXJ8ZSPDW24Q",
+"2KXJ8ZSPDW24Q",
+"2KXJ8Z81GVQRV",
+]
+const shortlist = []
+meis.forEach((mei, idx) => {
+  if (!shortlist.includes(mei)) {
+shortlist.push(mei)
+  }
+})
+console.log(shortlist)
+</script>
+
+</html>

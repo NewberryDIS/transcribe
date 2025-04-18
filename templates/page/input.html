@@ -1,0 +1,46 @@
+<div id="transcription-interface">
+  <div class="button-row tabs">
+    <button {% if text_type=="transcription" %} class="active" aria-selected="true" {% else %}
+      hx-get="/page/{{ ms_id}}/{{ page_number }}/input/transcription{{ review }}" aria-selected="false" {% endif %}
+      role="tab" aria-controls="tab-content">
+      Transcribe
+    </button>
+    <button {% if text_type=="translation" %} class="active" aria-selected="true" {% else %} {% if language=="English"
+      %} disabled aria-selected="false" {% else %}
+      hx-get="/page/{{ ms_id}}/{{ page_number }}/input/translation{{ review }}" aria-selected="false" {% endif %} {%
+      endif %} role="tab" aria-controls="tab-content">
+      Translate
+    </button>
+    <a href="/tutorial" target="_blank" class="button-like" title="This will open in a new tab">Tutorial</a>
+  </div>
+  {% if text_type == "help" %} {{ text | safe }} {% else %}
+  <form hx-post="/page/submit" hx-target="#modal-container" hx-swap="innerHTML" hx-include=".text-submit" id="transcription-form" review="{{ review }}">
+    <input type="hidden" class="text-submit" name="filename" value="{{ filename }}" />
+    <input type="hidden" class="text-submit" name="text_type" value="{{ text_type }}" />
+    <!-- or "translation" -->
+
+    <textarea class="text-submit" name="content" {% if text_type=="translation" %} placeholder="Translate here!" {% else
+      %} placeholder="Transcribe here!" {% endif %}>{{ text }}</textarea>
+    <div class="button-row submits">
+      <a {% if prev %} class="button-like" href="/page/{{ ms_id }}/{{ prev }}{{ review }}" {% else %} class="button-like disabled"
+        {% endif %}>Previous</a>
+
+      {% if review == "?review" %}
+      <button type="submit" name="action" value="save" id="save-button" {% if status=="reviewed" and text_type=="transcription" %} disabled {% endif %}>Save</button>
+      <button type="submit" name="action" value="review" id="approve-button" {% if status=="reviewed" and text_type=="transcription" %} disabled {% endif %}>
+        Save and Approve
+      </button>
+      {% else %}
+      <button type="submit" name="action" value="save">Save</button>
+      <button type="submit" name="action" value="submit" {% if status=="reviewed" and text_type=="transcription" %} disabled {% endif %}>
+        Save and Submit for Review
+      </button>
+      {% endif %}
+
+      <a {% if next %} class="button-like" href="/page/{{ ms_id }}/{{ next }}{{ review }}" {% else %} class="button-like disabled"
+        {% endif %}>Next</a>
+    </div>
+  </form>
+  {% endif %}
+</div>
+<div id="modal-container"></div>

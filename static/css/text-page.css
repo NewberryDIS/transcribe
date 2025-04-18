@@ -1,0 +1,253 @@
+body:not(:has(.transcription)) {
+  display: grid;
+  justify-content: center;
+
+  padding-top: 76px;
+
+  #main {
+    display: flex;
+    box-shadow: var(--shadow);
+    background: white;
+    width: 70vw;
+    justify-content: center;
+
+    .text-page {
+      display: flex;
+      margin-top: min(80px,6vw);
+      padding: 40px;
+      width: min(850px, 70vw);
+      /* border: 1px solid var(--fg-color); */
+      justify-content: center;
+
+      h1,h2,h3{
+        font-family: "styrene";
+        scroll-margin-top: 75px;
+      }
+
+      & h1{
+        width: 90%;
+        font-size: clamp(1rem, 0.577rem + 1.692vw, 2.1rem);
+        /* margin-left: calc((-50vw + 100%) / 2); */
+      }
+
+      & h2 {
+        /* padding: 10 px; */
+        font-size: clamp(0.9rem, 0.631rem + 1.077vw, 1.6rem);
+      }
+
+      & h3{
+        font-size: clamp(0.8rem, 0.708rem + 0.769vw, 1.3rem);
+        /* font-size: clamp(0.8rem, 0.631rem + 1.077vw, 1.6rem); */
+        color: var(--fg-accent-color);
+        text-wrap: auto;
+        
+        a:link{
+          text-decoration: none;
+        }
+        
+      }
+
+      & strong {
+        color: var(--fg-accent-color);
+      }
+
+      a:link{
+        color: var(--fg-splash);
+        text-decoration: underline;
+      }
+      a:visited{
+        color: var(--fg-splash);
+        text-decoration: none;
+      }
+      a:hover{
+        color: grey;
+      }
+
+      /* em{
+
+      } */
+    }
+
+    .toc {
+      position: relative;
+      margin-top: 10px;
+      padding-top: 5px;
+      align-self: flex-start;
+      position: sticky;
+      top: 80px;
+      min-width: 120px;
+      margin-right: 80px;
+      /* font-size: 1.1rem; */
+      font-weight: bold;
+      line-height: 1.9rem;
+
+      a:link {
+        color: var(--fg-accent-color);
+        text-decoration: none;
+      }
+      a:visited{
+        color: var(--fg-accent-color);
+        text-decoration: none;
+      }
+      a:hover {
+        color: grey;
+      }
+
+      a.active, a:target{
+        text-decoration: underline;
+      }
+
+      ul {
+        padding-left: 0;
+      }
+
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
+
+    .md-content {
+      > :first-child{
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top:90px;
+      }
+      /* &:not(:first-child) {
+        position: fixed;
+      } */
+
+      #header-img{
+        border: 1px solid;
+      }
+      .coming-soon{
+        color:gray;
+      }
+      a.caption {
+        float: right;
+        font-size: .8rem;
+        color: dimgray;
+        text-decoration: none;
+      }
+      a.caption:hover{
+        color:lightgray;
+      }
+
+      ul {
+        list-style: disc;
+      }
+    }
+
+    hr {
+      border: 1px solid gainsboro;
+    }
+
+    .li-img {
+      align-content: center;
+
+      img {
+        max-width: 100%;
+      }
+
+      p {
+        text-align: left;
+        margin: auto;
+      }
+    }
+
+    & p {
+      text-align: left;
+      margin: 10px auto;
+      padding: 5px;
+      color: var(--fg-color);
+    }
+
+    .read-instr{
+      background-color: rgb(235, 235, 235);
+      /* outline: 2px solid rgb(150,150,150);
+      outline-offset: -2px; */
+      border: 2px solid rgb(150,150,150);
+      padding: 0px;
+      border-collapse: collapse; 
+      
+      tr{
+        border-bottom: 2px solid rgb(150,150,150);
+      }
+      tr:nth-child(2n){
+        /* color: var(--fg-accent-color); */
+        background-color: white;
+      }
+      /* tr:last-child{
+        border: none;
+      } */
+      td{
+        padding-left: 1.8em;
+        padding-right: 1.8em;
+      }
+      
+    }
+
+    /* for contact page without toc */
+    .md-no-toc{
+      display: unset;
+      margin-top: 0px;
+      width: 90%;
+
+      & h1{
+        margin-top: 15px;
+      }
+
+      & #contact-img{
+        float:left;
+        margin-right: 2vw;
+        width: 20vw;
+      } 
+
+      & #contact-p{
+        font-size: clamp(1.1rem, 1.029rem + 0.19vw, 1.2rem);
+      }
+
+      & #contact-caption{
+        font-size: clamp(0.8rem, 0.693rem + 0.286vw, 0.95rem);
+      }
+
+      & p:not(#contact-img){
+        color: var(--fg-accent-color);
+        margin-top: 2.5vw;
+      }
+
+      @media screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+          width: 100%;
+          text-align: center;
+        }
+        & #contact-img{
+          float:none;
+          order: 1;
+          width: 100%;
+          align-self: center;
+        }
+        & img{
+          margin: auto;
+        }
+      }
+    }
+    @media screen and (max-width:800px) {
+      width: 90vw;
+      .text-page{
+        width: 90vw;
+      }
+    }
+  }
+}
+
+.transcription .text-page p {
+  text-align: center;
+  /* margin: auto; */
+}

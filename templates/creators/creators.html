@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Creators at{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', path='/css/creators.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <a href="/" class="llines">Transcribe Home</a>
+  &gt;
+  <h1 class="truncate">
+    Creators 
+  </h1>
+</div>
+<section class="creators cards" id="creators-section">
+
+  {% for c in creators %}
+  <a href='/creators/{{ c.slug }}' 
+     class='card creator{% if c.featured|int > 1 %} featured-creator{% endif %}' 
+     id="{{c.slug}}" 
+     data-featured="{{c.featured}}"
+     >
+     {% if c.featured|int > 1 %}
+     <p  class="name">{{ c.displayname }}</p>
+     {% endif %}
+
+     <img  class='bg-image' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-bg.webp') }}" />
+     <img id="{{c.indexname}}" class='center-image' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-focus.webp') }}" />
+     {% if c.indexname == 'StobieCharles' %}
+     <img id="{{c.indexname}}-head" class='center-image head' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-focus-2.webp') }}" />
+     {% endif %}
+     <img  class='fg-image' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-fg.webp') }}" />
+
+     <div class="card-caption">
+       {% if c.featured|int == 1  %}
+       <p class='name'>{{ c.displayname }}</p>
+       {% endif %}
+       <p class='blurb'>{{ c.bioblurb }}</p>
+       {% if c.featured|int == 2  %}
+       <p class="blurb">{{ c.biographicalnote | truncate(140) }}
+       {% endif %}
+     </div>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  let stobie = document.getElementById('StobieCharles')
+  let stobieHead = document.getElementById('StobieCharles-head')
+  let stobieCard = document.getElementById('charles-stobie')
+  let stobieCount = 0;
+  let expander = 0;
+  let intervalId;
+
+  stobieCard.addEventListener('mouseenter', (e) => {
+    stobieCount++
+    console.log('dancin', stobieCount)
+    if (stobieCount > 5 && !stobie.classList.contains('dancin')) {
+
+      console.log('daaaaancin', stobieCount)
+      stobieCard.classList.add('dancin')
+      stobie.style.top = 'var(--top';
+      stobieHead.style.top = 'var(--top)';
+      stobie.style.left = 'var(--left';
+      stobieHead.style.left = 'var(--left)';
+      timeoutId = setTimeout(() => {
+        boppin(true)
+      }, 4000, intervalId)
+    }
+  })
+
+  stobieCard.addEventListener('mouseleave', () => {
+    if (stobieCount > 5 && stobieCard.classList.contains('dancin')) {
+      boppin(false)
+      stobieCard.classList.remove('dancin')
+    }
+  })
+
+  function boppin(go) {
+    if (go) {
+      intervalId = setInterval(() => {
+        expander++
+        let newTop = Math.round((Math.random() *  10))
+        let newLeft = Math.round((Math.random() *  10))
+        let changers = ['top','top right','bottom right','bottom','bottom left','top left']
+        document.body.style.setProperty('--changer', `${changers[expander % changers.length]}px`)
+        document.body.style.setProperty('--top', `${newTop}px`)
+        document.body.style.setProperty('--left', `${newLeft}px`)
+        // document.body.style.setProperty('--expander', expander)
+      }, 250)
+    } else {
+      clearInterval(intervalId)
+    }
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,229 @@
+{% extends 'index_base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/jumbotron.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/how-to.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/beta-banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+{% endblock %}
+{% block body %}
+
+<style>
+  .right:has(.ray-bg) {
+    background: transparent;
+    position: relative;
+  }
+
+  .ray-bg {
+    --godrays: repeating-linear-gradient(111deg,
+        var(--fg-accent-color) 0%,
+        var(--fg-accent-color) 10%,
+        transparent 12%,
+        var(--fg-accent-color) 16%);
+    --godrays-2: repeating-linear-gradient(100deg,
+        var(--accent-color) 0%,
+        var(--accent-color) 33%,
+        transparent 37%,
+        var(--accent-color) 42%);
+    --godrays-same-2: repeating-linear-gradient(100deg,
+        var(--fg-accent-color) 0%,
+        var(--fg-accent-color) 33%,
+        transparent 37%,
+        var(--fg-accent-color) 42%);
+    --godrays-test: repeating-linear-gradient(100deg,
+        blue 0%,
+        blue 33%,
+        transparent 37%,
+        blue 42%);
+    --page: transparent;
+    background-image: var(--godrays), var(--godrays-same-2);
+    background-size: 200%, 300%;
+    background-position: 50% 50%;
+    filter: blur(10px) opacity(80%);
+
+    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  }
+
+  .ray-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--godrays-same-2), var(--godrays-same-2);
+    background-size: 200%, 300%;
+    animation: jumbo 60s linear infinite;
+    background-attachment: fixed;
+  }
+
+  .ray-bg,
+  .ray-fg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .ray-fg {
+    --fg-light: color-mix(in oklab, var(--fg-accent-color) 60%, transparent);
+    --fg-alight: transparent;
+    background: linear-gradient(30deg, var(--fg-accent-color) 60%, var(--fg-light) 100%)
+  }
+
+  .title-text {
+    position: relative;
+    z-index: 30;
+  }
+
+  @keyframes jumbo {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+</style>
+
+<body class="nt-{{ t.image }} horiz"
+  style="background-image: url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,1000/0/default.jpg'), url('{{ url_for('static', path='/images/jumbo/' + t.image + '-sm.jpg') }}');">
+
+  <header id="header" class="">
+
+    {% include 'chunks/header.html' %}
+  </header>
+  <div class="top">
+    <div class="left">
+      {% include 'chunks/jumbotron.html' %}
+    </div>
+    <div class="right">
+      <div class="title-text">
+        <h1>Newberry Transcribe</h1>
+        <h3>Unlock history!</h3>
+        <p>Help preserve the past by transcribing handwritten letters and diaries at <a
+            href="https://collections.newberry.org" target="_blank" class="nolines">Newberry Digital
+            Collections</a></p>
+      </div>
+
+      <div class="get-started-buttons">
+        <a href="/about" class="button-like">
+          <span class="initial-btn-text">Learn more</span>
+          <span class="hover-btn-text">visit our About page</span>
+        </a>
+        <a href="/transcribe" class="button-like  color-button">
+          <span class="initial-btn-text">Browse manuscripts</span>
+          <span class="hover-btn-text">select a set of documents</span>
+        </a>
+        <a href="{{ random_link }}" class="button-like  color-button">
+          <span class="initial-btn-text">Jump in!</span>
+          <span class="hover-btn-text">go right to a page &amp; start transcribing</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="how-to-container">
+    {% include 'chunks/how-to.html' %}
+  </div>
+  {% include 'chunks/carousel.html' %}
+
+  <footer>
+    {{ footer_menu | safe }}
+  </footer>
+</body>
+
+<style>
+  /* this might be photoshop's fault 
+   https://stackoverflow.com/questions/18434626/why-is-cursorpointer-effect-in-css-not-working
+ */
+  #mss-carousel :is(li, img, a, em) {
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+
+  const header = document.getElementById('header');
+
+  let ticking = false;
+
+  function toggleHeaderClass() {
+    if (null !== header) {
+      const scrollPercent = (window.scrollY / window.innerHeight) * 100;
+      header.classList.toggle('not-sneaky', scrollPercent >= 50);
+    }
+  }
+
+  document.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleHeaderClass();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+
+  // transcription fanciness / jumbotron 
+
+  // let blownUp = false;
+  const jumbo = document.getElementById('jumbo');
+  const transcription = document.getElementById('transcription');
+  const transcript = document.getElementById('transcription-text');
+  // const transcriptContainer = document.getElementById('transcriptContainer');
+  // let originalWidth = transcript.offsetWidth;
+  // let originalHeight = transcript.offsetHeight;
+
+
+
+  let circleRadius = 200;
+  let embiggened = false;
+
+  document.addEventListener('mousemove', (e) => {
+    jumbo.style.transition = `none`;
+
+    // console.log(e.clientX, e.clientY)
+    if (!embiggened) {
+      circleRadius = 200;
+      jumbo.style.clipPath = `circle(${circleRadius}px at ${e.clientX}px ${e.clientY}px)`;
+    }
+  });
+
+  jumbo.addEventListener('click', (e) => {
+    if (embiggened) {
+      header.style.zIndex = `9001`;
+
+    } else {
+      header.style.zIndex = `10`;
+    }
+    circleRadius = 4000;
+    jumbo.style.transition = `300ms clip-path`;
+    jumbo.style.clipPath = `circle(${circleRadius}px at ${e.clientX}px ${e.clientY}px)`;
+    embiggened = !embiggened;
+  });
+
+  function resizeContainer() {
+
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleHeaderClass();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+
+  resizeContainer();
+  window.addEventListener('resize', resizeContainer);
+  // jumbo.addEventListener('mousemove', mouseFollower);
+  // transcription.addEventListener('click', blowUp);
+
+</script>
+{% endblock %}

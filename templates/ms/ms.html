@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ ms.title | truncate(20, True, "") }} at {% endblock %}
+
+{% block content %}
+
+{% if ms %}
+
+<div class="title-bar">
+  <div class="page-title">
+    <div class="breadcrumbs">
+      <a href="/" class="llines">Transcribe Home</a>
+      &gt;
+      <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review' %}Review{%else%}Transcribe{%endif%}</a>
+      &gt;
+    </div>
+    <h1 class="truncate" title="{{ms.title}}">
+      {{ ms.title }}
+    </h1>
+  </div>
+  <div class="title-bar-links">
+    <a href="{{  ms.moreinformation  }}" class='llines more-info' target='_blank'>More Information</a>
+    <span class="separator"> | </span>
+    <a href='{{  ms.viewatndc  }}' class='llines view-at' target='_blank'>
+      View at
+      <span>Newberry Digital Collections</span>
+      <abbr title="Newberry Digital Collections">NDC</abbr>
+    </a>
+  </div>
+</div>
+<div class="progress-bar-wrapper">
+  <progress-bar inprogress="{{  ms.inprogress  }}" transcribed="{{ ms.transcribed }}"
+    reviewed="{{ ms.reviewed }}"></progress-bar>
+</div>
+
+{% if pages %}
+<section class='cards'>
+  {% for page in pages %}
+  <a href="/page/{{ ms.ms_id }}/{{ page.page_number  }}{{ review }}" id="page-{{ page.page_number }}" class="card page{% if review and page.status == 'notstarted' %} review-na{% endif
+    %}">
+    <h1>{{ page.page_number }}</h1>
+    <img src="https://collections.newberry.org/IIIF3/Image/{{ page.image }}/square/300,/0/default.jpg"
+      alt="a page of handwritten text" />
+    <progress-bar status="{{  page.status  }}"></progress-bar>
+  </a>
+  {% endfor %}
+</section>
+</div>
+{% else %}
+<p>No pages found for this ms.</p>
+{% endif %}
+{% else %}
+<p>Manuscript not found.</p>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<script src="{{ url_for('static', path='/js/progress-bar.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/ms.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+{% if first_reviewable_page_num %}
+document.addEventListener('DOMContentLoaded', function() {
+const element = document.getElementById('page-{{ first_reviewable_page_num }}');
+if (element) {
+element.scrollIntoView({ behavior: 'smooth' });
+}
+});
+{% endif %}
+{% endblock %}

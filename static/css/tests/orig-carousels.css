@@ -1,0 +1,171 @@
+
+article {
+  position: relative;
+
+  z-index: 30;
+
+}
+
+article:has(.choose){
+  padding-block: 33px;
+}
+
+.choose {
+  pointer-events: auto;
+  margin: auto;
+  /* box-shadow: var(--shadow); */
+}
+
+
+.mss {
+  /* background-image: url("https://collections.newberry.org/IIIF3/Image/2KXJ8ZFA39PN/full/,600/0/default.jpg"); */
+}
+
+.creator {
+  /* background-image: url("https://collections.newberry.org/IIIF3/Image/2KXJ8ZSAEHO1F/full/,600/0/default.jpg"); */
+  padding-bottom: var(--footer-height);
+}
+
+.choose {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* padding-block: 10vh; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+
+  &>* {
+    flex: 1;
+  }
+
+  &.creator {
+    /* --bg-accent-color: var(--mulnite); */
+    /* --fg-accent-color: rgb(var(--sapphire)); */
+    --button-fg: var(--fg-accent-color);
+  }
+
+  & .header-wrapper {
+    /* position: sticky; */
+    max-width: 80vw;
+    margin: 0 auto;
+    top: calc(var(--header-height) + 33px);
+    padding: 10vh 5vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & h2 {
+      font-size: 10vh;
+    }
+
+    & .button-wrapper {
+      flex: 1;
+      display: grid;
+      place-content: center;
+    }
+
+    & .citation {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding-inline: 1.5rem;
+      border-radius: 0.5rem 0 0 0;
+      font-size: 0.87rem;
+
+      /*background: var(--fg-accent-color);*/
+      /* color: var(--bg-color);*/
+      /* a { */
+      /*color: var(--mulnite);*/
+
+      /* } */
+    }
+  }
+
+  .creator-overlay {
+    z-index: 9001;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    & .message {
+      color: var(--fg-accent-color);
+      position: sticky;
+      top: 40vh;
+      font-size: 20vh;
+      font-family: "flecha-m";
+      transform: translateY(50%) rotate(33deg);
+
+    }
+  }
+
+  article {
+    max-width: 95vw;
+  }
+
+  .carousel {
+    width: 80%;
+    margin: auto;
+    overflow: auto;
+    background: var(--bg-color);
+    border: 3px solid var(--bg-accent-color);
+    box-shadow: var(--inset-shadow);
+
+    & ul {
+      margin: 0;
+      text-align: center;
+      height: 450px;
+      display: grid;
+      grid-template-columns: repeat(6, 300px);
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: start;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    & .li-img {
+      flex: 10 0 auto;
+      width: 300px;
+      aspect-ratio: 1 / 1.5;
+      position: relative;
+      margin: 0;
+      padding: 1rem;
+      list-style: none;
+
+      & a {
+        border: 3px solid var(--fg-accent-color);
+        display: block;
+        height: 100%;
+        text-decoration: none;
+        /*color: white;*/
+        position: relative;
+      }
+
+      & img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+      }
+
+      & em {
+        font-style: normal;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.5rem;
+        z-index: 1;
+      }
+    }
+  }

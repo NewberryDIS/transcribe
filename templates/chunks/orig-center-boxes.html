@@ -1,0 +1,47 @@
+  <article>
+    <div class="choose mss">
+      <div class="header-wrapper">
+        <h2>Choose a manuscript</h2>
+        <p id="title-anchor">
+        Select from thousands of pages of letters, diaries, and business records, spanning the 18th through 20th centuries
+        </p>
+        <div class="button-wrapper">
+          <a href="/transcribe" class="button-like index-button">Browse all</a>
+        </div>
+        <div id="mss-carousel" class="carousel">
+          <ul role="list">
+            {% for ms in gallery_mss %}
+              <li class="li-img">
+              <a href="/ms/{{ ms.ms_id }}"> <img alt="" src="https://collections.newberry.org/IIIF3/Image/{{ ms.repimage }}/full/,400/0/default.jpg"> <em>{{ ms.short_title if ms.short_title else ms.title }}</em> </a> 
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+  <article>
+    <div class="choose creator">
+      <!--<div class="creator-overlay">-->
+      <!--  <h5 class="message">Coming soon!</h5>-->
+      <!--</div>-->
+      <div class="header-wrapper">
+        <h2>Choose a creator</h2>
+        <p>
+        Our diarists and correspondents come from all walks of life. Choose from social activists,
+        novelists, homemakers, and lots more
+        </p>
+        <div class="button-wrapper">
+          <a href="/creators" class="button-like index-button">Browse all</a>
+        </div>
+        <p class="citation">Background image:
+        <a href="https://collections.newberry.org/asset-management/2KXJ8ZSATCW2M" target="_blank">
+          Michigan Avenue, Chicago, ca. 1910s </a>
+        </p>
+        <div id="creator-carousel" class="carousel">
+          {{ gallery_creators | safe }}
+        </div>
+      </div>
+
+    </div>
+  </article>

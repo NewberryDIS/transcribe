@@ -1,0 +1,6 @@
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZUZ9RMA/full/,400/0/default.jpg)  _W.E. Smith diary, 1870s_  ](/ms/120484) 
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZSQ8Y9T1/full/,400/0/default.jpg) _Lemuel Burke diary, 1876_ ](/ms/128246) 
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZS7WN4S9/full/,400/0/default.jpg)  _Jane Brown captivity narrative, 1851_  ](/ms/140701) 
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZSBWHTDK/full/,400/0/default.jpg)  _Indian recipes & cures, 1830s_ ](/ms/146661) 
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZSKQ5588/full/,400/0/default.jpg) _T. Pickering letters, 1790s_  ](/ms/148079) 
+- [![](https://collections.newberry.org/IIIF3/Image/2KXJ8ZA92SA2/full/,400/0/default.jpg) _May Walden letters, 1904-1940_  ](/ms/170347-0101)

@@ -1,0 +1,114 @@
+<form id="filter-form">
+  {% for filter_group in filters %}
+  <h3 class="filter-group-header">{{filter_group}}</h3>
+  <ul
+    role="list"
+    id="{{filter_group}}"
+    style="height: calc(1rem + {{ filters[filter_group]|length}} * 24px)"
+    class="len-{{filters[filter_group]|length}} filter-group"
+  >
+    {% for filter_value in filters[ filter_group ] %}
+    <li>
+      <input
+        type="radio"
+        class="filter-value"
+        name="filter-value"
+        value="{{filter_value.svalue}}"
+        id="{{filter_value.filter_group}}--{{filter_value.svalue}}"
+        hx-get="/mss/mss?fgroup={{filter_group}}&fvalue={{ filter_value.svalue }}&page_type={{ page_type }}"
+        hx-target="#mss-section"
+        hx-swap="innerHTML"
+        hx-push-url="/{{ page_type }}?fgroup={{filter_group}}&fvalue={{filter_value.svalue}}"
+        hx-trigger="click"
+        hx-on::before-request="resetFilters()"
+      />
+      <label for="{{filter_value.filter_group}}--{{filter_value.svalue}}">
+        <!-- {{ filter_value.hvalue}} ({{ filter_value.count}}) -->
+        <span title="{{ filter_value.hvalue }}" class="label-text"
+          >{{ filter_value.hvalue}}</span
+        ><span class="label-count">({{ filter_value.count}})</span>
+      </label>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+
+  <h3 class="filter-group-header">Date</h3>
+  <div id="date-filter">
+    <p id="year-label">{{ date_range[0]}} - {{ date_range[1] }}</p>
+    <div id="slider"></div>
+  </div>
+  <a href="/{{ page_type }}" class="button-like">Clear filters</a>
+</form>
+<script>
+  // hx-on::before-request="logit()"
+  // function logit() {
+  //   console.clear()
+  //   htmx.logAll();
+  // }
+  function resetFilters() {
+    if (typeof noUiSlider !== 'undefined') {
+      slider.noUiSlider.reset()
+    }
+  }
+
+  const filterGroups = document.querySelectorAll('.filter-group-header')
+  const sliderStartingDates = [{{ date_range[0]}}, {{ date_range[1] }}];
+  let yearLabelEl = document.getElementById('year-label');
+
+  yearLabelEl.innerText = "{{ date_range[0]}} - {{ date_range[1] }}";
+
+  var slider = document.getElementById('slider');
+
+  if (typeof noUiSlider !== 'undefined') {
+    noUiSlider.create(slider, {
+      start: [{{ date_range[0]}}, {{ date_range[1]}}],
+      connect: true,
+      format: {
+        to: function (value) {
+          return Math.round(value);
+        },
+        from: function (value) {
+          return Math.round(value);
+        }
+      },
+      range: {
+        'min': sliderStartingDates[0],
+        'max': sliderStartingDates[1]
+      }
+    });
+    slider.noUiSlider.on('update', async (values) => {
+      yearLabelEl.innerText = `${values[0]} - ${values[1]}`;
+    })
+
+    slider.noUiSlider.on("end", async (values) => {
+      const radioButtonForm = document.getElementById("filter-form");
+      radioButtonForm.reset();
+
+      try {
+        const furl = `/mss/mss?fgroup=date&fvalue=${values[0]}-${values[1]}&page_type={{ page_type }}`
+        const response = await fetch(furl);
+        const html = await response.text();
+        console.log(furl)
+        htmx.swap(
+          "#mss-section",
+          html,
+          { swapStyle: "innerHTML" },
+          {
+            selectOOB:
+            "#results-count:innerHTML",
+          },
+        );
+
+        var pushUrl = `/{{page_type}}?dates=${values[0]}-${values[1]}`
+
+        history.pushState({}, "", pushUrl);
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+  function resetSlider() {
+    slider.noUiSlider.reset();
+  }
+</script>
