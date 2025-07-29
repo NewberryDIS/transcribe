@@ -1,0 +1,7 @@
+User-agent: petalbot
+Disallow: /
+
+User-agent: *
+Disallow: /page/
+Disallow: /login/
+Disallow: /user/

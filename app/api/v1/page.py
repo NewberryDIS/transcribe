@@ -1,10 +1,14 @@
+import os
+import json
+import requests
+from app.core.config import get_settings
+
 # from operator import invert
 from fastapi import APIRouter, Depends, Request, HTTPException, Form, Query
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import select, and_
 
-# from sqlalchemy.sql.functions import concat
 from app.utils.markdown_handler import MarkdownHandler
 from app.utils.templates import get_template_response
 from app.db.sql import get_db
@@ -19,7 +23,7 @@ from app.api.v1.auth import get_current_user
 
 router = APIRouter()
 markdown_handler = MarkdownHandler()
-
+settings = get_settings()
 
 class TextType(str, Enum):
     transcription = "transcription"
@@ -31,6 +35,7 @@ class SubmitAction(str, Enum):
     submit = "submit"
     review = "review"
 
+
 def get_next_and_prev(num_pages, page_num):
     if page_num < 1 or page_num > num_pages:
         return None, None
@@ -40,6 +45,17 @@ def get_next_and_prev(num_pages, page_num):
 
     return prev, next
 
+def status_for_cortex(supa_status):
+    if supa_status == "inprogress":
+        return "In progress"
+    elif supa_status == "transcribed":
+        return "Needs review"
+    elif supa_status == "translated":
+        return "Needs review"
+    elif supa_status == "reviewed":
+        return "Completed"
+    else:
+        return ""
 
 @router.get("/{ms_id}/{page_number}", response_class=HTMLResponse)
 async def get_page(
@@ -56,7 +72,6 @@ async def get_page(
     ).first()
     # page_filename, image = db.scalars(select(Page.filename, Page.image).where(and_(Page.ms_id == ms_id, Page.page_number == page_number))).first()
     user = request.cookies.get("sb-auth-token")
-    header_menu, footer_menu = markdown_handler.get_menus()
     quick_tips = markdown_handler.get_quick_tips()
 
     review = "?review" if review is not None else ""
@@ -73,8 +88,6 @@ async def get_page(
             "image": page.image,
             "review": review,
             "user": user,
-            "header_menu": header_menu,
-            "footer_menu": footer_menu,
         },
     )
 
@@ -112,7 +125,7 @@ async def get_page_input(
     if text_type in ["transcription", "translation"]:
         text = getattr(page, text_type)
     elif text_type == "help":
-        text = markdown_handler.get_content("help.md")
+        page_fm, text = markdown_handler.get_content("help.md")
     else:
         text = "You can't do that here."
     language = db.scalars(select(Ms.language).where(Ms.ms_id == ms_id)).first()
@@ -132,7 +145,7 @@ async def get_page_input(
             "page_number": page_number,
             "language": language,
             "filename": page.filename,
-            "status": page.status
+            "status": page.status,
         },
     )
 
@@ -158,10 +171,12 @@ async def submit_page(
         user = await get_current_user(request, db, request.cookies.get("sb-auth-token"))
 
         if action == SubmitAction.save:
-            page.status = "inprogress"
+            page.status = "inprogress" if text_type=="transcription" else page.status
+            page.translation_status = "inprogress" if text_type=="translation" else page.translation_status
             message =f"The {text_type.value} has been saved."
         elif action == SubmitAction.review and user:
-            page.status = "reviewed"
+            page.status = "reviewed" if text_type=="transcription" else page.status
+            page.translation_status = "reviewed" if text_type=="translation" else page.translation_status
             message =f"Saved!"
             # if contribution does not already exist 
             review = db.scalars(select(Contribution).where(
@@ -177,22 +192,36 @@ async def submit_page(
                     title=page.title,
                     image=page.image,
                 )
-                db.add(contribution)  
+                db.add(contribution)
         elif action == SubmitAction.submit:
-            page.status = "transcribed"
+            page.status = "transcribed" if text_type=="transcription" else page.status
+            page.translation_status = "translated" if text_type=="translation" else page.translation_status
             message =f"The {text_type.value} has been saved and submitted for review!"
             if user:
-                transc = db.scalars(select(Contribution).where(
-                    and_(and_(Contribution.username == user.username, Contribution.status == 'transcribed'), Contribution.image == page.image )
-                    )).first()
-                transl = db.scalars(select(Contribution).where(
-                    and_(and_(Contribution.username == user.username, Contribution.status == 'translated'), Contribution.image == page.image)
-                    )).first()
+                transc = db.scalars(
+                    select(Contribution).where(
+                        and_(
+                            and_(
+                                Contribution.username == user.username,
+                                Contribution.status == "transcribed",
+                            ),
+                            Contribution.image == page.image,
+                        )
+                    )
+                ).first()
+                transl = db.scalars(
+                    select(Contribution).where(
+                        and_(
+                            and_(
+                                Contribution.username == user.username,
+                                Contribution.status == "translated",
+                            ),
+                            Contribution.image == page.image,
+                        )
+                    )
+                ).first()
                 # will not create a new contribution record if they were the last editor
-                if (
-                    text_type == "transcription"
-                    and transc is None
-                ):
+                if text_type == "transcription" and transc is None:
                     page.transcription_user = user.username
                     contribution = Contribution(
                         filename=filename,
@@ -204,10 +233,7 @@ async def submit_page(
                         image=page.image,
                     )
                     db.add(contribution)
-                elif (
-                    text_type == "translation"
-                    and transl is None
-                ):
+                elif text_type == "translation" and transl is None:
                     page.translation_user = user.username
                     contribution = Contribution(
                         filename=filename,
@@ -221,9 +247,39 @@ async def submit_page(
                     db.add(contribution)
         else:
             message = None
-            
+        
+        api_token = settings.CTX_API_KEY
+        headers = {
+            "Authorization": f"Bearer {api_token}", 
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+        name = user.username if user else "" # change this to concatenate somehow
+        status = status_for_cortex(page.status)
+        translation_status = status_for_cortex(page.translation_status)
+        transc_note = "This document was transcribed by volunteers as part of the Newberry Transcribe crowdsourcing initiative." if page.status!="notstarted" else ""
+        transl_note = "This document was translated by volunteers as part of the Newberry Transcribe crowdsourcing initiative." if page.translation_status!="notstarted" else ""
+        body = { 
+            "dataOptions": { "table": "Documents", "fieldToMatch": "CoreField.Identifier", "ignoreMissingRecords": True, "augmentAuthorityListsOnTheFly": True },
+            "executionOptions": { "executeSynchronously": False },
+            "records": [{"CoreField.Identifier": page.sysid, 
+                "new.User-name": name,
+                "new.User-Contributed-Transcription": page.transcription, 
+                "new.User-Contributed-Translation": page.translation, 
+                "new.Transcription-Status": status,
+                "new.Translation-Status": translation_status,
+                "new.Transcription-Note": transc_note,
+                "new.Translation-Note": transl_note,
+                "new.Transcription-Available": "Yes" }]
+        }
+        payload = json.dumps(body)
+
+        api_url = f"https://collections.newberry.org/webapi/objectmanagement/multiobjectstools/datatable/batchupsert_4FY_v1?token={api_token}"
+        response = requests.post(api_url, data=payload, headers=headers)
+        print(response.json())
+
         if message != None:
-        # Return success modal
+            # Return success modal
             db.commit()
             return get_template_response(
                 "page/toast.html",
@@ -244,7 +300,6 @@ async def submit_page(
                     "message": "Only logged in users can review transcriptions.",
                 },
             )
-               
 
     except Exception as e:
         # Rollback on error

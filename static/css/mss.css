@@ -4,15 +4,18 @@
   /* position: sticky; */
   top: calc(var(--header-height) - 11px);
   z-index: 3;
+
   /* box-shadow: var(--shadow); */
   /* border: 3px solid #f0f; */
   & h3 {
     font-size: 22px;
   }
+
   & h3,
   p {
     /* max-width: 75%; */
   }
+
   /* background: url("/static/images/glitter.png"); */
   /* background-size: 400%; */
   /* background-clip: text; */
@@ -21,9 +24,11 @@
   /* background-position: 0 0; */
   /* animation: glitter 100s linear infinite; */
 }
+
 .transcribe-mode {
   background: var(--bg-color);
 }
+
 .review-mode,
 .right:has(.review-mode) {
   background: color-mix(in oklab, var(--bg-color), rgb(var(--accent)) 10%);
@@ -38,7 +43,6 @@
 
 main {
   width: min(1500px, 100%);
-  --header-height: 66px;
   /* width: min(1400px, 95vw); */
   margin: auto;
   display: flex;
@@ -49,11 +53,13 @@ main {
     /* top: var(--header-height); */
     max-height: calc(100vh - var(--header-height));
   }
+
   & .right {
     /* width: 100%; */
     padding-right: 1rem;
     /* flex-basis: 70%; */
   }
+
   & .mss {
     /* justify-content: flex-end; */
     margin-left: auto;
@@ -110,10 +116,12 @@ main {
   max-height: calc(100vh - var(--header-height));
   min-width: 300px;
 }
+
 .mode-header,
 .cards {
   padding-inline: 2rem 1rem;
 }
+
 /* .right { */
 /*   padding-left: 2rem; */
 /*   padding-right: 1rem; */
@@ -220,6 +228,7 @@ main {
   }
 
   @media screen and (max-width: 800px) {
+
     hr,
     #result-count,
     #filter-form {
@@ -256,12 +265,13 @@ ul {
 }
 
 .filter-group-header.open {
-  & + ul,
-  + #date-filter {
+
+  &+ul,
+  +#date-filter {
     overflow: auto;
   }
 
-  & + #date-filter {
+  &+#date-filter {
     height: 87px;
   }
 
@@ -276,8 +286,9 @@ ul {
 }
 
 .filter-group-header:not(.open, .more) {
-  & + ul,
-  + #date-filter {
+
+  &+ul,
+  +#date-filter {
     height: 1px !important;
     overflow: hidden;
   }
@@ -311,7 +322,8 @@ ul {
   grid-template-columns: repeat(auto-fill, 250px);
 }
 
-#mss-section, #mss-section-bottomset{
+#mss-section,
+#mss-section-bottomset {
   /* width:max-content; */
   /* max-width: 1100px; */
   display: grid;
@@ -320,7 +332,7 @@ ul {
 
 .mss {
   /* max-width: min(1100px, 65vw); */
-  
+
   & .card {
     aspect-ratio: 1 / 1.5;
 

@@ -1,0 +1,31 @@
+<h1>Search crowdsourced transcriptions</h1>
+
+<form
+  hx-get="/search/results"
+  hx-target="#results-container"
+  hx-indicator=".htmx-indicator"
+  class="search-form"
+>
+  <div class="search-input-group">
+    <input
+      type="text"
+      name="keyword"
+      id="keyword"
+      placeholder="Enter search terms..."
+      required
+      class="search-input"
+      value="{{keyword or '' }}"
+    />
+    <button type="submit" class="search-button">Search</button>
+    <div class="htmx-indicator">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <div class="search-help">
+    <p>
+      <small>
+        Separate multiple keywords with commas (e.g., letter, jester, Chicago)
+      </small>
+    </p>
+  </div>
+</form>

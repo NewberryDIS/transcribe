@@ -1,0 +1,128 @@
+{% if results and total_count > 0 %}
+<script>
+  function toggleFullText(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle("expand");
+  }
+</script>
+
+<div id="loading-indicator" class="htmx-indicator">
+  <div class="spinner"></div>
+  <span>Loading...</span>
+</div>
+<div class="result-item summary-item">
+  <p class="results-summary">
+    Showing 100 out of {{ total_count }} total results
+    <!-- Showing <strong>{{ shown_count }}</strong> of -->
+    <!-- <strong>{{ total_count }}</strong> results  -->
+    for: <em>{{ "</em>,
+    <em>".join(keywords) | safe }}</em>
+  </p>
+  <div class="search-timing">
+    <a class="search-button" href="/search">New search</a>
+  </div>
+</div>
+<div class="results-list">
+  {% for item in results %}
+  <div class="result-item" id="result-{{ item.image }}">
+    <div class="info">
+      <div class="result-header">
+        <h3 class="result-title">{{ item.title }}</h3>
+      </div>
+
+      {% if item.transcription %}
+      <div id="transcription-{{ item.sysid }}" class="transcription-container">
+        {% if item.transcrippets %}
+        <div class="result-snippets has-tanscrpitts">
+          {% for transcrippet in item.transcrippets %}
+          <div class="result-snippet">{{ transcrippet|safe }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <pre class="result-full-transcription">
+{{ highlight_text(item.transcription, keywords)|safe }}</pre
+        >
+        <button
+          class="show-trans search-button"
+          onclick="toggleFullText('transcription-{{ item.sysid }}')"
+        >
+          <span class="hide"> Hide </span>
+          <span class="view"> View </span>
+          full transcription
+        </button>
+      </div>
+      {% else %}
+      <p class="no-transcription">No transcription available</p>
+      {% endif %} {% if item.translation %}
+      <div id="translation-{{ item.sysid }}" class="transcription-container">
+        {% if item.translippets %}
+        <div class="result-snippet">
+          {% for translippet in item.translippets %}
+          <div class="result-snippet">{{ translippet|safe }}</div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="result-snippet">{{ item.translation|truncate(300) }}</p>
+        {% endif %}
+        <pre class="result-full-transcription">
+{{ highlight_text(item.translation, keywords)|safe }}</pre
+        >
+        <button
+          class="show-trans search-button"
+          onclick="toggleFullText('translation-{{ item.sysid }}')"
+        >
+          <span class="hide"> Hide </span>
+          <span class="view"> View </span>
+          full translation
+        </button>
+      </div>
+      {% endif %}
+    </div>
+    <div class="image link-lines">
+      <a
+        href="https://collections.newberry.org/asset-management/{{item.image}}"
+        target="_blank"
+      >
+        <img
+          src="https://collections.newberry.org/IIIF3/Image/{{item.image}}/square/200,/0/default.jpg"
+          id="{{item.filename}}"
+          alt=""
+        />
+        <p>View at Newberry Digital Collections</p>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="search-pagination">
+    {% if has_prev %}
+    <a
+      href="/search/results?keyword={{ keywords|join(' ') }}&page={{ prev_page }}"
+      class="search-button"
+      hx-get="/search/results?keyword={{ keywords|join(' ') }}&page={{ prev_page }}"
+      hx-target="#results-container"
+      hx-push-url="true"
+    >
+      Previous
+    </a>
+    {% else %}
+    <button class="search-button" disabled>Previous</button>
+    {% endif %} {% if has_next %}
+    <a
+      href="/search/results?keyword={{ keywords|join(' ') }}&page={{ next_page }}"
+      class="search-button"
+      hx-get="/search/results?keyword={{ keywords|join(' ') }}&page={{ next_page }}"
+      hx-target="#results-container"
+      hx-push-url="true"
+    >
+      Next
+    </a>
+    {% else %}
+    <button class="search-button" disabled>Next</button>
+    {% endif %}
+  </div>
+</div>
+{% else %}
+<div class="no-results">
+  <p>No results found for your search. Please try different keywords.</p>
+</div>
+{% endif %}

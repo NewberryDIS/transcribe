@@ -1,0 +1,247 @@
+#main-header {
+  --header-transition: 250ms;
+
+  z-index: 9001;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+  background: var(--bg-color);
+  color: var(--color);
+  display: flex;
+  flex-direction: column;
+
+  & .header-home-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .header-title {
+    margin: 0;
+  }
+
+  & .header-top {
+    height: 3rem;
+    position: relative;
+    padding-inline: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  & .header-bottom {
+    background: rgba(var(--fg), 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 1.5rem;
+  }
+
+  & .nav-item,
+  .mini-menu {
+    display: flex;
+    align-items: center;
+  }
+  & .nav-item {
+    border: 1px solid transparent;
+    justify-content: center;
+  }
+
+  & li:not(.wide-menu-item),
+  li:not(.wide-menu-item) a {
+    display: inline-flex;
+  }
+
+  & li,
+  li a {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    transition: var(--header-transition);
+  }
+
+  & li a:hover {
+    background: var(--bg-accent-color);
+  }
+
+  & .mini-menu {
+    justify-content: space-evenly;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    right: -1px;
+    color: var(--fg-color);
+    border: 1px solid transparent;
+    z-index: 1;
+  }
+
+  & .mini-menu-item {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  & .nav-item:hover {
+    border-color: var(--fg-color);
+    & .mini-menu {
+      background: color-mix(in oklab, var(--bg-color), var(--bg-accent-color));
+      border-color: transparent var(--fg-color) var(--fg-color) var(--fg-color);
+    }
+    & .mini-menu-item {
+      height: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .header-home-link {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .mini-menu {
+    display: flex;
+  }
+
+  .wide-menu-item {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header-home-link {
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.4rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .wide-menu-item {
+    display: none;
+  }
+
+  .nav {
+    display: none !important;
+  }
+}
+
+#mobile-menu-button {
+  height: 40px;
+  margin: 5px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  cursor: pointer;
+  border: 0;
+  border: 1px solid var(--fg-color);
+  background: transparent;
+  transition: 250ms;
+
+  &:hover {
+    & .ex,
+    .xe,
+    .xex {
+      filter: brightness(1.5);
+    }
+  }
+
+  & .ex,
+  .xe,
+  .xex {
+    pointer-events: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 21px;
+    height: 5px;
+    background: var(--fg-color);
+    transition: all 200ms;
+    transform-origin: right;
+  }
+
+  & .xex {
+    transform: translate(-50%, 0) rotate(0deg);
+  }
+}
+
+#mobile-menu:not(.show) {
+  & .ex {
+    transform: translate(-50%, -150%) rotate(0);
+  }
+
+  & .xe {
+    transform: translate(-50%, 150%) rotate(0);
+  }
+
+  & .xex {
+    opacity: 1;
+  }
+}
+
+#mobile-menu.show {
+  & .ex {
+    transform: translate(-60%, -150%) rotate(-45deg);
+  }
+
+  & .xe {
+    transform: translate(-60%, 150%) rotate(45deg) !important;
+  }
+
+  & .xex {
+    opacity: 0;
+  }
+}
+
+.mobile-list {
+  padding: 0;
+  margin: 0;
+  background: var(--bg-color);
+  z-index: 99;
+  position: fixed;
+  inset: 3rem 0 0 0;
+  /* inset: 0; */
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.mobile-list li {
+  flex: 1;
+}
+
+.mobile-list a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  border-block: 1px solid rgba(var(--fg), 0.33);
+}
+
+.mobile-menu.show .mobile-list {
+  display: flex;
+}
+
+.mobile-menu:not(.show) .mobile-list {
+  display: none;
+}

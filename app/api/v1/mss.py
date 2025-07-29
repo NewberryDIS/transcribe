@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import func, select, case, and_, desc
-from app.utils.markdown_handler import MarkdownHandler
 from app.utils.templates import get_template_response
 from app.utils.filters import get_filters
 from app.db.sql import get_db
@@ -10,7 +9,6 @@ from typing import Optional
 from app.models import Ms, Filter, Page
 
 router = APIRouter()
-markdown_handler = MarkdownHandler()
 
 
 def get_base_query(page_type: Optional[str] = None):
@@ -19,7 +17,11 @@ def get_base_query(page_type: Optional[str] = None):
     if page_type == "transcribe":
         return select(Ms).where(Ms.transcribed < 100)
     elif page_type == "review":
-        return select(Ms).where(and_(Ms.transcribed > 0 , Ms.reviewed < 100)).order_by(desc(Ms.reviewed), desc(Ms.transcribed))
+        return (
+            select(Ms)
+            .where(and_(Ms.transcribed > 0, Ms.reviewed < 100))
+            .order_by(desc(Ms.reviewed), desc(Ms.transcribed))
+        )
     # elif page_type == "review_bottomset":
     #     return select(Ms).where(
     #         and_(Ms.transcribed > 1, Ms.transcribed < 100, Ms.reviewed < 100)
@@ -48,7 +50,7 @@ async def get_filter_htmx(
     fvalue: Optional[str] = None,
     db: Session = Depends(get_db),
 ):
-    print(f"fgroup: {fgroup}, fvalue: {fvalue}, page_type: {page_type}")
+    # print(f"fgroup: {fgroup}, fvalue: {fvalue}, page_type: {page_type}")
     filters, date_range = get_filters(db, page_type)
     # print(f"filters in filter route after get_fitlres: {filters}")
     return get_template_response(

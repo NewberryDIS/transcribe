@@ -2,9 +2,9 @@ class NewberryLogo extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({
-      mode: "open"
-    })
-    const wrapper = document.createElement('div');
+      mode: "open",
+    });
+    const wrapper = document.createElement("div");
     wrapper.innerHTML = `<div class="newberry-logo host">
   <a href="https://www.newberry.org" target="_blank">
     <svg
@@ -35,8 +35,8 @@ class NewberryLogo extends HTMLElement {
       Collections 
     </span>
   </a>
-</div>`
-    const style = document.createElement('style');
+</div>`;
+    const style = document.createElement("style");
     style.textContent = `
 .newberry-logo {
   --hover-color: var(--fg-splash);
@@ -49,11 +49,6 @@ class NewberryLogo extends HTMLElement {
   }
 }
 
-@media screen and (max-width: 1023px){
-  #dc-text {
-    display: none;
-  }
-}
 svg, text, path {
   fill: var(--fg-color);
 }
@@ -77,11 +72,15 @@ a:hover {
     position: relative;
   }
 }
+@media screen and (max-width: 600px){
+  #dc-text {
+    display: none;
+  }
+}
                 `;
     this.shadowRoot.appendChild(wrapper);
     this.shadowRoot.appendChild(style);
   }
 }
 
-customElements.define('newberry-logo', NewberryLogo);
-
+customElements.define("newberry-logo", NewberryLogo);

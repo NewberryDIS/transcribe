@@ -1,3 +1,7 @@
+---
+page_type: narrow
+---
+
 The transcriptions you work on will be made public and accessible -- that's the point of the project!  But, other than that, we store as little information about you as possible.  If you want to sign up for an account, we will store your username and password, and, if you choose to provide an email, we will store it.  We will not sell your information; we will do absolutely nothing with any of your data, except, as noted, the transcriptions themselves.
 
 We use a third party service to store all of our data -- including user data.  However, that third party (Supabase) will not have access to any of your personal data.  Supabase is a trusted industry leader in cloud storage, and are unique in that their code is fully open source.

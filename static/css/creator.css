@@ -87,6 +87,13 @@ width: 50%;
     text-align: center;
   }
 }
+.creator-text
+{
+  ul li {
+    list-style-type: disc;
+  }
+} 
+
 .creator-image  {
   display: flex;
   flex-direction: column;
@@ -101,7 +108,7 @@ width: 50%;
   }
 }
 
-}
+
 @media (max-width: 768px) {
   .creator {
     grid-template-columns: 1fr;

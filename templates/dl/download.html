@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% block content %}
+<article>
+  <h1>Download transcriptions</h1>
+  <form hx-get="/api" hx-target="#results" hx-indicator="#spinner">
+    <div class="form-group">
+      <label for="creator">Creators:</label>
+      <select name="creator" id="creator" hx-get="/api/ms_dd" hx-target="#mss">
+        <option value="">All</option>
+        {% for creator in creators %}
+        <option value="{{ creator.slug }}">{{ creator.displayname }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="ms_id">Manuscripts:</label>
+      <select name="ms_id" id="mss">
+        <option value="">All</option>
+        {% for ms in mss %}
+        <option value="{{ ms.ms_id }}">{{ ms.title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" id="submit-button" hx-get="/api" hx-target="#results">Submit Query</button>
+  </form>
+  <p id="api-label">Select filters and click "Submit Query" to see results.</p>
+
+  <!-- <p id="spinner" class="htmx-indicator">Loading...</p> -->
+  <p id="spinner" class="htmx-indicator"><span>Loading...</span></p>
+  <!-- <p id="" class="htmx-indicatorz"><span>Loading...</span></p> -->
+  <a id="dl-button" href="/api">Download all data as JSON<span class="alt-label">This could take a while...</span></a>
+
+  <pre id="results">
+</pre>
+</article>
+{% endblock %} {% block extra_foot %}
+<script>
+  function zeroPad(value) { return String(value).padStart(2, '0'); }
+
+  const selects = document.body.querySelectorAll('select')
+  const results = document.getElementById('results')
+  const submitButton = document.getElementById('submit-button')
+  const dlButton = document.getElementById('dl-button')
+  const apiLabel = document.getElementById('api-label')
+
+  function selectChecker() {
+    let check = Array.from({ length: selects.length }).every((_, i) => {
+      return selects[i].value
+    })
+    return check
+  }
+  console.log("selectChecker", selectChecker())
+
+  selects.forEach((s) => {
+    s.addEventListener('change', (e) => {
+      let apiParams = new URLSearchParams()
+      selects.forEach((s) => {
+        if (!s.value) return
+        apiParams.set(s.name, s.value)
+      })
+      apiLabel.innerText = `API URL: https://nt.newberry.org/api?${apiParams.toString()}`
+      let areSelectsChanged = selectChecker()
+      if (areSelectsChanged && !results.innerText) {
+        // console.log("selects are changed")
+        setTimeout(() => {
+          // console.log("results.innerText", results.innerText)
+          submitButton.classList.add('flash')
+        }, 3000)
+      }
+    })
+  })
+
+
+  document.body.addEventListener("htmx:afterSwap", function (event) {
+
+    if (event.detail.target.id === "results") {
+      submitButton.classList.remove('flash')
+      const data = JSON.parse(event.detail.xhr.responseText);
+      jsonText = JSON.stringify(data, null, 2)
+      results.innerText = jsonText
+      if (data && data.length > 0) {
+        const jsonStr = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+
+        dlButton.href = url;
+        dlButton.innerHTML = "Download filtered data as JSON";
+        let filters = ''
+        selects.forEach(s => filters += `_${s.value}`)
+
+        const now = new Date();
+        const dateString = `_${now.getFullYear()}-${zeroPad(now.getMonth() + 1)}-${zeroPad(now.getDate())}`
+        dlButton.download = `newberry-transcribe${filters}${dateString}.json`;
+        dlButton.classList.add('show');
+      }
+    }
+  });
+
+</script>
+{% endblock %}
+
+{% block extra_head %}
+<script src="/js/htmx.min.js"></script>
+<link rel="stylesheet" href="/css/download.css">
+{% endblock %}

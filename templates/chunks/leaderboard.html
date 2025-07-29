@@ -1,16 +1,33 @@
+<div class="leaderboard">
+  <h3><small>★</small> Top contributors <small>★</small></h3>
+  <ol class="top-three">
+    {% for u in leaderboard[:3] %}
 
-<div class="leaderboard-container">
-    <table id="leaderboard">
-        <tr><th>★ Top contributors ★</th></tr>
-        {% for user in leaderboard %}
-        <tr>
-            <!-- <td><img src="static/images/user-profile/none.svg"></td> -->
-            <td><img src="https://awntuwhgnlwgckwgfurh.supabase.co/storage/v1/object/public/avatars/{{ user.avatar if user.avatar is not none else '/none.svg' }}" alt="{{ user.username }} profile image"></td>
-            <td>{{ user.username }}
-                {{user.contribution_count}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <li class="top-3-user" id="leaderboard-{{loop.index}}">
+      <span class="top-3-ranking">{{ leaderboard.index(u)+1 }}</span>
+      <span title="{{ u.username }}">{{ u.username }}</span>
+      <span>{{ u.contribution_count }}</span>
+    </li>
+
+    {% endfor %}
+  </ol>
+  <ol start="4" class="next-five">
+    {% for u in leaderboard[3:] %}
+    <li
+      class="next-five-users leaderboard-users"
+      style="--user-image: url('https://awntuwhgnlwgckwgfurh.supabase.co/storage/v1/object/public/avatars/{{ u.avatar if u.avatar is not none else '/none.svg' }}');"
+    >
+      <span class="next-five-ranking">{{leaderboard.index(u)+1}}</span>
+      <!-- <img class="user-icon"
+                    src="https://awntuwhgnlwgckwgfurh.supabase.co/storage/v1/object/public/avatars/{{ u.avatar if u.avatar is not none else '/none.svg' }}"
+                    alt="{{ u.username }} profile image"> -->
+      <span class="next-five-username" title="{{ u.username }}"
+        >{{ u.username }}</span
+      >
+      <span class="next-five-count">{{ u.contribution_count }}</span>
+    </li>
+
+    {% endfor %}
+  </ol>
 </div>
-
 

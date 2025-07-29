@@ -1,0 +1,83 @@
+templates/page/page.html:  <a href="/" class="llines">Transcribe Home</a>
+templates/page/page.html:  <a href="/ms/{{ ms_id }}{{review}}" class="llines">{{ page.title }}</a>
+templates/page/page.html:<script src="/js/openseadragon/openseadragon.min.js"></script>
+templates/page/page.html:<script src="/js/htmx.min.js"></script>
+templates/page/page.html:<link rel="stylesheet" href="/css/page.css">
+templates/ms/ms.html:<script src="/js/progress-bar.js"></script>
+templates/ms/ms.html:<link rel="stylesheet" href="/css/ms.css">
+templates/mss/filters.html:  <a href="/{{ page_type }}" class="button-like">Clear filters</a>
+templates/mss/review_filter.html:  <a href="/{{ request.path }}" target="_blank" class="button-like" title="This will open in a new tab">what is this I don't even</a>
+templates/mss/mss.html:      <a href="/" class="link-lines">Transcribe Home</a>
+templates/mss/mss.html:        Select a manuscript, then click on a page, and type what you see! Check out our <a href="/tutorial"
+templates/mss/mss.html:<script src="/js/progress-bar.js"></script>
+templates/mss/mss.html:<script src="/js/htmx.min.js"></script>
+templates/mss/mss.html:<script src="/js/nouislider/nouislider.js"></script>
+templates/mss/mss.html:<link rel="stylesheet" href="/js/nouislider/nouislider.css">
+templates/mss/mss.html:<link rel="stylesheet" href="/css/_base.css">
+templates/mss/mss.html:<link rel="stylesheet" href="/css/mss.css">
+templates/mss/mss_list.html:<a href="/ms/{{ ms.ms_id }}{{ review }}" class="card set">
+templates/index.html:<script src="/js/htmx.min.js"></script>
+templates/index.html:<link rel="stylesheet" href="/css/chunks/jumbotron.css">
+templates/index.html:<link rel="stylesheet" href="/css/chunks/how-to.css">
+templates/index.html:<link rel="stylesheet" href="/css/chunks/beta-banner.css">
+templates/index.html:<link rel="stylesheet" href="/css/chunks/header.css">
+templates/index.html:<link rel="stylesheet" href="/css/chunks/footer.css">
+templates/index.html:<link rel="stylesheet" href="/css/index.css">
+templates/index.html:          <a href="/about" class="button-like">
+templates/index.html:          <a href="/transcribe" class="button-like  color-button">
+templates/base.html:  <link rel="shortcut icon" href="/favicon.png" sizes="16x16 32x32 48x48"
+templates/base.html:  <script src="/js/newberry-logo.js"></script>
+templates/base.html:  <link rel="stylesheet" href="/css/_base.css">
+templates/base.html:  <link rel="stylesheet" href="/css/chunks/header.css">
+templates/base.html:  <link rel="stylesheet" href="/css/chunks/footer.css">
+templates/base.html:  <script defer src="/_vercel/insights/script.js"></script>
+templates/auth/login.html:<link rel="stylesheet" href="/css/login.css">
+templates/auth/login.html:<link rel="stylesheet" href="/css/chunks/leaderboard.css">
+templates/index_base.html:      href="/favicon.png"
+templates/index_base.html:    <script src="/js/newberry-logo.js"></script>
+templates/index_base.html:    <link rel="stylesheet" href="/css/_base.css" />
+templates/text_base.html:<link rel="stylesheet" href="/css/text-page.css">
+templates/search/search_results.html:    <a class="search-button" href="/search">New search</a>
+templates/search/search_results.html:      href="/search/results?keyword={{ keywords|join(' ') }}&page={{ prev_page }}"
+templates/search/search_results.html:      href="/search/results?keyword={{ keywords|join(' ') }}&page={{ next_page }}"
+templates/search/cruft/transcription.html:        href="/api/transcription/{{ record_id }}"
+templates/search/search.html:<link rel="stylesheet" href="/css/search.css" />
+templates/search/search.html:<script src="/js/htmx.min.js"></script>
+templates/search/partials/error.html:  <a href="/search" class="search-button"> Return to Search </a>
+templates/chunks/recently-tanscribed.html:                from <a href="/ms/{{ most_recent.ms_id }}/{{ most_recent.page_number }}" class="link-lines ack-link"
+templates/chunks/quick_tips.html:      <img src="/images/popup-cap.jpg" alt="" />
+templates/chunks/quick_tips.html:  <img src="/images/ghostyboy-mini.webp" alt="" />
+templates/chunks/how-to.html:    <h3 id="foot">For detailed instructions, <a href="/tutorial" class="llines">view our tutorial</a></h3>
+templates/chunks/carousel.html:      <a href="/creators" class=" button-like section-link">Browse creators</a>
+templates/chunks/carousel.html:      <a href="/transcribe" class="button-like section-link">Browse manuscripts</a>
+templates/chunks/carousel.html:          <a href="/ms/{{ ms.ms_id }}">
+templates/chunks/review_popup.html:        Please <a href="/login">log in or sign up</a> for an account</p>
+templates/chunks/center-box.html:    <a href="/transcribe" class="button-like  color-button">Browse Manuscripts</a>
+templates/chunks/otd-block.html:            href="/page/{{ most_recent.ms_id }}/{{ most_recent.page_number }}"
+templates/chunks/orig-center-boxes.html:          <a href="/transcribe" class="button-like index-button">Browse all</a>
+templates/chunks/orig-center-boxes.html:              <a href="/ms/{{ ms.ms_id }}"> <img alt="" src="https://collections.newberry.org/IIIF3/Image/{{ ms.repimage }}/full/,400/0/default.jpg"> <em>{{ ms.short_title if ms.short_title else ms.title }}</em> </a> 
+templates/chunks/orig-center-boxes.html:          <a href="/creators" class="button-like index-button">Browse all</a>
+templates/chunks/header.html:    <a id="header-home-link" class="header-home-link llines" href="/">
+templates/chunks/wedgie.html:      <a href="/mss" class="button-like">Browse Manuscripts</a>
+templates/users/contributions.html:        <span>No contributions yet. Head to <a href="/transcribe" class="underline" color="var(--accent-color)">manuscripts</a> to get started!</span>
+templates/users/contributions.html:            <td><a color="var(--bg-accent-color)" text-decoration="underline" {% if c.status=='reviewed'%} href="/ms/{{c.ms_id}}?review" {%else%} href="/ms/{{c.ms_id}}" {%endif%}>{{c.title}}</a></td>
+templates/users/contributions.html:            <td><a color="var(--bg-accent-color)" class="underline" {% if c.status=='reviewed'%} href="/page/{{c.ms_id}}/{{c.page_number}}?review" {%else%} href="/page/{{c.ms_id}}/{{c.page_number}}" {%endif%}>{{c.page_number}}</a></td>
+templates/users/contributions.html:        <span>No contributions yet. Head to <a href="/transcribe" class="underline" color="var(--accent-color)">manuscripts</a> to get started!</span>
+templates/users/user.html:<link rel="stylesheet" href="/css/chunks/leaderboard.css">
+templates/users/user.html:<link rel="stylesheet" href="/css/user.css">
+templates/users/user.html:            <form enctype=multipart/form-data action="/auth/set-avatar" method="POST">
+templates/users/user.html:        <form action="/auth/logout" method="post" class="inline">
+templates/creators/creators.html:<link rel="stylesheet" href="/css/creators.css">
+templates/creators/creators.html:  <a href="/" class="llines">Transcribe Home</a>
+templates/creators/creators.html:    <img class='bg-image' src="/images/creators/{{  c.indexname  }}-bg.webp" />
+templates/creators/creators.html:      src="/images/creators/{{  c.indexname  }}-focus.webp" />
+templates/creators/creators.html:      src="/images/creators/{{  c.indexname  }}-focus-2.webp" />
+templates/creators/creators.html:    <img class='fg-image' src="/images/creators/{{  c.indexname  }}-fg.webp" />
+templates/creators/creator.html:<script src="/js/progress-bar.js"></script>
+templates/creators/creator.html:<link rel="stylesheet" href="/css/creator.css">
+templates/creators/creator.html:      <a class="llines" href="/">Transcribe Home</a>
+templates/dl/download.html:  <a id="dl-button" href="/api">Download all data as JSON<span class="alt-label">This could take a while...</span></a>
+templates/dl/download.html:<script src="/js/htmx.min.js"></script>
+templates/dl/download.html:<link rel="stylesheet" href="/css/download.css">
+templates/error.html:  <p><a href="/login">Go back.</a></p>
+templates/error.html:<link rel="stylesheet" href="/css/text-page.css">

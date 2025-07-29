@@ -22,7 +22,7 @@
     <textarea class="text-submit" name="content" {% if text_type=="translation" %} placeholder="Translate here!" {% else
       %} placeholder="Transcribe here!" {% endif %}>{{ text }}</textarea>
     <div class="button-row submits">
-      <a {% if prev %} class="button-like" href="/page/{{ ms_id }}/{{ prev }}{{ review }}" {% else %} class="button-like disabled"
+      <a {% if prev %} class="button-like" href="/page/{{ ms_id }}/{{ prev }}{{ review }}" {% else %} class="button-like disabled-next"
         {% endif %}>Previous</a>
 
       {% if review == "?review" %}
@@ -37,7 +37,7 @@
       </button>
       {% endif %}
 
-      <a {% if next %} class="button-like" href="/page/{{ ms_id }}/{{ next }}{{ review }}" {% else %} class="button-like disabled"
+      <a {% if next %} class="button-like" href="/page/{{ ms_id }}/{{ next }}{{ review }}" {% else %} class="button-like disabled-next"
         {% endif %}>Next</a>
     </div>
   </form>

@@ -1,0 +1,63 @@
+image: python:3.9
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+cache:
+  paths:
+    - .pip-cache/
+    - venv/
+
+stages:
+  - test
+  - build
+  - deploy
+
+# Test-specific service and configuration
+.test-db:
+  services:
+    - name: postgres:latest
+      # These variables are only for the temporary test database
+      variables:
+        POSTGRES_DB: test_db
+        POSTGRES_USER: test_user
+        POSTGRES_PASSWORD: test_password
+        POSTGRES_HOST_AUTH_METHOD: trust
+
+before_script:
+  - python -V
+  - python -m venv venv
+  - source venv/bin/activate
+  - python -m pip install -r requirements.txt
+  # Testing deps
+  - python -m pip install pytest pytest-cov httpx beautifulsoup4
+
+test:
+  extends: .test-db
+  stage: test
+  variables:
+    # Connection info for the temporary test database
+    DATABASE_URL: "postgresql://test_user:test_password@postgres:5432/test_db"
+  script:
+    - python -m pip install pytest
+    - python -m pytest
+
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+  artifacts:
+    paths:
+      - .
+    exclude:
+      - "zzz_cr-images/**/*"
+      - "zzz_cruft/**/*"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Starting deployment..."
+  only:
+    - python-version
+  environment:
+    name: production

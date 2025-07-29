@@ -215,6 +215,7 @@ class Page(Base):
     translation = Column(String)
     translation_user = Column(String)
     translation_timestamp = Column(DateTime)
+    translation_status = Column(String)
 
 
 class PageResponse(BaseModel):
@@ -232,6 +233,7 @@ class PageResponse(BaseModel):
     translation: Optional[str]
     translation_user: Optional[str]
     translation_timestamp: Optional[datetime]
+    translation_status: Optional[str]
 
     class Config:
         from_attributes = True

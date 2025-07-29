@@ -1,8 +1,8 @@
-<div id='openseadragon' style='width: 100%; height: 100%;'>
-</div>
+<div id="openseadragon" style="width: 100%; height: 100%"></div>
 
 <script>
-  picUrl = 'https://collections.newberry.org/IIIF3/Image/{{ image }}/info.json';
+  // picUrl = "https://sample.org/IIIF3/Image/image/info.json";
+  picUrl = "https://collections.newberry.org/IIIF3/Image/{{ image }}/info.json";
 
   // console.log(picUrl)
   // console.log("image link:", "https://collections.newberry.org/IIIF3/Image/{{ image }}/full/,400/0/default.jpg");
@@ -18,12 +18,45 @@
 
   viewer = OpenSeadragon({
     id: "openseadragon",
-    prefixUrl: "/static/js/openseadragon/images/",
+    prefixUrl: "/js/openseadragon/images/",
     showRotationControl: true,
     autoHideControls: false,
     // homeFillsViewer: true,
-    tileSources: [picUrl]
+    tileSources: [picUrl],
+  });
+  viewer.addHandler("open-failed", function (event) {
+    console.log("TileSource failed:", event.message);
+    // Custom error handling
+    showUserFriendlyError();
   });
 
-</script>
+  viewer.addHandler("tile-load-failed", function (event) {
+    console.log("Tile failed to load:", event);
+    showUserFriendlyError();
+    // Handle individual tile failures
+  });
+  function showUserFriendlyError() {
+    const viewerElement = document.getElementById("openseadragon");
+    viewerElement.style.position = "relative";
+    const osdError = document.createElement("div");
+    const bodyId = document.body.classList.value
+      .split(" ")
+      .filter((f) => f.startsWith("nt-"))
+      .pop();
+    osdError.id = "osd-error";
 
+    const imageAddre = `style="background-image: url('/images/jumbo/${bodyId}-sm.webp')"`;
+    osdError.innerHTML = `
+      <div class="message">
+        <div class="text">
+          <h4>Oh no! An error!</h4>
+          <p>
+            The page image didn't load.  There's a known issue that causes this, and we're working on a fix, but in the meantime, it should load the image if you refresh the page (sometimes it takes a couple of refreshes).  Thank you for your patience!
+          </p>
+          <h4>Please refresh the page.</h4>
+        </div>
+      </div>
+    `;
+    viewerElement.prepend(osdError);
+  }
+</script>

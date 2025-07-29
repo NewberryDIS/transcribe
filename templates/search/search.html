@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="search-container">
+  <div class="background-image"></div>
+  <h1>Search crowdsourced transcriptions</h1>
+  <form hx-get="/search/results" hx-target="#results-container" hx-indicator=".htmx-indicator" class="search-form">
+    <div class="search-input-group">
+      <input type="text" name="keyword" id="keyword" placeholder="Enter search terms..." class="search-input"
+        value="{{keyword or '' }}" />
+      <button type="submit" class="search-button">Search</button>
+    </div>
+  </form>
+</div>
+{% if keyword %}
+<div hx-get="/search/results?keyword={{keyword}}{%if page%}&page={{ page }}{%endif%}" hx-trigger="load delay:100ms" hx-indicator="#loading-indicator"
+  id="results-container" class="results-container">
+  <div id="loading-indicator" class="htmx-indicator">
+    <div class="spinner"></div>
+    <span>Loading...</span>
+  </div>
+</div>
+{% else %}
+<div id="results-container" class="results-container">
+  <div class="search-container md">
+
+  {{ instr | safe }}
+  <h4>Sample result:</h4>
+  {% include 'search/sample_result.html' %}
+</div>
+</div>
+{% endif %}
+</div>
+{% include 'chunks/back-to-top.html' %}
+{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="/css/search.css" />
+<script src="/js/htmx.min.js"></script>
+{% endblock %}
+{% block extra_foot %}
+<script>
+  document.body.classList.forEach(fe => {
+    if (fe.startsWith('nt-')) {
+      document.body.style.setProperty("--search-result-bg", `url('/images/jumbo/${fe}-sm.webp`);
+    }
+  })
+
+  document.body.addEventListener("htmx:afterSwap", function (event) {
+    document.documentElement.style.scrollBehavior = "var(--scroll-behavior)";
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,83 @@
+<div class="bsky-container">
+  <div class="bsky-header">
+    <h2>Latest from our Bluesky</h2>
+    <a
+      href="https://bsky.app/profile/{{bsky_username }}"
+      target="_blank"
+      class="follow-link link-lines"
+    >
+      Follow us on Bluesky
+    </a>
+  </div>
+  <div class="bsky-posts">
+    {% if posts|length > 0 %} {% for post in posts %}
+    <div class="bsky-post" id="bsky-post-{{loop.index}}">
+      <div class="bsky-content">
+        <p class="bsky-text">{{ post.text|replace("\n", "<br />") | safe}}</p>
+        <div class="bsky-meta">
+          <span class="bsky-time">{{ post.relative_time or "Recently"}}</span>
+          <a
+            href="{{ post.url or  '#' }}"
+            target="_blank"
+            class="bsky-link link-lines"
+            >View on BlueSky</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <p class="no-posts">No recent posts available.</p>
+    {% endif %}
+  </div>
+</div>
+<style>
+  .bsky-container {
+    max-width: 100vw;
+    margin: 0 0 33px 0;
+    padding: 33px;
+    background: var(--bg-color);
+    color: var(--fg-color);
+    box-shadow: 0 0 7px 7px rgba(var(--accent, 0, 0, 0), 0.33);
+    gap: 1rem;
+  }
+  .bsky-container,
+  .bsky-meta {
+    display: flex;
+    flex-direction: column;
+  }
+  .bsky-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bsky-posts {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .bsky-post {
+    flex: 1;
+    border: 1px solid rgba(var(--accent, 0, 0, 0), 0.33);
+    box-shadow: 0 0 7px 7px rgba(var(--accent, 0, 0, 0), 0.09);
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  .bsky-text {
+    background: rgba(var(--accent, 0, 0, 0), 0.09);
+    box-shadow: 0 0 7px 7px rgba(var(--accent, 0, 0, 0), 0.09);
+  }
+  .bsky-text,
+  .bsky-meta {
+    padding: 1rem;
+  }
+  @media screen and (max-width: 900px) {
+    #bsky-post-3 {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    #bsky-post-4 {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,200 @@
+<!-- HTML Structure for the header navigation -->
+<ul class="header-nav">
+  {% for item in header_lists %}
+  <li class="nav-item{% if item.submenu %} has-submenu{% endif %}">
+    <a href="{{ item.link }}">{{ item.text }}</a>
+    {% if item.submenu %}
+    <button class="mobile-submenu-toggle" aria-label="Toggle submenu">+</button>
+    <ul class="submenu">
+      {% for subitem in item.submenu %}
+      <li><a href="{{ subitem.link }}">{{ subitem.text }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<style>
+  .header-nav {
+    list-style: none;
+    display: flex;
+    padding: 0 1rem;
+    margin: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-item > a {
+    display: block;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    color: var(--fg-color);
+  }
+
+  .nav-item:hover > a {
+    background-color: var(--bg-accent-color);
+  }
+
+  /* Submenu styles */
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-color);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+
+    box-shadow: 0 2px 5px rgba(var(--fg), 0.2);
+    display: none;
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+  }
+
+  .nav-item:hover .submenu {
+    display: block;
+  }
+
+  .submenu li a {
+    display: block;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    color: var(--fg-color);
+  }
+
+  .submenu li a:hover {
+    background-color: var(--bg-accent-color);
+  }
+
+  /* Dropdown arrow indicator */
+  .has-submenu > a::after {
+    content: "▼";
+    height: 100%;
+    font-size: 0.6em;
+    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* Mobile submenu toggle button */
+  .mobile-submenu-toggle {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+  }
+
+  /* Mobile menu button */
+  #mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    #mobile-menu-button {
+      display: block;
+    }
+
+    .header-bottom {
+      display: none;
+    }
+
+    .header-bottom.active {
+      display: block;
+    }
+
+    .header-nav {
+      flex-direction: column;
+    }
+
+    .mobile-submenu-toggle {
+      display: block;
+    }
+
+    .submenu {
+      position: static;
+      box-shadow: none;
+      padding-left: 1.5rem;
+      background-color: var(--bg-color);
+      min-width: auto;
+    }
+
+    .nav-item:hover .submenu {
+      display: none;
+    }
+
+    .submenu.active {
+      display: block;
+    }
+
+    .nav-item {
+      border-bottom: 1px solid var(--fg-color);
+    }
+
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<!-- JavaScript for mobile interactions -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const headerBottom = document.querySelector(".header-bottom");
+    const submenuToggles = document.querySelectorAll(".mobile-submenu-toggle");
+
+    // Toggle mobile menu
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener("click", function () {
+        headerBottom.classList.toggle("active");
+      });
+    }
+
+    // Toggle submenus on mobile
+    submenuToggles.forEach((toggle) => {
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        const submenu = this.nextElementSibling;
+        submenu.classList.toggle("active");
+        this.textContent = submenu.classList.contains("active") ? "-" : "+";
+      });
+    });
+
+    // Function to handle viewport changes
+    function handleViewportChange(mediaQuery) {
+      if (!mediaQuery.matches) {
+        // Reset mobile menu state when returning to desktop
+        if (headerBottom) {
+          headerBottom.classList.remove("active");
+        }
+
+        const activeSubmenus = document.querySelectorAll(".submenu.active");
+        activeSubmenus.forEach((submenu) => submenu.classList.remove("active"));
+
+        submenuToggles.forEach((toggle) => {
+          toggle.textContent = "+";
+        });
+      }
+    }
+
+    // Watch for viewport changes
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    mediaQuery.addEventListener("change", handleViewportChange);
+  });
+</script>

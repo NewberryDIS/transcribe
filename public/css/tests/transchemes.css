@@ -1,0 +1,226 @@
+.transchemes-0014-1-a {
+  --background: #030305;
+  --foreground: #a6dae2;
+  --color0: 3, 3, 5;
+  --color1: 252, 230, 8;
+  --color2: 17, 105, 149;
+  --color3: 49, 72, 190;
+  --color4: 15, 150, 168;
+  --color5: 17, 167, 220;
+  --color6: 20, 217, 240;
+  --color7: 166, 218, 226;
+  --color8: 116, 152, 158;
+}
+.transchemes-0014-1-b {
+  --background: #020219;
+  --foreground: #b9dbe6;
+  --color0: 2, 2, 25;
+  --color1: 252, 208, 1;
+  --color2: 255, 223, 58;
+  --color3: 242, 157, 101;
+  --color4: 36, 87, 162;
+  --color5: 5, 159, 185;
+  --color6: 98, 188, 210;
+  --color7: 185, 219, 230;
+  --color8: 129, 153, 161;
+}
+.transchemes-0014-2-a {
+  --background: #030304;
+  --foreground: #d9dde3;
+  --color0: 3, 3, 4;
+  --color1: 240, 183, 36;
+  --color2: 250, 220, 10;
+  --color3: 42, 72, 177;
+  --color4: 189, 60, 197;
+  --color5: 13, 154, 158;
+  --color6: 43, 205, 231;
+  --color7: 217, 221, 227;
+  --color8: 151, 154, 158;
+}
+.transchemes-0014-2-b {
+  --background: #07000C;
+  --foreground: #7fd4dd;
+  --color0: 7, 0, 12;
+  --color1: 218, 173, 38;
+  --color2: 223, 172, 58;
+  --color3: 226, 183, 37;
+  --color4: 195, 103, 176;
+  --color5: 240, 126, 210;
+  --color6: 62, 163, 182;
+  --color7: 127, 212, 221;
+  --color8: 88, 148, 154;
+}
+.transchemes-0014-2-c {
+  --background: #020A22;
+  --foreground: #eee0e5;
+  --color0: 2, 10, 34;
+  --color1: 59, 79, 167;
+  --color2: 103, 127, 136;
+  --color3: 92, 106, 184;
+  --color4: 61, 145, 207;
+  --color5: 60, 139, 220;
+  --color6: 180, 177, 200;
+  --color7: 238, 224, 229;
+  --color8: 166, 156, 160;
+}
+.transchemes-0014-3-a {
+  --background: #010101;
+  --foreground: #cce5e9;
+  --color0: 1, 1, 1;
+  --color1: 241, 104, 8;
+  --color2: 242, 223, 11;
+  --color3: 242, 224, 6;
+  --color4: 246, 238, 94;
+  --color5: 21, 199, 202;
+  --color6: 149, 206, 220;
+  --color7: 204, 229, 233;
+  --color8: 142, 160, 163;
+}
+.transchemes-0014-3-b {
+  --background: #06020C;
+  --foreground: #a0ced9;
+  --color0: 6, 2, 12;
+  --color1: 250, 222, 11;
+  --color2: 219, 198, 72;
+  --color3: 26, 109, 143;
+  --color4: 89, 105, 153;
+  --color5: 92, 113, 145;
+  --color6: 24, 146, 155;
+  --color7: 160, 206, 217;
+  --color8: 112, 144, 151;
+}
+.transchemes-0014-4-a {
+  --background: #0F0F26;
+  --foreground: #cbe6ec;
+  --color0: 15, 15, 38;
+  --color1: 239, 135, 42;
+  --color2: 247, 223, 72;
+  --color3: 248, 226, 73;
+  --color4: 26, 96, 128;
+  --color5: 63, 158, 182;
+  --color6: 77, 165, 188;
+  --color7: 203, 230, 236;
+  --color8: 142, 161, 165;
+}
+.transchemes-0014-4-b {
+  --background: #03040B;
+  --foreground: #7bc8ea;
+  --color0: 3, 4, 11;
+  --color1: 240, 178, 24;
+  --color2: 27, 94, 153;
+  --color3: 29, 73, 182;
+  --color4: 82, 101, 151;
+  --color5: 151, 96, 141;
+  --color6: 51, 172, 208;
+  --color7: 123, 200, 234;
+  --color8: 86, 140, 163;
+}
+.transchemes-0014b {
+  --background: #04030B;
+  --foreground: #99c9d7;
+  --color0: 4, 3, 11;
+  --color1: 209, 61, 29;
+  --color2: 238, 197, 28;
+  --color3: 20, 75, 165;
+  --color4: 8, 94, 161;
+  --color5: 172, 107, 146;
+  --color6: 15, 157, 217;
+  --color7: 153, 201, 215;
+  --color8: 107, 140, 150;
+}
+.transchemes-0014c {
+  --background: #020105;
+  --foreground: #b5dbe3;
+  --color0: 2, 1, 5;
+  --color1: 244, 126, 28;
+  --color2: 238, 83, 45;
+  --color3: 245, 130, 28;
+  --color4: 249, 178, 11;
+  --color5: 31, 93, 148;
+  --color6: 27, 88, 162;
+  --color7: 181, 219, 227;
+  --color8: 126, 153, 158;
+}
+
+.transchemes-0014-2-a {
+  --fg-splash-rgb: var(--color3);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+.transchemes-0014-4-b {
+  --fg-splash-rgb: var(--color2);
+  --fg-alt-1-rgb:  var(--color3);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+.transchemes-0014b {
+  --fg-splash-rgb: var(--color1);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+.transchemes-0014c {
+  --fg-splash-rgb: var(--color2);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+
+.transchemes-0014-1-a {
+  --fg-splash-rgb: var(--color2);
+  --fg-alt-1-rgb:  var(--color3);
+  --fg-alt-2-rgb:  var(--color4);
+}
+
+
+.transchemes-0014-1-b {
+  --fg-splash-rgb: var(--color3);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+.transchemes-0014-3-b {
+  --fg-splash-rgb: var(--color3);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color6);
+}
+
+.bg-2KXJ8ZW261H8-sm {
+  --fg-splash-rgb: var(--color3);
+  --fg-alt-1-rgb:  var(--color4);
+  --fg-alt-2-rgb:  var(--color6);
+}
+
+.bg-2KXJ8ZE0DCKJ {
+  --fg-splash-rgb: var(--color1);
+  --fg-alt-1-rgb:  var(--color2);
+  --fg-alt-2-rgb:  var(--color5);
+}
+
+
+.color-button {
+
+  --blend-of-01:   color-mix(in oklab, rgb(var(--color0)) 66%, rgb(var(--color1)));
+  background-image: linear-gradient(to right, 
+    rgb(var(--color0)) 0 10%,
+    rgb(var(--color1)) 10% 20%,
+    rgb(var(--color2)) 20% 30%,
+    rgb(var(--color3)) 30% 40%,
+    rgb(var(--color4)) 40% 50%,
+    rgb(var(--color5)) 50% 60%,
+    rgb(var(--color6)) 60% 70%,
+    rgb(var(--color7)) 70% 80%,
+    rgb(var(--color8)) 80% 90%,
+    var(--blend-of-01) 90% 100%
+    ) !important;
+    &:nth-child(2) {
+    filter: brightness(0.5);
+    color: var(--bg-color ) !important;
+  }
+  &:last-child {
+
+    filter: brightness(2);
+    color: var(--fg-color);
+  }
+}

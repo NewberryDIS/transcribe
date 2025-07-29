@@ -1,0 +1,58 @@
+body {
+  /* sapphire */
+  /* --splash-rgb: 64,81,163; */
+  /* --splash: rgb(var(--splash-rgb)); */
+  /* lake */
+  /* --alt-rgb: 126,196,226; */
+  /* --alt: rgb(var(--alt-rgb)); */
+
+  /* midnight */
+  --main-dark-rgb: 17, 26, 42;
+  /* granite */
+  --main-light-rgb: 234, 235, 231;
+  /* sand */
+  --main-light-rgb: 234, 220, 201;
+
+  --main-dark: rgb(var(--main-dark-rgb));
+  --main-light: rgb(var(--main-light-rgb));
+
+  --splash-dark: color-mix(in oklab, var(--splash), var(--main-dark));
+  --alt-dark: color-mix(in oklab, var(--alt), var(--main-dark));
+
+  --splash-light: color-mix(in oklab, var(--splash), var(--main-light));
+  --alt-light: color-mix(in oklab, var(--alt), var(--main-light));
+
+  --bg-color: var(--main-light);
+  --bg-rgb: var(--main-light-rgb);
+  --fg-color: var(--main-dark);
+  --fg-rgb: var(--main-dark-rgb);
+
+  --fg-splash: var(--splash-dark);
+  --fg-alt: var(--alt-dark);
+
+  --bg-splash: var(--splash-light);
+  --bg-alt: var(--alt-light);
+
+  --splash-color: var(--fg-splash);
+
+  --shadow-color: color-mix(in oklab, var(--fg-alt) 15%, transparent);
+  --shadow: 0 0 7px 7px var(--shadow-color);
+
+  o
+}
+
+
+body.dark {
+
+  --fg-color: var(--main-light);
+  --fg-rgb: var(--main-light-rgb);
+  --bg-color: var(--main-dark);
+  --bg-rgb: var(--main-dark-rgb);
+
+  --bg-splash: var(--splash-dark);
+  --bg-alt: var(--alt-dark);
+
+  --fg-splash: var(--splash-light);
+  --fg-alt: var(--alt-light);
+
+}

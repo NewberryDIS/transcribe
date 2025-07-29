@@ -1,0 +1,347 @@
+{% extends 'tests/test_base.html' %} {% block content %}
+
+<header id="alt-header-2">
+  <section class="header-top">
+
+    <newberry-logo></newberry-logo>
+
+    <h1 class="header-title">
+      <a id="header-home-link" class="header-home-link llines" href="/">
+        <span class="will-hide">Newberry</span>
+        <span>Transcribe</span>
+      </a>
+    </h1>
+
+    <div id="mobile-menu" class="mobile-menu">
+      <button id="mobile-menu-button" class="mobile-menu-button">
+        <div class="ex"></div>
+        <div class="xex"></div>
+        <div class="xe"></div>
+      </button>
+      <ul role="list" id="mobile-list" class="mobile-list">
+        {% for link in header_lists %}
+        <li class="mobile-list-item">
+          <a href="{{link.link}}" {% if link.link.startswith('http') %} target="_blank" {% endif %}>{{link.text}}</a>
+
+        </li>
+        {% if link.submenu %}
+        {% for sublink in link.submenu %}
+        <li class="mobile-list-item">
+          <a href="{{sublink.link}}" {% if sublink.link.startswith('http') %} target="_blank" {% endif
+            %}>{{sublink.text}}</a>
+
+        </li>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <ul role="list" class="header-bottom nav">
+    {% for link in header_lists %}
+    <li class="nav-item">
+
+      <a href="{{ link.link }}">{{ link.text }}</a>
+      {% if link.submenu %}
+      <ul role="list" class="mini-menu">
+        {% for sublink in link.submenu %}
+        <li class="mini-menu-item"><a href="{{ sublink.link }}">{{ sublink.text }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% if link.submenu %}
+    {% for sublink in link.submenu %}
+    <li class="wide-menu-item"><a href="{{ sublink.link }}">{{ sublink.text }}</a></li>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </ul>
+</header>
+<style>
+  body {
+    background: #333;
+    color: #ccc;
+    --header-height: 55px;
+  }
+
+  #alt-header-2 {
+    --header-transition: 250ms;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    background: var(--bg-color);
+    color: var(--color);
+    display: flex;
+    flex-direction: column;
+
+    & .header-home-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    & .header-title {
+      margin: 0;
+    }
+
+    & .header-top {
+      position: relative;
+      padding-inline: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    & .header-bottom {
+      background: rgba(var(--fg), 0.1);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 1.5rem;
+    }
+
+    & .nav-item,
+    .mini-menu {
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    & li:not(.wide-menu-item),
+    li:not(.wide-menu-item) a {
+      display: inline-flex
+    }
+
+    & li,
+    li a {
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      transition: var(--header-transition);
+    }
+
+    & li a:hover {
+      background: var(--bg-accent-color);
+    }
+
+
+    & .mini-menu {
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-color);
+      color: var(--fg-color);
+      z-index: 1;
+
+    }
+
+    & .mini-menu-item {
+      height: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    & .nav-item:hover .mini-menu-item {
+      height: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .header-home-link {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+
+    .mini-menu,
+    .mini-menu-item {
+      display: none !important;
+    }
+
+    .wide-menu-item {
+      display: inline-flex;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1300px) and (min-width: 550px) {
+
+    .header-home-link {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+
+    .mini-menu {
+      display: flex;
+
+    }
+
+    .wide-menu-item {
+      display: none !important;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+  }
+
+  @media screen and (max-width: 550px) {
+
+    .header-home-link {
+      flex-direction: column;
+      gap: 0;
+      line-height: 1.4rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+
+    .wide-menu-item {
+      display: none;
+    }
+
+    .nav {
+      display: none !important;
+    }
+
+  }
+
+  #mobile-menu-button {
+    height: calc(var(--header-height) - 10px);
+    margin: 5px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    cursor: pointer;
+    border: 0;
+    border: 1px solid var(--fg-color);
+    background: transparent;
+    transition: 250ms;
+
+    &:hover {
+
+      & .ex,
+      .xe,
+      .xex {
+        filter: brightness(1.5);
+      }
+    }
+
+    & .ex,
+    .xe,
+    .xex {
+
+      pointer-events: none;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      width: 21px;
+      height: 5px;
+      background: var(--fg-color);
+      transition: all 200ms;
+      transform-origin: right;
+    }
+
+    & .xex {
+
+      transform: translate(-50%, 0) rotate(0deg);
+    }
+  }
+
+  #mobile-menu:not(.show) {
+    & .ex {
+      transform: translate(-50%, -150%) rotate(0);
+    }
+
+    & .xe {
+      transform: translate(-50%, 150%) rotate(0);
+    }
+
+    & .xex {
+      opacity: 1;
+    }
+  }
+
+  #mobile-menu.show {
+    & .ex {
+      transform: translate(-60%, -150%) rotate(-45deg);
+    }
+
+    & .xe {
+      transform: translate(-60%, 150%) rotate(45deg) !important;
+    }
+
+    & .xex {
+      opacity: 0;
+    }
+  }
+
+  .mobile-list {
+    padding: 0;
+    margin: 0;
+    background: var(--bg-color);
+    z-index: 99;
+    position: fixed;
+    inset: 55px 0 0 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+
+  .mobile-list li {
+    flex: 1;
+  }
+
+  .mobile-list a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+    border-block: 1px solid rgba(var(--fg), 0.33);
+  }
+
+  .mobile-menu.show .mobile-list {
+    display: flex;
+  }
+
+  .mobile-menu:not(.show) .mobile-list {
+    display: none;
+  }
+</style>
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button')
+  const mobuleMenu = document.getElementById('mobile-menu')
+  mobileMenuButton.addEventListener('click', () => {
+    if (mobuleMenu.classList.contains('show')) {
+
+      mobuleMenu.classList.remove('show')
+    } else {
+      mobuleMenu.classList.add('show')
+
+    }
+  }) 
+</script>
+{% endblock %}

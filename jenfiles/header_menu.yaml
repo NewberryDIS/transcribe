@@ -1,0 +1,29 @@
+- text: Contribute
+  submenu:
+    - text: Transcribe
+      link: /transcribe
+    - text: Review
+      link: /review
+    - text: Creators
+      link: /creators
+- text: Research
+  submenu:
+    - text: Search
+      link: /search
+    - text: Download
+      link: https://gitlab.com/newberry-library/transcribe/-/tree/main/bulk_data
+- text: Learn
+  submenu:
+    - text: About
+      link: /about
+    - text: Tutorial
+      link: /tutorial
+    - text: News
+      link: https://digitalnewberry.substack.com/
+    - text: Contact
+      link: /contact
+- text: Teach
+  link: /teach
+- text: Log in
+  alt: Account
+  link: /login

@@ -10,9 +10,8 @@
 
 /* Prevent font size inflation */
 html {
-
-  --header-height: 55px;
-  --footer-height: 33px;
+  --header-height: 6rem;
+  --footer-height: 2rem;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
@@ -24,15 +23,27 @@ html {
 
 /* be nice */
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+  body {
+    /* we're sticking this value onto things using js, so preserve empathy with a variable */
+    --scroll-behavior: smooth;
   }
+}
+
+@media (prefers-reduced-motion) {
+  body {
+    --scroll-behavior: auto;
+  }
+}
+
+html,
+body {
+  scroll-behavior: var(--scroll-behavior);
 }
 
 /* Set core body defaults */
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: calc(100vh - 1px);
   line-height: 1.5;
   position: relative;
 }
@@ -60,10 +71,9 @@ a {
   margin-block-start: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul li {
   list-style: none;
+  list-style-type: none;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -129,11 +139,9 @@ textarea:not([rows]) {
 
 button:not(:disabled) {
   cursor: pointer;
-
 }
 
 /* transcribe-specific */
-
 
 main {
   padding-block: var(--header-height, 65px) var(--footer-height, 33px);
@@ -153,7 +161,7 @@ main {
   /* place-content: center; */
 }
 
-.card  {
+.card {
   position: relative;
   width: 100%;
   display: flex;
@@ -163,11 +171,16 @@ main {
   /* border-radius: 9px 9px 0 0; */
   transition: var(--global-transition);
   border: 2px solid color-mix(in oklab, var(--fg-color) 76%, transparent);
-  box-shadow: 0 0 10px 10px color-mix(in oklab, var(--fg-color) 10%, transparent);
+  box-shadow: 0 0 10px 10px
+    color-mix(in oklab, var(--fg-color) 10%, transparent);
   background-color: var(--bg-color);
+  background-image: url("/static/images/nt-image-loading.webp");
+  background-position: center;
+  background-size: cover;
 
   &:hover {
-    box-shadow: 0 0 10px 10px color-mix(in oklab, var(--fg-color) 20%, transparent);
+    box-shadow: 0 0 10px 10px
+      color-mix(in oklab, var(--fg-color) 20%, transparent);
     border: 2px solid color-mix(in oklab, var(--fg-color) 99%, transparent);
   }
 
@@ -205,6 +218,7 @@ main {
 
     color: var(--fg-color);
     border: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
   }
 }
 
@@ -217,11 +231,13 @@ button[disabled] {
 
 .disabled:hover,
 button[disabled]:hover {
-  background-image: repeating-linear-gradient(-45deg,
-      transparent,
-      transparent 1rem,
-      rgba(var(--sapphire), 0.5) 1rem,
-      rgba(var(--sapphire), 0.5) 2rem);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 1rem,
+    rgba(var(--sapphire), 0.5) 1rem,
+    rgba(var(--sapphire), 0.5) 2rem
+  );
   background-size: 200% 200%;
   animation: barberpole 10s linear infinite;
 }
@@ -231,9 +247,10 @@ button[disabled]:hover {
     background-position: 100% 100%;
   }
 }
+
 .button-like {
   display: block;
-width: max-content;
+  width: max-content;
   font-family: "styrene";
   padding: 0.77rem 1rem;
   background: var(--button-bg);
@@ -247,7 +264,8 @@ width: max-content;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 0 7px 7px color-mix(in oklab, var(--button-fg) 33%, transparent);
+    box-shadow: 0 0 7px 7px
+      color-mix(in oklab, var(--button-fg) 33%, transparent);
   }
 }
 

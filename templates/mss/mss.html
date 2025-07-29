@@ -22,41 +22,44 @@
   </section>
 </div>
 <div class="right">
-  <section class="mss"
-    hx-get="/mss/mss?fgroup={{ fgroup }}&fvalue={{ fvalue }}&page_type={{ page_type }}" hx-trigger="load"
-    hx-target="#mss-section" hx-swap="beforeend">
-  {% if page_type == "review" %}
-  <div class="mode-header review-mode">
-    
+  <section class="mss" hx-get="/mss/mss?fgroup={{ fgroup }}&fvalue={{ fvalue }}&page_type={{ page_type }}"
+    hx-trigger="load" hx-target="#mss-section" hx-swap="beforeend">
+    {% if page_type == "review" %}
+    <div class="mode-header review-mode">
+
       <h3>
-      Review and approve transcriptions!
-    </h3>
-    <p>
-      Please review submissions, make corrections, and mark as approved. Staff will then add the transcriptions as searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry Digital Collections</a>
-    </p>
-  </div>
-  {% else %}
-  <div class="mode-header transcribe-mode">
-    <h3>
-      Transcribe handwritten letters and diaries and more!
-    </h3>
-    <p>
-      Select a manuscript, then click on a page, and type what you see!  Check out our <a href="/tutorial" class="link-lines">tutorial</a> to learn more.  Once you've finished,
-      reviewers will be able to proofread, and staff will then add the transcriptions as
-      searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry Digital Collections</a>
-    </p>
+        Review and approve transcriptions!
+      </h3>
+      <p>
+        Please review submissions, make corrections, and mark as approved. Staff will then add the transcriptions as
+        searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry
+          Digital Collections</a>
+      </p>
+    </div>
+    {% else %}
+    <div class="mode-header transcribe-mode">
+      <h3>
+        Transcribe handwritten letters and diaries and more!
+      </h3>
+      <p>
+        Select a manuscript, then click on a page, and type what you see! Check out our <a href="/tutorial"
+          class="link-lines">tutorial</a> to learn more. Once you've finished,
+        reviewers will be able to proofread, and staff will then add the transcriptions as
+        searchable text at <a href="https://collections.newberry.org" class="link-lines" target="_blank">Newberry
+          Digital Collections</a>
+      </p>
 
-  </div>
+    </div>
 
-  {% endif %}  
-</section>
-<div class="cards" id="mss-section"></div>
+    {% endif %}
+  </section>
+  <div class="cards" id="mss-section"></div>
 
 
 </div>
 
 <script>
-// https://newberrydis.cartodb.com/api/v2/sql/?q=SELECT * FROM us_histcounties_gen001 
+  // https://newberrydis.cartodb.com/api/v2/sql/?q=SELECT * FROM us_histcounties_gen001 
 
   let counter = 0;
   let expander = 0;
@@ -134,11 +137,11 @@
 </script>
 {% endblock %}
 
-{% block extra_css %}
-<script src="{{ url_for('static', path='/js/progress-bar.js') }}"></script>
-<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
-<script src="{{ url_for('static', path='/js/nouislider/nouislider.js') }}"></script>
-<link rel="stylesheet" href="{{ url_for('static', path='/js/nouislider/nouislider.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/_base.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/mss.css') }}">
+{% block extra_head %}
+<script src="/js/progress-bar.js"></script>
+<script src="/js/htmx.min.js"></script>
+<script src="/js/nouislider/nouislider.js"></script>
+<link rel="stylesheet" href="/js/nouislider/nouislider.css">
+<link rel="stylesheet" href="/css/_base.css">
+<link rel="stylesheet" href="/css/mss.css">
 {% endblock %}

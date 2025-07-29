@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import func, select
-from app.utils.markdown_handler import MarkdownHandler
 from app.utils.templates import get_template_response
 from app.db.sql import get_db
 from typing import Optional
@@ -13,7 +12,6 @@ import logging
 logging = logging.getLogger(__name__)
 
 router = APIRouter()
-markdown_handler = MarkdownHandler()
 
 
 def update_manuscript_status(manuscript_id: str, db: Session) -> None:
@@ -88,60 +86,6 @@ def update_manuscript_status(manuscript_id: str, db: Session) -> None:
         )
 
 
-# def update_manuscript_status(manuscript_id: str, db: Session) -> None:
-#     """
-#     Calculate and update status percentages for a manuscript based on the (string) status values of its pages.
-#
-#     Args:
-#         manuscript_id (str): The ID of the manuscript to update
-#         db (Session): SQLAlchemy database session
-#     """
-#     try:
-#         status_counts = (
-#             db.query(
-#                 Page.status,
-#                 func.count(Page.filename).label('count')
-#             )
-#             .filter(Page.ms_id == manuscript_id)
-#             .group_by(Page.status)
-#             .all()
-#         )
-#
-#         counts = {
-#             'inprogress': 0,
-#             'transcribed': 0,
-#             'reviewed': 0
-#         }
-#
-#         for status, count in status_counts:
-#             if status in counts:
-#                 counts[status] = count
-#
-#         manuscript = db.query(Ms).filter(Ms.ms_id == manuscript_id).first()
-#
-#         total_count = sum(counts.values())
-#
-#         inprogress = 0 if counts["inprogress"] == 0 else round((counts["inprogress"] / total_count) * 100)
-#         transcribed = 0 if counts["transcribed"] == 0 else round((counts["transcribed"] / total_count) * 100)
-#         reviewed = 0 if counts["reviewed"] == 0 else round((counts["reviewed"] / total_count) * 100)
-#
-#             # notstarted_count = sum(counts.values()) - sum([counts['inprogress'], counts['transcribed'], counts['reviewed']])
-#         if manuscript:
-#
-#              manuscript.inprogress = inprogress
-#              manuscript.transcribed = transcribed
-#              manuscript.reviewed = reviewed
-#
-#              db.commit()
-#
-#     except Exception as e:
-#         db.rollback()
-#         raise HTTPException(
-#             status_code=500,
-#             detail=f"Error updating manuscript status: {str(e)}"
-#         )
-
-
 def get_first_reviewable(query_results):
     for item in query_results:
         if item.status != "notstarted":
@@ -179,7 +123,6 @@ async def get_manuscript(
         first_reviewable_page_num = None
 
     user = request.cookies.get("sb-auth-token")
-    header_menu, footer_menu = markdown_handler.get_menus()
 
     return get_template_response(
         "ms/ms.html",
@@ -190,7 +133,5 @@ async def get_manuscript(
             "review": review,
             "first_reviewable_page_num": first_reviewable_page_num,
             "user": user,
-            "header_menu": header_menu,
-            "footer_menu": footer_menu,
         },
     )

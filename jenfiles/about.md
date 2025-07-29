@@ -1,10 +1,20 @@
-[TOC]
+---
+page_type: narrow
+---
+
+<div width="100%" max-width="750px">
+    <p>
+        <video width="100%" height="100%" controls poster="/static/images/nt-video-thumbnail.png">
+            <source src="https://collections.newberry.org/AssetLink/51x2x0e0o0mlk6cpw81y24jf2hdnoc5o.mp4" type="video/mp4">
+            Newberry Transcribe promotional video
+        </video>
+    </p>
+</div>
+
 
 # Welcome to Newberry Transcribe! # { #welcome data-toc-label='Welcome' }
 
 Thank you for visiting our crowdsourcing project, where you can help advance historical research by transcribing handwritten letters and diaries. Please check out our introductory video below, then read on to learn more.
-
-<div width="100%"><video width="100%" height="100%" controls><source src="https://collections.newberry.org/AssetLink/1256ktuj5lh1b2q06mh33qs3406051ak.mp4" type="video/mp4">Newberry Transcribe promotional video</video></div>
 
 **Why transcribe?**
 
@@ -19,7 +29,6 @@ And the best part? It’s fun! Explore the letters of twentieth-century authors,
 ## FAQs ## { #faq data-toc-label='FAQs' }
 
 ### [What is the Newberry?](/about#what-is-the-newberry) { #what-is-the-newberry }
-
 ![Newberry Library building postcard](static/images/nl-postcard.jpg)[Newberry Library postcard, 1901](https://collections.newberry.org/asset-management/2KXJ8ZSVHPRNY?BRPN=1){: .caption }
 
 The Newberry is an independent research library in Chicago that specializes in the humanities. [Per our mission](https://www.newberry.org/about), we seek to provide:
@@ -29,7 +38,6 @@ The Newberry is an independent research library in Chicago that specializes in t
 You can learn more by visiting our [website](https://www.newberry.org/), browsing our [digital collections](https://collections.newberry.org/), and reading our [magazine](https://issuu.com/newberrylibrary).
 
 ### [What is a manuscript?](/about#what-is-a-manuscript) { #what-is-a-manuscript }
-
 ![Handwritten promisory note](static/images/whittelsey.jpg)[Promissory note, 1768](https://collections.newberry.org/asset-management/2KXJ8ZSGOTQH5?BRPN=95&WS=AssetManagement){: .caption }
 
 The Society of American Archivists provides the following definition:
@@ -45,14 +53,12 @@ Outside of libraries, meaning #4 is the most common (author's draft of a work, p
 
 Manuscripts are part of a broader category known as “primary sources” ([per SAA](https://dictionary.archivists.org/entry/primary-source.html): “material that contains firsthand accounts of events and that was created contemporaneous to those events or later recalled by an eyewitness”); historians and other researchers study these materials to learn about the past, then publish their findings as books, articles, and other resources.
 
-### [What is transcription?](/about#what-is-a-transcription) { #what-is-a-transcription }
-
+### [What is transcription?](/about#what-is-transcription) { #what-is-transcription }
 ![Manuscript page and transcriptions](static/images/antoinette-met.jpg)[Antoinette Brigham Putnam Metcalf diaries, 1860-1863](https://collections.newberry.org/asset-management/2KXJ8ZS9CD4MV?BRPN=140&WS=AssetManagement){: .caption }
 
 Transcription is the act of creating a transcript, or copy, of a document or other information resource. Specifically, the type of transcription that happens at this website involves viewing a digitized, handwritten document from the Newberry’s holdings, typing the words exactly as written, and submitting the text. Newberry staff will then add it to the catalog record for the document at our [Digital Collections](https://collections.newberry.org/) site, so that researchers can easily browse and full-text search the material.
 
 ### [What is crowdsourcing?](/about#what-is-crowdsourcing) { #what-is-crowdsourcing }
-
 ![Children cutting, pasting, crafting](static/images/cbqgr2537.jpg)[Junior Missionary Society craft project, Galesburg, Illinois, 1948](https://archive.org/details/cbqgr2537){: .caption }
 
 Crowdsourcing is a process in which an organization puts out a public call for volunteers to contribute work on a large-scale project via the internet. If you’ve edited entries on Wikipedia, reviewed a product on Amazon, or contributed to a Kickstarter project, you’ve participated in crowdsourcing.
@@ -60,7 +66,6 @@ Crowdsourcing is a process in which an organization puts out a public call for v
 Newberry Transcribe is an example of cultural heritage crowdsourcing, in which nonprofit institutions such as libraries, archives, and museums request help from the public on tasks like manuscript transcription or subject tagging for digital collections. Other prominent examples of these projects include [By the People](https://crowd.loc.gov/), [Citizen Archivist](https://www.archives.gov/citizen-archivist), [Smithsonian Transcription Center](https://transcription.si.edu/), and [The Zooniverse](https://www.zooniverse.org/).
 
 ### [What kinds of manuscripts can I transcribe at this site?](/about#what-kinds-of-manuscripts) { #what-kinds-of-manuscripts }
-
 ![web navigation tiles of manuscript images](static/images/ms-tiles.JPG)[Newberry Transcribe manuscript browse page](/transcribe){: .caption }
 
 Newberry Transcribe features digitized documents drawn from the library’s [Modern Manuscripts and Archives](https://www.newberry.org/collection/subjects/modern-manuscripts-and-archives) collections, which include papers related to the performing arts, literature and journalism, clubs, Native American life from the 17th to 21st centuries, U.S. westward expansion, and social activism. You can view samples of some favorite transcribed manuscripts at our [Midwest Time Machine](https://digital.newberry.org/time-machine/) website.
@@ -81,72 +86,26 @@ Yes! When you finish transcribing a page, click the "Save and Submit for Review"
 
 ### [Can I review transcriptions?](/about#can-i-review-transcriptions) { #can-i-review-transcriptions }
 
-Yes, we encourage all transcribers to help review others’ work. Feel free to make edits and correct errors when you see them. We're currently building functionality for registered users to approve final versions of transcriptions and send them on to become searchable metadata at our digital collections site. Please check back!
+Yes, we encourage all transcribers to help review others’ work. Feel free to make edits and correct errors when you see them. Approve final versions of transcriptions over at our [Review page](https://nt.newberry.org/review). Your transcriptions will then become searchable metadata at our digital collections site. 
 
 ### [Is everything cursive?](/about#is-everything-cursive) { #is-everything-cursive }
 
 Usually, but occasionally you might encounter print handwriting –- and such exceptions are worth tracking down, since they’re often delightful thank-you letters written by 19th-century children ([for example](https://collections.newberry.org/asset-management/2KXGDNTFLAGL?BRPN=1&WS=AssetManagement)).
 
-### [Where can I read or search the completed transcriptions?](/about#where-can-i-read) { #where-can-i-read }
-
+### [Where can I read or search the completed transcriptions?](/about#where-can-i-read){ #where-can-i-read }
 Completed transcriptions can be searched and viewed as part of a manuscript's metadata record at our digital collections site. While we’re working on building a more user-friendly reader here on the Newberry Transcribe site for easier access, the process is a bit more involved at the moment. In the meantime, please follow these steps:
 
-<table markdown="1" class="read-instr">
-<tr markdown="1">
-<td markdown="1">
-1. Visit [Newberry Digital Collections](https://collections.newberry.org/).
+1. Visit [Newberry Digital Collections](https://collections.newberry.org/). ![Newberry Digital Collections home page](static/images/search1.png){: .table-list-image}
+2. Enter your search query in the search box. ![Search box with query word battle](static/images/search-2-.png)
+3. On the results page, use the filter column on the left to scroll down and click the "Transcription available" box; this will limit your query to search the transcription field only. ![Filter with transcription box checked](static/images/search-3.png)
+4. Click on an item to open a set of related manuscript images, which can range from two pages to several hundred. ![Manuscript page at Newberry Digital Collections](static/images/battle1.png)
+5. Click the "Image w/ Text" tab above the manuscript image; the full transcription for all pages in the set will appear in the panel on the right. You can use Ctrl + F to find your search term within the text. ![Manuscript page at left of screen, transcription at right](static/images/battle2.png)
+6. Unfortunately, our system cannot directly link you to the page containing your search term. You’ll need to click through each page in the set to locate the one you need. ![Manuscript page at left of screen, transcription at right](static/images/battle3.png)
 
-![Newberry Digital Collections home page](static/images/search1.png)
-
-</td>
-</tr>
-<tr markdown="1">
-<td markdown="1">
-2. Enter your search query in the search box.
-
-![Search box with query word battle](static/images/search-2-.png)
-
-</td>
-</tr>
-<tr markdown="1">
-<td markdown="1">
-3. On the results page, use the filter column on the left to scroll down and click the "Transcription available" box; this will limit your query to search the transcription field only.
-
-![Filter with transcription box checked](static/images/search-3.png)
-
-</td>
-</tr>
-<tr markdown="1">
-<td markdown="1">
-4. Click on an item to open a set of related manuscript images, which can range from two pages to several hundred.
-
-![Manuscript page at Newberry Digital Collections](static/images/battle1.png)
-
-</td>
-</tr>
-<tr markdown="1">
-<td markdown="1">
-5. Click the "Image w/ Text" tab above the manuscript image; the full transcription for all pages in the set will appear in the panel on the right. You can use Ctrl + F to find your search term within the text.
-
-![Manuscript page at left of screen, transcription at right](static/images/battle2.png)
-
-</td>
-</tr>
-<tr markdown="1">
-<td markdown="1">
-6. Unfortunately, our system cannot directly link you to the page containing your search term. You’ll need to click through each page in the set to locate the one you need.
-
-![Manuscript page at left of screen, transcription at right](static/images/battle3.png)
-
-</td>
-</tr>
-</table>
-
-Here's a video of the process: [coming soon!]
-
-Please note that you’ll be searching through a backlog of over 50,000 manuscript pages, dating back to the start of our crowdsourcing project. Newly submitted transcriptions are added to Newberry Digital Collections on a monthly basis.
+Please note that you’ll be searching through a backlog of over 50,000 manuscript pages, dating back to the start of our crowdsourcing project.
 
 We apologize for the less-than-ideal process, and we appreciate your patience as we work toward a simplified solution. To stay updated on this and other site improvements, [sign up for our newsletter](https://digitalnewberry.substack.com/).
+
 
 ### [Are there translation opportunities?](/about#translation) { #translation }
 
@@ -158,7 +117,7 @@ Are you an instructor interested in setting up a translation classroom crowdsour
 
 ### [Do you have teaching materials?](/about#teaching) { #teaching }
 
-We will soon -- please check back!
+Yes! You can check out available resources at our [Teach with Newberry Transcribe](https://nt.newberry.org/teach) page. 
 
 ### [Do I need permission to re-use text or images for personal / educational / business purposes?](/about#permission) { #permission }
 
@@ -172,7 +131,7 @@ The code is freely available in the [GitLab repository](https://gitlab.com/newbe
 
 ### [Can I bulk download the transcription data?](/about#bulk-download) { #bulk-download }
 
-Absolutely -- also coming soon.
+You can find transcription data in both json and csv formats at our [GitLab repository](https://gitlab.com/newberry-library/transcribe/-/tree/main/bulk_data). Data is uploaded on a monthly basis.
 
 ### [How else can I help?](/about#how-else) { #how-else }
 

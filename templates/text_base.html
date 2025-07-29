@@ -3,57 +3,103 @@
 {% block title %}{{ page_title }}{% endblock %}
 
 {% block content %}
-<article {% if "toc" in page_text %} class="text-page" {% else %} class="text-page md-no-toc" {% endif %}>
-  {{ page_text | safe }}
+
+<article class="{{frontmatter.page_type}} {{page_title.lower()}}">
+
+  <div class="text-page-header">
+    {% if frontmatter and frontmatter.header_image %}
+    <img alt="{{frontmatter.header_image.alt}}" id="header-img" src="{{frontmatter.header_image.src}}">
+    {% if frontmatter and frontmatter.header_image.caption %}
+
+    <a class="caption" href="{{frontmatter.header_image.link_url}}"
+      target="_blank">{{frontmatter.header_image.caption}}</a>
+    {% endif %}
+    {% endif %}
+    {% if frontmatter and frontmatter.title %}
+    <h1 id="tutorial">{{frontmatter.title}}</h1>
+    {% endif %}
+
+  </div>
+  <div class="text-page-content">
+    {% if frontmatter and frontmatter.show_toc and toc %}
+    {{ toc | safe }}
+    {% endif %}
+    <div class="md-content">
+      {{ page_text | safe }}
+
+    </div>
+  </div>
+
+  {% if frontmatter.related_resources %}
+  <div class="related-resources">
+
+    <h3 id="related-resources">Related resources</h3>
+    <p>
+      Lessons from the Newberry's <a href="https://dcc.newberry.org" class="llines" target="_blank">Digital Collections
+        for the Classroom</a> site:
+    </p>
+    <div class="rr-tiles">
+
+      {% for resource in frontmatter.related_resources %}
+      <a class="rr-tile" href="{{ resource.link }}">
+        <div>
+          <img src="{{ resource.image }}">
+          {{ resource.text }}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </article>
 
 <script>
 
-const headings = document.querySelectorAll('h1, h2');
-// console.log(headings);
+  const headings = document.querySelectorAll('h1, h2');
+  // console.log(headings);
 
-const tocLinks = document.querySelectorAll('.toc a');
+  const tocLinks = document.querySelectorAll('.toc a');
 
-function highlightActiveLink() {
-  // Remove all active classes first
-  tocLinks.forEach(link => link.classList.remove('active'));
+  function highlightActiveLink() {
+    // Remove all active classes first
+    tocLinks.forEach(link => link.classList.remove('active'));
 
-  // Convert headings to array for easier index-based access
-  const headingsArray = Array.from(headings);
-  if(headingsArray[headingsArray.length-1].id == "questions"){
-    headingsArray.pop(); // exclude questions h2
-  }
-    
-
-  headingsArray.forEach((heading, index) => {
-    const nextHeading = headingsArray[index + 1];
-    const { top, bottom } = heading.getBoundingClientRect();
-
-    // Check if current heading content is in viewport 
-    const isInViewport = (top <= window.innerHeight && 
-      (!nextHeading || nextHeading.getBoundingClientRect().top > (window.innerHeight - 100))) ; // a little offset for top half of viewport
-
-    if (isInViewport) {
-      const otherActive = document.querySelector('.active');
-      const activeLink = document.querySelector(`.toc a[href="#${heading.id}"]`);
-      if (activeLink && !otherActive) {
-        activeLink.classList.add('active');
-      }
+    // Convert headings to array for easier index-based access
+    const headingsArray = Array.from(headings);
+    if (headingsArray[headingsArray.length - 1].id == "questions") {
+      headingsArray.pop(); // exclude questions h2
     }
-  });
-}
 
-window.addEventListener('scroll', highlightActiveLink);
 
-// Initial call to highlight on page load
-highlightActiveLink();
+    headingsArray.forEach((heading, index) => {
+      const nextHeading = headingsArray[index + 1];
+      const { top, bottom } = heading.getBoundingClientRect();
+
+      // Check if current heading content is in viewport 
+      const isInViewport = (top <= window.innerHeight &&
+        (!nextHeading || nextHeading.getBoundingClientRect().top > (window.innerHeight - 100))); // a little offset for top half of viewport
+
+      if (isInViewport) {
+        const otherActive = document.querySelector('.active');
+        const activeLink = document.querySelector(`.toc a[href="#${heading.id}"]`);
+        if (activeLink && !otherActive) {
+          activeLink.classList.add('active');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightActiveLink);
+
+  // Initial call to highlight on page load
+  highlightActiveLink();
 
 </script>
 {% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', path='/css/text-page.css') }}">
+{% block extra_head %}
+<link rel="stylesheet" href="/css/text-page.css">
 {% endblock %}
 
-{% block scripts %}
+{% block extra_foot %}
 {% endblock %}

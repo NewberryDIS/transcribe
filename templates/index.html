@@ -1,76 +1,16 @@
 {% extends 'index_base.html' %}
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/jumbotron.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/how-to.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/beta-banner.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/header.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/footer.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+{% block extra_head %}
+<script src="/static/js/htmx.min.js"></script>
+<link rel="stylesheet" href="/static/css/chunks/jumbotron.css">
+<link rel="stylesheet" href="/static/css/chunks/how-to.css">
+<link rel="stylesheet" href="/static/css/chunks/beta-banner.css">
+<link rel="stylesheet" href="/static/css/chunks/header.css">
+<link rel="stylesheet" href="/static/css/chunks/footer.css">
+<link rel="stylesheet" href="/static/css/index.css">
 {% endblock %}
 {% block body %}
 
 <style>
-  .right:has(.ray-bg) {
-    background: transparent;
-    position: relative;
-  }
-
-  .ray-bg {
-    --godrays: repeating-linear-gradient(111deg,
-        var(--fg-accent-color) 0%,
-        var(--fg-accent-color) 10%,
-        transparent 12%,
-        var(--fg-accent-color) 16%);
-    --godrays-2: repeating-linear-gradient(100deg,
-        var(--accent-color) 0%,
-        var(--accent-color) 33%,
-        transparent 37%,
-        var(--accent-color) 42%);
-    --godrays-same-2: repeating-linear-gradient(100deg,
-        var(--fg-accent-color) 0%,
-        var(--fg-accent-color) 33%,
-        transparent 37%,
-        var(--fg-accent-color) 42%);
-    --godrays-test: repeating-linear-gradient(100deg,
-        blue 0%,
-        blue 33%,
-        transparent 37%,
-        blue 42%);
-    --page: transparent;
-    background-image: var(--godrays), var(--godrays-same-2);
-    background-size: 200%, 300%;
-    background-position: 50% 50%;
-    filter: blur(10px) opacity(80%);
-
-    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-  }
-
-  .ray-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--godrays-same-2), var(--godrays-same-2);
-    background-size: 200%, 300%;
-    animation: jumbo 60s linear infinite;
-    background-attachment: fixed;
-  }
-
-  .ray-bg,
-  .ray-fg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-  }
-
-  .ray-fg {
-    --fg-light: color-mix(in oklab, var(--fg-accent-color) 60%, transparent);
-    --fg-alight: transparent;
-    background: linear-gradient(30deg, var(--fg-accent-color) 60%, var(--fg-light) 100%)
-  }
-
   .title-text {
     position: relative;
     z-index: 30;
@@ -88,9 +28,9 @@
 </style>
 
 <body class="nt-{{ t.image }} horiz"
-  style="background-image: url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,1000/0/default.jpg'), url('{{ url_for('static', path='/images/jumbo/' + t.image + '-sm.jpg') }}');">
+  style="background-image: url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,1000/0/default.jpg'), url('/static/images/jumbo/{{  t.image  }}-sm.jpg');">
 
-  <header id="header" class="">
+  <header id="main-header" class="">
 
     {% include 'chunks/header.html' %}
   </header>
@@ -99,55 +39,50 @@
       {% include 'chunks/jumbotron.html' %}
     </div>
     <div class="right">
-      <div class="title-text">
-        <h1>Newberry Transcribe</h1>
-        <h3>Unlock history!</h3>
-        <p>Help preserve the past by transcribing handwritten letters and diaries at <a
-            href="https://collections.newberry.org" target="_blank" class="nolines">Newberry Digital
-            Collections</a></p>
-      </div>
+      <div class="mobile-wrapper">
+        <div class="title-text">
+          <h1>Newberry Transcribe</h1>
+          <h3>Unlock history!</h3>
+          <p>Help preserve the past by transcribing handwritten letters and diaries at <a
+              href="https://collections.newberry.org" target="_blank" class="nolines">Newberry Digital
+              Collections</a></p>
+        </div>
 
-      <div class="get-started-buttons">
-        <a href="/about" class="button-like">
-          <span class="initial-btn-text">Learn more</span>
-          <span class="hover-btn-text">visit our About page</span>
-        </a>
-        <a href="/transcribe" class="button-like  color-button">
-          <span class="initial-btn-text">Browse manuscripts</span>
-          <span class="hover-btn-text">select a set of documents</span>
-        </a>
-        <a href="{{ random_link }}" class="button-like  color-button">
-          <span class="initial-btn-text">Jump in!</span>
-          <span class="hover-btn-text">go right to a page &amp; start transcribing</span>
-        </a>
+        <div class="get-started-buttons">
+          <a href="/about" class="button-like">
+            <span class="initial-btn-text">Learn more</span>
+            <span class="hover-btn-text">visit our About page</span>
+          </a>
+          <a href="/transcribe" class="button-like  color-button">
+            <span class="initial-btn-text">Browse manuscripts</span>
+            <span class="hover-btn-text">select a set of documents</span>
+          </a>
+          <a href="{{ random_link }}" class="button-like  color-button">
+            <span class="initial-btn-text">Jump in!</span>
+            <span class="hover-btn-text">go right to a page &amp; start transcribing</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <div class="how-to-container">
     {% include 'chunks/how-to.html' %}
   </div>
+  <!-- <div class="bsky-htmx-container" hx-get="/bsky/feed" hx-trigger="load"></div> -->
   {% include 'chunks/carousel.html' %}
-
+  {% include 'chunks/otd-block.html' %}
   <footer>
-    {{ footer_menu | safe }}
+    {% include 'chunks/footer.html' %}
   </footer>
 </body>
 
-<style>
-  /* this might be photoshop's fault 
-   https://stackoverflow.com/questions/18434626/why-is-cursorpointer-effect-in-css-not-working
- */
-  #mss-carousel :is(li, img, a, em) {
-    cursor: pointer;
-  }
-</style>
 {% endblock %}
 
 
-{% block extra_js %}
+{% block extra_foot %}
 <script>
 
-  const header = document.getElementById('header');
+  const header = document.getElementById('main-header');
 
   let ticking = false;
 
@@ -206,7 +141,141 @@
     jumbo.style.clipPath = `circle(${circleRadius}px at ${e.clientX}px ${e.clientY}px)`;
     embiggened = !embiggened;
   });
+  function scaleQuoteText() {
+    const containers = document.querySelectorAll(".quote-container");
 
+    containers.forEach((container) => {
+      const textElem = container.querySelector(".quote-text");
+      const maxHeight = container.clientHeight - 33; // Account for header/footer
+      const maxWidth = container.clientWidth - 33;
+
+      let fontSize = 500; // Starting font size
+      textElem.style.fontSize = `${fontSize}px`;
+
+      // reduce font size until text fits
+      while (textElem.scrollHeight > maxHeight && fontSize > 20) {
+        // console.log(
+        //   `text element scroll height: ${textElem.scrollHeight} ; \n text element max height: ${maxHeight} ; `,
+        // );
+        fontSize -= 1;
+        textElem.style.fontSize = `${fontSize}px`;
+      }
+      // console.log(textElem.style.fontSize);
+      // console.log(textElem.innerText);
+    });
+  }
+
+  // Run on load, resize, and htmx load
+  window.addEventListener("load", scaleQuoteText);
+  window.addEventListener("resize", scaleQuoteText);
+  document.body.addEventListener("htmx:afterSwap", scaleQuoteText);
+
+  document.addEventListener("htmx:afterSwap", validateAndSubmit());
+
+  function validateAndSubmit() {
+    const monthInput = document.getElementById("month-input");
+    const dayInput = document.getElementById("day-input");
+    const form = document.getElementById("date-input-form");
+    const errorDiv = document.getElementById("date-error");
+
+    // Add input formatting and validation
+    if (monthInput && dayInput) {
+      // Handle numeric input only
+      [monthInput, dayInput].forEach((input) => {
+        input.addEventListener("input", function (e) {
+          // Replace any non-numeric characters
+          this.value = this.value.replace(/[^0-9]/g, "");
+
+          // Auto-move to next field if complete
+          if (this === monthInput && this.value.length >= 2) {
+            dayInput.focus();
+          }
+        });
+      });
+
+      // Format on blur
+      monthInput.addEventListener("blur", function () {
+        if (this.value) {
+          const num = parseInt(this.value, 10);
+          if (!isNaN(num) && num >= 1 && num <= 12) {
+            this.value = num.toString().padStart(2, "0");
+            // this.classList.remove('error');
+          }
+        }
+      });
+
+      dayInput.addEventListener("blur", function () {
+        if (this.value) {
+          const num = parseInt(this.value, 10);
+          if (!isNaN(num) && num >= 1 && num <= 31) {
+            this.value = num.toString().padStart(2, "0");
+            // this.classList.remove('error');
+          }
+        }
+      });
+
+      // Validate before form submission
+      form.addEventListener("submit", function (e) {
+        if (!validateDateInputs()) {
+          console.log("form invalid");
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      });
+    }
+
+    // Function to show error message
+    function showError(message) {
+      errorDiv.textContent = message;
+      errorDiv.classList.add("show");
+      setTimeout(() => {
+        errorDiv.classList.remove("show");
+      }, 50000000);
+    }
+
+    // Function to validate date inputs before submission
+    function validateDateInputs() {
+      // Reset any previous error states
+      monthInput.classList.remove("error");
+      dayInput.classList.remove("error");
+
+      // Get and clean values
+      let monthVal = monthInput.value.trim();
+      let dayVal = dayInput.value.trim();
+
+      // Validate month
+      let monthNum = parseInt(monthVal, 10);
+      if (isNaN(monthNum) || monthNum < 1 || monthNum > 12) {
+        monthInput.classList.add("error");
+        showError("Month must be between 1-12");
+        return false;
+      }
+
+      // Validate day
+      let dayNum = parseInt(dayVal, 10);
+      if (isNaN(dayNum) || dayNum < 1 || dayNum > 31) {
+        dayInput.classList.add("error");
+        showError("Day must be between 1-31");
+        return false;
+      }
+
+      // Check if date is valid (e.g., not Feb 30)
+      const currentYear = new Date().getFullYear();
+      const testDate = new Date(currentYear, monthNum - 1, dayNum);
+      if (testDate.getMonth() !== monthNum - 1) {
+        dayInput.classList.add("error");
+        showError("Invalid date for this month");
+        return false;
+      }
+
+      // Format as two digits
+      monthInput.value = monthNum.toString().padStart(2, "0");
+      dayInput.value = dayNum.toString().padStart(2, "0");
+
+      return true;
+    }
+  }
   function resizeContainer() {
 
 

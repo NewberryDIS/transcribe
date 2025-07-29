@@ -4,26 +4,28 @@ main {
 }
 
 .breadcrumbs {
-  font-family: 'styrene';
+  font-family: "styrene";
   margin-block: 1rem;
 }
 
 article {
-  min-height: calc(100vh - var(--header-height, 65px) - var(--footer-height, 50px));
+  min-height: calc(
+    100vh - var(--header-height, 65px) - var(--footer-height, 50px)
+  );
   display: flex;
   gap: 1rem;
 }
-.right{
+.right {
   display: flex;
   flex-direction: column;
 }
 
-#approved-ribbon{
+#approved-ribbon {
   align-self: self-end;
-  position:fixed;
+  position: fixed;
   background-color: color-mix(in oklab, var(--accent-color), white);
-  width:30vh;
-  height:7.5vh;
+  width: 30vh;
+  height: 7.5vh;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -33,7 +35,7 @@ article {
   /* translate: 23% 56%; */
   z-index: 1;
   /* clip-path: polygon(25% 37.5%, 75% 37.5%, 100% 62.5%, 0% 62.5%); */
-  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%); 
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
 }
 
 @media screen and (max-width: 1000px) {
@@ -42,16 +44,23 @@ article {
   }
 
   article {
-    min-height: calc(100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
-    height: calc(100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
-
+    min-height: calc(
+      100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
+    height: calc(
+      100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
   }
 
   .left,
   .right,
   #openseadragon {
-    min-height: calc(50vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
-    height: calc(50vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
+    min-height: calc(
+      50vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
+    height: calc(
+      50vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
   }
 }
 
@@ -64,10 +73,13 @@ article {
   .left,
   .right,
   #openseadragon {
-    min-height: calc(100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
-    height: calc(100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem);
+    min-height: calc(
+      100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
+    height: calc(
+      100vh - var(--header-height, 65px) - var(--footer-height, 33px) - 3.6rem
+    );
   }
-
 }
 
 .left {
@@ -90,7 +102,6 @@ article {
 
 form,
 textarea {
-
   height: 100%;
   width: 100%;
 }
@@ -118,7 +129,6 @@ textarea {
     top: 0;
 
     &:not(:first-child) {
-
       border-left-color: transparent;
     }
   }
@@ -152,29 +162,30 @@ textarea {
     &.active,
     &:not(.active, button[disabled]):hover {
       background: #fff;
-
     }
   }
 
   &.submits :is(button, .button-like) {
-
     &:first-child,
     &:last-child {
       border-color: transparent;
 
-      &:hover {
+      &:not(.disabled-next):hover {
         border-color: var(--fg-color);
       }
     }
 
-    &:not([disabled]){
+    &:not([disabled], .disabled-next) {
       &:hover {
         border: 1px solid var(--fg-color);
         color: #fff;
-        background-color: color-mix(in oklab, var(--accent-color) 87%, var(--fg-color));
+        background-color: color-mix(
+          in oklab,
+          var(--accent-color) 87%,
+          var(--fg-color)
+        );
       }
     }
-    
   }
 
   & button,
@@ -229,10 +240,8 @@ textarea {
       }
 
       &:first-child:before {
-
         left: 0;
         border-right-color: var(--fg-color);
-
       }
 
       &:last-child:after {
@@ -247,6 +256,13 @@ textarea {
   text-decoration: none;
   color: var(--fg-color);
   box-shadow: none;
+}
+
+.disabled-next,
+.disabled-next:hover {
+  cursor: not-allowed;
+  color: color-mix(in oklab, var(--fg-color), transparent);
+  background-color: color-mix(in oklab, #fff, transparent);
 }
 
 /* help css */
@@ -297,7 +313,6 @@ textarea {
   /*   text-transform: capitalize; */
   /* } */
   & button {
-
     margin-block: 6px;
     padding: 6px 9px;
     border: 1px solid var(--fg-color);
@@ -305,8 +320,28 @@ textarea {
     transition: var(--global-transition);
 
     &:hover {
-
       background-color: rgba(var(--accent), 0.5);
     }
   }
+}
+/* for openseadragon errors */
+#osd-error {
+  --error-color: color-mix(in oklab, var(--accent-color), var(--fg-color));
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-color);
+  z-index: 1;
+}
+#osd-error .message .text {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+#osd-error .message .text h4 {
+  font-size: var(--main-text-font-size);
 }

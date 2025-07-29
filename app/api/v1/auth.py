@@ -1,15 +1,14 @@
-from fastapi import APIRouter, Depends, HTTPException, Request, Response, Form, status, File, UploadFile
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, Form, status, File, UploadFile, Query
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from typing import Annotated
-# import jwt
 from datetime import datetime
 from typing import Optional
 
-from app.utils.templates import get_template_response
 from .exceptions import FormError, LoginError, SignupError, ResetError
 from app.utils.markdown_handler import MarkdownHandler
+from app.utils.templates import get_template_response
 from app.db.sql import get_db
 from app.db.supabase import supabase
 from app.models import Users, Contribution
@@ -17,12 +16,12 @@ from sqlalchemy import select, desc
 import uuid
 from datetime import datetime
 # import pytz
-
+from app.core.config import get_settings
 import logging
+
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-markdown_handler = MarkdownHandler()
 templates = Jinja2Templates(directory="templates")
 
 
@@ -32,10 +31,11 @@ def require_auth(request: Request):
         return RedirectResponse(url="/login", status_code=303)
     return token
 
+
 async def get_current_user(
     request: Request,
     db: Annotated[Session, Depends(get_db)],
-    token: str = Depends(require_auth)
+    token: str = Depends(require_auth),
 ) -> Users:
     try:
         user_resp = supabase.auth.get_user(token)
@@ -48,14 +48,15 @@ async def get_current_user(
     except Exception as e:
         return e
 
+
 # TODO: combine /user and /login
 # BUG: if you're logged in and you go to login, it pukes forever
 # -- fixed with simple redirect to user; maybe we find a better solution for this tho
 
+
 @router.get("/user", response_class=HTMLResponse)
 async def user_page(
-    request: Request,
-    auth_result: Annotated[str, Depends(require_auth)]
+    request: Request, auth_result: Annotated[str, Depends(require_auth)]
 ):
     logger.info("Starting user_page route")
     if isinstance(auth_result, RedirectResponse):
@@ -67,16 +68,16 @@ async def user_page(
         auth_response = supabase.auth.get_user(auth_result)
         # The user data is nested in the response
         user_id = auth_response.user.id  # Access the ID correctly
-        
+
         logger.info(f"Got user ID: {user_id}")
-        
+
         with next(get_db()) as db:
             logger.info("Querying database for user")
             db_user = db.query(Users).filter(Users.id == user_id).first()
             if not db_user:
                 logger.info("User not found in database")
                 return RedirectResponse(url="/login", status_code=303)
-            
+
             # Create a dict of user data to avoid potential lazy loading issues
             user_data = {
                 "id": db_user.id,
@@ -86,104 +87,55 @@ async def user_page(
                 "created_at": db_user.created_at,
                 "updated_at": db_user.updated_at,
                 "contribution_count": db_user.contribution_count,
-                "avatar":db_user.avatar
+                "avatar": db_user.avatar,
             }
             username = db_user.username
             contributions = db.scalars(select(Contribution).where(Contribution.username == username).order_by(desc(Contribution.contribution_timestamp))).all()
-            leaderboard = db.scalars(select(Users).order_by(desc(Users.contribution_count)).limit(5)).all()
+            leaderboard = db.scalars(select(Users).order_by(desc(Users.contribution_count)).limit(8)).all()
             user_background = contributions[0].image if contributions else "2KXJ8ZW261H8"
 
             logger.info("Rendering template")
-            header_menu, footer_menu = markdown_handler.get_menus()
 
             return get_template_response(
                 "users/user.html",
-                {"request": request, 
-                "user": user_data, 
-                "contributions": contributions,
-                "user_background": user_background,
-                "leaderboard": leaderboard,
-                "header_menu": header_menu,
-                "footer_menu": footer_menu}
+                {
+                    "request": request,
+                    "user": user_data,
+                    "contributions": contributions,
+                    "user_background": user_background,
+                    "leaderboard": leaderboard,
+                },
             )
-                
+
     except Exception as e:
         logger.error(f"Error in user_page: {str(e)}")
         logger.exception("Full traceback:")  # This will log the full stack trace
         return RedirectResponse(url="/login", status_code=303)
 
+
 @router.get("/login")
 async def login_page(request: Request, db: Annotated[Session, Depends(get_db)]):
     token = request.cookies.get("sb-auth-token")
-    header_menu, footer_menu = markdown_handler.get_menus()
     if token:
         return RedirectResponse(url="/user", status_code=303)
     else: 
-        leaderboard = db.scalars(select(Users).order_by(desc(Users.contribution_count)).limit(5)).all()
+        leaderboard = db.scalars(select(Users).order_by(desc(Users.contribution_count)).limit(8)).all()
         return get_template_response( "auth/login.html", {
             "request": request, 
             "leaderboard": leaderboard, 
-            "header_menu": header_menu,
-            "footer_menu": footer_menu
         })
-
-# this should only be accessible by authenticated users
-@router.get("/reset-password", response_class=HTMLResponse)
-async def reset_password(
-    request: Request,
-    auth_result: Annotated[str, Depends(require_auth)],
-    db: Annotated[Session, Depends(get_db)],
-    ):
-
-    # TODO: check access_token from email???
-    # loading page works when logged in but not with token from email
-    if isinstance(auth_result, RedirectResponse):
-        logger.info("Redirecting unauthenticated user to login page")
-        print("failed to retrieve token")
-        return auth_result
-    try:
-        print("loading reset page")
-
-        user_resp = supabase.auth.get_user()
-        # user_id = user_resp.user.id
-        # user = do db check with id
-        # username = user.username
-        # user = request.cookies.get("sb-auth-token")
-        header_menu, footer_menu = markdown_handler.get_menus()
-        return get_template_response(
-            "auth/reset-password.html",
-            {"request": request, 
-            "username": username, 
-            "header_menu": header_menu, 
-            "footer_menu": footer_menu}
-        )
-
-    except Exception as e:
-        logger.error(f"Error in reset page: {str(e)}")
-        logger.exception("Full traceback:")  # This will log the full stack trace
-        return RedirectResponse(url="/login", status_code=303)
-
 
 @router.get("/login/login-form")
 async def login_form(request: Request):
     return get_template_response(
-        "auth/login-form.html",
-        {"request": request, "active_tab": "login"}
+        "auth/login-form.html", {"request": request, "active_tab": "login"}
     )
+
 
 @router.get("/login/signup-form")
 async def signup_form(request: Request):
     return get_template_response(
-        "auth/signup-form.html",
-        {"request": request, "active_tab": "signup"}
-    )
-
-@router.get("/login/forgot-pw-form")
-async def forgot_pw_form(request:Request):
-    return get_template_response(
-        "auth/forgot-pw-contact.html",
-        # "auth/forgot-pw-form.html",
-        {"request": request}
+        "auth/signup-form.html", {"request": request, "active_tab": "signup"}
     )
 
 @router.post("/auth/login", response_class=RedirectResponse)
@@ -198,16 +150,15 @@ async def login(
         existing_user = db.query(Users).filter(Users.username == username).first()
         if existing_user:
             email = f"{username}@users.internal"
-            if (existing_user.email):
+            if existing_user.email:
                 email = existing_user.email
-        else: 
+        else:
             raise LoginError("No account exists with this username")
 
-        auth_response = supabase.auth.sign_in_with_password({
-            "email": email,
-            "password": password
-        })
-        
+        auth_response = supabase.auth.sign_in_with_password(
+            {"email": email, "password": password}
+        )
+
         # If login successful, return redirect response with cookie
         response = RedirectResponse(url="/user", status_code=200)
         response.headers["HX-Redirect"] = "/user"  # Tells HTMX to do a full redirect
@@ -218,14 +169,15 @@ async def login(
             max_age=3600,
             httponly=True,
             secure=True,
-            samesite="lax"
+            samesite="lax",
         )
         return response
 
     except Exception as e:
-        if e.message=="Invalid login credentials":
+        if e.message == "Invalid login credentials":
             raise LoginError("Incorrect password")
         raise LoginError(e)
+
 
 @router.post("/auth/signup")
 async def signup(
@@ -235,7 +187,7 @@ async def signup(
     password: str = Form(...),
     confirm_password: str = Form(...),
     email: str = Form(None),
-    newsletter: bool = Form(False)
+    newsletter: bool = Form(False),
 ):
     try:
         # Validate the input
@@ -253,10 +205,8 @@ async def signup(
             raise SignupError("Username already in use")
 
         # Create auth user with Supabase
-        auth_data = {
-            "password": password
-        }
-        
+        auth_data = {"password": password}
+
         if email:
             auth_data["email"] = email
         else:
@@ -281,7 +231,7 @@ async def signup(
         db.commit()
 
         # Redirect with auth cookie
-        # status code 200 to allow P/R/G pattern 
+        # status code 200 to allow P/R/G pattern
         response = RedirectResponse(url="/login", status_code=200)
         response.headers["HX-Redirect"] = "/login"
 
@@ -291,29 +241,31 @@ async def signup(
             max_age=3600,
             httponly=True,
             secure=True,
-            samesite="lax"
+            samesite="lax",
         )
         return response
- 
+
     except Exception as e:
         print(e)
         raise SignupError(e)
 
+
 @router.post("/auth/logout")
 async def logout():
     logger.info("Logging out...")
-    
+
     try:
         supabase.auth.sign_out()
     except Exception as e:
         logger.error(f"Error signing out: {str(e)}")
         raise FormError(f"Error signing out: {str(e)}")
-    
+
     response = RedirectResponse(url="/", status_code=303)
     response.delete_cookie("sb-auth-token")
-    
+
     logger.info("Logged out")
     return response
+
 
 @router.post("/auth/set-avatar")
 async def set_avatar(
@@ -322,7 +274,7 @@ async def set_avatar(
     avatar_upload: UploadFile = File(...),
 ):
     try:
-        file_extension = avatar_upload.filename.split('.')[-1]
+        file_extension = avatar_upload.filename.split(".")[-1]
         unique_filename = f"{uuid.uuid4()}.{file_extension}"
         contents = await avatar_upload.read()
 
@@ -341,27 +293,35 @@ async def set_avatar(
         # )
 
         # upload the new image
-        supabase.storage.from_('avatars').upload(
-            file=contents, 
+        supabase.storage.from_("avatars").upload(
+            file=contents,
             path=f"{db_user.username}/{unique_filename}",
-            file_options={"content-type": avatar_upload.content_type}
+            file_options={"content-type": avatar_upload.content_type},
         )
 
-        db_user.avatar = f"{db_user.username}/{ unique_filename }"
+        db_user.avatar = f"{db_user.username}/{unique_filename}"
         print(db_user.avatar)
         db.commit()
 
         response = RedirectResponse(url="/user", status_code=303)
-        
+
     except Exception:
         # log it
         print(avatar_upload)
         # hide the save button and reload
         return RedirectResponse(url="/user", status_code=303)
-        
+
     finally:
         await avatar_upload.close()
     return response
+
+# @router.get("/login/forgot-pw-form")
+# async def forgot_pw_form(request:Request):
+#     return get_template_response(
+#         # "auth/forgot-pw-contact.html",
+#         "auth/forgot-pw-form.html",
+#         {"request": request}
+#     )
 
 # @router.post("/auth/request-reset")
 # async def request_reset(
@@ -389,29 +349,64 @@ async def set_avatar(
 #             "/auth/error.html",
 #             {"request": request, "error": e}
 #         )
-    
 
-# @router.post("/auth/reset-password")
-# async def reset_pw(
-#     request: Request,
-#     # auth_result: Annotated[str, Depends(require_auth)],
-#     password: str = Form(...),
-#     confirm_password: str = Form(...)
-# ):
 
-#     try:
-#         if password != confirm_password:
-#             raise ResetError("Passwords must match")
+@router.get("/reset-password", response_class=HTMLResponse)
+async def reset_password(
+    request: Request,
+    db: Annotated[Session, Depends(get_db)],
+    token_hash: str = Query(None),
+    type: str = Query(None),
+    redirectUrl: str = Query(None)
+    ):
 
-#         # TODO: auth session missing?
-#         supabase.auth.get_user()
-#         supabase.auth.update_user({'password': password})
+    try:
+        resp = supabase.auth.verify_otp(
+        {
+            "token_hash": token_hash,
+            "type": "recovery",
+        })
 
-#         reset_success_html = """
-#             <div class="reset-success" style="display: block;">You have successfully reset your password.</div>
-#             """
-#         return Response(content=reset_success_html, media_type="text/html")
-#     except Exception as e:
-#         print(e)
-#         raise ResetError(e)
+        supabase.auth.set_session(resp.session.access_token,resp.session.refresh_token)
+        
+        user_id = resp.user.id
+        user = db.query(Users).filter(Users.id == user_id).first()
+        username = user.username
+
+        header_menu, footer_menu = markdown_handler.get_menus()
+        return get_template_response(
+            "auth/reset-password.html",
+            {"request": request, 
+            "username": username, 
+            "user_id": user_id,
+            "header_menu": header_menu, 
+            "footer_menu": footer_menu}
+        )
+
+    except Exception as e:
+        logger.error(f"Error in reset page: {str(e)}")
+        logger.exception("Full traceback:")  # This will log the full stack trace
+        return RedirectResponse(url="/login", status_code=303)
+
+
+@router.post("/auth/reset-password")
+async def reset_pw(
+    request: Request,
+    password: str = Form(...),
+    confirm_password: str = Form(...)
+):
+
+    try:
+        if password != confirm_password:
+            raise ResetError("Passwords must match")
+
+        supabase.auth.update_user({"password": password})
+
+        reset_success_html = """
+            <div class="reset-success" style="display: block;">You have successfully reset your password. Please return to the login page</div>
+            """
+        return Response(content=reset_success_html, media_type="text/html")
+    except Exception as e:
+        print(e)
+        raise ResetError(e)
 

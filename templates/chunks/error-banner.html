@@ -1,0 +1,21 @@
+<div id="error-banner">
+  <div class="error-message">
+    <h4>{{ error.title }}</h4>
+    {% if error.text %} {% for et in error.text %}
+    <p>{{ et }}</p>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+<style>
+  #error-banner {
+    color: var(--fg-color);
+    background: color-mix(in oklab, var(--bg-color), yellow);
+  }
+  .error-message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

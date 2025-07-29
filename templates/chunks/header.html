@@ -1,45 +1,77 @@
-<section class="header-left">
+<section class="header-top">
+
   <newberry-logo></newberry-logo>
-</section>
 
-<section class="header-right">
-  <nav class="site-nav">
-    <div class="site-title">
-      <h1><a id="header-home-link" class="llines" href="/">Newberry Transcribe</a></h1>
-    </div>
-    <ul role="list">
-      <li><a href="/transcribe">Transcribe</a></li>
-      <li><a href="/review">Review</a></li>
-      <li><a href="/creators">Creators</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/tutorial">Tutorial</a></li>
-      <li>{{header_menu | safe}}</li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/login">
-          {% if user %}
-          Account
-          {% else %}
-          Log in
-          {% endif %}
-        </a></li>
+  <h1 class="header-title">
+    <a id="header-home-link" class="header-home-link llines" href="/">
+      <span class="will-hide">Newberry</span>
+      <span>Transcribe</span>
+    </a>
+  </h1>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <button id="mobile-menu-button" class="mobile-menu-button">
+      <div class="ex"></div>
+      <div class="xex"></div>
+      <div class="xe"></div>
+    </button>
+    <ul role="list" id="mobile-list" class="mobile-list">
+      {% for link in header_lists %}
+
+      {% if link.link %}
+      <li class="mobile-list-item">
+        <a href="{{link.link}}" {% if link.link.startswith('http') %} target="_blank" {% endif %}>{{link.text}}</a>
+
+      </li>
+      {% endif %}
+      {% if link.submenu %}
+      {% for sublink in link.submenu %}
+      <li class="mobile-list-item">
+        <a href="{{sublink.link}}" {% if sublink.link.startswith('http') %} target="_blank" {% endif
+          %}>{{sublink.text}}</a>
+
+      </li>
+      {% endfor %}
+      {% endif %}
+      {% endfor %}
     </ul>
-  </nav>
-  <button id="menu-button" class="closed-menu" onclick="toggleMenu()">
-    <div class="ex"></div>
-    <div class="xex"></div>
-    <div class="xe"></div>
-  </button>
+  </div>
 </section>
+
+<ul role="list" class="header-bottom nav">
+  {% for link in header_lists %}
+  <li class="nav-item">
+    {% if link.link %}
+    <a href="{{ link.link }}">
+      {{ link.text }}
+    </a>
+    {% else %}
+    <i class="nav-triangle"></i>
+    {{ link.text }}
+    {% endif %}
+    {% if link.submenu %}
+    <ul role="list" class="mini-menu">
+      {% for sublink in link.submenu %}
+      <li class="mini-menu-item"><a href="{{ sublink.link }}">{{ sublink.text }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
 <style>
-  .beta-banner {
+  .nav-item {
+    position: relative;
+  }
 
-    /* width: calc(100% - var(--header-left-width) - var(--header-right-width) - var(--header-gap)); */
+  .nav-item i {
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--fg-color);
+    transition: 200ms;
+  }
 
+  .nav-item:hover i {
+    transform: rotate(90deg) translate(5px, 5px);
   }
 </style>
-<script>
-  function toggleMenu() {
-    let menu = document.querySelector("#menu-button");
-    menu.classList.toggle("closed-menu")
-  }
-</script>

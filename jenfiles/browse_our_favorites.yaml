@@ -1,0 +1,18 @@
+- slug: sherwood_car
+  name: Sherwood Anderson
+  shortname: Sherwood
+  quote: I'm becoming more and more a Communist. I think it must be coming nearer - an inevitable thing. Think of a whole nation of people who can be sure of work - the old and the sick and the weary decently taken care of. It’s worth fighting for. It's worth any price.
+  citation: Sherwood Anderson letter, 1932
+  color: lake
+- slug: julia_fire
+  name: Julia Newberry
+  shortname: Julia
+  quote: Oh misery, the fire, the red, angry, unrelenting fire, leapt across the river, & burnt & burnt. The whole North Side is in ashes, irreparably & irrevocably gone.
+  citation: Julia Newberry diary, 1871
+  color: flame
+- slug: mcauliffe_war
+  name: McAuliffe Brown
+  shortname: McAuliffe
+  quote: Caught out in no man's land, with half of my people caught under a triple barrage -- the Bosch shells, their machine gun fire, and the entire rifle fire of my company. Two of my men were killed, and four wounded.
+  citation: McAuliffe Brown diary, 1918
+  color: lavender

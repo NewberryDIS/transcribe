@@ -1,0 +1,7 @@
+<ul role="list">
+    {% for item in footer_menu %}
+    <li>
+        <a href="{{item.link}}" {% if item.link.startswith('http') %} target="_blank" {% endif %}>{{item.text}}</a>
+    </li>
+    {% endfor %}
+</ul>

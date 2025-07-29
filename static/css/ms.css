@@ -3,7 +3,7 @@ main {
   margin: 0 auto;
   border: 3px solid var(--accent-color);
   background-color: var(--bg-color);
-  padding: 66px 1rem;
+  padding: var(--header-height) 1rem;
 }
 
 .title-bar {
@@ -40,8 +40,7 @@ main {
     gap: 9px;
   }
 
-  .title-bar-links {
-  }
+  .title-bar-links {}
 }
 
 @media screen and (max-width: 1000px) {
@@ -132,8 +131,10 @@ main {
     height: 33px;
   }
 }
+
 .review-na {
   position: relative;
+
   &:after {
     position: absolute;
     display: flex;

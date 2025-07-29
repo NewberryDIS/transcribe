@@ -1,0 +1,77 @@
+<div class="result-item" id="result-{{ sample_result.image }}">
+  <div class="info">
+    <div class="result-header">
+      <h3 class="result-title">{{ sample_result.title }}</h3>
+    </div>
+
+    {% if sample_result.transcription %}
+    <div
+      id="transcription-{{ sample_result.sysid }}"
+      class="transcription-container"
+    >
+      {% if sample_result.transcrippets %}
+      <div class="result-snippets">
+        {% for transcrippet in sample_result.transcrippets %}
+        <div class="result-snippet">{{ transcrippet|safe }}</div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="result-snippets">
+        {{ highlight_text(sample_result.transcription, sample_keywords)|safe }}
+      </p>
+      {% endif %}
+      <pre class="result-full-transcription">
+        {{ highlight_text(sample_result.transcription, sample_keywords)|safe }}
+      </pre>
+      <button
+        class="show-trans search-button"
+        onclick="toggleFullText('transcription-{{ sample_result.sysid }}')"
+      >
+        <span class="hide"> Hide </span>
+        <span class="view"> View </span>
+        full transcription
+      </button>
+    </div>
+    {% else %}
+    <p class="no-transcription">No transcription available</p>
+    {% endif %} {% if sample_result.translation %}
+    <div
+      id="translation-{{ sample_result.sysid }}"
+      class="transcription-container"
+    >
+      {% if sample_result.translippets %}
+      <div class="result-snippet">
+        {% for translippet in sample_result.translippets %}
+        <div class="result-snippet">{{ translippet|safe }}</div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="result-snippet">
+        {{ sample_result.translation|truncate(300) }}
+      </p>
+      {% endif %}
+      <pre class="result-full-transcription">
+{{ highlight_text(sample_result.translation, sample_keywords)|safe }}</pre
+      >
+      <button
+        class="show-trans search-button"
+        onclick="toggleFullText('translation-{{ sample_result.sysid }}')"
+      >
+        <span class="hide"> Hide </span>
+        <span class="view"> View </span>
+        full translation
+      </button>
+    </div>
+    {% endif %}
+  </div>
+  <div class="image link-lines">
+    <a href="{{sample_result.link_to_object}}" target="_blank">
+      <img
+        src="https://collections.newberry.org/IIIF3/Image/{{sample_result.image}}/square/200,/0/default.jpg"
+        id="{{sample_result.filename}}"
+        alt=""
+      />
+      <p>View at Newberry Digital Collections</p>
+    </a>
+  </div>
+</div>

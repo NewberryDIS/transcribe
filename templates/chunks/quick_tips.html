@@ -1,7 +1,7 @@
 <aside id="popup" style="display: none">
   <div class="popup">
     <div class="image-content">
-      <img src="{{ url_for('static', path='/images/popup-cap.jpg')}}" alt="" />
+      <img src="/images/popup-cap.jpg" alt="" />
     </div>
     <div class="text-content">
       {{ quick_tips | safe }}
@@ -21,10 +21,7 @@
   <span class="reveal-hover"
     >Clicking this button will appear to do nothing.</span
   >
-  <img
-    src="{{ url_for('static', path='/images/ghostyboy-mini.webp')}}"
-    alt=""
-  />
+  <img src="/images/ghostyboy-mini.webp" alt="" />
 </button>
 {% endif %}
 <style>

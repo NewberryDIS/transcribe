@@ -1,0 +1,12 @@
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+psql/
+static/html/
+static/images/asdf
+static/images/i-*
+static/images/old_jumbo/
+static/images/jens-shortlist/
+zzz_cr-images/
+zzz_cruft/

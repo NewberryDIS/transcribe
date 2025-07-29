@@ -1,0 +1,172 @@
+{% extends 'index_base.html' %}
+{% block extra_head %}
+<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/jumbotron.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/_newberry.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/_colors.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/how-to.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/beta-banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/chunks/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+{% endblock %}
+{% block body %}
+
+<body class="nt-{{ t.image }}"
+    style="background-image: url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/{{ t.image }}/full/,1000/0/default.jpg'), url('{{ url_for('static', path='/images/jumbo/' + t.image + '-sm.jpg') }}');">
+
+    <header id="main-header" class="">
+        {% include 'chunks/header.html' %}
+    </header>
+    <main>
+        {% include 'chunks/otd-block.html' %}
+    </main>
+    <footer>
+        {{ footer_menu | safe }}
+    </footer>
+</body>
+
+{% endblock %}
+
+
+{% block extra_foot %}
+<script>
+
+    function scaleQuoteText() {
+        const containers = document.querySelectorAll(".quote-container");
+
+        containers.forEach((container) => {
+            const textElem = container.querySelector(".quote-text");
+            const maxHeight = container.clientHeight - 33; // Account for header/footer
+            const maxWidth = container.clientWidth - 33;
+
+            let fontSize = 500; // Starting font size
+            textElem.style.fontSize = `${fontSize}px`;
+
+            // reduce font size until text fits
+            while (textElem.scrollHeight > maxHeight && fontSize > 20) {
+                // console.log(
+                //   `text element scroll height: ${textElem.scrollHeight} ; \n text element max height: ${maxHeight} ; `,
+                // );
+                fontSize -= 1;
+                textElem.style.fontSize = `${fontSize}px`;
+            }
+            // console.log(textElem.style.fontSize);
+            // console.log(textElem.innerText);
+        });
+    }
+
+    // Run on load, resize, and htmx load
+    window.addEventListener("load", scaleQuoteText);
+    window.addEventListener("resize", scaleQuoteText);
+    document.body.addEventListener("htmx:afterSwap", scaleQuoteText);
+
+    document.addEventListener("htmx:afterSwap", validateAndSubmit());
+
+    function validateAndSubmit() {
+        const monthInput = document.getElementById("month-input");
+        const dayInput = document.getElementById("day-input");
+        const form = document.getElementById("date-input-form");
+        const errorDiv = document.getElementById("date-error");
+
+        // Add input formatting and validation
+        if (monthInput && dayInput) {
+            // Handle numeric input only
+            [monthInput, dayInput].forEach((input) => {
+                input.addEventListener("input", function (e) {
+                    // Replace any non-numeric characters
+                    this.value = this.value.replace(/[^0-9]/g, "");
+
+                    // Auto-move to next field if complete
+                    if (this === monthInput && this.value.length >= 2) {
+                        dayInput.focus();
+                    }
+                });
+            });
+
+            // Format on blur
+            monthInput.addEventListener("blur", function () {
+                if (this.value) {
+                    const num = parseInt(this.value, 10);
+                    if (!isNaN(num) && num >= 1 && num <= 12) {
+                        this.value = num.toString().padStart(2, "0");
+                        // this.classList.remove('error');
+                    }
+                }
+            });
+
+            dayInput.addEventListener("blur", function () {
+                if (this.value) {
+                    const num = parseInt(this.value, 10);
+                    if (!isNaN(num) && num >= 1 && num <= 31) {
+                        this.value = num.toString().padStart(2, "0");
+                        // this.classList.remove('error');
+                    }
+                }
+            });
+
+            // Validate before form submission
+            form.addEventListener("submit", function (e) {
+                if (!validateDateInputs()) {
+                    console.log("form invalid");
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            });
+        }
+
+        // Function to show error message
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.add("show");
+            setTimeout(() => {
+                errorDiv.classList.remove("show");
+            }, 50000000);
+        }
+
+        // Function to validate date inputs before submission
+        function validateDateInputs() {
+            // Reset any previous error states
+            monthInput.classList.remove("error");
+            dayInput.classList.remove("error");
+
+            // Get and clean values
+            let monthVal = monthInput.value.trim();
+            let dayVal = dayInput.value.trim();
+
+            // Validate month
+            let monthNum = parseInt(monthVal, 10);
+            if (isNaN(monthNum) || monthNum < 1 || monthNum > 12) {
+                monthInput.classList.add("error");
+                showError("Month must be between 1-12");
+                return false;
+            }
+
+            // Validate day
+            let dayNum = parseInt(dayVal, 10);
+            if (isNaN(dayNum) || dayNum < 1 || dayNum > 31) {
+                dayInput.classList.add("error");
+                showError("Day must be between 1-31");
+                return false;
+            }
+
+            // Check if date is valid (e.g., not Feb 30)
+            const currentYear = new Date().getFullYear();
+            const testDate = new Date(currentYear, monthNum - 1, dayNum);
+            if (testDate.getMonth() !== monthNum - 1) {
+                dayInput.classList.add("error");
+                showError("Invalid date for this month");
+                return false;
+            }
+
+            // Format as two digits
+            monthInput.value = monthNum.toString().padStart(2, "0");
+            dayInput.value = dayNum.toString().padStart(2, "0");
+
+            return true;
+        }
+    }
+
+</script>
+{% endblock %}

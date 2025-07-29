@@ -1,8 +1,11 @@
-[TOC]
-
-# Tutorial: How to use Newberry Transcribe { #tutorial data-toc-label='Tutorial' }
-
-![screencap of user transcribing a manuscript](static/images/wilderness2.gif){: #header-img}
+---
+title: "Tutorial: How to use Newberry Transcribe"
+header_image: 
+  src: static/images/wilderness2.gif
+  alt: animated image of a user transcribing a manuscript
+show_toc: true
+page_type: wide
+---
 
 The handwritten documents in the Newberry's manuscript collections are invaluable primary sources, offering unique, first-hand accounts of history. These pages capture everything from everyday observations on weather and daily tasks to dramatic narratives of battles and natural disasters. Researchers turn to these manuscripts to gain a richer understanding of the past -- but without your help, searching, browsing, and fully utilizing the content can be challenging.
 
@@ -13,7 +16,7 @@ Thank you for your support in preserving and expanding access to these voices fr
 ---
 
 ## Register for an account (optional) { #accounts data-toc-label='Accounts' }
-Track your progress by [signing up for an optional account](https://nt.newberry.org/login)! Coming soon: become a reviewer & compete on our leaderboard.</p>
+Track your progress by [signing up for an optional account](https://nt.newberry.org/login)! Coming soon: become a reviewer & compete on our leaderboard.
 
 ---
  
@@ -50,24 +53,30 @@ Once you’ve found your way to a transcription page, simply click into the tran
 
 - Line breaks: add a single line break (i.e. press “enter”) at the end of each paragraph; these make the final transcription more readable in our digital library. E.g. 
 
-    ![screenshot of Fanny Butcher letters transcribe page](static/images/nt-help-lb.jpg)[View in transcription interface](https://nt.newberry.org/page/808376-1/11){: .caption}  
+    ![screenshot of Fanny Butcher letters transcribe page](static/images/nt-help-lb.png)[View in transcription interface](https://nt.newberry.org/page/808376-1/11){: .caption}  
     ` `  
     In the example above, line breaks were added after: Cloud; 23; Butcher:; Chicago; it; yours.  
     
+
+- Margin notes: if you believe the notes are important to the flow of reading, you can use your best judgement on where to insert it with a line break and the label [margin note]. E.g.
+
+    ![screenshot of transcribe page](static/images/nt-help-margin.png)[View in transcription interface](https://nt.newberry.org/page/128246/1){: .caption}
+    ` `
+    If you are unsure or do not believe it is important to the flow of the reading, you can always insert the margin notes at the end of the transcription.
 
 - If a word is unclear, transcribe as much as possible. Use [[?]] to represent illegible words or parts of words, e.g. "th[[?]]" or "this is [[?]]"
 
 - For non-text images such as a diary cover, the front of a postcard, or a drawing within a letter, describe the image briefly in single brackets. E.g. 
 
-    ![screenshot of Marion Metcalf diary transcribe page](static/images/nt-help-image1.jpg)[View in transcription interface](https://nt.newberry.org/page/821787-27601a/1){: .caption}  
+    ![screenshot of Marion Metcalf diary transcribe page](static/images/nt-help-image1.png)[View in transcription interface](https://nt.newberry.org/page/821787-27601a/1){: .caption}  
     ` `  
-    ![screenshot of Jack Conroy letters transcribe page](static/images/nt-help-image2.jpg)[View in transcription interface](https://nt.newberry.org/page/200619-2401/21){: .caption}
+    ![screenshot of Jack Conroy letters transcribe page](static/images/nt-help-image2.png)[View in transcription interface](https://nt.newberry.org/page/200619-2401/21){: .caption}
 
 ---
 
 ## Review { #review data-toc-label='Review' }
 
-Coming soon!
+If you are a registered user, you can access completed transcriptions and review others' work. Use the guidelines above to make edits or corrections.
 
 ---
 
@@ -80,5 +89,5 @@ Are you an instructor who’s interested in using Newberry Transcribe for a tran
 
 ---
 
-<h2 id="questions">Still have questions?</h2>
+## Still have questions?
 Check out our [FAQs](/about#faq), or email us at dis@newberry.org

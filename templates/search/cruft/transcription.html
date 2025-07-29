@@ -1,0 +1,31 @@
+<div class="full-transcription">
+  <div class="transcription-header">
+    <h4>Full Transcription</h4>
+    <button
+      hx-get="#"
+      hx-swap="outerHTML"
+      hx-target="closest .transcription-container"
+      class="close-btn"
+    >
+      ×
+    </button>
+  </div>
+
+  <div class="transcription-content">
+    {% if transcription %}
+    <div class="transcription-text">{{ transcription }}</div>
+    <div class="transcription-actions">
+      <a
+        href="/api/transcription/{{ record_id }}"
+        target="_blank"
+        class="json-link"
+        >View as JSON</a
+      >
+    </div>
+    {% else %}
+    <p class="no-transcription">No transcription content available.</p>
+    {% endif %}
+  </div>
+</div>
+
+<style></style>

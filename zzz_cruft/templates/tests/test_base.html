@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', path='/favicon.png') }}"
+      sizes="16x16 32x32 48x48"
+      type="image/png"
+    />
+    <title>{% block title %}{% endblock %} Newberry Transcribe</title>
+    <script src="{{ url_for('static', path='/js/newberry-logo.js') }}"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/css/_colors.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/css/_base.css') }}"
+    />
+
+    {% block extra_head %}{% endblock %}
+  </head>
+  <script>
+    const themes = {{ themes | safe }}
+  </script>
+
+  <body style="{% block body_style %}{% endblock %}">
+    {% block content %}{% endblock %}
+  </body>
+  <script>
+    const body = document.body;
+
+    function changeTheme(newTheme) {
+      // console.log("newTheme", newTheme)
+      themes.forEach((theme, idx) => {
+        body.classList.remove(theme);
+      });
+      //  console.log(newTheme)
+      sessionStorage.setItem("theme", newTheme);
+      // const normalizedIndex = (newIndex + themes.length) % themes.length;
+      body.classList.add(newTheme);
+    }
+
+    function loadSavedTheme() {
+      const savedTheme =
+        sessionStorage.getItem("theme") ||
+        localStorage.getItem("theme") ||
+        "nt-2KXJ8Z1ZLV0H";
+      console.log("savedTheme", savedTheme);
+      console.log("themes", themes);
+      if (savedTheme && themes.includes(savedTheme)) {
+        changeTheme(savedTheme);
+        //     let computedStyle = window.getComputedStyle(body);
+        //     let backgroundImage = computedStyle.getPropertyValue('background-image');
+        //
+        //     if (backgroundImage === 'none' || backgroundImage === '') {
+        //       const bgImageId = savedTheme.replace('nt-','')
+        //       console.log("backgroundImage", backgroundImage)
+        //       const bgImage = `url('https://collections.newberry.org/IIIF3/Image/${bgImageId}/full/,2000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/${bgImageId}/full/,1000/0/default.jpg'), url('https://collections.newberry.org/IIIF3/Image/${bgImageId}/full/,300/0/default.jpg')`
+        //       body.style.backgroundImage = bgImage;
+        //    }
+      }
+    }
+
+    loadSavedTheme();
+  </script>
+</html>

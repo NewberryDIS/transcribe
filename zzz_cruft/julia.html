@@ -1,0 +1,31 @@
+
+  <a href='/creators/{{ c.slug }}' class='julia-gon-dance card creator{% if c.featured|int > 1 %} featured-creator{% endif %}'
+    id="{{c.slug}}" data-featured="{{c.featured}}">
+    {% if c.featured|int > 1 %}
+    <p class="name">{{ c.displayname }}</p>
+    {% endif %}
+
+    <img class='bg-image' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-bg.webp') }}" />
+    <img id="{{c.indexname}}" class='center-image'
+      src="{{ url_for('static', path='/images/creators/' + c.indexname + '-focus.webp') }}" />
+    {% if c.indexname == 'StobieCharles' %}
+    <img id="{{c.indexname}}-head" class='center-image head'
+      src="{{ url_for('static', path='/images/creators/' + c.indexname + '-focus-2.webp') }}" />
+    {% endif %}
+    <img class='fg-image' src="{{ url_for('static', path='/images/creators/' + c.indexname + '-fg.webp') }}" />
+
+    <div class="card-caption">
+      {% if c.featured|int == 1 %}
+      <p class='name'>{{ c.displayname }}</p>
+      {% endif %}
+      <p class='blurb'>{{ c.bioblurb }}</p>
+      {% if c.featured|int == 2 %}
+      <p class="blurb">{{ c.biographicalnote | truncate(140) }}
+        {% endif %}
+    </div>
+  </a>
+  <script>
+const juliaCard = document.getElementById('julia-newberry');
+
+
+  </script>

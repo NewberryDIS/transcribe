@@ -1,0 +1,41 @@
+<div class="trio-tiles">
+  <div class="trio-tile" id="recently-tanscribed">
+    <div class="tile-header">
+      <h3>Recently Transcribed</h3>
+    </div>
+    <div id="rt-transc-container" class="transc-container">
+      <pre class="transc-text">{{ most_recent.transcription }} </pre>
+      <div class="transc-ack">
+        <p>
+          from
+          <a
+            href="/page/{{ most_recent.ms_id }}/{{ most_recent.page_number }}"
+            class="link-lines ack-link"
+            target="_blank"
+            >{{ most_recent.title }}</a
+          >. Transcribed by <b>{{ most_recent.transcription_user }}</b> on {{
+          most_recent.formatted_date }}
+        </p>
+      </div>
+    </div>
+    <div class="tile-footer"></div>
+  </div>
+
+  <div
+    class="trio-tile"
+    id="browse-our-favorites"
+    hx-get="/otd-fav"
+    hx-trigger="load delay:10ms"
+    hx-target="#browse-our-favorites"
+    hx-swap="outerHTML"
+  ></div>
+  <div
+    class="trio-tile"
+    id="on-this-day"
+    hx-get="/otd"
+    hx-trigger="load delay:10ms"
+    hx-target="#on-this-day"
+    hx-swap="outerHTML"
+  ></div>
+</div>
+

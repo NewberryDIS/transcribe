@@ -11,7 +11,8 @@
     <div class="breadcrumbs">
       <a href="/" class="llines">Transcribe Home</a>
       &gt;
-      <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review' %}Review{%else%}Transcribe{%endif%}</a>
+      <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review'
+        %}Review{%else%}Transcribe{%endif%}</a>
       &gt;
     </div>
     <h1 class="truncate" title="{{ms.title}}">
@@ -54,18 +55,21 @@
 {% endif %}
 {% endblock %}
 
-{% block extra_css %}
-<script src="{{ url_for('static', path='/js/progress-bar.js') }}"></script>
-<link rel="stylesheet" href="{{ url_for('static', path='/css/ms.css') }}">
+{% block extra_head %}
+<script src="/js/progress-bar.js"></script>
+<link rel="stylesheet" href="/css/ms.css">
 {% endblock %}
 
-{% block extra_js %}
-{% if first_reviewable_page_num %}
-document.addEventListener('DOMContentLoaded', function() {
-const element = document.getElementById('page-{{ first_reviewable_page_num }}');
-if (element) {
-element.scrollIntoView({ behavior: 'smooth' });
-}
-});
-{% endif %}
+{% block extra_foot %}
+<script>
+
+  {% if first_reviewable_page_num %}
+  document.addEventListener('DOMContentLoaded', function () {
+    const element = document.getElementById('page-{{ first_reviewable_page_num }}');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+  {% endif %}
+</script>
 {% endblock %}

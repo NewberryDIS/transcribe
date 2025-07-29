@@ -7,7 +7,8 @@
 <div class="breadcrumbs">
   <a href="/" class="llines">Transcribe Home</a>
   &gt;
-  <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review' %}Review{%else%}Transcribe{%endif%}</a>
+  <a href={{ '/review' if review=='?review' else '/transcribe' }} class='llines'>{% if review=='?review'
+    %}Review{%else%}Transcribe{%endif%}</a>
   &gt;
   <a href="/ms/{{ ms_id }}{{review}}" class="llines">{{ page.title }}</a>
   &gt;
@@ -20,7 +21,7 @@
       hx-trigger="load delay:100ms" hx-target="#transcription-interface" hx-swap="innerHTML"></div>
   </section>
   <section class="right" id="right">
-  <!-- <div id="approved-ribbon" style={{ 'display:grid;' if page.status=='reviewed' else 'display:none;' }}><span>Approved</span></div> -->
+    <!-- <div id="approved-ribbon" style={{ 'display:grid;' if page.status=='reviewed' else 'display:none;' }}><span>Approved</span></div> -->
     {% include 'page/image.html' %}
   </section>
 </article>
@@ -30,8 +31,8 @@
   }
 
   // shows the ribbon and disables submits after reviewed
-  document.body.addEventListener('htmx:afterRequest', function(evt) {
-    if(evt.detail.elt.id=='transcription-form' && document.getElementById("transcription-form").getAttribute("review")=='?review'){
+  document.body.addEventListener('htmx:afterRequest', function (evt) {
+    if (evt.detail.elt.id == 'transcription-form' && document.getElementById("transcription-form").getAttribute("review") == '?review') {
       // document.getElementById("approved-ribbon").style.display = "grid"
       document.getElementById("approve-button").disabled = true;
       document.getElementById("save-button").disabled = true;
@@ -40,9 +41,9 @@
 </script>
 {% endblock %}
 
-{% block extra_css %}
+{% block extra_head %}
 <script>let picUrl = ''</script>
-<script src="{{ url_for('static', path='/js/openseadragon/openseadragon.min.js') }}"></script>
-<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
-<link rel="stylesheet" href="{{ url_for('static', path='/css/page.css') }}">
+<script src="/js/openseadragon/openseadragon.min.js"></script>
+<script src="/js/htmx.min.js"></script>
+<link rel="stylesheet" href="/css/page.css">
 {% endblock %}

@@ -1,0 +1,117 @@
+<button href="#main" id="top-arrow">
+  <div id="top-arrow-triangle"></div>
+  <p>back<br />to<br />top</p>
+</button>
+<style>
+  #top-arrow {
+    width: 50px;
+    height: 50px;
+
+    opacity: 10.0001;
+    /*    transform-origin: bottom right; */
+    /*    transform: scale(0.5); */
+    text-transform: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--bg-accent-color);
+    border-width: 0 !important;
+    padding: 9px 15px;
+    --arrow-color: var(--fg-accent-color);
+    --arrow-text-color: transparent;
+    overflow: hidden;
+  }
+  #top-arrow-triangle {
+    border-width: 33px 20px;
+    border-radius: 3px;
+    border-color: transparent;
+    border-bottom-color: var(--arrow-color);
+    border-style: solid;
+    position: absolute;
+    inset: 10%;
+    transform: translate(0, -45%);
+    width: 80%;
+    height: 80%;
+  }
+  #top-arrow:hover {
+    filter: brightness(1.5);
+    --arrow-color: transparent;
+    --arrow-text-color: var(--fg-accent-color);
+  }
+  #top-arrow p {
+    padding: 0;
+    margin: 0;
+    line-height: 0.76rem;
+    position: absolute;
+    inset: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--arrow-text-color);
+  }
+  #top-arrow,
+  #top-arrow * {
+    /* all this effort to keep the button above the footer, and then just transition all over it? */
+    transition:
+      all 333ms,
+      bottom 0ms;
+  }
+</style>
+
+<script>
+  function rem2px(rem) {
+    return (
+      rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    );
+  }
+  const docEl =
+    typeof documentElement === "undefined" ? document.body : documentElement;
+  const bookArrow = document.getElementById("top-arrow");
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    const docHeight = document.body.scrollHeight;
+
+    // We want the button to be positioned at the bottom of the window, but always above the footer
+    // add event listener for scroll (or, hook into the one we're using for opacity)
+    // when we get near the bottom of the page, we'll change the `bottom` value
+    // to add `1rem` to `${the amount of fotter currently visible}`
+    //
+    // first, we get scroll position -- but scroll position refers to the top of the window,
+    // so we have to add the height of the window itself (window.innerHeight)
+    // (scrollBtmPos)
+    //
+    // next we need to determine whether we are in the range to start adjusting position
+    // subtract the height of the footer from the full scrollable height of the document (docHeight)
+    // ( footer height is 2rem for us; we use rem2px() to convert rem to a usable value ),
+    //
+    // once we scroll within range, we take the difference between the scroll position and the docHeight
+    // (should always be below 2rem) and subtract that from 2rem; then add 1rem,
+    // since we want the button to be 1rem above the top of the footer
+    //
+    // (A lot of this math could be reduced but its illegible enough as it is)
+
+    const scrollBtmPos = window.scrollY + window.innerHeight;
+    if (scrollBtmPos > docHeight - rem2px(2)) {
+      let btmPos =
+        rem2px(1) + (rem2px(2) - Math.round(docHeight - scrollBtmPos));
+      bookArrow.style.bottom = `${btmPos}px`;
+    } else {
+      bookArrow.style.bottom = `${rem2px(1)}px`;
+    }
+    if (window.scrollY > 20) {
+      bookArrow.style.opacity = "0.9999";
+    } else {
+      bookArrow.style.opacity = "0.0001";
+    }
+  }
+  bookArrow.addEventListener("click", () => {
+    document.documentElement.style.scrollBehavior = "var(--scroll-behavior)";
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  });
+</script>
